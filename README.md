@@ -1,7 +1,8 @@
-Diffuse
+# Diffuse
 Version 0.4.8
 
-Copyright (C) 2006-2014 Derrick Moser <derrick_moser@yahoo.com>
+Copyright (C) 2006-2014 Derrick Moser <derrick_moser@yahoo.com>  
+Copyright (C) 2015 Romain Failliot <romain.failliot@foolstep.com>
 
 ----
 
