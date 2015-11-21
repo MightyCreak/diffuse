@@ -1,0 +1,24 @@
+# INI syntax file for Diffuse
+# Copyright (C) 2008-2009 Derrick Moser <derrick_moser@yahoo.com>
+syntax INI normal text
+syntax_files INI '\.(cfg|conf|desktop|ini|properties|url)$'
+
+# colours
+colour ini_comment 0.2 0.4 0.64
+colour ini_fixme 1.0 0.5 0.0
+colour ini_section 0.46 0.31 0.48
+colour ini_variable 0.3 0.6 0.02
+colour ini_value 0.0 0.0 0.0
+
+# comments
+syntax_pattern normal comment ini_comment '^[#;]'
+syntax_pattern comment normal ini_comment '(\r\n|\r|\n)$'
+syntax_pattern comment comment ini_fixme '\b(TODO|FIXME|XXX)\b'
+syntax_pattern comment comment ini_comment '.[^TFX\r\n]*'
+
+# variable-value
+syntax_pattern normal normal ini_section '\[.*\]' ignorecase
+syntax_pattern normal normal ini_variable '^[^:=]+[:=]' ignorecase
+
+# optimisation
+syntax_pattern normal normal text '.+'

@@ -1,0 +1,73 @@
+# C# syntax file for Diffuse
+# Copyright (C) 2008-2010 Derrick Moser <derrick_moser@yahoo.com>
+syntax 'C#' normal text
+syntax_files 'C#' '\.cs$'
+
+# colours
+colour csharp_comment 0.2 0.4 0.64
+colour csharp_fixme 1.0 0.5 0.0
+colour csharp_cpp 0.8 0.0 0.0
+colour csharp_cppkeyword 0.46 0.31 0.48
+colour csharp_import 0.46 0.31 0.48
+colour csharp_keyword 0.77 0.63 0.0
+colour csharp_type 0.3 0.6 0.02
+colour csharp_literal 1.0 0.2 0.8
+colour csharp_string 0.8 0.0 0.0
+colour csharp_escapedchar 0.46 0.31 0.48
+colour csharp_punctuation 0.5 0.5 0.5
+
+# whitespace
+syntax_pattern normal normal text '[ \t\r\n]+'
+
+# preprocessor
+syntax_pattern normal cpp csharp_cppkeyword '^[ \t]*#[ \t]*(define|elif|else|endif|endregion|error|if|line|region|undef|warning)\b'
+syntax_pattern cpp normal csharp_cppkeyword '(\r\n|\r|\n)$'
+
+# preprocessor args
+syntax_pattern cpp cpp csharp_cpp '\\(\r\n|\r|\n)$'
+syntax_pattern cpp cpp csharp_cpp '.[^\\/\r\n]*'
+
+# C++ style comments
+syntax_pattern normal cpp_comment csharp_comment '//'
+syntax_pattern cpp_comment normal csharp_comment '(\r\n|\r|\n)$'
+syntax_pattern cpp_comment cpp_comment csharp_comment '\\(\r\n|\r|\n)$'
+syntax_pattern cpp_comment cpp_comment csharp_fixme '\b(TODO|FIXME|XXX)\b'
+syntax_pattern cpp_comment cpp_comment csharp_comment '.[^\\TFX\r\n]*'
+
+# C style comments
+syntax_pattern normal comment csharp_comment '/\*'
+syntax_pattern comment normal csharp_comment '\*/'
+syntax_pattern comment comment csharp_fixme '\b(TODO|FIXME|XXX)\b'
+syntax_pattern comment comment csharp_comment '.[^\*TFX]*'
+
+# string
+syntax_pattern normal string csharp_string '"'
+syntax_pattern string normal csharp_string '"'
+syntax_pattern string string csharp_escapedchar '(\\([0-7]{1,3}|x[0-9a-fA-F]{1,4}|u[0-9a-fA-F]{1,4}|U[0-9a-fA-F]{1,8}|.))+'
+syntax_pattern string string csharp_string '.[^\\"]*'
+
+# verbatim string
+syntax_pattern normal verbatim csharp_string '@"'
+syntax_pattern verbatim verbatim csharp_string '[^"]+'
+syntax_pattern verbatim verbatim csharp_escapedchar '""'
+syntax_pattern verbatim normal csharp_string '"'
+
+# literals
+syntax_pattern normal normal csharp_literal '((([0-9]+\.[0-9]*|\.[0-9]+)(e[\+\-]?[0-9]+)?|[0-9]+e[\+\-]?[0-9]+)[dfm]?|[0-9]+[dfm]|(0x[0-9a-f]+|0[0-7]*|[1-9][0-9]*)(ul?|lu?)?)' ignorecase
+syntax_pattern normal normal csharp_literal '\b(true|false|null)\b'
+
+# import keywords
+syntax_pattern normal normal csharp_import '\b(using)\b'
+
+# typing keywords
+syntax_pattern normal normal csharp_type '\b(abstract|bool|byte|char|class|const|decimal|delegate|double|enum|event|extern|float|int|interface|internal|long|namespace|object|out|override|params|private|protected|public|readonly|sbyte|sealed|short|static|string|struct|uint|ulong|ushort|virtual|void|volatile)\b'
+
+# keywords
+syntax_pattern normal normal csharp_keyword '\b(as|base|break|case|catch|checked|continue|default|do|else|explicit|finally|fixed|for|foreach|goto|if|implicit|in|is|lock|new|operator|ref|return|sizeof|stackalloc|switch|this|throw|try|typeof|unchecked|unsafe|while)\b'
+
+# punctuation
+syntax_pattern normal normal csharp_punctuation '[!~%\|\&\^\(\)\<\>\*\-\+=\{\}\[\]:;,\?]+'
+syntax_pattern normal normal csharp_punctuation '[/\.]'
+
+# parsing optimisation
+syntax_pattern normal normal text '@?[a-z_][a-z_0-9]*' ignorecase

@@ -1,0 +1,56 @@
+# VHDL syntax file for Diffuse
+# Copyright (C) 2008-2009 Derrick Moser <derrick_moser@yahoo.com>
+syntax VHDL normal text
+syntax_files VHDL '\.vhdl$'
+
+# colours
+colour vhdl_comment 0.2 0.4 0.64
+colour vhdl_fixme 1.0 0.5 0.0
+colour vhdl_import 0.46 0.31 0.48
+colour vhdl_keyword 0.77 0.63 0.0
+colour vhdl_type 0.3 0.6 0.02
+colour vhdl_literal 1.0 0.2 0.8
+colour vhdl_string 0.8 0.0 0.0
+colour vhdl_escapedchar 0.46 0.31 0.48
+colour vhdl_punctuation 0.5 0.5 0.5
+
+# whitespace
+syntax_pattern normal normal text '[ \t\r\n]+'
+
+# comments
+syntax_pattern normal comment vhdl_comment '--'
+syntax_pattern comment normal vhdl_comment '(\r\n|\r|\n)$'
+syntax_pattern comment comment vhdl_fixme '\b(TODO|FIXME|XXX)\b'
+syntax_pattern comment comment vhdl_comment '.[^\-TFX\r\n]*'
+
+# char
+syntax_pattern normal normal vhdl_string "'.'"
+
+# string
+syntax_pattern normal string vhdl_string '"'
+syntax_pattern string string vhdl_escapedchar '""'
+syntax_pattern string normal vhdl_string '"'
+syntax_pattern string string vhdl_string '.[^"]*'
+
+# literals
+syntax_pattern normal normal vhdl_literal '([0-9](#[0-9a-f_]*#|(\.[0-9]+)?(e[\+\-]?[0-9]+)?)|b"[01_]*"|o"[0-7_]*"|x"[0-9a-f_]*")' ignorecase
+syntax_pattern normal normal vhdl_literal '\b(true|false)\b' ignorecase
+
+# import keywords
+syntax_pattern normal normal vhdl_import '\b(all|library|use)\b' ignorecase
+
+# typing keywords
+syntax_pattern normal normal vhdl_type '\b(array|bit|bit_vector|boolean|character|constant|file|file_open_kind|file_open_status|integer|natural|positive|real|severity_level|signal|string|std_u?logic(_vector)?|subtype|time|type|variable)\b' ignorecase
+
+# keywords
+syntax_pattern normal normal vhdl_keyword '\b(abs|access|after|alias|and|architecture|assert|attribute|begin|block|body|buffer|bus|case|component|configuration|disconnect|downto|else|elsif|end|entity|exit|for|function|generate|generic|group|guarded|if|impure|in|inertial|inout|is|label|linkage|literal|loop|map|mod|nand|new|next|nor|not|null|of|on|open|or|others|out|package|port|postponed|procedure|process|pure|range|record|register|reject|return|rol|ror|select|severity|shared|sla|sli|sra|srl|then|to|transport|unaffected|units|until|wait|when|while|with|xnor|xor)\b' ignorecase
+
+# punctuation
+syntax_pattern normal normal vhdl_punctuation '[\.,:;=/<>\+&\-\*\(\)]+'
+syntax_pattern normal normal vhdl_punctuation '-'
+
+# parsing optimisation
+syntax_pattern normal identifier text '\\'
+syntax_pattern identifier normal text '\\'
+syntax_pattern identifier identifier text '.[^\\]*'
+syntax_pattern normal normal text "[a-z_]['a-z_0-9]*" ignorecase

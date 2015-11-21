@@ -1,0 +1,102 @@
+# Ruby syntax file for Diffuse
+# Copyright (C) 2008-2009 Derrick Moser <derrick_moser@yahoo.com>
+syntax Ruby normal text
+syntax_files Ruby '\.rb$'
+syntax_magic Ruby '^#![ \t]*([^ \t/]*/)*(env[ \t]+)?ruby[0-9\.]*([ \t].*)?$'
+
+# colours
+colour ruby_comment 0.2 0.4 0.64
+colour ruby_fixme 1.0 0.5 0.0
+colour ruby_keyword 0.77 0.63 0.0
+colour ruby_import 0.46 0.31 0.48
+colour ruby_literal 1.0 0.2 0.8
+colour ruby_string 0.8 0.0 0.0
+colour ruby_escapedchar 0.46 0.31 0.48
+colour ruby_function 0.02 0.6 0.6
+colour ruby_constant 0.3 0.6 0.02
+colour ruby_punctuation 0.5 0.5 0.5
+colour ruby_symbol 0.3 0.6 0.02
+colour ruby_variable 0.02 0.6 0.6
+colour ruby_regexsep 0.77 0.63 0.0
+colour ruby_regex 0.8 0.0 0.0
+colour ruby_optionalsep 0.77 0.63 0.0
+colour ruby_optional 0.8 0.0 0.0
+
+# whitespace/comments
+syntax_pattern normal normal text '[ \t\r\n]+'
+syntax_pattern expr expr text '[ \t\r\n]+'
+syntax_pattern normal comment ruby_comment '#'
+syntax_pattern comment normal ruby_comment '(\r\n|\r|\n)$'
+syntax_pattern comment comment ruby_fixme '\b(TODO|FIXME|XXX)\b'
+syntax_pattern comment comment ruby_comment '.[^TFX\r\n]*'
+syntax_pattern normal doc ruby_comment '^=begin\b'
+syntax_pattern doc normal ruby_comment '^=end\b'
+syntax_pattern doc doc ruby_fixme '\b(TODO|FIXME|XXX)\b'
+syntax_pattern doc doc ruby_comment '.[^TFX]*'
+
+# "-style strings
+syntax_pattern normal double_string ruby_string '"'
+syntax_pattern double_string expr ruby_string '"'
+syntax_pattern double_string double_string ruby_escapedchar '\\([0-7]{1,3}|x[0-9a-fA-F]{1,2}|C-.|M-(\\C-)?.|c?.)'
+syntax_pattern double_string double_string ruby_escapedchar '#\{[^\}"]*\}'
+syntax_pattern double_string double_string ruby_string '.[^\\"#]*'
+
+# '-style strings
+syntax_pattern normal single_string ruby_string "'"
+syntax_pattern single_string expr ruby_string "'"
+syntax_pattern single_string single_string ruby_escapedchar "\\\\[\\\\']"
+syntax_pattern single_string single_string ruby_string ".[^\\\\']*"
+
+# `-style strings
+syntax_pattern normal backquote ruby_string '`'
+syntax_pattern backquote expr ruby_string '`'
+syntax_pattern backquote backquote ruby_escapedchar '\\([0-7]{1,3}|x[0-9a-fA-F]{1,2}|C-.|M-(\\C-)?.|c?.)'
+syntax_pattern backquote backquote ruby_string '.[^\\`]*'
+
+# literals
+syntax_pattern normal expr ruby_literal '(((0|[1-9][0-9])*\.[0-9]*|\.[0-9]+)(e[\+\-]?[0-9]+)?|(0|[1-9][0-9]*)e[\+\-]?[0-9]+|0x[0-9a-f]+|0[0-7]*|[1-9][0-9]*)' ignorecase
+syntax_pattern normal expr ruby_literal '\b(false|FALSE|nil|NIL|true|TRUE|__FILE__|__LINE__)\b'
+syntax_pattern normal expr ruby_literal '\?(\C-|\M-(\C-)?)?[^ \t\r\n]'
+
+# variables
+syntax_pattern normal expr ruby_variable "(@@?[a-z_][a-z_0-9]*|\\$([a-z_][a-z_0-9]*|-[a-z]|[!@&`+1~=/\\\\,;\\.<>0\\*\\$\\?:\"']))\b" ignorecase
+
+# symbol
+syntax_pattern normal expr ruby_symbol ":[a-z_][a-z_0-9]*\b" ignorecase
+
+# import
+syntax_pattern normal normal ruby_import '\b(require)\b'
+
+# keywords
+syntax_pattern normal normal ruby_keyword '\b(alias|and|BEGIN|begin|break|case|defined|do|else|elsif|END|end|ensure|for|if|in|module|next|not|or|redo|rescue|retry|return|then|undef|unless|until|when|while|yield)\b'
+syntax_pattern normal expr ruby_keyword '\b(self|super)\b'
+
+# function/class definitions
+syntax_pattern normal declaration ruby_keyword '\b(class|def)\b'
+syntax_pattern declaration declaration text '[ \t]+'
+syntax_pattern declaration normal ruby_function '\b[a-z_][a-z_0-9]*\b' ignorecase
+syntax_pattern declaration normal text ''
+
+# expressions
+syntax_pattern normal expression ruby_regexsep '/'
+syntax_pattern expression expr ruby_regexsep '/[iomxneus]*'
+syntax_pattern expression expression ruby_escapedchar '\\.'
+syntax_pattern expression expression ruby_regex '.[^\\/]*'
+
+# optional
+syntax_pattern normal optional ruby_optionalsep '\|'
+syntax_pattern optional normal ruby_optionalsep '\|'
+syntax_pattern optional optional ruby_optional '.[^\|]*'
+
+# punctuation
+syntax_pattern normal normal ruby_punctuation '[\[\{\}<>;=\(,~!&\^%\?\+\-\*\.]+'
+syntax_pattern normal normal ruby_punctuation '(\.|:+)'
+syntax_pattern normal expr ruby_punctuation '[\)\]]+'
+syntax_pattern expr normal ruby_punctuation '[/\|]+'
+
+# constants
+syntax_pattern normal expr ruby_constant '\b[A-Z_][a-zA-Z_0-9]*\b[\?!]?'
+
+# parsing optimisation
+syntax_pattern normal expr text '[a-z_][a-z_0-9]*[\?!]?' ignorecase
+syntax_pattern expr normal ruby_regex ''

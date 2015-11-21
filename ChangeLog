@@ -1,0 +1,188 @@
+- added Akom Chotiphantawanon's Thai translation
+- updated Python highlighting for Python 3 grammar
+- added a preference and command line option to specify the version control system search order
+
+Diffuse 0.4.8 - 2014-07-18
+- updated use of gtk.SpinButton and gtk.Entry to avoid quirks seen on some platforms
+- fixed a bug that prevented Diffuse from reviewing large git merge conflicts
+- updated C/C++ syntax highlighting to recognise C11/C++11 keywords
+- fixed a bug that prevented drag-and-drop of file paths with non-ASCII characters
+- improved image quality of icons
+- added Chi Ming and Wei-Lun Chao's Traditional Chinese translation
+
+Diffuse 0.4.7 - 2013-05-13
+- added Jindřich Šesták's Czech translation
+- improved character editing to allow easy indenting and moving the cursor by whole words
+- added Miś Uszatek's Polish translation
+- improved auto-detection of utf_16 and utf_32
+- added "New N-Way File Merge..." menu item
+- added syntax highlighting for Erlang and OpenCL files
+
+Diffuse 0.4.6 - 2011-11-02
+- added support for Subversion 1.7
+- added "Open Commit..." menu item
+- "-c" option now works for all supported version control systems
+- fixed a bug that caused the wrong revision to be shown when working on a branch in Mercurial
+- Git support distinguishes between staged and unstaged files
+- added syntax highlighting for R files
+
+Diffuse 0.4.5 - 2011-07-13
+- fixed a bug in CVS and Subversion support that prevented Diffuse from displaying some removed files
+- added syntax highlighting for JSON files
+- added menu items and keyboard shortcuts for "First Tab" and "Last Tab"
+- added "--line" command line option
+- fixed a bug that caused deleted files to be ignored when using the '-m' option
+- fixed a bug that incorrectly encoded pasted text if utf_8 was not specified in the Region Settings preferences
+- state information is now stored in ~/.local/share/diffuse
+- Diffuse now uses a patience diff-based algorithm to align lines
+- added command line option to specify a label to display instead of the file name
+- added preference to display the right margin
+- added Cristian Marchi's Italian translation
+- fixed a bug that could cause "Save As..." to fail with some user specified encodings
+
+Diffuse 0.4.4 - 2010-10-21
+- Git support now recognises conflicts when re-applying the stash
+- double clicking on text can now select full words with non-English characters
+- search dialog is now automatically populated with the currently selected text
+- fixed a bug that prevented opening files with non-ASCII characters in their path
+- added Oleg Pakhtusov's Russian translation
+- added Kang Bundo's Korean translation
+- pane headers tooltips
+- Shift-ScrollWheel can now be used to scroll horizontally
+
+Diffuse 0.4.3 - 2010-04-15
+- fixed a bug that prevented the "-m" option from opening a 3-way merge for Subversion and Bazaar conflicts
+
+Diffuse 0.4.2 - 2010-04-13
+- support for detached Git repositories
+- better removal of unnecessary spacer lines
+- added support for horizontal mouse scrolling
+- renamed some resources to more user friendly names
+- RCS support
+- added Henri Menke's Spanish translation
+- "#!" interpreter lines are now used to select proper highlighting rules
+- syntax highlighting is now indicated by radio menu items
+
+Diffuse 0.4.1 - 2009-10-12
+- added Japanese translation
+- added Liu Hao's simplified Chinese translation
+- added a 'Dismiss All Edits' menu item
+- personal configuration files are now stored in ~/.config/diffuse/ (the README file describes how to migrate old settings)
+- localised manuals are now supported on Windows
+- new command line option for specifying blank file comparison panes
+- new preference to enable/disable line numbers
+- Diffuse now quits if no viewers were created with the -m option
+- MMB on a notebook tab now closes the tab
+- RMB on a notebook tab creates a popup menu to set the current page
+- added "Undo Close Tab" menu item
+- replaced "Closing last tab quits Diffuse" preference with a "Warn me when closing a tab will quit Diffuse" preference
+- added new menu items and buttons for copying lines between panes
+- changed the default hotkeys for merging to reflect the direction text "moves"
+
+Diffuse 0.4.0 - 2009-08-17
+- added format menu with new items for changing case, sorting, and manipulating white space
+- replaced 'Hide end of line characters' preference with 'Show white space characters'
+- errors are now reported in a dialogue instead of printing to stderr
+- optimised redraws when only the cursor position has changed
+- input methods that use pre-editing can now be used when editing text
+- dead keys can now be used when editing text
+- updated Monotone support to use 'mtn automate inventory'
+- Git support now handles files flagged as 'unmerged'
+- graceful handling of and non-zero exit codes from 'git status'
+- added version control section to the manual
+- minor bug fixes
+
+Diffuse 0.3.4 - 2009-07-03
+- syntax highlighting for .plist, GLSL, SConscript, and SConstruct files
+- status bar now explains how to navigate between modes
+- added labels to indicate syntax highlighting rules, encoding, and format
+- Subversion 1.6 support
+- added Henri Menke's German translation
+- added '--examplesdir=' and '--mandir=' options to install.py
+- renamed the '--python-interpreter=' installer option to '--pythonbin='
+- minor bug fixes
+
+Diffuse 0.3.3 - 2009-04-13
+- fixed a bug handling the backspace key with the cursor in the first column
+
+Diffuse 0.3.2 - 2009-04-13
+- POSIX installer with '--destdir=' and '--files-only' options for packagers
+- vi-like keybindings for line mode
+- '-m' option to open modified files in separate tabs
+- 'Merge From Left Then Right' and 'Merge From Right Then Left' menu items
+- drag-n-drop support
+- preferences for behaviour of tabs
+- files with edits now tagged with '*'
+- auto indent
+- 'Open File In New Tab...' and 'Open Modified Files...' menu items
+- 'Save All' menu item
+- mac-style line ending support
+- new end of line display behaviour
+- improved organisation of menu items
+- button bar no longer grabs keyboard focus
+- removed dependence on urllib module
+- errors are now reported on stderr
+- removed TODO list
+- minor bug fixes
+
+Diffuse 0.3.1 - 2009-03-05
+- fixed a typo that broke the 'Find...' dialogue
+
+Diffuse 0.3.0 - 2009-03-03
+- new Windows installer
+- notification on focus change when files change on disk
+- menu items for adjusting indentation
+- syntax highlighting for Objective-C++
+- '-c' option now works with CVS-style revision numbers
+- window title now describes current tab
+- search settings now persist across sessions
+- minor bug fixes
+
+Diffuse 0.2.15 - 2008-12-03
+- smoother scrolling
+- panes and tabs can now be manually re-organised
+- preferences for tab key behaviour
+- 'go to line' menu item
+- '-c' option for viewing the changes of a particular commit
+- home/end keys can now be used in line mode
+- confirmation requested before overriding changed files
+- position of window now saved
+- syntax files for more file types
+- reading /etc/diffuserc now optional when using a personal configuration file
+- minor bug fixes
+
+Diffuse 0.2.14 - 2008-10-20
+- svk support
+- syntax files for more file types
+- DOS / Unix line endings now respected in edit operations
+- improved difference map
+- more robust launching of help browsers
+- man page
+- command line display options
+- moved some resources to the preferences dialogue
+- file revisions can now be specified in the open file dialogue
+- minor bug fixes
+
+Diffuse 0.2.13 - 2008-05-16
+- bazaar, darcs, and monotone support
+- configurable key bindings
+- persistent preference settings
+- optimisations
+- minor bug fixes
+
+Diffuse 0.2.12 - 2008-05-06
+- alternate codecs for reading and writing files
+- more search options
+- editor support for primary selection
+- minor bug fixes
+
+Diffuse 0.2.11 - 2008-04-27
+- cvs, subversion, git, mercurial support
+- python re-write
+- syntax highlighting
+- search and replace
+- customisable through configuration files
+- tabbed viewer panes
+
+Diffuse 0.1.14 - 2006-01-28
+- initial public release

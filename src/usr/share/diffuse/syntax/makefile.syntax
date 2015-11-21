@@ -1,0 +1,82 @@
+# Makefile syntax file for Diffuse
+# Copyright (C) 2008-2009 Derrick Moser <derrick_moser@yahoo.com>
+syntax Makefile normal text
+syntax_files Makefile '^(GNUmakefile|[Mm]akefile)$'
+
+# colours
+colour makefile_continue 0.46 0.31 0.48
+colour makefile_comment 0.2 0.4 0.64
+colour makefile_fixme 1.0 0.5 0.0
+colour makefile_keyword 0.46 0.31 0.48
+colour makefile_processor 0.8 0.0 0.0
+colour makefile_declaration 0.02 0.6 0.6
+colour makefile_step 0.46 0.31 0.48
+colour makefile_commands 0.8 0.0 0.0
+colour makefile_target 0.02 0.6 0.6
+colour makefile_variable 0.02 0.6 0.6
+
+# continuation
+syntax_pattern normal normal makefile_continue '\\(\r\n|\r|\n)$'
+
+# normal comment
+syntax_pattern normal normal_comment makefile_comment '#'
+syntax_pattern normal_comment normal makefile_comment '(\r\n|\r|\n)$'
+syntax_pattern normal_comment normal makefile_continue '\\(\r\n|\r|\n)$'
+syntax_pattern normal_comment normal_comment makefile_fixme '\b(TODO|FIXME|XXX)\b'
+syntax_pattern normal_comment normal_comment makefile_comment '.[^TFX\r\n]*'
+
+# processor
+syntax_pattern normal processor makefile_keyword '^ *(define|undef|[\-s]?include|ifdef|ifndef|ifeq|ifneq|else|endif|override|export|unexport|vpath)\b'
+syntax_pattern processor normal makefile_processor '(\r\n|\r|\n)$'
+syntax_pattern processor processor makefile_continue '\\(\r\n|\r|\n)$'
+syntax_pattern processor processor makefile_variable '\$(\([^\)]+\)|@|%|<|\?|\^|\+|\*)'
+syntax_pattern processor processor makefile_processor '.[^\\#\$\r\n]*'
+
+# processor comment
+syntax_pattern processor processor_comment makefile_comment '#'
+syntax_pattern processor_comment processor makefile_comment '(\r\n|\r|\n)$'
+syntax_pattern processor_comment processor makefile_continue '\\(\r\n|\r|\n)$'
+syntax_pattern processor_comment processor_comment makefile_fixme '\b(TODO|FIXME|XXX)\b'
+syntax_pattern processor_comment processor_comment makefile_comment '.[^TFX\r\n]*'
+
+# commands
+syntax_pattern normal commands makefile_step '^\t-?@?'
+syntax_pattern commands normal makefile_continue '(\r\n|\r|\n)$'
+syntax_pattern commands commands makefile_continue '\\(\r\n|\r|\n)$'
+syntax_pattern commands commands makefile_variable '\$(\([^\)]+\)|@|%|<|\?|\^|\+|\*)'
+syntax_pattern commands commands makefile_commands '.[^\\#\$\r\n]*'
+
+# commands comment
+syntax_pattern commands commands_comment makefile_comment '#'
+syntax_pattern commands_comment commands makefile_comment '(\r\n|\r|\n)$'
+syntax_pattern commands_comment commands makefile_continue '\\(\r\n|\r|\n)$'
+syntax_pattern commands_comment commands_comment makefile_fixme '\b(TODO|FIXME|XXX)\b'
+syntax_pattern commands_comment commands_comment makefile_comment '.[^TFX\r\n]*'
+
+# variable declarations
+syntax_pattern normal declaration makefile_declaration '^ *[A-Za-z_][A-Za-z_0-9]*[ \t]*[:\?\+]?='
+syntax_pattern declaration normal makefile_continue '(\r\n|\r|\n)$'
+syntax_pattern declaration declaration makefile_continue '\\(\r\n|\r|\n)$'
+syntax_pattern declaration declaration makefile_variable '\$(\([^\)]+\)|@|%|<|\?|\^|\+|\*)'
+syntax_pattern declaration declaration text '.[^\\#\$\r\n]*'
+
+# variable declaration comment
+syntax_pattern declaration declaration_comment makefile_comment '#'
+syntax_pattern declaration_comment declaration makefile_comment '(\r\n|\r|\n)$'
+syntax_pattern declaration_comment declaration makefile_continue '\\(\r\n|\r|\n)$'
+syntax_pattern declaration_comment declaration_comment makefile_fixme '\b(TODO|FIXME|XXX)\b'
+syntax_pattern declaration_comment declaration_comment makefile_comment '.[^TFX\r\n]*'
+
+# dependencies
+syntax_pattern normal depends makefile_target '^[^#:]*::?'
+syntax_pattern depends normal makefile_continue '(\r\n|\r|\n)$'
+syntax_pattern depends depends makefile_continue '\\(\r\n|\r|\n)$'
+syntax_pattern depends depends makefile_variable '\$(\([^\)]+\)|@|%|<|\?|\^|\+|\*)'
+syntax_pattern depends depends text '.[^\\#\$\r\n]*'
+
+# depends comment
+syntax_pattern depends depends_comment makefile_comment '#'
+syntax_pattern depends_comment depends makefile_comment '(\r\n|\r|\n)$'
+syntax_pattern depends_comment depends makefile_continue '\\(\r\n|\r|\n)$'
+syntax_pattern depends_comment depends_comment makefile_fixme '\b(TODO|FIXME|XXX)\b'
+syntax_pattern depends_comment depends_comment makefile_comment '.[^TFX\r\n]*'

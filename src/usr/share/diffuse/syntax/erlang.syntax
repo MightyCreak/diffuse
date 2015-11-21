@@ -1,0 +1,62 @@
+# Erlang syntax file for Diffuse
+# Copyright (C) 2012 Derrick Moser <derrick_moser@yahoo.com>
+syntax Erlang init text
+syntax_files Erlang '\.[eh]rl$'
+
+# colours
+colour erlang_comment 0.2 0.4 0.64
+colour erlang_fixme 1.0 0.5 0.0
+colour erlang_import 0.46 0.31 0.48
+colour erlang_keyword 0.77 0.63 0.0
+colour erlang_atom 0.3 0.6 0.02
+colour erlang_literal 1.0 0.2 0.8
+colour erlang_string 0.8 0.0 0.0
+colour erlang_escapedchar 0.46 0.31 0.48
+colour erlang_punctuation 0.5 0.5 0.5
+
+# whitespace
+syntax_pattern init init text '[ \t\r\n]+'
+
+# comments
+syntax_pattern init init_comment erlang_comment '%'
+syntax_pattern init_comment init erlang_comment '(\r\n|\r|\n)$'
+syntax_pattern init_comment init_comment erlang_fixme '\b(TODO|FIXME|XXX)\b'
+syntax_pattern init_comment init_comment erlang_comment '.[^\\TFX\r\n]*'
+
+# import keywords
+syntax_pattern init normal erlang_import '-([a-z_][a-z_0-9]*)\b' ignorecase
+syntax_pattern init normal erlang_import ''
+
+# whitespace
+syntax_pattern normal normal text '[ \t\r\n]+'
+
+# comments
+syntax_pattern normal comment erlang_comment '%'
+syntax_pattern comment normal erlang_comment '(\r\n|\r|\n)$'
+syntax_pattern comment comment erlang_fixme '\b(TODO|FIXME|XXX)\b'
+syntax_pattern comment comment erlang_comment '.[^\\TFX\r\n]*'
+
+# escaped atoms
+syntax_pattern normal char erlang_atom "'"
+syntax_pattern char normal erlang_atom "'"
+syntax_pattern char char erlang_escapedchar '(\\(x([0-9a-fA-F]{2}|\{[0-9a-fA-F]+\})|[0-7]{1,3}|\^[a-zA-Z]|.))+'
+syntax_pattern char char erlang_atom ".[^\\\\']*"
+
+# string
+syntax_pattern normal string erlang_string '"'
+syntax_pattern string normal erlang_string '"'
+syntax_pattern string string erlang_escapedchar '(\\(x([0-9a-fA-F]{2}|\{[0-9a-fA-F]+\})|[0-7]{1,3}|\^[a-zA-Z]|.))+'
+syntax_pattern string string erlang_string '.[^\\"]*'
+
+# literals
+syntax_pattern normal normal erlang_literal '(\$(\\(x([0-9a-fA-F]{2}|\{[0-9a-fA-F]+\})|[0-7]{1,3}|\^[a-zA-Z]|.)|.)|[0-9]+(#[0-9a-f]+|(\.[0-9]+)?(e[\+\-]?[0-9]+)?)?)' ignorecase
+
+# keywords
+syntax_pattern normal normal erlang_keyword '\b(after|and|andalso|band|begin|bnot|bor|bsl|bsr|bxor|case|catch|cond|div|end|fun|if|let|not|of|or|orelse|query|receive|rem|try|when|xor)\b'
+
+# punctuation
+syntax_pattern normal normal erlang_punctuation '[\[\]\{\}\(\)\|,;:\<\>/\+\-\*!\?#=]+'
+syntax_pattern normal init erlang_punctuation '\.'
+
+# parsing optimisation
+syntax_pattern normal normal text '[a-z_][a-z_0-9]*' ignorecase

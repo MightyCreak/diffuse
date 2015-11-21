@@ -1,0 +1,70 @@
+# Pascal syntax file for Diffuse
+# Copyright (C) 2008-2009 Derrick Moser <derrick_moser@yahoo.com>
+syntax Pascal normal text
+syntax_files Pascal '\.pas$'
+
+# colours
+colour pascal_comment 0.2 0.4 0.64
+colour pascal_cppkeyword 0.46 0.31 0.48
+colour pascal_cpp 0.8 0.0 0.0
+colour pascal_fixme 1.0 0.5 0.0
+colour pascal_import 0.46 0.31 0.48
+colour pascal_keyword 0.77 0.63 0.0
+colour pascal_type 0.3 0.6 0.02
+colour pascal_literal 1.0 0.2 0.8
+colour pascal_string 0.8 0.0 0.0
+colour pascal_escapedchar 0.46 0.31 0.48
+colour pascal_punctuation 0.5 0.5 0.5
+
+# whitespace
+syntax_pattern normal normal text '[ \t\r\n]+'
+
+# old style comments
+syntax_pattern normal comment pascal_comment '\(\*'
+syntax_pattern comment normal pascal_comment '\*\)'
+syntax_pattern comment comment pascal_fixme '\b(TODO|FIXME|XXX)\b'
+syntax_pattern comment comment pascal_comment '.[^\*TFX]*'
+
+# new style comments
+syntax_pattern normal cpp pascal_cppkeyword '\{\$[a-z_0-9]*' ignorecase
+syntax_pattern cpp normal pascal_cppkeyword '\}'
+syntax_pattern cpp cpp pascal_cpp '.[^\}]*'
+
+# new style comments
+syntax_pattern normal new_comment pascal_comment '\{'
+syntax_pattern new_comment normal pascal_comment '\}'
+syntax_pattern new_comment new_comment pascal_fixme '\b(TODO|FIXME|XXX)\b'
+syntax_pattern new_comment new_comment pascal_comment '.[^\}TFX]*'
+
+# delphi style comments
+syntax_pattern normal delphi_comment pascal_comment '//'
+syntax_pattern delphi_comment normal pascal_comment '(\r\n|\r|\n)$'
+syntax_pattern delphi_comment delphi_comment pascal_fixme '\b(TODO|FIXME|XXX)\b'
+syntax_pattern delphi_comment delphi_comment pascal_comment '.[^TFX\r\n]*'
+
+# string
+syntax_pattern normal string pascal_string "'"
+syntax_pattern string string pascal_escapedchar "''"
+syntax_pattern string normal pascal_string "'"
+syntax_pattern string string pascal_string ".[^']*"
+syntax_pattern normal normal pascal_escapedchar '#[0-9]+'
+
+# literals
+syntax_pattern normal normal pascal_literal '([0-9]+(\.[0-9]*)?(e[\+\-]?[0-9]+)?|\$[0-9a-f]+|%[01]+)' ignorecase
+syntax_pattern normal normal pascal_literal '\b(false|true|nil)\b' ignorecase
+
+# import keywords
+syntax_pattern normal normal pascal_import '\b(program|unit|uses)\b' ignorecase
+
+# typing keywords
+syntax_pattern normal normal pascal_type '\b(absolute|ansistring|array|boolean|byte|bytebool|cardinal|char|comp|double|extended|external|far|file|forward|inline|int64|integer|longbool|longint|near|pchar|pointer|qword|real|set|shortint|shortstring|single|smallint|string|virtual|word|wordbool)\b' ignorecase
+
+# keywords
+syntax_pattern normal normal pascal_keyword '\b(abstract|alias|and|as|asm|assembler|begin|break|case|cdecl|class|const|constructor|continue|default|destructor|dispose|div|do|downto|else|end|except|exit|exports|external|finalization|finally|for|function|goto|if|implementation|in|index|inherited|initialization|interface|is|label|library|mod|name|new|not|object|of|on|operator|or|override|packed|pascal|popstack|private|procedure|property|protected|public|published|raise|read|record|register|repeat|saveregisters|self|shl|shr|stdcall|then|to|try|type|until|var|while|with|write|xor)\b' ignorecase
+
+# punctuation
+syntax_pattern normal normal pascal_punctuation '[\+\-\*=<>\[\]\.,\):;\^@]+'
+syntax_pattern normal normal pascal_punctuation '[\(/]'
+
+# parsing optimisation
+syntax_pattern normal normal text '[a-z_][a-z_0-9]*' ignorecase

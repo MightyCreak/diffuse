@@ -1,0 +1,225 @@
+# HTML syntax file for Diffuse
+# Copyright (C) 2008-2009 Derrick Moser <derrick_moser@yahoo.com>
+syntax HTML normal text
+syntax_files HTML '\.html$'
+
+# colours
+colour html_comment 0.2 0.4 0.64
+colour html_fixme 1.0 0.5 0.0
+colour html_escapedchar 0.77 0.63 0.0
+colour html_processingtag 0.46 0.31 0.48
+colour html_processingtagname 0.3 0.6 0.02
+colour html_tag 0.02 0.6 0.6
+colour html_tagname 0.77 0.63 0.0
+colour html_punctuation 0.5 0.5 0.5
+colour html_attribute 0.3 0.6 0.02
+colour html_string 0.8 0.0 0.0
+colour html_script 0.46 0.31 0.48
+colour html_style 0.46 0.31 0.48
+
+# script colours
+colour html_script_comment 0.2 0.4 0.64
+colour html_script_fixme 1.0 0.5 0.0
+colour html_script_import 0.46 0.31 0.48
+colour html_script_keyword 0.77 0.63 0.0
+colour html_script_type 0.3 0.6 0.02
+colour html_script_regex 0.8 0.0 0.0
+colour html_script_regexsep 0.77 0.63 0.0
+colour html_script_literal 1.0 0.2 0.8
+colour html_script_string 0.8 0.0 0.0
+colour html_script_escapedchar 0.46 0.31 0.48
+colour html_script_punctuation 0.5 0.5 0.5
+
+# style colours
+colour html_style_comment 0.2 0.4 0.64
+colour html_style_fixme 1.0 0.5 0.0
+colour html_style_rule 0.46 0.31 0.48
+colour html_style_block 0.02 0.6 0.6
+colour html_style_selector 0.77 0.63 0.0
+colour html_style_property 0.3 0.6 0.02
+colour html_style_important 0.46 0.31 0.48
+colour html_style_literal 1.0 0.2 0.8
+colour html_style_string 0.8 0.0 0.0
+colour html_style_escapedchar 0.46 0.31 0.48
+colour html_style_punctuation 0.5 0.5 0.5
+
+# whitespace/comments
+syntax_pattern normal normal text '[ \t\r\n]+'
+syntax_pattern normal comment html_comment '<!--'
+syntax_pattern comment normal html_comment '-->'
+syntax_pattern comment comment html_fixme '\b(TODO|FIXME|XXX)\b'
+syntax_pattern comment comment html_comment '.[^TFX\-]*'
+
+#
+# script
+#
+syntax_pattern normal script html_script '<script\b[^>]*>'
+syntax_pattern script normal html_script '</script>'
+
+# whitespace
+syntax_pattern script script text '[ \t\r\n]+'
+syntax_pattern script_expr normal html_script '</script>'
+syntax_pattern script_expr script_expr text '[ \t\r\n]+'
+
+# C++ style comments
+syntax_pattern script script_cpp_comment html_script_comment '//'
+syntax_pattern script_cpp_comment normal html_script '</script>'
+syntax_pattern script_expr script_cpp_comment html_script_comment '//'
+syntax_pattern script_cpp_comment script html_script_comment '(\r\n|\r|\n)$'
+syntax_pattern script_cpp_comment script_cpp_comment html_script_comment '\\(\r\n|\r|\n)$'
+syntax_pattern script_cpp_comment script_cpp_comment html_script_fixme '\b(TODO|FIXME|XXX)\b'
+syntax_pattern script_cpp_comment script_cpp_comment html_script_comment '.[^\\TFX\r\n<]*'
+
+# C style comments
+syntax_pattern script script_comment html_script_comment '/\*'
+syntax_pattern script_comment normal html_script '</script>'
+syntax_pattern script_expr script_comment html_script_comment '/\*'
+syntax_pattern script_comment script html_script_comment '\*/'
+syntax_pattern script_comment script_comment html_script_fixme '\b(TODO|FIXME|XXX)\b'
+syntax_pattern script_comment script_comment html_script_comment '.[^\*TFX<]*'
+
+# char
+syntax_pattern script script_char html_script_string "'"
+syntax_pattern script_char normal html_script '</script>'
+syntax_pattern script_char script_char html_script_escapedchar '(\\([0-7]{1,3}|u[0-9a-f]{1,4}|[^<]))+' ignorecase
+syntax_pattern script_char script_expr html_script_string "'"
+syntax_pattern script_char script_char html_script_string ".[^\\\\'<]*"
+
+# string
+syntax_pattern script script_string html_script_string '"'
+syntax_pattern script_string normal html_script '</script>'
+syntax_pattern script_string script_string html_script_escapedchar '(\\([0-7]{1,3}|u[0-9a-f]{1,4}|[^<]))+' ignorecase
+syntax_pattern script_string script_expr html_script_string '"'
+syntax_pattern script_string script_string html_script_string '.[^\\"<]*'
+
+# literals
+syntax_pattern script script_expr html_script_literal '(((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)(e[\+\-]?[0-9]+)?|0[0-7]*|0x[0-9a-f]+)' ignorecase
+syntax_pattern script script_expr html_script_literal '\b(true|false|Infinity|NaN|null|undefined)\b'
+
+# import keywords
+syntax_pattern script script html_script_import '\b(import|package)\b'
+
+# typing keywords
+syntax_pattern script script html_script_type '\b(abstract|boolean|byte|char|class|const|double|enum|export|float|function|int|interface|long|native|private|protected|public|short|static|synchronized|transient|var|void|volatile)\b'
+
+# keywords
+syntax_pattern script script html_script_keyword '\b(break|case|catch|continue|debugger|default|delete|do|else|extends|final|finally|for|goto|if|implements|in|instanceof|new|return|switch|throw|throws|try|typeof|while|with)\b'
+syntax_pattern script script_expr html_script_keyword '\b(super|this)\b'
+
+# regular expressions
+syntax_pattern script script_regex html_script_regexsep '/'
+syntax_pattern script_regex normal html_script '</script>'
+syntax_pattern script_regex script_expr html_script_regexsep '/[gim]*'
+syntax_pattern script_regex script_regex html_script_escapedchar '\\(c[^<]|x[0-9a-fA-F]{1,2}|u[0-9a-fA-F]{1,4}|[^<])'
+syntax_pattern script_regex script_regex html_script_regex '.[^\\/<]*'
+
+# punctuation
+syntax_pattern script script html_script_punctuation '[\^\*%~!\+\-=\|\&\(\{\[:;,\?\>\}\.]+'
+syntax_pattern script script html_script_punctuation '<'
+syntax_pattern script script_expr html_script_punctuation '[\)\]]+'
+syntax_pattern script_expr script html_script_punctuation '/'
+
+# parsing optimisation
+syntax_pattern script script_expr text '.[\$a-z_][\$a-z_0-9]*' ignorecase
+syntax_pattern script_expr script html_script_punctuation ''
+
+#
+# style
+#
+syntax_pattern normal style html_style '<style\b[^>]*>'
+syntax_pattern style normal html_style '</style>'
+
+# whitespace and comments
+syntax_pattern style style text '[ \t\r\n]+'
+syntax_pattern style_property style_property text '[ \t\r\n]+'
+syntax_pattern style_property normal html_style '</style>'
+syntax_pattern style style_comment html_style_comment '/\*'
+syntax_pattern style_comment normal html_style '</style>'
+syntax_pattern style_comment style html_style_comment '\*/'
+syntax_pattern style_comment style_comment html_style_fixme '\b(TODO|FIXME|XXX)\b'
+syntax_pattern style_comment style_comment html_style_comment '.[^\*TFX<]*'
+syntax_pattern style_property style_property_comment html_style_comment '/\*'
+syntax_pattern style_property_comment style_property html_style_comment '\*/'
+syntax_pattern style_property_comment style_property_comment html_style_fixme '\b(TODO|FIXME|XXX)\b'
+syntax_pattern style_property_comment style_property_comment html_style_comment '.[^\*TFX<]*'
+
+# rules
+syntax_pattern style style html_style_rule '@[a-z0-9\-_]*' ignorecase
+
+# selectors
+syntax_pattern style style_property html_style_block '\{'
+syntax_pattern style style html_style_selector '[a-z0-9_\-\*]+' ignorecase
+syntax_pattern style style html_style_punctuation '[\|\.#,\[\]\(\)=:;>]+'
+syntax_pattern style style_string html_style_string '"'
+syntax_pattern style_string normal html_style '</style>'
+syntax_pattern style_string style html_style_string '"'
+syntax_pattern style_string style_string html_style_escapedchar '\\([0-9][a-f]{1,6}|.)' ignorecase
+syntax_pattern style_string style_string html_style_string '.[^"<]*'
+syntax_pattern style style_singlestring html_style_string "'"
+syntax_pattern style_singlestring normal html_style '</style>'
+syntax_pattern style_singlestring style html_style_string "'"
+syntax_pattern style_singlestring style_singlestring html_style_escapedchar '\\([0-9][a-f]{1,6}|[^<])' ignorecase
+syntax_pattern style_singlestring style_singlestring html_style_string ".[^'<]*"
+
+# property
+syntax_pattern style_property style html_style_block '\}'
+syntax_pattern style_property style_property html_style_literal '([\+\-]?([0-9]+(\.[0-9]*)?|\.[0-9]+)(em|pt|px|%)?|#[0-9a-f]+)' ignorecase
+syntax_pattern style_property style_property html_style_important '![ \t]*important\b'
+syntax_pattern style_property style_property html_style_property '[a-z0-9_\-]+' ignorecase
+syntax_pattern style_property style_property html_style_punctuation '[,\(\)=:;]+'
+syntax_pattern style_property style_property_string html_style_string '"'
+syntax_pattern style_property_string normal html_style '</style>'
+syntax_pattern style_property_string style_property html_style_string '"'
+syntax_pattern style_property_string style_property_string html_style_escapedchar '\\([0-9][a-f]{1,6}|[^<])' ignorecase
+syntax_pattern style_property_string style_property_string html_style_string '.[^"<]*'
+syntax_pattern style_property style_property_singlestring html_style_string "'"
+syntax_pattern style_property_singlestring normal html_style '</style>'
+syntax_pattern style_property_singlestring style_property html_style_string "'"
+syntax_pattern style_property_singlestring style_property_singlestring html_style_escapedchar '\\([0-9][a-f]{1,6}|[^<])' ignorecase
+syntax_pattern style_property_singlestring style_property_singlestring html_style_string ".[^'<]*"
+
+# parsing optimisation
+syntax_pattern style style html_style '.'
+
+#
+# processing
+#
+syntax_pattern normal process html_processingtag '<\?'
+syntax_pattern process process text '[ \t\r\n]+'
+syntax_pattern process process_attribs html_processingtagname '\b[a-z][a-z_0-9]*([ \t]*:[ \t]*[a-z][a-z_0-9]*)?\b' ignorecase
+syntax_pattern process_attribs normal html_processingtag '\?>'
+syntax_pattern process_attribs process_attribs text '[ \t\r\n]+'
+syntax_pattern process_attribs process_attribs html_punctuation '='
+syntax_pattern process_attribs process_attribs html_attribute '[a-z_0-9\-:\.]+' ignorecase
+syntax_pattern process_attribs process_string html_string '"'
+syntax_pattern process_string process_attribs html_string '"'
+syntax_pattern process_string process_string html_escapedchar '\&([a-z_:][a-z_0-9\.\-_:]*|#[0-9]+|#x[0-9a-f]+);' ignorecase
+syntax_pattern process_string process_string html_string '.[^\&"]*'
+
+syntax_pattern process_attribs process_singlestring html_string "'"
+syntax_pattern process_singlestring process_attribs html_string "'"
+syntax_pattern process_singlestring process_singlestring html_escapedchar '\&([a-z_:][a-z_0-9\.\-_:]*|#[0-9]+|#x[0-9a-f]+);' ignorecase
+syntax_pattern process_singlestring process_singlestring html_string ".[^\\&']*"
+
+# tags
+syntax_pattern normal tag html_tag '<[!/]?'
+syntax_pattern tag tag text '[ \t\r\n]+'
+syntax_pattern tag tag_attribs html_tagname '\b[a-z][a-z_0-9]*([ \t]*:[ \t]*[a-z][a-z_0-9]*)*\b' ignorecase
+syntax_pattern tag tag_attribs text ''
+syntax_pattern tag_attribs normal html_tag '/?>'
+syntax_pattern tag_attribs tag_attribs text '[ \t\r\n]+'
+syntax_pattern tag_attribs tag_attribs html_punctuation '='
+syntax_pattern tag_attribs tag_attribs html_attribute '[a-z_0-9\-:\.]+' ignorecase
+syntax_pattern tag_attribs tag_string html_string '"'
+syntax_pattern tag_string tag_attribs html_string '"'
+syntax_pattern tag_string tag_string html_escapedchar '\&([a-z_:][a-z_0-9\.\-_:]*|#[0-9]+|#x[0-9a-f]+);' ignorecase
+syntax_pattern tag_string tag_string html_string '.[^\&"]*'
+
+syntax_pattern tag_attribs tag_singlestring html_string "'"
+syntax_pattern tag_singlestring tag_attribs html_string "'"
+syntax_pattern tag_singlestring tag_singlestring html_escapedchar '\&([a-z_:][a-z_0-9\.\-_:]*|#[0-9]+|#x[0-9a-f]+);' ignorecase
+syntax_pattern tag_singlestring tag_singlestring html_string ".[^\\&']*"
+
+# text/parsing optimisation
+syntax_pattern normal normal html_escapedchar '\&([a-z_:][a-z_0-9\.\-_:]*|#[0-9]+|#x[0-9a-f]+);' ignorecase
+syntax_pattern normal normal text '.[^\&<]*'

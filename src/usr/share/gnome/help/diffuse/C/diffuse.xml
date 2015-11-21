@@ -1,0 +1,1898 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
+"http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd" [
+  <!ENTITY app "Diffuse">
+  <!ENTITY app-version "0.4.8">
+  <!ENTITY app-year "2006-2014">
+  <!ENTITY manual-year "2009-2014">
+]>
+<book id="index" lang="en">
+  <title><application>&app;</application> User's Manual</title>
+
+  <bookinfo>
+    <copyright>
+      <year>&manual-year;</year>
+      <holder>Derrick Moser</holder>
+    </copyright>
+
+    <authorgroup>
+      <author>
+        <firstname>Derrick</firstname>
+        <surname>Moser</surname>
+        <email>derrick_moser@yahoo.com</email>
+      </author>
+    </authorgroup>
+
+    <releaseinfo>This manual describes version &app-version; of <application>&app;</application>.</releaseinfo>
+  </bookinfo>
+
+  <chapter id="introduction">
+    <title>Introduction</title>
+
+    <para>
+      <application>&app;</application> is a graphical tool for merging and comparing text files.  <application>&app;</application>
+      is able to compare an arbitrary number of files side-by-side and gives
+      users the ability to manually adjust line matching and directly edit
+      files.  <application>&app;</application> can also retrieve revisions of files from Bazaar, CVS,
+      Darcs, Git, Mercurial, Monotone, RCS, Subversion, and SVK repositories
+      for comparison and merging.
+    </para>
+
+    <sect1 id="introduction-about">
+      <title>About</title>
+      <para>
+        <application>&app;</application> was written by Derrick Moser <email>derrick_moser@yahoo.com</email>.
+      </para>
+      <para>&copy; &app-year; Derrick Moser.  All Rights Reserved.</para>
+    </sect1>
+
+    <sect1 id="introduction-licence">
+      <title>Licence</title>
+      <para>
+        <application>&app;</application> is free software; you may redistribute it and/or modify it under
+        the terms of the <citetitle>GNU General Public License</citetitle> as
+        published by the Free Software Foundation; either version 2 of the
+        licence, or (at your option) any later version.
+      </para>
+      <para>
+        <application>&app;</application> is distributed in the hope that it will be useful, but WITHOUT
+        ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+        FITNESS FOR A PARTICULAR PURPOSE.  See the <citetitle>GNU General
+        Public License</citetitle> for more details.
+      </para>
+      <para>
+        You should have received a copy of the <citetitle>GNU General Public
+        License</citetitle> along with <application>&app;</application>.  You may also obtain a copy of
+        the <citetitle>GNU General Public License</citetitle> from the Free
+        Software Foundation by visiting
+        <ulink type="http" url="http://www.fsf.org/">their web site</ulink> or
+        by writing to
+        <address>
+          Free Software Foundation, Inc.
+          <street>51 Franklin St</street>, Fifth Floor,
+          <city>Boston</city>, <state>MA</state> <postcode>02110-1301</postcode>
+          <country>USA</country>
+        </address>
+      </para>
+    </sect1>
+
+    <sect1 id="introduction-usage">
+      <title>Command Line Usage</title>
+
+      <variablelist>
+        <varlistentry>
+          <term><userinput>diffuse [ -h | -? | --help | -v | --version ]</userinput></term>
+          <listitem>
+            <para>Display information about <application>&app;</application>.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><userinput>diffuse [ [ <replaceable>option</replaceable> ]... [ <replaceable>file</replaceable> ]... ]...</userinput></term>
+          <listitem>
+            <para>Compare and merge files.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <sect2 id="introduction-options-help">
+        <title>Help Options</title>
+
+        <para>
+          If a help option is specified, it must be the only argument
+          specified on the command line.  <application>&app;</application> will immediately quit after
+          displaying the help information.
+        </para>
+
+        <variablelist>
+          <varlistentry>
+            <term><userinput>-h</userinput>, <userinput>-?</userinput>, <userinput>--help</userinput></term>
+            <listitem>
+              <para>Display usage information.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>-v</userinput>, <userinput>--version</userinput></term>
+            <listitem>
+              <para>Display version number and copyright information.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </sect2>
+
+      <sect2 id="introduction-options-configuration">
+        <title>Configuration Options</title>
+
+        <para>
+          If a configuration option is specified, it must be the first
+          argument specified on the command line.
+        </para>
+
+        <variablelist>
+          <varlistentry>
+            <term><userinput>--no-rcfile</userinput></term>
+            <listitem>
+              <para>
+                Do not read any initialisation files.
+              </para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>--rcfile <replaceable>file</replaceable></userinput></term>
+            <listitem>
+              <para>
+                Only read initialisation commands from file
+                <replaceable>file</replaceable>.
+              </para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </sect2>
+
+      <sect2 id="introduction-options-general">
+        <title>General Options</title>
+
+        <variablelist>
+          <varlistentry>
+            <term><userinput>-c</userinput>, <userinput>--commit</userinput> <replaceable>rev</replaceable></term>
+            <listitem>
+              <para>
+                Open separate file comparison tabs for all files affected by
+                commit <replaceable>rev</replaceable> from the remaining paths
+                specified in the command line arguments.
+              </para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>-D</userinput>, <userinput>--close-if-same</userinput></term>
+            <listitem>
+              <para>
+                Close all tabs with no differences.
+              </para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>-e</userinput>, <userinput>--encoding</userinput> <replaceable>codec</replaceable></term>
+            <listitem>
+              <para>
+                Use <replaceable>codec</replaceable> to read and write files.
+              </para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>-L</userinput>, <userinput>--label</userinput> <replaceable>label</replaceable></term>
+            <listitem>
+              <para>
+                Display <replaceable>label</replaceable> instead of the file name.
+              </para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>-m</userinput>, <userinput>--modified</userinput></term>
+            <listitem>
+              <para>
+                Open separate file comparison tabs for all modified files from
+                the remaining paths specified in the command line arguments.
+              </para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>-r</userinput>, <userinput>--revision</userinput> <replaceable>rev</replaceable></term>
+            <listitem>
+              <para>
+                Include revision <replaceable>rev</replaceable> of the next
+                file named in the command line arguments in a file comparison
+                tab.
+              </para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>-s</userinput>, <userinput>--separate</userinput></term>
+            <listitem>
+              <para>
+                Open all remaining files specified in the command line
+                arguments in separate file comparison tabs.
+              </para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>-t</userinput>, <userinput>--tab</userinput></term>
+            <listitem>
+              <para>
+                Start a new tab for any remaining files named in the command
+                line arguments.
+              </para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>-V</userinput>, <userinput>--vcs</userinput> <replaceable>vcs-list</replaceable></term>
+            <listitem>
+              <para>
+                Search for version control systems in the ordering:
+                <replaceable>vcs-list</replaceable>.
+              </para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>--line <replaceable>line</replaceable></userinput></term>
+            <listitem>
+              <para>
+                Start with line <replaceable>line</replaceable> selected.
+              </para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>--null-file</userinput></term>
+            <listitem>
+              <para>
+                Create a blank file comparison pane.
+              </para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </sect2>
+
+      <sect2 id="introduction-options-display">
+        <title>Display Options</title>
+
+        <para>
+          Display options specified in the command line arguments will
+          override saved preference values.
+        </para>
+
+        <variablelist>
+          <varlistentry>
+            <term><userinput>-b</userinput>, <userinput>--ignore-space-change</userinput></term>
+            <listitem>
+              <para>
+                Ignore changes to the amount of white space.
+              </para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>-B</userinput>, <userinput>--ignore-blank-lines</userinput></term>
+            <listitem>
+              <para>
+                Ignore changes whose lines are all blank.
+              </para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>-E</userinput>, <userinput>--ignore-end-of-line</userinput></term>
+            <listitem>
+              <para>
+                Ignore end of line differences.
+              </para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>-i</userinput>, <userinput>--ignore-case</userinput></term>
+            <listitem>
+              <para>
+                Ignore case differences in file contents.
+              </para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>-w</userinput>, <userinput>--ignore-all-space</userinput></term>
+            <listitem>
+              <para>
+                Ignore all white space.
+              </para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </sect2>
+    </sect1>
+  </chapter>
+
+  <chapter id="file-comparison">
+    <title>File Comparison</title>
+
+    <para>
+      Use the <menuchoice><guimenu>File</guimenu><guimenuitem>New 2-Way File
+      Merge</guimenuitem></menuchoice>,
+      <menuchoice><guimenu>File</guimenu><guimenuitem>New 3-Way File
+      Merge</guimenuitem></menuchoice>, and
+      <menuchoice><guimenu>File</guimenu><guimenuitem>New N-Way File
+      Merge</guimenuitem></menuchoice> menu items to create additional tabs
+      for comparing text files.  File names and revisions can be specified
+      either in the command line arguments used to invoke
+      <application>&app;</application> or in fields on the Open File dialogue.
+    </para>
+
+    <para>
+      <application>&app;</application> displays files side-by-side inserting gaps to align similar lines
+      of text.  Differences are highlighted with a different background
+      colour.
+    </para>
+
+    <sect1 id="file-comparison-summary">
+      <title>Comparison Summary</title>
+
+      <para>
+        A summary of the compared files is located in the far right margin.
+        The summary illustrates where gaps have been inserted to align
+        matching lines of text and highlights differences using colour.  Manual
+        edits are also highlighted in green.  A blue cursor identifies the
+        region currently being viewed.  The viewed region can be changed by
+        clicking anywhere on the summary.
+      </para>
+    </sect1>
+
+    <sect1 id="file-comparison-selecting">
+      <title>Selecting</title>
+
+      <para>
+        Lines of text can be selected using the mouse pointer or keyboard.
+        Select lines of text with the mouse pointer by clicking on a line.
+        Click and drag to select multiple lines.  Holding down the shift key
+        when clicking will extend the current selection.  Select lines using
+        the keyboard by pressing the page up/down or arrow keys.  Extend the
+        current selection by holding down the shift key and pressing the page
+        up/down or arrow keys.  Move the selection to an adjacent file using
+        the left and right arrow keys.
+      </para>
+    </sect1>
+
+    <sect1 id="file-comparison-alignment">
+      <title>Matching Lines</title>
+
+      <para>
+        The mouse pointer or keyboard can be used to manually align lines of
+        text with adjacent files.  To aligning lines of text using the mouse
+        pointer, select a line of text with the left mouse button, right click
+        on a line of text from an adjacent file, and choose
+        <menuchoice><guimenuitem>Align with Selection</guimenuitem></menuchoice>.  To
+        align lines of text using the keyboard, move the selection with the
+        cursor keys, press the space bar to pick the current line of text, move
+        the selection with the cursor keys to a line of text in an adjacent
+        file, and press the space bar to pick the target line of text.
+        Pressing the <keycap>Escape</keycap> key will cancel the operation.
+      </para>
+
+      <para>
+        Use the <menuchoice><guimenuitem>Isolate</guimenuitem></menuchoice> menu item
+        to prevent the selected lines from being matched with any lines from
+        the adjacent files.
+      </para>
+    </sect1>
+
+    <sect1 id="file-comparison-editing">
+      <title>Editing</title>
+
+      <para>
+        Press the <keycap>Enter</keycap> key or double-click on a text area to enter text
+        editing mode.  The cursor will change to indicate text editing mode
+        and the status bar at the bottom of the window will display the
+        cursor's column position.
+      </para>
+
+      <para>
+        In text editing mode, text can be selected with the mouse pointer by
+        click and dragging.  The current selection can be extended by holding
+        down the shift key and moving the cursor by clicking with the mouse
+        pointer or pressing any of the arrow, home, end or page up/down keys.
+        Individual words can be selected by double-clicking on them with the
+        mouse pointer.  Whole lines can be selected by triple-clicking on them
+        with the mouse pointer.
+      </para>
+
+      <para>
+        Modify text by typing on the keyword.  Modified lines will be
+        highlighted in green.  Use the
+        <menuchoice><guimenuitem>Undo</guimenuitem></menuchoice> and
+        <menuchoice><guimenuitem>Redo</guimenuitem></menuchoice> menu items to
+        undo and redo the previously preformed operations.
+      </para>
+
+      <para>
+        Press the <keycap>Escape</keycap> key or click on another file's text area using the
+        left mouse button to leave editing mode.
+      </para>
+    </sect1>
+
+    <sect1 id="file-comparison-merging">
+      <title>Merging</title>
+
+      <para>
+        Use the difference buttons or menu items to navigate between blocks
+        of differences within a file.  When navigating, <application>&app;</application> will move the
+        selection to the next continuous set of lines with differences or
+        edits.
+      </para>
+
+      <para>
+        Use the merge buttons or menu items to copy blocks of text into the
+        selected range of lines.  The
+        <menuchoice><guimenuitem>Undo</guimenuitem></menuchoice> and
+        <menuchoice><guimenuitem>Redo</guimenuitem></menuchoice> menu items can be used
+        to undo and redo the previously preformed operations.  All changes to a
+        set of lines can be reverted using the
+        <menuchoice><guimenuitem>Clear Edits</guimenuitem></menuchoice> menu item
+        regardless of the order the edits were performed.
+      </para>
+    </sect1>
+  </chapter>
+
+  <chapter id="version-control">
+    <title>Version Control</title>
+
+    <para>
+      <application>&app;</application> can retrieve file revisions from several version control systems
+      via their command line interface.  The Microsoft Windows build of <application>&app;</application>
+      is able to use both the Cygwin and native versions of the supported
+      version control systems.  When using <application>&app;</application> with Cygwin, ensure
+      <application>&app;</application>'s Cygwin preferences correctly describe your system.  If the
+      <guilabel>Update paths for Cygwin</guilabel> preference exists for a
+      version control system, it must be enabled to use the Cygwin version.
+    </para>
+
+    <para>
+      Version control systems are sensitive to the system path and other
+      environment variable settings.  The <guilabel>Launch from a Bash login
+      shell</guilabel> preference may be used to easily set the environment for
+      Cygwin version control systems.
+    </para>
+
+    <sect1 id="version-control-uncommitted-modifications">
+      <title>Viewing Uncommitted Modifications</title>
+
+      <para>
+        The <userinput>-m</userinput> option will cause <application>&app;</application> to open
+        comparison tabs for each file the version control system indicates has
+        uncommitted modifications.  This is convenient for reviewing all
+        changes before committing or resolving a merge conflict.  If no paths
+        are specified the current working directory will be used.  For example,
+        view all of your uncommitted modifications with this command line:
+      </para>
+
+      <para>
+        <screen><prompt>$</prompt> <userinput>diffuse -m</userinput></screen>
+      </para>
+
+      <para>
+        The default revision of a file will be used for comparison if only one
+        file is specified.  For example, this will display a 2-way merge
+        between the default revision of <filename>foo.C</filename> and the
+        local <filename>foo.C</filename> file:
+      </para>
+
+      <para>
+        <screen><prompt>$</prompt> <userinput>diffuse foo.C</userinput></screen>
+      </para>
+    </sect1>
+
+    <sect1 id="version-control-specifying-revisions">
+      <title>Specifying Revisions</title>
+
+      <para>
+        The <userinput>-r</userinput> option may also be used to explicitly
+        specify a particular file revision.  Any revision specifier understood
+        by the version control system may be used.  The local file will be used
+        for comparison if only one file revision is specified.  For example,
+        this will display a 2-way merge between revision 123 of
+        <filename>foo.C</filename> and the local <filename>foo.C</filename>
+        file:
+      </para>
+
+      <para>
+        <screen><prompt>$</prompt> <userinput>diffuse -r 123 foo.C</userinput></screen>
+      </para>
+
+      <para>
+        Multiple file revisions can be compared by specifying multiple
+        <userinput>-r</userinput> options.  For example, this will display a
+        2-way merge between revision 123 of <filename>foo.C</filename> and
+        revision 321 of <filename>foo.C</filename>:
+      </para>
+
+      <para>
+        <screen><prompt>$</prompt> <userinput>diffuse -r 123 -r 321 foo.C</userinput></screen>
+      </para>
+
+      <para>
+        Local files can be mixed with files from the version control system.
+        For example, this will display a 3-way merge between revision
+        MERGE_HEAD of <filename>foo.C</filename>, the local
+        <filename>foo.C</filename> file, and revision HEAD of
+        <filename>foo.C</filename>:
+      </para>
+
+      <para>
+        <screen><prompt>$</prompt> <userinput>diffuse -r MERGE_HEAD foo.C foo.C -r HEAD foo.C</userinput></screen>
+      </para>
+
+      <para>
+        For the <userinput>-c</userinput> option may be used to easily specify
+        a pair of sequential revisions.  For example, this will display a 2-way
+        merge between revision 1.2.2 of
+        <filename>foo.C</filename> and revision 1.2.3 of
+        <filename>foo.C</filename>:
+      </para>
+
+      <para>
+        <screen><prompt>$</prompt> <userinput>diffuse -c 1.2.3 foo.C</userinput></screen>
+      </para>
+
+      <para>
+        <application>&app;</application> does not limit the number of panes that can be used for
+        comparing files.  The inputs to a Git octopus merge could be viewed
+        with a command line like this:
+      </para>
+
+      <para>
+        <screen><prompt>$</prompt> <userinput>diffuse -r HEAD^1 -r HEAD^2 -r HEAD^3 -r HEAD^4 -r HEAD^5 foo.C</userinput></screen>
+      </para>
+    </sect1>
+  </chapter>
+
+  <chapter id="resources">
+    <title>Resources</title>
+
+    <para>
+      Resources can be used to customise several aspects of <application>&app;</application>'s
+      appearance and behaviour such as changing the colours used in the user
+      interface, customising the keyboard shortcuts, adding or replacing syntax
+      highlighting rules, or changing the mapping from file extensions to
+      syntax highlighting rules.
+    </para>
+
+    <para>
+      When <application>&app;</application> is started, it will read commands from the system wide
+      initialisation file <filename>/etc/diffuserc</filename>
+      (<filename>%INSTALL_DIR%\diffuserc</filename> on Microsoft Windows) and
+      then the personal initialisation file
+      <filename>~/.config/diffuse/diffuserc</filename>
+      (<filename>%HOME%\.config\diffuse\diffuserc</filename> on Microsoft Windows).
+      This behaviour can be changed with the <userinput>--no-rcfile</userinput>
+      and <userinput>--rcfile</userinput> configuration options.  A Bourne
+      shell-like lexical analyser is used to parse initialisation commands.
+      Comments and special characters can be embedded using the same style of
+      escaping used in Bourne shell scripts.
+    </para>
+
+    <sect1 id="resources-general">
+      <title>General</title>
+
+      <variablelist>
+        <varlistentry>
+          <term><userinput>import <replaceable>file</replaceable></userinput></term>
+          <listitem>
+            <para>
+              Processes initialisation commands from
+              <replaceable>file</replaceable>.  Initialisation files will
+              only be processed once.
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect1> 
+
+    <sect1 id="resources-keybindings">
+      <title>Key Bindings</title>
+
+      <variablelist>
+        <varlistentry>
+          <term><userinput>keybinding <replaceable>context</replaceable> <replaceable>action</replaceable> <replaceable>key_combination</replaceable></userinput></term>
+          <listitem>
+            <para>
+              Binds a key combination to <replaceable>action</replaceable> when
+              used in <replaceable>context</replaceable>.  Specify
+              <keycap>Shift</keycap> and <keycap>Control</keycap> modifiers by
+              prepending <userinput>Shift+</userinput> and
+              <userinput>Ctrl+</userinput> to
+              <replaceable>key_combination</replaceable> respectively.  Keys
+              normally modified by the <keycap>Shift</keycap> key should be
+              specified using their modified value if
+              <replaceable>key_combination</replaceable> involves the
+              <keycap>Shift</keycap> key.  For example,
+              <userinput>Ctrl+g</userinput> and <userinput>Shift+Ctrl+G</userinput>.
+              Remove bindings for <replaceable>key_combination</replaceable> by
+              specifying <userinput>None</userinput> for the
+              <replaceable>action</replaceable>.
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <sect2 id="resources-keybindings-menu">
+        <title>Menu Item Key Bindings</title>
+
+        <para>
+          Use <userinput>menu</userinput> for the
+          <replaceable>context</replaceable> to define key bindings for menu
+          items.  The following values are valid for
+          <replaceable>action</replaceable>:
+        </para>
+
+        <variablelist>
+          <varlistentry>
+            <term><userinput>open_file</userinput></term>
+            <listitem>
+              <para><menuchoice><guimenu>File</guimenu><guimenuitem>Open File...</guimenuitem></menuchoice> menu item</para>
+              <para>Default: <literal>Ctrl+o</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>open_file_in_new_tab</userinput></term>
+            <listitem>
+              <para><menuchoice><guimenu>File</guimenu><guimenuitem>Open File In New Tab...</guimenuitem></menuchoice> menu item</para>
+              <para>Default: <literal>Ctrl+t</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>open_modified_files</userinput></term>
+            <listitem>
+              <para><menuchoice><guimenu>File</guimenu><guimenuitem>Open Modified Files...</guimenuitem></menuchoice> menu item</para>
+              <para>Default: <literal>Shift+Ctrl+O</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>open_commit</userinput></term>
+            <listitem>
+              <para><menuchoice><guimenu>File</guimenu><guimenuitem>Open Commit...</guimenuitem></menuchoice> menu item</para>
+              <para>Default: <literal>Shift+Ctrl+T</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>reload_file</userinput></term>
+            <listitem>
+              <para><menuchoice><guimenu>File</guimenu><guimenuitem>Reload File</guimenuitem></menuchoice> menu item</para>
+              <para>Default: <literal>Shift+Ctrl+R</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>save_file</userinput></term>
+            <listitem>
+              <para><menuchoice><guimenu>File</guimenu><guimenuitem>Save File</guimenuitem></menuchoice> menu item</para>
+              <para>Default: <literal>Ctrl+s</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>save_file_as</userinput></term>
+            <listitem>
+              <para><menuchoice><guimenu>File</guimenu><guimenuitem>Save File As...</guimenuitem></menuchoice> menu item</para>
+              <para>Default: <literal>Shift+Ctrl+A</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>save_all</userinput></term>
+            <listitem>
+              <para><menuchoice><guimenu>File</guimenu><guimenuitem>Save All</guimenuitem></menuchoice> menu item</para>
+              <para>Default: <literal>Shift+Ctrl+S</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>new_2_way_file_merge</userinput></term>
+            <listitem>
+              <para><menuchoice><guimenu>File</guimenu><guimenuitem>New 2-Way File Merge</guimenuitem></menuchoice> menu item</para>
+              <para>Default: <literal>Ctrl+2</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>new_3_way_file_merge</userinput></term>
+            <listitem>
+              <para><menuchoice><guimenu>File</guimenu><guimenuitem>New 3-Way File Merge</guimenuitem></menuchoice> menu item</para>
+              <para>Default: <literal>Ctrl+3</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>new_n_way_file_merge</userinput></term>
+            <listitem>
+              <para><menuchoice><guimenu>File</guimenu><guimenuitem>New N-Way File Merge</guimenuitem></menuchoice> menu item</para>
+              <para>Default: <literal>Ctrl+4</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>close_tab</userinput></term>
+            <listitem>
+              <para><menuchoice><guimenu>File</guimenu><guimenuitem>Close Tab</guimenuitem></menuchoice> menu item</para>
+              <para>Default: <literal>Ctrl+w</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>undo_close_tab</userinput></term>
+            <listitem>
+              <para><menuchoice><guimenu>File</guimenu><guimenuitem>Undo Close Tab</guimenuitem></menuchoice> menu item</para>
+              <para>Default: <literal>Shift+Ctrl+w</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>quit</userinput></term>
+            <listitem>
+              <para><menuchoice><guimenu>File</guimenu><guimenuitem>Quit</guimenuitem></menuchoice> menu item</para>
+              <para>Default: <literal>Ctrl+q</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>undo</userinput></term>
+            <listitem>
+              <para><menuchoice><guimenu>Edit</guimenu><guimenuitem>Undo</guimenuitem></menuchoice> menu item</para>
+              <para>Default: <literal>Ctrl+z</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>redo</userinput></term>
+            <listitem>
+              <para><menuchoice><guimenu>Edit</guimenu><guimenuitem>Redo</guimenuitem></menuchoice> menu item</para>
+              <para>Default: <literal>Shift+Ctrl+Z</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>cut</userinput></term>
+            <listitem>
+              <para><menuchoice><guimenu>Edit</guimenu><guimenuitem>Cut</guimenuitem></menuchoice> menu item</para>
+              <para>Default: <literal>Ctrl+x</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>copy</userinput></term>
+            <listitem>
+              <para><menuchoice><guimenu>Edit</guimenu><guimenuitem>Copy</guimenuitem></menuchoice> menu item</para>
+              <para>Default: <literal>Ctrl+c</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>paste</userinput></term>
+            <listitem>
+              <para><menuchoice><guimenu>Edit</guimenu><guimenuitem>Paste</guimenuitem></menuchoice> menu item</para>
+              <para>Default: <literal>Ctrl+v</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>select_all</userinput></term>
+            <listitem>
+              <para><menuchoice><guimenu>Edit</guimenu><guimenuitem>Select All</guimenuitem></menuchoice> menu item</para>
+              <para>Default: <literal>Ctrl+a</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>clear_edits</userinput></term>
+            <listitem>
+              <para><menuchoice><guimenu>Edit</guimenu><guimenuitem>Clear Edits</guimenuitem></menuchoice> menu item</para>
+              <para>Default: <literal>Ctrl+r</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>dismiss_all_edits</userinput></term>
+            <listitem>
+              <para><menuchoice><guimenu>Edit</guimenu><guimenuitem>Dismiss All Edits</guimenuitem></menuchoice> menu item</para>
+              <para>Default: <literal>Ctrl+d</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>find</userinput></term>
+            <listitem>
+              <para><menuchoice><guimenu>Edit</guimenu><guimenuitem>Find...</guimenuitem></menuchoice> menu item</para>
+              <para>Default: <literal>Ctrl+f</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>find_next</userinput></term>
+            <listitem>
+              <para><menuchoice><guimenu>Edit</guimenu><guimenuitem>Find Next</guimenuitem></menuchoice> menu item</para>
+              <para>Default: <literal>Ctrl+g</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>find_previous</userinput></term>
+            <listitem>
+              <para><menuchoice><guimenu>Edit</guimenu><guimenuitem>Find Previous</guimenuitem></menuchoice> menu item</para>
+              <para>Default: <literal>Shift+Ctrl+G</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>go_to_line</userinput></term>
+            <listitem>
+              <para><menuchoice><guimenu>Edit</guimenu><guimenuitem>Go To Line...</guimenuitem></menuchoice> menu item</para>
+              <para>Default: <literal>Shift+Ctrl+L</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>preferences</userinput></term>
+            <listitem>
+              <para><menuchoice><guimenu>Edit</guimenu><guimenuitem>Preferences</guimenuitem></menuchoice> menu item</para>
+              <para>Default: None</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>no_syntax_highlighting</userinput></term>
+            <listitem>
+              <para><menuchoice><guimenu>View</guimenu><guisubmenu>Syntax Highlighting</guisubmenu><guimenuitem>None</guimenuitem></menuchoice> menu item</para>
+              <para>Default: None</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>syntax_highlighting_<replaceable>syntax</replaceable></userinput></term>
+            <listitem>
+              <para><menuchoice><guimenu>View</guimenu><guisubmenu>Syntax Highlighting</guisubmenu><guimenuitem><replaceable>syntax</replaceable></guimenuitem></menuchoice> menu item</para>
+              <para>Default: None</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>realign_all</userinput></term>
+            <listitem>
+              <para><menuchoice><guimenu>View</guimenu><guimenuitem>Realign All</guimenuitem></menuchoice> menu item</para>
+              <para>Default: <literal>Ctrl+l</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>isolate</userinput></term>
+            <listitem>
+              <para><menuchoice><guimenu>View</guimenu><guimenuitem>Isolate</guimenuitem></menuchoice> menu item</para>
+              <para>Default: <literal>Ctrl+i</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>first_difference</userinput></term>
+            <listitem>
+              <para><menuchoice><guimenu>View</guimenu><guimenuitem>First Difference</guimenuitem></menuchoice> menu item</para>
+              <para>Default: <literal>Shift+Ctrl+Up</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>previous_difference</userinput></term>
+            <listitem>
+              <para><menuchoice><guimenu>View</guimenu><guimenuitem>Previous Difference</guimenuitem></menuchoice> menu item</para>
+              <para>Default: <literal>Ctrl+Up</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>next_difference</userinput></term>
+            <listitem>
+              <para><menuchoice><guimenu>View</guimenu><guimenuitem>Next Difference</guimenuitem></menuchoice> menu item</para>
+              <para>Default: <literal>Ctrl+Down</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>last_difference</userinput></term>
+            <listitem>
+              <para><menuchoice><guimenu>View</guimenu><guimenuitem>Last Difference</guimenuitem></menuchoice> menu item</para>
+              <para>Default: <literal>Shift+Ctrl+Down</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>first_tab</userinput></term>
+            <listitem>
+              <para><menuchoice><guimenu>View</guimenu><guimenuitem>First Tab</guimenuitem></menuchoice> menu item</para>
+              <para>Default: <literal>Shift+Ctrl+Page_Up</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>previous_tab</userinput></term>
+            <listitem>
+              <para><menuchoice><guimenu>View</guimenu><guimenuitem>Previous Tab</guimenuitem></menuchoice> menu item</para>
+              <para>Default: <literal>Ctrl+Page_Up</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>next_tab</userinput></term>
+            <listitem>
+              <para><menuchoice><guimenu>View</guimenu><guimenuitem>Next Tab</guimenuitem></menuchoice> menu item</para>
+              <para>Default: <literal>Ctrl+Page_Down</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>last_tab</userinput></term>
+            <listitem>
+              <para><menuchoice><guimenu>View</guimenu><guimenuitem>Last Tab</guimenuitem></menuchoice> menu item</para>
+              <para>Default: <literal>Shift+Ctrl+Page_Down</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>shift_pane_right</userinput></term>
+            <listitem>
+              <para><menuchoice><guimenu>View</guimenu><guimenuitem>Shift Pane Right</guimenuitem></menuchoice> menu item</para>
+              <para>Default: <literal>Shift+Ctrl+parenleft</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>shift_pane_left</userinput></term>
+            <listitem>
+              <para><menuchoice><guimenu>View</guimenu><guimenuitem>Shift Pane Left</guimenuitem></menuchoice> menu item</para>
+              <para>Default: <literal>Shift+Ctrl+parenright</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>convert_to_upper_case</userinput></term>
+            <listitem>
+              <para><menuchoice><guimenu>Format</guimenu><guimenuitem>Convert To Upper Case</guimenuitem></menuchoice> menu item</para>
+              <para>Default: <literal>Ctrl+u</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>convert_to_lower_case</userinput></term>
+            <listitem>
+              <para><menuchoice><guimenu>Format</guimenu><guimenuitem>Convert To Lower Case</guimenuitem></menuchoice> menu item</para>
+              <para>Default: <literal>Shift+Ctrl+U</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>sort_lines_in_ascending_order</userinput></term>
+            <listitem>
+              <para><menuchoice><guimenu>Format</guimenu><guimenuitem>Sort Lines In Ascending Order</guimenuitem></menuchoice> menu item</para>
+              <para>Default: <literal>Ctrl+y</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>sort_lines_in_descending_order</userinput></term>
+            <listitem>
+              <para><menuchoice><guimenu>Format</guimenu><guimenuitem>Sort Lines In Descending Order</guimenuitem></menuchoice> menu item</para>
+              <para>Default: <literal>Shift+Ctrl+Y</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>remove_trailing_white_space</userinput></term>
+            <listitem>
+              <para><menuchoice><guimenu>Format</guimenu><guimenuitem>Remove Trailing White Space</guimenuitem></menuchoice> menu item</para>
+              <para>Default: <literal>Ctrl+k</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>convert_tabs_to_spaces</userinput></term>
+            <listitem>
+              <para><menuchoice><guimenu>Format</guimenu><guimenuitem>Convert Tabs To Spaces</guimenuitem></menuchoice> menu item</para>
+              <para>Default: <literal>Ctrl+b</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>convert_leading_spaces_to_tabs</userinput></term>
+            <listitem>
+              <para><menuchoice><guimenu>Format</guimenu><guimenuitem>Convert Leading Spaces To Tabs</guimenuitem></menuchoice> menu item</para>
+              <para>Default: <literal>Shift+Ctrl+B</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>increase_indenting</userinput></term>
+            <listitem>
+              <para><menuchoice><guimenu>Format</guimenu><guimenuitem>Increase Indenting</guimenuitem></menuchoice> menu item</para>
+              <para>Default: <literal>Shift+Ctrl+greater</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>decrease_indenting</userinput></term>
+            <listitem>
+              <para><menuchoice><guimenu>Format</guimenu><guimenuitem>Decrease Indenting</guimenuitem></menuchoice> menu item</para>
+              <para>Default: <literal>Shift+Ctrl+less</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>convert_to_dos</userinput></term>
+            <listitem>
+              <para><menuchoice><guimenu>Format</guimenu><guimenuitem>Convert To DOS Format</guimenuitem></menuchoice> menu item</para>
+              <para>Default: <literal>Shift+Ctrl+E</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>convert_to_mac</userinput></term>
+            <listitem>
+              <para><menuchoice><guimenu>Format</guimenu><guimenuitem>Convert To Mac Format</guimenuitem></menuchoice> menu item</para>
+              <para>Default: <literal>Shift+Ctrl+C</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>convert_to_unix</userinput></term>
+            <listitem>
+              <para><menuchoice><guimenu>Format</guimenu><guimenuitem>Convert To Unix Format</guimenuitem></menuchoice> menu item</para>
+              <para>Default: <literal>Ctrl+e</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>copy_selection_right</userinput></term>
+            <listitem>
+              <para><menuchoice><guimenu>Merge</guimenu><guimenuitem>Copy Selection Right</guimenuitem></menuchoice> menu item</para>
+              <para>Default: <literal>Shift+Ctrl+Right</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>copy_selection_left</userinput></term>
+            <listitem>
+              <para><menuchoice><guimenu>Merge</guimenu><guimenuitem>Copy Selection Left</guimenuitem></menuchoice> menu item</para>
+              <para>Default: <literal>Shift+Ctrl+Left</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>copy_left_into_selection</userinput></term>
+            <listitem>
+              <para><menuchoice><guimenu>Merge</guimenu><guimenuitem>Copy Left Into Selection</guimenuitem></menuchoice> menu item</para>
+              <para>Default: <literal>Ctrl+Right</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>copy_right_into_selection</userinput></term>
+            <listitem>
+              <para><menuchoice><guimenu>Merge</guimenu><guimenuitem>Copy Right Into Selection</guimenuitem></menuchoice> menu item</para>
+              <para>Default: <literal>Ctrl+Left</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>merge_from_left_then_right</userinput></term>
+            <listitem>
+              <para><menuchoice><guimenu>Merge</guimenu><guimenuitem>Merge From Left Then Right</guimenuitem></menuchoice> menu item</para>
+              <para>Default: <literal>Ctrl+m</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>merge_from_right_then_left</userinput></term>
+            <listitem>
+              <para><menuchoice><guimenu>Merge</guimenu><guimenuitem>Merge From Right Then Left</guimenuitem></menuchoice> menu item</para>
+              <para>Default: <literal>Shift+Ctrl+M</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>help_contents</userinput></term>
+            <listitem>
+              <para><menuchoice><guimenu>Help</guimenu><guimenuitem>Help Contents</guimenuitem></menuchoice> menu item</para>
+              <para>Default: <literal>F1</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>about</userinput></term>
+            <listitem>
+              <para><menuchoice><guimenu>Help</guimenu><guimenuitem>About</guimenuitem></menuchoice> menu item</para>
+              <para>Default: None</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </sect2>
+
+      <sect2 id="resources-keybindings-line_mode">
+        <title>Line Editing Mode Key Bindings</title>
+
+        <para>
+          Use <userinput>line_mode</userinput> for the
+          <replaceable>context</replaceable> to define key bindings for line
+          editing mode.  The following values are valid for
+          <replaceable>action</replaceable>:
+        </para>
+
+        <variablelist>
+          <varlistentry>
+            <term><userinput>enter_align_mode</userinput></term>
+            <listitem>
+              <para>enter alignment editing mode</para>
+              <para>Default: <literal>space</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>enter_character_mode</userinput></term>
+            <listitem>
+              <para>enter character editing mode</para>
+              <para>Defaults: <literal>Return</literal>, <literal>KP_Enter</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>first_line</userinput></term>
+            <listitem>
+              <para>move cursor to the first line</para>
+              <para>Defaults: <literal>Home</literal>, <literal>g</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>extend_first_line</userinput></term>
+            <listitem>
+              <para>move cursor to the first line, extending the selection</para>
+              <para>Default: <literal>Shift+Home</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>last_line</userinput></term>
+            <listitem>
+              <para>move cursor to the last line</para>
+              <para>Defaults: <literal>End</literal>, <literal>Shift+G</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>extend_last_line</userinput></term>
+            <listitem>
+              <para>move cursor to the last line, extending the selection</para>
+              <para>Default: <literal>Shift+End</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>up</userinput></term>
+            <listitem>
+              <para>move cursor up one line</para>
+              <para>Defaults: <literal>Up</literal>, <literal>k</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>extend_up</userinput></term>
+            <listitem>
+              <para>move cursor up one line, extending the selection</para>
+              <para>Defaults: <literal>Shift+Up</literal>, <literal>Shift+K</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>down</userinput></term>
+            <listitem>
+              <para>move cursor down one line</para>
+              <para>Defaults: <literal>Down</literal>, <literal>j</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>extend_down</userinput></term>
+            <listitem>
+              <para>move cursor down one line, extending the selection</para>
+              <para>Defaults: <literal>Shift+Down</literal>, <literal>Shift+J</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>left</userinput></term>
+            <listitem>
+              <para>move cursor left one file</para>
+              <para>Defaults: <literal>Left</literal>, <literal>h</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>extend_left</userinput></term>
+            <listitem>
+              <para>move cursor left one file, extending the selection</para>
+              <para>Default: <literal>Shift+Left</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>right</userinput></term>
+            <listitem>
+              <para>move cursor right one file</para>
+              <para>Defaults: <literal>Right</literal>, <literal>l</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>extend_right</userinput></term>
+            <listitem>
+              <para>move cursor right one file, extending the selection</para>
+              <para>Default: <literal>Shift+Right</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>page_up</userinput></term>
+            <listitem>
+              <para>move cursor up one page</para>
+              <para>Defaults: <literal>Page_Up</literal>, <literal>Ctrl+u</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>extend_page_up</userinput></term>
+            <listitem>
+              <para>move cursor up one page, extending the selection</para>
+              <para>Defaults: <literal>Shift+Page_Up</literal>, <literal>Shift+Ctrl+u</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>page_down</userinput></term>
+            <listitem>
+              <para>move cursor down one page</para>
+              <para>Defaults: <literal>Page_Down</literal>, <literal>Ctrl+d</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>extend_page_down</userinput></term>
+            <listitem>
+              <para>move cursor down one page, extending the selection</para>
+              <para>Defaults: <literal>Shift+Page_Down</literal>, <literal>Shift+Ctrl+d</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>delete_text</userinput></term>
+            <listitem>
+              <para>delete the selected text</para>
+              <para>Defaults: <literal>BackSpace</literal>, <literal>Delete</literal>, <literal>x</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>first_difference</userinput></term>
+            <listitem>
+              <para>select the first difference</para>
+              <para>Defaults: <literal>Ctrl+Home</literal>, <literal>Shift+P</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>previous_difference</userinput></term>
+            <listitem>
+              <para>select the previous difference</para>
+              <para>Default: <literal>p</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>next_difference</userinput></term>
+            <listitem>
+              <para>select the next difference</para>
+              <para>Default: <literal>n</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>last_difference</userinput></term>
+            <listitem>
+              <para>select the last difference</para>
+              <para>Defaults: <literal>Ctrl+End</literal>, <literal>Shift+N</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>clear_edits</userinput></term>
+            <listitem>
+              <para>clear all edits from the selected lines</para>
+              <para>Default: <literal>r</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>copy_selection_left</userinput></term>
+            <listitem>
+              <para>copy lines from the selection into the file on the left</para>
+              <para>Default: None</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>copy_selection_right</userinput></term>
+            <listitem>
+              <para>copy lines from the selection into the file on the right</para>
+              <para>Default: None</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>copy_left_into_selection</userinput></term>
+            <listitem>
+              <para>copy lines from the file on the left into the selection</para>
+              <para>Default: <literal>Shift+L</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>copy_right_into_selection</userinput></term>
+            <listitem>
+              <para>copy lines from the file on the right into the selection</para>
+              <para>Default: <literal>Shift+H</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>merge_from_left_then_right</userinput></term>
+            <listitem>
+              <para>merge lines from file on the left then file on the right</para>
+              <para>Default: <literal>m</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>merge_from_right_then_left</userinput></term>
+            <listitem>
+              <para>merge lines from file on the right then file on the left</para>
+              <para>Default: <literal>Shift+M</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>isolate</userinput></term>
+            <listitem>
+              <para>isolate the selected lines</para>
+              <para>Default: <literal>i</literal></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </sect2>
+
+      <sect2 id="resources-keybindings-align_mode">
+        <title>Alignment Editing Mode Key Bindings</title>
+
+        <para>
+          Use <userinput>align_mode</userinput> for the
+          <replaceable>context</replaceable> to define key bindings for
+          alignment editing mode.  The following values are valid for
+          <replaceable>action</replaceable>:
+        </para>
+
+        <variablelist>
+          <varlistentry>
+            <term><userinput>enter_line_mode</userinput></term>
+            <listitem>
+              <para>enter line editing mode</para>
+              <para>Default: <literal>Escape</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>enter_character_mode</userinput></term>
+            <listitem>
+              <para>enter character editing mode</para>
+              <para>Defaults: <literal>Return</literal>, <literal>KP_Enter</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>first_line</userinput></term>
+            <listitem>
+              <para>move cursor to the first line</para>
+              <para>Default: <literal>g</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>last_line</userinput></term>
+            <listitem>
+              <para>move cursor to the last line</para>
+              <para>Default: <literal>Shift+G</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>up</userinput></term>
+            <listitem>
+              <para>move cursor up one line</para>
+              <para>Defaults: <literal>Up</literal>, <literal>k</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>down</userinput></term>
+            <listitem>
+              <para>move cursor down one line</para>
+              <para>Defaults: <literal>Down</literal>, <literal>j</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>left</userinput></term>
+            <listitem>
+              <para>move cursor left one file</para>
+              <para>Defaults: <literal>Left</literal>, <literal>h</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>right</userinput></term>
+            <listitem>
+              <para>move cursor right one file</para>
+              <para>Defaults: <literal>Right</literal>, <literal>l</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>page_up</userinput></term>
+            <listitem>
+              <para>move cursor up one page</para>
+              <para>Defaults: <literal>Page_Up</literal>, <literal>Ctrl+u</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>page_down</userinput></term>
+            <listitem>
+              <para>move cursor down one page</para>
+              <para>Defaults: <literal>Page_Down</literal>, <literal>Ctrl+d</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>align</userinput></term>
+            <listitem>
+              <para>align the selected line to the cursor position</para>
+              <para>Default: <literal>space</literal></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </sect2>
+
+      <sect2 id="resources-keybindings-character_mode">
+        <title>Character Editing Mode Key Bindings</title>
+
+        <para>
+          Use <userinput>character_mode</userinput> for the
+          <replaceable>context</replaceable> to define key bindings for
+          character editing mode.  The following values are valid for
+          <replaceable>action</replaceable>:
+        </para>
+
+        <variablelist>
+          <varlistentry>
+            <term><userinput>enter_line_mode</userinput></term>
+            <listitem>
+              <para>enter line editing mode</para>
+              <para>Default: <literal>Escape</literal></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </sect2>
+    </sect1>
+
+    <sect1 id="resources-strings">
+      <title>Strings</title>
+
+      <variablelist>
+        <varlistentry>
+          <term><userinput>string <replaceable>name</replaceable> <replaceable>value</replaceable></userinput></term>
+          <listitem>
+            <para>
+              Declares a string resource called
+              <replaceable>name</replaceable> with value
+              <replaceable>value</replaceable>.
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <sect2 id="resources-strings-used">
+        <title>Used String Resources</title>
+
+        <para>The following string resources are used by <application>&app;</application>:</para>
+
+        <variablelist>
+          <varlistentry>
+            <term><userinput>difference_colours</userinput></term>
+            <listitem>
+              <para>a list of colour resources used to indicate differences</para>
+              <para>Default: <literal>difference_1 difference_2 difference_3</literal></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </sect2> 
+    </sect1> 
+
+    <sect1 id="resources-colours">
+      <title>Colours</title>
+
+      <variablelist>
+        <varlistentry>
+          <term><userinput>[ colour | color ] <replaceable>name</replaceable> <replaceable>red</replaceable> <replaceable>green</replaceable> <replaceable>blue</replaceable></userinput></term>
+          <listitem>
+            <para>
+              Declares a colour resource called
+              <replaceable>name</replaceable>.  Individual colour components
+              should be expressed as a value between 0 and 1.
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <sect2 id="resources-colours-used">
+        <title>Used Colour Resources</title>
+
+        <para>The following colour resources are used by <application>&app;</application>:</para>
+
+        <variablelist>
+
+          <varlistentry>
+            <term><userinput>alignment</userinput></term>
+            <listitem>
+              <para>colour used to indicate a line picked for manual alignment</para>
+              <para>Default: <literal>1 1 0</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>character_selection</userinput></term>
+            <listitem>
+              <para>colour used to indicate selected characters</para>
+              <para>Default: <literal>0.7 0.7 1</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>cursor</userinput></term>
+            <listitem>
+              <para>colour used for the cursor</para>
+              <para>Default: <literal>0 0 0</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>difference_1</userinput></term>
+            <listitem>
+              <para>colour used to identify differences between the first pair of files</para>
+              <para>Default: <literal>1 0.625 0.625</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>difference_2</userinput></term>
+            <listitem>
+              <para>colour used to identify differences between the second pair of files</para>
+              <para>Default: <literal>0.85 0.625 0.775</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>difference_3</userinput></term>
+            <listitem>
+              <para>colour used to identify differences between the third pair of files</para>
+              <para>Default: <literal>0.85 0.775 0.625</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>edited</userinput></term>
+            <listitem>
+              <para>colour used to indicate edited lines</para>
+              <para>Default: <literal>0.5 1 0.5</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>hatch</userinput></term>
+            <listitem>
+              <para>colour used for indicating alignment gaps</para>
+              <para>Default: <literal>0.8 0.8 0.8</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>line_number</userinput></term>
+            <listitem>
+              <para>colour used for line numbers</para>
+              <para>Default: <literal>0 0 0</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>line_number_background</userinput></term>
+            <listitem>
+              <para>background colour for the line number area</para>
+              <para>Default: <literal>0.75 0.75 0.75</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>line_selection</userinput></term>
+            <listitem>
+              <para>colour used to indicate selected lines</para>
+              <para>Default: <literal>0.7 0.7 1</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>map_background</userinput></term>
+            <listitem>
+              <para>background colour for the map area</para>
+              <para>Default: <literal>0.6 0.6 0.6</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>margin</userinput></term>
+            <listitem>
+              <para>colour used to indicate the right margin</para>
+              <para>Default: <literal>0.8 0.8 0.8</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>preedit</userinput></term>
+            <listitem>
+              <para>pre-edit text colour</para>
+              <para>Default: <literal>0 0 0</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>text</userinput></term>
+            <listitem>
+              <para>regular text colour</para>
+              <para>Default: <literal>0 0 0</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>text_background</userinput></term>
+            <listitem>
+              <para>background colour for the text area</para>
+              <para>Default: <literal>1 1 1</literal></para>
+            </listitem>
+          </varlistentry>
+
+        </variablelist>
+      </sect2> 
+    </sect1> 
+
+    <sect1 id="resources-floats">
+      <title>Floating Point Values</title>
+
+      <variablelist>
+        <varlistentry>
+          <term><userinput>float <replaceable>name</replaceable> <replaceable>value</replaceable></userinput></term>
+          <listitem>
+            <para>
+              Declares a floating point resource called
+              <replaceable>name</replaceable> with value
+              <replaceable>value</replaceable>.
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <sect2 id="resources-floats-used">
+        <title>Used Floating Point Resources</title>
+
+        <para>The following floating point resources are used by <application>&app;</application>:</para>
+
+        <variablelist>
+
+          <varlistentry>
+            <term><userinput>alignment_opacity</userinput></term>
+            <listitem>
+              <para>opacity used when compositing the manual alignment colour</para>
+              <para>Defaults: <literal>1</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>character_difference_opacity</userinput></term>
+            <listitem>
+              <para>opacity used when compositing character difference colours</para>
+              <para>Defaults: <literal>0.4</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>character_selection_opacity</userinput></term>
+            <listitem>
+              <para>opacity used when compositing the character selection colour</para>
+              <para>Defaults: <literal>0.4</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>edited_opacity</userinput></term>
+            <listitem>
+              <para>opacity used when compositing the edited line colour</para>
+              <para>Defaults: <literal>0.4</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>line_difference_opacity</userinput></term>
+            <listitem>
+              <para>opacity used when compositing line difference colours</para>
+              <para>Defaults: <literal>0.3</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>line_selection_opacity</userinput></term>
+            <listitem>
+              <para>opacity used when compositing the line selection colour</para>
+              <para>Defaults: <literal>0.4</literal></para>
+            </listitem>
+          </varlistentry>
+
+        </variablelist>
+      </sect2> 
+    </sect1> 
+
+    <sect1 id="resources-syntax-highlighting">
+      <title>Syntax Highlighting</title>
+
+      <variablelist>
+
+        <varlistentry>
+          <term><userinput>syntax <replaceable>name</replaceable> <optional><replaceable>initial_state</replaceable> <replaceable>default_tag</replaceable></optional></userinput></term>
+          <listitem>
+            <para>
+              Declares a new syntax style called
+              <replaceable>name</replaceable>.  Syntax highlighting uses a
+              simple state machine that transitions between states when
+              certain patterns are matched.  The initial state for the state
+              machine will be <replaceable>initial_state</replaceable>.  All
+              characters not matched by a pattern will be tagged as
+              <replaceable>default_tag</replaceable> for highlighting.  The
+              syntax style called <replaceable>name</replaceable> can be
+              removed by omitting <replaceable>initial_state</replaceable> and
+              <replaceable>default_tag</replaceable>.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><userinput>syntax_files <replaceable>name</replaceable> <optional><replaceable>pattern</replaceable></optional></userinput></term>
+          <listitem>
+            <para>
+              Specifies that files with a name matching
+              <replaceable>pattern</replaceable> should be highlighted using
+              the syntax style called <replaceable>name</replaceable>.
+              Patterns used to match files for use with the syntax style called
+              <replaceable>name</replaceable> can be removed by omitting
+              <replaceable>pattern</replaceable>.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><userinput>syntax_magic <replaceable>name</replaceable> <optional><replaceable>pattern</replaceable> <optional>ignorecase</optional></optional></userinput></term>
+          <listitem>
+            <para>
+              Specifies that files with a first line matching
+              <replaceable>pattern</replaceable> should be highlighted using
+              the syntax style called <replaceable>name</replaceable>.
+              Patterns used to match files for use with the syntax style called
+              <replaceable>name</replaceable> can be removed by omitting
+              <replaceable>pattern</replaceable>.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><userinput>syntax_pattern <replaceable>name</replaceable> <replaceable>initial_state</replaceable> <replaceable>final_state</replaceable> <replaceable>tag</replaceable> <replaceable>pattern</replaceable> <optional>ignorecase</optional></userinput></term>
+          <listitem>
+            <para>
+              Adds a pattern to the previously declared syntax style.  Patterns
+              are tried one at a time in the order they were declared until the
+              first match is found.  A pattern will only be used to match
+              characters if the state machine is in the state
+              <replaceable>initial_state</replaceable>.  The state machine will
+              transition to <replaceable>final_state</replaceable> if the
+              pattern defined by <replaceable>pattern</replaceable> is matched.
+              Case insensitive pattern matching will be used if
+              <userinput>ignorecase</userinput> is specified.  All characters
+              matched by the pattern will be tagged as
+              <replaceable>tag</replaceable> for highlighting.
+            </para>
+          </listitem>
+        </varlistentry>
+
+      </variablelist>
+    </sect1> 
+  </chapter>
+
+  <chapter id="files">
+    <title>Files</title>
+    <para>The following files are used by <application>&app;</application>:</para>
+
+    <variablelist>
+      <varlistentry>
+        <term><filename>/etc/diffuserc</filename></term>
+        <listitem>
+          <para>system wide initialisations (<filename>%INSTALL_DIR%\diffuserc</filename> on Microsoft Windows)</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><filename>/usr/share/diffuse/syntax/*.syntax</filename></term>
+        <listitem>
+          <para>syntax files for various languages (<filename>%INSTALL_DIR%\syntax\*.syntax</filename> on Microsoft Windows)</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+          <term><filename>~/.config/diffuse/diffuserc</filename></term>
+        <listitem>
+          <para>your initialisations (<filename>%HOME%\.config\diffuse\diffuserc</filename> on Microsoft Windows)</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><filename>~/.config/diffuse/prefs</filename></term>
+        <listitem>
+          <para>your saved preferences (<filename>%HOME%\.config\diffuse\prefs</filename> on Microsoft Windows)</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><filename>~/.local/share/diffuse/state</filename></term>
+        <listitem>
+          <para>data persistent across sessions (<filename>%HOME%\.local\share\diffuse\state</filename> on Microsoft Windows)</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </chapter>
+</book>

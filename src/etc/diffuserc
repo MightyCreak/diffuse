@@ -1,0 +1,5 @@
+# /etc/diffuserc: System-wide initialisation file for Diffuse
+#
+# Copyright (C) 2006-2009 Derrick Moser <derrick_moser@yahoo.com>
+
+import ../usr/share/diffuse/syntax/*.syntax

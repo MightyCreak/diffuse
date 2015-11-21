@@ -1,0 +1,67 @@
+# SQL syntax file for Diffuse
+# Copyright (C) 2008-2009 Derrick Moser <derrick_moser@yahoo.com>
+syntax SQL normal text
+syntax_files SQL '\.sql$'
+
+# colours
+colour sql_comment 0.2 0.4 0.64
+colour sql_fixme 1.0 0.5 0.0
+colour sql_keyword 0.77 0.63 0.0
+colour sql_type 0.3 0.6 0.02
+colour sql_literal 1.0 0.2 0.8
+colour sql_string 0.8 0.0 0.0
+colour sql_escapedchar 0.46 0.31 0.48
+colour sql_punctuation 0.5 0.5 0.5
+colour sql_identifier 0.46 0.31 0.48
+colour sql_variable 0.02 0.6 0.6
+
+# whitespace
+syntax_pattern normal normal text '[ \t\r\n]+'
+
+# regular comments
+syntax_pattern normal cpp_comment sql_comment '(#|--)'
+syntax_pattern cpp_comment cpp_comment sql_fixme '\b(TODO|FIXME|XXX)\b'
+syntax_pattern cpp_comment normal sql_comment '(\r\n|\r|\n)$'
+syntax_pattern cpp_comment cpp_comment sql_comment '.[^TFX\r\n]*'
+
+# C style comments
+syntax_pattern normal comment sql_comment '/\*'
+syntax_pattern comment normal sql_comment '\*/'
+syntax_pattern comment comment sql_fixme '\b(TODO|FIXME|XXX)\b'
+syntax_pattern comment comment sql_comment '.[^\*TFX]*'
+
+# char
+syntax_pattern normal char sql_string "(_latin1|_utf8|N|n)?'"
+syntax_pattern char char sql_escapedchar "(\\\\[0'\"bnrtZ\\\\%_]|'')+"
+syntax_pattern char char sql_string "[^\\\\']+"
+syntax_pattern char normal sql_string "'"
+
+# string
+syntax_pattern normal string sql_string '(_latin1|_utf8|N|n)?"'
+syntax_pattern string string sql_escapedchar "(\\\\[0'\"bnrtZ\\\\%_]|\"\")+"
+syntax_pattern string string sql_string '[^\\"]+'
+syntax_pattern string normal sql_string '"'
+
+# identifier
+syntax_pattern normal normal sql_identifier '`[^`]+`'
+
+# variables
+syntax_pattern normal normal sql_variable '@[a-z0-9\._\$]+' ignorecase
+
+# literals
+syntax_pattern normal normal sql_literal "([0-9]*\.[0-9]+(e[\+\-]?[0-9]+)?|0x[0-9a-f]+|[0-9]+|x'[0-9a-f]+'|b'[01]+')" ignorecase
+syntax_pattern normal normal sql_literal '\b(true|false|null)\b' ignorecase
+syntax_pattern normal normal sql_literal '\\N\b'
+
+# types
+syntax_pattern normal normal sql_type '\b(ascii|bigint|binary|bit|blob|bool|boolean|byte|char|character|collate|date|datetime|dec|decimal|double|enum|fixed|float[48]?|int[12348]?|integer|long|longblob|longtext|mediumblob|mediumint|mediumtext|middleint|numeric|precision|real|serial|signed|smallint|text|time|timestamp|tinyblob|tinyint|tinytext|unicode|varbinary|varchar|varcharacter|year)\b' ignorecase
+
+# keywords
+syntax_pattern normal normal sql_keyword '\b(accessible|add|all|alter|analyze|and|as|asc|asensitive|auto_increment|before|between|both|by|call|cascade|case|change|charset|check|column|condition|constraint|continue|convert|create|cross|current_date|current_time|current_timestamp|current_user|cursor|database|databases|day_hour|day_microsecond|day_minute|day_second|declare|default|delayed|delete|desc|describe|deterministic|distinct|distinctrow|div|drop|dual|each|else|elseif|enclosed|engine|escaped|exists|exit|explain|fetch|for|force|foreign|from|fulltext|grant|group|having|high_priority|hour_microsecond|hour_minute|hour_second|if|ignore|in|index|infile|inner|inout|insensitive|insert|interval|into|is|iterate|join|key|keys|kill|leading|leave|left|like|limit|linear|lines|load|localtime|localtimestamp|lock|loop|low_priority|master_ssl_verify_server_cert|match|minute_microsecond|minute_second|mod|modifies|natural|no_write_to_binlog|not|on|optimize|option|optionally|or|order|out|outer|outfile|primary|procedure|purge|range|read|read_only|read_write|reads|real|references|regexp|release|rename|repeat|replace|require|restrict|return|revoke|right|rlike|schema|schemas|second_microsecond|select|sensitive|separator|set|show|spatial|specific|sql|sql_big_result|sql_calc_found_rows|sql_small_result|sqlexception|sqlstate|sqlwarning|ssl|starting|straight_join|table|terminated|then|to|trailing|trigger|undo|union|unique|unlock|unsigned|update|usage|use|using|utc_date|utc_time|utc_timestamp|values|varying|when|where|while|with|write|xor|year_month|zerofill)\b' ignorecase
+
+# punctuation
+syntax_pattern normal normal sql_punctuation '[=<>!\|\+\-\*\.,;\(\)]+'
+syntax_pattern normal normal sql_punctuation '/'
+
+# parsing optimisation
+syntax_pattern normal normal text '[a-z_][a-z_0-9]*' ignorecase

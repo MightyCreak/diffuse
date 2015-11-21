@@ -1,0 +1,59 @@
+# GLSL syntax file for Diffuse
+# Copyright (C) 2009-2011 Derrick Moser <derrick_moser@yahoo.com>
+syntax GLSL normal text
+syntax_files GLSL '\.(frag|geom|glsl|vert)$'
+
+# colours
+colour glsl_comment 0.2 0.4 0.64
+colour glsl_fixme 1.0 0.5 0.0
+colour glsl_keyword 0.77 0.63 0.0
+colour glsl_type 0.3 0.6 0.02
+colour glsl_cpp 0.8 0.0 0.0
+colour glsl_cppkeyword 0.46 0.31 0.48
+colour glsl_literal 1.0 0.2 0.8
+colour glsl_punctuation 0.5 0.5 0.5
+
+# preprocessor
+syntax_pattern normal cpp glsl_cppkeyword '^[ \t]*#[ \t]*(define|elif|else|endif|error|extension|if|ifdef|ifndef|line|pragma|undef|version)\b'
+syntax_pattern cpp normal glsl_cppkeyword '(\r\n|\r|\n)$'
+syntax_pattern normal normal text '[ \t\r\n]+'
+
+# C++ style comments
+syntax_pattern normal cpp_comment glsl_comment '//'
+syntax_pattern cpp cpp_comment glsl_comment '//'
+syntax_pattern cpp_comment normal glsl_comment '(\r\n|\r|\n)$'
+syntax_pattern cpp_comment cpp_comment glsl_comment '\\(\r\n|\r|\n)$'
+syntax_pattern cpp_comment cpp_comment glsl_fixme '\b(TODO|FIXME|XXX)\b'
+syntax_pattern cpp_comment cpp_comment glsl_comment '.[^\\TFX\r\n]*'
+
+# C style comments
+syntax_pattern normal comment glsl_comment '/\*'
+syntax_pattern comment normal glsl_comment '\*/'
+syntax_pattern comment comment glsl_fixme '\b(TODO|FIXME|XXX)\b'
+syntax_pattern comment comment glsl_comment '.[^\*TFX]*'
+
+syntax_pattern cpp comment_cpp glsl_comment '/\*'
+syntax_pattern comment_cpp cpp glsl_comment '\*/'
+syntax_pattern comment_cpp comment_cpp glsl_fixme '\b(TODO|FIXME|XXX)\b'
+syntax_pattern comment_cpp comment_cpp glsl_comment '.[^\*TFX]*'
+
+# preprocessor args
+syntax_pattern cpp cpp glsl_cpp '\\(\r\n|\r|\n)$'
+syntax_pattern cpp cpp glsl_cpp '.[^\\/\r\n]*'
+
+# literals
+syntax_pattern normal normal glsl_literal '((([0-9]+\.[0-9]*|\.[0-9]+)([eE][\+\-]?[0-9]+)?|[0-9]+[eE][\+\-]?[0-9]+)[fF]?|(0x[0-9a-f]+|0[0-7]*|[1-9][0-9]*)[uU]?)' ignorecase
+syntax_pattern normal normal glsl_literal '\b(true|false)\b'
+
+# typing keywords
+syntax_pattern normal normal glsl_type '\b(active|attribute|bool|centroid|class|common|const|double|enum|extern|external|filter|fixed|flat|float|half|highp|image([12]D(Array)?(Shadow)?|3D|Buffer|Cube)|[iu]image([12]D(Array)?|3D|Buffer|Cube)|in|inline|inout|input|int|interface|invariant|[iu]sampler([12]D(Array)?|3D|2DRect|Buffer|Cube)|layout|long|lowp|mat[2-4](x[2-4])?|mediump|namespace|noinline|noperspective|out|output|packed|partition|precision|row_major|sampler([12]D(Array)?(Shadow)?|3D|Cube(Shadow)?|2DRect(Shadow)?|3DRect|Buffer)|short|smooth|static|struct|superp|template|typedef|uniform|union|unsigned|varying|[bdfhi]?vec[2-4]|void|volatile)\b'
+
+# keywords
+syntax_pattern normal normal glsl_keyword '\b(asm|break|cast|continue|default|discard|do|else|for|goto|if|public|return|sizeof|switch|this|using|while)\b'
+
+# punctuation
+syntax_pattern normal normal glsl_punctuation '[!~%\|\&\^\(\)\<\>\*\-\+=\{\}\[\]:;,\?]+'
+syntax_pattern normal normal glsl_punctuation '[/\.]'
+
+# parsing optimisation
+syntax_pattern normal normal text '[a-z_][a-z_0-9]*' ignorecase

@@ -1,0 +1,60 @@
+# CSS syntax file for Diffuse
+# Copyright (C) 2008 Derrick Moser <derrick_moser@yahoo.com>
+syntax CSS normal text
+syntax_files CSS '\.css$'
+
+# colours
+colour css_comment 0.2 0.4 0.64
+colour css_fixme 1.0 0.5 0.0
+colour css_rule 0.46 0.31 0.48
+colour css_block 0.02 0.6 0.6
+colour css_selector 0.77 0.63 0.0
+colour css_property 0.3 0.6 0.02
+colour css_important 0.46 0.31 0.48
+colour css_literal 1.0 0.2 0.8
+colour css_string 0.8 0.0 0.0
+colour css_escapedchar 0.46 0.31 0.48
+colour css_punctuation 0.5 0.5 0.5
+
+# whitespace/comments
+syntax_pattern normal normal text '[ \t\r\n]+'
+syntax_pattern property property text '[ \t\r\n]+'
+syntax_pattern normal comment css_comment '/\*'
+syntax_pattern comment normal css_comment '\*/'
+syntax_pattern comment comment css_fixme '\b(TODO|FIXME|XXX)\b'
+syntax_pattern comment comment css_comment '.[^\*TFX]*'
+syntax_pattern property property_comment css_comment '/\*'
+syntax_pattern property_comment property css_comment '\*/'
+syntax_pattern property_comment property_comment css_fixme '\b(TODO|FIXME|XXX)\b'
+syntax_pattern property_comment property_comment css_comment '.[^\*TFX]*'
+
+# rules
+syntax_pattern normal normal css_rule '@[a-z0-9\-_]*' ignorecase
+
+# selectors
+syntax_pattern normal property css_block '\{'
+syntax_pattern normal normal css_selector '[a-z0-9_\-\*]+' ignorecase
+syntax_pattern normal normal css_punctuation '[\|\.#,\[\]\(\)=:;>]+'
+syntax_pattern normal string css_string '"'
+syntax_pattern string normal css_string '"'
+syntax_pattern string string css_escapedchar '\\([0-9][a-f]{1,6}|.)' ignorecase
+syntax_pattern string string css_string '.[^"]*'
+syntax_pattern normal singlestring css_string "'"
+syntax_pattern singlestring normal css_string "'"
+syntax_pattern singlestring singlestring css_escapedchar '\\([0-9][a-f]{1,6}|.)' ignorecase
+syntax_pattern singlestring singlestring css_string ".[^']*"
+
+# property
+syntax_pattern property normal css_block '\}'
+syntax_pattern property property css_literal '([\+\-]?([0-9]+(\.[0-9]*)?|\.[0-9]+)(em|pt|px|%)?|#[0-9a-f]+)' ignorecase
+syntax_pattern property property css_important '![ \t]*important\b'
+syntax_pattern property property css_property '[a-z0-9_\-]+' ignorecase
+syntax_pattern property property css_punctuation '[,\(\)=:;]+'
+syntax_pattern property property_string css_string '"'
+syntax_pattern property_string property css_string '"'
+syntax_pattern property_string property_string css_escapedchar '\\([0-9][a-f]{1,6}|.)' ignorecase
+syntax_pattern property_string property_string css_string '.[^"]*'
+syntax_pattern property property_singlestring css_string "'"
+syntax_pattern property_singlestring property css_string "'"
+syntax_pattern property_singlestring property_singlestring css_escapedchar '\\([0-9][a-f]{1,6}|.)' ignorecase
+syntax_pattern property_singlestring property_singlestring css_string ".[^']*"

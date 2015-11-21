@@ -1,0 +1,31 @@
+cs:Diffuse Manual:Příručka programu diffuse
+cs:.SH "NAME":.SH "NÁZEV"
+cs:.SH "SYNOPSIS":.SH "POUŽITÍ"
+cs:graphical tool for merging and comparing text files:grafický nástroj pro slučování a porovnávání textových souborů
+cs:.SH "DESCRIPTION":.SH "POPIS"
+cs:.SH "OPTIONS":.SH "MOŽNOSTI"
+cs:.SH "AUTHOR":.SH "AUTOR"
+cs:.SH "COPYING":.SH "LICENCE"
+
+it:Diffuse Manual:Manuale di Diffuse
+it:.SH "NAME":.SH "NOME"
+it:.SH "SYNOPSIS":.SH "SINOSSI"
+it:graphical tool for merging and comparing text files:strumento grafico per l'unione e il confronto di file
+it:.SH "DESCRIPTION":.SH "DESCRIZIONE"
+it:.SH "OPTIONS":.SH "OPZIONI"
+it:.SH "AUTHOR":.SH "AUTORE"
+it:.SH "COPYING":.SH "COPIA"
+
+ru:Diffuse Manual:Руководство по Diffuse
+ru:.SH "NAME":.SH "НАЗВАНИЕ"
+ru:.SH "SYNOPSIS":.SH "СИНТАКСИС"
+ru:graphical tool for merging and comparing text files:графический инструмент для слияния и сравнения текстовых файлов
+ru:.SH "DESCRIPTION":.SH "ОПИСАНИЕ"
+ru:.SH "OPTIONS":.SH "ОПЦИИ"
+ru:.SH "Введение":.SH "ВВЕДЕНИЕ"
+ru:.SH "Сравнение Файлов":.SH "СРАВНЕНИЕ ФАЙЛОВ"
+ru:.SH "Контроль Версий":.SH "КОНТРОЛЬ ВЕРСИЙ"
+ru:.SH "Ресурсы":.SH "РЕСУРСЫ"
+ru:.SH "Файлы":.SH "ФАЙЛЫ"
+ru:.SH "AUTHOR":.SH "АВТОРЫ"
+ru:.SH "COPYING":.SH "КОПИРОВАНИЕ"

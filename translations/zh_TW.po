@@ -1,0 +1,856 @@
+# Traditional Chinese translations for diffuse package
+# Copyright (C) 2009 THE diffuse's COPYRIGHT HOLDER
+# This file is distributed under the same license as the diffuse package.
+# lh <jarryson@gmail.com>, 2009.
+# 紀明村 <tw.chi.ming@gmail.com>, 2010.
+# Wei-Lun Chao <bluebat@member.fsf.org>, 2013.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: diffuse 0.4.8\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-04-20 10:40-0400\n"
+"PO-Revision-Date: 2013-05-25 14:07+0800\n"
+"Last-Translator: Wei-Lun Chao <bluebat@member.fsf.org>\n"
+"Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../src/usr/bin/diffuse:901
+msgid "\"co\" command"
+msgstr "「co」命令"
+
+#: ../src/usr/bin/diffuse:902
+msgid "\"rlog\" command"
+msgstr "「rlog」命令"
+
+#: ../src/usr/bin/diffuse:7226
+#, python-format
+msgid "A file named %s already exists.  Do you want to overwrite it?"
+msgstr "%s 的檔案已存在，您希望覆蓋它嗎？"
+
+#: ../src/usr/bin/diffuse:4737
+msgid "Align with Selection"
+msgstr "對齊選擇區域"
+
+#: ../src/usr/bin/diffuse:835
+msgid "Alignment"
+msgstr "對齊"
+
+#: ../src/usr/bin/diffuse:852
+msgid "Always show the tab bar"
+msgstr "總是顯示分頁欄"
+
+#: ../src/usr/bin/diffuse:725
+msgid "Auto Detect"
+msgstr "自動偵測"
+
+#: ../src/usr/bin/diffuse:845
+msgid "Auto indent"
+msgstr "自動縮排"
+
+#: ../src/usr/bin/diffuse:7464
+msgid "C_lear Edits"
+msgstr "取消編輯(L)"
+
+#: ../src/usr/bin/diffuse:8021
+msgid "Choose Folder With Commit"
+msgstr "選擇認可過的檔案夾"
+
+#: ../src/usr/bin/diffuse:8001
+msgid "Choose Folder With Modified Files"
+msgstr "選擇更改過的檔案夾"
+
+#: ../src/usr/bin/diffuse:4746 ../src/usr/bin/diffuse:7566
+msgid "Clear Edits"
+msgstr "取消編輯"
+
+#: ../src/usr/bin/diffuse:6774
+msgid "Close Tab"
+msgstr "關閉分頁"
+
+#: ../src/usr/bin/diffuse:7707
+msgid "Close _Without Saving"
+msgstr "不儲存而關閉"
+
+#: ../src/usr/bin/diffuse:6647
+#, python-format
+msgid "Closing this tab will quit %s."
+msgstr "關閉此分頁將會退出 %s"
+
+#: ../src/usr/bin/diffuse:6912
+#, python-format
+msgid "Column %d"
+msgstr "第 %d 行"
+
+#: ../src/usr/bin/diffuse:904
+msgid "Command"
+msgstr "命令"
+
+#: ../src/usr/bin/diffuse:7510
+msgid "Convert Leading Spaces To _Tabs"
+msgstr "轉換開頭的空格為跳格字元(_T)"
+
+#: ../src/usr/bin/diffuse:7509
+msgid "Convert Tabs To _Spaces"
+msgstr "轉換跳格字元為空格(_S)"
+
+#: ../src/usr/bin/diffuse:7517
+msgid "Convert To Uni_x Format"
+msgstr "轉換為 Unix 格式(_X)"
+
+#: ../src/usr/bin/diffuse:7515
+msgid "Convert To _DOS Format"
+msgstr "轉換為 DOS 格式(_D)"
+
+#: ../src/usr/bin/diffuse:7503
+msgid "Convert To _Lower Case"
+msgstr "轉換成小寫"
+
+#: ../src/usr/bin/diffuse:7516
+msgid "Convert To _Mac Format"
+msgstr "轉換為 Mac 格式(_M)"
+
+#: ../src/usr/bin/diffuse:7502
+msgid "Convert To _Upper Case"
+msgstr "轉換成大寫"
+
+#: ../src/usr/bin/diffuse:4742 ../src/usr/bin/diffuse:7564
+msgid "Copy"
+msgstr "複製"
+
+#: ../src/usr/bin/diffuse:7556
+msgid "Copy Left Into Selection"
+msgstr "複製左邊內容到選擇區域"
+
+#: ../src/usr/bin/diffuse:7523
+msgid "Copy Left _Into Selection"
+msgstr "複製左邊內容到選擇區域(_L)"
+
+#: ../src/usr/bin/diffuse:7524
+msgid "Copy Right I_nto Selection"
+msgstr "複製右邊內容到選擇區域(_L)"
+
+#: ../src/usr/bin/diffuse:7557
+msgid "Copy Right Into Selection"
+msgstr "複製右邊內容到選擇區域"
+
+#: ../src/usr/bin/diffuse:7555
+msgid "Copy Selection Left"
+msgstr "複製選擇區域到左邊"
+
+#: ../src/usr/bin/diffuse:7554
+msgid "Copy Selection Right"
+msgstr "複製選擇區域到右邊"
+
+#: ../src/usr/bin/diffuse:7521
+msgid "Copy Selection _Left"
+msgstr "複製選擇區域到左邊(_L)"
+
+#: ../src/usr/bin/diffuse:7520
+msgid "Copy Selection _Right"
+msgstr "複製選擇區域到右邊(_R)"
+
+#: ../src/usr/bin/diffuse:68
+msgid "Copyright © 2006-2014 Derrick Moser"
+msgstr "著作權 © 2006-2014 Derrick Moser"
+
+#: ../src/usr/bin/diffuse:7459
+msgid "Cu_t"
+msgstr "剪下(_T)"
+
+#: ../src/usr/bin/diffuse:4741 ../src/usr/bin/diffuse:7563
+msgid "Cut"
+msgstr "剪下"
+
+#: ../src/usr/bin/diffuse:881
+msgid "Cygdrive prefix"
+msgstr "Cygdrive 前綴"
+
+#: ../src/usr/bin/diffuse:878
+msgid "Cygwin"
+msgstr "Cygwin"
+
+#: ../src/usr/bin/diffuse:7513
+msgid "De_crease Indenting"
+msgstr "減少縮排"
+
+#: ../src/usr/bin/diffuse:857
+msgid "Default codec"
+msgstr "預設解碼器"
+
+#: ../src/usr/bin/diffuse:851
+msgid "Default panes"
+msgstr "預設窗格"
+
+#: ../src/usr/bin/diffuse:6736
+msgid "Derrick Moser <derrick_moser@yahoo.com>"
+msgstr "Derrick Moser <derrick_moser@yahoo.com>"
+
+#: ../src/usr/bin/diffuse:6733
+msgid "Diffuse is a graphical tool for merging and comparing text files."
+msgstr "Diffuse 是一個合併與比較文字檔案的圖形工具。"
+
+#: ../src/usr/bin/diffuse:821
+msgid "Display"
+msgstr "顯示"
+
+#: ../src/usr/bin/diffuse:843
+msgid "Editor"
+msgstr "編輯器"
+
+#: ../src/usr/bin/diffuse:6659
+msgid "Encoding: "
+msgstr "編碼："
+
+#: ../src/usr/bin/diffuse:7272
+#, python-format
+msgid "Error encoding to %s."
+msgstr "無法編碼為 %s。"
+
+#: ../src/usr/bin/diffuse:2528
+#, python-format
+msgid "Error parsing %s."
+msgstr "無法解析 %s。"
+
+#: ../src/usr/bin/diffuse:8399
+msgid "Error parsing line number."
+msgstr "解析列數時錯誤。"
+
+#: ../src/usr/bin/diffuse:1630 ../src/usr/bin/diffuse:2193
+#: ../src/usr/bin/diffuse:2321
+#, python-format
+msgid "Error parsing revision %s."
+msgstr "無法解析修訂版本 %s。"
+
+#: ../src/usr/bin/diffuse:8416
+#, python-format
+msgid "Error processing argument \"%s\".  Directory not expected."
+msgstr "無法處理「%s」。目錄不存在。"
+
+#: ../src/usr/bin/diffuse:706
+#, python-format
+msgid "Error processing line %(line)d of %(file)s."
+msgstr "處理到檔案 %(file)s 的第 %(line)d 列時出錯。"
+
+#: ../src/usr/bin/diffuse:7107 ../src/usr/bin/diffuse:8322
+#, python-format
+msgid "Error reading %s."
+msgstr "無法讀取 %s。"
+
+#: ../src/usr/bin/diffuse:7105
+#, python-format
+msgid "Error reading revision %(rev)s of %(file)s."
+msgstr "無法讀取檔案 %(file)s 中的修訂版本 %(rev)s。"
+
+#: ../src/usr/bin/diffuse:7921
+#, python-format
+msgid "Error retrieving commits for %s."
+msgstr "無法恢復對 %s 的認可。"
+
+#: ../src/usr/bin/diffuse:7952
+#, python-format
+msgid "Error retrieving modifications for %s."
+msgstr "無法恢復對 %s 的修改。"
+
+#: ../src/usr/bin/diffuse:1013 ../src/usr/bin/diffuse:7276
+#, python-format
+msgid "Error writing %s."
+msgstr "無法寫入 %s"
+
+#: ../src/usr/bin/diffuse:846
+msgid "Expand tabs to spaces"
+msgstr "展開跳格字元為空格"
+
+#: ../src/usr/bin/diffuse:7501
+msgid "F_ormat"
+msgstr "格式(_O)"
+
+#: ../src/usr/bin/diffuse:7818
+#, python-format
+msgid "File Merge %d"
+msgstr "檔案合併 %d"
+
+#: ../src/usr/bin/diffuse:7469
+msgid "Find Pre_vious"
+msgstr "找上一個(_V)"
+
+#: ../src/usr/bin/diffuse:7468
+msgid "Find _Next"
+msgstr "找下一個(_N)"
+
+#: ../src/usr/bin/diffuse:6597
+msgid "Find..."
+msgstr "搜尋…"
+
+#: ../src/usr/bin/diffuse:7493
+msgid "Fir_st Tab"
+msgstr "第一個分頁(_S)"
+
+#: ../src/usr/bin/diffuse:7549
+msgid "First Difference"
+msgstr "第一個差異"
+
+#: ../src/usr/bin/diffuse:823
+msgid "Font"
+msgstr "字型"
+
+#: ../src/usr/bin/diffuse:7306
+msgid "Go To Line..."
+msgstr "跳到列號…"
+
+#: ../src/usr/bin/diffuse:832
+msgid "Ignore blank line differences"
+msgstr "忽略空列的差異"
+
+#: ../src/usr/bin/diffuse:840
+msgid "Ignore blank lines"
+msgstr "忽略空列"
+
+#: ../src/usr/bin/diffuse:837
+msgid "Ignore case"
+msgstr "忽略大小寫"
+
+#: ../src/usr/bin/diffuse:829
+msgid "Ignore case differences"
+msgstr "忽略大小寫的差異"
+
+#: ../src/usr/bin/diffuse:831 ../src/usr/bin/diffuse:839
+msgid "Ignore changes to white space"
+msgstr "忽略對空格的改變"
+
+#: ../src/usr/bin/diffuse:841
+msgid "Ignore end of line characters"
+msgstr "忽略列尾字元"
+
+#: ../src/usr/bin/diffuse:833
+msgid "Ignore end of line differences"
+msgstr "忽略列尾的差異"
+
+#: ../src/usr/bin/diffuse:838
+msgid "Ignore white space"
+msgstr "忽略空格"
+
+#: ../src/usr/bin/diffuse:830
+msgid "Ignore white space differences"
+msgstr "忽略空格的差異"
+
+#: ../src/usr/bin/diffuse:4738
+msgid "Isolate"
+msgstr "分離"
+
+#: ../src/usr/bin/diffuse:7496
+msgid "Las_t Tab"
+msgstr "最後一個分頁(_T)"
+
+#: ../src/usr/bin/diffuse:7552
+msgid "Last Difference"
+msgstr "最後一個差異"
+
+#: ../src/usr/bin/diffuse:906
+msgid "Launch from a Bash login shell"
+msgstr "從登入命令列介面啟動"
+
+#: ../src/usr/bin/diffuse:7306
+msgid "Line Number: "
+msgstr "列數："
+
+#: ../src/usr/bin/diffuse:7526
+msgid "M_erge From Right Then Left"
+msgstr "從右向左合併(_E)"
+
+#: ../src/usr/bin/diffuse:6628
+msgid "Match Case"
+msgstr "符合大小寫"
+
+#: ../src/usr/bin/diffuse:7558
+msgid "Merge From Left Then Right"
+msgstr "先左後右合併"
+
+#: ../src/usr/bin/diffuse:7559
+msgid "Merge From Right Then Left"
+msgstr "先右後左合併(_T)"
+
+#: ../src/usr/bin/diffuse:4739
+msgid "Merge Selection"
+msgstr "合併選擇區域"
+
+#: ../src/usr/bin/diffuse:7545
+msgid "New 2-Way File Merge"
+msgstr "新的二重檔案合併"
+
+#: ../src/usr/bin/diffuse:7546
+msgid "New 3-Way File Merge"
+msgstr "新的三重檔案合併"
+
+#: ../src/usr/bin/diffuse:8070
+msgid "New N-Way File Merge..."
+msgstr "新的多重檔案合併…"
+
+#: ../src/usr/bin/diffuse:7447
+msgid "New _2-Way File Merge"
+msgstr "新的二重檔案合併(_2)"
+
+#: ../src/usr/bin/diffuse:7448
+msgid "New _3-Way File Merge"
+msgstr "新的三重檔案合併(_3)"
+
+#: ../src/usr/bin/diffuse:7449
+msgid "New _N-Way File Merge..."
+msgstr "新的多重檔案合併(_N)…"
+
+#: ../src/usr/bin/diffuse:7551
+msgid "Next Difference"
+msgstr "下一個差異"
+
+#: ../src/usr/bin/diffuse:7495
+msgid "Next _Tab"
+msgstr "下一個分頁(_T)"
+
+#: ../src/usr/bin/diffuse:8034
+msgid "No committed files found."
+msgstr "找不到已認可的檔案。"
+
+#: ../src/usr/bin/diffuse:8014
+msgid "No modified files found."
+msgstr "找不到已修改的檔案。"
+
+#: ../src/usr/bin/diffuse:7474
+msgid "None"
+msgstr "無"
+
+#: ../src/usr/bin/diffuse:8070
+msgid "Number of panes: "
+msgstr "窗格數: "
+
+#: ../src/usr/bin/diffuse:7440
+msgid "Open Commi_t..."
+msgstr "開啟認可(_T)…"
+
+#: ../src/usr/bin/diffuse:7130
+msgid "Open File"
+msgstr "開啟檔案"
+
+#: ../src/usr/bin/diffuse:7985
+msgid "Open File In New Tab"
+msgstr "在新分頁裡開啟檔案"
+
+#: ../src/usr/bin/diffuse:7438
+msgid "Open File In New _Tab..."
+msgstr "在新分頁裡開啟檔案(_T)…"
+
+#: ../src/usr/bin/diffuse:6829
+msgid "Open File..."
+msgstr "開啟檔案…"
+
+#: ../src/usr/bin/diffuse:7439
+msgid "Open _Modified Files..."
+msgstr "開啟修改過的檔案(_M)…"
+
+#: ../src/usr/bin/diffuse:858
+msgid "Order of codecs used to identify encoding"
+msgstr "用來識別編碼的解碼器順序"
+
+#: ../src/usr/bin/diffuse:7696
+msgid "Pane"
+msgstr "窗格"
+
+#: ../src/usr/bin/diffuse:4743 ../src/usr/bin/diffuse:7565
+msgid "Paste"
+msgstr "貼上"
+
+#: ../src/usr/bin/diffuse:8135
+msgid "Phrase not found.  Continue from the end of the file?"
+msgstr "語詞未找到，從檔案結尾繼續嗎？"
+
+#: ../src/usr/bin/diffuse:8137
+msgid "Phrase not found.  Continue from the start of the file?"
+msgstr "語詞未找到，從檔案開頭繼續嗎？"
+
+#: ../src/usr/bin/diffuse:7472
+msgid "Pr_eferences..."
+msgstr "選項(_E)…"
+
+#: ../src/usr/bin/diffuse:7494
+msgid "Pre_vious Tab"
+msgstr "上一個分頁(_V)"
+
+#: ../src/usr/bin/diffuse:975
+msgid "Preferences"
+msgstr "選項"
+
+#: ../src/usr/bin/diffuse:7332
+msgid "Press the enter key or double click to edit.  Press the space bar or use the RMB menu to manually align."
+msgstr "按確定鍵或雙擊滑鼠進行編輯。空格鍵或者右鍵選單手動對齊。"
+
+#: ../src/usr/bin/diffuse:7334
+msgid "Press the escape key to finish editing."
+msgstr "按 ESC 鍵結束編輯"
+
+#: ../src/usr/bin/diffuse:7550
+msgid "Previous Difference"
+msgstr "上一個差異"
+
+#: ../src/usr/bin/diffuse:7485
+msgid "Re_align All"
+msgstr "全部重新對齊(_A)"
+
+#: ../src/usr/bin/diffuse:7548
+msgid "Realign All"
+msgstr "全部重新對齊"
+
+#: ../src/usr/bin/diffuse:7562
+msgid "Redo"
+msgstr "重做"
+
+#: ../src/usr/bin/diffuse:855
+msgid "Regional Settings"
+msgstr "設定"
+
+#: ../src/usr/bin/diffuse:6830
+msgid "Reload File"
+msgstr "重新載入"
+
+#: ../src/usr/bin/diffuse:7508
+msgid "Remove Trailing _White Space"
+msgstr "刪除多餘的空格(_W)"
+
+#: ../src/usr/bin/diffuse:6669
+msgid "Revision: "
+msgstr "修訂："
+
+#: ../src/usr/bin/diffuse:826
+msgid "Right margin"
+msgstr "右邊距"
+
+#: ../src/usr/bin/diffuse:880
+msgid "Root directory"
+msgstr "根目錄"
+
+#: ../src/usr/bin/diffuse:7200
+#, python-format
+msgid "Save %(title)s Pane %(pane)d"
+msgstr "儲存 %(title)s 窗格 %(pane)d"
+
+#: ../src/usr/bin/diffuse:7445
+msgid "Save A_ll"
+msgstr "儲存所有(_L)"
+
+#: ../src/usr/bin/diffuse:6831
+msgid "Save File"
+msgstr "儲存檔案"
+
+#: ../src/usr/bin/diffuse:6832
+msgid "Save File As..."
+msgstr "另存為…"
+
+#: ../src/usr/bin/diffuse:7444
+msgid "Save File _As..."
+msgstr "另存為(_A)…"
+
+#: ../src/usr/bin/diffuse:6977
+msgid "Save changes before loading the new file?"
+msgstr "載入新檔前儲存更改嗎？"
+
+#: ../src/usr/bin/diffuse:6633
+msgid "Search Backwards"
+msgstr "反向搜尋"
+
+#: ../src/usr/bin/diffuse:6603
+msgid "Search For: "
+msgstr "搜尋："
+
+#: ../src/usr/bin/diffuse:4745
+msgid "Select All"
+msgstr "全選"
+
+#: ../src/usr/bin/diffuse:7463
+msgid "Select _All"
+msgstr "全選(_A)"
+
+#: ../src/usr/bin/diffuse:7336
+msgid "Select target line and press the space bar to align.  Press the escape key to cancel."
+msgstr "選擇目標列然後按空格鍵進行對齊，按 ESC 取消。"
+
+#: ../src/usr/bin/diffuse:7499
+msgid "Shift Pane _Left"
+msgstr "左移窗格(_L)"
+
+#: ../src/usr/bin/diffuse:7498
+msgid "Shift Pane _Right"
+msgstr "右移窗格(_R)"
+
+#: ../src/usr/bin/diffuse:827
+msgid "Show line numbers"
+msgstr "顯示列號"
+
+#: ../src/usr/bin/diffuse:825
+msgid "Show right margin"
+msgstr "顯示右邊距"
+
+#: ../src/usr/bin/diffuse:828
+msgid "Show white space characters"
+msgstr "顯示空格"
+
+#: ../src/usr/bin/diffuse:8409
+#, python-format
+msgid "Skipping unknown argument \"%s\"."
+msgstr "跳過未知引數「%s」。"
+
+#: ../src/usr/bin/diffuse:847
+msgid "Soft tab width"
+msgstr "跳格寬度"
+
+#: ../src/usr/bin/diffuse:7678
+msgid "Some files have unsaved changes.  Select the files to save before closing."
+msgstr "一些檔案已變更但未儲存，請在關閉前儲存這些檔案。"
+
+#: ../src/usr/bin/diffuse:7506
+msgid "Sort Lines In D_escending Order"
+msgstr "以遞減的順序排列"
+
+#: ../src/usr/bin/diffuse:7505
+msgid "Sort Lines In _Ascending Order"
+msgstr "以遞增的順序排列"
+
+#: ../src/usr/bin/diffuse:4748
+msgid "Swap with Selected Pane"
+msgstr "交換選中的窗格"
+
+#: ../src/usr/bin/diffuse:7691
+msgid "Tab"
+msgstr "跳格字元"
+
+#: ../src/usr/bin/diffuse:824
+msgid "Tab width"
+msgstr "跳格寬度"
+
+#: ../src/usr/bin/diffuse:849
+msgid "Tabs"
+msgstr "分頁"
+
+#: ../src/usr/bin/diffuse:7180
+#, python-format
+msgid "The file %s changed on disk.  Do you want to reload the file?"
+msgstr "檔案 %s 已被更改，是否重新載入？"
+
+#: ../src/usr/bin/diffuse:7231
+#, python-format
+msgid "The file %s has been modified by another process since reading it.  If you save, all the external changes could be lost.  Save anyways?"
+msgstr "檔案 %s 打開後被其他程式變更過了，如果儲存，其他程式的變更修改將會不見，儲存嗎？"
+
+#: ../src/usr/bin/diffuse:6740
+msgid ""
+"This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the licence, or (at your option) any later version.\n\n"
+"This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.\n\n"
+"You should have received a copy of the GNU General Public License along with this program.  You may also obtain a copy of the GNU General Public License from the Free Software Foundation by visiting their web site (http://www.fsf.org/) "
+"or by writing to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA\n"
+msgstr ""
+"這個程式是自由軟體；您可以遵循由自由軟體基金會所發布的 GNU 通用公共授權條款來再次散布它與/或修改它；無論您依據的是本授權的第二版、或 (您自行選擇的) 任何後續版本。\n\n"
+"發行本程式是希望它能夠有用，但是沒有任何擔保；亦無對於某一特定目的之適售性與適用性的暗示性擔保。 請參看 GNU 通用公共授權以獲得更多細節。\n\n"
+"您應該已經收到隨附於這個程式的 GNU 通用公共授權複本。 您也可以藉由造訪它們的網站 (http://www.fsf.org/)，從自由軟體基金會得到 GNU 通用公共授權的複本，"
+"或是寫信給 Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA\n"
+
+#: ../src/usr/bin/diffuse:7561
+msgid "Undo"
+msgstr "復原"
+
+#: ../src/usr/bin/diffuse:908
+msgid "Update paths for Cygwin"
+msgstr "為 Cygwin 更新路徑"
+
+#: ../src/usr/bin/diffuse:86
+msgid ""
+"Usage:\n"
+"    diffuse [ [OPTION...] [FILE...] ]...\n"
+"    diffuse ( -h | -? | --help | -v | --version )\n\n"
+"Diffuse is a graphical tool for merging and comparing text files.  Diffuse is\n"
+"able to compare an arbitrary number of files side-by-side and gives users the\n"
+"ability to manually adjust line matching and directly edit files.  Diffuse can\n"
+"also retrieve revisions of files from Bazaar, CVS, Darcs, Git, Mercurial,\n"
+"Monotone, RCS, Subversion, and SVK repositories for comparison and merging.\n\n"
+"Help Options:\n"
+"  ( -h | -? | --help )             Display this usage information\n"
+"  ( -v | --version )               Display version and copyright information\n\n"
+"Configuration Options:\n"
+"  --no-rcfile                      Do not read any resource files\n"
+"  --rcfile <file>                  Specify explicit resource file\n\n"
+"General Options:\n"
+"  ( -c | --commit ) <rev>          File revisions <rev-1> and <rev>\n"
+"  ( -D | --close-if-same )         Close all tabs with no differences\n"
+"  ( -e | --encoding ) <codec>      Use <codec> to read and write files\n"
+"  ( -L | --label ) <label>         Display <label> instead of the file name\n"
+"  ( -m | --modified )              Create a new tab for each modified file\n"
+"  ( -r | --revision ) <rev>        File revision <rev>\n"
+"  ( -s | --separate )              Create a new tab for each file\n"
+"  ( -t | --tab )                   Start a new tab\n"
+"  --line <line>                    Start with line <line> selected\n"
+"  --null-file                      Create a blank file comparison pane\n\n"
+"Display Options:\n"
+"  ( -b | --ignore-space-change )   Ignore changes to white space\n"
+"  ( -B | --ignore-blank-lines )    Ignore changes in blank lines\n"
+"  ( -E | --ignore-end-of-line )    Ignore end of line differences\n"
+"  ( -i | --ignore-case )           Ignore case differences\n"
+"  ( -w | --ignore-all-space )      Ignore white space differences"
+msgstr ""
+"用法：\n"
+"    diffuse [ [選項…] [檔案…] ]…\n"
+"    diffuse ( -h | -? | --help | -v | --version )\n\n"
+"Diffuse 是用於合併與比較文字檔的圖形工具。 Diffuse \n"
+"能夠一起比較任意數量的檔案，並給予使用者\n"
+"手動調整各列匹配與直接編輯檔案的能力。 Diffuse 也可以\n"
+"從 Bazaar、CVS、Darcs、Git、Mercurial、Monotone、RCS、\n"
+"Subversion 以及 SVK 儲存庫取回修訂的檔案用於比較與合併。\n\n"
+"求助選項：\n"
+"  ( -h | -? | --help )             顯示這個用法資訊\n"
+"  ( -v | --version )               顯示版本與著作權資訊\n\n"
+"組態選項：\n"
+"  --no-rcfile                      不讀取任何資源檔案\n"
+"  --rcfile <file>                  指定明確的資源檔案\n\n"
+"一般選項：\n"
+"  ( -c | --commit ) <rev>          檔案修訂 <rev-1> 與 <rev>\n"
+"  ( -D | --close-if-same )         關閉所有不具任何差異的分頁\n"
+"  ( -e | --encoding ) <codec>      使用 <codec> 以讀取與寫入檔案\n"
+"  ( -L | --label ) <label>         顯示 <label> 以代替檔案名稱\n"
+"  ( -m | --modified )              對於每個已修改檔案建立新的分頁\n"
+"  ( -r | --revision ) <rev>        檔案修訂 <rev>\n"
+"  ( -s | --separate )              對於每個檔案建立新的分頁\n"
+"  ( -t | --tab )                   開始新的分頁\n"
+"  --line <line>                    開始時已選第 <line> 列\n"
+"  --null-file                      建立空白檔案的比較窗格\n\n"
+"顯示選項：\n"
+"  ( -b | --ignore-space-change )   忽略空白的變更\n"
+"  ( -B | --ignore-blank-lines )    忽略空列的變更\n"
+"  ( -E | --ignore-end-of-line )    忽略列尾差異\n"
+"  ( -i | --ignore-case )           忽略大小寫差異\n"
+"  ( -w | --ignore-all-space )      忽略空白差異"
+
+#: ../src/usr/bin/diffuse:911
+msgid "Version Control"
+msgstr "版本控制"
+
+#: ../src/usr/bin/diffuse:853
+#, python-format
+msgid "Warn me when closing a tab will quit %s"
+msgstr "當關閉分頁會退出 %s 的時候提醒我"
+
+#: ../src/usr/bin/diffuse:7531
+#, python-format
+msgid "_About %s..."
+msgstr "關於 %s(_A)…"
+
+#: ../src/usr/bin/diffuse:7451
+msgid "_Close Tab"
+msgstr "關閉分頁(_C)"
+
+#: ../src/usr/bin/diffuse:7460
+msgid "_Copy"
+msgstr "複製(_C)"
+
+#: ../src/usr/bin/diffuse:7465
+msgid "_Dismiss All Edits"
+msgstr "放棄所有的變更(_D)"
+
+#: ../src/usr/bin/diffuse:7455
+msgid "_Edit"
+msgstr "編輯(_E)"
+
+#: ../src/usr/bin/diffuse:7436
+msgid "_File"
+msgstr "檔案(_F)"
+
+#: ../src/usr/bin/diffuse:7467
+msgid "_Find..."
+msgstr "搜尋(_F)…"
+
+#: ../src/usr/bin/diffuse:7488
+msgid "_First Difference"
+msgstr "第一個差異(_F)"
+
+#: ../src/usr/bin/diffuse:7470
+msgid "_Go To Line..."
+msgstr "跳到列號(_G)…"
+
+#: ../src/usr/bin/diffuse:7528
+msgid "_Help"
+msgstr "求助(_H)"
+
+#: ../src/usr/bin/diffuse:7529
+msgid "_Help Contents..."
+msgstr "說明內容(_H)…"
+
+#: ../src/usr/bin/diffuse:7512
+msgid "_Increase Indenting"
+msgstr "減少縮排(_I)"
+
+#: ../src/usr/bin/diffuse:7486
+msgid "_Isolate"
+msgstr "分離(_I)"
+
+#: ../src/usr/bin/diffuse:7491
+msgid "_Last Difference"
+msgstr "最後一個差異(_L)"
+
+#: ../src/usr/bin/diffuse:7519
+msgid "_Merge"
+msgstr "合併(_M)"
+
+#: ../src/usr/bin/diffuse:7525
+msgid "_Merge From Left Then Right"
+msgstr "先左再右合併(_M)"
+
+#: ../src/usr/bin/diffuse:7490
+msgid "_Next Difference"
+msgstr "下一個差異(_N)"
+
+#: ../src/usr/bin/diffuse:7437
+msgid "_Open File..."
+msgstr "開啟檔案(_O)…"
+
+#: ../src/usr/bin/diffuse:7461
+msgid "_Paste"
+msgstr "貼上(_P)"
+
+#: ../src/usr/bin/diffuse:7489
+msgid "_Previous Difference"
+msgstr "上一個差異(_P)"
+
+#: ../src/usr/bin/diffuse:7453
+msgid "_Quit"
+msgstr "退出(_Q)"
+
+#: ../src/usr/bin/diffuse:7457
+msgid "_Redo"
+msgstr "重做(_R)"
+
+#: ../src/usr/bin/diffuse:7441
+msgid "_Reload File"
+msgstr "重新載入(_R)"
+
+#: ../src/usr/bin/diffuse:7443
+msgid "_Save File"
+msgstr "儲存(_S)"
+
+#: ../src/usr/bin/diffuse:7483
+msgid "_Syntax Highlighting"
+msgstr "高亮度語法(_S)"
+
+#: ../src/usr/bin/diffuse:7456
+msgid "_Undo"
+msgstr "復原(_U)"
+
+#: ../src/usr/bin/diffuse:7452
+msgid "_Undo Close Tab"
+msgstr "復原關閉的分頁"
+
+#: ../src/usr/bin/diffuse:7482
+msgid "_View"
+msgstr "檢視(_V)"
+
+#: ../src/usr/bin/diffuse:6737
+msgid "translator-credits"
+msgstr ""
+"紀明村 <tw.chi.ming@gmail.com>\n"
+"趙惟倫 <bluebat@member.fsf.org>"

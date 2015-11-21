@@ -1,0 +1,124 @@
+# PHP syntax file for Diffuse
+# Copyright (C) 2008-2009 Derrick Moser <derrick_moser@yahoo.com>
+syntax PHP normal text
+syntax_files PHP '\.php$'
+
+# colours
+colour php_comment 0.2 0.4 0.64
+colour php_fixme 1.0 0.5 0.0
+colour php_tag 0.46 0.31 0.48
+colour php_import 0.46 0.31 0.48
+colour php_keyword 0.77 0.63 0.0
+colour php_type 0.3 0.6 0.02
+colour php_literal 1.0 0.2 0.8
+colour php_string 0.8 0.0 0.0
+colour php_escapedchar 0.46 0.31 0.48
+colour php_punctuation 0.5 0.5 0.5
+colour php_variable 0.02 0.6 0.6
+
+# colours
+colour php_html_comment 0.2 0.4 0.64
+colour php_html_fixme 1.0 0.5 0.0
+colour php_html_escapedchar 0.77 0.63 0.0
+colour php_html_tag 0.02 0.6 0.6
+colour php_html_tagname 0.77 0.63 0.0
+colour php_html_punctuation 0.5 0.5 0.5
+colour php_html_attribute 0.3 0.6 0.02
+colour php_html_string 0.8 0.0 0.0
+
+# php tags
+syntax_pattern normal php php_tag '<\?(php)?=?' ignorecase
+syntax_pattern php normal php_tag '\?>'
+
+# whitespace and comments
+syntax_pattern php php text '[ \t\r\n]+'
+syntax_pattern php comment php_comment '(//|#)'
+syntax_pattern comment normal php_tag '\?>'
+syntax_pattern comment php php_comment '(\r\n|\r|\n)$'
+syntax_pattern comment comment php_fixme '\b(TODO|FIXME|XXX)\b'
+syntax_pattern comment comment php_comment '.[^TFX\r\n\?]*'
+syntax_pattern php c_comment php_comment '/\*'
+syntax_pattern c_comment normal php_tag '\?>'
+syntax_pattern c_comment php php_comment '\*/'
+syntax_pattern c_comment c_comment php_fixme '\b(TODO|FIXME|XXX)\b'
+syntax_pattern c_comment c_comment php_comment '.[^\*\?TFX]*'
+
+# char
+syntax_pattern php char php_string "'"
+syntax_pattern char php php_string "'"
+syntax_pattern char char php_escapedchar "\\\\[\\\\']"
+syntax_pattern char char php_string ".[^\\\\']*"
+
+# string
+syntax_pattern php string php_string '"'
+syntax_pattern string php php_string '"'
+syntax_pattern string string php_escapedchar '(\\([0-7]{1,3}|x[0-9a-f]{1,2}|.))+' ignorecase
+syntax_pattern string string php_string '.[^\\"]*'
+
+# literals
+syntax_pattern php php php_literal '(([0-9]+\.[0-9]*|\.[0-9]+)(e[\+\-]?[0-9]+)?|[0-9]+e[\+\-]?[0-9]+|0x[0-9a-f]+|0[0-7]*|[1-9][0-9]*)' ignorecase
+syntax_pattern php php php_literal '\b(true|false|null)\b' ignorecase
+
+# keywords
+syntax_pattern php php php_keyword '\b(and|as|break|case|catch|clone|continue|declare|default|die|do|echo|else|elseif|empty|enddeclare|endfor|endforeach|endif|endswitch|endwhile|exit|extends|eval|final|for|foreach|goto|if|implements|instanceof|isset|namespace|new|or|print|return|switch|this|throw|try|unset|unset|use|while|xor)\b' ignorecase
+
+# import
+syntax_pattern php php php_import '\b(include|include_once|require|require_once)\b' ignorecase
+
+# types
+syntax_pattern php php php_type '\b(abstract|array|bool|boolean|class|const|double|float|function|global|int|interface|integer|list|object|private|protected|public|static|string|var)\b' ignorecase
+
+# variables
+syntax_pattern php php php_variable '\$+[a-z_\x7f-\xff][a-z0-9_\x7f-\xff]*' ignorecase
+
+# punctuation
+syntax_pattern php php php_punctuation '[@!~%\|\&\^\(\)\<\>\*\-\+=\{\}\[\]:;,]+'
+syntax_pattern php php php_punctuation '[/\?\.]'
+
+# optimisation
+syntax_pattern php php text '[a-z_0-9]+' ignorecase
+
+# whitespace/comments
+syntax_pattern normal normal text '[ \t\r\n]+'
+syntax_pattern normal html_comment php_html_comment '<!--'
+syntax_pattern html_comment php_html_comment php_tag '<\?(php)?=?' ignorecase
+syntax_pattern php_html_comment html_comment php_tag '\?>'
+syntax_pattern php_html_comment php_html_comment php_tag '.[^\?]*'
+syntax_pattern html_comment normal html_comment '-->'
+syntax_pattern html_comment html_comment php_html_fixme '\b(TODO|FIXME|XXX)\b'
+syntax_pattern html_comment html_comment php_html_comment '.[^TFX\-<]*'
+
+# tags
+syntax_pattern normal html_tag php_html_tag '<[!/]?'
+syntax_pattern html_tag php_html_tag php_tag '<\?(php)?=?' ignorecase
+syntax_pattern php_html_tag html_tag php_tag '\?>'
+syntax_pattern php_html_tag php_html_tag php_tag '.[^\?]*'
+syntax_pattern html_tag html_tag text '[ \t\r\n]+'
+syntax_pattern html_tag html_tag_attribs php_html_tagname '\b[a-z][a-z_0-9]*([ \t]*:[ \t]*[a-z][a-z_0-9]*)*\b' ignorecase
+syntax_pattern html_tag_attribs php_html_tag_attribs php_tag '<\?(php)?=?' ignorecase
+syntax_pattern php_html_tag_attribs html_tag_attribs php_tag '\?>'
+syntax_pattern php_html_tag_attribs php_html_tag_attribs php_tag '.[^\?]*'
+syntax_pattern html_tag html_tag_attribs text ''
+syntax_pattern html_tag_attribs normal php_html_tag '/?>'
+syntax_pattern html_tag_attribs html_tag_attribs text '[ \t\r\n]+'
+syntax_pattern html_tag_attribs html_tag_attribs php_html_punctuation '='
+syntax_pattern html_tag_attribs html_tag_attribs php_html_attribute '[a-z_0-9\-:\.]+' ignorecase
+syntax_pattern html_tag_attribs html_tag_string php_html_string '"'
+syntax_pattern html_tag_string php_html_tag_string php_tag '<\?(php)?=?' ignorecase
+syntax_pattern php_html_tag_string html_tag_string php_tag '\?>'
+syntax_pattern php_html_tag_string php_html_tag_string php_tag '.[^\?]*'
+syntax_pattern html_tag_string html_tag_attribs php_html_string '"'
+syntax_pattern html_tag_string html_tag_string php_html_escapedchar '\&([a-z_:][a-z_0-9\.\-_:]*|#[0-9]+|#x[0-9a-f]+);' ignorecase
+syntax_pattern html_tag_string html_tag_string php_html_string '.[^\&"<]*'
+
+syntax_pattern html_tag_attribs html_tag_singlestring php_html_string "'"
+syntax_pattern html_tag_singlestring php_html_tag_singlestring php_tag '<\?(php)?=?' ignorecase
+syntax_pattern php_html_tag_singlestring html_tag_singlestring php_tag '\?>'
+syntax_pattern php_html_tag_singlestring php_html_tag_singlestring php_tag '.[^\?]*'
+syntax_pattern html_tag_singlestring html_tag_attribs php_html_string "'"
+syntax_pattern html_tag_singlestring html_tag_singlestring php_html_escapedchar '\&([a-z_:][a-z_0-9\.\-_:]*|#[0-9]+|#x[0-9a-f]+);' ignorecase
+syntax_pattern html_tag_singlestring html_tag_singlestring php_html_string ".[^\\&'<]*"
+
+# text/parsing optimisation
+syntax_pattern normal normal php_html_escapedchar '\&([a-z_:][a-z_0-9\.\-_:]*|#[0-9]+|#x[0-9a-f]+);' ignorecase
+syntax_pattern normal normal text '.[^\&<]*'

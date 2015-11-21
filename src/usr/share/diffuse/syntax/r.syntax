@@ -1,0 +1,45 @@
+# R syntax file for Diffuse
+# Copyright (C) 2011 Derrick Moser <derrick_moser@yahoo.com>
+syntax R normal text
+syntax_files R '\.R$'
+
+# colours
+colour r_comment 0.2 0.4 0.64
+colour r_fixme 1.0 0.5 0.0
+colour r_keyword 0.77 0.63 0.0
+colour r_literal 1.0 0.2 0.8
+colour r_string 0.8 0.0 0.0
+colour r_escapedchar 0.46 0.31 0.48
+colour r_punctuation 0.5 0.5 0.5
+
+# whitespace/comments
+syntax_pattern normal normal text '[ \t\r\n]+'
+syntax_pattern normal comment r_comment '#'
+syntax_pattern comment normal r_comment '(\r\n|\r|\n)$'
+syntax_pattern comment comment r_fixme '\b(TODO|FIXME|XXX)\b'
+syntax_pattern comment comment r_comment '.[^TFX\r\n]*'
+
+# "-style strings
+syntax_pattern normal double_string r_string '"'
+syntax_pattern double_string normal r_string '"'
+syntax_pattern double_string double_string r_escapedchar '(\\([0-7]{1,3}|x[0-9a-fA-F]{2}|u[0-9a-fA-F]{4}|U[0-9a-fA-F]{8}|.))+'
+syntax_pattern double_string double_string r_string '.[^\\"]*'
+
+# '-style strings
+syntax_pattern normal single_string r_string "'"
+syntax_pattern single_string normal r_string "'"
+syntax_pattern single_string single_string r_escapedchar '(\\([0-7]{1,3}|x[0-9a-fA-F]{2}|u[0-9a-fA-F]{4}|U[0-9a-fA-F]{8}|.))+'
+syntax_pattern single_string single_string r_string ".[^\\\\']*"
+
+# literals
+syntax_pattern normal normal c++_literal '((([0-9]+\.[0-9]*|\.[0-9]+)([eE][\+\-]?[0-9]+)?|[0-9]+[eE][\+\-]?[0-9]+)|([1-9][0-9]*|0x[0-9a-fA-F]+|0[0-7]*|[1-9][0-9]*|0))[iL]?'
+syntax_pattern normal normal r_literal '\b(FALSE|Inf|NA(_(character|complex|integer|real)_)?|NaN|NULL|TRUE)\b'
+
+# keywords
+syntax_pattern normal normal r_keyword '\b(break|else|for|function|if|in|next|repeat|while)\b'
+
+# punctuation
+syntax_pattern normal normal r_punctuation '(%[^%]*%|[@\^~\<=\>\|\-:!/\(\)\[\]\{\}\$\*\&\+])+'
+
+# parsing optimisation
+syntax_pattern normal normal text '[a-z_][a-z_0-9\.]*' ignorecase

@@ -1,0 +1,76 @@
+# Python syntax file for Diffuse
+# Copyright (C) 2008-2011 Derrick Moser <derrick_moser@yahoo.com>
+syntax Python normal text
+syntax_files Python '^(.*\.pyw?|Sconscript|(S[Cc]|sc)onstruct)$'
+syntax_magic Python '^#![ \t]*([^ \t/]*/)*(env[ \t]+)?python[0-9\.]*([ \t].*)?$'
+
+# colours
+colour python_comment 0.2 0.4 0.64
+colour python_fixme 1.0 0.5 0.0
+colour python_keyword 0.77 0.63 0.0
+colour python_type 0.3 0.6 0.02
+colour python_import 0.46 0.31 0.48
+colour python_literal 1.0 0.2 0.8
+colour python_string 0.8 0.0 0.0
+colour python_escapedchar 0.46 0.31 0.48
+colour python_function 0.02 0.6 0.6
+colour python_punctuation 0.5 0.5 0.5
+
+# whitespace/comments
+syntax_pattern normal normal text '[ \t\r\n]+'
+syntax_pattern normal comment python_comment '#'
+syntax_pattern comment normal python_comment '(\r\n|\r|\n)$'
+syntax_pattern comment comment python_fixme '\b(TODO|FIXME|XXX)\b'
+syntax_pattern comment comment python_comment '.[^TFX\r\n]*'
+
+# """-style strings
+syntax_pattern normal triple_string python_string '[bu]?r?"""' ignorecase
+syntax_pattern triple_string normal python_string '"""'
+syntax_pattern triple_string triple_string python_escapedchar '(\\([0-7]{1,3}|x[0-9a-fA-F]{2}|u[0-9a-fA-F]{4}|U[0-9a-fA-F]{8}|N\{[^\}]*\}|.))+'
+syntax_pattern triple_string triple_string python_string '[^\\"]+'
+syntax_pattern triple_string triple_string python_string '.'
+
+# "-style strings
+syntax_pattern normal double_string python_string '[bu]?r?"' ignorecase
+syntax_pattern double_string normal python_string '"'
+syntax_pattern double_string double_string python_string '[^\\"]+'
+syntax_pattern double_string double_string python_escapedchar '(\\([0-7]{1,3}|x[0-9a-fA-F]{2}|u[0-9a-fA-F]{4}|U[0-9a-fA-F]{8}|N\{[^\}]*\}|.))+'
+
+# '''-style strings
+syntax_pattern normal triple2_string python_string "[bu]?r?'''" ignorecase
+syntax_pattern triple2_string normal python_string "'''"
+syntax_pattern triple2_string triple2_string python_escapedchar '(\\([0-7]{1,3}|x[0-9a-fA-F]{2}|u[0-9a-fA-F]{4}|U[0-9a-fA-F]{8}|N\{[^\}]*\}|.))+'
+syntax_pattern triple2_string triple2_string python_string "[^\\\\']+"
+syntax_pattern triple2_string triple2_string python_string '.'
+
+# '-style strings
+syntax_pattern normal single_string python_string "[bu]?r?'" ignorecase
+syntax_pattern single_string normal python_string "'"
+syntax_pattern single_string single_string python_string "[^\\\\']+"
+syntax_pattern single_string single_string python_escapedchar '(\\([0-7]{1,3}|x[0-9a-fA-F]{2}|u[0-9a-fA-F]{4}|U[0-9a-fA-F]{8}|N\{[^\}]*\}|.))+'
+
+# literals
+syntax_pattern normal normal python_literal '(([0-9]+\.[0-9]*|\.[0-9]+)(e[\+\-]?[0-9]+)?|[0-9]+e[\+\-]?[0-9]+|0x[0-9a-f]+|0[0-7]*|[1-9][0-9]*)' ignorecase
+syntax_pattern normal normal python_literal '\b(None|True|False)\b'
+
+# types
+syntax_pattern normal normal python_type '\b(bool|buffer|builtin_function_or_method|bytes|bytearray|classobj|code|complex|dict|dictproxy|ellipsis|file|float|frame|frozenset|function|generator|instance|instancemethod|int|list|long|module|object|range|slice|str|traceback|tuple|type|unicode|xrange|NoneType|NotImplementedType)\b'
+
+# keywords
+syntax_pattern normal normal python_keyword '\b(and|as|assert|break|continue|del|elif|else|except|exec|finally|for|global|if|in|is|lambda|nonlocal|not|or|pass|print|raise|return|try|while|with|yield)\b'
+
+# special kewords
+syntax_pattern normal normal python_import '\b(from|import)\b'
+
+# function/class definitions
+syntax_pattern normal declaration python_keyword '\b(class|def)\b'
+syntax_pattern declaration declaration text '[ \t]+'
+syntax_pattern declaration normal python_function '\b[a-z_][a-z_0-9]*\b' ignorecase
+syntax_pattern declaration normal text ''
+
+# punctuation
+syntax_pattern normal normal python_punctuation '[!~%\|\&\^\(\)\<\>\*\-\+=\{\}\[\]:;,\/]+'
+syntax_pattern normal normal python_punctuation '\.'
+
+# parsing optimisation
+syntax_pattern normal normal text '[a-z_][a-z_0-9]*' ignorecase

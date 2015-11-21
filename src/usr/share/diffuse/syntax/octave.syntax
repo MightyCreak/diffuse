@@ -1,0 +1,64 @@
+# Octave syntax file for Diffuse
+# Copyright (C) 2009 Derrick Moser <derrick_moser@yahoo.com>
+syntax Octave normal text
+# We want Diffuse's default behaviour tot identify files with the '.m'
+# extension as Objective-C files so we do not define a rule for matching files
+# with the extension '.m' here.
+#syntax_files Octave '\.m$'
+
+# colours
+colour octave_comment 0.2 0.4 0.64
+colour octave_fixme 1.0 0.5 0.0
+colour octave_keyword 0.77 0.63 0.0
+colour octave_type 0.3 0.6 0.02
+colour octave_literal 1.0 0.2 0.8
+colour octave_string 0.8 0.0 0.0
+colour octave_escapedchar 0.46 0.31 0.48
+colour octave_punctuation 0.5 0.5 0.5
+
+# whitespace
+syntax_pattern normal normal text '[ \t\r\n]+'
+
+syntax_pattern op op octave_punctuation "'+"
+syntax_pattern op normal octave_punctuation ''
+
+# block comments
+syntax_pattern normal block_comment octave_comment '^%\{(\r\n|\r|\n)$'
+syntax_pattern block_comment normal octave_comment '^%\}(\r\n|\r|\n)$'
+syntax_pattern block_comment block_comment octave_fixme '\b(TODO|FIXME|XXX)\b'
+syntax_pattern block_comment block_comment octave_comment '.[^TFX]*'
+
+# comments
+syntax_pattern normal comment octave_comment '[#%]'
+syntax_pattern comment normal octave_comment '(\r\n|\r|\n)$'
+syntax_pattern comment comment octave_fixme '\b(TODO|FIXME|XXX)\b'
+syntax_pattern comment comment octave_comment '.[^TFX\r\n]*'
+
+# char
+syntax_pattern normal char octave_string "'"
+syntax_pattern char char octave_escapedchar "''"
+syntax_pattern char op octave_string "'"
+syntax_pattern char char octave_string ".[^']*"
+
+# string
+syntax_pattern normal string octave_string '"'
+syntax_pattern string string octave_escapedchar '(\\.)+'
+syntax_pattern string op octave_string '"'
+syntax_pattern string string octave_string '.[^\\"]*'
+
+# literals
+syntax_pattern normal op octave_literal '[0-9]+(\.[0-9]+)?(e[\+\-]?[0-9]+)?[ij]?' ignorecase
+syntax_pattern normal op octave_literal '\b(Inf|NA|NaN)\b'
+
+# typing keywords
+syntax_pattern normal op octave_type '\b(char|double|logical|single|u?int(8|16|32|64))\b'
+
+# keywords
+syntax_pattern normal op octave_keyword '\b(break|case|catch|continue|do|else|elseif|end|endfor|endfunction|endif|endswitch|end_try_catch|end_unwind_protect|endwhile|for|function|global|if|otherwise|persistent|return|switch|try|until|unwind_protect(_cleanup)?|while)\b'
+
+# punctuation
+syntax_pattern normal op octave_punctuation '[\]\)\}\.]+'
+syntax_pattern normal normal octave_punctuation '[\[\(\{:;,~&\|=<>\*/\+\-@\^\\!]+'
+
+# parsing optimisation
+syntax_pattern normal op text '[a-z_][a-z_0-9]*' ignorecase

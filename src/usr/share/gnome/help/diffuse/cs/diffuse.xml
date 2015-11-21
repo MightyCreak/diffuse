@@ -1,0 +1,1584 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd"
+[
+  <!ENTITY app "Diffuse">
+  <!ENTITY app-version "0.4.8">
+  <!ENTITY app-year "2006-2014">
+  <!ENTITY manual-year "2009-2014">
+]>
+<book id="index" lang="cs">
+  <title>Uživatelská příručka programu <application>&app;</application></title>
+
+  <bookinfo>
+    <copyright>
+      <year>&manual-year;</year>
+      <holder>Derrick Moser</holder>
+    </copyright>
+
+    <authorgroup>
+      <author>
+        <firstname>Derrick</firstname>
+        <surname>Moser</surname>
+        <email>derrick_moser@yahoo.com</email>
+      </author>
+    </authorgroup>
+
+    <othercredit role="translator">
+      <firstname>Jindřich</firstname>
+      <surname>Šesták</surname>
+      <contrib>překlad do češtiny</contrib>
+      <email>khagaroth@gmail.com</email>
+    </othercredit>
+
+    <releaseinfo>Tato příručka popisuje &app; verze &app-version;.</releaseinfo>
+  </bookinfo>
+
+  <chapter id="introduction">
+    <title>Úvod</title>
+
+    <para>
+      <application>&app;</application> je grafický nástroj pro slučování a porovnávání textových souborů. <application>&app;</application> dokáže porovnat libovolný počet souborů a nabízí uživatelům možnost ručně upravit zarovnání řádků a přímo upravovat porovnávané soubory. <application>&app;</application> také umí načíst k porovnání a slučování revize souborů přímo z repozitářů Bazaar, CVS, Darcs, Git, Mercurial, Monotone, RCS, Subversion a SVK.</para>
+
+    <sect1 id="introduction-about">
+      <title>O programu</title>
+      <para>
+        Autorem <application>&app;</application> je Derrick Moser <email>derrick_moser@yahoo.com</email>.
+      </para>
+      <para>&copy; &app-year; Derrick Moser. Všechna práva vyhrazena.</para>
+    </sect1>
+
+    <sect1 id="introduction-licence">
+      <title>Licence</title>
+      <para>
+        <application>&app;</application> je svobodný software. Lze ho upravovat a distribuovat za podmínky dodržení pravidel licence <citetitle>GNU General Public License</citetitle> (dále jen GPL), vydané Free Software Foundation. Použít lze verzi 2, nebo (pokud chcete) některou z jejích novějších verzí.</para>
+      <para>
+        <application>&app;</application> je distribuován v naději, že bude užitečný, ale BEZ JAKÉKOLIV ZÁRUKY, tedy ani implicitní záruky OBCHODOVATELNOSTI nebo VHODNOSTI PRO URČITÝ ÚČEL. Další podrobnosti získáte přečtením <citetitle>GPL</citetitle>.</para>
+      <para>Spolu s <application>&app;</application> by jste měli obdržet i kopii <citetitle>GPL</citetitle>. <citetitle>GPL</citetitle> můžete také získat na <ulink type="http" url="http://www.fsf.org/">domovských stránkách</ulink> Free Software Foundation, nebo můžete zaslat dopis na adresu<address>
+          Free Software Foundation, Inc.
+          <street>51 Franklin St</street>, Fifth Floor,
+          <city>Boston</city>, <state>MA</state> <postcode>02110-1301</postcode>
+          <country>USA</country>
+        </address>
+      </para>
+    </sect1>
+
+    <sect1 id="introduction-usage">
+      <title>Použití z příkazové řádky</title>
+
+      <variablelist>
+        <varlistentry>
+          <term><userinput>diffuse [ -h | -? | --help | -v | --version ]</userinput></term>
+          <listitem>
+            <para>Zobrazí informace o <application>&app;</application>.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><userinput>diffuse [ [ <replaceable>parametr</replaceable> ]... [ <replaceable>soubor</replaceable> ]... ]...</userinput></term>
+          <listitem>
+            <para>Porovnání a sloučení souborů.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <sect2 id="introduction-options-help">
+        <title>Možnosti nápovědy</title>
+
+        <para>Parametr pro zobrazení nápovědy musí být zadán jako jediný parametr příkazové řádky. <application>&app;</application> bude po zobrazení nápovědy okamžitě ukončeno.</para>
+
+        <variablelist>
+          <varlistentry>
+            <term><userinput>-h</userinput>, <userinput>-?</userinput>, <userinput>--help</userinput></term>
+            <listitem>
+              <para>Zobrazí návod k použití.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>-v</userinput>, <userinput>--version</userinput></term>
+            <listitem>
+              <para>Zobrazí verzi programu a licenční údaje.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </sect2>
+
+      <sect2 id="introduction-options-configuration">
+        <title>Možnosti nastavení</title>
+
+        <para>Parametr pro specifikaci nastavení musí být zadán jako první parametr příkazové řádky.</para>
+
+        <variablelist>
+          <varlistentry>
+            <term><userinput>--no-rcfile</userinput></term>
+            <listitem>
+              <para>Zakáže načítání inicializačních souborů.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>--rcfile <replaceable>soubor</replaceable></userinput></term>
+            <listitem>
+              <para>Načte inicializační příkazy ze souboru <replaceable>soubor</replaceable>.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </sect2>
+
+      <sect2 id="introduction-options-general">
+        <title>Obecné možnosti</title>
+
+        <variablelist>
+          <varlistentry>
+            <term><userinput>-c</userinput>, <userinput>--commit</userinput> <replaceable>rev</replaceable></term>
+            <listitem>
+              <para>Otevře samostatné panely pro porovnání všech souborů ze zadaných cest změněných zápisem revize <replaceable>rev</replaceable>.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>-D</userinput>, <userinput>--close-if-same</userinput></term>
+            <listitem>
+              <para>Zavře panely s identickým obsahem.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>-e</userinput>, <userinput>--encoding</userinput> <replaceable>kodek</replaceable></term>
+            <listitem>
+              <para>Pro čtení a zápis souborů použije <replaceable>kodek</replaceable>.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>-L</userinput>, <userinput>--label</userinput> <replaceable>název</replaceable></term>
+            <listitem>
+              <para>Místo názvu souboru zobrazí uvedený <replaceable>název</replaceable>.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>-m</userinput>, <userinput>--modified</userinput></term>
+            <listitem>
+              <para>Otevře samostatné panely pro porovnání všech změněných souborů ze zadaných cest.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>-r</userinput>, <userinput>--revision</userinput> <replaceable>rev</replaceable></term>
+            <listitem>
+              <para>Otevře revizi <replaceable>rev</replaceable> souboru uvedeného jako následující parametr příkazové řádky.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>-s</userinput>, <userinput>--separate</userinput></term>
+            <listitem>
+              <para>Všechny soubory uvedené v příkazové řádce po tomto parametru otevře v samostatných panelech.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>-t</userinput>, <userinput>--tab</userinput></term>
+            <listitem>
+              <para>Otevře nový panel pro všechny soubory uvedené v příkazové řádce po tomto parametru.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>--line <replaceable>řádek</replaceable></userinput></term>
+            <listitem>
+              <para>Po spuštění zobrazí a vybere zadaný <replaceable>řádek</replaceable>.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>--null-file</userinput></term>
+            <listitem>
+              <para>Vytvoří prázdné podokno pro porovnání souborů.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </sect2>
+
+      <sect2 id="introduction-options-display">
+        <title>Možnosti zobrazení</title>
+
+        <para>Parametry zobrazení zadané v příkazové řádce budou mít přednost před uloženým nastavením.</para>
+
+        <variablelist>
+          <varlistentry>
+            <term><userinput>-b</userinput>, <userinput>--ignore-space-change</userinput></term>
+            <listitem>
+              <para>Bude ignorovat změny, pokud jde o znaky mezer.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>-B</userinput>, <userinput>--ignore-blank-lines</userinput></term>
+            <listitem>
+              <para>Bude ignorovat změny, pokud jde o prázdné řádky.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>-E</userinput>, <userinput>--ignore-end-of-line</userinput></term>
+            <listitem>
+              <para>Bude ignorovat změny, pokud jde o znaky konců řádek.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>-i</userinput>, <userinput>--ignore-case</userinput></term>
+            <listitem>
+              <para>Bude ignorovat změny, pokud jde o změnu velikosti písmen.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>-w</userinput>, <userinput>--ignore-all-space</userinput></term>
+            <listitem>
+              <para>Bude ignorovat změny, pokud jde o netisknutelné znaky.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </sect2>
+    </sect1>
+  </chapter>
+
+  <chapter id="file-comparison">
+    <title>Porovnávání souborů</title>
+
+    <para>Pro vytvoření dalších panelů pro porovnání souborů použijte položky nabídky <menuchoice><guimenu>Soubor</guimenu><guimenuitem>Nové 2směrné slučování</guimenuitem></menuchoice>, <menuchoice><guimenu>Soubor</guimenu><guimenuitem>Nové 3směrné slučování</guimenuitem></menuchoice> nebo <menuchoice><guimenu>Soubor</guimenu><guimenuitem>Nové Nsměrné slučování</guimenuitem></menuchoice>. Názvy souborů a čísla revizí mohou být zadány pomocí příkazové řádky pro spuštění <application>&app;</application>, nebo pomocí polí v dialogu Otevřít soubor.</para>
+
+    <para>
+      <application>&app;</application> zobrazí soubory vedle sebe a vložením mezer zarovná podobné řádky v jednotlivých souborech. Rozdíly jsou zvýrazněny pomocí odlišné barvy pozadí.</para>
+
+    <sect1 id="file-comparison-summary">
+      <title>Přehled porovnání</title>
+
+      <para>Přehled rozdílů v porovnaných souborech je umístěn na pravém okraji. V přehledu jsou vyznačena místa, kde byly vloženy mezery pro zarovnání shodných řádků a rozdíly jsou zvýrazněny pomocí barevných pruhů. Ruční úpravy jsou zvýrazněny zelenou barvou. Aktuálně zobrazený úsek je pak označen modrým kurzorem. Kliknutím do podokna přehledu můžete vybrat úsek, který má být zobrazen.</para>
+    </sect1>
+
+    <sect1 id="file-comparison-selecting">
+      <title>Výběr</title>
+
+      <para>Pro výběr textových řádků můžete použít jak myš, tak klávesnici. Samostatný řádek vyberete myší jednoduše tak, že na něj kliknete. Více řádků můžete vybrat kliknutím a tažením kurzoru. Aktuální výběr pak také můžete rozšířit tak, že při kliknutí podržíte klávesu Shift. Pomocí klávesnice vyberete jednotlivé řádky pomocí kláves Page Up/Down nebo pomocí šipek. Aktuální výběr pak rozšíříte podržením klávesy Shift a stisknutím kláves Page Up/Down nebo šipek. Pro přesun výběru mezi jednotlivými soubory můžete použít šipku doleva nebo doprava.</para>
+    </sect1>
+
+    <sect1 id="file-comparison-alignment">
+      <title>Zarovnání řádků</title>
+
+      <para>K zarovnání řádků porovnávaných souborů může být použita myš nebo klávesnice. Pro zarovnání řádků pomocí myši vyberte požadovaný řádek v prvním ze souborů pomocí levého tlačítka a v druhém souboru klikněte pravým tlačítkem myši na řádek, který chcete zarovnat s vybraným a z místní nabídky vyberte položku <menuchoice><guimenuitem>Zarovnat s výběrem</guimenuitem></menuchoice>. Pro zarovnání řádků pomocí klávesnice nastavte pomocí šipek výběr na požadovaný řádek v prvním ze souborů a aktivujte ho stisknutím mezerníku, poté pomocí šipek vyberte požadovaný řádek ve druhém souboru a stisknutím mezerníku potvrďte zarovnání. Tuto operaci můžete přerušit stisknutím klávesy <keycap>Escape</keycap>.</para>
+
+      <para>Pokud nechcete aby některé řádky byly porovnávány s řádky v ostatních souborech, můžete je z porovnání vyloučit použitím položky <menuchoice><guimenuitem>Izolovat</guimenuitem></menuchoice>.</para>
+    </sect1>
+
+    <sect1 id="file-comparison-editing">
+      <title>Editace</title>
+
+      <para>Pro přepnutí do režimu editace stiskněte klávesu <keycap>Enter</keycap> nebo dvakrát klikněte myší. Režim editace je indikován změnou kurzoru a zobrazením pozice kurzoru ve stavovém řádku.</para>
+
+      <para>V režimu editace je možné vybírat text pomocí myši. Pro rozšíření aktuálního výběru je možné použít klávesu Shift, kterou je třeba přidržet a poté určit nový rozsah výběru buď pomocí myši, nebo pomocí klávesnice za použití šipek, nebo některé z kláves Home, End, Page Up nebo Page Down. Jednotlivá slova mohou být vybrána dvojitým kliknutím myší. Celé řádky pak trojitým kliknutím.</para>
+
+      <para>V režimu editace je také možné text upravovat. Upravené řádky budou zvýrazněny použitím zeleného pozadí. Provedené úpravy můžete vrátit zpět nebo zopakovat použitím položek nabídky <menuchoice><guimenuitem>Zpět</guimenuitem></menuchoice> a <menuchoice><guimenuitem>Znovu</guimenuitem></menuchoice>.</para>
+
+      <para>Režim editace opustíte pomocí klávesy <keycap>Escape</keycap> nebo kliknutím do podokna jiného souboru.</para>
+    </sect1>
+
+    <sect1 id="file-comparison-merging">
+      <title>Slučování</title>
+
+      <para>Pro přesun mezi nalezenými rozdíly použijte příslušná tlačítka nebo položky nabídky. <application>&app;</application> při procházení přesune výběr na následující souvislý blok rozdílů nebo úprav.</para>
+
+      <para>Pro zkopírování bloků textu do vybraného rozsahu použijte příslušná tlačítka nebo položky nabídky. Provedené úpravy můžete vrátit zpět nebo zopakovat použitím položek nabídky <menuchoice><guimenuitem>Zpět</guimenuitem></menuchoice> a <menuchoice><guimenuitem>Znovu</guimenuitem></menuchoice>. Pro vrácení všech provedených úprav daného bloku řádků bez ohledu na pořadí jejich provedení je možné použít položku nabídky <menuchoice><guimenuitem>Smazat úpravy</guimenuitem></menuchoice>.</para>
+    </sect1>
+  </chapter>
+
+  <chapter id="version-control">
+    <title>Správa verzí</title>
+
+    <para>
+      <application>&app;</application> podporuje načítání revizí souborů z několika systémů pro správu verzí prostřednictvím jejich rozhraní pro příkazový řádek. Verze <application>&app;</application> pro Microsoft Windows umí používat jak Cygwin verze, tak nativní verze podporovaných systémů pro správu verzí. Pokud <application>&app;</application> používáte s Cygwin, zajistěte, aby nastavení <application>&app;</application> pro Cygwin odpovídala konfiguraci vašeho systému. Pokud je pro daný systém správy verzí k dispozici volba <guilabel>Upravit cesty pro Cygwin</guilabel>, musí být při použití verze pro Cygwin povolena.</para>
+
+    <para>Chování systémů pro správu verzí závisí na nastavení systémových cest a dalších proměnných. Volba <guilabel>Spustit z příkazové řádky terminálu Bash</guilabel> může být použita pro zjednodušení nastavení prostředí pro systémy kontroly verzí pro Cygwin.</para>
+
+    <sect1 id="version-control-uncommitted-modifications">
+      <title>Prohlížení nezapsaných změn</title>
+
+      <para>Při použití parametru <userinput>-m</userinput> budou v <application>&app;</application> otevřeny panely s porovnáním pro všechny soubory u kterých systém pro správu verzí nahlásí nezapsané změny. To se hodí pro kontrolu změn před zapsáním, nebo pro řešení konfliktů slučování. Pokud není specifikována žádná cesta, bude použit aktuální pracovní adresář. Například pokud chcete zobrazit všechny nezapsané úpravy, použijte tento příkaz:</para>
+
+      <para>
+        <screen><prompt>$</prompt> <userinput>diffuse -m</userinput></screen>
+      </para>
+
+      <para>Pokud je specifikován jen jeden soubor, bude pro porovnání použita výchozí revize tohoto souboru. Například tento příkaz zobrazí 2směrné slučování mezi výchozí revizí souboru <filename>foo.C</filename> a místní kopií souboru <filename>foo.C</filename>:</para>
+
+      <para>
+        <screen><prompt>$</prompt> <userinput>diffuse foo.C</userinput></screen>
+      </para>
+    </sect1>
+
+    <sect1 id="version-control-specifying-revisions">
+      <title>Specifikace revizí</title>
+
+      <para>Parametr <userinput>-r</userinput> může být použit pro explicitní specifikaci určité revize souboru. Může být použit libovolný identifikátor podporovaný daným systémem pro správu verzí. Pokud je uvedena jen jedna revize, bude při porovnání použita místní kopie souboru. Například tento příkaz zobrazí 2směrné slučování mezi revizí 123 souboru <filename>foo.C</filename> a místní kopií souboru <filename>foo.C</filename>:</para>
+
+      <para>
+        <screen><prompt>$</prompt> <userinput>diffuse -r 123 foo.C</userinput></screen>
+      </para>
+
+      <para>Několik revizí souboru může být porovnáno použitím více parametrů <userinput>-r</userinput>. Například tento příkaz zobrazí 2směrné slučování mezi revizí 123 souboru <filename>foo.C</filename> a revizí 321 souboru <filename>foo.C</filename>:</para>
+
+      <para>
+        <screen><prompt>$</prompt> <userinput>diffuse -r 123 -r 321 foo.C</userinput></screen>
+      </para>
+
+      <para>Při porovnání mohou být uvedeny jak místní soubory, tak soubory ze systému správy verzí. Například tento příkaz zobrazí 3směrné slučování mezi revizí MERGE_HEAD souboru <filename>foo.C</filename>, lokální kopií souboru <filename>foo.C</filename> a revizí HEAD souboru <filename>foo.C</filename>:</para>
+
+      <para>
+        <screen><prompt>$</prompt> <userinput>diffuse -r MERGE_HEAD foo.C foo.C -r HEAD foo.C</userinput></screen>
+      </para>
+
+      <para>Parametr <userinput>-c</userinput> může být použit k jednoduchému určení po sobě jdoucích revizí. Například tento příkaz zobrazí 2směrné slučování mezi revizí 1.2.2 souboru <filename>foo.C</filename> a revizí 1.2.3 souboru <filename>foo.C</filename>:</para>
+
+      <para>
+        <screen><prompt>$</prompt> <userinput>diffuse -c 1.2.3 foo.C</userinput></screen>
+      </para>
+
+      <para>
+        Počet podoken která mohou být použita k porovnání souborů není programem <application>&app;</application> nijak omezen. Například vstupní soubory pro chobotnicovité sloučení v Git mohou být zobrazeny pomocí následujícího příkazu:</para>
+
+      <para>
+        <screen><prompt>$</prompt> <userinput>diffuse -r HEAD^1 -r HEAD^2 -r HEAD^3 -r HEAD^4 -r HEAD^5 foo.C</userinput></screen>
+      </para>
+    </sect1>
+  </chapter>
+
+  <chapter id="resources">
+    <title>Zdroje</title>
+
+    <para>Zdroje mohou být použity k úpravě vzhledu a chování <application>&app;</application>, například ke změně barev použitých v uživatelském rozhraní, přizpůsobení klávesových zkratek, přidání nebo změně pravidel zvýraznění syntaxe, nebo změně přiřazení pravidel zvýraznění syntaxe k určitým příponám souborů.</para>
+
+    <para><application>&app;</application> při spuštění načte příkazy ze systémového inicializačního souboru <filename>/etc/diffuserc</filename> ( ve Windows <filename>%INSTALL_DIR%\diffuserc</filename>) a poté z uživatelského inicializačního souboru <filename>~/.config/diffuse/diffuserc</filename> (ve Windows <filename>%HOME%\.config\diffuse\diffuserc</filename>). Toto chování může být změněno pomocí parametrů <userinput>--no-rcfile</userinput> a <userinput>--rcfile</userinput>. Pro zpracování inicializačních příkazů je použit lexikální analyzátor podobný tomu v Bourne shell . Pro zadávání komentářů a speciálních znaků je možné použít stejné escapování jako v Bourne shell skriptech.</para>
+
+    <sect1 id="resources-general">
+      <title>Obecné</title>
+
+      <variablelist>
+        <varlistentry>
+          <term><userinput>import <replaceable>soubor</replaceable></userinput></term>
+          <listitem>
+            <para>Zpracuje inicializační příkazy ze souboru <replaceable>soubor</replaceable>. Inicializační soubory budou zpracovány pouze jednou.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect1> 
+
+    <sect1 id="resources-keybindings">
+      <title>Přiřazení klávesových zkratek</title>
+
+      <variablelist>
+        <varlistentry>
+          <term><userinput>keybinding <replaceable>kontext</replaceable> <replaceable>akce</replaceable> <replaceable>kombinace_kláves</replaceable></userinput></term>
+          <listitem>
+            <para>Přiřadí klávesovou zkratku akci <replaceable>akce</replaceable> použité v určitém kontextu <replaceable>kontext</replaceable>. Použití modifikačních kláves <keycap>Shift</keycap> nebo <keycap>Control</keycap> určíte přidáním <userinput>Shift+</userinput> nebo <userinput>Ctrl+</userinput> k řetězci parametru <replaceable>kombinace_kláves</replaceable>. Klávesy běžně modifikované klávesou <keycap>Shift</keycap> by při použití modifikační klávesy <keycap>Shift</keycap> měly být v řetězci parametru <replaceable>kombinace_kláves</replaceable> uváděny ve své modifikované podobě. Tedy například, <userinput>Ctrl+g</userinput>, ale <userinput>Shift+Ctrl+G</userinput>. Přiřazení určité <replaceable>kombinace_kláves</replaceable> můžete zrušit nastavením parametru <replaceable>akce</replaceable> na hodnotu <userinput>None</userinput>.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <sect2 id="resources-keybindings-menu">
+        <title>Přiřazení klávesových zkratek položkám nabídky</title>
+
+        <para>Pro definici přiřazení klávesových zkratek pro položky nabídky použijte pro parametr <replaceable>kontext</replaceable> hodnotu <userinput>menu</userinput>. Platné hodnoty parametru <replaceable>akce</replaceable> jsou:</para>
+
+        <variablelist>
+          <varlistentry>
+            <term><userinput>open_file</userinput></term>
+            <listitem>
+              <para>Položka nabídky <menuchoice><guimenu>Soubor</guimenu><guimenuitem>Otevřít soubor...</guimenuitem></menuchoice></para>
+              <para>Výchozí: <literal>Ctrl+o</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>open_file_in_new_tab</userinput></term>
+            <listitem>
+              <para>Položka nabídky <menuchoice><guimenu>Soubor</guimenu><guimenuitem>Otevřít v novém panelu...</guimenuitem></menuchoice></para>
+              <para>Výchozí: <literal>Ctrl+t</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>open_modified_files</userinput></term>
+            <listitem>
+              <para>Položka nabídky <menuchoice><guimenu>Soubor</guimenu><guimenuitem>Otevřít změněné soubory...</guimenuitem></menuchoice></para>
+              <para>Výchozí: <literal>Shift+Ctrl+O</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>open_commit</userinput></term>
+            <listitem>
+              <para>Položka nabídky <menuchoice><guimenu>Soubor</guimenu><guimenuitem>Otevřít revizi...</guimenuitem></menuchoice> menu item</para>
+              <para>Výchozí: <literal>Shift+Ctrl+T</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>reload_file</userinput></term>
+            <listitem>
+              <para>Položka nabídky <menuchoice><guimenu>Soubor</guimenu><guimenuitem>Znovu načíst soubor</guimenuitem></menuchoice></para>
+              <para>Výchozí: <literal>Shift+Ctrl+R</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>save_file</userinput></term>
+            <listitem>
+              <para>Položka nabídky <menuchoice><guimenu>Soubor</guimenu><guimenuitem>Uložit soubor</guimenuitem></menuchoice></para>
+              <para>Výchozí: <literal>Ctrl+s</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>save_file_as</userinput></term>
+            <listitem>
+              <para>Položka nabídky <menuchoice><guimenu>Soubor</guimenu><guimenuitem>Uložit soubor jako...</guimenuitem></menuchoice></para>
+              <para>Výchozí: <literal>Shift+Ctrl+A</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>save_all</userinput></term>
+            <listitem>
+              <para>Položka nabídky <menuchoice><guimenu>Soubor</guimenu><guimenuitem>Uložit vše</guimenuitem></menuchoice></para>
+              <para>Výchozí: <literal>Shift+Ctrl+S</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>new_2_way_file_merge</userinput></term>
+            <listitem>
+              <para>Položka nabídky <menuchoice><guimenu>Soubor</guimenu><guimenuitem>Nové 2směrné slučování</guimenuitem></menuchoice></para>
+              <para>Výchozí: <literal>Ctrl+2</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>new_3_way_file_merge</userinput></term>
+            <listitem>
+              <para>Položka nabídky <menuchoice><guimenu>Soubor</guimenu><guimenuitem>Nové 3směrné slučování</guimenuitem></menuchoice></para>
+              <para>Výchozí: <literal>Ctrl+3</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>new_n_way_file_merge</userinput></term>
+            <listitem>
+              <para>Položka nabídky <menuchoice><guimenu>Soubor</guimenu><guimenuitem>Nové Nsměrné slučování</guimenuitem></menuchoice></para>
+              <para>Výchozí: <literal>Ctrl+4</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>close_tab</userinput></term>
+            <listitem>
+              <para>Položka nabídky <menuchoice><guimenu>Soubor</guimenu><guimenuitem>Zavřít panel</guimenuitem></menuchoice></para>
+              <para>Výchozí: <literal>Ctrl+w</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>undo_close_tab</userinput></term>
+            <listitem>
+              <para>Položka nabídky <menuchoice><guimenu>Soubor</guimenu><guimenuitem>Obnovit zavřený panel</guimenuitem></menuchoice></para>
+              <para>Výchozí: <literal>Shift+Ctrl+w</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>quit</userinput></term>
+            <listitem>
+              <para>Položka nabídky <menuchoice><guimenu>Soubor</guimenu><guimenuitem>Konec</guimenuitem></menuchoice></para>
+              <para>Výchozí: <literal>Ctrl+q</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>undo</userinput></term>
+            <listitem>
+              <para>Položka nabídky <menuchoice><guimenu>Úpravy</guimenu><guimenuitem>Zpět</guimenuitem></menuchoice></para>
+              <para>Výchozí: <literal>Ctrl+z</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>redo</userinput></term>
+            <listitem>
+              <para>Položka nabídky <menuchoice><guimenu>Úpravy</guimenu><guimenuitem>Znovu</guimenuitem></menuchoice></para>
+              <para>Výchozí: <literal>Shift+Ctrl+Z</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>cut</userinput></term>
+            <listitem>
+              <para>Položka nabídky <menuchoice><guimenu>Vyjmout</guimenu><guimenuitem>Zpět</guimenuitem></menuchoice></para>
+              <para>Výchozí: <literal>Ctrl+x</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>copy</userinput></term>
+            <listitem>
+              <para>Položka nabídky <menuchoice><guimenu>Úpravy</guimenu><guimenuitem>Kopírovat</guimenuitem></menuchoice></para>
+              <para>Výchozí: <literal>Ctrl+c</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>paste</userinput></term>
+            <listitem>
+              <para>Položka nabídky <menuchoice><guimenu>Úpravy</guimenu><guimenuitem>Vložit</guimenuitem></menuchoice></para>
+              <para>Výchozí: <literal>Ctrl+v</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>select_all</userinput></term>
+            <listitem>
+              <para>Položka nabídky <menuchoice><guimenu>Úpravy</guimenu><guimenuitem>Označit vše</guimenuitem></menuchoice></para>
+              <para>Výchozí: <literal>Ctrl+a</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>clear_edits</userinput></term>
+            <listitem>
+              <para>Položka nabídky <menuchoice><guimenu>Úpravy</guimenu><guimenuitem>Smazat úpravy</guimenuitem></menuchoice></para>
+              <para>Výchozí: <literal>Ctrl+r</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>dismiss_all_edits</userinput></term>
+            <listitem>
+              <para>Položka nabídky <menuchoice><guimenu>Úpravy</guimenu><guimenuitem>Zrušit všechny úpravy</guimenuitem></menuchoice></para>
+              <para>Výchozí: <literal>Ctrl+d</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>find</userinput></term>
+            <listitem>
+              <para>Položka nabídky <menuchoice><guimenu>Úpravy</guimenu><guimenuitem>Najít...</guimenuitem></menuchoice></para>
+              <para>Výchozí: <literal>Ctrl+f</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>find_next</userinput></term>
+            <listitem>
+              <para>Položka nabídky <menuchoice><guimenu>Úpravy</guimenu><guimenuitem>Najít další</guimenuitem></menuchoice></para>
+              <para>Výchozí: <literal>Ctrl+g</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>find_previous</userinput></term>
+            <listitem>
+              <para>Položka nabídky <menuchoice><guimenu>Úpravy</guimenu><guimenuitem>Najít předchozí</guimenuitem></menuchoice></para>
+              <para>Výchozí: <literal>Shift+Ctrl+G</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>go_to_line</userinput></term>
+            <listitem>
+              <para>Položka nabídky <menuchoice><guimenu>Úpravy</guimenu><guimenuitem>Přejít na řádek...</guimenuitem></menuchoice></para>
+              <para>Výchozí: <literal>Shift+Ctrl+L</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>preferences</userinput></term>
+            <listitem>
+              <para>Položka nabídky <menuchoice><guimenu>Úpravy</guimenu><guimenuitem>Předvolby...</guimenuitem></menuchoice></para>
+              <para>Výchozí: None</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>no_syntax_highlighting</userinput></term>
+            <listitem>
+              <para>Položka nabídky <menuchoice><guimenu>Zobrazit</guimenu><guisubmenu>Zvýraznění syntaxe</guisubmenu><guimenuitem>Nic</guimenuitem></menuchoice></para>
+              <para>Výchozí: None</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>syntax_highlighting_<replaceable>syntaxe</replaceable></userinput></term>
+            <listitem>
+              <para>Položka nabídky <menuchoice><guimenu>Zobrazit</guimenu><guisubmenu>Zvýraznění syntaxe</guisubmenu><guimenuitem><replaceable>syntaxe</replaceable></guimenuitem></menuchoice></para>
+              <para>Výchozí: None</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>realign_all</userinput></term>
+            <listitem>
+              <para>Položka nabídky <menuchoice><guimenu>Zobrazit</guimenu><guimenuitem>Znovu zarovnat</guimenuitem></menuchoice></para>
+              <para>Výchozí: <literal>Ctrl+l</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>isolate</userinput></term>
+            <listitem>
+              <para>Položka nabídky <menuchoice><guimenu>Zobrazit</guimenu><guimenuitem>Izolovat</guimenuitem></menuchoice></para>
+              <para>Výchozí: <literal>Ctrl+i</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>first_difference</userinput></term>
+            <listitem>
+              <para>Položka nabídky <menuchoice><guimenu>Zobrazit</guimenu><guimenuitem>První rozdíl</guimenuitem></menuchoice></para>
+              <para>Výchozí: <literal>Shift+Ctrl+Up</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>previous_difference</userinput></term>
+            <listitem>
+              <para>Položka nabídky <menuchoice><guimenu>Zobrazit</guimenu><guimenuitem>Předchozí rozdíl</guimenuitem></menuchoice></para>
+              <para>Výchozí: <literal>Ctrl+Up</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>next_difference</userinput></term>
+            <listitem>
+              <para>Položka nabídky <menuchoice><guimenu>Zobrazit</guimenu><guimenuitem>Další rozdíl</guimenuitem></menuchoice></para>
+              <para>Výchozí: <literal>Ctrl+Down</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>last_difference</userinput></term>
+            <listitem>
+              <para>Položka nabídky <menuchoice><guimenu>Zobrazit</guimenu><guimenuitem>Poslední rozdíl</guimenuitem></menuchoice></para>
+              <para>Výchozí: <literal>Shift+Ctrl+Down</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>first_tab</userinput></term>
+            <listitem>
+              <para>Položka nabídky <menuchoice><guimenu>Zobrazit</guimenu><guimenuitem>První panel</guimenuitem></menuchoice></para>
+              <para>Výchozí: <literal>Shift+Ctrl+Page_Up</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>previous_tab</userinput></term>
+            <listitem>
+              <para>Položka nabídky <menuchoice><guimenu>Zobrazit</guimenu><guimenuitem>Předchozí panel</guimenuitem></menuchoice></para>
+              <para>Výchozí: <literal>Ctrl+Page_Up</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>next_tab</userinput></term>
+            <listitem>
+              <para>Položka nabídky <menuchoice><guimenu>Zobrazit</guimenu><guimenuitem>Další panel</guimenuitem></menuchoice></para>
+              <para>Výchozí: <literal>Ctrl+Page_Down</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>last_tab</userinput></term>
+            <listitem>
+              <para>Položka nabídky <menuchoice><guimenu>Zobrazit</guimenu><guimenuitem>Poslední panel</guimenuitem></menuchoice></para>
+              <para>Výchozí: <literal>Shift+Ctrl+Page_Down</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>shift_pane_right</userinput></term>
+            <listitem>
+              <para>Položka nabídky <menuchoice><guimenu>Zobrazit</guimenu><guimenuitem>Přesunout podokno doprava</guimenuitem></menuchoice></para>
+              <para>Výchozí: <literal>Shift+Ctrl+parenleft</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>shift_pane_left</userinput></term>
+            <listitem>
+              <para>Položka nabídky <menuchoice><guimenu>Zobrazit</guimenu><guimenuitem>Přesunout podokno doleva</guimenuitem></menuchoice></para>
+              <para>Výchozí: <literal>Shift+Ctrl+parenright</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>convert_to_upper_case</userinput></term>
+            <listitem>
+              <para>Položka nabídky <menuchoice><guimenu>Formát</guimenu><guimenuitem>Převést na velká písmena</guimenuitem></menuchoice></para>
+              <para>Výchozí: <literal>Ctrl+u</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>convert_to_lower_case</userinput></term>
+            <listitem>
+              <para>Položka nabídky <menuchoice><guimenu>Formát</guimenu><guimenuitem>Převést na malá písmena</guimenuitem></menuchoice></para>
+              <para>Výchozí: <literal>Shift+Ctrl+U</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>sort_lines_in_ascending_order</userinput></term>
+            <listitem>
+              <para>Položka nabídky <menuchoice><guimenu>Formát</guimenu><guimenuitem>Seřadit řádky vzestupně</guimenuitem></menuchoice></para>
+              <para>Výchozí: <literal>Ctrl+y</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>sort_lines_in_descending_order</userinput></term>
+            <listitem>
+              <para>Položka nabídky <menuchoice><guimenu>Formát</guimenu><guimenuitem>Seřadit řádky sestupně</guimenuitem></menuchoice></para>
+              <para>Výchozí: <literal>Shift+Ctrl+Y</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>remove_trailing_white_space</userinput></term>
+            <listitem>
+              <para>Položka nabídky <menuchoice><guimenu>Formát</guimenu><guimenuitem>Odstranit mezery na koncích řádků</guimenuitem></menuchoice></para>
+              <para>Výchozí: <literal>Ctrl+k</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>convert_tabs_to_spaces</userinput></term>
+            <listitem>
+              <para>Položka nabídky <menuchoice><guimenu>Formát</guimenu><guimenuitem>Nahradit tabulátory mezerami</guimenuitem></menuchoice></para>
+              <para>Výchozí: <literal>Ctrl+b</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>convert_leading_spaces_to_tabs</userinput></term>
+            <listitem>
+              <para>Položka nabídky <menuchoice><guimenu>Formát</guimenu><guimenuitem>Nahradit úvodní mezery tabulátory</guimenuitem></menuchoice></para>
+              <para>Výchozí: <literal>Shift+Ctrl+B</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>increase_indenting</userinput></term>
+            <listitem>
+              <para>Položka nabídky <menuchoice><guimenu>Formát</guimenu><guimenuitem>Zvětšit odsazení</guimenuitem></menuchoice></para>
+              <para>Výchozí: <literal>Shift+Ctrl+&gt;</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>decrease_indenting</userinput></term>
+            <listitem>
+              <para>Položka nabídky <menuchoice><guimenu>Formát</guimenu><guimenuitem>Zmenšit odsazení</guimenuitem></menuchoice></para>
+              <para>Výchozí: <literal>Shift+Ctrl+&lt;</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>convert_to_dos</userinput></term>
+            <listitem>
+              <para><menuchoice><guimenu>Formát</guimenu><guimenuitem>Převést na DOS formát</guimenuitem></menuchoice></para>
+              <para>Výchozí: <literal>Shift+Ctrl+E</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>convert_to_mac</userinput></term>
+            <listitem>
+              <para>Položka nabídky <menuchoice><guimenu>Formát</guimenu><guimenuitem>Převést na Mac formát</guimenuitem></menuchoice></para>
+              <para>Výchozí: <literal>Shift+Ctrl+C</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>convert_to_unix</userinput></term>
+            <listitem>
+              <para>Položka nabídky <menuchoice><guimenu>Formát</guimenu><guimenuitem>Převést na Unix formát</guimenuitem></menuchoice></para>
+              <para>Výchozí: <literal>Ctrl+e</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>copy_selection_right</userinput></term>
+            <listitem>
+              <para>Položka nabídky <menuchoice><guimenu>Sloučit</guimenu><guimenuitem>Kopírovat výběr doprava</guimenuitem></menuchoice></para>
+              <para>Výchozí: <literal>Shift+Ctrl+Right</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>copy_selection_left</userinput></term>
+            <listitem>
+              <para>Položka nabídky <menuchoice><guimenu>Sloučit</guimenu><guimenuitem>Kopírovat výběr doleva</guimenuitem></menuchoice></para>
+              <para>Výchozí: <literal>Shift+Ctrl+Left</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>copy_left_into_selection</userinput></term>
+            <listitem>
+              <para>Položka nabídky <menuchoice><guimenu>Sloučit</guimenu><guimenuitem>Kopírovat zleva do výběru</guimenuitem></menuchoice></para>
+              <para>Výchozí: <literal>Ctrl+Right</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>copy_right_into_selection</userinput></term>
+            <listitem>
+              <para>Položka nabídky <menuchoice><guimenu>Sloučit</guimenu><guimenuitem>Kopírovat zprava do výběru</guimenuitem></menuchoice></para>
+              <para>Výchozí: <literal>Ctrl+Left</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>merge_from_left_then_right</userinput></term>
+            <listitem>
+              <para>Položka nabídky <menuchoice><guimenu>Sloučit</guimenu><guimenuitem>Sloučit zleva a poté zprava</guimenuitem></menuchoice> menu item</para>
+              <para>Výchozí: <literal>Ctrl+m</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>merge_from_right_then_left</userinput></term>
+            <listitem>
+              <para>Položka nabídky <menuchoice><guimenu>Sloučit</guimenu><guimenuitem>Sloučit zprava a poté zleva</guimenuitem></menuchoice></para>
+              <para>Výchozí: <literal>Shift+Ctrl+M</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>help_contents</userinput></term>
+            <listitem>
+              <para>Položka nabídky <menuchoice><guimenu>Nápověda</guimenu><guimenuitem>Zobrazit nápovědu</guimenuitem></menuchoice></para>
+              <para>Výchozí: <literal>F1</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>about</userinput></term>
+            <listitem>
+              <para>Položka nabídky <menuchoice><guimenu>Nápověda</guimenu><guimenuitem>O programu Diffuse</guimenuitem></menuchoice></para>
+              <para>Výchozí: None</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </sect2>
+
+      <sect2 id="resources-keybindings-line_mode">
+        <title>Přiřazení klávesových zkratek pro řádkový režim úprav</title>
+
+        <para>Pro přiřazení klávesových zkratek pro řádkový režim úprav použijte pro parametr <replaceable>kontext</replaceable> hodnotu <userinput>line_mode</userinput>. Platné hodnoty parametru <replaceable>akce</replaceable> jsou:</para>
+
+        <variablelist>
+          <varlistentry>
+            <term><userinput>enter_align_mode</userinput></term>
+            <listitem>
+              <para>aktivovat režim úprav zarovnání</para>
+              <para>Výchozí: <literal>space</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>enter_character_mode</userinput></term>
+            <listitem>
+              <para>aktivovat znakový režim úprav</para>
+              <para>Výchozí: <literal>Return</literal>, <literal>KP_Enter</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>first_line</userinput></term>
+            <listitem>
+              <para>přesunout kurzor na první řádek</para>
+              <para>Výchozí: <literal>Home</literal>, <literal>g</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>extend_first_line</userinput></term>
+            <listitem>
+              <para>přesunout kurzor na první řádek a rozšířit výběr</para>
+              <para>Výchozí: <literal>Shift+Home</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>last_line</userinput></term>
+            <listitem>
+              <para>přesunout kurzor na poslední řádek</para>
+              <para>Výchozí: <literal>End</literal>, <literal>Shift+G</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>extend_last_line</userinput></term>
+            <listitem>
+              <para>přesunout kurzor na poslední řádek a rozšířit výběr</para>
+              <para>Výchozí: <literal>Shift+End</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>up</userinput></term>
+            <listitem>
+              <para>posunout kurzor o jeden řádek nahoru</para>
+              <para>Výchozí: <literal>Up</literal>, <literal>k</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>extend_up</userinput></term>
+            <listitem>
+              <para>posunout kurzor o jeden řádek nahoru a rozšířit výběr</para>
+              <para>Výchozí: <literal>Shift+Up</literal>, <literal>Shift+K</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>down</userinput></term>
+            <listitem>
+              <para>posunout kurzor o jeden řádek dolů</para>
+              <para>Výchozí: <literal>Down</literal>, <literal>j</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>extend_down</userinput></term>
+            <listitem>
+              <para>posunout kurzor o jeden řádek dolů a rozšířit výběr</para>
+              <para>Výchozí: <literal>Shift+Down</literal>, <literal>Shift+J</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>left</userinput></term>
+            <listitem>
+              <para>přesunout kurzor o soubor doleva</para>
+              <para>Výchozí: <literal>Left</literal>, <literal>h</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>extend_left</userinput></term>
+            <listitem>
+              <para>přesunout kurzor o soubor doleva a rozšířit výběr</para>
+              <para>Výchozí: <literal>Shift+Left</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>right</userinput></term>
+            <listitem>
+              <para>přesunout kurzor o soubor doprava</para>
+              <para>Výchozí: <literal>Right</literal>, <literal>l</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>extend_right</userinput></term>
+            <listitem>
+              <para>přesunout kurzor o soubor doprava a rozšířit výběr</para>
+              <para>Výchozí: <literal>Shift+Right</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>page_up</userinput></term>
+            <listitem>
+              <para>přesunout kurzor o stránku nahoru</para>
+              <para>Výchozí: <literal>Page_Up</literal>, <literal>Ctrl+u</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>extend_page_up</userinput></term>
+            <listitem>
+              <para>přesunout kurzor o stránku nahoru a rozšířit výběr</para>
+              <para>Výchozí: <literal>Shift+Page_Up</literal>, <literal>Shift+Ctrl+u</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>page_down</userinput></term>
+            <listitem>
+              <para>přesunout kurzor o stránku dolů</para>
+              <para>Výchozí: <literal>Page_Down</literal>, <literal>Ctrl+d</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>extend_page_down</userinput></term>
+            <listitem>
+              <para>přesunout kurzor o stránku dolů a rozšířit výběr</para>
+              <para>Výchozí: <literal>Shift+Page_Down</literal>, <literal>Shift+Ctrl+d</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>delete_text</userinput></term>
+            <listitem>
+              <para>smazat vybraný text</para>
+              <para>Výchozí: <literal>BackSpace</literal>, <literal>Delete</literal>, <literal>x</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>first_difference</userinput></term>
+            <listitem>
+              <para>vybrat první rozdíl</para>
+              <para>Výchozí: <literal>Ctrl+Home</literal>, <literal>Shift+P</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>previous_difference</userinput></term>
+            <listitem>
+              <para>vybrat předchozí rozdíl</para>
+              <para>Výchozí: <literal>p</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>next_difference</userinput></term>
+            <listitem>
+              <para>vybrat další rozdíl</para>
+              <para>Výchozí: <literal>n</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>last_difference</userinput></term>
+            <listitem>
+              <para>vybrat poslední rozdíl</para>
+              <para>Výchozí: <literal>Ctrl+End</literal>, <literal>Shift+N</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>clear_edits</userinput></term>
+            <listitem>
+              <para>smazat všechny úpravy ve vybraných řádcích</para>
+              <para>Výchozí: <literal>r</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>copy_selection_left</userinput></term>
+            <listitem>
+              <para>zkopírovat vybrané řádky do souboru nalevo</para>
+              <para>Výchozí: None</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>copy_selection_right</userinput></term>
+            <listitem>
+              <para>zkopírovat vybrané řádky do souboru napravo</para>
+              <para>Výchozí: None</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>copy_left_into_selection</userinput></term>
+            <listitem>
+              <para>zkopírovat do výběru řádky ze souboru nalevo</para>
+              <para>Výchozí: <literal>Shift+L</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>copy_right_into_selection</userinput></term>
+            <listitem>
+              <para>zkopírovat do výběru řádky ze souboru napravo</para>
+              <para>Výchozí: <literal>Shift+H</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>merge_from_left_then_right</userinput></term>
+            <listitem>
+              <para>sloučit řádky ze souboru nalevo a poté ze souboru napravo</para>
+              <para>Výchozí: <literal>m</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>merge_from_right_then_left</userinput></term>
+            <listitem>
+              <para>sloučit řádky ze souboru napravo a poté ze souboru nalevo</para>
+              <para>Výchozí: <literal>Shift+M</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>isolate</userinput></term>
+            <listitem>
+              <para>izolovat vybrané řádky</para>
+              <para>Výchozí: <literal>i</literal></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </sect2>
+
+      <sect2 id="resources-keybindings-align_mode">
+        <title>Přiřazení klávesových zkratek pro režim úprav zarovnání</title>
+
+        <para>Pro přiřazení klávesových zkratek pro režim úprav zarovnání použijte pro parametr <replaceable>kontext</replaceable> hodnotu <userinput>align_mode</userinput>. Platné hodnoty parametru <replaceable>akce</replaceable> jsou:</para>
+
+        <variablelist>
+          <varlistentry>
+            <term><userinput>enter_line_mode</userinput></term>
+            <listitem>
+              <para>aktivovat řádkový režim úprav</para>
+              <para>Výchozí: <literal>Escape</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>enter_character_mode</userinput></term>
+            <listitem>
+              <para>aktivovat znakový režim úprav</para>
+              <para>Výchozí: <literal>Return</literal>, <literal>KP_Enter</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>first_line</userinput></term>
+            <listitem>
+              <para>přesunout kurzor na první řádek</para>
+              <para>Výchozí: <literal>g</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>last_line</userinput></term>
+            <listitem>
+              <para>přesunout kurzor na poslední řádek</para>
+              <para>Výchozí: <literal>Shift+G</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>up</userinput></term>
+            <listitem>
+              <para>posunout kurzor o jeden řádek nahoru</para>
+              <para>Výchozí: <literal>Up</literal>, <literal>k</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>down</userinput></term>
+            <listitem>
+              <para>posunout kurzor o jeden řádek dolů</para>
+              <para>Výchozí: <literal>Down</literal>, <literal>j</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>left</userinput></term>
+            <listitem>
+              <para>přesunout kurzor o soubor doleva</para>
+              <para>Výchozí: <literal>Left</literal>, <literal>h</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>right</userinput></term>
+            <listitem>
+              <para>přesunout kurzor o soubor doprava</para>
+              <para>Výchozí: <literal>Right</literal>, <literal>l</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>page_up</userinput></term>
+            <listitem>
+              <para>přesunout kurzor o stránku nahoru</para>
+              <para>Výchozí: <literal>Page_Up</literal>, <literal>Ctrl+u</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>page_down</userinput></term>
+            <listitem>
+              <para>přesunout kurzor o stránku dolů</para>
+              <para>Výchozí: <literal>Page_Down</literal>, <literal>Ctrl+d</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>align</userinput></term>
+            <listitem>
+              <para>zarovnat vybraný řádek k aktuální pozici kurzoru</para>
+              <para>Výchozí: <literal>space</literal></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </sect2>
+
+      <sect2 id="resources-keybindings-character_mode">
+        <title>Přiřazení klávesových zkratek pro znakový režim úprav</title>
+
+        <para>Pro přiřazení klávesových zkratek pro znakový režim úprav použijte pro parametr <replaceable>kontext</replaceable> hodnotu <userinput>character_mode</userinput>. Platné hodnoty parametru <replaceable>akce</replaceable> jsou:</para>
+
+        <variablelist>
+          <varlistentry>
+            <term><userinput>enter_line_mode</userinput></term>
+            <listitem>
+              <para>aktivovat řádkový režim úprav</para>
+              <para>Výchozí: <literal>Escape</literal></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </sect2>
+    </sect1>
+
+    <sect1 id="resources-strings">
+      <title>Řetězce</title>
+
+      <variablelist>
+        <varlistentry>
+          <term><userinput>string <replaceable>název</replaceable> <replaceable>hodnota</replaceable></userinput></term>
+          <listitem>
+            <para>Deklaruje řetězec s názvem <replaceable>název</replaceable> a přiřadí mu hodnotu <replaceable>hodnota</replaceable>.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <sect2 id="resources-strings-used">
+        <title>Používané řetězce</title>
+
+        <para><application>&app;</application> používá následující řetězce:</para>
+
+        <variablelist>
+          <varlistentry>
+            <term><userinput>difference_colours</userinput></term>
+            <listitem>
+              <para>seznam definovaných názvů barev použitých ke zvýraznění rozdílů</para>
+              <para>Výchozí: <literal>difference_1 difference_2 difference_3</literal></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </sect2> 
+    </sect1> 
+
+    <sect1 id="resources-colours">
+      <title>Barvy</title>
+
+      <variablelist>
+        <varlistentry>
+          <term><userinput>[ colour | color ] <replaceable>název</replaceable> <replaceable>červená</replaceable> <replaceable>zelená</replaceable> <replaceable>modrá</replaceable></userinput></term>
+          <listitem>
+            <para>Deklaruje barvu s názvem <replaceable>název</replaceable>. Jednotlivé barevné složky jsou definovány jako hodnoty mezi 0 a 1.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <sect2 id="resources-colours-used">
+        <title>Používané barvy</title>
+
+        <para><application>&app;</application> používá následující barvy:</para>
+
+        <variablelist>
+
+          <varlistentry>
+            <term><userinput>alignment</userinput></term>
+            <listitem>
+              <para>barva použitá ke zvýraznění řádku vybraného k ručnímu zarovnání</para>
+              <para>Výchozí: <literal>1 1 0</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>character_selection</userinput></term>
+            <listitem>
+              <para>barva použitá ke zvýraznění vybraných znaků</para>
+              <para>Výchozí: <literal>0.7 0.7 1</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>cursor</userinput></term>
+            <listitem>
+              <para>barva kurzoru</para>
+              <para>Výchozí: <literal>0 0 0</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>difference_1</userinput></term>
+            <listitem>
+              <para>barva použitá ke zvýraznění rozdílů mezi první dvojicí souborů</para>
+              <para>Výchozí: <literal>1 0.625 0.625</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>difference_2</userinput></term>
+            <listitem>
+              <para>barva použitá ke zvýraznění rozdílů mezi druhou dvojicí souborů</para>
+              <para>Výchozí: <literal>0.85 0.625 0.775</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>difference_3</userinput></term>
+            <listitem>
+              <para>barva použitá ke zvýraznění rozdílů mezi třetí dvojicí souborů</para>
+              <para>Výchozí: <literal>0.85 0.775 0.625</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>edited</userinput></term>
+            <listitem>
+              <para>barva použitá ke zvýraznění upravených řádků</para>
+              <para>Výchozí: <literal>0.5 1 0.5</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>hatch</userinput></term>
+            <listitem>
+              <para>barva použitá k označení mezer vzniklých zarovnáním</para>
+              <para>Výchozí: <literal>0.8 0.8 0.8</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>line_number</userinput></term>
+            <listitem>
+              <para>barva písma pro čísla řádků</para>
+              <para>Výchozí: <literal>0 0 0</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>line_number_background</userinput></term>
+            <listitem>
+              <para>barva pozadí pro oblast čísel řádků</para>
+              <para>Výchozí: <literal>0.75 0.75 0.75</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>line_selection</userinput></term>
+            <listitem>
+              <para>barva použitá ke zvýraznění vybraných řádků</para>
+              <para>Výchozí: <literal>0.7 0.7 1</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>map_background</userinput></term>
+            <listitem>
+              <para>barva pozadí mapy</para>
+              <para>Výchozí: <literal>0.6 0.6 0.6</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>margin</userinput></term>
+            <listitem>
+              <para>barva použitá k označení pravého okraje</para>
+              <para>Výchozí: <literal>0.8 0.8 0.8</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>preedit</userinput></term>
+            <listitem>
+              <para>barva textu před úpravami</para>
+              <para>Výchozí: <literal>0 0 0</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>text</userinput></term>
+            <listitem>
+              <para>barva písma běžného textu</para>
+              <para>Výchozí: <literal>0 0 0</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>text_background</userinput></term>
+            <listitem>
+              <para>barva pozadí textové oblasti</para>
+              <para>Výchozí: <literal>1 1 1</literal></para>
+            </listitem>
+          </varlistentry>
+
+        </variablelist>
+      </sect2> 
+    </sect1> 
+
+    <sect1 id="resources-floats">
+      <title>Hodnoty s plovoucí desetinnou čárkou</title>
+
+      <variablelist>
+        <varlistentry>
+          <term><userinput>float <replaceable>název</replaceable> <replaceable>hodnota</replaceable></userinput></term>
+          <listitem>
+            <para>Deklaruje hodnotu s plovoucí desetinnou čárkou s názvem <replaceable>název</replaceable> a přiřadí jí hodnotu <replaceable>hodnota</replaceable>.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <sect2 id="resources-floats-used">
+        <title>Používané hodnoty s plovoucí desetinnou čárkou</title>
+
+        <para><application>&app;</application> používá následující hodnoty s plovoucí desetinnou čárkou:</para>
+
+        <variablelist>
+
+          <varlistentry>
+            <term><userinput>alignment_opacity</userinput></term>
+            <listitem>
+              <para>průhlednost použitá při míchání barvy použité pro zvýraznění ručního zarovnání</para>
+              <para>Výchozí: <literal>1</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>character_difference_opacity</userinput></term>
+            <listitem>
+              <para>průhlednost použitá při míchání barev použitých pro zvýraznění rozdílných znaků</para>
+              <para>Výchozí: <literal>0.4</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>character_selection_opacity</userinput></term>
+            <listitem>
+              <para>průhlednost použitá při míchání barvy použité pro zvýraznění vybraných znaků</para>
+              <para>Výchozí: <literal>0.4</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>edited_opacity</userinput></term>
+            <listitem>
+              <para>průhlednost použitá při míchání barvy použité pro zvýraznění upravených řádků</para>
+              <para>Výchozí: <literal>0.4</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>line_difference_opacity</userinput></term>
+            <listitem>
+              <para>průhlednost použitá při míchání barev pro zvýraznění rozdílných řádků</para>
+              <para>Výchozí: <literal>0.3</literal></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><userinput>line_selection_opacity</userinput></term>
+            <listitem>
+              <para>průhlednost použitá při míchání barvy pro zvýraznění vybraných řádků</para>
+              <para>Výchozí: <literal>0.4</literal></para>
+            </listitem>
+          </varlistentry>
+
+        </variablelist>
+      </sect2> 
+    </sect1> 
+
+    <sect1 id="resources-syntax-highlighting">
+      <title>Zvýraznění syntaxe</title>
+
+      <variablelist>
+
+        <varlistentry>
+          <term><userinput>syntax <replaceable>název</replaceable> <optional><replaceable>výchozí_stav</replaceable> <replaceable>výchozí_značka</replaceable></optional></userinput></term>
+          <listitem>
+            <para>Deklaruje nový styl syntaxe s názvem <replaceable>název</replaceable>. Zvýrazňování syntaxe používá jednoduchý stavový stroj u kterého přepínání mezi jednotlivými stavy závisí na nalezení určitých řetězců. Výchozím stavem stavového stroje bude <replaceable>výchozí_stav</replaceable>. Všechny znaky, které neodpovídají nějaké masce budou pro zvýraznění označeny značkou <replaceable>výchozí_značka</replaceable>. Styl syntaxe s názvem <replaceable>název</replaceable> může být odstraněn vynecháním parametrů <replaceable>výchozí_stav</replaceable> a <replaceable>výchozí_značka</replaceable>.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><userinput>syntax_files <replaceable>název</replaceable> <optional><replaceable>maska</replaceable></optional></userinput></term>
+          <listitem>
+            <para>Určuje, že pro soubory jejichž název odpovídá masce uvedené v parametru <replaceable>maska</replaceable> má být použit styl zvýraznění syntaxe s názvem <replaceable>název</replaceable>. Masky sloužící k rozpoznání toho pro které soubory má být použito zvýraznění syntaxe s názvem <replaceable>název</replaceable> mohou být odstraněny vynecháním parametru <replaceable>maska</replaceable>.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><userinput>syntax_magic <replaceable>název</replaceable> <optional><replaceable>maska</replaceable> <optional>ignorecase</optional></optional></userinput></term>
+          <listitem>
+            <para>Určuje, že pro soubory jejichž první řádek odpovídá masce uvedené v parametru <replaceable>maska</replaceable> má být použit styl zvýraznění syntaxe s názvem <replaceable>název</replaceable>. Masky sloužící k rozpoznání toho pro které soubory má být použito zvýraznění syntaxe s názvem <replaceable>název</replaceable> mohou být odstraněny vynecháním parametru <replaceable>maska</replaceable>.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><userinput>syntax_pattern <replaceable>název</replaceable> <replaceable>výchozí_stav</replaceable> <replaceable>cílový_stav</replaceable> <replaceable>značka</replaceable> <replaceable>maska</replaceable> <optional>ignorecase</optional></userinput></term>
+          <listitem>
+            <para>Přidá masku do dříve definovaného stylu syntaxe. Masky jsou postupně testovány v pořadí v jakém byly definovány, dokud není nalezena první shoda. Porovnávány jsou vždy jen masky u nichž parametr <replaceable>výchozí_stav</replaceable> odpovídá právě aktivnímu stavu stavového stroje. Pokud je nalezen řetězec odpovídající masce parametru <replaceable>maska</replaceable>, stavový stroj se přepne do stavu definovaného v parametru <replaceable>cílový_stav</replaceable>. Pokud je uveden parametr <userinput>ignorecase</userinput>, bude při porovnávání masky ignorována velikost písmen. Všechny znaky, které odpovídají určené masce budou pro zvýraznění označeny značkou <replaceable>značka</replaceable>.</para>
+          </listitem>
+        </varlistentry>
+
+      </variablelist>
+    </sect1> 
+  </chapter>
+
+  <chapter id="files">
+    <title>Soubory</title>
+    <para><application>&app;</application> používá následující soubory:</para>
+
+    <variablelist>
+      <varlistentry>
+        <term><filename>/etc/diffuserc</filename></term>
+        <listitem>
+          <para>sdílené předvolby (ve Windows <filename>%INSTALL_DIR%\diffuserc</filename>)</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><filename>/usr/share/diffuse/syntax/*.syntax</filename></term>
+        <listitem>
+          <para>soubory s pravidly pro zvýraznění syntaxe různých jazyků (ve Windows <filename>%INSTALL_DIR%\syntax\*.syntax</filename>)</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+          <term><filename>~/.config/diffuse/diffuserc</filename></term>
+        <listitem>
+          <para>uživatelské předvolby (ve Windows <filename>%HOME%\.config\diffuse\diffuserc</filename>)</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><filename>~/.config/diffuse/prefs</filename></term>
+        <listitem>
+          <para>uložená nastavení (ve Windows <filename>%HOME%\.config\diffuse\prefs</filename>)</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><filename>~/.local/share/diffuse/state</filename></term>
+        <listitem>
+          <para>data přenášená mezi relacemi (ve Windows <filename>%HOME%\.local\share\diffuse\state</filename>)</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </chapter>
+</book>

@@ -1,0 +1,29 @@
+# Patch syntax file for Diffuse
+# Copyright (C) 2013 Derrick Moser <derrick_moser@yahoo.com>
+syntax Patch comment text
+syntax_files Patch '\.patch$'
+
+# colours
+colour patch_comment 0.2 0.4 0.64
+colour patch_info 0.46 0.31 0.48
+colour patch_location 0.77 0.63 0.0
+colour patch_add 0.3 0.6 0.02
+colour patch_remove 0.8 0.0 0.0
+
+# information
+syntax_pattern comment normal patch_info '^(diff|---|\+\+\+) .*\n?'
+syntax_pattern normal normal patch_info '^(diff|---|\+\+\+) .*\n?'
+
+# location
+syntax_pattern normal location patch_location '^@@[^@]*@@'
+
+# comments
+syntax_pattern comment comment patch_comment '.*\n?'
+syntax_pattern location normal patch_comment '.*\n?'
+
+# changes
+syntax_pattern normal normal patch_add '^\+.*\n?'
+syntax_pattern normal normal patch_remove '^-.*\n?'
+
+# optimisation
+syntax_pattern normal normal text '.*\n?'

@@ -1,0 +1,25 @@
+# Gettext syntax file for Diffuse
+# Copyright (C) 2008-2010 Derrick Moser <derrick_moser@yahoo.com>
+syntax Gettext normal text
+syntax_files Gettext '\.pot?$'
+
+# colours
+colour gettext_comment 0.2 0.4 0.64
+colour gettext_fixme 1.0 0.5 0.0
+colour gettext_string 0.8 0.0 0.0
+colour gettext_escapedchar 0.46 0.31 0.48
+
+# comments
+syntax_pattern normal comment gettext_comment '#'
+syntax_pattern comment normal gettext_comment '(\r\n|\r|\n)$'
+syntax_pattern comment comment gettext_fixme '\b(TODO|FIXME|XXX)\b'
+syntax_pattern comment comment gettext_comment '.[^\\TFX\r\n]*'
+
+# string
+syntax_pattern normal string gettext_string '"'
+syntax_pattern string normal gettext_string '"'
+syntax_pattern string string gettext_escapedchar '(\\([0-7]{1,3}|x[0-9a-f]{1,2}|.))+' ignorecase
+syntax_pattern string string gettext_string '.[^\\"]*'
+
+# parsing optimisation
+syntax_pattern normal normal text '[ \ta-z_0-9]+' ignorecase

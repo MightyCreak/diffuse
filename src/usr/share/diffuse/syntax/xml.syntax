@@ -1,0 +1,135 @@
+# XML syntax file for Diffuse
+# Copyright (C) 2008-2009 Derrick Moser <derrick_moser@yahoo.com>
+syntax XML normal text
+syntax_files XML '\.(dtd|omf|plist|svg|xhtml|xml|xsd|xsl)$'
+syntax_magic XML '^[ \t]*<\?[ \t]*xml\b'
+
+# colours
+colour xml_comment 0.2 0.4 0.64
+colour xml_fixme 1.0 0.5 0.0
+colour xml_escapedchar 0.77 0.63 0.0
+colour xml_processingtag 0.46 0.31 0.48
+colour xml_processingtagname 0.3 0.6 0.02
+colour xml_tag 0.02 0.6 0.6
+colour xml_tagname 0.77 0.63 0.0
+colour xml_punctuation 0.5 0.5 0.5
+colour xml_attribute 0.3 0.6 0.02
+colour xml_string 0.8 0.0 0.0
+colour xml_cdatatag 0.3 0.6 0.02
+colour xml_cdata 0.8 0.0 0.0
+
+# whitespace/comments
+syntax_pattern normal normal text '[ \t\r\n]+'
+syntax_pattern normal comment xml_comment '<!--'
+syntax_pattern comment normal xml_comment '-->'
+syntax_pattern comment comment xml_fixme '\b(TODO|FIXME|XXX)\b'
+syntax_pattern comment comment xml_comment '.[^TFX\-]*'
+
+# processing
+syntax_pattern normal process xml_processingtag '<\?'
+syntax_pattern process process text '[ \t\r\n]+'
+syntax_pattern process process_attribs xml_processingtagname '\b[a-z][a-z_0-9]*([ \t]*:[ \t]*[a-z][a-z_0-9]*)?\b' ignorecase
+syntax_pattern process_attribs normal xml_processingtag '\?>'
+syntax_pattern process_attribs process_attribs text '[ \t\r\n]+'
+syntax_pattern process_attribs process_attribs xml_punctuation '='
+syntax_pattern process_attribs process_attribs xml_attribute '[a-z_0-9\-:\.]+' ignorecase
+syntax_pattern process_attribs process_string xml_string '"'
+syntax_pattern process_string process_attribs xml_string '"'
+syntax_pattern process_string process_string xml_escapedchar '\&([a-z_:][a-z_0-9\.\-_:]*|#[0-9]+|#x[0-9a-f]+);' ignorecase
+syntax_pattern process_string process_string xml_string '.[^\&"]*'
+
+syntax_pattern process_attribs process_singlestring xml_string "'"
+syntax_pattern process_singlestring process_attribs xml_string "'"
+syntax_pattern process_singlestring process_singlestring xml_escapedchar '\&([a-z_:][a-z_0-9\.\-_:]*|#[0-9]+|#x[0-9a-f]+);' ignorecase
+syntax_pattern process_singlestring process_singlestring xml_string ".[^\\&']*"
+
+# cdata
+syntax_pattern normal cdata xml_cdatatag '<!\[CDATA\['
+syntax_pattern cdata normal xml_cdatatag '\]\]>'
+syntax_pattern cdata cdata xml_cdata '.[^\]]*'
+
+# definitions
+syntax_pattern normal def xml_tag '<!'
+syntax_pattern def def_attribs xml_tagname '(ELEMENT|ENTITY|ATTLIST|NOTATION)\b'
+syntax_pattern def doc_attribs xml_tagname 'DOCTYPE\b'
+syntax_pattern def def_attribs text ''
+syntax_pattern def_attribs normal xml_tag '>'
+syntax_pattern def_attribs def_comment xml_comment '--'
+syntax_pattern def_comment def_attribs xml_comment '--'
+syntax_pattern def_comment def_comment xml_fixme '\b(TODO|FIXME|XXX)\b'
+syntax_pattern def_comment def_comment xml_comment '.[^TFX\-]*'
+syntax_pattern def_attribs def_attribs text '[ \t\r\n]+'
+syntax_pattern def_attribs def_attribs xml_punctuation '[=%\(\)\|,\?\*\+;\&]+'
+syntax_pattern def_attribs def_attribs xml_attribute '#?[a-z_0-9\-:\.]+' ignorecase
+syntax_pattern def_attribs def_string xml_string '"'
+syntax_pattern def_string def_attribs xml_string '"'
+syntax_pattern def_string def_string xml_escapedchar '\&([a-z_:][a-z_0-9\.\-_:]*|#[0-9]+|#x[0-9a-f]+);' ignorecase
+syntax_pattern def_string def_string xml_string '.[^\&"]*'
+syntax_pattern def_attribs def_singlestring xml_string "'"
+syntax_pattern def_singlestring def_attribs xml_string "'"
+syntax_pattern def_singlestring def_singlestring xml_escapedchar '\&([a-z_:][a-z_0-9\.\-_:]*|#[0-9]+|#x[0-9a-f]+);' ignorecase
+syntax_pattern def_singlestring def_singlestring xml_string ".[^\\&']*"
+
+# doctype
+syntax_pattern doc_attribs normal xml_tag '>'
+syntax_pattern doc_attribs doc_comment xml_comment '--'
+syntax_pattern doc_comment doc_attribs xml_comment '--'
+syntax_pattern doc_comment doc_comment xml_fixme '\b(TODO|FIXME|XXX)\b'
+syntax_pattern doc_comment doc_comment xml_comment '.[^TFX\-]*'
+syntax_pattern doc_attribs doc_attribs text '[ \t\r\n]+'
+syntax_pattern doc_attribs doc_attribs xml_punctuation '[=%\(\)\|,\?\*\+;\&]+'
+syntax_pattern doc_attribs def_normal xml_punctuation '\['
+syntax_pattern doc_attribs doc_attribs xml_attribute '#?[a-z_0-9\-:\.]+' ignorecase
+syntax_pattern doc_attribs doc_string xml_string '"'
+syntax_pattern doc_string doc_attribs xml_string '"'
+syntax_pattern doc_string doc_string xml_escapedchar '\&([a-z_:][a-z_0-9\.\-_:]*|#[0-9]+|#x[0-9a-f]+);' ignorecase
+syntax_pattern doc_string doc_string xml_string '.[^\&"]*'
+syntax_pattern doc_attribs doc_singlestring xml_string "'"
+syntax_pattern doc_singlestring doc_attribs xml_string "'"
+syntax_pattern doc_singlestring doc_singlestring xml_escapedchar '\&([a-z_:][a-z_0-9\.\-_:]*|#[0-9]+|#x[0-9a-f]+);' ignorecase
+syntax_pattern doc_singlestring doc_singlestring xml_string ".[^\\&']*"
+
+# doctype definitions
+syntax_pattern def_normal doc_attribs xml_punctuation '\]'
+syntax_pattern def_normal def2 xml_tag '<!'
+syntax_pattern def2 def2_attribs xml_tagname '(ELEMENT|ENTITY|ATTLIST|NOTATION)\b'
+syntax_pattern def2 def2_attribs text ''
+syntax_pattern def2_attribs def_normal xml_tag '>'
+syntax_pattern def2_attribs def2_comment xml_comment '--'
+syntax_pattern def2_comment def2_attribs xml_comment '--'
+syntax_pattern def2_comment def2_comment xml_fixme '\b(TODO|FIXME|XXX)\b'
+syntax_pattern def2_comment def2_comment xml_comment '.[^TFX\-]*'
+syntax_pattern def2_attribs def2_attribs text '[ \t\r\n]+'
+syntax_pattern def2_attribs def2_attribs xml_punctuation '[=%\(\)\|,\?\*\+;\&]+'
+syntax_pattern def2_attribs def2_attribs xml_attribute '#?[a-z_0-9\-:\.]+' ignorecase
+syntax_pattern def2_attribs def2_string xml_string '"'
+syntax_pattern def2_string def2_attribs xml_string '"'
+syntax_pattern def2_string def2_string xml_escapedchar '\&([a-z_:][a-z_0-9\.\-_:]*|#[0-9]+|#x[0-9a-f]+);' ignorecase
+syntax_pattern def2_string def2_string xml_string '.[^\&"]*'
+syntax_pattern def2_attribs def2_singlestring xml_string "'"
+syntax_pattern def2_singlestring def2_attribs xml_string "'"
+syntax_pattern def2_singlestring def2_singlestring xml_escapedchar '\&([a-z_:][a-z_0-9\.\-_:]*|#[0-9]+|#x[0-9a-f]+);' ignorecase
+syntax_pattern def2_singlestring def2_singlestring xml_string ".[^\\&']*"
+
+# tags
+syntax_pattern normal tag xml_tag '</?'
+syntax_pattern tag tag text '[ \t\r\n]+'
+syntax_pattern tag tag_attribs xml_tagname '\b[a-z][a-z_0-9]*([ \t]*:[ \t]*[a-z][a-z_0-9]*)*\b' ignorecase
+syntax_pattern tag tag_attribs text ''
+syntax_pattern tag_attribs normal xml_tag '/?>'
+syntax_pattern tag_attribs tag_attribs text '[ \t\r\n]+'
+syntax_pattern tag_attribs tag_attribs xml_punctuation '='
+syntax_pattern tag_attribs tag_attribs xml_attribute '[a-z_0-9\-:\.]+' ignorecase
+syntax_pattern tag_attribs tag_string xml_string '"'
+syntax_pattern tag_string tag_attribs xml_string '"'
+syntax_pattern tag_string tag_string xml_escapedchar '\&([a-z_:][a-z_0-9\.\-_:]*|#[0-9]+|#x[0-9a-f]+);' ignorecase
+syntax_pattern tag_string tag_string xml_string '.[^\&"]*'
+
+syntax_pattern tag_attribs tag_singlestring xml_string "'"
+syntax_pattern tag_singlestring tag_attribs xml_string "'"
+syntax_pattern tag_singlestring tag_singlestring xml_escapedchar '\&([a-z_:][a-z_0-9\.\-_:]*|#[0-9]+|#x[0-9a-f]+);' ignorecase
+syntax_pattern tag_singlestring tag_singlestring xml_string ".[^\\&']*"
+
+# text/parsing optimisation
+syntax_pattern normal normal xml_escapedchar '\&([a-z_:][a-z_0-9\.\-_:]*|#[0-9]+|#x[0-9a-f]+);' ignorecase
+syntax_pattern normal normal text '.[^\&<]*'

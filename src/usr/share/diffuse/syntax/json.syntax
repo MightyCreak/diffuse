@@ -1,0 +1,29 @@
+# JSON syntax file for Diffuse
+# Copyright (C) 2011 Derrick Moser <derrick_moser@yahoo.com>
+syntax JSON normal text
+syntax_files JSON '\.json$'
+
+# colours
+colour json_literal 1.0 0.2 0.8
+colour json_string 0.8 0.0 0.0
+colour json_escapedchar 0.46 0.31 0.48
+colour json_punctuation 0.5 0.5 0.5
+
+# whitespace
+syntax_pattern normal normal text '[ \t\r\n]+'
+
+# string
+syntax_pattern normal string json_string '"'
+syntax_pattern string string json_escapedchar '(\\(u[0-9a-f]{4}|.))+' ignorecase
+syntax_pattern string normal json_string '"'
+syntax_pattern string string json_string '.[^\\"]*'
+
+# literals
+syntax_pattern normal normal json_literal '-?(0|[1-9][0-9]*)(\.[0-9]+)?(e[\+\-]?[0-9]+)?' ignorecase
+syntax_pattern normal normal json_literal '\b(true|false|null)\b'
+
+# punctuation
+syntax_pattern normal normal json_punctuation '[\{\}\[\]:,]+'
+
+# parsing optimisation
+syntax_pattern normal normal text '[a-z_][a-z_0-9]*' ignorecase

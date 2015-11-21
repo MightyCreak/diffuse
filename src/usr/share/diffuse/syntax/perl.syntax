@@ -1,0 +1,103 @@
+# Perl syntax file for Diffuse
+# Copyright (C) 2008-2009 Derrick Moser <derrick_moser@yahoo.com>
+syntax Perl normal text
+syntax_files Perl '\.p[hlm]$'
+syntax_magic Perl '^#![ \t]*([^ \t/]*/)*(env[ \t]+)?perl[0-9\.]*([ \t].*)?$'
+
+# colours
+colour perl_comment 0.2 0.4 0.64
+colour perl_fixme 1.0 0.5 0.0
+colour perl_keyword 0.77 0.63 0.0
+colour perl_import 0.46 0.31 0.48
+colour perl_literal 1.0 0.2 0.8
+colour perl_string 0.8 0.0 0.0
+colour perl_escapedchar 0.46 0.31 0.48
+colour perl_function 0.02 0.6 0.6
+colour perl_punctuation 0.5 0.5 0.5
+colour perl_variable 0.02 0.6 0.6
+colour perl_regexsep 0.77 0.63 0.0
+colour perl_regex 0.8 0.0 0.0
+
+# whitespace/comments
+syntax_pattern normal normal text '[ \t\r\n]+'
+syntax_pattern expr expr text '[ \t\r\n]+'
+syntax_pattern normal comment perl_comment '#'
+syntax_pattern comment normal perl_comment '(\r\n|\r|\n)$'
+syntax_pattern comment comment perl_fixme '\b(TODO|FIXME|XXX)\b'
+syntax_pattern comment comment perl_comment '.[^TFX\r\n]*'
+syntax_pattern normal doc perl_comment '^=(head1|head2|item|over|back|pod|for|begin|end)\b'
+syntax_pattern doc normal perl_comment '^=cut\b'
+syntax_pattern doc doc perl_fixme '\b(TODO|FIXME|XXX)\b'
+syntax_pattern doc doc perl_comment '.[^TFX]*'
+
+# "-style strings
+syntax_pattern normal double_string perl_string '"'
+syntax_pattern double_string expr perl_string '"'
+syntax_pattern double_string double_string perl_escapedchar '(\\([0-7]{1,3}|x([A-Za-z0-9]{2}|\{[A-Za-z0-9]+\})|\\N\{[A-Za-z]*\}|c?.))+'
+syntax_pattern double_string double_string perl_variable '(@|\$#?|%)[a-z_][a-z_0-9]*\b' ignorecase
+syntax_pattern double_string double_string perl_string '.[^\\"@\$%]*'
+
+# '-style strings
+syntax_pattern normal single_string perl_string "'"
+syntax_pattern single_string expr perl_string "'"
+syntax_pattern single_string single_string perl_string ".[^\\']*"
+
+# `-style strings
+syntax_pattern normal backquote perl_string '`'
+syntax_pattern backquote expr perl_string '`'
+syntax_pattern backquote backquote perl_escapedchar '(\\([0-7]{1,3}|x([A-Za-z0-9]{2}|\{[A-Za-z0-9]+\})|\\N\{[A-Za-z]*\}|c?.))+'
+syntax_pattern backquote backquote perl_variable '(@|\$#?|%)[a-z_][a-z_0-9]*\b' ignorecase
+syntax_pattern backquote backquote perl_string '.[^\\`@\$%]*'
+
+# literals
+syntax_pattern normal expr perl_literal '(((0|[1-9][0-9])*\.[0-9]*|\.[0-9]+)(e[\+\-]?[0-9]+)?|(0|[1-9][0-9]*)e[\+\-]?[0-9]+|0x[0-9a-f]+|0[0-7]*|[1-9][0-9]*)' ignorecase
+
+# variable
+syntax_pattern normal expr perl_variable "(@(\\+|-|[A-Za-z_][A-Za-z0-9_]*)?|%(\\+|-|!|^H|[A-Za-z_][A-Za-z0-9_]*)?|\\$([\\?&`'\\+\\./\\|,\\\\\\\";%=\\-~^:!\\$<>\\(\\)\\[\\]]|^[ACDEFHIMNOPRSTVWX]|#?[A-Za-z0-9_]+)?)"
+
+# keywords
+syntax_pattern normal normal perl_keyword '\b(abs|accept|alarm|and|atan2|bind|binmode|bless|caller|chdir|chmod|chomp|chop|chown|chr|chroot|close|closedir|cmp|connect|continue|cos|crypt|dbmclose|dbmopen|default|defined|delete|die|do|dump|each|else|elsif|endgrent|endhostent|endnetent|endprotoent|endpwent|endservent|eof|eq|eval|exec|exists|exit|exp|fcntl|fileno|flock|for|foreach|fork|format|formline|ge|getc|getgrent|getgrgid|getgrnam|gethostbyaddr|gethostbyname|gethostent|getlogin|getnetbyaddr|getnetbyname|getnetent|getpeername|getpgrp|getppid|getpriority|getprotobyname|getprotobynumber|getprotoent|getpwent|getpwnam|getpwuid|getservbyname|getservbyport|getservent|getsockname|getsockopt|given|glob|gmtime|goto|grep|gt|hex|if|index|int|ioctl|join|keys|kill|last|lc|lcfirst|le|length|link|listen|local|localtime|log|lstat|lt|map|mkdir|msgctl|msgget|msgrcv|msgsnd|my|ne|next|not|oct|open|opendir|or|ord|pack|pipe|pop|pos|print|printf|prototype|push|quotemeta|qw|qx|rand|read|readdir|readline|readlink|readpipe|recv|redo|ref|rename|reset|return|reverse|rewinddir|rindex|rmdir|scalar|seek|seekdir|select|semctl|semget|semop|send|setgrent|sethostent|setnetent|setpgrp|setpriority|setprotoent|setpwent|setservent|setsockopt|shift|shmctl|shmget|shmread|shmwrite|shutdown|sin|sleep|socket|socketpair|sort|splice|split|sprintf|sqrt|srand|stat|study|substr|symlink|syscall|sysopen|sysread|sysseek|system|syswrite|tell|telldir|tie|tied|time|times|truncate|uc|ucfirst|umask|undef|unless|unlink|unpack|unshift|untie|until|utime|values|vec|wait|waitpid|wantarray|warn|when|while|write|xor)\b'
+syntax_pattern normal normal perl_keyword '-[AbBcCdefgklMoOprRsStTuwWxXz]\b'
+
+# special kewords
+syntax_pattern normal normal perl_import '\b(import|no|package|require|use)\b'
+
+# function/class definitions
+syntax_pattern normal declaration perl_keyword '\b(sub)\b'
+syntax_pattern declaration declaration text '[ \t]+'
+syntax_pattern declaration normal perl_function '\b[a-z_][a-z_0-9]*\b' ignorecase
+syntax_pattern declaration normal text ''
+
+# expressions
+syntax_pattern normal expression perl_regexsep 'm?/'
+syntax_pattern expression expr perl_regexsep '/[cgimposx]*'
+syntax_pattern expression expression perl_escapedchar '(\\([0-7]{1,3}|x([A-Za-z0-9]{2}|\{[A-Za-z0-9]+\})|\\N\{[A-Za-z]*\}|c?.))+'
+syntax_pattern expression expression perl_regex '.[^\\/]*'
+
+# search and replace
+syntax_pattern normal search perl_regexsep 's/'
+syntax_pattern search replace perl_regexsep '/'
+syntax_pattern search search perl_escapedchar '(\\([0-7]{1,3}|x([A-Za-z0-9]{2}|\{[A-Za-z0-9]+\})|\\N\{[A-Za-z]*\}|c?.))+'
+syntax_pattern search search perl_regex '.[^\\/]*'
+syntax_pattern replace expr perl_regexsep '/[cegimposx]*'
+syntax_pattern replace replace perl_escapedchar '(\\([0-7]{1,3}|x([A-Za-z0-9]{2}|\{[A-Za-z0-9]+\})|\\N\{[A-Za-z]*\}|c?.))+'
+syntax_pattern replace replace perl_regex '.[^\\/]*'
+
+# translate
+syntax_pattern normal translate_search perl_regexsep '(tr|y)/'
+syntax_pattern translate_search translate_replace perl_regexsep '/'
+syntax_pattern translate_search translate_search perl_escapedchar '(\\([0-7]{1,3}|x([A-Za-z0-9]{2}|\{[A-Za-z0-9]+\})|\\N\{[A-Za-z]*\}|c?.))+'
+syntax_pattern translate_search translate_search perl_regex '.[^\\/]*'
+syntax_pattern translate_replace expr perl_regexsep '/[cds]*'
+syntax_pattern translate_replace translate_replace perl_escapedchar '(\\([0-7]{1,3}|x([A-Za-z0-9]{2}|\{[A-Za-z0-9]+\})|\\N\{[A-Za-z]*\}|c?.))+'
+syntax_pattern translate_replace translate_replace perl_regex '.[^\\/]*'
+
+# punctuation
+syntax_pattern normal normal perl_punctuation '[=\(,~!&\|\^;\[\{\}<>\+\-\*:]+'
+syntax_pattern normal normal perl_punctuation '\.'
+syntax_pattern normal expr perl_punctuation '[\)\]]+'
+syntax_pattern expr normal perl_punctuation '/'
+
+# parsing optimisation
+syntax_pattern normal expr text '[a-z_][a-z_0-9]*' ignorecase
+syntax_pattern expr normal perl_regex ''

@@ -1,0 +1,62 @@
+# Fortran syntax file for Diffuse
+# Copyright (C) 2009 Derrick Moser <derrick_moser@yahoo.com>
+syntax Fortran normal text
+syntax_files Fortran '\.[fF]9[05]$'
+
+# colours
+colour fortran_cpp 0.8 0.0 0.0
+colour fortran_cppkeyword 0.46 0.31 0.48
+colour fortran_comment 0.2 0.4 0.64
+colour fortran_fixme 1.0 0.5 0.0
+colour fortran_keyword 0.77 0.63 0.0
+colour fortran_type 0.3 0.6 0.02
+colour fortran_import 0.46 0.31 0.48
+colour fortran_literal 1.0 0.2 0.8
+colour fortran_string 0.8 0.0 0.0
+colour fortran_escapedchar 0.46 0.31 0.48
+colour fortran_punctuation 0.5 0.5 0.5
+
+# preprocessor
+syntax_pattern normal cpp fortran_cppkeyword '^[ \t]*#[ \t]*(define|undef|include|[0-9]+|ifdef|ifndef|elif|else|endif|if)\b'
+syntax_pattern cpp normal fortran_cpp '(\r\n|\r|\n)$'
+syntax_pattern cpp cpp fortran_cpp '.[^\r\n]*'
+
+# whitespace/comments
+syntax_pattern normal normal text '[ \t\r\n]+'
+syntax_pattern normal comment fortran_comment '!'
+syntax_pattern comment normal fortran_comment '(\r\n|\r|\n)$'
+syntax_pattern comment comment fortran_fixme '\b(TODO|FIXME|XXX)\b'
+syntax_pattern comment comment fortran_comment '.[^TFX\r\n]*'
+
+# "-style strings
+syntax_pattern normal double_string fortran_string '(([0-9]+|[a-z_][a-z_0-9]*)_)?"' ignorecase
+syntax_pattern double_string double_string fortran_escapedchar '("")+'
+syntax_pattern double_string normal fortran_string '"'
+syntax_pattern double_string double_string fortran_string '[^"]+'
+
+# '-style strings
+syntax_pattern normal single_string fortran_string "(([0-9]+|[a-z_][a-z_0-9]*)_)?'" ignorecase
+syntax_pattern single_string single_string fortran_escapedchar "('')+"
+syntax_pattern single_string normal fortran_string "'"
+syntax_pattern single_string single_string fortran_string "[^']+"
+
+# literals
+syntax_pattern normal normal fortran_literal "(((\\.[0-9]+|[0-9]+(\\.[0-9]*)?)[ed][\\-\\+]?[0-9]+|\\.[0-9]+|[0-9]+(\\.[0-9]+)?)(_([0-9]+|[a-z_][a-z_0-9]*))?\b|b('[01]+'|\"[01]+\")|o('[0-7]+'|\"[0-7]+\")|z('[0-9a-f]+'|\"[0-9a-f]+\"))" ignorecase
+syntax_pattern normal normal fortran_literal '\.(false|true)\.(_([0-9]+|[a-z_][a-z_0-9]*))?' ignorecase
+
+# types
+syntax_pattern normal normal fortran_type '\b(abstract|allocateable|assignment|asynchronous|bind|class|character|common|complex|data|deferred|dimension|double[ \t]*precision|(end[ \t]*)?(enum|interface|type)|entry|enumerator|equivalence|extends|external|final|format|generic|implicit|import|integer|intent|intrinsic|logical|module[ \t]*procedure|namelist|non_overridable|nopass|operator|optional|parameter|pass|pointer|private|procedure|protected|public|real|record|save|sequence|target|use|value|volatile)\b' ignorecase
+
+# keywords
+syntax_pattern normal normal fortran_keyword '\b(allocate|assign|backspace|call|case|close|contains|continue|cycle|deallocate|do[ \t]+while|elemental|else|else(if|where)?|(end)?(associate|block[ \t]*data|do|forall|function|if|module|program|select|subroutine|where)|end|endfile|exit|flush|go[ \t]*to|inquire|nullify|open|pause|print|pure|read|recursive|return|rewind|select[ \t]*case|select[ \t]+type|stop|wait|write)\b' ignorecase
+syntax_pattern normal normal fortran_keyword '\.(eq|ne|gt|ge|lt|le|not|and|or|eqv|neqv)\.' ignorecase
+
+# special kewords
+syntax_pattern normal normal fortran_import '\b(include)\b' ignorecase
+
+# punctuation
+syntax_pattern normal normal fortran_punctuation '[=\+\-\*/\(\),:%\&;\<\>\[\]]+'
+syntax_pattern normal normal fortran_punctuation '\.'
+
+# parsing optimisation
+syntax_pattern normal normal text '[a-z_][a-z_0-9]*' ignorecase

@@ -1,0 +1,66 @@
+# Verilog syntax file for Diffuse
+# Copyright (C) 2008-2009 Derrick Moser <derrick_moser@yahoo.com>
+syntax Verilog normal text
+syntax_files Verilog '\.v$'
+
+# colours
+colour verilog_comment 0.2 0.4 0.64
+colour verilog_fixme 1.0 0.5 0.0
+colour verilog_keyword 0.77 0.63 0.0
+colour verilog_type 0.3 0.6 0.02
+colour verilog_cpp 0.8 0.0 0.0
+colour verilog_cppkeyword 0.46 0.31 0.48
+colour verilog_literal 1.0 0.2 0.8
+colour verilog_string 0.8 0.0 0.0
+colour verilog_escapedchar 0.46 0.31 0.48
+colour verilog_variable 0.02 0.6 0.6
+colour verilog_punctuation 0.5 0.5 0.5
+
+# directives
+syntax_pattern normal cpp verilog_cppkeyword '`[0-9a-z_]+'
+syntax_pattern cpp normal verilog_cppkeyword '(\r\n|\r|\n)$'
+syntax_pattern normal normal text '[ \t\r\n]+'
+
+# C++ style comments
+syntax_pattern normal cpp_comment verilog_comment '//'
+syntax_pattern cpp cpp_comment verilog_comment '//'
+syntax_pattern cpp_comment normal verilog_comment '(\r\n|\r|\n)$'
+syntax_pattern cpp_comment cpp_comment verilog_fixme '\b(TODO|FIXME|XXX)\b'
+syntax_pattern cpp_comment cpp_comment verilog_comment '.[^TFX\r\n]*'
+
+# C style comments
+syntax_pattern normal comment verilog_comment '/\*'
+syntax_pattern comment normal verilog_comment '\*/'
+syntax_pattern comment comment verilog_fixme '\b(TODO|FIXME|XXX)\b'
+syntax_pattern comment comment verilog_comment '.[^\*TFX]*'
+
+syntax_pattern cpp comment_cpp verilog_comment '/\*'
+syntax_pattern comment_cpp cpp verilog_comment '\*/'
+syntax_pattern comment_cpp comment_cpp verilog_fixme '\b(TODO|FIXME|XXX)\b'
+syntax_pattern comment_cpp comment_cpp verilog_comment '.[^\*TFX]*'
+
+# preprocessor args
+syntax_pattern cpp cpp verilog_cpp '.[^/\r\n]*'
+
+# string
+syntax_pattern normal string verilog_string '"'
+syntax_pattern string normal verilog_string '"'
+syntax_pattern string string verilog_escapedchar '(\\([0-7]{1,3}|x[0-9a-f]{1,2}|.))+' ignorecase
+syntax_pattern string string verilog_string '.[^\\"]*'
+
+# literals
+syntax_pattern normal normal verilog_literal "(([0-9]+\\.[0-9]*|\\.[0-9]+)(e[\\+\\-]?[0-9]+)?|[0-9]+e[\\+\\-]?[0-9]+|[0-9]+('(b[01xz_]+|o[0-7xz_]+|d[0-9xz_]+|h[0-9a-fxz_]))?)" ignorecase
+
+# typing keywords
+syntax_pattern normal normal verilog_type '\b(defparam|inout|input|integer|output|parameter|real|reg|supply[01]|time|tri(and|or|reg|0|1|)|wand|wire|wor)\b'
+
+# keywords
+syntax_pattern normal normal verilog_keyword '\b(always|and|assign|attribute|begin|buf|bufif0|bufif1|case|casex|casez|cmos|deassign|default|disable|edge|else|end|endattribute|endcase|endfunction|endmodule|endprimitive|endspecify|endtable|endtask|event|for|force|forever|fork|function|highz0|highz1|if|ifnone|initial|join|medium|module|large|macromodule|nand|negedge|nmos|nor|not|notif0|notif1|or|pmos|posedge|primitive|pull0|pull1|pulldown|pullup|rcmos|realtime|release|repeat|rnmos|rpmos|rtran|rtranif0|rtranif1|scalared|signed|small|specify|specparam|strength|strong0|strong1|table|task|tran|tranif0|tranif1|unsigned|vectored|wait|weak0|weak1|while|xnor|xor)\b'
+
+# punctuation
+syntax_pattern normal normal verilog_punctuation '[\[\]\(\)!~&\|\^\+\-\{\}\*%<=>\?:,;@#]+'
+syntax_pattern normal normal verilog_punctuation '[/\.]'
+
+# parsing optimisation
+syntax_pattern normal normal verilog_variable '\$[a-z_0-9\$]*' ignorecase
+syntax_pattern normal normal text '[a-z_][a-z_0-9\$]*' ignorecase

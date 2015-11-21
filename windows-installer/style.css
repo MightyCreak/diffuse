@@ -1,0 +1,5 @@
+body { font:12px verdana; background:#f7f7f7; }
+p, pre, dl { padding:0; margin:0px 10px 8px 10px; }
+a { color:#D70; }
+a:hover { color:#666 }
+h2 { color:#730;margin:20px 0 6px;padding-bottom:10px;font:17px Georgia, serif;border-bottom : 1px solid #e2dfdb; }

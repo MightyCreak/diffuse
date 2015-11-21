@@ -1,0 +1,57 @@
+# VB.NET syntax file for Diffuse
+# Copyright (C) 2008-2009 Derrick Moser <derrick_moser@yahoo.com>
+syntax VB.NET normal text
+syntax_files VB.NET '\.vb$'
+
+# colours
+colour vb_comment 0.2 0.4 0.64
+colour vb_fixme 1.0 0.5 0.0
+colour vb_import 0.46 0.31 0.48
+colour vb_keyword 0.77 0.63 0.0
+colour vb_type 0.3 0.6 0.02
+colour vb_literal 1.0 0.2 0.8
+colour vb_string 0.8 0.0 0.0
+colour vb_escapedchar 0.46 0.31 0.48
+colour vb_punctuation 0.5 0.5 0.5
+
+# whitespace
+syntax_pattern normal normal text '[ \t\r\n]+'
+
+# comments
+syntax_pattern normal comment vb_comment "'"
+syntax_pattern normal comment vb_comment '\brem\b' ignorecase
+syntax_pattern comment normal vb_comment '(\r\n|\r|\n)$'
+syntax_pattern comment comment vb_fixme '\b(TODO|FIXME|XXX)\b'
+syntax_pattern comment comment vb_comment '.[^TFX\r\n]*'
+
+# date
+syntax_pattern normal date vb_string '#'
+syntax_pattern date normal vb_string '#'
+syntax_pattern date date vb_string ".[^#]*"
+
+# string
+syntax_pattern normal string vb_string '"'
+syntax_pattern string string vb_escapedchar '""'
+syntax_pattern string normal vb_string '"c?' ignorecase
+syntax_pattern string string vb_string '.[^"]*'
+
+# literals
+syntax_pattern normal normal vb_literal '\b([0-9]*\.[0-9]+(e[+-]?[0-9]+)?[frd]?|[0-9]+[frdsil]?|True|False|Nothing)\b' ignorecase
+syntax_pattern normal normal vb_literal '&(o[0-7]+|h[0-9a-f]+)[sil]?\b' ignorecase
+
+# import keywords
+syntax_pattern normal normal vb_import '\b(Imports|Option)\b'
+
+# typing keywords
+syntax_pattern normal normal vb_type '\b(Boolean|Byte|CBool|CByte|CChar|CDate|CDbl|CDec|Char|CInt|CLng|CObj|CShort|CSng|CStr|Date|Decimal|Double|Integer|Long|Object|Short|Single|String|Variant)\b' ignorecase
+
+# keywords
+syntax_pattern normal normal vb_keyword '\b(AddHandler|AddressOf|Alias|And|AndAlso|Ansi|As|Assembly|Auto|ByRef|ByVal|Call|Case|Catch|Class|Const|CType|Declare|Default|Delegate|Dim|DirectCast|Do|Each|Else|ElseIf|End|EndIf|Enum|Erase|Error|Event|Exit|Finally|For|Friend|Function|Get|GetType|GoSub|GoTo|Handles|If|Implements|In|Inherits|Interface|Is|Let|Lib|Like|Loop|Me|Mod|Module|MustInherit|MustOverride|MyBase|MyClass|Namespace|New|Next|Not|NotInheritable|NotOverridable|On|Optional|Or|OrElse|Overloads|Overridable|Overrides|ParamArray|Preserve|Private|Property|Protected|Public|RaiseEvent|ReadOnly|ReDim|RemoveHandler|Resume|Return|Select|Set|Shadows|Shared|Static|Step|Stop|Structure|Sub|SyncLock|Then|Throw|To|Try|TypeOf|Unicode|Until|Wend|When|While|With|WithEvents|WriteOnly|Xor)\b' ignorecase
+
+# punctuation
+syntax_pattern normal normal vb_punctuation '[\(\)\{\}!,\.:]+'
+#'[!~%\|\&\^\(\)\<\>\*\-\+=\{\}\[\]:;,\.\?]+'
+#syntax_pattern normal normal vb_punctuation '/'
+
+# parsing optimisation
+syntax_pattern normal normal text '[a-z][a-z_0-9]*' ignorecase

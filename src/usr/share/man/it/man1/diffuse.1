@@ -1,0 +1,1711 @@
+'\" t
+.TH "DIFFUSE" "1" "2014\-07\-18" "diffuse 0\&.4\&.8" "Manuale di Diffuse"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.nh
+.ad l
+.SH "NOME"
+diffuse \- strumento grafico per l'unione e il confronto di file
+.SH "SINOSSI"
+.HP \w'\fBdiffuse\fR\ 'u
+\fBdiffuse\fR [\fB\-h\fR | \fB\-?\fR | \fB\-\-help\fR | \fB\-v\fR | \fB\-\-version\fR]
+.HP \w'\fBdiffuse\fR\ 'u
+\fBdiffuse\fR [\fB\-\-no\-rcfile\fR | \fB\-\-rcfile\ \fR\fB\fIfile\fR\fR] [[\fIoption\fR...] | [\fIfile\fR...]...]
+.SH "DESCRIZIONE"
+.PP
+Diffuse
+è uno strumento grafico per l\*(Aqunione e il confronto di file di testo\&.
+Diffuse
+è in grado di confrontare uno a fianco all\*(Aqaltro un qualsiasi numero di file e fornisce all\*(Aqutente la possibilità di correggere manualmente la corrispondenza fra le righe e di modificare i file\&.
+Diffuse
+è anche in grado di recuperare le revisioni dei file dai repository Bazaar, CVS, Darcs, Git, Mercurial, Monotone, RCS, Subversion e SVK per confrontarle e unirle\&.
+.SH "OPZIONI"
+.SS "Opzioni di aiuto"
+.PP
+Se viene specificata una opzione di aiuto, questa deve essere l\*(Aqunico argomento inserito nella linea di comando\&.
+Diffuse
+uscirà subito dopo aver visualizzato le informazioni\&.
+.PP
+\fB\-h\fR, \fB\-?\fR, \fB\-\-help\fR
+.RS 4
+Mostra le informazioni di utilizzo\&.
+.RE
+.PP
+\fB\-v\fR, \fB\-\-version\fR
+.RS 4
+Mostra la versione e il copyright\&.
+.RE
+.SS "Opzioni di configurazione"
+.PP
+Se viene specificata una opzione di configurazione, questa deve essere il primo argomento indicato nella riga di comando\&.
+.PP
+\fB\-\-no\-rcfile\fR
+.RS 4
+Non legge alcun file di inizializzazione\&.
+.RE
+.PP
+\fB\-\-rcfile \fR\fB\fIfile\fR\fR
+.RS 4
+Legge i comandi di inizializzazione esclusivamente dal file
+\fIfile\fR\&.
+.RE
+.SS "Opzioni generali"
+.PP
+\fB\-c\fR, \fB\-\-commit\fR \fIrev\fR
+.RS 4
+Apre delle schede di confronto separate per tutti i file interessati dal commit
+\fIrev\fR
+dai restanti percorsi indicati tra gli argomenti della linea di comando\&.
+.RE
+.PP
+\fB\-D\fR, \fB\-\-close\-if\-same\fR
+.RS 4
+Chiude tutte le schede senza differenze\&.
+.RE
+.PP
+\fB\-e\fR, \fB\-\-encoding\fR \fIcodec\fR
+.RS 4
+Usa
+\fIcodec\fR
+per leggere e scrivere i file\&.
+.RE
+.PP
+\fB\-L\fR, \fB\-\-label\fR \fIetichetta\fR
+.RS 4
+Visualizza
+\fIetichetta\fR
+invece del nome del file\&.
+.RE
+.PP
+\fB\-m\fR, \fB\-\-modified\fR
+.RS 4
+Apre delle schede di confronto separate per tutti gli elementi modificati dai restanti percorsi indicati tra gli argomenti della linea di comando\&.
+.RE
+.PP
+\fB\-r\fR, \fB\-\-revision\fR \fIrev\fR
+.RS 4
+Include nella scheda di confronto dei file la revisione
+\fIrev\fR
+del file successivo contenuto negli argomenti della linea di comando\&.
+.RE
+.PP
+\fB\-s\fR, \fB\-\-separate\fR
+.RS 4
+Apre tutti i restanti file specificati come argomento della linea di comando in schede di confronto separate\&.
+.RE
+.PP
+\fB\-t\fR, \fB\-\-tab\fR
+.RS 4
+Apre una nuova scheda per ogni altro file indicato come argomento della riga di comando\&.
+.RE
+.PP
+\fB\-\-line \fR\fB\fIlinea\fR\fR
+.RS 4
+Inizia con la
+\fIlinea\fR
+selezionata\&.
+.RE
+.PP
+\fB\-\-null\-file\fR
+.RS 4
+Crea un riquadro di confronto vuoto\&.
+.RE
+.SS "Opzioni di visualizzazione"
+.PP
+Le opzioni di visualizzazione indicate come argomenti della linea di comando hanno la precedenza sui valori salvati delle preferenze\&.
+.PP
+\fB\-b\fR, \fB\-\-ignore\-space\-change\fR
+.RS 4
+Ignora i cambiamenti del numero di spazi vuoti\&.
+.RE
+.PP
+\fB\-B\fR, \fB\-\-ignore\-blank\-lines\fR
+.RS 4
+Ignora i cambiamenti le cui righe sono tutte vuote\&.
+.RE
+.PP
+\fB\-E\fR, \fB\-\-ignore\-end\-of\-line\fR
+.RS 4
+Ignora le differenze alla fine della riga\&.
+.RE
+.PP
+\fB\-i\fR, \fB\-\-ignore\-case\fR
+.RS 4
+Ignora le differenze tra lettere maiuscole e minuscole nel contenuto del file\&.
+.RE
+.PP
+\fB\-w\fR, \fB\-\-ignore\-all\-space\fR
+.RS 4
+Ignora tutti gli spazi vuoti\&.
+.RE
+.SH "CONFRONTARE I FILE"
+.PP
+Usare le voci del menu
+File \(-> Nuova unione a 2 file,
+File \(-> Nuova unione a 3 file
+e
+File \(-> Nuova unione a N file
+per creare ulteriori schede di confronto tra file di testo\&. I nomi dei file e le revisioni possono essere indicati sia come argomenti della linea di comando di
+Diffuse
+sia nei campi della finestra di apertura file\&.
+.PP
+Diffuse
+visualizza i file uno a fianco all\*(Aqaltro inserendo degli spazi per allineare le righe di testo simili\&. Le differenze sono evidenziate con diversi colori di sfondo\&.
+.SS "Sommario del confronto"
+.PP
+Nel margine destro della finestra è visibile un sommario del confronto dei file\&. Il sommario mostra dove sono stati inseriti degli spazi per allineare le righe di testo corrispondenti ed evidenzia le differenze usando i colori\&. Le modifiche manuali sono evidenziate in verde\&. Un cursore blu identifica la regione che si sta visualizzando\&. La regione visualizzata può essere cambiata facendo clic in un qualsiasi punto del sommario\&.
+.SS "Selezionare"
+.PP
+Le righe di testo possono essere selezionate utilizzando il mouse o la tastiera\&. Selezionare le righe di testo facendovi clic sopra con il puntatore del mouse\&. Fare clic e trascinare il puntatore per selezionare più righe\&. Mantenendo premuto
+Maiusc
+quando si fa clic la selezione corrente verrà estesa\&. Selezionare le righe con la tastiera premendo i tasti
+Pag_Su,
+Pag_Giù
+o le
+frecce\&. Tenere premuto
+Maiusc
+mentre si usano questi tasti per estendere la selezione\&. Spostare la selezione in un file adiacente utilizzando i tasti delle frecce sinistra e destra\&.
+.SS "Far corrispondere le righe"
+.PP
+Il puntatore del mouse o la tastiera possono essere usati per allineare manualmente le righe di testo con i file adiacenti\&. Per allineare le righe di testo usando il puntatore del mouse, selezionare una riga di testo con il pulsante sinistro del mouse, fare clic con il tasto destro del mouse su una riga di testo del file adiacente e scegliere
+Allinea con la selezione\&. Per allineare le righe di testo con la tastiera, spostare la selezione con i tasti freccia, premere la barra spaziatrice per selezionare la riga corrente di testo, spostare la selezione con i tasti freccia a una riga di testo nel file adiacente e premere di nuovo la barra spaziatrice per indicare la riga di destinazione del testo\&. Premere il tasto
+Esc
+in qualsiasi momento per annullare l\*(Aqoperazione\&.
+.PP
+Usare la voce di menu
+Isola
+per evitare che le righe selezionate vengano fatte corrispondere a una qualsiasi riga dei file adiacenti\&.
+.SS "Modificare"
+.PP
+Premere il tasto
+Invio
+o fare doppio clic nell\*(Aqarea di testo per avviare la modalità di modifica del testo\&. Il cursore cambierà e nella barra di stato verrà visualizzato il numero della colonna in cui il cursore è posizionato\&.
+.PP
+Nella modalità di modifica testo, il testo può essere selezionato con il puntatore del mouse facendo clic e trascinando\&. La selezione corrente può essere estesa tenendo premuto il tasto
+Maiusc
+e muovendo il cursore facendo clic con il puntatore del mouse o premendo uno qualsiasi tra i
+tasti freccia,
+home,
+fine,
+Pg_Su
+o
+Pg_Giù\&. Le parole possono essere selezionate individualmente con un doppio clic sopra di esse con il puntatore del mouse\&. L\*(Aqintera riga può essere selezionata con un triplo clic su di essa con il puntatore del mouse\&.
+.PP
+Modificare il testo digitando sulla tastiera\&. Le righe modificate verranno evidenziate in verde\&. Usare le voci di menu
+Annulla
+e
+Ripeti
+per annullare e ripetere le operazioni effettuate\&.
+.PP
+Premere il tasto
+Esc
+o fare clic nell\*(Aqarea di testo di un altro file con il pulsante sinistro del mouse per abbandonare la modalità di modifica del testo\&.
+.SS "Unire"
+.PP
+Usare i pulsanti delle differenze o le relative voci del menu per spostarsi tra i blocchi di differenze all\*(Aqinterno del file\&.
+Diffuse
+sposterà la selezione al gruppo di righe più vicino con differenze o modifiche\&.
+.PP
+Usare i pulsanti di unione o le relative voci di menu per copiare blocchi di testo nelle righe selezionate\&. Le voci di menu
+Annulla
+e
+Ripeti
+possono essere utilizzate per annullare e ripetere le operazioni effettuate in precedenza\&. Tutte le modifiche a un gruppo di righe possono essere annullate utilizzando la voce di menu
+Annulla modifiche
+indipendentemente dall\*(Aqordine con cui le modifiche sono state effettuate\&.
+.SH "CONTROLLO DI VERSIONE"
+.PP
+Diffuse
+è in grado di recuperare le revisioni dei file da diversi sistemi di controllo di versione attraverso la loro interfaccia da linea di comando\&. Il pacchetto di
+Diffuse
+compilato per Microsoft Windows è in grado di utilizzare sia Cygwin che le versioni native dei sistemi di controllo di versione supportati\&. Quando si utilizza
+Diffuse
+con Cygwin, assicurarsi che le preferenze di
+Diffuse
+relative a Cygwin descrivano correttamente il proprio sistema\&. Se la preferenza
+Aggiorna i percorsi per Cygwin
+esiste per un sistema di controllo di versione, deve essere abilitata per utilizzare la versione di Cygwin\&.
+.PP
+I sistemi di controllo di versione sono sensibili al percorso di sistema e ad altre impostazioni delle variabili di sistema\&. La preferenza
+Avvia dalla Bash di una shell di login
+può essere usata per impostare facilmente l\*(Aqambiente per i sistemi di controllo di versione Cygwin\&.
+.SS "Visualizzare le modifiche non applicate"
+.PP
+L\*(Aqopzione
+\fB\-m\fR
+farà aprire a
+Diffuse
+tante schede di confronto quanti sono i file con modifiche non applicate così come riportati dal sistema di controllo di versione\&. Questo è utile per controllare tutti i cambiamenti prima di effettuare il "commit" o di risolvere i conflitti di unione\&. Se non vengono specificati dei percorsi, verrà utilizzata la cartella di lavoro corrente\&. Per esempio, visualizzare tutte le proprie modifiche non applicate con il seguente comando:
+.PP
+.if n \{\
+.RS 4
+.\}
+.nf
+$ \fBdiffuse \-m\fR
+.fi
+.if n \{\
+.RE
+.\}
+.PP
+La revisione predefinita di un file verrà usata per il confronto se viene specificato un solo file\&. Per esempio, il seguente comando visualizzerà un\*(Aqunione a due file tra la revisione predefinita del file
+foo\&.C
+e la copia locale dello stesso file:
+.PP
+.if n \{\
+.RS 4
+.\}
+.nf
+$ \fBdiffuse foo\&.C\fR
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+.SS "Specificare le revisioni"
+.PP
+L\*(Aqopzione\fB\-r\fR
+può essere usata per specificare esplicitamente una particolare revisione di un file\&. Può essere utilizzato un qualsiasi identificatore della revisione riconosciuto dal sistema di controllo di versione\&. Se viene specificata un\*(Aqunica revisione, il confronto verrà fatto rispetto al file locale\&. Per esempio, il seguente comando visualizzerà una unione a 2 file tra la revisione 123 del file
+foo\&.C
+e la copia locale dello stesso file:
+.PP
+.if n \{\
+.RS 4
+.\}
+.nf
+$ \fBdiffuse \-r 123 foo\&.C\fR
+.fi
+.if n \{\
+.RE
+.\}
+.PP
+Diverse revisioni dello stesso file possono essere confrontate specificando più opzioni
+\fB\-r\fR\&. Per esempio, il seguente comando visualizzerà una unione a due file tra la revisione 123 del file
+foo\&.C
+e la revisione 321 dello stesso file:
+.PP
+.if n \{\
+.RS 4
+.\}
+.nf
+$ \fBdiffuse \-r 123 \-r 321 foo\&.C\fR
+.fi
+.if n \{\
+.RE
+.\}
+.PP
+I file locali possono essere combinati con file dal controllo di versione\&. Per esempio, il seguente comando visualizzerà una unione a 3 file tra la revisione MERGE_HEAD del file
+foo\&.C, il file locale
+foo\&.C
+e la revisione HEAD dello stesso file:
+.PP
+.if n \{\
+.RS 4
+.\}
+.nf
+$ \fBdiffuse \-r MERGE_HEAD foo\&.C foo\&.C \-r HEAD foo\&.C\fR
+.fi
+.if n \{\
+.RE
+.\}
+.PP
+L\*(Aqopzione
+\fB\-c\fR
+può essere usata per specificare facilmente una coppia di revisioni con numerazioni successive\&. Per esempio, questo comando visualizzerà una unione a 2 file tra la revisione 1\&.2\&.2 del file
+foo\&.C
+e la revisione 1\&.2\&.3 dello stesso file:
+.PP
+.if n \{\
+.RS 4
+.\}
+.nf
+$ \fBdiffuse \-c 1\&.2\&.3 foo\&.C\fR
+.fi
+.if n \{\
+.RE
+.\}
+.PP
+Diffuse
+non limita il numero di riquadri che possono essere usati per confrontare i file\&. Gli input a una unione Git a più direzioni possono essere visualizzati con un comando di questo tipo:
+.PP
+.if n \{\
+.RS 4
+.\}
+.nf
+$ \fBdiffuse \-r HEAD^1 \-r HEAD^2 \-r HEAD^3 \-r HEAD^4 \-r HEAD^5 foo\&.C\fR
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+.SH "RISORSE"
+.PP
+Le risorse possono essere utilizzate per personalizzare vari parametri dell\*(Aqaspetto e del comportamento di
+Diffuse\&. È possibile infatti modificare i colori utilizzati nell\*(Aqinterfaccia, personalizzare le scorciatoie da tastiera, aggiungere o sostituire regole per il riconoscimento della sintassi o modificare la mappatura tra estensione del file e regole di riconoscimento della sintassi\&.
+.PP
+Quando
+Diffuse
+viene avviato, legge i comandi dal file di inizializzazione del sistema
+/etc/diffuserc
+(%CARTELLA_DI_INSTALLAZIONE%\ediffuserc
+su Microsoft Windows) e in seguito il file di inizializzazione personale
+~/\&.config/diffuse/diffuserc
+(%HOME%\e\&.config\ediffuse\ediffuserc
+su Microsoft Windows)\&. Questo comportamento può essere modificato con le opzioni di configurazione
+\fB\-\-no\-rcfile\fR
+e
+\fB\-\-rcfile\fR\&. Un analizzatore di lessico simile alla Bourne shell è utilizzato per analizzare i comandi di inizializzazione\&. I commenti e i caratteri speciali possono essere inseriti utilizzando lo stesso stile di "escaping" utilizzato per gli script della Bourne shell\&.
+.SS "Generali"
+.PP
+\fBimport \fR\fB\fIfile\fR\fR
+.RS 4
+Elabora i comandi di inizializzazione dal file
+\fIfile\fR\&. Il file di inizializzazione viene elaborato una sola volta\&.
+.RE
+.SS "Keybinding"
+.PP
+\fBkeybinding \fR\fB\fIcontesto\fR\fR\fB \fR\fB\fIazione\fR\fR\fB \fR\fB\fIcombinazione_tasti\fR\fR
+.RS 4
+Collega una combinazione di tasti a
+\fIazione\fR
+quando è utilizzata in
+\fIcontesto\fR\&. Specificare i modificatori
+Maiusc
+e
+Control
+precedendo rispettivamente
+\fBMaiusc+\fR
+e
+\fBCtrl+\fR
+a
+\fIcombinazione_tasti\fR\&. I tasti normalmente modificati da
+Maiusc
+dovrebbero essere specificati utilizzando il loro valore modificato se
+\fIcombinazione_tasti\fR
+comprende il tasto
+Maiusc; per esempio
+\fBCtrl+g\fR
+e
+\fBMaiusc+Ctrl+G\fR\&. Rimuovere i collegamenti per
+\fIcombinazione_tasti\fR
+specificando
+\fBNone\fR
+come
+\fIazione\fR\&.
+.RE
+.sp
+.it 1 an-trap
+.nr an-no-space-flag 1
+.nr an-break-flag 1
+.br
+.ps +1
+\fBKeybinding delle voci di menu\fR
+.RS 4
+.PP
+Usare
+\fBmenu\fR
+come
+\fIcontesto\fR
+per definire i keybinding per le voci dei menu\&. I seguenti valori sono validi per il campo
+\fIazione\fR:
+.PP
+\fBopen_file\fR
+.RS 4
+Voce di menu
+File \(-> Apri file
+.sp
+Predefinito:
+Ctrl+o
+.RE
+.PP
+\fBopen_file_in_new_tab\fR
+.RS 4
+Voce di menu
+File \(-> Apri file in una nuova scheda\&.\&.\&.
+.sp
+Predefinito:
+Ctrl+t
+.RE
+.PP
+\fBopen_modified_files\fR
+.RS 4
+Voce di menu
+File \(-> Apri file modificati\&.\&.\&.
+.sp
+Predefinito:
+Shift+Ctrl+O
+.RE
+.PP
+\fBopen_commit\fR
+.RS 4
+Voce di menu
+File \(-> Apri commit\&.\&.\&.
+.sp
+Predefinito:
+Shift+Ctrl+T
+.RE
+.PP
+\fBreload_file\fR
+.RS 4
+Voce di menu
+File \(-> Ricarica file
+.sp
+Predefinito:
+Shift+Ctrl+R
+.RE
+.PP
+\fBsave_file\fR
+.RS 4
+Voce di menu
+File \(-> Salva file
+.sp
+Predefinito:
+Ctrl+s
+.RE
+.PP
+\fBsave_file_as\fR
+.RS 4
+Voce di menu
+File \(-> Salva con nome\&.\&.\&.
+.sp
+Predefinito:
+Shift+Ctrl+A
+.RE
+.PP
+\fBsave_all\fR
+.RS 4
+Voce di menu
+File \(-> Salva tutti
+.sp
+Predefinito:
+Shift+Ctrl+S
+.RE
+.PP
+\fBnew_2_way_file_merge\fR
+.RS 4
+Voce di menu
+File \(-> Nuova unione a 2 file
+.sp
+Predefinito:
+Ctrl+2
+.RE
+.PP
+\fBnew_3_way_file_merge\fR
+.RS 4
+Voce di menu
+File \(-> Nuova unione a 3 file
+.sp
+Predefinito:
+Ctrl+3
+.RE
+.PP
+\fBnew_n_way_file_merge\fR
+.RS 4
+Voce di menu
+File \(-> Nuova unione a N file
+.sp
+Predefinito:
+Ctrl+4
+.RE
+.PP
+\fBclose_tab\fR
+.RS 4
+Voce di menu
+File \(-> Chiudi scheda
+.sp
+Predefinito:
+Ctrl+w
+.RE
+.PP
+\fBundo_close_tab\fR
+.RS 4
+Voce di menu
+File \(-> Annulla chiusura scheda
+.sp
+Predefinito:
+Shift+Ctrl+w
+.RE
+.PP
+\fBquit\fR
+.RS 4
+Voce di menu
+File \(-> Esci\&.
+.sp
+Predefinito:
+Ctrl+q
+.RE
+.PP
+\fBundo\fR
+.RS 4
+Voce di menu
+Modifica \(-> Annulla
+.sp
+Predefinito:
+Ctrl+z
+.RE
+.PP
+\fBredo\fR
+.RS 4
+Voce di menu
+Modifica \(-> Ripeti
+.sp
+Predefinito:
+Shift+Ctrl+Z
+.RE
+.PP
+\fBcut\fR
+.RS 4
+Voce di menu
+Modifica \(-> Taglia
+.sp
+Predefinito:
+Ctrl+x
+.RE
+.PP
+\fBcopy\fR
+.RS 4
+Voce di menu
+Modifica \(-> Copia
+.sp
+Predefinito:
+Ctrl+c
+.RE
+.PP
+\fBpaste\fR
+.RS 4
+Voce di menu
+Modifica \(-> Incolla
+.sp
+Predefinito:
+Ctrl+v
+.RE
+.PP
+\fBselect_all\fR
+.RS 4
+Voce di menu
+Modifica \(-> Seleziona tutto
+.sp
+Predefinito:
+Ctrl+a
+.RE
+.PP
+\fBclear_edits\fR
+.RS 4
+Voce di menu
+Modifica \(-> Annulla modifiche
+.sp
+Predefinito:
+Ctrl+r
+.RE
+.PP
+\fBdismiss_all_edits\fR
+.RS 4
+Voce di menu
+Modifica \(-> Scarta tutte le modifiche
+.sp
+Predefinito:
+Ctrl+d
+.RE
+.PP
+\fBfind\fR
+.RS 4
+Voce di menu
+Modifica \(-> Trova\&.\&.\&.
+.sp
+Predefinito:
+Ctrl+f
+.RE
+.PP
+\fBfind_next\fR
+.RS 4
+Voce di menu
+Modifica \(-> Trova successivo
+.sp
+Predefinito:
+Ctrl+g
+.RE
+.PP
+\fBfind_previous\fR
+.RS 4
+Voce di menu
+Modifica \(-> Trova precedente
+.sp
+Predefinito:
+Shift+Ctrl+G
+.RE
+.PP
+\fBgo_to_line\fR
+.RS 4
+Voce di menu
+Modifica \(-> Vai alla riga\&.\&.\&.
+.sp
+Predefinito:
+Shift+Ctrl+L
+.RE
+.PP
+\fBpreferences\fR
+.RS 4
+Voce di menu
+Modifica \(-> Preferenze
+.sp
+Predefinito: Nessuno
+.RE
+.PP
+\fBno_syntax_highlighting\fR
+.RS 4
+Voce di menu
+Visualizza \(-> Sintassi \(-> Nessuna
+.sp
+Predefinito: Nessuno
+.RE
+.PP
+\fBsyntax_highlighting_\fR\fB\fIsintassi\fR\fR
+.RS 4
+Voce di menu
+Visualizza \(-> Sintassi \(-> \fIsyntax\fR
+.sp
+Predefinito: Nessuno
+.RE
+.PP
+\fBrealign_all\fR
+.RS 4
+Voce di menu
+Visualizza \(-> Riallinea tutto
+.sp
+Predefinito:
+Ctrl+l
+.RE
+.PP
+\fBisolate\fR
+.RS 4
+Voce di menu
+Visualizza \(-> isola
+.sp
+Predefinito:
+Ctrl+i
+.RE
+.PP
+\fBfirst_difference\fR
+.RS 4
+Voce di menu
+Visualizza \(-> Prima differenza
+.sp
+Predefinito:
+Shift+Ctrl+Up
+.RE
+.PP
+\fBprevious_difference\fR
+.RS 4
+Voce di menu
+Visualizza \(-> Differenza precedente
+.sp
+Predefinito:
+Ctrl+Up
+.RE
+.PP
+\fBnext_difference\fR
+.RS 4
+Voce di menu
+Visualizza \(-> Differenza successiva
+.sp
+Predefinito:
+Ctrl+Down
+.RE
+.PP
+\fBlast_difference\fR
+.RS 4
+Voce di menu
+Visualizza \(-> Ultima differenza
+.sp
+Predefinito:
+Shift+Ctrl+Down
+.RE
+.PP
+\fBfirst_tab\fR
+.RS 4
+Voce di menu
+Visualizza \(-> Prima scheda
+.sp
+Predefinito:
+Shift+Ctrl+Page_Up
+.RE
+.PP
+\fBprevious_tab\fR
+.RS 4
+Voce di menu
+Visualizza \(-> Scheda precedente
+.sp
+Predefinito:
+Ctrl+Page_Up
+.RE
+.PP
+\fBnext_tab\fR
+.RS 4
+Voce di menu
+Visualizza \(-> Scheda successiva
+.sp
+Predefinito:
+Ctrl+Page_Down
+.RE
+.PP
+\fBlast_tab\fR
+.RS 4
+Voce di menu
+Visualizza \(-> Ultima scheda
+.sp
+Predefinito:
+Shift+Ctrl+Page_Down
+.RE
+.PP
+\fBshift_pane_right\fR
+.RS 4
+Voce di menu
+Visualizza \(-> Sposta riquadro a destra
+.sp
+Predefinito:
+Shift+Ctrl+parenleft
+.RE
+.PP
+\fBshift_pane_left\fR
+.RS 4
+Voce di menu
+Visualizza \(-> Sposta riquadro a sinistra
+.sp
+Predefinito:
+Shift+Ctrl+parenright
+.RE
+.PP
+\fBconvert_to_upper_case\fR
+.RS 4
+Voce di menu
+Formato \(-> Converti in MAIUSCOLO
+.sp
+Predefinito:
+Ctrl+u
+.RE
+.PP
+\fBconvert_to_lower_case\fR
+.RS 4
+Voce di menu
+Formato \(-> Converti in minuscolo
+.sp
+Predefinito:
+Shift+Ctrl+U
+.RE
+.PP
+\fBsort_lines_in_ascending_order\fR
+.RS 4
+Voce di menu
+Formato \(-> Disponi le righe in ordine ascendente
+.sp
+Predefinito:
+Ctrl+y
+.RE
+.PP
+\fBsort_lines_in_descending_order\fR
+.RS 4
+Voce di menu
+Formato \(-> Disponi le righe in ordine discendente
+.sp
+Predefinito:
+Shift+Ctrl+Y
+.RE
+.PP
+\fBremove_trailing_white_space\fR
+.RS 4
+Voce di menu
+Formato \(-> Rimuovi gli spazi vuoti alla fine della riga
+.sp
+Predefinito:
+Ctrl+k
+.RE
+.PP
+\fBconvert_tabs_to_spaces\fR
+.RS 4
+Voce di menu
+Formato \(-> Converti le tabulazioni in spazi
+.sp
+Predefinito:
+Ctrl+b
+.RE
+.PP
+\fBconvert_leading_spaces_to_tabs\fR
+.RS 4
+Voce di menu
+Formato \(-> Converti gli spazi iniziali in tabulazioni
+.sp
+Predefinito:
+Shift+Ctrl+B
+.RE
+.PP
+\fBincrease_indenting\fR
+.RS 4
+Voce di menu
+Formato \(-> Aumenta indentazione
+.sp
+Predefinito:
+Shift+Ctrl+greater
+.RE
+.PP
+\fBdecrease_indenting\fR
+.RS 4
+Voce di menu
+Formato \(-> Diminuisci indentazione
+.sp
+Predefinito:
+Shift+Ctrl+less
+.RE
+.PP
+\fBconvert_to_dos\fR
+.RS 4
+Voce di menu
+Formato \(-> Converti nel formato DOS
+.sp
+Predefinito:
+Shift+Ctrl+E
+.RE
+.PP
+\fBconvert_to_mac\fR
+.RS 4
+Voce di menu
+Formato \(-> Converti nel formato MAC
+.sp
+Predefinito:
+Shift+Ctrl+C
+.RE
+.PP
+\fBconvert_to_unix\fR
+.RS 4
+Voce di menu
+Formato \(-> Converti nel formato Unix
+.sp
+Predefinito:
+Ctrl+e
+.RE
+.PP
+\fBcopy_selection_right\fR
+.RS 4
+Voce di menu
+Unione \(-> Copia selezione a destra
+.sp
+Predefinito:
+Shift+Ctrl+Right
+.RE
+.PP
+\fBcopy_selection_left\fR
+.RS 4
+Voce di menu
+Unione \(-> Copia selezione a sinistra
+.sp
+Predefinito:
+Shift+Ctrl+Left
+.RE
+.PP
+\fBcopy_left_into_selection\fR
+.RS 4
+Voce di menu
+Unione \(-> Copia sinistra nella selezione
+.sp
+Predefinito:
+Ctrl+Destra
+.RE
+.PP
+\fBcopy_right_into_selection\fR
+.RS 4
+Voce di menu
+Unione \(-> Copia destra nella selezione
+.sp
+Predefinito:
+Ctrl+Sinistra
+.RE
+.PP
+\fBmerge_from_left_then_right\fR
+.RS 4
+Voce di menu
+Unione \(-> Unisci sinistra poi destra
+.sp
+Predefinito:
+Ctrl+m
+.RE
+.PP
+\fBmerge_from_right_then_left\fR
+.RS 4
+Voce di menu
+Unione \(-> Unisci destra poi sinistra
+.sp
+Predefinito:
+Shift+Ctrl+M
+.RE
+.PP
+\fBhelp_contents\fR
+.RS 4
+Voce di menu
+Aiuto \(-> Sommario
+.sp
+Predefinito:
+F1
+.RE
+.PP
+\fBabout\fR
+.RS 4
+Voce di menu
+Aiuto \(-> Informazioni
+.sp
+Predefinito: Nessuno
+.RE
+.RE
+.sp
+.it 1 an-trap
+.nr an-no-space-flag 1
+.nr an-break-flag 1
+.br
+.ps +1
+\fBKeybinding per la modalità di modifica delle righe\fR
+.RS 4
+.PP
+Usare
+\fBline_mode\fR
+come
+\fIcontesto\fR
+per definire i keybinding per la modalità di modifica delle righe\&. I seguenti valori sono validi per il campo
+\fIazione\fR:
+.PP
+\fBenter_align_mode\fR
+.RS 4
+Passa alla modalità di modifica dell\*(Aqallineamento
+.sp
+Predefinito:
+space
+.RE
+.PP
+\fBenter_character_mode\fR
+.RS 4
+Passa alla modalità di modifica del testo
+.sp
+Predefiniti:
+Return,
+KP_Enter
+.RE
+.PP
+\fBfirst_line\fR
+.RS 4
+Sposta il cursore alla prima riga
+.sp
+Predefiniti:
+Home,
+g
+.RE
+.PP
+\fBextend_first_line\fR
+.RS 4
+Sposta il cursore alla prima riga, estendendo la selezione
+.sp
+Predefinito:
+Shift+Home
+.RE
+.PP
+\fBlast_line\fR
+.RS 4
+Sposta il cursore all\*(Aqultima riga
+.sp
+Predefiniti:
+End,
+Shift+G
+.RE
+.PP
+\fBextend_last_line\fR
+.RS 4
+Sposta il cursore all\*(Aqultima riga, estendendo la selezione
+.sp
+Predefinito:
+Shift+End
+.RE
+.PP
+\fBup\fR
+.RS 4
+Sposta il cursore alla riga superiore
+.sp
+Predefiniti:
+Up,
+k
+.RE
+.PP
+\fBextend_up\fR
+.RS 4
+Sposta il cursore alla riga superiore, estendendo la selezione
+.sp
+Predefiniti:
+Shift+Up,
+Shift+K
+.RE
+.PP
+\fBdown\fR
+.RS 4
+Sposta il cursore alla riga inferiore
+.sp
+Predefiniti:
+Down,
+j
+.RE
+.PP
+\fBextend_down\fR
+.RS 4
+Sposta il cursore alla riga inferiore, estendendo la selezione
+.sp
+Predefiniti:
+Shift+Down,
+Shift+J
+.RE
+.PP
+\fBleft\fR
+.RS 4
+Sposta il cursore sinistra di un file
+.sp
+Predefiniti:
+Left,
+h
+.RE
+.PP
+\fBextend_left\fR
+.RS 4
+Sposta il cursore a sinistra di un file, estendendo la selezione
+.sp
+Predefinito:
+Shift+Left
+.RE
+.PP
+\fBright\fR
+.RS 4
+Sposta il cursore a destra di un file
+.sp
+Predefiniti:
+Right,
+l
+.RE
+.PP
+\fBextend_right\fR
+.RS 4
+Sposta il cursore a destra di un file, estendendo la selezione
+.sp
+Predefinito:
+Shift+Right
+.RE
+.PP
+\fBpage_up\fR
+.RS 4
+Sposta il cursore alla pagina superiore
+.sp
+Predefiniti:
+Page_Up,
+Ctrl+u
+.RE
+.PP
+\fBextend_page_up\fR
+.RS 4
+Sposta il cursore alla pagina superiore, estendendo la selezione
+.sp
+Predefiniti:
+Shift+Page_Up,
+Shift+Ctrl+u
+.RE
+.PP
+\fBpage_down\fR
+.RS 4
+Sposta il cursore alla pagina inferiore
+.sp
+Predefiniti:
+Page_Down,
+Ctrl+d
+.RE
+.PP
+\fBextend_page_down\fR
+.RS 4
+Sposta il cursore alla pagina inferiore, estendendo la selezione
+.sp
+Predefiniti:
+Shift+Page_Down,
+Shift+Ctrl+d
+.RE
+.PP
+\fBdelete_text\fR
+.RS 4
+Cancella il testo selezionato
+.sp
+Predefiniti:
+BackSpace,
+Delete,
+x
+.RE
+.PP
+\fBfirst_difference\fR
+.RS 4
+Seleziona la prima differenza
+.sp
+Predefiniti:
+Ctrl+Home,
+Shift+P
+.RE
+.PP
+\fBprevious_difference\fR
+.RS 4
+Seleziona la differenza precedente
+.sp
+Predefinito:
+p
+.RE
+.PP
+\fBnext_difference\fR
+.RS 4
+Seleziona la differenza successiva
+.sp
+Predefinito:
+n
+.RE
+.PP
+\fBlast_difference\fR
+.RS 4
+Seleziona l\*(Aqultima differenza
+.sp
+Predefiniti:
+Ctrl+End,
+Shift+N
+.RE
+.PP
+\fBclear_edits\fR
+.RS 4
+Annulla tutte le modifiche alle righe selezionate
+.sp
+Predefinito:
+r
+.RE
+.PP
+\fBcopy_selection_left\fR
+.RS 4
+Copia le righe selezionate nel file di sinistra
+.sp
+Predefinito: Nessuno
+.RE
+.PP
+\fBcopy_selection_right\fR
+.RS 4
+Copia le righe selezionate nel file di destra
+.sp
+Predefinito: Nessuno
+.RE
+.PP
+\fBcopy_left_into_selection\fR
+.RS 4
+Copia le righe dal file a sinistra nella selezione
+.sp
+Predefinito:
+Shift+L
+.RE
+.PP
+\fBcopy_right_into_selection\fR
+.RS 4
+Copia le righe dal file a destra nella selezione
+.sp
+Predefinito:
+Shift+H
+.RE
+.PP
+\fBmerge_from_left_then_right\fR
+.RS 4
+Unisce le righe dal file a sinistra poi da quello a destra
+.sp
+Predefinito:
+m
+.RE
+.PP
+\fBmerge_from_right_then_left\fR
+.RS 4
+Unisce le righe dal file a destra poi da quello a sinistra
+.sp
+Predefinito:
+Shift+M
+.RE
+.PP
+\fBisolate\fR
+.RS 4
+Isola le righe selezionate
+.sp
+Predefinito:
+i
+.RE
+.RE
+.sp
+.it 1 an-trap
+.nr an-no-space-flag 1
+.nr an-break-flag 1
+.br
+.ps +1
+\fBKeybinding per la modalità di modifica dell'allineamento\fR
+.RS 4
+.PP
+Usare
+\fBalign_mode\fR
+come
+\fIcontesto\fR
+per definire i keybinding per la modalità di modifica dell\*(Aqallineamento\&. I seguenti valori sono validi per il campo
+\fIazione\fR:
+.PP
+\fBenter_line_mode\fR
+.RS 4
+Passa alla modalità di modifica riga
+.sp
+Predefinito:
+Escape
+.RE
+.PP
+\fBenter_character_mode\fR
+.RS 4
+Passa alla modalità di modifica del testo
+.sp
+Predefiniti:
+Return,
+KP_Enter
+.RE
+.PP
+\fBfirst_line\fR
+.RS 4
+Sposta il cursore alla prima riga
+.sp
+Predefinito:
+g
+.RE
+.PP
+\fBlast_line\fR
+.RS 4
+Sposta il cursore all\*(Aqultima riga
+.sp
+Predefinito:
+Shift+G
+.RE
+.PP
+\fBup\fR
+.RS 4
+Sposta il cursore alla riga superiore
+.sp
+Predefiniti:
+Up,
+k
+.RE
+.PP
+\fBdown\fR
+.RS 4
+Sposta il cursore alla riga inferiore
+.sp
+Predefiniti:
+Down,
+j
+.RE
+.PP
+\fBleft\fR
+.RS 4
+Sposta il cursore sinistra di un file
+.sp
+Predefiniti:
+Left,
+h
+.RE
+.PP
+\fBright\fR
+.RS 4
+Sposta il cursore a destra di un file
+.sp
+Predefiniti:
+Right,
+l
+.RE
+.PP
+\fBpage_up\fR
+.RS 4
+Sposta il cursore alla pagina superiore
+.sp
+Predefiniti:
+Page_Up,
+Ctrl+u
+.RE
+.PP
+\fBpage_down\fR
+.RS 4
+Sposta il cursore alla pagina inferiore
+.sp
+Predefiniti:
+Page_Down,
+Ctrl+d
+.RE
+.PP
+\fBalign\fR
+.RS 4
+Allinea le righe selezionate alla posizione del cursore
+.sp
+Predefinito:
+space
+.RE
+.RE
+.sp
+.it 1 an-trap
+.nr an-no-space-flag 1
+.nr an-break-flag 1
+.br
+.ps +1
+\fBKeybinding della modalità di modifica testo\fR
+.RS 4
+.PP
+Usare
+\fBcharacter_mode\fR
+come
+\fIcontesto\fR
+per definire i keybinding per la modalità di modifica testo\&. I seguenti valori sono validi per il campo
+\fIazione\fR:
+.PP
+\fBenter_line_mode\fR
+.RS 4
+Passa alla modalità di modifica riga
+.sp
+Predefinito:
+Escape
+.RE
+.RE
+.SS "Stringhe"
+.PP
+\fBstringa \fR\fB\fInome\fR\fR\fB \fR\fB\fIvalore\fR\fR
+.RS 4
+Dichiara una stringa chiamata
+\fInome\fR
+con valore
+\fIvalore\fR\&.
+.RE
+.sp
+.it 1 an-trap
+.nr an-no-space-flag 1
+.nr an-break-flag 1
+.br
+.ps +1
+\fBRisorse stringa utilizzate\fR
+.RS 4
+.PP
+Diffuse
+utilizza le seguenti stringhe come risorse:
+.PP
+\fBdifference_colours\fR
+.RS 4
+un elenco di risorse colore utilizzate per evidenziare le differenze
+.sp
+Predefinito:
+difference_1 difference_2 difference_3
+.RE
+.RE
+.SS "Colori"
+.PP
+\fB[ colour | color ] \fR\fB\fInome\fR\fR\fB \fR\fB\fIrosso\fR\fR\fB \fR\fB\fIverde\fR\fR\fB \fR\fB\fIblu\fR\fR
+.RS 4
+Dichiara una risorsa colore chiamata
+\fInome\fR\&. Le singole componenti del colore devono essere espresse come valori compresi tra 0 e 1\&.
+.RE
+.sp
+.it 1 an-trap
+.nr an-no-space-flag 1
+.nr an-break-flag 1
+.br
+.ps +1
+\fBRisorse colori utilizzati\fR
+.RS 4
+.PP
+Diffuse
+utilizza le seguenti risorse colore:
+.PP
+\fBalignment\fR
+.RS 4
+Colore utilizzato per indicare una riga selezionata per l\*(Aqallineamento manuale\&.
+.sp
+Predefinito:
+1 1 0
+.RE
+.PP
+\fBcharacter_selection\fR
+.RS 4
+Colore usato per evidenziare i caratteri selezionati\&.
+.sp
+Predefinito:
+0\&.7 0\&.7 1
+.RE
+.PP
+\fBcursor\fR
+.RS 4
+Colore utilizzato per il cursore\&.
+.sp
+Predefinito:
+0 0 0
+.RE
+.PP
+\fBdifference_1\fR
+.RS 4
+Colore usato per evidenziare le differenze nella prima coppia di file\&.
+.sp
+Predefinito:
+1 0\&.625 0\&.625
+.RE
+.PP
+\fBdifference_2\fR
+.RS 4
+Colore usato per evidenziare le differenze nella seconda coppia di file\&.
+.sp
+Predefinito:
+0\&.85 0\&.625 0\&.775
+.RE
+.PP
+\fBdifference_3\fR
+.RS 4
+Colore usato per evidenziare le differenze nella terza coppia di file\&.
+.sp
+Predefinito:
+0\&.85 0\&.775 0\&.625
+.RE
+.PP
+\fBedited\fR
+.RS 4
+Colore usato per evidenziare le righe modificate\&.
+.sp
+Predefinito:
+0\&.5 1 0\&.5
+.RE
+.PP
+\fBhatch\fR
+.RS 4
+Colore usato per evidenziare delle discrepanze nell\*(Aqallineamento\&.
+.sp
+Predefinito:
+0\&.8 0\&.8 0\&.8
+.RE
+.PP
+\fBline_number\fR
+.RS 4
+Colore usato per i numeri di riga\&.
+.sp
+Predefinito:
+0 0 0
+.RE
+.PP
+\fBline_number_background\fR
+.RS 4
+Colore di sfondo per l\*(Aqarea del numero di riga\&.
+.sp
+Predefinito:
+0\&.75 0\&.75 0\&.75
+.RE
+.PP
+\fBline_selection\fR
+.RS 4
+Colore usato per evidenziare le linee selezionate\&.
+.sp
+Predefinito:
+0\&.7 0\&.7 1
+.RE
+.PP
+\fBmap_background\fR
+.RS 4
+Colore di sfondo per l\*(Aqarea di mappatura\&.
+.sp
+Predefinito:
+0\&.6 0\&.6 0\&.6
+.RE
+.PP
+\fBmargin\fR
+.RS 4
+Colore usato per indicare il margine destro\&.
+.sp
+Predefinito:
+0\&.8 0\&.8 0\&.8
+.RE
+.PP
+\fBpreedit\fR
+.RS 4
+Colore del testo prima delle modifiche\&.
+.sp
+Predefinito:
+0 0 0
+.RE
+.PP
+\fBtext\fR
+.RS 4
+Colore del testo regolare\&.
+.sp
+Predefinito:
+0 0 0
+.RE
+.PP
+\fBtext_background\fR
+.RS 4
+Colore di sfondo per l\*(Aqarea di testo\&.
+.sp
+Predefinito:
+1 1 1
+.RE
+.RE
+.SS "Valori a virgola mobile"
+.PP
+\fBfloat \fR\fB\fInome\fR\fR\fB \fR\fB\fIvalore\fR\fR
+.RS 4
+Dichiara una risorsa a virgola mobile chiamata
+\fInome\fR
+con valore
+\fIvalore\fR\&.
+.RE
+.sp
+.it 1 an-trap
+.nr an-no-space-flag 1
+.nr an-break-flag 1
+.br
+.ps +1
+\fBRisorse a virgola mobile utilizzate\fR
+.RS 4
+.PP
+Diffuse
+utilizza le seguenti risorse a virgola mobile:
+.PP
+\fBalignment_opacity\fR
+.RS 4
+Opacità utilizzata durante la composizione del colore per l\*(Aqallineamento manuale
+.sp
+Predefinito:
+1
+.RE
+.PP
+\fBcharacter_difference_opacity\fR
+.RS 4
+Opacità utilizzata durante la composizione del colore per le differenze di testo
+.sp
+Predefinito:
+0\&.4
+.RE
+.PP
+\fBcharacter_selection_opacity\fR
+.RS 4
+Opacità utilizzata durante la composizione del colore per il testo selezionato
+.sp
+Predefinito:
+0\&.4
+.RE
+.PP
+\fBedited_opacity\fR
+.RS 4
+Opacità utilizzata durante la composizione del colore per le righe modificate
+.sp
+Predefinito:
+0\&.4
+.RE
+.PP
+\fBline_difference_opacity\fR
+.RS 4
+Opacità utilizzata durante la composizione del colore per le differenze di riga
+.sp
+Predefinito:
+0\&.3
+.RE
+.PP
+\fBline_selection_opacity\fR
+.RS 4
+Opacità utilizzata durante la composizione del colore per la riga selezionata
+.sp
+Predefinito:
+0\&.4
+.RE
+.RE
+.SS "Riconoscimento della sintassi"
+.PP
+\fBsyntax \fR\fB\fInome\fR\fR\fB \fR\fB[\fIstato_iniziale\fR \fIdefault_tag\fR]\fR
+.RS 4
+Dichiara un nuovo stile di sintassi chiamato
+\fInome\fR\&. Il riconoscimento della sintassi utilizza una semplice macchina di stato che cambia di stato nel momento in cui alcuni schemi risultano corrispondenti\&. Lo stato iniziale per la macchina sarà
+\fIstato_iniziale\fR\&. Tutti i caratteri che non corrispondono ad alcuno schema verranno marcati come
+\fIdefault_tag\fR
+per il riconoscimento\&. Lo stile di sintassi chiamato
+\fInome\fR
+può essere rimosso omettendo
+\fIstato_iniziale\fR
+e
+\fIdefault_tag\fR\&.
+.RE
+.PP
+\fBsyntax_files \fR\fB\fInome\fR\fR\fB \fR\fB[\fIschema\fR]\fR
+.RS 4
+Specifica che i file con un nome corrispondente a
+\fIschema\fR
+devono essere evidenziati utilizzando lo stile di sintassi chiamato
+\fInome\fR\&. Gli schemi usati per far corrispondere i file utilizzati con lo stile di sintassi chiamato
+\fInome\fR
+possono essere rimossi omettendo
+\fIschema\fR\&.
+.RE
+.PP
+\fBsyntax_magic \fR\fB\fInome\fR\fR\fB \fR\fB[\fIschema\fR [ignorecase]]\fR
+.RS 4
+Specifica che i file con una prima riga corrispondente a
+\fIschema\fR
+devono essere evidenziati utilizzando lo stile di sintassi chiamato
+\fInome\fR\&. Gli schemi usati per far corrispondere i file utilizzati con lo stile di sintassi chiamato
+\fInome\fR
+possono essere rimossi omettendo
+\fIschema\fR\&.
+.RE
+.PP
+\fBsyntax_pattern \fR\fB\fInome\fR\fR\fB \fR\fB\fIstato_iniziale\fR\fR\fB \fR\fB\fIstato_finale\fR\fR\fB \fR\fB\fItag\fR\fR\fB \fR\fB\fIschema\fR\fR\fB \fR\fB[ignorecase]\fR
+.RS 4
+Aggiunge uno schema allo stile di sintassi dichiarato precedentemente\&.Gli schemi sono analizzati uno alla volta nell\*(Aqordine dichiarato fino a quando non viene trovata una corrispondenza\&. Uno schema sarà utilizzato per far corrispondere dei caratteri solamente se la macchina di stato si trova nello stato
+\fIstato_iniziale\fR\&. La macchina di stato si sposterà sullo
+\fIstato_finale\fR
+se lo schema definito da
+\fIschema\fR
+verrà corrisposto\&. La corrispondenza dello schema ignorerà le differenze tra maiuscole e minuscole se è specificata l\*(Aqopzione
+\fBignorecase\fR\&. Tutti i caratteri per cui è stata trovata una corrispondenza verranno identificati con
+\fItag\fR
+per evidenziarli\&.
+.RE
+.SH "FILE"
+.PP
+Diffuse
+utilizza i seguenti file:
+.PP
+/etc/diffuserc
+.RS 4
+Inizializzazioni a livello di tutto il sistema (%CARTELLA_DI_INSTALLAZIONE%\ediffuserc
+su Microsoft Windows)
+.RE
+.PP
+/usr/share/diffuse/syntax/*\&.syntax
+.RS 4
+File di sintassi per i vari linguaggi (%CARTELLA_DI_INSTALLAZIONE%\esyntax\e*\&.syntax
+su Microsoft Windows)
+.RE
+.PP
+~/\&.config/diffuse/diffuserc
+.RS 4
+Le proprie inizializzazioni (%HOME%\e\&.config\ediffuse\ediffuserc
+su Microsoft Windows)
+.RE
+.PP
+~/\&.config/diffuse/prefs
+.RS 4
+Le proprie preferenze salvate (%HOME%\e\&.config\ediffuse\eprefs
+su Microsoft Windows)
+.RE
+.PP
+~/\&.local/share/diffuse/state
+.RS 4
+dati persistenti tra le sessioni (%HOME%\e\&.local\eshare\ediffuse\estate
+su Microsoft Windows)
+.RE
+.SH "AUTORE"
+.PP
+Diffuse
+è stato scritto da Derrick Moser
+<derrick_moser@yahoo\&.com>\&.
+.PP
+\(co 2006\-2014 Derrick Moser\&. Tutti i diritti riservati\&.
+.SH "COPIA"
+.PP
+Diffuse
+è software libero; è possibile ridistribuirlo e modificarlo nel rispetto dei termini della
+GNU General Public License
+come pubblicata dalla Free Software Foundation sia essa nella versione 2 o (a propria scelta) qualsiasi versione successiva\&.

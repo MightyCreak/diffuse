@@ -1,0 +1,59 @@
+# Tcl syntax file for Diffuse
+# Copyright (C) 2008-2009 Derrick Moser <derrick_moser@yahoo.com>
+syntax Tcl normal text
+syntax_files Tcl '\.tcl$'
+syntax_magic Tcl '^#![ \t]*([^ \t/]*/)*(env[ \t]+)?(tclsh|wish)[0-9\.]*([ \t].*)?$'
+
+# colours
+colour tcl_comment 0.2 0.4 0.64
+colour tcl_fixme 1.0 0.5 0.0
+colour tcl_literal 1.0 0.2 0.8
+colour tcl_string 0.8 0.0 0.0
+colour tcl_escapedchar 0.46 0.31 0.48
+colour tcl_variable 0.02 0.6 0.6
+colour tcl_keyword 0.77 0.63 0.0
+colour tcl_punctuation 0.5 0.5 0.5
+colour tcl_function 0.02 0.6 0.6
+
+# whitespace/comments
+syntax_pattern normal normal text '[ \t\r]+'
+syntax_pattern expr expr text '[ \t\r]+'
+syntax_pattern normal comment tcl_comment '#'
+syntax_pattern comment normal tcl_comment '(\r\n|\r|\n)$'
+syntax_pattern comment comment tcl_fixme '\b(TODO|FIXME|XXX)\b'
+syntax_pattern comment comment tcl_comment '.[^TFX\r\n]*'
+
+# strings
+syntax_pattern expr string tcl_string '"'
+syntax_pattern string expr tcl_string '"'
+syntax_pattern string string tcl_variable '\$(([a-z_0-9]|::)+|\{([a-z_0-9]|::)+\})' ignorecase
+syntax_pattern string string tcl_escapedchar '\\([0-7]{1,3}|x[0-9a-fA-F]{1,2}|u[0-9a-fA-F]{1,4}|.)'
+syntax_pattern string string tcl_string '.[^\\"\$]*'
+
+# escaped characters outside of strings
+syntax_pattern expr expr tcl_escapedchar '\\([0-7]{1,3}|x[0-9a-fA-F]{1,2}|u[0-9a-fA-F]{1,4}|\r?\n|.)'
+
+# literals
+syntax_pattern expr expr python_literal '(0b[01]+|0o[0-7]+|0x[0-9a-f]+|([0-9]+(\.[0-9]*)?|\.[0-9]+)(e[\+\-]?[0-9]+)?)' ignorecase
+syntax_pattern expr expr python_literal '\b(Inf|NaN)\b'
+
+# keywords
+syntax_pattern normal expr tcl_keyword '\b(after|append|array|bgerror|binary|break|case|catch|cd|chan|clock|close|concat|continue|dict|encoding|eof|error|eval|exec|exit|fblocked|fconfigure|fcopy|file|fileevent|flush|for|foreach|format|gets|glob|global|history|if|incr|info|interp|join|lappend|lassign|lindex|linsert|list|llength|load|lrange|lrepeat|lreplace|lreverse|lsearch|lset|lsort|memory|namespace|open|package|pid|pkg_mkIndex|puts|pwd|read|regexp|regsub|rename|return|scan|seek|set|socket|source|split|string|subst|switch|tell|time|trace|unknown|unload|unset|update|uplevel|upvar|variable|vwait|while)\b'
+
+# function/class definitions
+syntax_pattern normal declaration tcl_keyword '\b(proc)\b'
+syntax_pattern declaration declaration text '[ \t]+'
+syntax_pattern declaration expr tcl_function '([a-z_0-9]|::)+' ignorecase
+syntax_pattern declaration expr text ''
+
+# punctuation
+syntax_pattern expr normal tcl_punctuation '[;\{\[]+'
+syntax_pattern expr normal text '(\r\n|\r|\n)$'
+syntax_pattern expr expr tcl_punctuation '[\^\}\]\-\+~!\*/%<>=&\|\?\:\(\)]+'
+
+# environment variables
+syntax_pattern expr expr tcl_variable '\$(([a-z_0-9]|::)+|\{([a-z_0-9]|::)+\})' ignorecase
+
+# parsing optimisation
+syntax_pattern expr expr text '[a-z_0-9]+' ignorecase
+syntax_pattern normal expr text ''

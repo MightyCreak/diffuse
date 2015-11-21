@@ -1,0 +1,127 @@
+# JSP syntax file for Diffuse
+# Copyright (C) 2008-2009 Derrick Moser <derrick_moser@yahoo.com>
+syntax JSP normal text
+syntax_files JSP '\.jsp$'
+
+# colours
+colour jsp_comment 0.2 0.4 0.64
+colour jsp_fixme 1.0 0.5 0.0
+colour jsp_import 0.46 0.31 0.48
+colour jsp_keyword 0.77 0.63 0.0
+colour jsp_type 0.3 0.6 0.02
+colour jsp_literal 1.0 0.2 0.8
+colour jsp_string 0.8 0.0 0.0
+colour jsp_escapedchar 0.46 0.31 0.48
+colour jsp_punctuation 0.5 0.5 0.5
+colour jsp_tag 0.46 0.31 0.48
+
+# colours
+colour jsp_html_comment 0.2 0.4 0.64
+colour jsp_html_fixme 1.0 0.5 0.0
+colour jsp_html_escapedchar 0.77 0.63 0.0
+colour jsp_html_tag 0.02 0.6 0.6
+colour jsp_html_tagname 0.77 0.63 0.0
+colour jsp_html_punctuation 0.5 0.5 0.5
+colour jsp_html_attribute 0.3 0.6 0.02
+colour jsp_html_string 0.8 0.0 0.0
+
+# jsp tag
+syntax_pattern normal jsp jsp_tag '<%=?'
+syntax_pattern jsp normal jsp_tag '%>'
+
+# whitespace
+syntax_pattern jsp jsp text '[ \t\r\n]+'
+
+# C++ style comments
+syntax_pattern jsp cpp_comment jsp_comment '//'
+syntax_pattern cpp_comment normal jsp_tag '%>'
+syntax_pattern cpp_comment jsp jsp_comment '(\r\n|\r|\n)$'
+syntax_pattern cpp_comment cpp_comment jsp_comment '\\(\r\n|\r|\n)$'
+syntax_pattern cpp_comment cpp_comment jsp_fixme '\b(TODO|FIXME|XXX)\b'
+syntax_pattern cpp_comment cpp_comment jsp_comment '.[^\\TFX\r\n%]*'
+
+# C style comments
+syntax_pattern jsp comment jsp_comment '/\*'
+syntax_pattern comment normal jsp_tag '%>'
+syntax_pattern comment jsp jsp_comment '\*/'
+syntax_pattern comment comment jsp_fixme '\b(TODO|FIXME|XXX)\b'
+syntax_pattern comment comment jsp_comment '.[^\*TFX%]*'
+
+# char
+syntax_pattern jsp char jsp_string "'"
+syntax_pattern char normal jsp_tag '%>'
+syntax_pattern char jsp jsp_string "'"
+syntax_pattern char char jsp_escapedchar '(\\([0-7]{1,3}|x[0-9a-f]{1,2}|u[0-9a-f]{1,4}|[^%]))+' ignorecase
+syntax_pattern char char jsp_string ".[^\\\\'%]*"
+
+# string
+syntax_pattern jsp string jsp_string '"'
+syntax_pattern string normal jsp_tag '%>'
+syntax_pattern string jsp jsp_string '"'
+syntax_pattern string string jsp_escapedchar '(\\([0-7]{1,3}|x[0-9a-f]{1,2}|u[0-9a-f]{1,4}|[^%]))+' ignorecase
+syntax_pattern string string jsp_string '.[^\\"%]*'
+
+# literals
+syntax_pattern jsp jsp jsp_literal '((([0-9]+\.[0-9]*|\.[0-9]+)(e[\+\-]?[0-9]+)?|[0-9]+e[\+\-]?[0-9]+)[fd]?|(0|[1-9][0-9]*)[fd]|(0x[0-9a-f]+|0[0-7]*|[1-9][0-9]*)l?)' ignorecase
+syntax_pattern jsp jsp jsp_literal '\b(true|false|null)\b'
+
+# import keywords
+syntax_pattern jsp jsp jsp_import '\b(import|package)\b'
+
+# typing keywords
+syntax_pattern jsp jsp jsp_type '\b(abstract|boolean|byte|char|class|const|double|enum|final|float|int|interface|long|native|private|protected|public|short|static|synchronized|transient|void|volatile)\b'
+
+# keywords
+syntax_pattern jsp jsp jsp_keyword '\b(assert|break|case|catch|continue|default|do|else|extends|finally|for|goto|if|implements|instanceof|new|return|strictfp|super|switch|this|throw|throws|try|while)\b'
+
+# punctuation
+syntax_pattern jsp jsp jsp_punctuation '[!~\|\&\^\(\)\<\>\*\-\+=\{\}\[\]:;,\?]+'
+syntax_pattern jsp jsp jsp_punctuation '[%/\.]'
+
+# parsing optimisation
+syntax_pattern jsp jsp text '[a-z_][a-z_0-9]*' ignorecase
+
+# whitespace/comments
+syntax_pattern normal normal text '[ \t\r\n]+'
+syntax_pattern normal html_comment jsp_html_comment '<!--'
+syntax_pattern html_comment jsp_html_comment jsp_tag '<%=?'
+syntax_pattern jsp_html_comment html_comment jsp_tag '%>'
+syntax_pattern jsp_html_comment jsp_html_comment jsp_tag '.[^%]*'
+syntax_pattern html_comment normal html_comment '-->'
+syntax_pattern html_comment html_comment jsp_html_fixme '\b(TODO|FIXME|XXX)\b'
+syntax_pattern html_comment html_comment jsp_html_comment '.[^TFX\-%]*'
+
+# tags
+syntax_pattern normal html_tag jsp_html_tag '<[!/]?'
+syntax_pattern html_tag jsp_html_tag jsp_tag '<%=?'
+syntax_pattern jsp_html_tag html_tag jsp_tag '%>'
+syntax_pattern jsp_html_tag jsp_html_tag jsp_tag '.[^%]*'
+syntax_pattern html_tag html_tag text '[ \t\r\n]+'
+syntax_pattern html_tag html_tag_attribs jsp_html_tagname '\b[a-z][a-z_0-9]*([ \t]*:[ \t]*[a-z][a-z_0-9]*)*\b' ignorecase
+syntax_pattern html_tag_attribs jsp_html_tag_attribs jsp_tag '<%=?'
+syntax_pattern jsp_html_tag_attribs html_tag_attribs jsp_tag '%>'
+syntax_pattern jsp_html_tag_attribs jsp_html_tag_attribs jsp_tag '.[^%]*'
+syntax_pattern html_tag html_tag_attribs text ''
+syntax_pattern html_tag_attribs normal jsp_html_tag '/?>'
+syntax_pattern html_tag_attribs html_tag_attribs text '[ \t\r\n]+'
+syntax_pattern html_tag_attribs html_tag_attribs jsp_html_punctuation '='
+syntax_pattern html_tag_attribs html_tag_attribs jsp_html_attribute '[a-z_0-9\-:\.]+' ignorecase
+syntax_pattern html_tag_attribs html_tag_string jsp_html_string '"'
+syntax_pattern html_tag_string jsp_html_tag_string jsp_tag '<%=?'
+syntax_pattern jsp_html_tag_string html_tag_string jsp_tag '%>'
+syntax_pattern jsp_html_tag_string jsp_html_tag_string jsp_tag '.[^%]*'
+syntax_pattern html_tag_string html_tag_attribs jsp_html_string '"'
+syntax_pattern html_tag_string html_tag_string jsp_html_escapedchar '\&([a-z_:][a-z_0-9\.\-_:]*|#[0-9]+|#x[0-9a-f]+);' ignorecase
+syntax_pattern html_tag_string html_tag_string jsp_html_string '.[^\&"%]*'
+
+syntax_pattern html_tag_attribs html_tag_singlestring jsp_html_string "'"
+syntax_pattern html_tag_singlestring jsp_html_tag_singlestring jsp_tag '<%=?'
+syntax_pattern jsp_html_tag_singlestring html_tag_singlestring jsp_tag '%>'
+syntax_pattern jsp_html_tag_singlestring jsp_html_tag_singlestring jsp_tag '.[^%]*'
+syntax_pattern html_tag_singlestring html_tag_attribs jsp_html_string "'"
+syntax_pattern html_tag_singlestring html_tag_singlestring jsp_html_escapedchar '\&([a-z_:][a-z_0-9\.\-_:]*|#[0-9]+|#x[0-9a-f]+);' ignorecase
+syntax_pattern html_tag_singlestring html_tag_singlestring jsp_html_string ".[^\\&'%]*"
+
+# text/parsing optimisation
+syntax_pattern normal normal jsp_html_escapedchar '\&([a-z_:][a-z_0-9\.\-_:]*|#[0-9]+|#x[0-9a-f]+);' ignorecase
+syntax_pattern normal normal text '.[^\&<]*'

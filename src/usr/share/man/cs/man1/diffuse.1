@@ -1,0 +1,1688 @@
+'\" t
+.TH "DIFFUSE" "1" "2014\-07\-18" "diffuse 0\&.4\&.8" "Příručka programu diffuse"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.nh
+.ad l
+.SH "NÁZEV"
+diffuse \- grafický nástroj pro slučování a porovnávání textových souborů
+.SH "POUŽITÍ"
+.HP \w'\fBdiffuse\fR\ 'u
+\fBdiffuse\fR [\fB\-h\fR | \fB\-?\fR | \fB\-\-help\fR | \fB\-v\fR | \fB\-\-version\fR]
+.HP \w'\fBdiffuse\fR\ 'u
+\fBdiffuse\fR [\fB\-\-no\-rcfile\fR | \fB\-\-rcfile\ \fR\fB\fIfile\fR\fR] [[\fIoption\fR...] | [\fIfile\fR...]...]
+.SH "POPIS"
+.PP
+Diffuse
+je grafický nástroj pro slučování a porovnávání textových souborů\&.
+Diffuse
+dokáže porovnat libovolný počet souborů a nabízí uživatelům možnost ručně upravit zarovnání řádků a přímo upravovat porovnávané soubory\&.
+Diffuse
+také umí načíst k porovnání a slučování revize souborů přímo z repozitářů Bazaar, CVS, Darcs, Git, Mercurial, Monotone, RCS, Subversion a SVK\&.
+.SH "MOŽNOSTI"
+.SS "Možnosti nápovědy"
+.PP
+Parametr pro zobrazení nápovědy musí být zadán jako jediný parametr příkazové řádky\&.
+Diffuse
+bude po zobrazení nápovědy okamžitě ukončeno\&.
+.PP
+\fB\-h\fR, \fB\-?\fR, \fB\-\-help\fR
+.RS 4
+Zobrazí návod k použití\&.
+.RE
+.PP
+\fB\-v\fR, \fB\-\-version\fR
+.RS 4
+Zobrazí verzi programu a licenční údaje\&.
+.RE
+.SS "Možnosti nastavení"
+.PP
+Parametr pro specifikaci nastavení musí být zadán jako první parametr příkazové řádky\&.
+.PP
+\fB\-\-no\-rcfile\fR
+.RS 4
+Zakáže načítání inicializačních souborů\&.
+.RE
+.PP
+\fB\-\-rcfile \fR\fB\fIsoubor\fR\fR
+.RS 4
+Načte inicializační příkazy ze souboru
+\fIsoubor\fR\&.
+.RE
+.SS "Obecné možnosti"
+.PP
+\fB\-c\fR, \fB\-\-commit\fR \fIrev\fR
+.RS 4
+Otevře samostatné panely pro porovnání všech souborů ze zadaných cest změněných zápisem revize
+\fIrev\fR\&.
+.RE
+.PP
+\fB\-D\fR, \fB\-\-close\-if\-same\fR
+.RS 4
+Zavře panely s identickým obsahem\&.
+.RE
+.PP
+\fB\-e\fR, \fB\-\-encoding\fR \fIkodek\fR
+.RS 4
+Pro čtení a zápis souborů použije
+\fIkodek\fR\&.
+.RE
+.PP
+\fB\-L\fR, \fB\-\-label\fR \fInázev\fR
+.RS 4
+Místo názvu souboru zobrazí uvedený
+\fInázev\fR\&.
+.RE
+.PP
+\fB\-m\fR, \fB\-\-modified\fR
+.RS 4
+Otevře samostatné panely pro porovnání všech změněných souborů ze zadaných cest\&.
+.RE
+.PP
+\fB\-r\fR, \fB\-\-revision\fR \fIrev\fR
+.RS 4
+Otevře revizi
+\fIrev\fR
+souboru uvedeného jako následující parametr příkazové řádky\&.
+.RE
+.PP
+\fB\-s\fR, \fB\-\-separate\fR
+.RS 4
+Všechny soubory uvedené v příkazové řádce po tomto parametru otevře v samostatných panelech\&.
+.RE
+.PP
+\fB\-t\fR, \fB\-\-tab\fR
+.RS 4
+Otevře nový panel pro všechny soubory uvedené v příkazové řádce po tomto parametru\&.
+.RE
+.PP
+\fB\-\-line \fR\fB\fIřádek\fR\fR
+.RS 4
+Po spuštění zobrazí a vybere zadaný
+\fIřádek\fR\&.
+.RE
+.PP
+\fB\-\-null\-file\fR
+.RS 4
+Vytvoří prázdné podokno pro porovnání souborů\&.
+.RE
+.SS "Možnosti zobrazení"
+.PP
+Parametry zobrazení zadané v příkazové řádce budou mít přednost před uloženým nastavením\&.
+.PP
+\fB\-b\fR, \fB\-\-ignore\-space\-change\fR
+.RS 4
+Bude ignorovat změny, pokud jde o znaky mezer\&.
+.RE
+.PP
+\fB\-B\fR, \fB\-\-ignore\-blank\-lines\fR
+.RS 4
+Bude ignorovat změny, pokud jde o prázdné řádky\&.
+.RE
+.PP
+\fB\-E\fR, \fB\-\-ignore\-end\-of\-line\fR
+.RS 4
+Bude ignorovat změny, pokud jde o znaky konců řádek\&.
+.RE
+.PP
+\fB\-i\fR, \fB\-\-ignore\-case\fR
+.RS 4
+Bude ignorovat změny, pokud jde o změnu velikosti písmen\&.
+.RE
+.PP
+\fB\-w\fR, \fB\-\-ignore\-all\-space\fR
+.RS 4
+Bude ignorovat změny, pokud jde o netisknutelné znaky\&.
+.RE
+.SH "POROVNáVáNí SOUBORů"
+.PP
+Pro vytvoření dalších panelů pro porovnání souborů použijte položky nabídky
+Soubor \(-> Nové 2směrné slučování,
+Soubor \(-> Nové 3směrné slučování
+nebo
+Soubor \(-> Nové Nsměrné slučování\&. Názvy souborů a čísla revizí mohou být zadány pomocí příkazové řádky pro spuštění
+Diffuse, nebo pomocí polí v dialogu Otevřít soubor\&.
+.PP
+Diffuse
+zobrazí soubory vedle sebe a vložením mezer zarovná podobné řádky v jednotlivých souborech\&. Rozdíly jsou zvýrazněny pomocí odlišné barvy pozadí\&.
+.SS "Přehled porovnání"
+.PP
+Přehled rozdílů v porovnaných souborech je umístěn na pravém okraji\&. V přehledu jsou vyznačena místa, kde byly vloženy mezery pro zarovnání shodných řádků a rozdíly jsou zvýrazněny pomocí barevných pruhů\&. Ruční úpravy jsou zvýrazněny zelenou barvou\&. Aktuálně zobrazený úsek je pak označen modrým kurzorem\&. Kliknutím do podokna přehledu můžete vybrat úsek, který má být zobrazen\&.
+.SS "Výběr"
+.PP
+Pro výběr textových řádků můžete použít jak myš, tak klávesnici\&. Samostatný řádek vyberete myší jednoduše tak, že na něj kliknete\&. Více řádků můžete vybrat kliknutím a tažením kurzoru\&. Aktuální výběr pak také můžete rozšířit tak, že při kliknutí podržíte klávesu Shift\&. Pomocí klávesnice vyberete jednotlivé řádky pomocí kláves Page\ \&Up/Down nebo pomocí šipek\&. Aktuální výběr pak rozšíříte podržením klávesy Shift a stisknutím kláves Page\ \&Up/Down nebo šipek\&. Pro přesun výběru mezi jednotlivými soubory můžete použít šipku doleva nebo doprava\&.
+.SS "Zarovnání řádků"
+.PP
+K zarovnání řádků porovnávaných souborů může být použita myš nebo klávesnice\&. Pro zarovnání řádků pomocí myši vyberte požadovaný řádek v prvním ze souborů pomocí levého tlačítka a v druhém souboru klikněte pravým tlačítkem myši na řádek, který chcete zarovnat s vybraným a z místní nabídky vyberte položku
+Zarovnat s výběrem\&. Pro zarovnání řádků pomocí klávesnice nastavte pomocí šipek výběr na požadovaný řádek v prvním ze souborů a aktivujte ho stisknutím mezerníku, poté pomocí šipek vyberte požadovaný řádek ve druhém souboru a stisknutím mezerníku potvrďte zarovnání\&. Tuto operaci můžete přerušit stisknutím klávesy
+Escape\&.
+.PP
+Pokud nechcete aby některé řádky byly porovnávány s řádky v ostatních souborech, můžete je z porovnání vyloučit použitím položky
+Izolovat\&.
+.SS "Editace"
+.PP
+Pro přepnutí do režimu editace stiskněte klávesu
+Enter
+nebo dvakrát klikněte myší\&. Režim editace je indikován změnou kurzoru a zobrazením pozice kurzoru ve stavovém řádku\&.
+.PP
+V režimu editace je možné vybírat text pomocí myši\&. Pro rozšíření aktuálního výběru je možné použít klávesu Shift, kterou je třeba přidržet a poté určit nový rozsah výběru buď pomocí myši, nebo pomocí klávesnice za použití šipek, nebo některé z kláves Home, End, Page\ \&Up nebo Page\ \&Down\&. Jednotlivá slova mohou být vybrána dvojitým kliknutím myší\&. Celé řádky pak trojitým kliknutím\&.
+.PP
+V režimu editace je také možné text upravovat\&. Upravené řádky budou zvýrazněny použitím zeleného pozadí\&. Provedené úpravy můžete vrátit zpět nebo zopakovat použitím položek nabídky
+Zpět
+a
+Znovu\&.
+.PP
+Režim editace opustíte pomocí klávesy
+Escape
+nebo kliknutím do podokna jiného souboru\&.
+.SS "Slučování"
+.PP
+Pro přesun mezi nalezenými rozdíly použijte příslušná tlačítka nebo položky nabídky\&.
+Diffuse
+při procházení přesune výběr na následující souvislý blok rozdílů nebo úprav\&.
+.PP
+Pro zkopírování bloků textu do vybraného rozsahu použijte příslušná tlačítka nebo položky nabídky\&. Provedené úpravy můžete vrátit zpět nebo zopakovat použitím položek nabídky
+Zpět
+a
+Znovu\&. Pro vrácení všech provedených úprav daného bloku řádků bez ohledu na pořadí jejich provedení je možné použít položku nabídky
+Smazat úpravy\&.
+.SH "SPRáVA VERZí"
+.PP
+Diffuse
+podporuje načítání revizí souborů z několika systémů pro správu verzí prostřednictvím jejich rozhraní pro příkazový řádek\&. Verze
+Diffuse
+pro Microsoft Windows umí používat jak Cygwin verze, tak nativní verze podporovaných systémů pro správu verzí\&. Pokud
+Diffuse
+používáte s Cygwin, zajistěte, aby nastavení
+Diffuse
+pro Cygwin odpovídala konfiguraci vašeho systému\&. Pokud je pro daný systém správy verzí k dispozici volba
+Upravit cesty pro Cygwin, musí být při použití verze pro Cygwin povolena\&.
+.PP
+Chování systémů pro správu verzí závisí na nastavení systémových cest a dalších proměnných\&. Volba
+Spustit z příkazové řádky terminálu Bash
+může být použita pro zjednodušení nastavení prostředí pro systémy kontroly verzí pro Cygwin\&.
+.SS "Prohlížení nezapsaných změn"
+.PP
+Při použití parametru
+\fB\-m\fR
+budou v
+Diffuse
+otevřeny panely s porovnáním pro všechny soubory u kterých systém pro správu verzí nahlásí nezapsané změny\&. To se hodí pro kontrolu změn před zapsáním, nebo pro řešení konfliktů slučování\&. Pokud není specifikována žádná cesta, bude použit aktuální pracovní adresář\&. Například pokud chcete zobrazit všechny nezapsané úpravy, použijte tento příkaz:
+.PP
+.if n \{\
+.RS 4
+.\}
+.nf
+$ \fBdiffuse \-m\fR
+.fi
+.if n \{\
+.RE
+.\}
+.PP
+Pokud je specifikován jen jeden soubor, bude pro porovnání použita výchozí revize tohoto souboru\&. Například tento příkaz zobrazí 2směrné slučování mezi výchozí revizí souboru
+foo\&.C
+a místní kopií souboru
+foo\&.C:
+.PP
+.if n \{\
+.RS 4
+.\}
+.nf
+$ \fBdiffuse foo\&.C\fR
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+.SS "Specifikace revizí"
+.PP
+Parametr
+\fB\-r\fR
+může být použit pro explicitní specifikaci určité revize souboru\&. Může být použit libovolný identifikátor podporovaný daným systémem pro správu verzí\&. Pokud je uvedena jen jedna revize, bude při porovnání použita místní kopie souboru\&. Například tento příkaz zobrazí 2směrné slučování mezi revizí 123 souboru
+foo\&.C
+a místní kopií souboru
+foo\&.C:
+.PP
+.if n \{\
+.RS 4
+.\}
+.nf
+$ \fBdiffuse \-r 123 foo\&.C\fR
+.fi
+.if n \{\
+.RE
+.\}
+.PP
+Několik revizí souboru může být porovnáno použitím více parametrů
+\fB\-r\fR\&. Například tento příkaz zobrazí 2směrné slučování mezi revizí 123 souboru
+foo\&.C
+a revizí 321 souboru
+foo\&.C:
+.PP
+.if n \{\
+.RS 4
+.\}
+.nf
+$ \fBdiffuse \-r 123 \-r 321 foo\&.C\fR
+.fi
+.if n \{\
+.RE
+.\}
+.PP
+Při porovnání mohou být uvedeny jak místní soubory, tak soubory ze systému správy verzí\&. Například tento příkaz zobrazí 3směrné slučování mezi revizí MERGE_HEAD souboru
+foo\&.C, lokální kopií souboru
+foo\&.C
+a revizí HEAD souboru
+foo\&.C:
+.PP
+.if n \{\
+.RS 4
+.\}
+.nf
+$ \fBdiffuse \-r MERGE_HEAD foo\&.C foo\&.C \-r HEAD foo\&.C\fR
+.fi
+.if n \{\
+.RE
+.\}
+.PP
+Parametr
+\fB\-c\fR
+může být použit k jednoduchému určení po sobě jdoucích revizí\&. Například tento příkaz zobrazí 2směrné slučování mezi revizí 1\&.2\&.2 souboru
+foo\&.C
+a revizí 1\&.2\&.3 souboru
+foo\&.C:
+.PP
+.if n \{\
+.RS 4
+.\}
+.nf
+$ \fBdiffuse \-c 1\&.2\&.3 foo\&.C\fR
+.fi
+.if n \{\
+.RE
+.\}
+.PP
+Počet podoken která mohou být použita k porovnání souborů není programem
+Diffuse
+nijak omezen\&. Například vstupní soubory pro chobotnicovité sloučení v Git mohou být zobrazeny pomocí následujícího příkazu:
+.PP
+.if n \{\
+.RS 4
+.\}
+.nf
+$ \fBdiffuse \-r HEAD^1 \-r HEAD^2 \-r HEAD^3 \-r HEAD^4 \-r HEAD^5 foo\&.C\fR
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+.SH "ZDROJE"
+.PP
+Zdroje mohou být použity k úpravě vzhledu a chování
+Diffuse, například ke změně barev použitých v uživatelském rozhraní, přizpůsobení klávesových zkratek, přidání nebo změně pravidel zvýraznění syntaxe, nebo změně přiřazení pravidel zvýraznění syntaxe k určitým příponám souborů\&.
+.PP
+Diffuse
+při spuštění načte příkazy ze systémového inicializačního souboru
+/etc/diffuserc
+( ve Windows
+%INSTALL_DIR%\ediffuserc) a poté z uživatelského inicializačního souboru
+~/\&.config/diffuse/diffuserc
+(ve Windows
+%HOME%\e\&.config\ediffuse\ediffuserc)\&. Toto chování může být změněno pomocí parametrů
+\fB\-\-no\-rcfile\fR
+a
+\fB\-\-rcfile\fR\&. Pro zpracování inicializačních příkazů je použit lexikální analyzátor podobný tomu v Bourne shell \&. Pro zadávání komentářů a speciálních znaků je možné použít stejné escapování jako v Bourne shell skriptech\&.
+.SS "Obecné"
+.PP
+\fBimport \fR\fB\fIsoubor\fR\fR
+.RS 4
+Zpracuje inicializační příkazy ze souboru
+\fIsoubor\fR\&. Inicializační soubory budou zpracovány pouze jednou\&.
+.RE
+.SS "Přiřazení klávesových zkratek"
+.PP
+\fBkeybinding \fR\fB\fIkontext\fR\fR\fB \fR\fB\fIakce\fR\fR\fB \fR\fB\fIkombinace_kláves\fR\fR
+.RS 4
+Přiřadí klávesovou zkratku akci
+\fIakce\fR
+použité v určitém kontextu
+\fIkontext\fR\&. Použití modifikačních kláves
+Shift
+nebo
+Control
+určíte přidáním
+\fBShift+\fR
+nebo
+\fBCtrl+\fR
+k řetězci parametru
+\fIkombinace_kláves\fR\&. Klávesy běžně modifikované klávesou
+Shift
+by při použití modifikační klávesy
+Shift
+měly být v řetězci parametru
+\fIkombinace_kláves\fR
+uváděny ve své modifikované podobě\&. Tedy například,
+\fBCtrl+g\fR, ale
+\fBShift+Ctrl+G\fR\&. Přiřazení určité
+\fIkombinace_kláves\fR
+můžete zrušit nastavením parametru
+\fIakce\fR
+na hodnotu
+\fBNone\fR\&.
+.RE
+.sp
+.it 1 an-trap
+.nr an-no-space-flag 1
+.nr an-break-flag 1
+.br
+.ps +1
+\fBPřiřazení klávesových zkratek položkám nabídky\fR
+.RS 4
+.PP
+Pro definici přiřazení klávesových zkratek pro položky nabídky použijte pro parametr
+\fIkontext\fR
+hodnotu
+\fBmenu\fR\&. Platné hodnoty parametru
+\fIakce\fR
+jsou:
+.PP
+\fBopen_file\fR
+.RS 4
+Položka nabídky
+Soubor \(-> Otevřít soubor\&.\&.\&.
+.sp
+Výchozí:
+Ctrl+o
+.RE
+.PP
+\fBopen_file_in_new_tab\fR
+.RS 4
+Položka nabídky
+Soubor \(-> Otevřít v novém panelu\&.\&.\&.
+.sp
+Výchozí:
+Ctrl+t
+.RE
+.PP
+\fBopen_modified_files\fR
+.RS 4
+Položka nabídky
+Soubor \(-> Otevřít změněné soubory\&.\&.\&.
+.sp
+Výchozí:
+Shift+Ctrl+O
+.RE
+.PP
+\fBopen_commit\fR
+.RS 4
+Položka nabídky
+Soubor \(-> Otevřít revizi\&.\&.\&.
+menu item
+.sp
+Výchozí:
+Shift+Ctrl+T
+.RE
+.PP
+\fBreload_file\fR
+.RS 4
+Položka nabídky
+Soubor \(-> Znovu načíst soubor
+.sp
+Výchozí:
+Shift+Ctrl+R
+.RE
+.PP
+\fBsave_file\fR
+.RS 4
+Položka nabídky
+Soubor \(-> Uložit soubor
+.sp
+Výchozí:
+Ctrl+s
+.RE
+.PP
+\fBsave_file_as\fR
+.RS 4
+Položka nabídky
+Soubor \(-> Uložit soubor jako\&.\&.\&.
+.sp
+Výchozí:
+Shift+Ctrl+A
+.RE
+.PP
+\fBsave_all\fR
+.RS 4
+Položka nabídky
+Soubor \(-> Uložit vše
+.sp
+Výchozí:
+Shift+Ctrl+S
+.RE
+.PP
+\fBnew_2_way_file_merge\fR
+.RS 4
+Položka nabídky
+Soubor \(-> Nové 2směrné slučování
+.sp
+Výchozí:
+Ctrl+2
+.RE
+.PP
+\fBnew_3_way_file_merge\fR
+.RS 4
+Položka nabídky
+Soubor \(-> Nové 3směrné slučování
+.sp
+Výchozí:
+Ctrl+3
+.RE
+.PP
+\fBnew_n_way_file_merge\fR
+.RS 4
+Položka nabídky
+Soubor \(-> Nové Nsměrné slučování
+.sp
+Výchozí:
+Ctrl+4
+.RE
+.PP
+\fBclose_tab\fR
+.RS 4
+Položka nabídky
+Soubor \(-> Zavřít panel
+.sp
+Výchozí:
+Ctrl+w
+.RE
+.PP
+\fBundo_close_tab\fR
+.RS 4
+Položka nabídky
+Soubor \(-> Obnovit zavřený panel
+.sp
+Výchozí:
+Shift+Ctrl+w
+.RE
+.PP
+\fBquit\fR
+.RS 4
+Položka nabídky
+Soubor \(-> Konec
+.sp
+Výchozí:
+Ctrl+q
+.RE
+.PP
+\fBundo\fR
+.RS 4
+Položka nabídky
+Úpravy \(-> Zpět
+.sp
+Výchozí:
+Ctrl+z
+.RE
+.PP
+\fBredo\fR
+.RS 4
+Položka nabídky
+Úpravy \(-> Znovu
+.sp
+Výchozí:
+Shift+Ctrl+Z
+.RE
+.PP
+\fBcut\fR
+.RS 4
+Položka nabídky
+Vyjmout \(-> Zpět
+.sp
+Výchozí:
+Ctrl+x
+.RE
+.PP
+\fBcopy\fR
+.RS 4
+Položka nabídky
+Úpravy \(-> Kopírovat
+.sp
+Výchozí:
+Ctrl+c
+.RE
+.PP
+\fBpaste\fR
+.RS 4
+Položka nabídky
+Úpravy \(-> Vložit
+.sp
+Výchozí:
+Ctrl+v
+.RE
+.PP
+\fBselect_all\fR
+.RS 4
+Položka nabídky
+Úpravy \(-> Označit vše
+.sp
+Výchozí:
+Ctrl+a
+.RE
+.PP
+\fBclear_edits\fR
+.RS 4
+Položka nabídky
+Úpravy \(-> Smazat úpravy
+.sp
+Výchozí:
+Ctrl+r
+.RE
+.PP
+\fBdismiss_all_edits\fR
+.RS 4
+Položka nabídky
+Úpravy \(-> Zrušit všechny úpravy
+.sp
+Výchozí:
+Ctrl+d
+.RE
+.PP
+\fBfind\fR
+.RS 4
+Položka nabídky
+Úpravy \(-> Najít\&.\&.\&.
+.sp
+Výchozí:
+Ctrl+f
+.RE
+.PP
+\fBfind_next\fR
+.RS 4
+Položka nabídky
+Úpravy \(-> Najít další
+.sp
+Výchozí:
+Ctrl+g
+.RE
+.PP
+\fBfind_previous\fR
+.RS 4
+Položka nabídky
+Úpravy \(-> Najít předchozí
+.sp
+Výchozí:
+Shift+Ctrl+G
+.RE
+.PP
+\fBgo_to_line\fR
+.RS 4
+Položka nabídky
+Úpravy \(-> Přejít na řádek\&.\&.\&.
+.sp
+Výchozí:
+Shift+Ctrl+L
+.RE
+.PP
+\fBpreferences\fR
+.RS 4
+Položka nabídky
+Úpravy \(-> Předvolby\&.\&.\&.
+.sp
+Výchozí: None
+.RE
+.PP
+\fBno_syntax_highlighting\fR
+.RS 4
+Položka nabídky
+Zobrazit \(-> Zvýraznění syntaxe \(-> Nic
+.sp
+Výchozí: None
+.RE
+.PP
+\fBsyntax_highlighting_\fR\fB\fIsyntaxe\fR\fR
+.RS 4
+Položka nabídky
+Zobrazit \(-> Zvýraznění syntaxe \(-> \fIsyntaxe\fR
+.sp
+Výchozí: None
+.RE
+.PP
+\fBrealign_all\fR
+.RS 4
+Položka nabídky
+Zobrazit \(-> Znovu zarovnat
+.sp
+Výchozí:
+Ctrl+l
+.RE
+.PP
+\fBisolate\fR
+.RS 4
+Položka nabídky
+Zobrazit \(-> Izolovat
+.sp
+Výchozí:
+Ctrl+i
+.RE
+.PP
+\fBfirst_difference\fR
+.RS 4
+Položka nabídky
+Zobrazit \(-> První rozdíl
+.sp
+Výchozí:
+Shift+Ctrl+Up
+.RE
+.PP
+\fBprevious_difference\fR
+.RS 4
+Položka nabídky
+Zobrazit \(-> Předchozí rozdíl
+.sp
+Výchozí:
+Ctrl+Up
+.RE
+.PP
+\fBnext_difference\fR
+.RS 4
+Položka nabídky
+Zobrazit \(-> Další rozdíl
+.sp
+Výchozí:
+Ctrl+Down
+.RE
+.PP
+\fBlast_difference\fR
+.RS 4
+Položka nabídky
+Zobrazit \(-> Poslední rozdíl
+.sp
+Výchozí:
+Shift+Ctrl+Down
+.RE
+.PP
+\fBfirst_tab\fR
+.RS 4
+Položka nabídky
+Zobrazit \(-> První panel
+.sp
+Výchozí:
+Shift+Ctrl+Page_Up
+.RE
+.PP
+\fBprevious_tab\fR
+.RS 4
+Položka nabídky
+Zobrazit \(-> Předchozí panel
+.sp
+Výchozí:
+Ctrl+Page_Up
+.RE
+.PP
+\fBnext_tab\fR
+.RS 4
+Položka nabídky
+Zobrazit \(-> Další panel
+.sp
+Výchozí:
+Ctrl+Page_Down
+.RE
+.PP
+\fBlast_tab\fR
+.RS 4
+Položka nabídky
+Zobrazit \(-> Poslední panel
+.sp
+Výchozí:
+Shift+Ctrl+Page_Down
+.RE
+.PP
+\fBshift_pane_right\fR
+.RS 4
+Položka nabídky
+Zobrazit \(-> Přesunout podokno doprava
+.sp
+Výchozí:
+Shift+Ctrl+parenleft
+.RE
+.PP
+\fBshift_pane_left\fR
+.RS 4
+Položka nabídky
+Zobrazit \(-> Přesunout podokno doleva
+.sp
+Výchozí:
+Shift+Ctrl+parenright
+.RE
+.PP
+\fBconvert_to_upper_case\fR
+.RS 4
+Položka nabídky
+Formát \(-> Převést na velká písmena
+.sp
+Výchozí:
+Ctrl+u
+.RE
+.PP
+\fBconvert_to_lower_case\fR
+.RS 4
+Položka nabídky
+Formát \(-> Převést na malá písmena
+.sp
+Výchozí:
+Shift+Ctrl+U
+.RE
+.PP
+\fBsort_lines_in_ascending_order\fR
+.RS 4
+Položka nabídky
+Formát \(-> Seřadit řádky vzestupně
+.sp
+Výchozí:
+Ctrl+y
+.RE
+.PP
+\fBsort_lines_in_descending_order\fR
+.RS 4
+Položka nabídky
+Formát \(-> Seřadit řádky sestupně
+.sp
+Výchozí:
+Shift+Ctrl+Y
+.RE
+.PP
+\fBremove_trailing_white_space\fR
+.RS 4
+Položka nabídky
+Formát \(-> Odstranit mezery na koncích řádků
+.sp
+Výchozí:
+Ctrl+k
+.RE
+.PP
+\fBconvert_tabs_to_spaces\fR
+.RS 4
+Položka nabídky
+Formát \(-> Nahradit tabulátory mezerami
+.sp
+Výchozí:
+Ctrl+b
+.RE
+.PP
+\fBconvert_leading_spaces_to_tabs\fR
+.RS 4
+Položka nabídky
+Formát \(-> Nahradit úvodní mezery tabulátory
+.sp
+Výchozí:
+Shift+Ctrl+B
+.RE
+.PP
+\fBincrease_indenting\fR
+.RS 4
+Položka nabídky
+Formát \(-> Zvětšit odsazení
+.sp
+Výchozí:
+Shift+Ctrl+>
+.RE
+.PP
+\fBdecrease_indenting\fR
+.RS 4
+Položka nabídky
+Formát \(-> Zmenšit odsazení
+.sp
+Výchozí:
+Shift+Ctrl+<
+.RE
+.PP
+\fBconvert_to_dos\fR
+.RS 4
+Formát \(-> Převést na DOS formát
+.sp
+Výchozí:
+Shift+Ctrl+E
+.RE
+.PP
+\fBconvert_to_mac\fR
+.RS 4
+Položka nabídky
+Formát \(-> Převést na Mac formát
+.sp
+Výchozí:
+Shift+Ctrl+C
+.RE
+.PP
+\fBconvert_to_unix\fR
+.RS 4
+Položka nabídky
+Formát \(-> Převést na Unix formát
+.sp
+Výchozí:
+Ctrl+e
+.RE
+.PP
+\fBcopy_selection_right\fR
+.RS 4
+Položka nabídky
+Sloučit \(-> Kopírovat výběr doprava
+.sp
+Výchozí:
+Shift+Ctrl+Right
+.RE
+.PP
+\fBcopy_selection_left\fR
+.RS 4
+Položka nabídky
+Sloučit \(-> Kopírovat výběr doleva
+.sp
+Výchozí:
+Shift+Ctrl+Left
+.RE
+.PP
+\fBcopy_left_into_selection\fR
+.RS 4
+Položka nabídky
+Sloučit \(-> Kopírovat zleva do výběru
+.sp
+Výchozí:
+Ctrl+Right
+.RE
+.PP
+\fBcopy_right_into_selection\fR
+.RS 4
+Položka nabídky
+Sloučit \(-> Kopírovat zprava do výběru
+.sp
+Výchozí:
+Ctrl+Left
+.RE
+.PP
+\fBmerge_from_left_then_right\fR
+.RS 4
+Položka nabídky
+Sloučit \(-> Sloučit zleva a poté zprava
+menu item
+.sp
+Výchozí:
+Ctrl+m
+.RE
+.PP
+\fBmerge_from_right_then_left\fR
+.RS 4
+Položka nabídky
+Sloučit \(-> Sloučit zprava a poté zleva
+.sp
+Výchozí:
+Shift+Ctrl+M
+.RE
+.PP
+\fBhelp_contents\fR
+.RS 4
+Položka nabídky
+Nápověda \(-> Zobrazit nápovědu
+.sp
+Výchozí:
+F1
+.RE
+.PP
+\fBabout\fR
+.RS 4
+Položka nabídky
+Nápověda \(-> O programu Diffuse
+.sp
+Výchozí: None
+.RE
+.RE
+.sp
+.it 1 an-trap
+.nr an-no-space-flag 1
+.nr an-break-flag 1
+.br
+.ps +1
+\fBPřiřazení klávesových zkratek pro řádkový režim úprav\fR
+.RS 4
+.PP
+Pro přiřazení klávesových zkratek pro řádkový režim úprav použijte pro parametr
+\fIkontext\fR
+hodnotu
+\fBline_mode\fR\&. Platné hodnoty parametru
+\fIakce\fR
+jsou:
+.PP
+\fBenter_align_mode\fR
+.RS 4
+aktivovat režim úprav zarovnání
+.sp
+Výchozí:
+space
+.RE
+.PP
+\fBenter_character_mode\fR
+.RS 4
+aktivovat znakový režim úprav
+.sp
+Výchozí:
+Return,
+KP_Enter
+.RE
+.PP
+\fBfirst_line\fR
+.RS 4
+přesunout kurzor na první řádek
+.sp
+Výchozí:
+Home,
+g
+.RE
+.PP
+\fBextend_first_line\fR
+.RS 4
+přesunout kurzor na první řádek a rozšířit výběr
+.sp
+Výchozí:
+Shift+Home
+.RE
+.PP
+\fBlast_line\fR
+.RS 4
+přesunout kurzor na poslední řádek
+.sp
+Výchozí:
+End,
+Shift+G
+.RE
+.PP
+\fBextend_last_line\fR
+.RS 4
+přesunout kurzor na poslední řádek a rozšířit výběr
+.sp
+Výchozí:
+Shift+End
+.RE
+.PP
+\fBup\fR
+.RS 4
+posunout kurzor o jeden řádek nahoru
+.sp
+Výchozí:
+Up,
+k
+.RE
+.PP
+\fBextend_up\fR
+.RS 4
+posunout kurzor o jeden řádek nahoru a rozšířit výběr
+.sp
+Výchozí:
+Shift+Up,
+Shift+K
+.RE
+.PP
+\fBdown\fR
+.RS 4
+posunout kurzor o jeden řádek dolů
+.sp
+Výchozí:
+Down,
+j
+.RE
+.PP
+\fBextend_down\fR
+.RS 4
+posunout kurzor o jeden řádek dolů a rozšířit výběr
+.sp
+Výchozí:
+Shift+Down,
+Shift+J
+.RE
+.PP
+\fBleft\fR
+.RS 4
+přesunout kurzor o soubor doleva
+.sp
+Výchozí:
+Left,
+h
+.RE
+.PP
+\fBextend_left\fR
+.RS 4
+přesunout kurzor o soubor doleva a rozšířit výběr
+.sp
+Výchozí:
+Shift+Left
+.RE
+.PP
+\fBright\fR
+.RS 4
+přesunout kurzor o soubor doprava
+.sp
+Výchozí:
+Right,
+l
+.RE
+.PP
+\fBextend_right\fR
+.RS 4
+přesunout kurzor o soubor doprava a rozšířit výběr
+.sp
+Výchozí:
+Shift+Right
+.RE
+.PP
+\fBpage_up\fR
+.RS 4
+přesunout kurzor o stránku nahoru
+.sp
+Výchozí:
+Page_Up,
+Ctrl+u
+.RE
+.PP
+\fBextend_page_up\fR
+.RS 4
+přesunout kurzor o stránku nahoru a rozšířit výběr
+.sp
+Výchozí:
+Shift+Page_Up,
+Shift+Ctrl+u
+.RE
+.PP
+\fBpage_down\fR
+.RS 4
+přesunout kurzor o stránku dolů
+.sp
+Výchozí:
+Page_Down,
+Ctrl+d
+.RE
+.PP
+\fBextend_page_down\fR
+.RS 4
+přesunout kurzor o stránku dolů a rozšířit výběr
+.sp
+Výchozí:
+Shift+Page_Down,
+Shift+Ctrl+d
+.RE
+.PP
+\fBdelete_text\fR
+.RS 4
+smazat vybraný text
+.sp
+Výchozí:
+BackSpace,
+Delete,
+x
+.RE
+.PP
+\fBfirst_difference\fR
+.RS 4
+vybrat první rozdíl
+.sp
+Výchozí:
+Ctrl+Home,
+Shift+P
+.RE
+.PP
+\fBprevious_difference\fR
+.RS 4
+vybrat předchozí rozdíl
+.sp
+Výchozí:
+p
+.RE
+.PP
+\fBnext_difference\fR
+.RS 4
+vybrat další rozdíl
+.sp
+Výchozí:
+n
+.RE
+.PP
+\fBlast_difference\fR
+.RS 4
+vybrat poslední rozdíl
+.sp
+Výchozí:
+Ctrl+End,
+Shift+N
+.RE
+.PP
+\fBclear_edits\fR
+.RS 4
+smazat všechny úpravy ve vybraných řádcích
+.sp
+Výchozí:
+r
+.RE
+.PP
+\fBcopy_selection_left\fR
+.RS 4
+zkopírovat vybrané řádky do souboru nalevo
+.sp
+Výchozí: None
+.RE
+.PP
+\fBcopy_selection_right\fR
+.RS 4
+zkopírovat vybrané řádky do souboru napravo
+.sp
+Výchozí: None
+.RE
+.PP
+\fBcopy_left_into_selection\fR
+.RS 4
+zkopírovat do výběru řádky ze souboru nalevo
+.sp
+Výchozí:
+Shift+L
+.RE
+.PP
+\fBcopy_right_into_selection\fR
+.RS 4
+zkopírovat do výběru řádky ze souboru napravo
+.sp
+Výchozí:
+Shift+H
+.RE
+.PP
+\fBmerge_from_left_then_right\fR
+.RS 4
+sloučit řádky ze souboru nalevo a poté ze souboru napravo
+.sp
+Výchozí:
+m
+.RE
+.PP
+\fBmerge_from_right_then_left\fR
+.RS 4
+sloučit řádky ze souboru napravo a poté ze souboru nalevo
+.sp
+Výchozí:
+Shift+M
+.RE
+.PP
+\fBisolate\fR
+.RS 4
+izolovat vybrané řádky
+.sp
+Výchozí:
+i
+.RE
+.RE
+.sp
+.it 1 an-trap
+.nr an-no-space-flag 1
+.nr an-break-flag 1
+.br
+.ps +1
+\fBPřiřazení klávesových zkratek pro režim úprav zarovnání\fR
+.RS 4
+.PP
+Pro přiřazení klávesových zkratek pro režim úprav zarovnání použijte pro parametr
+\fIkontext\fR
+hodnotu
+\fBalign_mode\fR\&. Platné hodnoty parametru
+\fIakce\fR
+jsou:
+.PP
+\fBenter_line_mode\fR
+.RS 4
+aktivovat řádkový režim úprav
+.sp
+Výchozí:
+Escape
+.RE
+.PP
+\fBenter_character_mode\fR
+.RS 4
+aktivovat znakový režim úprav
+.sp
+Výchozí:
+Return,
+KP_Enter
+.RE
+.PP
+\fBfirst_line\fR
+.RS 4
+přesunout kurzor na první řádek
+.sp
+Výchozí:
+g
+.RE
+.PP
+\fBlast_line\fR
+.RS 4
+přesunout kurzor na poslední řádek
+.sp
+Výchozí:
+Shift+G
+.RE
+.PP
+\fBup\fR
+.RS 4
+posunout kurzor o jeden řádek nahoru
+.sp
+Výchozí:
+Up,
+k
+.RE
+.PP
+\fBdown\fR
+.RS 4
+posunout kurzor o jeden řádek dolů
+.sp
+Výchozí:
+Down,
+j
+.RE
+.PP
+\fBleft\fR
+.RS 4
+přesunout kurzor o soubor doleva
+.sp
+Výchozí:
+Left,
+h
+.RE
+.PP
+\fBright\fR
+.RS 4
+přesunout kurzor o soubor doprava
+.sp
+Výchozí:
+Right,
+l
+.RE
+.PP
+\fBpage_up\fR
+.RS 4
+přesunout kurzor o stránku nahoru
+.sp
+Výchozí:
+Page_Up,
+Ctrl+u
+.RE
+.PP
+\fBpage_down\fR
+.RS 4
+přesunout kurzor o stránku dolů
+.sp
+Výchozí:
+Page_Down,
+Ctrl+d
+.RE
+.PP
+\fBalign\fR
+.RS 4
+zarovnat vybraný řádek k aktuální pozici kurzoru
+.sp
+Výchozí:
+space
+.RE
+.RE
+.sp
+.it 1 an-trap
+.nr an-no-space-flag 1
+.nr an-break-flag 1
+.br
+.ps +1
+\fBPřiřazení klávesových zkratek pro znakový režim úprav\fR
+.RS 4
+.PP
+Pro přiřazení klávesových zkratek pro znakový režim úprav použijte pro parametr
+\fIkontext\fR
+hodnotu
+\fBcharacter_mode\fR\&. Platné hodnoty parametru
+\fIakce\fR
+jsou:
+.PP
+\fBenter_line_mode\fR
+.RS 4
+aktivovat řádkový režim úprav
+.sp
+Výchozí:
+Escape
+.RE
+.RE
+.SS "Řetězce"
+.PP
+\fBstring \fR\fB\fInázev\fR\fR\fB \fR\fB\fIhodnota\fR\fR
+.RS 4
+Deklaruje řetězec s názvem
+\fInázev\fR
+a přiřadí mu hodnotu
+\fIhodnota\fR\&.
+.RE
+.sp
+.it 1 an-trap
+.nr an-no-space-flag 1
+.nr an-break-flag 1
+.br
+.ps +1
+\fBPoužívané řetězce\fR
+.RS 4
+.PP
+Diffuse
+používá následující řetězce:
+.PP
+\fBdifference_colours\fR
+.RS 4
+seznam definovaných názvů barev použitých ke zvýraznění rozdílů
+.sp
+Výchozí:
+difference_1 difference_2 difference_3
+.RE
+.RE
+.SS "Barvy"
+.PP
+\fB[ colour | color ] \fR\fB\fInázev\fR\fR\fB \fR\fB\fIčervená\fR\fR\fB \fR\fB\fIzelená\fR\fR\fB \fR\fB\fImodrá\fR\fR
+.RS 4
+Deklaruje barvu s názvem
+\fInázev\fR\&. Jednotlivé barevné složky jsou definovány jako hodnoty mezi 0 a 1\&.
+.RE
+.sp
+.it 1 an-trap
+.nr an-no-space-flag 1
+.nr an-break-flag 1
+.br
+.ps +1
+\fBPoužívané barvy\fR
+.RS 4
+.PP
+Diffuse
+používá následující barvy:
+.PP
+\fBalignment\fR
+.RS 4
+barva použitá ke zvýraznění řádku vybraného k ručnímu zarovnání
+.sp
+Výchozí:
+1 1 0
+.RE
+.PP
+\fBcharacter_selection\fR
+.RS 4
+barva použitá ke zvýraznění vybraných znaků
+.sp
+Výchozí:
+0\&.7 0\&.7 1
+.RE
+.PP
+\fBcursor\fR
+.RS 4
+barva kurzoru
+.sp
+Výchozí:
+0 0 0
+.RE
+.PP
+\fBdifference_1\fR
+.RS 4
+barva použitá ke zvýraznění rozdílů mezi první dvojicí souborů
+.sp
+Výchozí:
+1 0\&.625 0\&.625
+.RE
+.PP
+\fBdifference_2\fR
+.RS 4
+barva použitá ke zvýraznění rozdílů mezi druhou dvojicí souborů
+.sp
+Výchozí:
+0\&.85 0\&.625 0\&.775
+.RE
+.PP
+\fBdifference_3\fR
+.RS 4
+barva použitá ke zvýraznění rozdílů mezi třetí dvojicí souborů
+.sp
+Výchozí:
+0\&.85 0\&.775 0\&.625
+.RE
+.PP
+\fBedited\fR
+.RS 4
+barva použitá ke zvýraznění upravených řádků
+.sp
+Výchozí:
+0\&.5 1 0\&.5
+.RE
+.PP
+\fBhatch\fR
+.RS 4
+barva použitá k označení mezer vzniklých zarovnáním
+.sp
+Výchozí:
+0\&.8 0\&.8 0\&.8
+.RE
+.PP
+\fBline_number\fR
+.RS 4
+barva písma pro čísla řádků
+.sp
+Výchozí:
+0 0 0
+.RE
+.PP
+\fBline_number_background\fR
+.RS 4
+barva pozadí pro oblast čísel řádků
+.sp
+Výchozí:
+0\&.75 0\&.75 0\&.75
+.RE
+.PP
+\fBline_selection\fR
+.RS 4
+barva použitá ke zvýraznění vybraných řádků
+.sp
+Výchozí:
+0\&.7 0\&.7 1
+.RE
+.PP
+\fBmap_background\fR
+.RS 4
+barva pozadí mapy
+.sp
+Výchozí:
+0\&.6 0\&.6 0\&.6
+.RE
+.PP
+\fBmargin\fR
+.RS 4
+barva použitá k označení pravého okraje
+.sp
+Výchozí:
+0\&.8 0\&.8 0\&.8
+.RE
+.PP
+\fBpreedit\fR
+.RS 4
+barva textu před úpravami
+.sp
+Výchozí:
+0 0 0
+.RE
+.PP
+\fBtext\fR
+.RS 4
+barva písma běžného textu
+.sp
+Výchozí:
+0 0 0
+.RE
+.PP
+\fBtext_background\fR
+.RS 4
+barva pozadí textové oblasti
+.sp
+Výchozí:
+1 1 1
+.RE
+.RE
+.SS "Hodnoty s plovoucí desetinnou čárkou"
+.PP
+\fBfloat \fR\fB\fInázev\fR\fR\fB \fR\fB\fIhodnota\fR\fR
+.RS 4
+Deklaruje hodnotu s plovoucí desetinnou čárkou s názvem
+\fInázev\fR
+a přiřadí jí hodnotu
+\fIhodnota\fR\&.
+.RE
+.sp
+.it 1 an-trap
+.nr an-no-space-flag 1
+.nr an-break-flag 1
+.br
+.ps +1
+\fBPoužívané hodnoty s plovoucí desetinnou čárkou\fR
+.RS 4
+.PP
+Diffuse
+používá následující hodnoty s plovoucí desetinnou čárkou:
+.PP
+\fBalignment_opacity\fR
+.RS 4
+průhlednost použitá při míchání barvy použité pro zvýraznění ručního zarovnání
+.sp
+Výchozí:
+1
+.RE
+.PP
+\fBcharacter_difference_opacity\fR
+.RS 4
+průhlednost použitá při míchání barev použitých pro zvýraznění rozdílných znaků
+.sp
+Výchozí:
+0\&.4
+.RE
+.PP
+\fBcharacter_selection_opacity\fR
+.RS 4
+průhlednost použitá při míchání barvy použité pro zvýraznění vybraných znaků
+.sp
+Výchozí:
+0\&.4
+.RE
+.PP
+\fBedited_opacity\fR
+.RS 4
+průhlednost použitá při míchání barvy použité pro zvýraznění upravených řádků
+.sp
+Výchozí:
+0\&.4
+.RE
+.PP
+\fBline_difference_opacity\fR
+.RS 4
+průhlednost použitá při míchání barev pro zvýraznění rozdílných řádků
+.sp
+Výchozí:
+0\&.3
+.RE
+.PP
+\fBline_selection_opacity\fR
+.RS 4
+průhlednost použitá při míchání barvy pro zvýraznění vybraných řádků
+.sp
+Výchozí:
+0\&.4
+.RE
+.RE
+.SS "Zvýraznění syntaxe"
+.PP
+\fBsyntax \fR\fB\fInázev\fR\fR\fB \fR\fB[\fIvýchozí_stav\fR \fIvýchozí_značka\fR]\fR
+.RS 4
+Deklaruje nový styl syntaxe s názvem
+\fInázev\fR\&. Zvýrazňování syntaxe používá jednoduchý stavový stroj u kterého přepínání mezi jednotlivými stavy závisí na nalezení určitých řetězců\&. Výchozím stavem stavového stroje bude
+\fIvýchozí_stav\fR\&. Všechny znaky, které neodpovídají nějaké masce budou pro zvýraznění označeny značkou
+\fIvýchozí_značka\fR\&. Styl syntaxe s názvem
+\fInázev\fR
+může být odstraněn vynecháním parametrů
+\fIvýchozí_stav\fR
+a
+\fIvýchozí_značka\fR\&.
+.RE
+.PP
+\fBsyntax_files \fR\fB\fInázev\fR\fR\fB \fR\fB[\fImaska\fR]\fR
+.RS 4
+Určuje, že pro soubory jejichž název odpovídá masce uvedené v parametru
+\fImaska\fR
+má být použit styl zvýraznění syntaxe s názvem
+\fInázev\fR\&. Masky sloužící k rozpoznání toho pro které soubory má být použito zvýraznění syntaxe s názvem
+\fInázev\fR
+mohou být odstraněny vynecháním parametru
+\fImaska\fR\&.
+.RE
+.PP
+\fBsyntax_magic \fR\fB\fInázev\fR\fR\fB \fR\fB[\fImaska\fR [ignorecase]]\fR
+.RS 4
+Určuje, že pro soubory jejichž první řádek odpovídá masce uvedené v parametru
+\fImaska\fR
+má být použit styl zvýraznění syntaxe s názvem
+\fInázev\fR\&. Masky sloužící k rozpoznání toho pro které soubory má být použito zvýraznění syntaxe s názvem
+\fInázev\fR
+mohou být odstraněny vynecháním parametru
+\fImaska\fR\&.
+.RE
+.PP
+\fBsyntax_pattern \fR\fB\fInázev\fR\fR\fB \fR\fB\fIvýchozí_stav\fR\fR\fB \fR\fB\fIcílový_stav\fR\fR\fB \fR\fB\fIznačka\fR\fR\fB \fR\fB\fImaska\fR\fR\fB \fR\fB[ignorecase]\fR
+.RS 4
+Přidá masku do dříve definovaného stylu syntaxe\&. Masky jsou postupně testovány v pořadí v jakém byly definovány, dokud není nalezena první shoda\&. Porovnávány jsou vždy jen masky u nichž parametr
+\fIvýchozí_stav\fR
+odpovídá právě aktivnímu stavu stavového stroje\&. Pokud je nalezen řetězec odpovídající masce parametru
+\fImaska\fR, stavový stroj se přepne do stavu definovaného v parametru
+\fIcílový_stav\fR\&. Pokud je uveden parametr
+\fBignorecase\fR, bude při porovnávání masky ignorována velikost písmen\&. Všechny znaky, které odpovídají určené masce budou pro zvýraznění označeny značkou
+\fIznačka\fR\&.
+.RE
+.SH "SOUBORY"
+.PP
+Diffuse
+používá následující soubory:
+.PP
+/etc/diffuserc
+.RS 4
+sdílené předvolby (ve Windows
+%INSTALL_DIR%\ediffuserc)
+.RE
+.PP
+/usr/share/diffuse/syntax/*\&.syntax
+.RS 4
+soubory s pravidly pro zvýraznění syntaxe různých jazyků (ve Windows
+%INSTALL_DIR%\esyntax\e*\&.syntax)
+.RE
+.PP
+~/\&.config/diffuse/diffuserc
+.RS 4
+uživatelské předvolby (ve Windows
+%HOME%\e\&.config\ediffuse\ediffuserc)
+.RE
+.PP
+~/\&.config/diffuse/prefs
+.RS 4
+uložená nastavení (ve Windows
+%HOME%\e\&.config\ediffuse\eprefs)
+.RE
+.PP
+~/\&.local/share/diffuse/state
+.RS 4
+data přenášená mezi relacemi (ve Windows
+%HOME%\e\&.local\eshare\ediffuse\estate)
+.RE
+.SH "AUTOR"
+.PP
+Autorem
+Diffuse
+je Derrick Moser
+<derrick_moser@yahoo\&.com>\&.
+.PP
+\(co 2006\-2014 Derrick Moser\&. Všechna práva vyhrazena\&.
+.SH "LICENCE"
+.PP
+Diffuse
+je svobodný software\&. Lze ho upravovat a distribuovat za podmínky dodržení pravidel licence
+GNU General Public License
+(dále jen GPL), vydané Free Software Foundation\&. Použít lze verzi 2, nebo (pokud chcete) některou z jejích novějších verzí\&.
