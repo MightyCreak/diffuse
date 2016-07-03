@@ -71,7 +71,7 @@ WEBSITE = 'http://diffuse.sourceforge.net/'
 # print a UTF-8 string using the host's native encoding
 def printMessage(s):
     try:
-        print codecs.encode(unicode(s, 'utf_8'), sys.getfilesystemencoding())
+        print(codecs.encode(unicode(s, 'utf_8'), sys.getfilesystemencoding()))
     except UnicodeEncodeError:
         pass
 
@@ -901,7 +901,7 @@ class Preferences:
                 if key != 'git':
                     temp.append([ 'Boolean', key + '_cygwin', False, _('Update paths for Cygwin') ])
             vcs_folders_template.extend([ name, temp ])
-	vcs_template.append(vcs_folders_template)
+        vcs_template.append(vcs_folders_template)
 
         self.template.extend([ _('Version Control'), vcs_template ])
         self._initFromTemplate(self.template)
@@ -2387,7 +2387,7 @@ class _Svn:
         result = []
         try:
             prev = self._getPreviousRevision(rev)
-        except ValueError, e:
+        except ValueError as e:
             logError(_('Error parsing revision %s.') % (rev, ))
             return result
 
@@ -2643,7 +2643,7 @@ class VCSs:
     def findByFolder(self, path, prefs):
         path = os.path.abspath(path)
         for vcs in prefs.getString('vcs_search_order').split():
-	    if vcs in self._get_repo:
+            if vcs in self._get_repo:
                 repo = self._get_repo[vcs](path, prefs)
                 if repo:
                     return repo
