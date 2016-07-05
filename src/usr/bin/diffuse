@@ -1066,7 +1066,7 @@ class Preferences:
                             button = FontButton()
                             button.set_font_name(self.string_prefs[tpl[1]])
                         else:
-                            button = gtk.SpinButton(gtk.Adjustment(self.int_prefs[tpl[1]], tpl[4], tpl[5], 1), 0)
+                            button = gtk.SpinButton.new(gtk.Adjustment(self.int_prefs[tpl[1]], tpl[4], tpl[5], 1), 1.0, 0)
                         widgets[tpl[1]] = button
                         entry.pack_start(button, False, False, 0)
                         button.show()
