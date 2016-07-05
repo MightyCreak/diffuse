@@ -4627,7 +4627,7 @@ class FileDiffViewer(gtk.Table):
 
     def __set_clipboard_text(self, clipboard, s):
         # remove embedded nulls as the clipboard cannot handle them
-        gtk.clipboard_get(clipboard).set_text(s.replace('\0', ''))
+        gtk.clipboard_get(clipboard).set_text(s.replace('\0', ''), -1)
 
     # change the current selection in CHAR_MODE
     # use extend=True to extend the selection
