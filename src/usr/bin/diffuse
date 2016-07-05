@@ -2698,11 +2698,11 @@ class ScrolledWindow(gtk.Table):
         bar.show()
 
         # listen to our signals
-        hadj.connect('value_changed', self.value_changed_cb)
-        vadj.connect('value_changed', self.value_changed_cb)
-        darea.connect('configure_event', self.configure_cb)
-        darea.connect('scroll_event', self.scroll_cb)
-        darea.connect('expose_event', self.expose_cb)
+        hadj.connect('value-changed', self.value_changed_cb)
+        vadj.connect('value-changed', self.value_changed_cb)
+        darea.connect('configure-event', self.configure_cb)
+        darea.connect('scroll-event', self.scroll_cb)
+        darea.connect('expose-event', self.expose_cb)
 
     # updates the adjustments to match the new widget size
     def configure_cb(self, widget, event):
@@ -3331,36 +3331,36 @@ class FileDiffViewer(gtk.Table):
             sw = ScrolledWindow(self.hadj, self.vadj)
             darea = sw.darea
             darea.add_events(gtk.gdk.BUTTON_PRESS_MASK | gtk.gdk.BUTTON1_MOTION_MASK)
-            darea.connect('button_press_event', self.darea_button_press_cb, i)
-            darea.connect('motion_notify_event', self.darea_motion_notify_cb, i)
-            darea.connect('expose_event', self.darea_expose_cb, i)
+            darea.connect('button-press-event', self.darea_button_press_cb, i)
+            darea.connect('motion-notify-event', self.darea_motion_notify_cb, i)
+            darea.connect('expose-event', self.darea_expose_cb, i)
             self.dareas.append(darea)
             self.attach(sw, i, i + 1, 1, 2)
             sw.show()
 
-        self.hadj.connect('value_changed', self.hadj_changed_cb)
-        self.vadj.connect('value_changed', self.vadj_changed_cb)
+        self.hadj.connect('value-changed', self.hadj_changed_cb)
+        self.vadj.connect('value-changed', self.vadj_changed_cb)
 
         # add diff map
         self.map = map = gtk.DrawingArea()
         map.add_events(gtk.gdk.BUTTON_PRESS_MASK | gtk.gdk.BUTTON1_MOTION_MASK)
-        map.connect('button_press_event', self.map_button_press_cb)
-        map.connect('motion_notify_event', self.map_button_press_cb)
-        map.connect('scroll_event', self.map_scroll_cb)
-        map.connect('expose_event', self.map_expose_cb)
+        map.connect('button-press-event', self.map_button_press_cb)
+        map.connect('motion-notify-event', self.map_button_press_cb)
+        map.connect('scroll-event', self.map_scroll_cb)
+        map.connect('expose-event', self.map_expose_cb)
         self.attach(map, n, n + 1, 1, 2, gtk.FILL, gtk.FILL)
         map.show()
         map.set_size_request(16 * n, 0)
         self.add_events(gtk.gdk.KEY_PRESS_MASK | gtk.gdk.FOCUS_CHANGE)
-        self.connect('focus_in_event', self.focus_in_cb)
-        self.connect('focus_out_event', self.focus_out_cb)
-        self.connect('key_press_event', self.key_press_cb)
+        self.connect('focus-in-event', self.focus_in_cb)
+        self.connect('focus-out-event', self.focus_out_cb)
+        self.connect('key-press-event', self.key_press_cb)
 
         # input method
         self.im_context = im = gtk.IMMulticontext()
         im.connect('commit', self.im_commit_cb)
-        im.connect('preedit_changed', self.im_preedit_changed_cb)
-        im.connect('retrieve_surrounding', self.im_retrieve_surrounding_cb)
+        im.connect('preedit-changed', self.im_preedit_changed_cb)
+        im.connect('retrieve-surrounding', self.im_retrieve_surrounding_cb)
         self.im_preedit = None
         # Cache our keyboard focus state so we know when to change the
         # input method's focus.  We ensure the input method is given focus
@@ -6993,11 +6993,11 @@ class Diffuse(gtk.Window):
                 w = Diffuse.FileDiffViewer.PaneHeader()
                 self.headers.append(w)
                 self.attach(w, i, i + 1, 0, 1, gtk.FILL, gtk.FILL)
-                w.connect('title_changed', self.title_changed_cb)
+                w.connect('title-changed', self.title_changed_cb)
                 w.connect('open', self.open_file_button_cb, i)
                 w.connect('reload', self.reload_file_button_cb, i)
                 w.connect('save', self.save_file_button_cb, i)
-                w.connect('save_as', self.save_file_as_button_cb, i)
+                w.connect('save-as', self.save_file_as_button_cb, i)
                 w.show()
 
                 # pane footer
@@ -7006,15 +7006,15 @@ class Diffuse(gtk.Window):
                 self.attach(w, i, i + 1, 2, 3, gtk.FILL, gtk.FILL)
                 w.show()
 
-            self.connect('swapped_panes', self.swapped_panes_cb)
-            self.connect('num_edits_changed', self.num_edits_changed_cb)
-            self.connect('mode_changed', self.mode_changed_cb)
-            self.connect('cursor_changed', self.cursor_changed_cb)
-            self.connect('format_changed', self.format_changed_cb)
+            self.connect('swapped-panes', self.swapped_panes_cb)
+            self.connect('num-edits-changed', self.num_edits_changed_cb)
+            self.connect('mode-changed', self.mode_changed_cb)
+            self.connect('cursor-changed', self.cursor_changed_cb)
+            self.connect('format-changed', self.format_changed_cb)
 
             for i, darea in enumerate(self.dareas):
                 darea.drag_dest_set(gtk.DEST_DEFAULT_ALL, [ ('text/uri-list', 0, 0) ], gtk.gdk.ACTION_COPY)
-                darea.connect('drag_data_received', self.drag_data_received_cb, i)
+                darea.connect('drag-data-received', self.drag_data_received_cb, i)
             # initialise status
             self.updateStatus()
 
@@ -7413,8 +7413,8 @@ class Diffuse(gtk.Window):
         self.int_state = { 'window_width': 1024, 'window_height': 768 }
         self.int_state['window_x'] = max(0, (gtk.gdk.screen_width() - self.int_state['window_width']) / 2)
         self.int_state['window_y'] = max(0, (gtk.gdk.screen_height() - self.int_state['window_height']) / 2)
-        self.connect('configure_event', self.configure_cb)
-        self.connect('window_state_event', self.window_state_cb)
+        self.connect('configure-event', self.configure_cb)
+        self.connect('window-state-event', self.window_state_cb)
 
         # search history is application wide
         self.search_pattern = None
@@ -7635,7 +7635,7 @@ class Diffuse(gtk.Window):
         self.add_accel_group(accel_group)
         self.add(vbox)
         vbox.show()
-        self.connect('focus_in_event', self.focus_in_cb)
+        self.connect('focus-in-event', self.focus_in_cb)
 
     # notifies all viewers on focus changes so they may check for external
     # changes to files
@@ -7748,7 +7748,7 @@ class Diffuse(gtk.Window):
         column.set_resizable(True)
         column.set_sort_column_id(2)
         treeview.append_column(column)
-        treeview.connect('row_activated', self.__confirmClose_row_activated_cb, model)
+        treeview.connect('row-activated', self.__confirmClose_row_activated_cb, model)
         sw.add(treeview)
         treeview.show()
         dialog.vbox.pack_start(sw, True, True, 0)
@@ -7870,7 +7870,7 @@ class Diffuse(gtk.Window):
         tab = NotebookTab(tabname, gtk.STOCK_FILE)
         viewer = Diffuse.FileDiffViewer(n, self.prefs, tabname)
         tab.button.connect('clicked', self.remove_tab_cb, viewer)
-        tab.connect('button_press_event', self.notebooktab_button_press_cb, viewer)
+        tab.connect('button-press-event', self.notebooktab_button_press_cb, viewer)
         self.notebook.append_page(viewer, tab)
         if hasattr(self.notebook, 'set_tab_reorderable'):
             # some PyGTK packages incorrectly omit this method
@@ -7878,9 +7878,9 @@ class Diffuse(gtk.Window):
         tab.show()
         viewer.show()
         self.notebook.set_show_tabs(self.prefs.getBool('tabs_always_show') or self.notebook.get_n_pages() > 1)
-        viewer.connect('title_changed', self.title_changed_cb)
-        viewer.connect('status_changed', self.status_changed_cb)
-        viewer.connect('syntax_changed', self.syntax_changed_cb)
+        viewer.connect('title-changed', self.title_changed_cb)
+        viewer.connect('status-changed', self.status_changed_cb)
+        viewer.connect('syntax-changed', self.syntax_changed_cb)
         return viewer
 
     # create a new viewer to display 'items'
