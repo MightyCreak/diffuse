@@ -6681,8 +6681,8 @@ class SearchDialog(gtk.Dialog):
         label = gtk.Label(_('Search For: '))
         hbox.pack_start(label, False, False, 0)
         label.show()
-        combo = gtk.combo_box_entry_new_text()
-        self.entry = combo.child
+        combo = gtk.ComboBoxText.new_with_entry()
+        self.entry = combo.get_child()
         self.entry.connect('activate', self.entry_cb)
 
         if pattern is not None:
