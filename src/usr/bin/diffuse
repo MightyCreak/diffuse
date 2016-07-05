@@ -6787,7 +6787,7 @@ class NumericDialog(gtk.Dialog):
         hbox.pack_start(label, False, False, 0)
         label.show()
         adj = gtk.Adjustment(val, lower, upper, step, page)
-        self.button = button = gtk.SpinButton(adj, 0)
+        self.button = button = gtk.SpinButton.new(adj, 1.0, 0)
         button.connect('activate', self.button_cb)
         hbox.pack_start(button, True, True, 0)
         button.show()
