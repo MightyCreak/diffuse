@@ -4795,7 +4795,7 @@ class FileDiffViewer(gtk.Table):
             if self.mode == CHAR_MODE and f == self.current_pane:
                 self.button_press(f, x, y, False)
                 self.openUndoBlock()
-                gtk.clipboard_get(gtk.gdk.SELECTION_PRIMARY).request_text(self.receive_clipboard_text_cb)
+                gtk.clipboard_get(gtk.gdk.SELECTION_PRIMARY).request_text(self.receive_clipboard_text_cb, None)
                 self.closeUndoBlock()
         elif event.button == 3:
             # right mouse button, raise context sensitive menu
@@ -5925,7 +5925,7 @@ class FileDiffViewer(gtk.Table):
 
     # 'paste' action
     def paste(self):
-         gtk.clipboard_get(gtk.gdk.SELECTION_CLIPBOARD).request_text(self.receive_clipboard_text_cb)
+         gtk.clipboard_get(gtk.gdk.SELECTION_CLIPBOARD).request_text(self.receive_clipboard_text_cb, None)
 
     # 'clear_edits' action
     def clear_edits(self):
