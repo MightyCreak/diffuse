@@ -3991,7 +3991,7 @@ class FileDiffViewer(gtk.Table):
             for f in range(npanes):
                 line = self.getLine(f, j)
                 if line is not None:
-                    if line.line_number > 0 or (f != skip and line.getText() is not None):
+                    if line.line_number is not None or (f != skip and line.getText() is not None):
                         break
             else:
                 # remove line
@@ -4988,7 +4988,7 @@ class FileDiffViewer(gtk.Table):
                 cr.paint()
 
                 ## draw the line number
-                if line is not None and line.line_number > 0:
+                if line is not None and line.line_number is not None:
                     colour = theResources.getColour('line_number')
                     cr.set_source_rgb(colour.red, colour.green, colour.blue)
                     layout = self.create_pango_layout(str(line.line_number))
