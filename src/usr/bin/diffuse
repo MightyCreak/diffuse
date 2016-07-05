@@ -717,7 +717,7 @@ def norm_encoding(e):
 class EncodingMenu(gtk.HBox):
     def __init__(self, prefs, autodetect=False):
         gtk.HBox.__init__(self)
-        self.combobox = combobox = gtk.combo_box_new_text()
+        self.combobox = combobox = gtk.ComboBoxText.new()
         self.encodings = prefs.getEncodings()[:]
         for e in self.encodings:
             combobox.append_text(e)
@@ -6741,6 +6741,7 @@ class FileChooserDialog(gtk.FileChooserDialog):
         gtk.FileChooserDialog.__init__(self, title, parent, action, (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL, accept, gtk.RESPONSE_OK))
         self.prefs = prefs
         hbox = gtk.HBox()
+        hbox.set_border_width(5)
         label = gtk.Label(_('Encoding: '))
         hbox.pack_start(label, False, False, 0)
         label.show()
