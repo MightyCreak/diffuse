@@ -154,7 +154,6 @@ whitespace = ' \t\n\r\x0b\x0c'
 
 # escape special glob characters
 def globEscape(s):
-    print 'globEscape', repr(s)
     m = dict([ (c, u'[%s]' % (c, )) for c in u'[]?*' ])
     return u''.join([ m.get(c, c) for c in s ])
 
@@ -8364,9 +8363,9 @@ if __name__ == '__main__':
     data_dir = make_subdirs(data_dir, subdirs)
     # load resource files
     i, rc_files = 1, []
-    if argc == 2 and args[1] == '--no-rcfile':
+    if i < argc  and args[i] == '--no-rcfile':
         i += 1
-    elif argc == 3 and args[1] == '--rcfile':
+    elif i + 1 < argc and args[i] == '--rcfile':
         i += 1
         rc_files.append(args[i])
         i += 1
