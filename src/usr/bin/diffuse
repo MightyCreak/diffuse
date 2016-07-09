@@ -1861,7 +1861,7 @@ class _Git:
 
     def getFolderTemplate(self, prefs, names):
         # build command
-        args = [ prefs.getString('git_bin'), 'status', '--porcelain', '-s', '--untracked-files=no' ]
+        args = [ prefs.getString('git_bin'), 'status', '--porcelain', '-s', '--untracked-files=no', '--ignore-submodules=all' ]
         # build list of interesting files
         pwd, isabs = os.path.abspath(os.curdir), False
         for name in names:
@@ -1963,9 +1963,15 @@ def _get_git_repo(path, prefs):
         except (IOError, OSError, WindowsError):
             # working tree not found
             pass
-    p = _find_parent_dir_with(path, '.git')
-    if p:
-        return _Git(p)
+    # search for .git direcotry (project) or .git file (submodule)
+    while True:
+        name = os.path.join(path, '.git')
+        if os.path.isdir(name) or os.path.isfile(name):
+            return _Git(path)
+        newpath = os.path.dirname(path)
+        if newpath == path:
+            break
+        path = newpath
 
 # Mercurial support
 class _Hg:
