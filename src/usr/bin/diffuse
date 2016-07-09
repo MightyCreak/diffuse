@@ -152,6 +152,12 @@ def logDebug(s):
 # this is sorted based upon frequency to speed up code for stripping whitespace
 whitespace = ' \t\n\r\x0b\x0c'
 
+# escape special glob characters
+def globEscape(s):
+    print 'globEscape', repr(s)
+    m = dict([ (c, u'[%s]' % (c, )) for c in u'[]?*' ])
+    return u''.join([ m.get(c, c) for c in s ])
+
 # associate our icon with all of our windows
 if __name__ == '__main__':
     # this is not automatically set on some older version of PyGTK
@@ -272,6 +278,9 @@ def splitlines(s):
 # also recognise old Mac OS line endings
 def readlines(fd):
     return strip_eols(splitlines(fd.read()))
+
+def readconfiglines(fd):
+    return unicode(fd.read(), 'utf_8').replace(u'\r', u'').split(u'\n')
 
 # This class to hold all customisable behaviour not exposed in the preferences
 # dialogue: hotkey assignment, colours, syntax highlighting, etc.
@@ -576,7 +585,7 @@ class Resources:
 
         self.resource_files.add(file_name)
         f = open(file_name, 'r')
-        ss = readlines(f)
+        ss = readconfiglines(f)
         f.close()
 
         # FIXME: improve validation
@@ -588,10 +597,10 @@ class Resources:
             try:
                 # eg. add Python syntax highlighting:
                 #    import /usr/share/diffuse/syntax/python.syntax
-                if args[0] == 'import' and len(args) == 2:
+                if args[0] == u'import' and len(args) == 2:
                     path = os.path.expanduser(args[1])
                     # relative paths are relative to the parsed file
-                    path = os.path.join(os.path.dirname(file_name), path)
+                    path = os.path.join(globEscape(os.path.dirname(file_name)), path)
                     paths = glob.glob(path)
                     if len(paths) == 0:
                         paths = [ path ]
@@ -602,28 +611,28 @@ class Resources:
                         self.parse(os.path.abspath(path))
                 # eg. make Ctrl+o trigger the open_file menu item
                 #    keybinding menu open_file Ctrl+o
-                elif args[0] == 'keybinding' and len(args) == 4:
+                elif args[0] == u'keybinding' and len(args) == 4:
                     self.setKeyBinding(args[1], args[2], args[3])
                 # eg. set the regular background colour to white
                 #    colour text_background 1.0 1.0 1.0
-                elif args[0] in [ 'colour', 'color' ] and len(args) == 5:
+                elif args[0] in [ u'colour', u'color' ] and len(args) == 5:
                     self.colours[args[1]] = Colour(float(args[2]), float(args[3]), float(args[4]))
                 # eg. set opacity of the line_selection colour
                 #    float line_selection_opacity 0.4
-                elif args[0] == 'float' and len(args) == 3:
+                elif args[0] == u'float' and len(args) == 3:
                     self.floats[args[1]] = float(args[2])
                 # eg. set the help browser
                 #    string help_browser gnome-help
-                elif args[0] == 'string' and len(args) == 3:
+                elif args[0] == u'string' and len(args) == 3:
                     self.strings[args[1]] = args[2]
-                    if args[1] == 'difference_colours':
+                    if args[1] == u'difference_colours':
                         self.setDifferenceColours(args[2])
                 # eg. start a syntax specification for Python
                 #    syntax Python normal text
                 # where 'normal' is the name of the default state and
                 # 'text' is the classification of all characters not
                 # explicitly matched by a syntax highlighting rule
-                elif args[0] == 'syntax' and (len(args) == 2 or len(args) == 4):
+                elif args[0] == u'syntax' and (len(args) == 2 or len(args) == 4):
                     key = args[1]
                     if len(args) == 2:
                         # remove file pattern for a syntax specification
@@ -649,10 +658,10 @@ class Resources:
                 # the pattern '#' is matched and classify the matched
                 # characters as 'python_comment'
                 #    syntax_pattern normal comment python_comment '#'
-                elif args[0] == 'syntax_pattern' and self.current_syntax is not None and len(args) >= 5:
+                elif args[0] == u'syntax_pattern' and self.current_syntax is not None and len(args) >= 5:
                     flags = 0
                     for arg in args[5:]:
-                        if arg == 'ignorecase':
+                        if arg == u'ignorecase':
                             flags |= re.IGNORECASE
                         else:
                             raise ValueError()
@@ -660,7 +669,7 @@ class Resources:
                 # eg. default to the Python syntax rules when viewing
                 # a file ending with '.py' or '.pyw'
                 #    syntax_files Python '\.pyw?$'
-                elif args[0] == 'syntax_files' and (len(args) == 2 or len(args) == 3):
+                elif args[0] == u'syntax_files' and (len(args) == 2 or len(args) == 3):
                     key = args[1]
                     if len(args) == 2:
                         # remove file pattern for a syntax specification
@@ -676,7 +685,7 @@ class Resources:
                 # eg. default to the Python syntax rules when viewing
                 # a files starting with patterns like #!/usr/bin/python
                 #    syntax_magic Python '^#!/usr/bin/python$'
-                elif args[0] == 'syntax_magic' and len(args) > 1:
+                elif args[0] == u'syntax_magic' and len(args) > 1:
                     key = args[1]
                     if len(args) == 2:
                         # remove magic pattern for a syntax specification
@@ -687,7 +696,7 @@ class Resources:
                     else:
                         flags = 0
                         for arg in args[3:]:
-                            if arg == 'ignorecase':
+                            if arg == u'ignorecase':
                                 flags |= re.IGNORECASE
                             else:
                                 raise ValueError()
@@ -914,7 +923,7 @@ class Preferences:
         if os.path.isfile(self.path):
             try:
                 f = open(self.path, 'r')
-                ss = readlines(f)
+                ss = readconfiglines(f)
                 f.close()
                 for j, s in enumerate(ss):
                     try:
@@ -2377,14 +2386,15 @@ class _Svn:
     def getFileTemplate(self, prefs, name):
         # FIXME: verify this
         # merge conflict
-        left = glob.glob(name + '.merge-left.r*')
-        right = glob.glob(name + '.merge-right.r*')
+        escaped_name = globEscape(name)
+        left = glob.glob(escaped_name + u'.merge-left.r*')
+        right = glob.glob(escaped_name + u'.merge-right.r*')
         if len(left) > 0 and len(right) > 0:
             return [ (left[-1], None), (name, None), (right[-1], None) ]
         # update conflict
-        left = sorted(glob.glob(name + '.r*'))
-        right = glob.glob(name + '.mine')
-        right.extend(glob.glob(name + '.working'))
+        left = sorted(glob.glob(escaped_name + u'.r*'))
+        right = glob.glob(escaped_name + u'.mine')
+        right.extend(glob.glob(escaped_name + u'.working'))
         if len(left) > 0 and len(right) > 0:
             return [ (left[-1], None), (name, None), (right[0], None) ]
         # default case
@@ -8341,16 +8351,16 @@ def make_subdirs(p, ss):
 # process the command line arguments
 if __name__ == '__main__':
     # find the config directory and create it if it didn't exist
-    rc_dir, subdirs = os.environ.get('XDG_CONFIG_HOME', None), ['diffuse']
+    rc_dir, subdirs = os.environ.get('XDG_CONFIG_HOME', None), [u'diffuse']
     if rc_dir is None:
-        rc_dir = os.path.expanduser('~')
-        subdirs.insert(0, '.config')
+        rc_dir = os.path.expanduser(u'~')
+        subdirs.insert(0, u'.config')
     rc_dir = make_subdirs(rc_dir, subdirs)
     # find the local data directory and create it if it didn't exist
-    data_dir, subdirs = os.environ.get('XDG_DATA_HOME', None), ['diffuse']
+    data_dir, subdirs = os.environ.get('XDG_DATA_HOME', None), [u'diffuse']
     if data_dir is None:
-        data_dir = os.path.expanduser('~')
-        subdirs[:0] = [ '.local', 'share' ]
+        data_dir = os.path.expanduser(u'~')
+        subdirs[:0] = [ u'.local', u'share' ]
     data_dir = make_subdirs(data_dir, subdirs)
     # load resource files
     i, rc_files = 1, []
@@ -8363,10 +8373,10 @@ if __name__ == '__main__':
     else:
         # parse system wide then personal initialisation files
         if isWindows():
-            rc_file = os.path.join(bin_dir, 'diffuserc')
+            rc_file = os.path.join(bin_dir, u'diffuserc')
         else:
-            rc_file = os.path.join(bin_dir, '../../etc/diffuserc')
-        for rc_file in rc_file, os.path.join(rc_dir, 'diffuserc'):
+            rc_file = os.path.join(bin_dir, u'../../etc/diffuserc')
+        for rc_file in rc_file, os.path.join(rc_dir, u'diffuserc'):
             if os.path.isfile(rc_file):
                 rc_files.append(rc_file)
     for rc_file in rc_files:
