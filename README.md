@@ -1,6 +1,6 @@
 # Diffuse
 
-Version 0.4.8
+Version 0.5.0
 
 Copyright (C) 2006-2014 Derrick Moser <derrick_moser@yahoo.com>  
 Copyright (C) 2015-2016 Romain Failliot <romain.failliot@foolstep.com>
@@ -27,8 +27,8 @@ Some key features of Diffuse:
 
 ## Requirements
 
-* Python >= 2.4
-* PyGTK >= 2.10
+* Python >= 3.4
+* PyGObject >= 3.18
 
 Diffuse is implemented entirely in Python and should run on any platform with
 Python and PyGTK.  If you need to manually install PyGTK, please be aware its

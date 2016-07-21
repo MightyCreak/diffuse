@@ -1,3 +1,6 @@
+Diffuse 0.5.0 - 2016-07-10
+- convert to Python 3
+- convert to GTK 3
 - add support for Git submodules
 - added Akom Chotiphantawanon's Thai translation
 - updated Python highlighting for Python 3 grammar

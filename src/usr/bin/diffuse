@@ -65,9 +65,10 @@ gettext.textdomain('diffuse')
 _ = gettext.gettext
 
 APP_NAME = 'Diffuse'
-VERSION = '0.4.8'
-COPYRIGHT = _('Copyright © 2006-2014 Derrick Moser')
-WEBSITE = 'http://diffuse.sourceforge.net/'
+VERSION = '0.5.0'
+COPYRIGHT = _('''Copyright © 2006-2014 Derrick Moser
+Copyright © 2015-2016 Romain Failliot''')
+WEBSITE = 'https://github.com/MightyCreak/diffuse'
 
 # process help options
 if __name__ == '__main__':
@@ -6788,7 +6789,8 @@ class AboutDialog(Gtk.AboutDialog):
         self.set_comments(_('Diffuse is a graphical tool for merging and comparing text files.'))
         self.set_copyright(COPYRIGHT)
         self.set_website(WEBSITE)
-        self.set_authors([ _('Derrick Moser <derrick_moser@yahoo.com>') ])
+        self.set_authors([ _('Derrick Moser <derrick_moser@yahoo.com>'),
+                           _('Romain Failliot <romain.failliot@foolstep.com>') ])
         self.set_translator_credits(_('translator-credits'))
         ss = [ APP_NAME + ' ' + VERSION + '\n',
                COPYRIGHT + '\n\n',
