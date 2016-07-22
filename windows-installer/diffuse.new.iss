@@ -3,7 +3,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Diffuse Merge Tool"
-#define MyAppVersion "0.5.0-alpha"
+#define MyAppVersion "0.5.0-alpha.2"
 #define MyAppPublisher "Diffuse Team"
 #define MyAppURL "https://github.com/MightyCreak/diffuse/"
 #define MyAppExeName "diffuse.exe"
