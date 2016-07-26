@@ -6890,7 +6890,9 @@ class Diffuse(Gtk.Window):
                    [ Gtk.STOCK_SAVE_AS, self.button_cb, 'save_as', _('Save File As...') ] ])
 
                 self.label = label = Gtk.Label.new()
-                label.set_size_request(0, label.get_size_request()[1])
+                label.set_ellipsize(Pango.EllipsizeMode.START)
+                label.set_max_width_chars(1)
+
                 self.pack_start(label, True, True, 0)
                 label.show()
 
