@@ -3239,7 +3239,7 @@ class FileDiffViewer(Gtk.Table):
 
         # cached data
         self.syntax = None
-        self.map_cache = None
+        self.diffmap_cache = None
 
         # editing mode
         self.mode = LINE_MODE
@@ -3360,17 +3360,17 @@ class FileDiffViewer(Gtk.Table):
         self.vadj.connect('value-changed', self.vadj_changed_cb)
 
         # add diff map
-        self.map = map = Gtk.DrawingArea.new()
-        map.add_events(Gdk.EventMask.BUTTON_PRESS_MASK |
+        self.diffmap = diffmap = Gtk.DrawingArea.new()
+        diffmap.add_events(Gdk.EventMask.BUTTON_PRESS_MASK |
                        Gdk.EventMask.BUTTON1_MOTION_MASK |
                        Gdk.EventMask.SCROLL_MASK)
-        map.connect('button-press-event', self.map_button_press_cb)
-        map.connect('motion-notify-event', self.map_button_press_cb)
-        map.connect('scroll-event', self.map_scroll_cb)
-        map.connect('draw', self.map_draw_cb)
-        self.attach(map, n, n + 1, 1, 2, Gtk.AttachOptions.FILL, Gtk.AttachOptions.FILL)
-        map.show()
-        map.set_size_request(16 * n, 0)
+        diffmap.connect('button-press-event', self.diffmap_button_press_cb)
+        diffmap.connect('motion-notify-event', self.diffmap_button_press_cb)
+        diffmap.connect('scroll-event', self.diffmap_scroll_cb)
+        diffmap.connect('draw', self.diffmap_draw_cb)
+        self.attach(diffmap, n, n + 1, 1, 2, Gtk.AttachOptions.FILL, Gtk.AttachOptions.FILL)
+        diffmap.show()
+        diffmap.set_size_request(16 * n, 0)
         self.add_events(Gdk.EventMask.KEY_PRESS_MASK |
                         Gdk.EventMask.FOCUS_CHANGE_MASK)
         self.connect('focus-in-event', self.focus_in_cb)
@@ -3422,7 +3422,7 @@ class FileDiffViewer(Gtk.Table):
         self.font_height = max(pixels(metrics.get_ascent() + metrics.get_descent()), 1)
         self.digit_width = metrics.get_approximate_digit_width()
         self.updateSize(True)
-        self.map.queue_draw()
+        self.diffmap.queue_draw()
 
     # returns the 'column width' for a string -- used to help position
     # characters when tabs and other special characters are present
@@ -3831,8 +3831,8 @@ class FileDiffViewer(Gtk.Table):
             pane.diff_cache[i] = None
         self.dareas[f].queue_draw()
         if self.getMapFlags(f, i) != flags:
-            self.map_cache = None
-            self.map.queue_draw()
+            self.diffmap_cache = None
+            self.diffmap.queue_draw()
 
     # Undo for inserting a spacing line in a single pane
     class InsertNullUndo:
@@ -3894,8 +3894,8 @@ class FileDiffViewer(Gtk.Table):
                 else:
                     del pane.diff_cache[i:]
             self.dareas[f].queue_draw()
-        self.map_cache = None
-        self.map.queue_draw()
+        self.diffmap_cache = None
+        self.diffmap.queue_draw()
 
     # Undo for alignment changes
     class AlignmentChangeUndo:
@@ -3976,8 +3976,8 @@ class FileDiffViewer(Gtk.Table):
             self.selection_line += n
         # queue redraws
         self.updateSize(False)
-        self.map_cache = None
-        self.map.queue_draw()
+        self.diffmap_cache = None
+        self.diffmap.queue_draw()
 
     # remove a line
     def removeSpacerLines(self, i, n, skip=-1):
@@ -4028,8 +4028,8 @@ class FileDiffViewer(Gtk.Table):
 
             # queue redraws
             self.updateSize(False)
-            self.map_cache = None
-            self.map.queue_draw()
+            self.diffmap_cache = None
+            self.diffmap.queue_draw()
         return nremoved
 
     # Undo for replacing the lines for a single pane with a new set
@@ -4064,8 +4064,8 @@ class FileDiffViewer(Gtk.Table):
         pane.max_line_number = new_max_num
         self.dareas[f].queue_draw()
         self.updateSize(True, f)
-        self.map_cache = None
-        self.map.queue_draw()
+        self.diffmap_cache = None
+        self.diffmap.queue_draw()
 
     # create a hash for a line to use for line matching
     def _alignmentHash(self, line):
@@ -5284,10 +5284,10 @@ class FileDiffViewer(Gtk.Table):
     # callback used when panes are scrolled vertically
     def vadj_changed_cb(self, adj):
         self._cursor_position_changed(False)
-        self.map.queue_draw()
+        self.diffmap.queue_draw()
 
     # callback to handle button presses on the overview map
-    def map_button_press_cb(self, widget, event):
+    def diffmap_button_press_cb(self, widget, event):
         vadj = self.vadj
 
         h = widget.get_allocation().height
@@ -5301,7 +5301,7 @@ class FileDiffViewer(Gtk.Table):
         vadj.set_value(v)
 
     # callback to handle mouse scrollwheel events
-    def map_scroll_cb(self, widget, event):
+    def diffmap_scroll_cb(self, widget, event):
         delta = 100
         if event.direction == Gdk.ScrollDirection.UP:
             step_adjustment(self.vadj, -delta)
@@ -5309,7 +5309,7 @@ class FileDiffViewer(Gtk.Table):
             step_adjustment(self.vadj, delta)
 
     # redraws the overview map when a portion is exposed
-    def map_draw_cb(self, widget, cr):
+    def diffmap_draw_cb(self, widget, cr):
         n = len(self.panes)
 
         # compute map if it hasn't already been cached
@@ -5318,11 +5318,11 @@ class FileDiffViewer(Gtk.Table):
         # flags & 2 indicates differences with the pane to the right
         # flags & 4 indicates modified lines
         # flags & 8 indicates regular lines with text
-        if self.map_cache is None:
+        if self.diffmap_cache is None:
             nlines = len(self.panes[0].lines)
             start = n * [ 0 ]
             flags = n * [ 0 ]
-            self.map_cache = [ [] for f in range(n) ]
+            self.diffmap_cache = [ [] for f in range(n) ]
             # iterate over each row of lines
             for i in range(nlines):
                 nextflag = 0
@@ -5348,13 +5348,13 @@ class FileDiffViewer(Gtk.Table):
                         flag = 8
                     if flags[f] != flag:
                         if flags[f] != 0:
-                            self.map_cache[f].append([start[f], i, flags[f]])
+                            self.diffmap_cache[f].append([start[f], i, flags[f]])
                         start[f] = i
                         flags[f] = flag
             # finish any incomplete ranges
             for f in range(n):
                 if flags[f] != 0:
-                    self.map_cache[f].append([start[f], nlines, flags[f]])
+                    self.diffmap_cache[f].append([start[f], nlines, flags[f]])
 
         # clear
         colour = theResources.getColour('map_background')
@@ -5380,7 +5380,7 @@ class FileDiffViewer(Gtk.Table):
             # this ensures less important stuff does not obscure more important
             # data
             for p in range(2):
-                for start, end, flag in self.map_cache[f]:
+                for start, end, flag in self.diffmap_cache[f]:
                     if p == 0 and flag == 8:
                         colour = bg_colour
                     elif p == 1 and flag & 7:
@@ -6012,8 +6012,8 @@ class FileDiffViewer(Gtk.Table):
         self.emit('cursor_changed')
         for darea in self.dareas:
             darea.queue_draw()
-        self.map_cache = None
-        self.map.queue_draw()
+        self.diffmap_cache = None
+        self.diffmap.queue_draw()
 
     # 'realign_all' action
     def realign_all(self):
@@ -6201,8 +6201,8 @@ class FileDiffViewer(Gtk.Table):
                     del self.panes[f].diff_cache[:]
                     self.dareas[f].queue_draw()
         # queue redraw
-        self.map_cache = None
-        self.map.queue_draw()
+        self.diffmap_cache = None
+        self.diffmap.queue_draw()
         self.emit('swapped_panes', f_dst, f_src)
 
     # swap the contents of two panes
