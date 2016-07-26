@@ -3172,7 +3172,7 @@ def patience_diff(a, b):
     return matches
 
 # widget used to compare and merge text files
-class FileDiffViewer(Gtk.Table):
+class FileDiffViewer(Gtk.Grid):
     # class describing a text pane
     class Pane:
         def __init__(self):
@@ -3223,7 +3223,7 @@ class FileDiffViewer(Gtk.Table):
         if n < 2:
             raise ValueError('Invalid number of panes')
 
-        Gtk.Table.__init__(self, 3, n + 1)
+        Gtk.Grid.__init__(self)
         self.set_can_focus(True)
         self.prefs = prefs
         self.string_width_cache = {}
@@ -3346,6 +3346,7 @@ class FileDiffViewer(Gtk.Table):
 
             # pane contents
             sw = ScrolledWindow(self.hadj, self.vadj)
+            sw.set_hexpand(True)
             darea = sw.darea
             darea.add_events(Gdk.EventMask.BUTTON_PRESS_MASK |
                              Gdk.EventMask.BUTTON1_MOTION_MASK)
@@ -3353,7 +3354,7 @@ class FileDiffViewer(Gtk.Table):
             darea.connect('motion-notify-event', self.darea_motion_notify_cb, i)
             darea.connect('draw', self.darea_draw_cb, i)
             self.dareas.append(darea)
-            self.attach(sw, i, i + 1, 1, 2)
+            self.attach(sw, i, 1, 1, 1)
             sw.show()
 
         self.hadj.connect('value-changed', self.hadj_changed_cb)
@@ -3368,7 +3369,7 @@ class FileDiffViewer(Gtk.Table):
         diffmap.connect('motion-notify-event', self.diffmap_button_press_cb)
         diffmap.connect('scroll-event', self.diffmap_scroll_cb)
         diffmap.connect('draw', self.diffmap_draw_cb)
-        self.attach(diffmap, n, n + 1, 1, 2, Gtk.AttachOptions.FILL, Gtk.AttachOptions.FILL)
+        self.attach(diffmap, n, 1, 1, 1)
         diffmap.show()
         diffmap.set_size_request(16 * n, 0)
         self.add_events(Gdk.EventMask.KEY_PRESS_MASK |
@@ -7000,7 +7001,7 @@ class Diffuse(Gtk.Window):
                 # pane header
                 w = Diffuse.FileDiffViewer.PaneHeader()
                 self.headers.append(w)
-                self.attach(w, i, i + 1, 0, 1, Gtk.AttachOptions.FILL, Gtk.AttachOptions.FILL)
+                self.attach(w, i, 0, 1, 1)
                 w.connect('title-changed', self.title_changed_cb)
                 w.connect('open', self.open_file_button_cb, i)
                 w.connect('reload', self.reload_file_button_cb, i)
@@ -7011,7 +7012,7 @@ class Diffuse(Gtk.Window):
                 # pane footer
                 w = Diffuse.FileDiffViewer.PaneFooter()
                 self.footers.append(w)
-                self.attach(w, i, i + 1, 2, 3, Gtk.AttachOptions.FILL, Gtk.AttachOptions.FILL)
+                self.attach(w, i, 2, 1, 1)
                 w.show()
 
             self.connect('swapped-panes', self.swapped_panes_cb)
