@@ -3,12 +3,13 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Diffuse Merge Tool"
-#define MyAppVersion "0.5.0-alpha.3"
+#define MyAppGroupName "Diffuse"
+#define MyAppVersion "0.5.0-alpha.4"
 #define MyAppPublisher "Diffuse Team"
 #define MyAppURL "https://github.com/MightyCreak/diffuse/"
 #define MyAppExeName "diffuse.exe"
 
-#define SrcDir ".\build\exe.win-amd64-3.4\"
+#define SrcDir "build\exe.win-amd64-3.4\"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application.
@@ -24,11 +25,13 @@ AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
 ArchitecturesAllowed=x64
 ArchitecturesInstallIn64BitMode=x64
-DefaultDirName={pf}\{#MyAppName}
-DisableProgramGroupPage=yes
+DefaultDirName={pf}\{#MyAppGroupName}
+DefaultGroupName={#MyAppGroupName}
+;DisableProgramGroupPage=yes
 OutputBaseFilename=setup-diffuse-{#MyAppVersion}-x64
 Compression=lzma
 SolidCompression=yes
+UninstallDisplayIcon={app}\{#MyAppExeName}
 
 [Languages]
 Name: "en"; MessagesFile: "compiler:Default.isl,.\en.isl"
@@ -52,7 +55,7 @@ Source: "{#SrcDir}*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs crea
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
-Name: "{commonprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
+Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
 Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
 
 [Run]
