@@ -6965,11 +6965,13 @@ class Diffuse(Gtk.Window):
             # set the cursor label
             def updateCursor(self, viewer, f):
                 if viewer.mode == CHAR_MODE and viewer.current_pane == f:
-                    j = viewer.current_char
-                    if j > 0:
-                        text = viewer.getLineText(viewer.current_pane, viewer.current_line)[:j]
-                        j = viewer.stringWidth(text)
-                    s = _('Column %d') % (j, )
+                    ## TODO: Find a fix for the column bug (resizing issue when editing a line)
+                    #j = viewer.current_char
+                    #if j > 0:
+                    #    text = viewer.getLineText(viewer.current_pane, viewer.current_line)[:j]
+                    #    j = viewer.stringWidth(text)
+                    #s = _('Column %d') % (j, )
+                    s = ''
                 else:
                     s = ''
                 self.cursor.set_text(s)
