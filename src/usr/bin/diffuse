@@ -2681,13 +2681,14 @@ def step_adjustment(adj, delta):
 # handled immediately after changing the viewport position.  This could cause
 # the application to become unresponsive for a while as it processed a large
 # queue of keypress and expose event pairs.
-class ScrolledWindow(Gtk.Table):
+class ScrolledWindow(Gtk.Grid):
     scroll_directions = set((Gdk.ScrollDirection.UP,
                              Gdk.ScrollDirection.DOWN,
                              Gdk.ScrollDirection.LEFT,
                              Gdk.ScrollDirection.RIGHT))
+
     def __init__(self, hadj, vadj):
-        Gtk.Table.__init__(self, 2, 2)
+        Gtk.Grid.__init__(self)
         self.position = (0, 0)
         self.scroll_count = 0
         self.partial_redraw = False
@@ -2703,15 +2704,17 @@ class ScrolledWindow(Gtk.Table):
         darea.queue_draw_area = self.redraw_region
         vport.add(darea)
         darea.show()
-        self.attach(vport, 0, 1, 0, 1)
+        self.attach(vport, 0, 0, 1, 1)
+        vport.set_vexpand(True)
+        vport.set_hexpand(True)
         vport.show()
 
         self.vbar = bar = Gtk.VScrollbar.new(vadj)
-        self.attach(bar, 1, 2, 0, 1, Gtk.AttachOptions.FILL, Gtk.AttachOptions.EXPAND | Gtk.AttachOptions.FILL)
+        self.attach(bar, 1, 0, 1, 1)
         bar.show()
 
         self.hbar = bar = Gtk.HScrollbar.new(hadj)
-        self.attach(bar, 0, 1, 1, 2, Gtk.AttachOptions.EXPAND | Gtk.AttachOptions.FILL, Gtk.AttachOptions.FILL)
+        self.attach(bar, 0, 1, 1, 1)
         bar.show()
 
         # listen to our signals
@@ -3346,6 +3349,7 @@ class FileDiffViewer(Gtk.Grid):
 
             # pane contents
             sw = ScrolledWindow(self.hadj, self.vadj)
+            sw.set_vexpand(True)
             sw.set_hexpand(True)
             darea = sw.darea
             darea.add_events(Gdk.EventMask.BUTTON_PRESS_MASK |
@@ -6880,9 +6884,9 @@ class Diffuse(Gtk.Window):
     # specialisation of FileDiffViewer for Diffuse
     class FileDiffViewer(FileDiffViewer):
         # pane header
-        class PaneHeader(Gtk.HBox):
+        class PaneHeader(Gtk.Box):
             def __init__(self):
-                Gtk.HBox.__init__(self)
+                Gtk.Box.__init__(self, Gtk.Orientation.HORIZONTAL, 0)
                 appendButtons(self, Gtk.IconSize.MENU, [
                    [ Gtk.STOCK_OPEN, self.button_cb, 'open', _('Open File...') ],
                    [ Gtk.STOCK_REFRESH, self.button_cb, 'reload', _('Reload File') ],
@@ -6894,13 +6898,13 @@ class Diffuse(Gtk.Window):
                 label.set_max_width_chars(1)
 
                 self.pack_start(label, True, True, 0)
-                label.show()
 
                 # file's name and information about how to retrieve it from a
                 # VCS
                 self.info = FileInfo()
                 self.has_edits = False
                 self.updateTitle()
+                self.show_all()
 
             # callback for buttons
             def button_cb(self, widget, s):
@@ -6932,35 +6936,31 @@ class Diffuse(Gtk.Window):
                     self.updateTitle()
 
         # pane footer
-        class PaneFooter(Gtk.HBox):
+        class PaneFooter(Gtk.Box):
             def __init__(self):
-                Gtk.HBox.__init__(self)
+                Gtk.Box.__init__(self, Gtk.Orientation.HORIZONTAL, 0)
 
                 self.cursor = label = Gtk.Label.new()
+                self.cursor.set_size_request(-1, -1)
                 self.pack_start(label, False, False, 0)
-                label.show()
 
                 separator = Gtk.VSeparator.new()
                 self.pack_end(separator, False, False, 10)
-                separator.show()
 
                 self.encoding = label = Gtk.Label.new()
                 self.pack_end(label, False, False, 0)
-                label.show()
 
                 separator = Gtk.VSeparator.new()
                 self.pack_end(separator, False, False, 10)
-                separator.show()
 
                 self.format = label = Gtk.Label.new()
                 self.pack_end(label, False, False, 0)
-                label.show()
 
                 separator = Gtk.VSeparator.new()
                 self.pack_end(separator, False, False, 10)
-                separator.show()
 
                 self.set_size_request(0, self.get_size_request()[1])
+                self.show_all()
 
             # set the cursor label
             def updateCursor(self, viewer, f):
