@@ -1124,8 +1124,9 @@ class Preferences:
                   'utf32': [ codecs.BOM_UTF32_BE, codecs.BOM_UTF32_LE ] }
         for encoding in self._getDefaultEncodings():
             try:
-                for m in magic.get(encoding.lower().replace('-', '').replace('_', ''), [ '' ]):
-                    if str(s).startswith(m):
+                encoding = encoding.lower().replace('-', '').replace('_', '')
+                for m in magic.get(encoding, [ b'' ]):
+                    if s.startswith(m):
                         break
                 else:
                     continue
