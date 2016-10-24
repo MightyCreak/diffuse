@@ -106,7 +106,7 @@ missingDll = [
 #    'libopenssl.dll',
 #    'liborc-0.4-0.dll',
 #    'liborc-test-0.4-0.dll',
-#    'libp11-kit-0.dll',
+    'libp11-kit-0.dll',
     'libpango-1.0-0.dll',
     'libpangocairo-1.0-0.dll',
     'libpangoft2-1.0-0.dll',
