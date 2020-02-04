@@ -1,0 +1,910 @@
+# Swedish translation for Diffuse.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Åke Engelbrektson <eson@svenskasprakfiler.se>, 2017.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-12-24 14:49+0100\n"
+"PO-Revision-Date: 2017-12-31 08:45+0100\n"
+"Language-Team: Svenska Språkfiler <contactform@svenskasprakfiler.se>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7.1\n"
+"Last-Translator: Åke Engelbrektson <eson@svenskasprakfiler.se>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: sv\n"
+
+#: diffuse:892
+msgid "\"co\" command"
+msgstr "\"co\" kommando"
+
+#: diffuse:893
+msgid "\"rlog\" command"
+msgstr "\"rlog\" kommando"
+
+#: diffuse:7229
+#, python-format
+msgid "A file named %s already exists.  Do you want to overwrite it?"
+msgstr "Det finns redan en fil som heter %s. Vill du skriva över den?"
+
+#: diffuse:4731
+msgid "Align with Selection"
+msgstr "Justera till markerat"
+
+#: diffuse:826
+msgid "Alignment"
+msgstr "Justering"
+
+#: diffuse:843
+msgid "Always show the tab bar"
+msgstr "Visa alltid flikfältet"
+
+#: diffuse:716
+msgid "Auto Detect"
+msgstr "Identifiera automatiskt"
+
+#: diffuse:836
+msgid "Auto indent"
+msgstr "Automatiskt indrag"
+
+#: diffuse:7469
+msgid "C_lear Edits"
+msgstr "_Rensa bort ändringar"
+
+#: diffuse:8026
+msgid "Choose Folder With Commit"
+msgstr "Välj mapp för arkiveringar"
+
+#: diffuse:8006
+msgid "Choose Folder With Modified Files"
+msgstr "Välj mapp med ändrade filer"
+
+#: diffuse:4740 diffuse:7571
+msgid "Clear Edits"
+msgstr "Rensa bort ändringar"
+
+#: diffuse:6777
+msgid "Close Tab"
+msgstr "Stäng fliken"
+
+#: diffuse:7712
+msgid "Close _Without Saving"
+msgstr "Stäng _utan att spara"
+
+#: diffuse:6641
+#, python-format
+msgid "Closing this tab will quit %s."
+msgstr "Stängning av denna flik, avslutar %s."
+
+#: diffuse:6915
+#, python-format
+msgid "Column %d"
+msgstr "Kolumn %d"
+
+#: diffuse:895
+msgid "Command"
+msgstr "Kommando"
+
+#: diffuse:7515
+msgid "Convert Leading Spaces To _Tabs"
+msgstr "Konvertera inledande blanksteg till _tabbar"
+
+#: diffuse:7514
+msgid "Convert Tabs To _Spaces"
+msgstr "Konvertera tabbar till _blanksteg"
+
+#: diffuse:7522
+msgid "Convert To Uni_x Format"
+msgstr "Konvertera till _Unix-format"
+
+#: diffuse:7520
+msgid "Convert To _DOS Format"
+msgstr "Konvertera till _DOS-format"
+
+#: diffuse:7508
+msgid "Convert To _Lower Case"
+msgstr "Konvertera till _gemener"
+
+#: diffuse:7521
+msgid "Convert To _Mac Format"
+msgstr "Konvertera till _MAC-format"
+
+#: diffuse:7507
+msgid "Convert To _Upper Case"
+msgstr "Konvertera till _VERSALER"
+
+#: diffuse:4736 diffuse:7569
+msgid "Copy"
+msgstr "Kopiera"
+
+#: diffuse:7561
+msgid "Copy Left Into Selection"
+msgstr "Kopiera från vänster till markerat"
+
+#: diffuse:7528
+msgid "Copy Left _Into Selection"
+msgstr "Kopiera från vänster till _markerat"
+
+#: diffuse:7529
+msgid "Copy Right I_nto Selection"
+msgstr "Kopiera från höger till m_arkerat"
+
+#: diffuse:7562
+msgid "Copy Right Into Selection"
+msgstr "Kopiera från höger till markerat"
+
+#: diffuse:7560
+msgid "Copy Selection Left"
+msgstr "Kopiera från markerat till vänster"
+
+#: diffuse:7559
+msgid "Copy Selection Right"
+msgstr "Kopiera från markerat till höger"
+
+#: diffuse:7526
+msgid "Copy Selection _Left"
+msgstr "Kopiera från markerat till _vänster"
+
+#: diffuse:7525
+msgid "Copy Selection _Right"
+msgstr "Kopiera från markerat till _höger"
+
+#: diffuse:68
+msgid "Copyright © 2006-2014 Derrick Moser"
+msgstr "Copyright © 2006-2014 Derrick Moser"
+
+#: diffuse:7464
+msgid "Cu_t"
+msgstr "Klipp _ut"
+
+#: diffuse:4735 diffuse:7568
+msgid "Cut"
+msgstr "Klipp ut"
+
+#: diffuse:872
+msgid "Cygdrive prefix"
+msgstr "Cygdrive-prefix"
+
+#: diffuse:869
+msgid "Cygwin"
+msgstr "Cygwin"
+
+#: diffuse:7518
+msgid "De_crease Indenting"
+msgstr "Mi_nska indrag"
+
+#: diffuse:848
+msgid "Default codec"
+msgstr "Standardkodning"
+
+#: diffuse:842
+msgid "Default panes"
+msgstr "Standardpaneler"
+
+#: diffuse:6739
+msgid "Derrick Moser <derrick_moser@yahoo.com>"
+msgstr "Derrick Moser <derrick_moser@yahoo.com>"
+
+#: diffuse:6736
+msgid "Diffuse is a graphical tool for merging and comparing text files."
+msgstr ""
+"Diffuse är ett grafiskt verktyg för att jämföra och sammanfoga textfiler."
+
+#: diffuse:812
+msgid "Display"
+msgstr "Visning"
+
+#: diffuse:834
+msgid "Editor"
+msgstr "Redigerare"
+
+#: diffuse:6660
+msgid "Encoding: "
+msgstr "Teckentabell: "
+
+#: diffuse:7275
+#, python-format
+msgid "Error encoding to %s."
+msgstr "Fel vid kodning till %s."
+
+#: diffuse:2519
+#, python-format
+msgid "Error parsing %s."
+msgstr "Fel vid tolkning av %s."
+
+#: diffuse:8404
+msgid "Error parsing line number."
+msgstr "Fel vid tolkning av radnummer."
+
+#: diffuse:1621 diffuse:2184 diffuse:2312
+#, python-format
+msgid "Error parsing revision %s."
+msgstr "Fel vid tolkning av revision %s."
+
+#: diffuse:8421
+#, python-format
+msgid "Error processing argument \"%s\".  Directory not expected."
+msgstr ""
+"Fel vid bearbetning av argumentet \"%s\". Katalogen inte den förväntade."
+
+#: diffuse:697
+#, python-format
+msgid "Error processing line %(line)d of %(file)s."
+msgstr "Fel vid bearbetning av rad %(line)d i %(file)s."
+
+#: diffuse:7110 diffuse:8327
+#, python-format
+msgid "Error reading %s."
+msgstr "Fel vid läsning av  %s."
+
+#: diffuse:7108
+#, python-format
+msgid "Error reading revision %(rev)s of %(file)s."
+msgstr "Fel vid läsning av revision %(rev)s i %(file)s"
+
+#: diffuse:7926
+#, python-format
+msgid "Error retrieving commits for %s."
+msgstr "Fel vid hämtning av arkiveringar för %s."
+
+#: diffuse:7957
+#, python-format
+msgid "Error retrieving modifications for %s."
+msgstr "Fel vid hämtning av ändringar för %s."
+
+#: diffuse:1004 diffuse:7279
+#, python-format
+msgid "Error writing %s."
+msgstr "Fel vid skrivning av %s."
+
+#: diffuse:837
+msgid "Expand tabs to spaces"
+msgstr "Expandera tabbar till blanksteg"
+
+#: diffuse:7506
+msgid "F_ormat"
+msgstr "F_ormat"
+
+#: diffuse:7823
+#, python-format
+msgid "File Merge %d"
+msgstr "Filsammanslagning %d"
+
+#: diffuse:7474
+msgid "Find Pre_vious"
+msgstr "Sök _föregående"
+
+#: diffuse:7473
+msgid "Find _Next"
+msgstr "Sök _nästa"
+
+#: diffuse:6591
+msgid "Find..."
+msgstr "Sök..."
+
+#: diffuse:7498
+msgid "Fir_st Tab"
+msgstr "F_örsta fliken"
+
+#: diffuse:7554
+msgid "First Difference"
+msgstr "Första olikheten"
+
+#: diffuse:814
+msgid "Font"
+msgstr "Teckensnitt"
+
+#: diffuse:7309
+msgid "Go To Line..."
+msgstr "Gå till rad..."
+
+#: diffuse:823
+msgid "Ignore blank line differences"
+msgstr "Ignorera olikheter i tomma rader"
+
+#: diffuse:831
+msgid "Ignore blank lines"
+msgstr "Ignorera tomma rader"
+
+#: diffuse:828
+msgid "Ignore case"
+msgstr "Ignorera skiftläge"
+
+#: diffuse:820
+msgid "Ignore case differences"
+msgstr "Ignorera olikheter i skiftläge"
+
+#: diffuse:822 diffuse:830
+msgid "Ignore changes to white space"
+msgstr "Ignorera ändringar i blanksteg"
+
+#: diffuse:832
+msgid "Ignore end of line characters"
+msgstr "Ignorera tecken för radavslut"
+
+#: diffuse:824
+msgid "Ignore end of line differences"
+msgstr "Ignorera olikheter i radavslut"
+
+#: diffuse:829
+msgid "Ignore white space"
+msgstr "Ignorera blanksteg"
+
+#: diffuse:821
+msgid "Ignore white space differences"
+msgstr "Ignorera olikheter i blanksteg"
+
+#: diffuse:4732
+msgid "Isolate"
+msgstr "Isolera"
+
+#: diffuse:7501
+msgid "Las_t Tab"
+msgstr "S_ista fliken"
+
+#: diffuse:7557
+msgid "Last Difference"
+msgstr "Sista olikheten"
+
+#: diffuse:897
+msgid "Launch from a Bash login shell"
+msgstr "Starta från ett Bash inloggningsskal"
+
+#: diffuse:7309
+msgid "Line Number: "
+msgstr "Radnummer: "
+
+#: diffuse:7531
+msgid "M_erge From Right Then Left"
+msgstr "S_ammanfoga från höger, sedan vänster"
+
+#: diffuse:6622
+msgid "Match Case"
+msgstr "Skiftlägeskänslig"
+
+#: diffuse:7563
+msgid "Merge From Left Then Right"
+msgstr "Sammanfoga från vänster, sedan höger"
+
+#: diffuse:7564
+msgid "Merge From Right Then Left"
+msgstr "Sammanfoga från höger, sedan vänster"
+
+#: diffuse:4733
+msgid "Merge Selection"
+msgstr "Sammanfoga markerat"
+
+#: diffuse:7550
+msgid "New 2-Way File Merge"
+msgstr "Ny 2-vägs filsammanslagning"
+
+#: diffuse:7551
+msgid "New 3-Way File Merge"
+msgstr "Ny 3-vägs filsammanslagning"
+
+#: diffuse:8075
+msgid "New N-Way File Merge..."
+msgstr "Ny x-vägs filsammanslagning..."
+
+#: diffuse:7452
+msgid "New _2-Way File Merge"
+msgstr "Ny _2-vägs filsammanslagning"
+
+#: diffuse:7453
+msgid "New _3-Way File Merge"
+msgstr "Ny _3-vägs filsammanslagning"
+
+#: diffuse:7454
+msgid "New _N-Way File Merge..."
+msgstr "Ny _x-vägs filsammanslagning..."
+
+#: diffuse:7556
+msgid "Next Difference"
+msgstr "Nästa olikhet"
+
+#: diffuse:7500
+msgid "Next _Tab"
+msgstr "Nästa _flik"
+
+#: diffuse:8039
+msgid "No committed files found."
+msgstr "Inga arkiverade filer hittades."
+
+#: diffuse:8019
+msgid "No modified files found."
+msgstr "Inga ändrade filer hittades"
+
+#: diffuse:7479
+msgid "None"
+msgstr "Ingen"
+
+#: diffuse:8075
+msgid "Number of panes: "
+msgstr "Antal paneler: "
+
+#: diffuse:7445
+msgid "Open Commi_t..."
+msgstr "_Öppna arkivering..."
+
+#: diffuse:7133
+msgid "Open File"
+msgstr "Öppna fil"
+
+#: diffuse:7990
+msgid "Open File In New Tab"
+msgstr "Öppna fil i ny flik"
+
+#: diffuse:7443
+msgid "Open File In New _Tab..."
+msgstr "Öppna fil i ny _flik..."
+
+#: diffuse:6832
+msgid "Open File..."
+msgstr "Öppna fil..."
+
+#: diffuse:7444
+msgid "Open _Modified Files..."
+msgstr "Öppna _ändrade filer..."
+
+#: diffuse:849
+msgid "Order of codecs used to identify encoding"
+msgstr "Tabellordning för att identifiera kodning"
+
+#: diffuse:7701
+msgid "Pane"
+msgstr "Panel"
+
+#: diffuse:4737 diffuse:7570
+msgid "Paste"
+msgstr "Klistra in"
+
+#: diffuse:8140
+msgid "Phrase not found.  Continue from the end of the file?"
+msgstr "Frasen kan inte hittas. Vill du fortsätta från slutet på filen?"
+
+#: diffuse:8142
+msgid "Phrase not found.  Continue from the start of the file?"
+msgstr "Frasen kan inte hittas. Vill du fortsätta från början på filen?"
+
+#: diffuse:7477
+msgid "Pr_eferences..."
+msgstr "_Inställningar..."
+
+#: diffuse:7499
+msgid "Pre_vious Tab"
+msgstr "Före_gående flik"
+
+#: diffuse:966
+msgid "Preferences"
+msgstr "Inställningar"
+
+#: diffuse:7335
+msgid ""
+"Press the enter key or double click to edit.  Press the space bar or use the "
+"RMB menu to manually align."
+msgstr ""
+"Tryck på returtangenten eller dubbelklicka för att redigera. Tryck blanksteg "
+"eller använd kontextmenyn för att justera manuellt."
+
+#: diffuse:7337
+msgid "Press the escape key to finish editing."
+msgstr "Tryck på Esc-tangenten för att avsluta redigering."
+
+#: diffuse:7555
+msgid "Previous Difference"
+msgstr "Föregående olikhet"
+
+#: diffuse:7490
+msgid "Re_align All"
+msgstr "_Omjustera alla"
+
+#: diffuse:7553
+msgid "Realign All"
+msgstr "Omjustera alla"
+
+#: diffuse:7567
+msgid "Redo"
+msgstr "Upprepa"
+
+#: diffuse:846
+msgid "Regional Settings"
+msgstr "Regionala inställningar"
+
+#: diffuse:6833
+msgid "Reload File"
+msgstr "Läs in filen igen"
+
+#: diffuse:7513
+msgid "Remove Trailing _White Space"
+msgstr "Ta bort avslutande blanksteg"
+
+#: diffuse:6670
+msgid "Revision: "
+msgstr "Revision: "
+
+#: diffuse:817
+msgid "Right margin"
+msgstr "Höger marginal"
+
+#: diffuse:871
+msgid "Root directory"
+msgstr "Root-mapp"
+
+#: diffuse:7203
+#, python-format
+msgid "Save %(title)s Pane %(pane)d"
+msgstr "Spara %(title)s Panel %(pane)d"
+
+#: diffuse:7450
+msgid "Save A_ll"
+msgstr "Spara a_lla"
+
+#: diffuse:6834
+msgid "Save File"
+msgstr "Spara filen"
+
+#: diffuse:6835
+msgid "Save File As..."
+msgstr "Spara filen som..."
+
+#: diffuse:7449
+msgid "Save File _As..."
+msgstr "Spara filen _som..."
+
+#: diffuse:6980
+msgid "Save changes before loading the new file?"
+msgstr "Vill du spara ändringar före inläsning av den ny filen?"
+
+#: diffuse:6627
+msgid "Search Backwards"
+msgstr "Sök bakifrån"
+
+#: diffuse:6597
+msgid "Search For: "
+msgstr "Sök efter: "
+
+#: diffuse:4739
+msgid "Select All"
+msgstr "Markera alla"
+
+#: diffuse:7468
+msgid "Select _All"
+msgstr "Markera _alla"
+
+#: diffuse:7339
+msgid ""
+"Select target line and press the space bar to align.  Press the escape key "
+"to cancel."
+msgstr ""
+"Välj målrad och tryck blanksteg för att justera. Tryck Esc för att avbryta."
+
+#: diffuse:7504
+msgid "Shift Pane _Left"
+msgstr "Växla panel _vänster"
+
+#: diffuse:7503
+msgid "Shift Pane _Right"
+msgstr "Växla panel _höger"
+
+#: diffuse:818
+msgid "Show line numbers"
+msgstr "Visa radnummer"
+
+#: diffuse:816
+msgid "Show right margin"
+msgstr "Visa höger marginal"
+
+#: diffuse:819
+msgid "Show white space characters"
+msgstr "Visa blankstegstecken"
+
+#: diffuse:8414
+#, python-format
+msgid "Skipping unknown argument \"%s\"."
+msgstr "Undantar okänt argument \"%s\"."
+
+#: diffuse:838
+msgid "Soft tab width"
+msgstr "Mjuk tabulatorbredd"
+
+#: diffuse:7683
+msgid ""
+"Some files have unsaved changes.  Select the files to save before closing."
+msgstr ""
+"Vissa filer har ändringar som inte sparats. Välj filer att spara före "
+"stängning."
+
+#: diffuse:7511
+msgid "Sort Lines In D_escending Order"
+msgstr "Sortera rader i _fallande ordning"
+
+#: diffuse:7510
+msgid "Sort Lines In _Ascending Order"
+msgstr "Sortera rader i _stigande ordning"
+
+#: diffuse:4742
+msgid "Swap with Selected Pane"
+msgstr "Växla med markerad panel"
+
+#: diffuse:7696
+msgid "Tab"
+msgstr "Flik"
+
+#: diffuse:815
+msgid "Tab width"
+msgstr "Tabulatorbredd"
+
+#: diffuse:840
+msgid "Tabs"
+msgstr "Flikar"
+
+#: diffuse:7183
+#, python-format
+msgid "The file %s changed on disk.  Do you want to reload the file?"
+msgstr "Filen %s har ändrats på disk. Vill du läsa in filen igen?"
+
+#: diffuse:7234
+#, python-format
+msgid ""
+"The file %s has been modified by another process since reading it.  If you "
+"save, all the external changes could be lost.  Save anyways?"
+msgstr ""
+"Filen %s har ändrats av en annan process sedan inläsning. Om du sparar kan "
+"alla externa ändringar förloras. Vill du spara ändå?"
+
+#: diffuse:6743
+msgid ""
+"This program is free software; you can redistribute it and/or modify it "
+"under the terms of the GNU General Public License as published by the Free "
+"Software Foundation; either version 2 of the licence, or (at your option) "
+"any later version.\n"
+"\n"
+"This program is distributed in the hope that it will be useful, but WITHOUT "
+"ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or "
+"FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for "
+"more details.\n"
+"\n"
+"You should have received a copy of the GNU General Public License along with "
+"this program.  You may also obtain a copy of the GNU General Public License "
+"from the Free Software Foundation by visiting their web site (http://www.fsf."
+"org/) or by writing to the Free Software Foundation, Inc., 51 Franklin St, "
+"Fifth Floor, Boston, MA  02110-1301  USA\n"
+msgstr ""
+"Detta program är fri mjukvara! Du kan återdistribuera det och/eller "
+"modifiera det, under villkoren för GNU General Public License som den "
+"publiceras av Free Software Foundation. Antingen version 2 av licensen, "
+"eller valfri senare version.\n"
+"\n"
+"Programmet distribueras i hopp om att det skall vara användbart, men UTAN "
+"NÅGRA GARANTIER. Utan ens underförstådd garanti om SÄLJBARHET eller "
+"LÄMPLIGHET FÖR ETT VISST ÄNDAMÅL. Se GNU General Public License för mer "
+"detaljerad info.\n"
+"\n"
+"Du bör ha fått en kopia av GNU General Public License tillsammans med det "
+"här programmet. Du kan också hämta en kopia av GNU General Public License "
+"från Free Software Foundation genom att besöka deras webbsida (http://www."
+"fsf.org/) eller skriva till Free Software Foundation, Inc., 51 Franklin St, "
+"Fifth Floor, Boston, MA  02110-1301  USA.\n"
+
+#: diffuse:7566
+msgid "Undo"
+msgstr "Ångra"
+
+#: diffuse:899
+msgid "Update paths for Cygwin"
+msgstr "Uppdatera sökvägar för Cygwin"
+
+#: diffuse:86
+msgid ""
+"Usage:\n"
+"    diffuse [ [OPTION...] [FILE...] ]...\n"
+"    diffuse ( -h | -? | --help | -v | --version )\n"
+"\n"
+"Diffuse is a graphical tool for merging and comparing text files.  Diffuse "
+"is\n"
+"able to compare an arbitrary number of files side-by-side and gives users "
+"the\n"
+"ability to manually adjust line matching and directly edit files.  Diffuse "
+"can\n"
+"also retrieve revisions of files from Bazaar, CVS, Darcs, Git, Mercurial,\n"
+"Monotone, RCS, Subversion, and SVK repositories for comparison and merging.\n"
+"\n"
+"Help Options:\n"
+"  ( -h | -? | --help )             Display this usage information\n"
+"  ( -v | --version )               Display version and copyright "
+"information\n"
+"\n"
+"Configuration Options:\n"
+"  --no-rcfile                      Do not read any resource files\n"
+"  --rcfile <file>                  Specify explicit resource file\n"
+"\n"
+"General Options:\n"
+"  ( -c | --commit ) <rev>          File revisions <rev-1> and <rev>\n"
+"  ( -D | --close-if-same )         Close all tabs with no differences\n"
+"  ( -e | --encoding ) <codec>      Use <codec> to read and write files\n"
+"  ( -L | --label ) <label>         Display <label> instead of the file name\n"
+"  ( -m | --modified )              Create a new tab for each modified file\n"
+"  ( -r | --revision ) <rev>        File revision <rev>\n"
+"  ( -s | --separate )              Create a new tab for each file\n"
+"  ( -t | --tab )                   Start a new tab\n"
+"  --line <line>                    Start with line <line> selected\n"
+"  --null-file                      Create a blank file comparison pane\n"
+"\n"
+"Display Options:\n"
+"  ( -b | --ignore-space-change )   Ignore changes to white space\n"
+"  ( -B | --ignore-blank-lines )    Ignore changes in blank lines\n"
+"  ( -E | --ignore-end-of-line )    Ignore end of line differences\n"
+"  ( -i | --ignore-case )           Ignore case differences\n"
+"  ( -w | --ignore-all-space )      Ignore white space differences"
+msgstr ""
+"Användning:\n"
+"    diffuse [ [OPTION...] [FILE...] ]...\n"
+"    diffuse ( -h | -? | --help | -v | --version )\n"
+"\n"
+"Diffuse är ett grafiskt verktyg för sammanfogning och jämförelse av "
+"textfiler. \n"
+"Diffuse kan jämföra ett godtyckligt antal filer sida vid sida och ger "
+"användaren\n"
+"en möjlighet att manuellt justera radmatchning och att direktredigera "
+"filer.\n"
+"Diffuse kan också hämta revideringar av filer från Bazaar, CVS, Darcs, Git,\n"
+"Mercurial, Monotone, RCS, Subversion, och SVK för jämförelse och "
+"sammanfogning.\n"
+"\n"
+"Hjälpalternativ:\n"
+"  ( -h | -? | --help )             Visa användningsinformation\n"
+"  ( -v | --version )               Visa version och upphovsrättsinformation\n"
+"\n"
+"Konfigurationsalternativ:\n"
+"  --no-rcfile                      Läs inga resursfiler\n"
+"  --rcfile <file>                  Specificera explicit resursfil\n"
+"\n"
+"General Options:\n"
+"  ( -c | --commit ) <rev>          Filrevisioner <rev-1> och <rev>\n"
+"  ( -D | --close-if-same )         Stäng alla flikar som saknar olikheter\n"
+"  ( -e | --encoding ) <codec>      Använd <teckentabell> för att läsa och "
+"skriva filer\n"
+"  ( -L | --label ) <label>         Visa <etikett> istället för filnamn\n"
+"  ( -m | --modified )              Skapa ny flik för varje ändrad fil\n"
+"  ( -r | --revision ) <rev>        Filrevision <rev>\n"
+"  ( -s | --separate )              Skapa ny flik för varje fil\n"
+"  ( -t | --tab )                   Starta en ny flik\n"
+"  --line <line>                    Starta med rad <radnummer> markerad\n"
+"  --null-file                      Skapa en tom filjämförelsepanel\n"
+"\n"
+"Display Options:\n"
+"  ( -b | --ignore-space-change )   Ignorera ändringar i blanksteg\n"
+"  ( -B | --ignore-blank-lines )    Ignorera ändringar i  tomma rader\n"
+"  ( -E | --ignore-end-of-line )    Ignorera olikheter i radslut\n"
+"  ( -i | --ignore-case )           Ignorera olikheter i skiftläge\n"
+"  ( -w | --ignore-all-space )      Ignorera olikheter i blanksteg"
+
+#: diffuse:902
+msgid "Version Control"
+msgstr "Versionskontroll"
+
+#: diffuse:844
+#, python-format
+msgid "Warn me when closing a tab will quit %s"
+msgstr "Varna mig när flikstängning kommer att avsluta %s"
+
+#: diffuse:7536
+#, python-format
+msgid "_About %s..."
+msgstr "_Om %s..."
+
+#: diffuse:7456
+msgid "_Close Tab"
+msgstr "_Stäng fliken"
+
+#: diffuse:7465
+msgid "_Copy"
+msgstr "_Kopiera"
+
+#: diffuse:7470
+msgid "_Dismiss All Edits"
+msgstr "_Förkasta alla ändringar"
+
+#: diffuse:7460
+msgid "_Edit"
+msgstr "_Redigera"
+
+#: diffuse:7441
+msgid "_File"
+msgstr "_Arkiv"
+
+#: diffuse:7472
+msgid "_Find..."
+msgstr "_Sök..."
+
+#: diffuse:7493
+msgid "_First Difference"
+msgstr "_Första olikheten"
+
+#: diffuse:7475
+msgid "_Go To Line..."
+msgstr "_Gå till rad..."
+
+#: diffuse:7533
+msgid "_Help"
+msgstr "_Hjälp"
+
+#: diffuse:7534
+msgid "_Help Contents..."
+msgstr "_Hjälpinnehåll..."
+
+#: diffuse:7517
+msgid "_Increase Indenting"
+msgstr "_Utöka indrag"
+
+#: diffuse:7491
+msgid "_Isolate"
+msgstr "_Isolera"
+
+#: diffuse:7496
+msgid "_Last Difference"
+msgstr "_Sista olikheten"
+
+#: diffuse:7524
+msgid "_Merge"
+msgstr "_Sammanfoga"
+
+#: diffuse:7530
+msgid "_Merge From Left Then Right"
+msgstr "_Sammanfoga från vänster, sedan höger"
+
+#: diffuse:7495
+msgid "_Next Difference"
+msgstr "_Nästa olikhet"
+
+#: diffuse:7442
+msgid "_Open File..."
+msgstr "_Öppna fil..."
+
+#: diffuse:7466
+msgid "_Paste"
+msgstr "_Klistra in"
+
+#: diffuse:7494
+msgid "_Previous Difference"
+msgstr "_Föregående olikhet"
+
+#: diffuse:7458
+msgid "_Quit"
+msgstr "_Avsluta"
+
+#: diffuse:7462
+msgid "_Redo"
+msgstr "_Upprepa"
+
+#: diffuse:7446
+msgid "_Reload File"
+msgstr "_Läs in filen igen"
+
+#: diffuse:7448
+msgid "_Save File"
+msgstr "_Spara filen"
+
+#: diffuse:7488
+msgid "_Syntax Highlighting"
+msgstr "_Syntaxmarkering"
+
+#: diffuse:7461
+msgid "_Undo"
+msgstr "_Ångra"
+
+#: diffuse:7457
+msgid "_Undo Close Tab"
+msgstr "_Ångra flikstängning"
+
+#: diffuse:7487
+msgid "_View"
+msgstr "_Visa"
+
+#: diffuse:6740
+msgid "translator-credits"
+msgstr "Åke Engelbrektson"
