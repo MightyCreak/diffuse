@@ -197,7 +197,7 @@ msgstr "Derrick Moser <derrick_moser@yahoo.com>"
 
 #: ../src/usr/bin/diffuse:6733
 msgid "Diffuse is a graphical tool for merging and comparing text files."
-msgstr "Diffuse ist ein graphisches Werzeug zum Zusammenführen und Vergleichen von Textdateien."
+msgstr "Diffuse ist ein graphisches Werkzeug zum Zusammenführen und Vergleichen von Textdateien."
 
 #: ../src/usr/bin/diffuse:821
 msgid "Display"
@@ -717,7 +717,7 @@ msgstr ""
 "    diffuse [ [OPTION...] [DATEI...] ]...\n"
 "    diffuse ( -h | -? | --help | -v | --version )\n"
 "\n"
-"Diffuse ist ein graphisches Werzeug zum Zusammenführen und Vergleichen von\n"
+"Diffuse ist ein graphisches Werkzeug zum Zusammenführen und Vergleichen von\n"
 "Textdateien.  Diffuse ist in der Lage eine beliebige Anzahl von Dateien direkt\n"
 "zu vergleichen und gibt Nutzern die Möglichkeit manuell die Übereinstimmung\n"
 "anzupassen und Dateien direkt zu bearbeiten.  Diffuse kann ebenfalls Revisionen\n"

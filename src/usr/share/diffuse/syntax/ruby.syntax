@@ -56,7 +56,7 @@ syntax_pattern backquote backquote ruby_string '.[^\\`]*'
 # literals
 syntax_pattern normal expr ruby_literal '(((0|[1-9][0-9])*\.[0-9]*|\.[0-9]+)(e[\+\-]?[0-9]+)?|(0|[1-9][0-9]*)e[\+\-]?[0-9]+|0x[0-9a-f]+|0[0-7]*|[1-9][0-9]*)' ignorecase
 syntax_pattern normal expr ruby_literal '\b(false|FALSE|nil|NIL|true|TRUE|__FILE__|__LINE__)\b'
-syntax_pattern normal expr ruby_literal '\?(\C-|\M-(\C-)?)?[^ \t\r\n]'
+syntax_pattern normal expr ruby_literal '\\?(\\C-|\\M-(\\C-)?)?[^ \t\r\n]'
 
 # variables
 syntax_pattern normal expr ruby_variable "(@@?[a-z_][a-z_0-9]*|\\$([a-z_][a-z_0-9]*|-[a-z]|[!@&`+1~=/\\\\,;\\.<>0\\*\\$\\?:\"']))\b" ignorecase

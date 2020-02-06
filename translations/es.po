@@ -1,4 +1,4 @@
-# German translations for diffuse package.
+# Spanish translations for diffuse package.
 # This is an alpha release.
 # Copyright (C) 2010 Derrick Moser
 # This file is distributed under the same license as the diffuse package.

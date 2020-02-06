@@ -1,4 +1,4 @@
-# Chinese translations for X package
+# Chinese translations for diffuse package
 # Diffuse 软件包的简体中文翻译.
 # Copyright (C) 2009 THE X'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the X package.

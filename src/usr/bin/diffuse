@@ -6,7 +6,7 @@
 #
 # This program is free software; you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free Software
-# Foundation; either version 2 of the licence, or (at your option) any later
+# Foundation; either version 2 of the license, or (at your option) any later
 # version.
 #
 # This program is distributed in the hope that it will be useful, but WITHOUT
@@ -234,7 +234,7 @@ class SyntaxParser:
                 lookup[state] = []
         lookup[prev_state].append([pattern, token_type, next_state])
 
-    # given a string and an initial state, idenitify the final state and tokens
+    # given a string and an initial state, identify the final state and tokens
     def parse(self, state_name, s):
         lookup = self.transitions_lookup
         transitions, blocks, start = lookup[state_name], [], 0
@@ -561,7 +561,7 @@ class Resources:
             return self.strings[symbol]
         except KeyError:
             logDebug('Warning: unknown string "%s"' % (symbol, ))
-            self.strings[symbols] = v = ''
+            self.strings[symbol] = v = ''
             return v
 
     # syntax highlighting
@@ -1712,11 +1712,11 @@ class _Darcs:
         if mods:
             args.extend(['whatsnew', '-s'])
         else:
-            args.extend(['changes', '--number', '-s'])
+            args.extend(['log', '--number', '-s'])
             try:
                 args.extend(['-n', str(int(rev))])
             except ValueError:
-                args.extend(['--max-count', '1', '-p', rev])
+                args.extend(['-h', rev])
         # build list of interesting files
         pwd, isabs = os.path.abspath(os.curdir), False
         for name in names:
@@ -1779,7 +1779,8 @@ class _Darcs:
                     if fs.contains(k):
                         if not isabs:
                             k = relpath(pwd, k)
-                        modified[k] = [ (k, prev), (k, rev) ]
+                        if k not in renamed:
+                            modified[k] = [ (k, prev), (k, rev) ]
             elif x == ' ':
                 # renamed
                 k = s[1:].split(' -> ')
@@ -1815,7 +1816,7 @@ class _Darcs:
         try:
             args.extend([ '-n', str(int(rev)) ])
         except ValueError:
-            args.extend([ '-p', rev ])
+            args.extend([ '-h', rev ])
         args.append(safeRelativePath(self.root, name, prefs, 'darcs_cygwin'))
         return popenRead(self.root, args, prefs, 'darcs_bash')
 
@@ -2644,7 +2645,7 @@ def _get_svk_repo(path, prefs):
             if _VcsFolderSet(projs).contains(name):
                 return _Svk(path)
         except IOError:
-            logError(_('Error parsing %s.') % (config, ))
+            logError(_('Error parsing %s.') % (svkconfig, ))
 
 class VCSs:
     def __init__(self):
@@ -6895,6 +6896,7 @@ class Diffuse(Gtk.Window):
                    [ Gtk.STOCK_SAVE_AS, self.button_cb, 'save_as', _('Save File As...') ] ])
 
                 self.label = label = Gtk.Label.new()
+                label.set_selectable(True)
                 label.set_ellipsize(Pango.EllipsizeMode.START)
                 label.set_max_width_chars(1)
 
@@ -8441,7 +8443,7 @@ if __name__ == '__main__':
                 specs, labels, options = [], [], {}
                 # start a new tab
                 mode = 'single'
-            elif i + 1 < argc and arg in [ '-V', '--vcs-order' ]:
+            elif i + 1 < argc and arg in [ '-V', '--vcs' ]:
                 i += 1
                 diff.prefs.setString('vcs_search_order', args[i])
                 diff.preferences_updated()
