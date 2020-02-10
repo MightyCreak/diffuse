@@ -29,7 +29,7 @@ app_path = sys.argv[0]
 
 # print a message to stderr
 def logError(s):
-    sys.stderr.write('%s: %s\n' % (app_path, s))
+    sys.stderr.write(f'{app_path}: {s}\n')
 
 # this install script should not be used on Windows
 if os.name == 'nt':
@@ -51,7 +51,7 @@ files_only = False
 
 # process --help option
 if len(sys.argv) == 2 and sys.argv[1] == '--help':
-    print """Usage: %s [OPTION...]
+    print(f"""Usage: {app_path} [OPTION...]
 
 Install or remove Diffuse.
 
@@ -64,30 +64,30 @@ Options:
 
   --destdir=PATH
      path to the installation's root directory
-     default: %s
+     default: {options['destdir']}
 
   --prefix=PATH
      common installation prefix for files
-     default: %s
+     default: {options['prefix']}
 
   --sysconfdir=PATH
      directory for installing read-only single-machine data
-     default: %s
+     default: {options['sysconfdir']}
 
   --examplesdir=PATH
      directory for example configuration files
-     default: %s
+     default: {options['examplesdir']}
 
   --mandir=PATH
      directory for man pages
-     default: %s
+     default: {options['mandir']}
 
   --pythonbin=PATH
      command for python interpreter
-     default: %s
+     default: {options['pythonbin']}
 
   --files-only
-     only install/remove files; skip the post install/removal tasks""" % (app_path, options['destdir'], options['prefix'], options['sysconfdir'], options['examplesdir'], options['mandir'], options['pythonbin'])
+     only install/remove files; skip the post install/removal tasks""")
     sys.exit(0)
  
 # returns the list of components used in a path
@@ -126,7 +126,7 @@ def removeFile(f):
     try:
         os.unlink(f)
     except OSError:
-        logError('Error removing "%s".' % (f, ))
+        logError(f'Error removing "{f}".')
 
 # install/remove sets of files
 def processFiles(install, dst, src, template):
@@ -141,13 +141,13 @@ def processFiles(install, dst, src, template):
                 f.close()
                 if v is not None:
                     c = replace(c, v)
-                print 'Installing %s' % (d, )
+                print(f'Installing {d}')
                 f = open(d, 'wb')
                 f.write(c)
                 f.close()
                 if k == 'bin/diffuse':
                     # turn on the execute bits
-                    os.chmod(d, 0755)
+                    os.chmod(d, 0o755)
             else:
                 # remove file
                 removeFile(d)
@@ -156,16 +156,16 @@ def processFiles(install, dst, src, template):
 def processTranslations(install, dst):
     for s in glob.glob('translations/*.po'):
         lang = s[13:-3]
-        d = os.path.join(dst, 'share/locale/%s/LC_MESSAGES/diffuse.mo' % (lang, ))
+        d = os.path.join(dst, f'share/locale/{lang}/LC_MESSAGES/diffuse.mo')
         if install:
             # install file
             try:
-                print 'Installing %s' % (d, )
+                print(f'Installing {d}')
                 createDirs(os.path.dirname(d))
                 if subprocess.Popen(['msgfmt', '-o', d, s]).wait() != 0:
                     raise OSError()
             except OSError:
-                logError('WARNING: Failed to compile "%s" localisation.' % (lang, ))
+                logError(f'WARNING: Failed to compile "{lang}" localisation.')
         else:
             # remove file
             removeFile(d)
@@ -178,19 +178,19 @@ for arg in sys.argv[1:]:
         files_only = True
     else:
         for opt in options.keys():
-            key = '--%s=' % (opt, )
+            key = f'--{opt}='
             if arg.startswith(key):
                 options[opt] = arg[len(key):]
                 break
         else:
-            logError('Unknown option "%s".' % (arg, ))
+            logError(f'Unknown option "{arg}".')
             sys.exit(1)
 
 # expand variables
 for s in 'sysconfdir', 'examplesdir', 'mandir':
     for k in 'prefix', 'sysconfdir':
         if s != k:
-            options[s] = options[s].replace('${%s}' % (k, ), options[k])
+            options[s] = options[s].replace(f'${{{k}}}', options[k])
 
 # validate inputs
 if options['destdir'] == '':
@@ -199,7 +199,7 @@ for opt in 'prefix', 'sysconfdir', 'examplesdir', 'mandir':
     p = options[opt]
     c = components(p)
     if os.pardir in c or os.curdir in c:
-        logError('Bad value for option "%s".' % (opt, ))
+        logError(f'Bad value for option "{opt}".')
         sys.exit(1)
     c.insert(0, '')
     c.append('')
@@ -217,32 +217,34 @@ if install:
     stage = 'install'
 else:
     stage = 'removal'
-print '''Performing %s with:
-    destdir=%s
-    prefix=%s
-    sysconfdir=%s
-    examplesdir=%s
-    mandir=%s
-    pythonbin=%s''' % (stage, destdir, prefix, sysconfdir, examplesdir, mandir, pythonbin)
+print(f'''Performing {stage} with:
+    destdir={destdir}
+    prefix={prefix}
+    sysconfdir={sysconfdir}
+    examplesdir={examplesdir}
+    mandir={mandir}
+    pythonbin={pythonbin}''')
 
 # install files to prefix
 processFiles(install, os.path.join(destdir, prefix[1:]), 'src/usr/', {
-        'bin/diffuse': [ ("'../../etc/diffuserc'", repr(relpath(os.path.join(prefix, 'bin'), os.path.join(sysconfdir, 'diffuserc')))), ('/usr/bin/env python', pythonbin) ],
+        'bin/diffuse': [ (b"'../../etc/diffuserc'", repr(relpath(os.path.join(prefix, 'bin'), os.path.join(sysconfdir, 'diffuserc'))).encode()),
+            (b'/usr/bin/env python', pythonbin.encode()) ],
         'share/applications/diffuse.desktop': None,
         'share/diffuse/syntax/*.syntax': None,
-        'share/gnome/help/diffuse/*/diffuse.xml': [ ('/usr/', prefix), ('/etc/', sysconfdir) ],
-        'share/omf/diffuse/diffuse-*.omf': [ ('/usr/', prefix) ],
+        'share/gnome/help/diffuse/*/diffuse.xml': [ (b'/usr/', prefix.encode()), (b'/etc/', sysconfdir.encode()) ],
+        'share/omf/diffuse/diffuse-*.omf': [ (b'/usr/', prefix.encode()) ],
         'share/icons/hicolor/*/apps/diffuse.png': None
     })
 
 # install manual
 processFiles(install, os.path.join(destdir, mandir[1:]), 'src/usr/share/man/', {
-        'man1/diffuse.1': [ ('/usr/', prefix), ('/etc/', sysconfdir) ],
-        '*/man1/diffuse.1': [ ('/usr/', prefix), ('/etc/', sysconfdir) ]
+        'man1/diffuse.1': [ (b'/usr/', prefix.encode()), (b'/etc/', sysconfdir.encode()) ],
+        '*/man1/diffuse.1': [ (b'/usr/', prefix.encode()), (b'/etc/', sysconfdir.encode()) ]
     })
 
 # install files to sysconfdir
-processFiles(install, os.path.join(destdir, examplesdir[1:]), 'src/etc/', { 'diffuserc': [ ('/etc/', sysconfdir), ('../usr', relpath(sysconfdir, prefix)) ] })
+processFiles(install, os.path.join(destdir, examplesdir[1:]), 'src/etc/', { 'diffuserc': [ (b'/etc/', sysconfdir.encode()),
+    (b'../usr', relpath(sysconfdir, prefix).encode()) ] })
 
 # install translations
 processTranslations(install, os.path.join(destdir, prefix[1:]))
@@ -254,11 +256,11 @@ if not install:
         try:
             os.rmdir(d)
         except OSError:
-            logError('Error removing "%s".' % (d, ))
+            logError(f'Error removing "{d}".')
 
 # do post install/removal tasks
 if not files_only:
-    print 'Performing post %s tasks.' % (stage, )
+    print(f'Performing post {stage} tasks.')
 
     cmds = [ [ 'update-desktop-database' ],
              [ 'gtk-update-icon-cache', os.path.join(destdir, os.path.join(prefix, 'icons/hicolor')[1:]) ] ]
@@ -269,12 +271,12 @@ if not files_only:
     for c in cmds:
         for p in os.environ['PATH'].split(os.pathsep):
             if os.path.exists(os.path.join(p, c[0])):
-                print ' '.join(c)
+                print(' '.join(c))
                 try:
                     if subprocess.Popen(c).wait() != 0:
                         raise OSError()
                 except OSError:
-                    logError('WARNING: Failed to update documentation database with %s.' % (c[0], ))
+                    logError(f'WARNING: Failed to update documentation database with {c[0]}.')
                 break
         else:
-            print 'WARNING: %s is not installed' % (c[0], )
+            print(f'WARNING: {c[0]} is not installed')
