@@ -1370,7 +1370,7 @@ def popenRead(dn, cmd, prefs, bash_pref, success_results=None):
 
 # use popen to read the output of a command
 def popenReadLines(dn, cmd, prefs, bash_pref, success_results=None):
-    return strip_eols(splitlines(popenRead(dn, cmd, prefs, bash_pref, success_results)))
+    return strip_eols(splitlines(popenRead(dn, cmd, prefs, bash_pref, success_results).decode('utf-8', errors='ignore')))
 
 # simulate use of popen with xargs to read the output of a command
 def popenXArgsReadLines(dn, cmd, args, prefs, bash_pref):
