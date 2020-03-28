@@ -67,7 +67,7 @@ _ = gettext.gettext
 APP_NAME = 'Diffuse'
 VERSION = '0.5.0'
 COPYRIGHT = _('''Copyright © 2006-2014 Derrick Moser
-Copyright © 2015-2016 Romain Failliot''')
+Copyright © 2015-2020 Romain Failliot''')
 WEBSITE = 'https://github.com/MightyCreak/diffuse'
 
 # process help options
@@ -7423,11 +7423,14 @@ class Diffuse(Gtk.Window):
         # number of created viewers (used to label some tabs)
         self.viewer_count = 0
 
+        # get monitor resolution
+        monitor_geometry = Gdk.Display.get_default().get_monitor(0).get_geometry()
+
         # state information that should persist across sessions
         self.bool_state = { 'window_maximized': False, 'search_matchcase': False, 'search_backwards': False }
         self.int_state = { 'window_width': 1024, 'window_height': 768 }
-        self.int_state['window_x'] = max(0, (Gdk.Screen.width() - self.int_state['window_width']) / 2)
-        self.int_state['window_y'] = max(0, (Gdk.Screen.height() - self.int_state['window_height']) / 2)
+        self.int_state['window_x'] = max(0, (monitor_geometry.width - self.int_state['window_width']) / 2)
+        self.int_state['window_y'] = max(0, (monitor_geometry.height - self.int_state['window_height']) / 2)
         self.connect('configure-event', self.configure_cb)
         self.connect('window-state-event', self.window_state_cb)
 
@@ -7447,9 +7450,12 @@ class Diffuse(Gtk.Window):
         DIFFUSE_STOCK_LEFT_RIGHT = 'diffuse-left-right'
         DIFFUSE_STOCK_RIGHT_LEFT = 'diffuse-right-left'
 
+        default_theme = Gtk.IconTheme.get_default()
+        icon_size = Gtk.IconSize.lookup(Gtk.IconSize.LARGE_TOOLBAR).height
         factory = Gtk.IconFactory()
+
         # render the base item used to indicate a new document
-        p0 = self.render_icon(Gtk.STOCK_NEW, Gtk.IconSize.LARGE_TOOLBAR)
+        p0 = default_theme.load_icon("document-new", icon_size, 0)
         w, h = p0.get_width(), p0.get_height()
 
         # render new 2-way merge icon
@@ -7475,8 +7481,8 @@ class Diffuse(Gtk.Window):
         factory.add(DIFFUSE_STOCK_NEW_3WAY_MERGE, Gtk.IconSet.new_from_pixbuf(p))
 
         # render the left and right arrow we will use in our custom icons
-        p0 = self.render_icon(Gtk.STOCK_GO_FORWARD, Gtk.IconSize.LARGE_TOOLBAR)
-        p1 = self.render_icon(Gtk.STOCK_GO_BACK, Gtk.IconSize.LARGE_TOOLBAR)
+        p0 = default_theme.load_icon("go-next", icon_size, 0)
+        p1 = default_theme.load_icon("go-previous", icon_size, 0)
         w, h, s = p0.get_width(), p0.get_height(), 0.65
         sw, sh = int(s * w), int(s * h)
         w1, h1 = w - sw, h - sh
