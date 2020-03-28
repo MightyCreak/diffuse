@@ -7423,11 +7423,14 @@ class Diffuse(Gtk.Window):
         # number of created viewers (used to label some tabs)
         self.viewer_count = 0
 
+        # get monitor resolution
+        monitor_geometry = Gdk.Display.get_default().get_monitor(0).get_geometry()
+
         # state information that should persist across sessions
         self.bool_state = { 'window_maximized': False, 'search_matchcase': False, 'search_backwards': False }
         self.int_state = { 'window_width': 1024, 'window_height': 768 }
-        self.int_state['window_x'] = max(0, (Gdk.Screen.width() - self.int_state['window_width']) / 2)
-        self.int_state['window_y'] = max(0, (Gdk.Screen.height() - self.int_state['window_height']) / 2)
+        self.int_state['window_x'] = max(0, (monitor_geometry.width - self.int_state['window_width']) / 2)
+        self.int_state['window_y'] = max(0, (monitor_geometry.height - self.int_state['window_height']) / 2)
         self.connect('configure-event', self.configure_cb)
         self.connect('window-state-event', self.window_state_cb)
 
