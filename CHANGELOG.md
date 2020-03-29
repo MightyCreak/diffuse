@@ -12,6 +12,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - added support for Git submodules
 - added Akom Chotiphantawanon's Thai translation
 - added a preference and command line option to specify the version control system search order
+- added .editorconfig file
+- added .gitignore file
 
 ### Changed
 - convert to Python 3
