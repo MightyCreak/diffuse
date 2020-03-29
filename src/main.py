@@ -1,121 +1,34 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
+# Diffuse: a graphical tool for merging and comparing text files.
+#
+# Copyright (C) 2019 Derrick Moser <derrick_moser@yahoo.com>
+# Copyright (C) 2021 Romain Failliot <romain.failliot@foolstep.com>
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along
+# with this program; if not, write to the Free Software Foundation, Inc.,
+# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-# Copyright (C) 2006-2019 Derrick Moser <derrick_moser@yahoo.com>
-# Copyright (C) 2015-2020 Romain Failliot <romain.failliot@foolstep.com>
-#
-# This program is free software; you can redistribute it and/or modify it under
-# the terms of the GNU General Public License as published by the Free Software
-# Foundation; either version 2 of the license, or (at your option) any later
-# version.
-#
-# This program is distributed in the hope that it will be useful, but WITHOUT
-# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
-# FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
-# details.
-#
-# You should have received a copy of the GNU General Public License along with
-# this program.  You may also obtain a copy of the GNU General Public License
-# from the Free Software Foundation by visiting their web site
-# (http://www.fsf.org/) or by writing to the Free Software Foundation, Inc.,
-# 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-
-import codecs
-import gettext
-import locale
 import os
 import sys
-
-# use the program's location as a starting place to search for supporting files
-# such as icon and help documentation
-if hasattr(sys, 'frozen'):
-    app_path = sys.executable
-else:
-    app_path = os.path.realpath(sys.argv[0])
-bin_dir = os.path.dirname(app_path)
-
-# platform test
-def isWindows():
-    return os.name == 'nt'
-
-# translation location: '../share/locale/<LANG>/LC_MESSAGES/diffuse.mo'
-# where '<LANG>' is the language key
-lang = locale.getdefaultlocale()[0]
-if isWindows():
-    # gettext looks for the language using environment variables which
-    # are normally not set on Windows so we try setting it for them
-    for v in 'LANGUAGE', 'LC_ALL', 'LC_MESSAGES', 'LANG':
-        if v in os.environ:
-            lang = os.environ[v]
-            # remove any additional languages, encodings, or modifications
-            for v in ':.@':
-                lang = lang.split(v)[0]
-            break
-    else:
-        if lang is not None:
-            os.environ['LANG'] = lang
-    del v
-    locale_dir = 'locale'
-else:
-    locale_dir = '../share/locale'
-locale_dir = os.path.join(bin_dir, locale_dir)
-gettext.bindtextdomain('diffuse', locale_dir)
-
-gettext.textdomain('diffuse')
-_ = gettext.gettext
-
-APP_NAME = 'Diffuse'
-VERSION = '0.6.0'
-COPYRIGHT =  '''{copyright} © 2006-2019 Derrick Moser
-{copyright} © 2015-2020 Romain Failliot'''.format(copyright=_("Copyright"))
-WEBSITE = 'https://github.com/MightyCreak/diffuse'
-
-# process help options
-if __name__ == '__main__':
-    args = sys.argv
-    argc = len(args)
-    if argc == 2 and args[1] in [ '-v', '--version' ]:
-        print(f'{APP_NAME} {VERSION}\n{COPYRIGHT}')
-        sys.exit(0)
-    if argc == 2 and args[1] in [ '-h', '-?', '--help' ]:
-        print(_('''Usage:
-    diffuse [ [OPTION...] [FILE...] ]...
-    diffuse ( -h | -? | --help | -v | --version )
-
-Diffuse is a graphical tool for merging and comparing text files.  Diffuse is
-able to compare an arbitrary number of files side-by-side and gives users the
-ability to manually adjust line matching and directly edit files.  Diffuse can
-also retrieve revisions of files from Bazaar, CVS, Darcs, Git, Mercurial,
-Monotone, RCS, Subversion, and SVK repositories for comparison and merging.
-
-Help Options:
-  ( -h | -? | --help )             Display this usage information
-  ( -v | --version )               Display version and copyright information
-
-Configuration Options:
-  --no-rcfile                      Do not read any resource files
-  --rcfile <file>                  Specify explicit resource file
-
-General Options:
-  ( -c | --commit ) <rev>          File revisions <rev-1> and <rev>
-  ( -D | --close-if-same )         Close all tabs with no differences
-  ( -e | --encoding ) <codec>      Use <codec> to read and write files
-  ( -L | --label ) <label>         Display <label> instead of the file name
-  ( -m | --modified )              Create a new tab for each modified file
-  ( -r | --revision ) <rev>        File revision <rev>
-  ( -s | --separate )              Create a new tab for each file
-  ( -t | --tab )                   Start a new tab
-  ( -V | --vcs ) <vcs-list>        Version control system search order
-  --line <line>                    Start with line <line> selected
-  --null-file                      Create a blank file comparison pane
-
-Display Options:
-  ( -b | --ignore-space-change )   Ignore changes to white space
-  ( -B | --ignore-blank-lines )    Ignore changes in blank lines
-  ( -E | --ignore-end-of-line )    Ignore end of line differences
-  ( -i | --ignore-case )           Ignore case differences
-  ( -w | --ignore-all-space )      Ignore white space differences'''))
-        sys.exit(0)
+import codecs
+import difflib
+import encodings
+import glob
+import re
+import shlex
+import stat
+import subprocess
+import unicodedata
+import webbrowser
 
 import gi
 
@@ -137,26 +50,13 @@ from gi.repository import Pango
 gi.require_version('PangoCairo', '1.0')
 from gi.repository import PangoCairo
 
-import difflib
-import encodings
-import glob
-import re
-import shlex
-import stat
-import string
-import subprocess
-import unicodedata
-import webbrowser
-
 from urllib.parse import urlparse
+
+from diffuse import utils
 
 if not hasattr(__builtins__, 'WindowsError'):
     # define 'WindowsError' so 'except' statements will work on all platforms
     WindowsError = IOError
-
-# convenience function to display debug messages
-def logDebug(s):
-    pass #sys.stderr.write(f'{APP_NAME}: {s}\n')
 
 # avoid some dictionary lookups when string.whitespace is used in loops
 # this is sorted based upon frequency to speed up code for stripping whitespace
@@ -166,27 +66,6 @@ whitespace = ' \t\n\r\x0b\x0c'
 def globEscape(s):
     m = dict([ (c, f'[{c}]') for c in '[]?*' ])
     return ''.join([ m.get(c, c) for c in s ])
-
-# associate our icon with all of our windows
-if __name__ == '__main__':
-    # this is not automatically set on some older version of PyGTK
-    Gtk.Window.set_default_icon_name('diffuse')
-
-# convenience class for displaying a message dialogue
-class MessageDialog(Gtk.MessageDialog):
-    def __init__(self, parent, type, s):
-        if type == Gtk.MessageType.ERROR:
-            buttons = Gtk.ButtonsType.OK
-        else:
-            buttons = Gtk.ButtonsType.OK_CANCEL
-        Gtk.MessageDialog.__init__(self, parent = parent, destroy_with_parent = True, message_type = type, buttons = buttons, text = s)
-        self.set_title(APP_NAME)
-
-# report error messages
-def logError(s):
-    m = MessageDialog(None, Gtk.MessageType.ERROR, s)
-    m.run()
-    m.destroy()
 
 # colour resources
 class Colour:
@@ -544,7 +423,7 @@ class Resources:
         try:
             return self.colours[symbol]
         except KeyError:
-            logDebug(f'Warning: unknown colour "{symbol}"')
+            utils.logDebug(f'Warning: unknown colour "{symbol}"')
             self.colours[symbol] = v = Colour(0.0, 0.0, 0.0)
             return v
 
@@ -553,7 +432,7 @@ class Resources:
         try:
             return self.floats[symbol]
         except KeyError:
-            logDebug(f'Warning: unknown float "{symbol}"')
+            utils.logDebug(f'Warning: unknown float "{symbol}"')
             self.floats[symbol] = v = 0.5
             return v
 
@@ -562,7 +441,7 @@ class Resources:
         try:
             return self.strings[symbol]
         except KeyError:
-            logDebug(f'Warning: unknown string "{symbol}"')
+            utils.logDebug(f'Warning: unknown string "{symbol}"')
             self.strings[symbol] = v = ''
             return v
 
@@ -687,7 +566,7 @@ class Resources:
                             pass
                     else:
                         flags = 0
-                        if isWindows():
+                        if utils.isWindows():
                             flags |= re.IGNORECASE
                         self.syntax_file_patterns[key] = re.compile(args[2], flags)
                 # eg. default to the Python syntax rules when viewing
@@ -713,7 +592,7 @@ class Resources:
                     raise ValueError()
             except: # Grr... the 're' module throws weird errors
             #except ValueError:
-                logError(_('Error processing line %(line)d of %(file)s.') % { 'line': i + 1, 'file': file_name })
+                utils.logError(_('Error processing line %(line)d of %(file)s.') % { 'line': i + 1, 'file': file_name })
 
 theResources = Resources()
 
@@ -799,7 +678,7 @@ class Preferences:
         # find available encodings
         self.encodings = sorted(set(encodings.aliases.aliases.values()))
 
-        if isWindows():
+        if utils.isWindows():
             svk_bin = 'svk.bat'
         else:
             svk_bin = 'svk'
@@ -860,7 +739,7 @@ class Preferences:
             [ 'List',
               [ 'Integer', 'tabs_default_panes', 2, _('Default panes'), 2, 16 ],
               [ 'Boolean', 'tabs_always_show', False, _('Always show the tab bar') ],
-              [ 'Boolean', 'tabs_warn_before_quit', True, _('Warn me when closing a tab will quit %s') % APP_NAME ]
+              [ 'Boolean', 'tabs_warn_before_quit', True, _('Warn me when closing a tab will quit %s') % utils.APP_NAME ]
             ],
             _('Regional Settings'),
             [ 'List',
@@ -878,7 +757,7 @@ class Preferences:
             'align_ignore_blanklines': ('align_ignore_whitespace', True),
             'align_ignore_endofline': ('align_ignore_whitespace', True)
         }
-        if isWindows():
+        if utils.isWindows():
             root = os.environ.get('SYSTEMDRIVE', None)
             if root is None:
                 root = 'C:\\'
@@ -914,7 +793,7 @@ class Preferences:
                               [ 'File', key + '_bin_rlog', 'rlog', _('"rlog" command') ] ])
             else:
                 temp.extend([ [ 'File', key + '_bin', cmd, _('Command') ] ])
-            if isWindows():
+            if utils.isWindows():
                 temp.append([ 'Boolean', key + '_bash', False, _('Launch from a Bash login shell') ])
                 if key != 'git':
                     temp.append([ 'Boolean', key + '_cygwin', False, _('Update paths for Cygwin') ])
@@ -949,10 +828,10 @@ class Preferences:
                     except ValueError:
                         # this may happen if the prefs were written by a
                         # different version -- don't bother the user
-                        logDebug(f'Error processing line {j + 1} of {self.path}.')
+                        utils.logDebug(f'Error processing line {j + 1} of {self.path}.')
             except IOError:
                 # bad $HOME value? -- don't bother the user
-                logDebug(f'Error reading {self.path}.')
+                utils.logDebug(f'Error reading {self.path}.')
 
     # recursively traverses 'template' to discover the preferences and
     # initialise their default values in self.bool_prefs, self.int_prefs, and
@@ -1021,12 +900,12 @@ class Preferences:
                         ss.append(f'{k} "{v_escaped}"\n')
                 ss.sort()
                 f = open(self.path, 'w')
-                f.write(f'# This prefs file was generated by {APP_NAME} {VERSION}.\n\n')
+                f.write(f'# This prefs file was generated by {utils.APP_NAME} {utils.VERSION}.\n\n')
                 for s in ss:
                     f.write(s)
                 f.close()
             except IOError:
-                m = MessageDialog(parent, Gtk.MessageType.ERROR, _('Error writing %s.') % (self.path, ))
+                m = utils.MessageDialog(parent, Gtk.MessageType.ERROR, _('Error writing %s.') % (self.path, ))
                 m.run()
                 m.destroy()
         dialog.destroy()
@@ -1143,7 +1022,7 @@ class Preferences:
     # cygwin and native applications can be used on windows, use this method
     # to convert a path to the usual form expected on sys.platform
     def convertToNativePath(self, s):
-        if isWindows() and s.find('/') >= 0:
+        if utils.isWindows() and s.find('/') >= 0:
             # treat as a cygwin path
             s = s.replace(os.sep, '/')
             # convert to a Windows native style path
@@ -1319,7 +1198,7 @@ def drive_from_path(s):
 
 # constructs a relative path from 'a' to 'b', both should be absolute paths
 def relpath(a, b):
-    if isWindows():
+    if utils.isWindows():
         if drive_from_path(a) != drive_from_path(b):
             return b
     c1 = [ c for c in a.split(os.sep) if c != '' ]
@@ -1335,7 +1214,7 @@ def relpath(a, b):
 # by prepending './' to the basename
 def safeRelativePath(abspath1, name, prefs, cygwin_pref):
     s = os.path.join(os.curdir, relpath(abspath1, os.path.abspath(name)))
-    if isWindows():
+    if utils.isWindows():
         if prefs.getBool(cygwin_pref):
             s = s.replace('\\', '/')
         else:
@@ -1350,12 +1229,12 @@ def bashEscape(s):
 def popenRead(dn, cmd, prefs, bash_pref, success_results=None):
     if success_results is None:
         success_results = [ 0 ]
-    if isWindows() and prefs.getBool(bash_pref):
+    if utils.isWindows() and prefs.getBool(bash_pref):
         # launch the command from a bash shell is requested
         cmd = [ prefs.convertToNativePath('/bin/bash.exe'), '-l', '-c', 'cd {}; {}'.format(bashEscape(dn), ' '.join([ bashEscape(arg) for arg in cmd ])) ]
         dn = None
     # use subprocess.Popen to retrieve the file contents
-    if isWindows():
+    if utils.isWindows():
         info = subprocess.STARTUPINFO()
         info.dwFlags |= subprocess.STARTF_USESHOWWINDOW
         info.wShowWindow = subprocess.SW_HIDE
@@ -1653,7 +1532,7 @@ class _Cvs:
                      k0 = k
                  result.append([ (k0, prev), (k, rev) ])
         except ValueError:
-            logError(_('Error parsing revision %s.') % (rev, ))
+            utils.logError(_('Error parsing revision %s.') % (rev, ))
         return result
 
     def getFolderTemplate(self, prefs, names):
@@ -2270,7 +2149,7 @@ class _Rcs:
                     k0 = k
                 result.append([ (k0, prev), (k, rev) ])
         except ValueError:
-            logError(_('Error parsing revision %s.') % (rev, ))
+            utils.logError(_('Error parsing revision %s.') % (rev, ))
         return result
 
     def getFolderTemplate(self, prefs, names):
@@ -2414,7 +2293,7 @@ class _Svn:
         try:
             prev = self._getPreviousRevision(rev)
         except ValueError:
-            logError(_('Error parsing revision %s.') % (rev, ))
+            utils.logError(_('Error parsing revision %s.') % (rev, ))
             return result
 
         # build command
@@ -2599,7 +2478,7 @@ def _get_svk_repo(path, prefs):
     name = path
     # parse the ~/.svk/config file to discover which directories are part of
     # SVK repositories
-    if isWindows():
+    if utils.isWindows():
         name = name.upper()
     svkroot = os.environ.get('SVKROOT', None)
     if svkroot is None:
@@ -2647,7 +2526,7 @@ def _get_svk_repo(path, prefs):
                                     tt.append(key[j])
                                     j += 1
                             key = ''.join(tt).replace(sep, os.sep)
-                            if isWindows():
+                            if utils.isWindows():
                                 key = key.upper()
                             projs.append(key)
                     break
@@ -2655,7 +2534,7 @@ def _get_svk_repo(path, prefs):
             if _VcsFolderSet(projs).contains(name):
                 return _Svk(path)
         except IOError:
-            logError(_('Error parsing %s.') % (svkconfig, ))
+            utils.logError(_('Error parsing %s.') % (svkconfig, ))
 
 class VCSs:
     def __init__(self):
@@ -2912,7 +2791,7 @@ def path2url(path, proto='file'):
     for c in s[i:]:
         if c == os.sep:
             c = '/'
-        elif c == ':' and isWindows():
+        elif c == ':' and utils.isWindows():
             c = '|'
         else:
             v = ord(c)
@@ -6669,7 +6548,7 @@ class SearchDialog(Gtk.Dialog):
 
 # convenience method to request confirmation when closing the last tab
 def confirmTabClose(parent):
-    dialog = MessageDialog(parent, Gtk.MessageType.WARNING, _('Closing this tab will quit %s.') % (APP_NAME, ))
+    dialog = utils.MessageDialog(parent, Gtk.MessageType.WARNING, _('Closing this tab will quit %s.') % (utils.APP_NAME, ))
     end = (dialog.run() == Gtk.ResponseType.OK)
     dialog.destroy()
     return end
@@ -6756,31 +6635,38 @@ class NumericDialog(Gtk.Dialog):
 def url_hook(dialog, link, userdata):
     webbrowser.open(link)
 
-# the about dialogue
+
+
+# the about dialog
 class AboutDialog(Gtk.AboutDialog):
     def __init__(self):
         Gtk.AboutDialog.__init__(self)
-        self.set_logo_icon_name('diffuse')
-        if hasattr(self, 'set_program_name'):
-            # only available in pygtk >= 2.12
-            self.set_program_name(APP_NAME)
-        self.set_version(VERSION)
+        self.set_logo_icon_name('io.github.mightycreak.Diffuse')
+        self.set_program_name(utils.APP_NAME)
+        self.set_version(utils.VERSION)
         self.set_comments(_('Diffuse is a graphical tool for merging and comparing text files.'))
-        self.set_copyright(COPYRIGHT)
-        self.set_website(WEBSITE)
+        self.set_copyright(utils.COPYRIGHT)
+        self.set_website(utils.WEBSITE)
         self.set_authors([ 'Derrick Moser <derrick_moser@yahoo.com>',
                            'Romain Failliot <romain.failliot@foolstep.com>' ])
         self.set_translator_credits(_('translator-credits'))
-        ss = [ APP_NAME + ' ' + VERSION + '\n',
-               COPYRIGHT + '\n\n',
-               _("""This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the licence, or (at your option) any later version.
+        license_text = [
+            utils.APP_NAME + ' ' + utils.VERSION + '\n\n',
+            utils.COPYRIGHT + '\n\n',
+            _('''This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
 
-This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
 
-You should have received a copy of the GNU General Public License along with this program.  You may also obtain a copy of the GNU General Public License from the Free Software Foundation by visiting their web site (http://www.fsf.org/) or by writing to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-""") ]
-        self.set_license(''.join(ss))
-        self.set_wrap_license(True)
+You should have received a copy of the GNU General Public License along
+with this program; if not, write to the Free Software Foundation, Inc.,
+51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.''') ]
+        self.set_license(''.join(license_text))
 
 # widget classed to create notebook tabs with labels and a close button
 # use notebooktab.button.connect() to be notified when the button is pressed
@@ -7012,7 +6898,7 @@ class Diffuse(Gtk.Window):
             if self.headers[f].has_edits:
                 # warn users of any unsaved changes they might lose
                 dialog = Gtk.MessageDialog(self.get_toplevel(), Gtk.DialogFlags.DESTROY_WITH_PARENT, Gtk.MessageType.WARNING, Gtk.ButtonsType.NONE, _('Save changes before loading the new file?'))
-                dialog.set_title(APP_NAME)
+                dialog.set_title(utils.APP_NAME)
                 dialog.add_button(Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL)
                 dialog.add_button(Gtk.STOCK_NO, Gtk.ResponseType.REJECT)
                 dialog.add_button(Gtk.STOCK_YES, Gtk.ResponseType.OK)
@@ -7124,7 +7010,7 @@ class Diffuse(Gtk.Window):
                         msg = _('Error reading revision %(rev)s of %(file)s.') % { 'rev': rev, 'file': name }
                     else:
                         msg = _('Error reading %s.') % (name, )
-                    dialog = MessageDialog(self.get_toplevel(), Gtk.MessageType.ERROR, msg)
+                    dialog = utils.MessageDialog(self.get_toplevel(), Gtk.MessageType.ERROR, msg)
                     dialog.run()
                     dialog.destroy()
                     return
@@ -7197,7 +7083,7 @@ class Diffuse(Gtk.Window):
                             else:
                                 s = info.name
                             msg = _('The file %s changed on disk.  Do you want to reload the file?') % (s, )
-                            dialog = MessageDialog(self.get_toplevel(), Gtk.MessageType.QUESTION, msg)
+                            dialog = utils.MessageDialog(self.get_toplevel(), Gtk.MessageType.QUESTION, msg)
                             ok = (dialog.run() == Gtk.ResponseType.OK)
                             dialog.destroy()
                             if ok:
@@ -7249,7 +7135,7 @@ class Diffuse(Gtk.Window):
                     if info.stat[stat.ST_MTIME] < os.stat(name)[stat.ST_MTIME]:
                         msg = _('The file %s has been modified by another process since reading it.  If you save, all the external changes could be lost.  Save anyways?') % (name, )
                 if msg is not None:
-                    dialog = MessageDialog(self.get_toplevel(), Gtk.MessageType.QUESTION, msg)
+                    dialog = utils.MessageDialog(self.get_toplevel(), Gtk.MessageType.QUESTION, msg)
                     end = (dialog.run() != Gtk.ResponseType.OK)
                     dialog.destroy()
                     if end:
@@ -7288,11 +7174,11 @@ class Diffuse(Gtk.Window):
                     self.setSyntax(syntax)
                 return True
             except (UnicodeEncodeError, LookupError):
-                dialog = MessageDialog(self.get_toplevel(), Gtk.MessageType.ERROR, _('Error encoding to %s.') % (encoding, ))
+                dialog = utils.MessageDialog(self.get_toplevel(), Gtk.MessageType.ERROR, _('Error encoding to %s.') % (encoding, ))
                 dialog.run()
                 dialog.destroy()
             except IOError:
-                dialog = MessageDialog(self.get_toplevel(), Gtk.MessageType.ERROR, _('Error writing %s.') % (name, ))
+                dialog = utils.MessageDialog(self.get_toplevel(), Gtk.MessageType.ERROR, _('Error writing %s.') % (name, ))
                 dialog.run()
                 dialog.destroy()
             return False
@@ -7558,7 +7444,7 @@ class Diffuse(Gtk.Window):
         menuspecs.append([ _('_Help'), [
                      [_('_Help Contents...'), self.help_contents_cb, None, Gtk.STOCK_HELP, 'help_contents'],
                      [],
-                     [_('_About %s...') % (APP_NAME, ), self.about_cb, None, Gtk.STOCK_ABOUT, 'about'] ] ])
+                     [_('_About %s...') % (utils.APP_NAME, ), self.about_cb, None, Gtk.STOCK_ABOUT, 'about'] ] ])
 
         # used to disable menu events when switching tabs
         self.menu_update_depth = 0
@@ -7655,10 +7541,10 @@ class Diffuse(Gtk.Window):
                     except ValueError:
                         # this may happen if the state was written by a
                         # different version -- don't bother the user
-                        logDebug(f'Error processing line {j + 1} of {statepath}.')
+                        utils.logDebug(f'Error processing line {j + 1} of {statepath}.')
             except IOError:
                 # bad $HOME value? -- don't bother the user
-                logDebug(f'Error reading {statepath}.')
+                utils.logDebug(f'Error reading {statepath}.')
 
         self.move(self.int_state['window_x'], self.int_state['window_y'])
         self.resize(self.int_state['window_width'], self.int_state['window_height'])
@@ -7675,13 +7561,13 @@ class Diffuse(Gtk.Window):
                 ss.append(f'{k} {v}\n')
             ss.sort()
             f = open(statepath, 'w')
-            f.write(f"# This state file was generated by {APP_NAME} {VERSION}.\n\n")
+            f.write(f"# This state file was generated by {utils.APP_NAME} {utils.VERSION}.\n\n")
             for s in ss:
                 f.write(s)
             f.close()
         except IOError:
             # bad $HOME value? -- don't bother the user
-            logDebug(f'Error writing {statepath}.')
+            utils.logDebug(f'Error writing {statepath}.')
 
     # select viewer for a newly selected file in the confirm close dialogue
     def __confirmClose_row_activated_cb(self, tree, path, col, model):
@@ -7715,7 +7601,7 @@ class Diffuse(Gtk.Window):
                                    buttons=Gtk.ButtonsType.NONE,
                                    text=_('Some files have unsaved changes.  Select the files to save before closing.'))
         dialog.set_resizable(True)
-        dialog.set_title(APP_NAME)
+        dialog.set_title(utils.APP_NAME)
         # add list of files with unsaved changes
         sw = Gtk.ScrolledWindow.new()
         sw.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
@@ -7802,7 +7688,7 @@ class Diffuse(Gtk.Window):
     # update window's title
     def updateTitle(self, viewer):
         title = self.notebook.get_tab_label(viewer).get_text()
-        self.set_title(f'{title} - {APP_NAME}')
+        self.set_title(f'{title} - {utils.APP_NAME}')
 
     # update the message in the status bar
     def setStatus(self, s):
@@ -7956,7 +7842,7 @@ class Diffuse(Gtk.Window):
                             viewer.load(i, FileInfo(name, encoding, vcs, rev))
                         viewer.setOptions(options)
                 except (IOError, OSError, WindowsError):
-                    dialog = MessageDialog(self.get_toplevel(), Gtk.MessageType.ERROR, _('Error retrieving commits for %s.') % (dn, ))
+                    dialog = utils.MessageDialog(self.get_toplevel(), Gtk.MessageType.ERROR, _('Error retrieving commits for %s.') % (dn, ))
                     dialog.run()
                     dialog.destroy()
 
@@ -7987,7 +7873,7 @@ class Diffuse(Gtk.Window):
                             viewer.load(i, FileInfo(name, encoding, vcs, rev))
                         viewer.setOptions(options)
                 except (IOError, OSError, WindowsError):
-                    dialog = MessageDialog(self.get_toplevel(), Gtk.MessageType.ERROR, _('Error retrieving modifications for %s.') % (dn, ))
+                    dialog = utils.MessageDialog(self.get_toplevel(), Gtk.MessageType.ERROR, _('Error retrieving modifications for %s.') % (dn, ))
                     dialog.run()
                     dialog.destroy()
 
@@ -8048,7 +7934,7 @@ class Diffuse(Gtk.Window):
                 self.notebook.set_current_page(n)
                 self.getCurrentViewer().grab_focus()
             else:
-                m = MessageDialog(parent, Gtk.MessageType.ERROR, _('No modified files found.'))
+                m = utils.MessageDialog(parent, Gtk.MessageType.ERROR, _('No modified files found.'))
                 m.run()
                 m.destroy()
 
@@ -8068,7 +7954,7 @@ class Diffuse(Gtk.Window):
                 self.notebook.set_current_page(n)
                 self.getCurrentViewer().grab_focus()
             else:
-                m = MessageDialog(parent, Gtk.MessageType.ERROR, _('No committed files found.'))
+                m = utils.MessageDialog(parent, Gtk.MessageType.ERROR, _('No committed files found.'))
                 m.run()
                 m.destroy()
 
@@ -8172,7 +8058,7 @@ class Diffuse(Gtk.Window):
                 msg = _('Phrase not found.  Continue from the end of the file?')
             else:
                 msg = _('Phrase not found.  Continue from the start of the file?')
-            dialog = MessageDialog(self.get_toplevel(), Gtk.MessageType.QUESTION, msg)
+            dialog = utils.MessageDialog(self.get_toplevel(), Gtk.MessageType.QUESTION, msg)
             dialog.set_default_response(Gtk.ResponseType.OK)
             more = (dialog.run() == Gtk.ResponseType.OK)
             dialog.destroy()
@@ -8238,15 +8124,15 @@ class Diffuse(Gtk.Window):
     # display help documentation
     def help_contents_cb(self, widget, data):
         help_url = None
-        if isWindows():
+        if utils.isWindows():
             # help documentation is distributed as local HTML files
             # search for localised manual first
             parts = [ 'manual' ]
-            if lang is not None:
+            if utils.lang is not None:
                 parts = [ 'manual' ]
-                parts.extend(lang.split('_'))
+                parts.extend(utils.lang.split('_'))
             while len(parts) > 0:
-                help_file = os.path.join(bin_dir, '_'.join(parts) + '.html')
+                help_file = os.path.join(utils.bin_dir, '_'.join(parts) + '.html')
                 if os.path.isfile(help_file):
                     # we found a help file
                     help_url = path2url(help_file)
@@ -8264,11 +8150,11 @@ class Diffuse(Gtk.Window):
                         break
             if browser is not None:
                 # find localised help file
-                if lang is None:
+                if utils.lang is None:
                     parts = []
                 else:
-                    parts = lang.split('_')
-                s = os.path.abspath(os.path.join(bin_dir, '../share/gnome/help/diffuse'))
+                    parts = utils.lang.split('_')
+                s = os.path.abspath(os.path.join(utils.bin_dir, '../share/gnome/help/diffuse'))
                 while True:
                     if len(parts) > 0:
                         d = '_'.join(parts)
@@ -8286,10 +8172,10 @@ class Diffuse(Gtk.Window):
                     del parts[-1]
         if help_url is None:
             # no local help file is available, show on-line help
-            help_url = WEBSITE + 'manual.html'
+            help_url = utils.WEBSITE + 'manual.html'
             # ask for localised manual
-            if lang is not None:
-                help_url += '?lang=' + lang
+            if utils.lang is not None:
+                help_url += '?lang=' + utils.lang
         # use a web browser to display the help documentation
         webbrowser.open(help_url)
 
@@ -8307,31 +8193,70 @@ GObject.signal_new('reload', Diffuse.FileDiffViewer.PaneHeader, GObject.SignalFl
 GObject.signal_new('save', Diffuse.FileDiffViewer.PaneHeader, GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, ())
 GObject.signal_new('save-as', Diffuse.FileDiffViewer.PaneHeader, GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, ())
 
-# create nested subdirectories and return the complete path
-def make_subdirs(p, ss):
-    for s in ss:
-        p = os.path.join(p, s)
-        if not os.path.exists(p):
-            try:
-                os.mkdir(p)
-            except IOError:
-                pass
-    return p
+def main(version, sysconfigdir):
+    # app = Application()
+    # return app.run(sys.argv)
 
-# process the command line arguments
-if __name__ == '__main__':
+    utils.VERSION = version
+
+    args = sys.argv
+    argc = len(args)
+
+    if argc == 2 and args[1] in [ '-v', '--version' ]:
+        print('%s %s\n%s' % (utils.APP_NAME, utils.VERSION, utils.COPYRIGHT))
+        sys.exit(0)
+    if argc == 2 and args[1] in [ '-h', '-?', '--help' ]:
+        print(_('''Usage:
+    diffuse [ [OPTION...] [FILE...] ]...
+    diffuse ( -h | -? | --help | -v | --version )
+
+Diffuse is a graphical tool for merging and comparing text files.  Diffuse is
+able to compare an arbitrary number of files side-by-side and gives users the
+ability to manually adjust line matching and directly edit files.  Diffuse can
+also retrieve revisions of files from Bazaar, CVS, Darcs, Git, Mercurial,
+Monotone, RCS, Subversion, and SVK repositories for comparison and merging.
+
+Help Options:
+  ( -h | -? | --help )             Display this usage information
+  ( -v | --version )               Display version and copyright information
+
+Configuration Options:
+  --no-rcfile                      Do not read any resource files
+  --rcfile <file>                  Specify explicit resource file
+
+General Options:
+  ( -c | --commit ) <rev>          File revisions <rev-1> and <rev>
+  ( -D | --close-if-same )         Close all tabs with no differences
+  ( -e | --encoding ) <codec>      Use <codec> to read and write files
+  ( -L | --label ) <label>         Display <label> instead of the file name
+  ( -m | --modified )              Create a new tab for each modified file
+  ( -r | --revision ) <rev>        File revision <rev>
+  ( -s | --separate )              Create a new tab for each file
+  ( -t | --tab )                   Start a new tab
+  ( -V | --vcs ) <vcs-list>        Version control system search order
+  --line <line>                    Start with line <line> selected
+  --null-file                      Create a blank file comparison pane
+
+Display Options:
+  ( -b | --ignore-space-change )   Ignore changes to white space
+  ( -B | --ignore-blank-lines )    Ignore changes in blank lines
+  ( -E | --ignore-end-of-line )    Ignore end of line differences
+  ( -i | --ignore-case )           Ignore case differences
+  ( -w | --ignore-all-space )      Ignore white space differences'''))
+        sys.exit(0)
+
     # find the config directory and create it if it didn't exist
     rc_dir, subdirs = os.environ.get('XDG_CONFIG_HOME', None), ['diffuse']
     if rc_dir is None:
         rc_dir = os.path.expanduser('~')
         subdirs.insert(0, '.config')
-    rc_dir = make_subdirs(rc_dir, subdirs)
+    rc_dir = utils.make_subdirs(rc_dir, subdirs)
     # find the local data directory and create it if it didn't exist
     data_dir, subdirs = os.environ.get('XDG_DATA_HOME', None), ['diffuse']
     if data_dir is None:
         data_dir = os.path.expanduser('~')
         subdirs[:0] = [ '.local', 'share' ]
-    data_dir = make_subdirs(data_dir, subdirs)
+    data_dir = utils.make_subdirs(data_dir, subdirs)
     # load resource files
     i, rc_files = 1, []
     if i < argc  and args[i] == '--no-rcfile':
@@ -8342,10 +8267,10 @@ if __name__ == '__main__':
         i += 1
     else:
         # parse system wide then personal initialisation files
-        if isWindows():
-            rc_file = os.path.join(bin_dir, 'diffuserc')
+        if utils.isWindows():
+            rc_file = os.path.join(utils.bin_dir, 'diffuserc')
         else:
-            rc_file = os.path.join(bin_dir, '@SYSCONFIGDIR@/diffuserc')
+            rc_file = os.path.join(utils.bin_dir, f'{sysconfigdir}/diffuserc')
         for rc_file in rc_file, os.path.join(rc_dir, 'diffuserc'):
             if os.path.isfile(rc_file):
                 rc_files.append(rc_file)
@@ -8354,11 +8279,14 @@ if __name__ == '__main__':
         # reported with normalised file names
         rc_file = os.path.abspath(rc_file)
         try:
+            # diffuse.theResources.parse(rc_file) # Modularization
             theResources.parse(rc_file)
         except IOError:
-            logError(_('Error reading %s.') % (rc_file, ))
+            utils.logError(_('Error reading %s.') % (rc_file, ))
 
+    # diff = diffuse.Diffuse(rc_dir) # Modularization
     diff = Diffuse(rc_dir)
+
     # load state
     statepath = os.path.join(data_dir, 'state')
     diff.loadState(statepath)
@@ -8437,7 +8365,7 @@ if __name__ == '__main__':
                 try:
                     options['line'] = int(args[i])
                 except ValueError:
-                    logError(_('Error parsing line number.'))
+                    utils.logError(_('Error parsing line number.'))
             elif arg == '--null-file':
                 # add a blank file pane
                 if mode == 'single' or mode == 'separate':
@@ -8447,14 +8375,14 @@ if __name__ == '__main__':
                     revs = []
                 had_specs = True
             else:
-                logError(_('Skipping unknown argument "%s".') % (args[i], ))
+                utils.logError(_('Skipping unknown argument "%s".') % (args[i], ))
         else:
             filename = diff.prefs.convertToNativePath(args[i])
             if (mode == 'single' or mode == 'separate') and os.path.isdir(filename):
                 if len(specs) > 0:
                     filename = os.path.join(filename, os.path.basename(specs[-1][0]))
                 else:
-                    logError(_('Error processing argument "%s".  Directory not expected.') % (args[i], ))
+                    utils.logError(_('Error processing argument "%s".  Directory not expected.') % (args[i], ))
                     filename = None
             if filename is not None:
                 if len(revs) == 0:
@@ -8483,3 +8411,5 @@ if __name__ == '__main__':
         Gtk.main()
         # save state
         diff.saveState(statepath)
+
+    return 0

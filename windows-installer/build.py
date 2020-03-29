@@ -197,7 +197,7 @@ for lang in os.listdir(d):
             j = s.find(';', i)
             a.append(unichr(int(s[i:j])))
             idx = j + 1
-        s = u''.join(a)
+        s = ''.join(a)
         s = codecs.encode(s, 'utf-8')
         # clean up translator credit portion
         div = extract_tag(s, '<div class="othercredit">', '</div>')
@@ -227,7 +227,7 @@ copyFile('style.css', 'dist\\style.css')
 # Package everything into a single EXE installer.
 #
 
-# build binary installer 
+# build binary installer
 copyFile(os.path.join(os.environ['ADD_PATH_HOME'], 'add_path.exe'), 'dist\\add_path.exe')
 if os.system('iscc diffuse.iss /F%s' % (INSTALLER, )) != 0:
     raise OSError('Could not run iscc')
