@@ -5585,8 +5585,7 @@ class FileDiffViewer(Gtk.Grid):
         if self.mode == CHAR_MODE:
             # notify input method of text surrounding the cursor
             s = nullToEmpty(self.getLineText(self.current_pane, self.current_line))
-            s, n = codecs.encode(s, 'utf_8'), len(codecs.encode(s[:self.current_char], 'utf_8'))
-            im.set_surrounding(s, len(s), n)
+            im.set_surrounding(s, len(s), self.current_char)
 
     # callback for 'focus_in_event'
     def focus_in_cb(self, widget, event):
