@@ -1,0 +1,40 @@
+#!/usr/bin/make -f
+
+clean:
+	dh_testdir
+	dh_testroot
+	dh_clean
+
+install:
+	dh_testdir
+	dh_testroot
+	dh_prep
+	dh_installdirs
+	cp -rf src/* debian/diffuse/
+	for po in `find translations/ -name *.po`; do						\
+	BASENAME=`basename $$po .po`;								\
+	mkdir -p debian/diffuse/usr/share/locale/$$BASENAME/LC_MESSAGES;			\
+	msgfmt -o debian/diffuse/usr/share/locale/$$BASENAME/LC_MESSAGES/diffuse.mo $$po;	\
+	done
+
+build: build-arch build-indep
+build-arch: build-stamp
+build-indep: build-stamp
+build-stamp:
+
+binary-arch: install
+
+binary-indep: install
+	dh_testdir
+	dh_testroot
+	dh_installchangelogs CHANGELOG.md
+	dh_installdocs README.md
+	dh_compress
+	dh_fixperms
+	dh_installdeb
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb
+
+binary: binary-indep binary-arch
+.PHONY: clean binary-indep binary-arch binary install build build-arch build-indep

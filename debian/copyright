@@ -1,0 +1,7 @@
+Format: http://dep.debian.net/deps/dep5
+Upstream-Name: diffuse
+
+Files: *
+Copyright: (C) 2006-2017 Derrick Moser <derrick_moser@yahoo.com>
+Copyright: (C) 2015-2019 Creak <romain.failliot@foolstep.com>
+License: GPL-2

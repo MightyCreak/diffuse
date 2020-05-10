@@ -1,0 +1,20 @@
+Source: diffuse
+Section: editors
+Priority: optional
+Maintainer: Creak <romain.failliot@foolstep.com>
+Build-Depends: debhelper (>= 9)
+Build-Depends-indep: gettext
+Standards-Version: 4.0.0
+Homepage: https://github.com/MightyCreak/diffuse/
+
+Package: diffuse
+Architecture: all
+Depends: python3-gi-cairo, ${misc:Depends}
+Suggests: desktop-file-utils
+Description: graphical tool for merging and comparing text files
+ Diffuse is a graphical tool for merging and comparing text files. Diffuse is
+ able to compare an arbitrary number of files side-by-side and gives users the
+ ability to manually adjust line-matching and directly edit files. Diffuse can
+ also retrieve revisions of files from bazaar, CVS, darcs, git, mercurial,
+ monotone, Subversion and GNU Revision Control System (RCS) repositories for
+ comparison and merging.

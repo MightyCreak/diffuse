@@ -1,0 +1,12 @@
+diffuse (0.5.0-2) unstable; urgency=medium
+
+  * Fix install python version.
+  * Fix incorrect conversion.
+
+ -- Like Ma <likemartinma@gmail.com>  Sun, 10 May 2020 22:50:27 +0800
+
+diffuse (0.5.0-1) unstable; urgency=medium
+
+  * New upstream version 0.5.0
+
+ -- Like Ma <likemartinma@gmail.com>  Mon, 04 May 2020 20:44:35 +0800
