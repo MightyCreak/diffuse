@@ -1,7 +1,7 @@
 Source: diffuse
 Section: editors
 Priority: optional
-Maintainer: Creak <romain.failliot@foolstep.com>
+Maintainer: Romain Failliot <romain.failliot@foolstep.com>
 Build-Depends: debhelper (>= 9)
 Build-Depends-indep: gettext
 Standards-Version: 4.0.0
