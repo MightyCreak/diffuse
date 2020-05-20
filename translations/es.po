@@ -41,7 +41,7 @@ msgstr "Alineación"
 
 #: ../src/usr/bin/diffuse:852
 msgid "Always show the tab bar"
-msgstr "Mostrar siempre lista de pestañas"
+msgstr "Mostrar siempre barra de pestañas"
 
 #: ../src/usr/bin/diffuse:725
 msgid "Auto Detect"
