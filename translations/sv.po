@@ -154,8 +154,10 @@ msgid "Copy Selection _Right"
 msgstr "Kopiera från markerat till _höger"
 
 #: diffuse:68
-msgid "Copyright © 2006-2014 Derrick Moser"
-msgstr "Copyright © 2006-2014 Derrick Moser"
+msgid "Copyright © 2006-2019 Derrick Moser"
+"Copyright © 2015-2020 Romain Failliot"
+msgstr "Copyright © 2006-2019 Derrick Moser"
+"Copyright © 2015-2020 Romain Failliot"
 
 #: diffuse:7464
 msgid "Cu_t"
