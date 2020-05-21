@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 # Copyright (C) 2009-2010 Derrick Moser <derrick_moser@yahoo.com>
+# Copyright (C) 2015-2020 Romain "Creak" Failliot
 #
 # This program is free software; you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free Software
@@ -89,7 +90,7 @@ Options:
   --files-only
      only install/remove files; skip the post install/removal tasks""")
     sys.exit(0)
- 
+
 # returns the list of components used in a path
 def components(s):
     return [ p for p in s.split(os.sep) if p != '' ]

@@ -154,8 +154,10 @@ msgid "Copy Selection _Right"
 msgstr "Skopiuj Zaznaczenie w _Prawo"
 
 #: ../src/usr/bin/diffuse:68
-msgid "Copyright © 2006-2014 Derrick Moser"
-msgstr "Copyright © 2006-2014 Derrick Moser"
+msgid "Copyright © 2006-2019 Derrick Moser"
+"Copyright © 2015-2020 Romain Failliot"
+msgstr "Copyright © 2006-2019 Derrick Moser"
+"Copyright © 2015-2020 Romain Failliot"
 
 #: ../src/usr/bin/diffuse:7459
 msgid "Cu_t"

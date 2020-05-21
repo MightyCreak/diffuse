@@ -153,8 +153,10 @@ msgid "Copy Selection _Right"
 msgstr "复制选择之处到右边(_R)"
 
 #: ../src/usr/bin/diffuse:68
-msgid "Copyright © 2006-2014 Derrick Moser"
-msgstr "版权所有 © 2006-2014 Derrick Moser"
+msgid "Copyright © 2006-2019 Derrick Moser"
+"Copyright © 2015-2020 Romain Failliot"
+msgstr "版权所有 © 2006-2019 Derrick Moser"
+"版权所有 © 2015-2020 Romain Failliot"
 
 #: ../src/usr/bin/diffuse:7459
 msgid "Cu_t"

@@ -19,8 +19,10 @@ msgstr ""
 "X-Generator: Gtranslator 2.91.6\n"
 
 #: ../src/usr/bin/diffuse:68
-msgid "Copyright © 2006-2014 Derrick Moser"
-msgstr "Copyright © 2006-2014 Derrick Moser"
+msgid "Copyright © 2006-2019 Derrick Moser"
+"Copyright © 2015-2020 Romain Failliot"
+msgstr "Copyright © 2006-2019 Derrick Moser"
+"Copyright © 2015-2020 Romain Failliot"
 
 #: ../src/usr/bin/diffuse:86
 msgid ""

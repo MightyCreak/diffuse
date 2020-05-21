@@ -2,8 +2,8 @@
 
 Version 0.5.0
 
-Copyright (C) 2006-2014 Derrick Moser <derrick_moser@yahoo.com>  
-Copyright (C) 2015-2016 Romain Failliot <romain.failliot@foolstep.com>
+Copyright (C) 2006-2019 Derrick Moser <derrick_moser@yahoo.com>
+Copyright (C) 2015-2020 Romain Failliot <romain.failliot@foolstep.com>
 
 ----
 

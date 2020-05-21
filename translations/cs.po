@@ -1,5 +1,5 @@
 # Czech translation for diffuse.
-# Copyright © 2006-2013 Derrick Moser
+# Copyright (C) 2006-2013 Derrick Moser
 # This file is distributed under the same license as the diffuse package.
 # Jindřich Šesták <khagaroth@gmail.com>, 2013.
 #
@@ -23,8 +23,10 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 
 #: diffuse:68
-msgid "Copyright © 2006-2014 Derrick Moser"
-msgstr "Copyright © 2006-2014 Derrick Moser"
+msgid "Copyright © 2006-2019 Derrick Moser"
+"Copyright © 2015-2020 Romain Failliot"
+msgstr "Copyright © 2006-2019 Derrick Moser"
+"Copyright © 2015-2020 Romain Failliot"
 
 #: diffuse:86
 msgid ""
