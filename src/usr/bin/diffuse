@@ -983,7 +983,9 @@ class Preferences:
     # display the dialogue and update the preference values if the accept
     # button was pressed
     def runDialog(self, parent):
-        dialog = Gtk.Dialog(_('Preferences'), parent, Gtk.DialogFlags.DESTROY_WITH_PARENT, (Gtk.STOCK_CANCEL, Gtk.ResponseType.REJECT, Gtk.STOCK_OK, Gtk.ResponseType.OK))
+        dialog = Gtk.Dialog(_('Preferences'), parent=parent, destroy_with_parent=True)
+        dialog.add_button(Gtk.STOCK_CANCEL, Gtk.ResponseType.REJECT)
+        dialog.add_button(Gtk.STOCK_OK, Gtk.ResponseType.OK)
 
         widgets = {}
         w = self._buildPrefsDialog(parent, widgets, self.template)
@@ -1047,31 +1049,32 @@ class Preferences:
             return notebook
         else:
             n = len(template) - 1
-            table = Gtk.Table.new(2, n, False)
+            table = Gtk.Grid.new()
             table.set_border_width(10)
             for i, tpl in enumerate(template[1:]):
                 type = tpl[0]
                 if type == 'FolderSet':
                     w = self._buildPrefsDialog(parent, widgets, tpl)
-                    table.attach(w, 0, 2, i, i + 1, Gtk.AttachOptions.FILL, Gtk.AttachOptions.FILL)
+                    table.attach(w, 0, i, 2, 1)
                     w.show()
                 elif type == 'Boolean':
                     button = Gtk.CheckButton.new_with_mnemonic(tpl[3])
                     button.set_active(self.bool_prefs[tpl[1]])
                     widgets[tpl[1]] = button
-                    table.attach(button, 1, 2, i, i + 1, Gtk.AttachOptions.FILL, Gtk.AttachOptions.FILL)
+                    table.attach(button, 1, i, 1, 1)
                     button.connect('toggled', self._toggled_cb, widgets, tpl[1])
                     button.show()
                 else:
                     label = Gtk.Label.new(tpl[3] + ': ')
-                    label.set_alignment(1.0, 0.5)
-                    table.attach(label, 0, 1, i, i + 1, Gtk.AttachOptions.FILL, Gtk.AttachOptions.FILL)
+                    label.set_xalign(1.0)
+                    label.set_yalign(0.5)
+                    table.attach(label, 0, i, 1, 1)
                     label.show()
                     if tpl[0] in [ 'Font', 'Integer' ]:
                         entry = Gtk.Box.new(Gtk.Orientation.HORIZONTAL, 0)
                         if tpl[0] == 'Font':
                             button = FontButton()
-                            button.set_font_name(self.string_prefs[tpl[1]])
+                            button.set_font(self.string_prefs[tpl[1]])
                         else:
                             button = Gtk.SpinButton.new(Gtk.Adjustment.new(self.int_prefs[tpl[1]], tpl[4], tpl[5], 1, 0, 0), 1.0, 0)
                         widgets[tpl[1]] = button
@@ -1087,7 +1090,7 @@ class Preferences:
                             entry = Gtk.Entry.new()
                         widgets[tpl[1]] = entry
                         entry.set_text(self.string_prefs[tpl[1]])
-                    table.attach(entry, 1, 2, i, i + 1, Gtk.AttachOptions.EXPAND|Gtk.AttachOptions.FILL, Gtk.AttachOptions.FILL)
+                    table.attach(entry, 1, i, 1, 1)
                     entry.show()
                 table.show()
             return table
@@ -6716,7 +6719,9 @@ class FileChooserDialog(Gtk.FileChooserDialog):
         FileChooserDialog.last_chosen_folder = widget.get_current_folder()
 
     def __init__(self, title, parent, prefs, action, accept, rev=False):
-        Gtk.FileChooserDialog.__init__(self, title, parent, action, (Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL, accept, Gtk.ResponseType.OK))
+        Gtk.FileChooserDialog.__init__(self, title=title, parent=parent, action=action)
+        self.add_button(Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL)
+        self.add_button(accept, Gtk.ResponseType.OK)
         self.prefs = prefs
         hbox = Gtk.Box.new(Gtk.Orientation.HORIZONTAL, 0)
         hbox.set_border_width(5)
@@ -7750,11 +7755,11 @@ class Diffuse(Gtk.Window):
             return True
 
         # ask the user which files should be saved
-        dialog = Gtk.MessageDialog(self.get_toplevel(),
-                                   Gtk.DialogFlags.DESTROY_WITH_PARENT,
-                                   Gtk.MessageType.WARNING,
-                                   Gtk.ButtonsType.NONE,
-                                   _('Some files have unsaved changes.  Select the files to save before closing.'))
+        dialog = Gtk.MessageDialog(parent=self.get_toplevel(),
+                                   destroy_with_parent=True,
+                                   message_type=Gtk.MessageType.WARNING,
+                                   buttons=Gtk.ButtonsType.NONE,
+                                   text=_('Some files have unsaved changes.  Select the files to save before closing.'))
         dialog.set_resizable(True)
         dialog.set_title(APP_NAME)
         # add list of files with unsaved changes
