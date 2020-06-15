@@ -6653,7 +6653,9 @@ GObject.signal_new('format-changed', FileDiffViewer, GObject.SignalFlags.RUN_LAS
 # dialogue used to search for text
 class SearchDialog(Gtk.Dialog):
     def __init__(self, parent, pattern=None, history=None):
-        Gtk.Dialog.__init__(self, _('Find...'), parent, Gtk.DialogFlags.DESTROY_WITH_PARENT, (Gtk.STOCK_CANCEL, Gtk.ResponseType.REJECT, Gtk.STOCK_OK, Gtk.ResponseType.ACCEPT))
+        Gtk.Dialog.__init__(self, title=_('Find...'), parent=parent, destroy_with_parent=True)
+        self.add_button(Gtk.STOCK_CANCEL, Gtk.ResponseType.REJECT)
+        self.add_button(Gtk.STOCK_OK, Gtk.ResponseType.ACCEPT)
 
         vbox = Gtk.Box.new(Gtk.Orientation.VERTICAL, 0)
         vbox.set_border_width(10)
@@ -6760,7 +6762,9 @@ class FileChooserDialog(Gtk.FileChooserDialog):
 # dialogue used to search for text
 class NumericDialog(Gtk.Dialog):
     def __init__(self, parent, title, text, val, lower, upper, step=1, page=0):
-        Gtk.Dialog.__init__(self, title, parent, Gtk.DialogFlags.DESTROY_WITH_PARENT, (Gtk.STOCK_CANCEL, Gtk.ResponseType.REJECT, Gtk.STOCK_OK, Gtk.ResponseType.ACCEPT))
+        Gtk.Dialog.__init__(self, title=title, parent=parent, destroy_with_parent=True)
+        self.add_button(Gtk.STOCK_CANCEL, Gtk.ResponseType.REJECT)
+        self.add_button(Gtk.STOCK_OK, Gtk.ResponseType.ACCEPT)
 
         vbox = Gtk.Box.new(Gtk.Orientation.VERTICAL, 0)
         vbox.set_border_width(10)
