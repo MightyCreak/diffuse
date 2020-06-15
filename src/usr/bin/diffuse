@@ -6830,7 +6830,8 @@ class NotebookTab(Gtk.EventBox):
             image.show()
         self.label = label = Gtk.Label.new(name)
         # left justify the widget
-        label.set_halign(Gtk.Align.START)
+        label.set_xalign(0.0)
+        label.set_yalign(0.5)
         hbox.pack_start(label, True, True, 0)
         label.show()
         self.button = button = Gtk.Button.new()
