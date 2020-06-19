@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - convert to Python 3
 - convert to GTK 3
 - updated Python highlighting for Python 3 grammar
+- updated copyrights years and authors
 
 ## [0.4.8] - 2014-07-18
 ### Added
