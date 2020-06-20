@@ -252,7 +252,17 @@ processTranslations(install, os.path.join(destdir, prefix[1:]))
 
 if not install:
     # remove directories we own
-    for s in 'share/omf/diffuse', 'share/gnome/help/diffuse/C', 'share/gnome/help/diffuse/ru', 'share/gnome/help/diffuse', 'share/diffuse/syntax', 'share/diffuse':
+    dirs_to_remove = [
+        'share/omf/diffuse',
+        'share/gnome/help/diffuse/C',
+        'share/gnome/help/diffuse/cs',
+        'share/gnome/help/diffuse/it',
+        'share/gnome/help/diffuse/ru',
+        'share/gnome/help/diffuse',
+        'share/diffuse/syntax',
+        'share/diffuse'
+    ]
+    for s in dirs_to_remove:
         d = os.path.join(destdir, os.path.join(prefix, s)[1:])
         try:
             os.rmdir(d)
