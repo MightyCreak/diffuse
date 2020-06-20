@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - added a preference and command line option to specify the version control system search order
 - added .editorconfig file
 - added .gitignore file
+- added message when removing files during uninstallation
 
 ### Changed
 - convert to Python 3
@@ -22,6 +23,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - updated copyrights years and authors
 - improve Spanish translation
 - convert translation README to MarkDown
+
+### Fixed
+- fixed wrong icons directory for gtk-update-icon-cache
+- fixed missing directories when uninstalling
 
 ## [0.4.8] - 2014-07-18
 ### Added

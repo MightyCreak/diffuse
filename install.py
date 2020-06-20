@@ -151,6 +151,7 @@ def processFiles(install, dst, src, template):
                     os.chmod(d, 0o755)
             else:
                 # remove file
+                print(f'Removing {d}')
                 removeFile(d)
 
 # compile .po files and install
@@ -252,7 +253,17 @@ processTranslations(install, os.path.join(destdir, prefix[1:]))
 
 if not install:
     # remove directories we own
-    for s in 'share/omf/diffuse', 'share/gnome/help/diffuse/C', 'share/gnome/help/diffuse/ru', 'share/gnome/help/diffuse', 'share/diffuse/syntax', 'share/diffuse':
+    dirs_to_remove = [
+        'share/omf/diffuse',
+        'share/gnome/help/diffuse/C',
+        'share/gnome/help/diffuse/cs',
+        'share/gnome/help/diffuse/it',
+        'share/gnome/help/diffuse/ru',
+        'share/gnome/help/diffuse',
+        'share/diffuse/syntax',
+        'share/diffuse'
+    ]
+    for s in dirs_to_remove:
         d = os.path.join(destdir, os.path.join(prefix, s)[1:])
         try:
             os.rmdir(d)
@@ -264,7 +275,7 @@ if not files_only:
     print(f'Performing post {stage} tasks.')
 
     cmds = [ [ 'update-desktop-database' ],
-             [ 'gtk-update-icon-cache', os.path.join(destdir, os.path.join(prefix, 'icons/hicolor')[1:]) ] ]
+             [ 'gtk-update-icon-cache', os.path.join(destdir, os.path.join(prefix, 'share/icons/hicolor')[1:]) ] ]
     if install:
         cmds.append([ 'scrollkeeper-update', '-q', '-o', os.path.join(destdir, os.path.join(prefix, 'share/omf/diffuse')[1:]) ])
     else:
