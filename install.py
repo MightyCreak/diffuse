@@ -151,6 +151,7 @@ def processFiles(install, dst, src, template):
                     os.chmod(d, 0o755)
             else:
                 # remove file
+                print(f'Removing {d}')
                 removeFile(d)
 
 # compile .po files and install
