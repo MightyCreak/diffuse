@@ -9,54 +9,51 @@ The example commands below show how to create and manage the Japanese
 translations.  Replace all instances of "ja" with the code for the desired
 language.
 
-----
-
-Creating a new translation:
+Creating a new translation
+--------------------------
 
 1. Create a .pot file for Diffuse:
 
-  $ xgettext -s -o diffuse.pot -L Python ../src/usr/bin/diffuse
+        $ xgettext -s -o diffuse.pot -L Python ../src/usr/bin/diffuse
 
 2. Create a .po file for the translation:
 
-  $ msginit -l ja -o ja.po -i diffuse.pot 
+        $ msginit -l ja -o ja.po -i diffuse.pot
 
 3. Manually complete in the translations in the .po file:
 
-  $ vi ja.po
+        $ vi ja.po
 
-----
-
-Updating an existing translation:
+Updating an existing translation
+--------------------------------
 
 1. Move the existing .po file:
 
-  $ mv ja.po old.po
+        $ mv ja.po old.po
 
 2. Create an empty .po file for the translation:
 
-  $ xgettext -s -o diffuse.pot -L Python ../src/usr/bin/diffuse
-  $ msginit -l ja -o empty.po -i diffuse.pot 
+        $ xgettext -s -o diffuse.pot -L Python ../src/usr/bin/diffuse
+        $ msginit -l ja -o empty.po -i diffuse.pot
 
 3. Merge the old translations:
 
-  $ msgmerge old.po empty.po -o ja.po
+        $ msgmerge old.po empty.po -o ja.po
 
 4. Clean up:
 
-  $ rm old.po empty.po
+        $ rm old.po empty.po
 
 5. Manually complete in the translations in the .po file:
 
-  $ vi ja.po
+        $ vi ja.po
 
-----
-
-Validate a translation:
+Validate a translation
+----------------------
 
 1. Attempt to compile the .po file and note any warnings:
 
-  $ msgfmt -c -v ja.po
+        $ msgfmt -c -v ja.po
 
 System Integration
 ==================
@@ -64,7 +61,7 @@ System Integration
 Localised text for the system menu (name and comment) should be manually
 added to the desktop file:
 
-  ../src/usr/share/applications/diffuse.desktop
+    ../src/usr/share/applications/diffuse.desktop
 
 Localised text for the Microsoft Windows installer is stored in separate ISL
 files.  Copy the English version (../windows-installer/en.isl) and replace the
@@ -83,7 +80,7 @@ POSIX platforms.  The conversion tools insert some English text that gets
 localised using search and replace.  Manually add new search and replace rules
 to these files:
 
-  ../windows-installer/translations.txt
-  ../utils/translations.txt
+    ../windows-installer/translations.txt
+    ../utils/translations.txt
 
-The format of each line is: <language id>:<English text>:<localised text>
+The format of each line is: \<language id\>:\<English text\>:\<localised text\>
