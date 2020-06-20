@@ -264,7 +264,7 @@ if not files_only:
     print(f'Performing post {stage} tasks.')
 
     cmds = [ [ 'update-desktop-database' ],
-             [ 'gtk-update-icon-cache', os.path.join(destdir, os.path.join(prefix, 'icons/hicolor')[1:]) ] ]
+             [ 'gtk-update-icon-cache', os.path.join(destdir, os.path.join(prefix, 'share/icons/hicolor')[1:]) ] ]
     if install:
         cmds.append([ 'scrollkeeper-update', '-q', '-o', os.path.join(destdir, os.path.join(prefix, 'share/omf/diffuse')[1:]) ])
     else:
