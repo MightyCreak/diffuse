@@ -2263,11 +2263,11 @@ class _Rcs:
                 if len(r):
                     prev = '.'.join(r)
             for k in sorted(names):
-                 if prev is None:
-                     k0 = None
-                 else:
-                     k0 = k
-                 result.append([ (k0, prev), (k, rev) ])
+                if prev is None:
+                    k0 = None
+                else:
+                    k0 = k
+                result.append([ (k0, prev), (k, rev) ])
         except ValueError:
             logError(_('Error parsing revision %s.') % (rev, ))
         return result
@@ -2337,6 +2337,12 @@ class _Rcs:
         return popenRead(self.root, [ prefs.getString('rcs_bin_co'), '-p', '-q', '-r' + rev, safeRelativePath(self.root, name, prefs, 'rcs_cygwin') ], prefs, 'rcs_bash')
 
 def _get_rcs_repo(path, prefs):
+    if os.path.isdir(os.path.join(path, 'RCS')):
+        return _Rcs(path)
+
+    # [rfailliot] this code doesn't seem to work, but was in 0.4.8 too.
+    # I'm letting it here until further tests are done, but it is possible
+    # this code never actually worked.
     try:
         for s in os.listdir(path):
             if s.endswith(',v') and os.path.isfile(os.path.join(path, s)):
