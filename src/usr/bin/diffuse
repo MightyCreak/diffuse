@@ -2263,11 +2263,11 @@ class _Rcs:
                 if len(r):
                     prev = '.'.join(r)
             for k in sorted(names):
-                 if prev is None:
-                     k0 = None
-                 else:
-                     k0 = k
-                 result.append([ (k0, prev), (k, rev) ])
+                if prev is None:
+                    k0 = None
+                else:
+                    k0 = k
+                result.append([ (k0, prev), (k, rev) ])
         except ValueError:
             logError(_('Error parsing revision %s.') % (rev, ))
         return result
