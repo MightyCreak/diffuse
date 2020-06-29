@@ -2561,7 +2561,7 @@ class _Svn:
     def getRevision(self, prefs, name, rev):
         vcs_bin = prefs.getString('svn_bin')
         if rev in [ 'BASE', 'COMMITTED', 'PREV' ]:
-            return popenRead(self.root, [ vcs_bin, 'cat', '%s@%s' % (safeRelativePath(self.root, name, prefs, 'svn_cygwin'), rev) ], prefs, 'svn_bash')
+            return popenRead(self.root, [ vcs_bin, 'cat', '%s@%s' % (relpath(self.root, os.path.abspath(name)).replace(os.sep, '/'), rev) ], prefs, 'svn_bash')
         return popenRead(self.root, [ vcs_bin, 'cat', '%s/%s@%s' % (self._getURL(prefs), relpath(self.root, os.path.abspath(name)).replace(os.sep, '/'), rev) ], prefs, 'svn_bash')
 
 def _get_svn_repo(path, prefs):
