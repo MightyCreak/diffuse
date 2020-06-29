@@ -27,33 +27,51 @@ Creating a new translation
 Updating an existing translation
 --------------------------------
 
-1. Move the existing .po file:
+Use `update-translations.py` to update one or more PO files.
 
-        $ mv ja.po old.po
+Here is an example with `ja.po` and `ko.po`:
 
-2. Create an empty .po file for the translation:
+Command-line:
+```sh
+./update-translations.py ja.po ko.po
+```
 
-        $ xgettext -s -o diffuse.pot -L Python ../src/usr/bin/diffuse
-        $ msginit -l ja -o empty.po -i diffuse.pot
+Output:
+```
+Generate 'diffuse.pot'.
+Updating translation file 'ja.po'...
+Created /tmp/tmp0gtniydu/ja.empty.po.
+Validate ja.po:
+183 translated messages, 2 untranslated messages.
+Update done.
+Updating translation file 'ko.po'...
+Created /tmp/tmp0gtniydu/ko.empty.po.
+Validate ko.po:
+183 translated messages, 2 untranslated messages.
+Update done.
+```
 
-3. Merge the old translations:
-
-        $ msgmerge old.po empty.po -o ja.po
-
-4. Clean up:
-
-        $ rm old.po empty.po
-
-5. Manually complete in the translations in the .po file:
-
-        $ vi ja.po
+Then use the text editor of your choice to complete the translations.
 
 Validate a translation
 ----------------------
 
-1. Attempt to compile the .po file and note any warnings:
+Use `update-translations.py` to validate one or more PO files.
 
-        $ msgfmt -c -v ja.po
+Here is an example with `ja.po` and `ko.po`:
+
+Command-line:
+```sh
+./update-translations.py --check-only ja.po ko.po
+```
+
+Output:
+```
+Validate ja.po:
+183 translated messages, 2 untranslated messages.
+Validate ko.po:
+183 translated messages, 2 untranslated messages.
+```
 
 System Integration
 ==================

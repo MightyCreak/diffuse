@@ -19,6 +19,7 @@
 # (http://www.fsf.org/) or by writing to the Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
+import argparse
 import glob
 import os
 import subprocess
@@ -27,6 +28,9 @@ import tempfile
 
 def generate_pot_file():
     subprocess.run(["xgettext", "-s", "-o", "diffuse.pot", "-L", "Python", "../src/usr/bin/diffuse"])
+
+def check_translation(filename):
+    subprocess.run(["msgfmt", "-c", "-v", filename])
 
 def update_translation(filename):
     print(f"Updating translation file '{filename}'...")
@@ -46,21 +50,42 @@ def update_translation(filename):
     subprocess.run(["msgmerge", "-q", "--no-wrap", tmpfile, emptypofile, "-o", filename])
 
     # Validate translation
-    print(f"Validation:")
-    subprocess.run(["msgfmt", "-c", "-v", filename])
+    print(f"Validate {filename}:")
+    check_translation(filename)
 
     print(f"Update done.")
 
-# Generate diffuse.pot file
-generate_pot_file()
+# Setup argument parser
+parser = argparse.ArgumentParser(description='Update translation files (.po).')
+parser.add_argument('po_files', metavar='filename.po', nargs='+',
+                    help='the translation file')
+parser.add_argument('-c', '--check-only', action='store_true',
+                    help='check the PO files')
+parser.add_argument('--no-pot-generation', action='store_true',
+                    help='don\'t generate the POT file')
+
+# Parse command-line arguments
+args = parser.parse_args()
+
+# Get PO files from command-line
+po_files = args.po_files
+po_files.sort()
+
+if args.check_only:
+    for file in po_files:
+        print(f"Validate {file}:")
+        check_translation(file)
+    exit(0)
+
+if not args.no_pot_generation:
+    # Generate diffuse.pot file
+    print("Generate 'diffuse.pot'.")
+    generate_pot_file()
 
 # Create temporary working directory
 tmpdir = tempfile.mkdtemp()
-
 try:
     # Update PO files
-    po_files = glob.glob("*.po", recursive=False)
-    po_files.sort()
     for file in po_files:
         update_translation(file)
 finally:
