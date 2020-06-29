@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - added .editorconfig file
 - added .gitignore file
 - added message when removing files during uninstallation
+- added Python script to update all the translation files at once
 
 ### Changed
 - convert to Python 3
@@ -23,6 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - updated copyrights years and authors
 - improve Spanish translation
 - convert translation README to MarkDown
+- updated all the translation files
 
 ### Fixed
 - fixed wrong icons directory for gtk-update-icon-cache

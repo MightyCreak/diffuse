@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: diffuse-svn\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-08 18:50+0100\n"
-"PO-Revision-Date: 2013-04-08 19:24+0100\n"
+"POT-Creation-Date: 2020-06-29 14:49-0400\n"
+"PO-Revision-Date: 2020-06-29 14:49-0400\n"
 "Last-Translator: Jindřich Šesták <khagaroth@gmail.com>\n"
 "Language-Team: NONE <NONE>\n"
 "Language: cs\n"
@@ -22,31 +22,657 @@ msgstr ""
 "X-Poedit-KeywordsList: _\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: diffuse:68
-msgid "Copyright © 2006-2019 Derrick Moser"
-"Copyright © 2015-2020 Romain Failliot"
-msgstr "Copyright © 2006-2019 Derrick Moser"
-"Copyright © 2015-2020 Romain Failliot"
+#: ../src/usr/bin/diffuse:911
+msgid "\"co\" command"
+msgstr "příkaz \"co\""
 
-#: diffuse:86
+#: ../src/usr/bin/diffuse:912
+msgid "\"rlog\" command"
+msgstr "příkaz \"rlog\""
+
+#: ../src/usr/bin/diffuse:7305
+#, python-format
+msgid "A file named %s already exists.  Do you want to overwrite it?"
+msgstr "Soubor s názvem %s již existuje. Chcete ho přepsat?"
+
+#: ../src/usr/bin/diffuse:4820
+msgid "Align with Selection"
+msgstr "Zarovnat s výběrem"
+
+#: ../src/usr/bin/diffuse:843
+msgid "Alignment"
+msgstr "Zarovnání"
+
+#: ../src/usr/bin/diffuse:860
+msgid "Always show the tab bar"
+msgstr "Vždy zobrazovat lištu s panely"
+
+#: ../src/usr/bin/diffuse:733
+msgid "Auto Detect"
+msgstr "Automaticky rozpoznat"
+
+#: ../src/usr/bin/diffuse:853
+msgid "Auto indent"
+msgstr "Automaticky odsazovat"
+
+#: ../src/usr/bin/diffuse:7551
+msgid "C_lear Edits"
+msgstr "_Smazat úpravy"
+
+#: ../src/usr/bin/diffuse:8116
+msgid "Choose Folder With Commit"
+msgstr "Vyberte adresář se zapsanou revizí"
+
+#: ../src/usr/bin/diffuse:8096
+msgid "Choose Folder With Modified Files"
+msgstr "Vyberte adresář se změněnými soubory"
+
+#: ../src/usr/bin/diffuse:4829 ../src/usr/bin/diffuse:7653
+msgid "Clear Edits"
+msgstr "Smazat úpravy"
+
+#: ../src/usr/bin/diffuse:6853
+msgid "Close Tab"
+msgstr "Zavřít panel"
+
+#: ../src/usr/bin/diffuse:7802
+msgid "Close _Without Saving"
+msgstr "Zavřít _bez uložení"
+
+#: ../src/usr/bin/diffuse:6714
+#, python-format
+msgid "Closing this tab will quit %s."
+msgstr "Zavřením tohoto panelu ukončíte %s."
+
+#: ../src/usr/bin/diffuse:914
+msgid "Command"
+msgstr "Příkaz"
+
+#: ../src/usr/bin/diffuse:7597
+msgid "Convert Leading Spaces To _Tabs"
+msgstr "Nah_radit úvodní mezery tabulátory"
+
+#: ../src/usr/bin/diffuse:7596
+msgid "Convert Tabs To _Spaces"
+msgstr "_Nahradit tabulátory mezerami"
+
+#: ../src/usr/bin/diffuse:7604
+msgid "Convert To Uni_x Format"
+msgstr "Převést na Uni_x formát"
+
+#: ../src/usr/bin/diffuse:7602
+msgid "Convert To _DOS Format"
+msgstr "Převést na _DOS formát"
+
+#: ../src/usr/bin/diffuse:7590
+msgid "Convert To _Lower Case"
+msgstr "Převést na _malá písmena"
+
+#: ../src/usr/bin/diffuse:7603
+msgid "Convert To _Mac Format"
+msgstr "Převést na Ma_c formát"
+
+#: ../src/usr/bin/diffuse:7589
+msgid "Convert To _Upper Case"
+msgstr "Převést na _velká písmena"
+
+#: ../src/usr/bin/diffuse:4825 ../src/usr/bin/diffuse:7651
+msgid "Copy"
+msgstr "Kopírovat"
+
+#: ../src/usr/bin/diffuse:7643
+msgid "Copy Left Into Selection"
+msgstr "Kopírovat zleva do výběru"
+
+#: ../src/usr/bin/diffuse:7610
+msgid "Copy Left _Into Selection"
+msgstr "Ko_pírovat zleva do výběru"
+
+#: ../src/usr/bin/diffuse:7611
+msgid "Copy Right I_nto Selection"
+msgstr "Kopí_rovat zprava do výběru"
+
+#: ../src/usr/bin/diffuse:7644
+msgid "Copy Right Into Selection"
+msgstr "Kopírovat zprava do výběru"
+
+#: ../src/usr/bin/diffuse:7642
+msgid "Copy Selection Left"
+msgstr "Kopírovat výběr doleva"
+
+#: ../src/usr/bin/diffuse:7641
+msgid "Copy Selection Right"
+msgstr "Kopírovat výběr doprava"
+
+#: ../src/usr/bin/diffuse:7608
+msgid "Copy Selection _Left"
+msgstr "K_opírovat výběr doleva"
+
+#: ../src/usr/bin/diffuse:7607
+msgid "Copy Selection _Right"
+msgstr "_Kopírovat výběr doprava"
+
+#: ../src/usr/bin/diffuse:70
+msgid "Copyright"
+msgstr ""
+
+#: ../src/usr/bin/diffuse:7546
+msgid "Cu_t"
+msgstr "_Vyjmout"
+
+#: ../src/usr/bin/diffuse:4824 ../src/usr/bin/diffuse:7650
+msgid "Cut"
+msgstr "Vyjmout"
+
+#: ../src/usr/bin/diffuse:889
+msgid "Cygdrive prefix"
+msgstr "Předpona cygdrive"
+
+#: ../src/usr/bin/diffuse:886
+msgid "Cygwin"
+msgstr "Cygwin"
+
+#: ../src/usr/bin/diffuse:7600
+msgid "De_crease Indenting"
+msgstr "Zmenši_t odsazení"
+
+#: ../src/usr/bin/diffuse:865
+msgid "Default codec"
+msgstr "Výchozí kódování"
+
+#: ../src/usr/bin/diffuse:859
+msgid "Default panes"
+msgstr "Výchozí počet podoken"
+
+#: ../src/usr/bin/diffuse:6810
+msgid "Diffuse is a graphical tool for merging and comparing text files."
+msgstr "Diffuse je grafický nástroj pro slučování a porovnávání textových souborů."
+
+#: ../src/usr/bin/diffuse:829
+msgid "Display"
+msgstr "Zobrazení"
+
+#: ../src/usr/bin/diffuse:851
+msgid "Editor"
+msgstr "Editor"
+
+#: ../src/usr/bin/diffuse:6736
+msgid "Encoding: "
+msgstr "Kódování: "
+
+#: ../src/usr/bin/diffuse:7351
+#, python-format
+msgid "Error encoding to %s."
+msgstr "Při změně kódování do %s došlo k chybě."
+
+#: ../src/usr/bin/diffuse:2657
+#, python-format
+msgid "Error parsing %s."
+msgstr "Při analýze %s došlo k chybě."
+
+#: ../src/usr/bin/diffuse:8498
+msgid "Error parsing line number."
+msgstr "Při analýze čísla řádku došlo k chybě."
+
+#: ../src/usr/bin/diffuse:1655 ../src/usr/bin/diffuse:2272
+#: ../src/usr/bin/diffuse:2416
+#, python-format
+msgid "Error parsing revision %s."
+msgstr "Při analýze revize %s došlo k chybě."
+
+#: ../src/usr/bin/diffuse:8515
+#, python-format
+msgid "Error processing argument \"%s\".  Directory not expected."
+msgstr "Při zpracování parametru \"%s\" došlo k chybě. Adresář nebyl očekáván."
+
+#: ../src/usr/bin/diffuse:714
+#, python-format
+msgid "Error processing line %(line)d of %(file)s."
+msgstr "Při zpracování řádku %(line)d souboru %(file)s došlo k chybě."
+
+#: ../src/usr/bin/diffuse:7186 ../src/usr/bin/diffuse:8417
+#, python-format
+msgid "Error reading %s."
+msgstr "Při čtení souboru %s došlo k chybě."
+
+#: ../src/usr/bin/diffuse:7184
+#, python-format
+msgid "Error reading revision %(rev)s of %(file)s."
+msgstr "Při čtení revize %(rev)s souboru %(file)s došlo k chybě."
+
+#: ../src/usr/bin/diffuse:8016
+#, python-format
+msgid "Error retrieving commits for %s."
+msgstr "Revize pro %s se nepodařilo načíst."
+
+#: ../src/usr/bin/diffuse:8047
+#, python-format
+msgid "Error retrieving modifications for %s."
+msgstr "Při načítání změn %s došlo k chybě."
+
+#: ../src/usr/bin/diffuse:1026 ../src/usr/bin/diffuse:7355
+#, python-format
+msgid "Error writing %s."
+msgstr "Při ukládání %s došlo k chybě."
+
+#: ../src/usr/bin/diffuse:854
+msgid "Expand tabs to spaces"
+msgstr "Nahradit tabulátory mezerami"
+
+#: ../src/usr/bin/diffuse:7588
+msgid "F_ormat"
+msgstr "F_ormát"
+
+#: ../src/usr/bin/diffuse:7913
+#, python-format
+msgid "File Merge %d"
+msgstr "Slučování %d"
+
+#: ../src/usr/bin/diffuse:7556
+msgid "Find Pre_vious"
+msgstr "Najít _předchozí"
+
+#: ../src/usr/bin/diffuse:7555
+msgid "Find _Next"
+msgstr "Najít _další"
+
+#: ../src/usr/bin/diffuse:6662
+msgid "Find..."
+msgstr "Najít..."
+
+#: ../src/usr/bin/diffuse:7580
+msgid "Fir_st Tab"
+msgstr "Prv_ní panel"
+
+#: ../src/usr/bin/diffuse:7636
+msgid "First Difference"
+msgstr "První rozdíl"
+
+#: ../src/usr/bin/diffuse:831
+msgid "Font"
+msgstr "Písmo"
+
+#: ../src/usr/bin/diffuse:7385
+msgid "Go To Line..."
+msgstr "Přejít na řádek..."
+
+#: ../src/usr/bin/diffuse:840
+msgid "Ignore blank line differences"
+msgstr "Ignorovat prázdné řádky"
+
+#: ../src/usr/bin/diffuse:848
+msgid "Ignore blank lines"
+msgstr "Ignorovat prázdné řádky"
+
+#: ../src/usr/bin/diffuse:845
+msgid "Ignore case"
+msgstr "Ignorovat velikost písmen"
+
+#: ../src/usr/bin/diffuse:837
+msgid "Ignore case differences"
+msgstr "Ignorovat velikost písmen"
+
+#: ../src/usr/bin/diffuse:839 ../src/usr/bin/diffuse:847
+msgid "Ignore changes to white space"
+msgstr "Ignorovat znaky mezer"
+
+#: ../src/usr/bin/diffuse:849
+msgid "Ignore end of line characters"
+msgstr "Ignorovat znaky konce řádku"
+
+#: ../src/usr/bin/diffuse:841
+msgid "Ignore end of line differences"
+msgstr "Ignorovat znaky konce řádku"
+
+#: ../src/usr/bin/diffuse:846
+msgid "Ignore white space"
+msgstr "Ignorovat netisknutelné znaky"
+
+#: ../src/usr/bin/diffuse:838
+msgid "Ignore white space differences"
+msgstr "Ignorovat netisknutelné znaky"
+
+#: ../src/usr/bin/diffuse:4821
+msgid "Isolate"
+msgstr "Izolovat"
+
+#: ../src/usr/bin/diffuse:7583
+msgid "Las_t Tab"
+msgstr "Posl_ední panel"
+
+#: ../src/usr/bin/diffuse:7639
+msgid "Last Difference"
+msgstr "Poslední rozdíl"
+
+#: ../src/usr/bin/diffuse:916
+msgid "Launch from a Bash login shell"
+msgstr "Spustit z příkazové řádky terminálu Bash"
+
+#: ../src/usr/bin/diffuse:7385
+msgid "Line Number: "
+msgstr "Řádek číslo: "
+
+#: ../src/usr/bin/diffuse:7613
+msgid "M_erge From Right Then Left"
+msgstr "S_loučit zprava a poté zleva"
+
+#: ../src/usr/bin/diffuse:6695
+msgid "Match Case"
+msgstr "Rozlišovat velikost písmen"
+
+#: ../src/usr/bin/diffuse:7645
+msgid "Merge From Left Then Right"
+msgstr "Sloučit zleva a poté zprava"
+
+#: ../src/usr/bin/diffuse:7646
+msgid "Merge From Right Then Left"
+msgstr "Sloučit zprava a poté zleva"
+
+#: ../src/usr/bin/diffuse:4822
+msgid "Merge Selection"
+msgstr "Sloučit výběr"
+
+#: ../src/usr/bin/diffuse:7632
+msgid "New 2-Way File Merge"
+msgstr "Nové 2směrné slučování"
+
+#: ../src/usr/bin/diffuse:7633
+msgid "New 3-Way File Merge"
+msgstr "Nové 3směrné slučování"
+
+#: ../src/usr/bin/diffuse:8165
+msgid "New N-Way File Merge..."
+msgstr "Nové Nsměrné slučování"
+
+#: ../src/usr/bin/diffuse:7534
+msgid "New _2-Way File Merge"
+msgstr "Nové _2směrné slučování"
+
+#: ../src/usr/bin/diffuse:7535
+msgid "New _3-Way File Merge"
+msgstr "Nové _3směrné slučování"
+
+#: ../src/usr/bin/diffuse:7536
+msgid "New _N-Way File Merge..."
+msgstr "Nové _Nsměrné slučování"
+
+#: ../src/usr/bin/diffuse:7638
+msgid "Next Difference"
+msgstr "Další rozdíl"
+
+#: ../src/usr/bin/diffuse:7582
+msgid "Next _Tab"
+msgstr "D_alší panel"
+
+#: ../src/usr/bin/diffuse:8129
+msgid "No committed files found."
+msgstr "Nebyly nalezeny žádné zapsané soubory."
+
+#: ../src/usr/bin/diffuse:8109
+msgid "No modified files found."
+msgstr "Nebyly nalezeny žádné změněné soubory."
+
+#: ../src/usr/bin/diffuse:7561
+msgid "None"
+msgstr "Nic"
+
+#: ../src/usr/bin/diffuse:8165
+msgid "Number of panes: "
+msgstr "Počet podoken: "
+
+#: ../src/usr/bin/diffuse:7527
+msgid "Open Commi_t..."
+msgstr "Otevřít _revizi..."
+
+#: ../src/usr/bin/diffuse:7209
+msgid "Open File"
+msgstr "Otevřít soubor"
+
+#: ../src/usr/bin/diffuse:8080
+msgid "Open File In New Tab"
+msgstr "Otevřít soubor v novém panelu"
+
+#: ../src/usr/bin/diffuse:7525
+msgid "Open File In New _Tab..."
+msgstr "Otevřít soubor v novém _panelu..."
+
+#: ../src/usr/bin/diffuse:6908
+msgid "Open File..."
+msgstr "Otevřít soubor..."
+
+#: ../src/usr/bin/diffuse:7526
+msgid "Open _Modified Files..."
+msgstr "Otevřít změněné soubory..."
+
+#: ../src/usr/bin/diffuse:866
+msgid "Order of codecs used to identify encoding"
+msgstr "Pořadí kodeků pro rozpoznání kódování"
+
+#: ../src/usr/bin/diffuse:7791
+msgid "Pane"
+msgstr "Podokno"
+
+#: ../src/usr/bin/diffuse:4826 ../src/usr/bin/diffuse:7652
+msgid "Paste"
+msgstr "Vložit"
+
+#: ../src/usr/bin/diffuse:8230
+msgid "Phrase not found.  Continue from the end of the file?"
+msgstr "Hledaný výraz nebyl nalezen. Pokračovat v hledání od konce souboru?"
+
+#: ../src/usr/bin/diffuse:8232
+msgid "Phrase not found.  Continue from the start of the file?"
+msgstr "Hledaný výraz nebyl nalezen. Pokračovat v hledání od začátku souboru?"
+
+#: ../src/usr/bin/diffuse:7559
+msgid "Pr_eferences..."
+msgstr "Př_edvolby..."
+
+#: ../src/usr/bin/diffuse:7581
+msgid "Pre_vious Tab"
+msgstr "Předch_ozí panel"
+
+#: ../src/usr/bin/diffuse:986
+msgid "Preferences"
+msgstr "Předvolby"
+
+#: ../src/usr/bin/diffuse:7411
+msgid "Press the enter key or double click to edit.  Press the space bar or use the RMB menu to manually align."
+msgstr "Pro aktivaci úprav stiskněte klávesu Enter, nebo na řádek dvakrát klikněte myší. Pro ruční zarovnání stiskněte Mezerník, nebo použijte místní nabídku dostupnou po kliknutí pravým tlačítkem myši."
+
+#: ../src/usr/bin/diffuse:7413
+msgid "Press the escape key to finish editing."
+msgstr "Editaci ukončíte pomocí klávesy escape."
+
+#: ../src/usr/bin/diffuse:7637
+msgid "Previous Difference"
+msgstr "Předchozí rozdíl"
+
+#: ../src/usr/bin/diffuse:7572
+msgid "Re_align All"
+msgstr "Znovu _zarovnat"
+
+#: ../src/usr/bin/diffuse:7635
+msgid "Realign All"
+msgstr "Znovu zarovnat"
+
+#: ../src/usr/bin/diffuse:7649
+msgid "Redo"
+msgstr "Znovu"
+
+#: ../src/usr/bin/diffuse:863
+msgid "Regional Settings"
+msgstr "Místní nastavení"
+
+#: ../src/usr/bin/diffuse:6909
+msgid "Reload File"
+msgstr "Znovu načíst soubor"
+
+#: ../src/usr/bin/diffuse:7595
+msgid "Remove Trailing _White Space"
+msgstr "_Odstranit mezery na koncích řádků"
+
+#: ../src/usr/bin/diffuse:6746
+msgid "Revision: "
+msgstr "Revize: "
+
+#: ../src/usr/bin/diffuse:834
+msgid "Right margin"
+msgstr "Pravý okraj"
+
+#: ../src/usr/bin/diffuse:888
+msgid "Root directory"
+msgstr "Kořenový adresář"
+
+#: ../src/usr/bin/diffuse:7279
+#, python-format
+msgid "Save %(title)s Pane %(pane)d"
+msgstr "Uložit podokno %(pane)d %(title)s"
+
+#: ../src/usr/bin/diffuse:7532
+msgid "Save A_ll"
+msgstr "Uložit _vše"
+
+#: ../src/usr/bin/diffuse:6910
+msgid "Save File"
+msgstr "Uložit soubor"
+
+#: ../src/usr/bin/diffuse:6911
+msgid "Save File As..."
+msgstr "Uložit soubor jako..."
+
+#: ../src/usr/bin/diffuse:7531
+msgid "Save File _As..."
+msgstr "Uložit soubor ­_jako..."
+
+#: ../src/usr/bin/diffuse:7056
+msgid "Save changes before loading the new file?"
+msgstr "Uložit změny před načtením nového souboru?"
+
+#: ../src/usr/bin/diffuse:6700
+msgid "Search Backwards"
+msgstr "Hledat od konce"
+
+#: ../src/usr/bin/diffuse:6670
+msgid "Search For: "
+msgstr "Vyhledat: "
+
+#: ../src/usr/bin/diffuse:4828
+msgid "Select All"
+msgstr "Vybrat vše"
+
+#: ../src/usr/bin/diffuse:7550
+msgid "Select _All"
+msgstr "V_ybrat vše"
+
+#: ../src/usr/bin/diffuse:7415
+msgid "Select target line and press the space bar to align.  Press the escape key to cancel."
+msgstr "Vyberte cílový řádek a proveďte zarovnání stisknutím klávesy Mezerník. Pro zrušení stiskněte klávesu Escape."
+
+#: ../src/usr/bin/diffuse:7586
+msgid "Shift Pane _Left"
+msgstr "Přesunout podokno do_leva"
+
+#: ../src/usr/bin/diffuse:7585
+msgid "Shift Pane _Right"
+msgstr "Přesunout podokno dop_rava"
+
+#: ../src/usr/bin/diffuse:835
+msgid "Show line numbers"
+msgstr "Zobrazit čísla řádků"
+
+#: ../src/usr/bin/diffuse:833
+msgid "Show right margin"
+msgstr "Zobrazit pravý okraj"
+
+#: ../src/usr/bin/diffuse:836
+msgid "Show white space characters"
+msgstr "Zobrazit netisknutelné znaky"
+
+#: ../src/usr/bin/diffuse:8508
+#, python-format
+msgid "Skipping unknown argument \"%s\"."
+msgstr "Ignorován neznámý parametr \"%s\"."
+
+#: ../src/usr/bin/diffuse:855
+msgid "Soft tab width"
+msgstr "Šířka tabulátoru"
+
+#: ../src/usr/bin/diffuse:7773
+msgid "Some files have unsaved changes.  Select the files to save before closing."
+msgstr "Některé změněné soubory nebyly uloženy. Vyberte soubory, které chcete před zavřením uložit."
+
+#: ../src/usr/bin/diffuse:7593
+msgid "Sort Lines In D_escending Order"
+msgstr "Seřadit řádky _sestupně"
+
+#: ../src/usr/bin/diffuse:7592
+msgid "Sort Lines In _Ascending Order"
+msgstr "Seřadit řádky v_zestupně"
+
+#: ../src/usr/bin/diffuse:4831
+msgid "Swap with Selected Pane"
+msgstr "Prohodit s vybraným podoknem"
+
+#: ../src/usr/bin/diffuse:7786
+msgid "Tab"
+msgstr "Panel"
+
+#: ../src/usr/bin/diffuse:832
+msgid "Tab width"
+msgstr "Šířka tabulátoru"
+
+#: ../src/usr/bin/diffuse:857
+msgid "Tabs"
+msgstr "Panely"
+
+#: ../src/usr/bin/diffuse:7259
+#, python-format
+msgid "The file %s changed on disk.  Do you want to reload the file?"
+msgstr "Soubor %s byl změněn. Chcete ho znovu načíst?"
+
+#: ../src/usr/bin/diffuse:7310
+#, python-format
+msgid "The file %s has been modified by another process since reading it.  If you save, all the external changes could be lost.  Save anyways?"
+msgstr "Soubor %s byl od načtení změněn jiným procesem. Pokud ho nyní uložíte, změny provedené tímto externím procesem mohou být ztraceny. Chcete ho přesto uložit?"
+
+#: ../src/usr/bin/diffuse:6818
+msgid ""
+"This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the licence, or (at your option) any later version.\n"
+"\n"
+"This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.\n"
+"\n"
+"You should have received a copy of the GNU General Public License along with this program.  You may also obtain a copy of the GNU General Public License from the Free Software Foundation by visiting their web site (http://www.fsf.org/) or by writing to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA\n"
+msgstr ""
+"Tento program je svobodný software. Můžete ho upravovat a distribuovat za podmínky dodržení pravidel licence GNU General Public License verze 2 (dále jen GPL), nebo (pokud chcete) některé z jejích novějších verzí.\n"
+"\n"
+"Tento program je distribuován v naději, že bude užitečný, ale BEZ JAKÉKOLIV ZÁRUKY, tedy ani implicitní záruky OBCHODOVATELNOSTI nebo VHODNOSTI PRO URČITÝ ÚČEL. Další podrobnosti získáte přečtením GPL.\n"
+"\n"
+"Spolu s tímto programem by jste měli obdržet i kopii GPL. GPL můžete také získat na domovských stránkách Free Software Foundation (http://www.fsf.org/), nebo můžete zaslat dopis na adresu Free Software Foundation, Inc., 51 Franclin St, Fifth Floor, Boston, MA 02110-1301 USA\n"
+
+#: ../src/usr/bin/diffuse:7648
+msgid "Undo"
+msgstr "Zpět"
+
+#: ../src/usr/bin/diffuse:918
+msgid "Update paths for Cygwin"
+msgstr "Upravit cesty pro Cygwin"
+
+#: ../src/usr/bin/diffuse:81
 msgid ""
 "Usage:\n"
 "    diffuse [ [OPTION...] [FILE...] ]...\n"
 "    diffuse ( -h | -? | --help | -v | --version )\n"
 "\n"
-"Diffuse is a graphical tool for merging and comparing text files.  Diffuse "
-"is\n"
-"able to compare an arbitrary number of files side-by-side and gives users "
-"the\n"
-"ability to manually adjust line matching and directly edit files.  Diffuse "
-"can\n"
+"Diffuse is a graphical tool for merging and comparing text files.  Diffuse is\n"
+"able to compare an arbitrary number of files side-by-side and gives users the\n"
+"ability to manually adjust line matching and directly edit files.  Diffuse can\n"
 "also retrieve revisions of files from Bazaar, CVS, Darcs, Git, Mercurial,\n"
 "Monotone, RCS, Subversion, and SVK repositories for comparison and merging.\n"
 "\n"
 "Help Options:\n"
 "  ( -h | -? | --help )             Display this usage information\n"
-"  ( -v | --version )               Display version and copyright "
-"information\n"
+"  ( -v | --version )               Display version and copyright information\n"
 "\n"
 "Configuration Options:\n"
 "  --no-rcfile                      Do not read any resource files\n"
@@ -61,6 +687,7 @@ msgid ""
 "  ( -r | --revision ) <rev>        File revision <rev>\n"
 "  ( -s | --separate )              Create a new tab for each file\n"
 "  ( -t | --tab )                   Start a new tab\n"
+"  ( -V | --vcs ) <vcs-list>        Version control system search order\n"
 "  --line <line>                    Start with line <line> selected\n"
 "  --null-file                      Create a blank file comparison pane\n"
 "\n"
@@ -75,14 +702,10 @@ msgstr ""
 "    diffuse [ [PARAMETR...] [SOUBOR...] ]...\n"
 "    diffuse ( -h | -? | --help | -v | --version )\n"
 "\n"
-"Diffuse je grafický nástroj pro slučování a porovnávání textových souborů.  "
-"Diffuse\n"
-"dokáže porovnat libovolný počet souborů a nabízí uživatelům možnost ručně "
-"upravit\n"
-"zarovnání řádků a přímo upravovat porovnávané soubory.  Diffuse také umí "
-"načíst k\n"
-"porovnání a slučování revize souborů přímo z repozitářů Bazaar, CVS, Darcs, "
-"Git,\n"
+"Diffuse je grafický nástroj pro slučování a porovnávání textových souborů.  Diffuse\n"
+"dokáže porovnat libovolný počet souborů a nabízí uživatelům možnost ručně upravit\n"
+"zarovnání řádků a přímo upravovat porovnávané soubory.  Diffuse také umí načíst k\n"
+"porovnání a slučování revize souborů přímo z repozitářů Bazaar, CVS, Darcs, Git,\n"
 "Mercurial, Monotone,RCS, Subversion, a SVK.\n"
 "\n"
 "Nápověda:\n"
@@ -94,832 +717,155 @@ msgstr ""
 "  --rcfile <file>                  Použije zadaný zdrojový soubor\n"
 "\n"
 "Obecné:\n"
-"  ( -c | --commit ) <rev>          Revize souboru ve formátu <rev-1> a "
-"<rev>\n"
+"  ( -c | --commit ) <rev>          Revize souboru ve formátu <rev-1> a <rev>\n"
 "  ( -D | --close-if-same )         Zavře panely s identickým obsahem\n"
-"  ( -e | --encoding ) <kodek>      Použije pro čtení a zápis souborů uvedený "
-"<kodek>\n"
-"  ( -L | --label ) <název>         Místo názvu soboru zobrazí uvedený "
-"<název>\n"
-"  ( -m | --modified )              Vytvoří pro každý změněný soubor nový "
-"panel\n"
+"  ( -e | --encoding ) <kodek>      Použije pro čtení a zápis souborů uvedený <kodek>\n"
+"  ( -L | --label ) <název>         Místo názvu soboru zobrazí uvedený <název>\n"
+"  ( -m | --modified )              Vytvoří pro každý změněný soubor nový panel\n"
 "  ( -r | --revision ) <rev>        Revize souboru <rev>\n"
-"  ( -s | --separate )              Vytvoří pro každý soubor samostatný "
-"panel\n"
+"  ( -s | --separate )              Vytvoří pro každý soubor samostatný panel\n"
 "  ( -t | --tab )                   Vytvoří nový panel\n"
+"  ( -V | --vcs ) <vcs-list>        Version control system search order\n"
 "  --line <řádek>                   Po spuštění přejde na <řádek>\n"
-"  --null-file                      Vytvoří prázdné podokno pro porovnání "
-"souborů\n"
+"  --null-file                      Vytvoří prázdné podokno pro porovnání souborů\n"
 "\n"
 "Zobrazení:\n"
-"  ( -b | --ignore-space-change )   Bude ignorovat změny, pokud jde o znaky "
-"mezer\n"
-"  ( -B | --ignore-blank-lines )    Bude ignorovat změny pokud, jde o prázdné "
-"řádky\n"
-"  ( -E | --ignore-end-of-line )    Bude ignorovat změny pokud, jde o znaky "
-"konců řádek\n"
-"  ( -i | --ignore-case )           Bude ignorovat změny pokud, jde jen o "
-"změnu velikosti písmen\n"
-"  ( -w | --ignore-all-space )      Bude ignorovat změny pokud, jde o "
-"netisknutelné znaky"
+"  ( -b | --ignore-space-change )   Bude ignorovat změny, pokud jde o znaky mezer\n"
+"  ( -B | --ignore-blank-lines )    Bude ignorovat změny pokud, jde o prázdné řádky\n"
+"  ( -E | --ignore-end-of-line )    Bude ignorovat změny pokud, jde o znaky konců řádek\n"
+"  ( -i | --ignore-case )           Bude ignorovat změny pokud, jde jen o změnu velikosti písmen\n"
+"  ( -w | --ignore-all-space )      Bude ignorovat změny pokud, jde o netisknutelné znaky"
 
-#: diffuse:706
-#, python-format
-msgid "Error processing line %(line)d of %(file)s."
-msgstr "Při zpracování řádku %(line)d souboru %(file)s došlo k chybě."
+#: ../src/usr/bin/diffuse:922
+msgid "Version Control"
+msgstr "Správa verzí"
 
-#: diffuse:725
-msgid "Auto Detect"
-msgstr "Automaticky rozpoznat"
+#: ../src/usr/bin/diffuse:905
+msgid "Version control system search order"
+msgstr ""
 
-#: diffuse:821
-msgid "Display"
-msgstr "Zobrazení"
-
-#: diffuse:823
-msgid "Font"
-msgstr "Písmo"
-
-#: diffuse:824
-msgid "Tab width"
-msgstr "Šířka tabulátoru"
-
-#: diffuse:825
-msgid "Show right margin"
-msgstr "Zobrazit pravý okraj"
-
-#: diffuse:826
-msgid "Right margin"
-msgstr "Pravý okraj"
-
-#: diffuse:827
-msgid "Show line numbers"
-msgstr "Zobrazit čísla řádků"
-
-#: diffuse:828
-msgid "Show white space characters"
-msgstr "Zobrazit netisknutelné znaky"
-
-#: diffuse:829
-msgid "Ignore case differences"
-msgstr "Ignorovat velikost písmen"
-
-#: diffuse:830
-msgid "Ignore white space differences"
-msgstr "Ignorovat netisknutelné znaky"
-
-#: diffuse:831 diffuse:839
-msgid "Ignore changes to white space"
-msgstr "Ignorovat znaky mezer"
-
-#: diffuse:832
-msgid "Ignore blank line differences"
-msgstr "Ignorovat prázdné řádky"
-
-#: diffuse:833
-msgid "Ignore end of line differences"
-msgstr "Ignorovat znaky konce řádku"
-
-#: diffuse:835
-msgid "Alignment"
-msgstr "Zarovnání"
-
-#: diffuse:837
-msgid "Ignore case"
-msgstr "Ignorovat velikost písmen"
-
-#: diffuse:838
-msgid "Ignore white space"
-msgstr "Ignorovat netisknutelné znaky"
-
-#: diffuse:840
-msgid "Ignore blank lines"
-msgstr "Ignorovat prázdné řádky"
-
-#: diffuse:841
-msgid "Ignore end of line characters"
-msgstr "Ignorovat znaky konce řádku"
-
-#: diffuse:843
-msgid "Editor"
-msgstr "Editor"
-
-#: diffuse:845
-msgid "Auto indent"
-msgstr "Automaticky odsazovat"
-
-#: diffuse:846
-msgid "Expand tabs to spaces"
-msgstr "Nahradit tabulátory mezerami"
-
-#: diffuse:847
-msgid "Soft tab width"
-msgstr "Šířka tabulátoru"
-
-#: diffuse:849
-msgid "Tabs"
-msgstr "Panely"
-
-#: diffuse:851
-msgid "Default panes"
-msgstr "Výchozí počet podoken"
-
-#: diffuse:852
-msgid "Always show the tab bar"
-msgstr "Vždy zobrazovat lištu s panely"
-
-#: diffuse:853
+#: ../src/usr/bin/diffuse:861
 #, python-format
 msgid "Warn me when closing a tab will quit %s"
 msgstr "Zobrazit upozornění, pokud zavření panelu ukončí %s"
 
-#: diffuse:855
-msgid "Regional Settings"
-msgstr "Místní nastavení"
-
-#: diffuse:857
-msgid "Default codec"
-msgstr "Výchozí kódování"
-
-#: diffuse:858
-msgid "Order of codecs used to identify encoding"
-msgstr "Pořadí kodeků pro rozpoznání kódování"
-
-#: diffuse:878
-msgid "Cygwin"
-msgstr "Cygwin"
-
-#: diffuse:880
-msgid "Root directory"
-msgstr "Kořenový adresář"
-
-#: diffuse:881
-msgid "Cygdrive prefix"
-msgstr "Předpona cygdrive"
-
-#: diffuse:901
-msgid "\"co\" command"
-msgstr "příkaz \"co\""
-
-#: diffuse:902
-msgid "\"rlog\" command"
-msgstr "příkaz \"rlog\""
-
-#: diffuse:904
-msgid "Command"
-msgstr "Příkaz"
-
-#: diffuse:906
-msgid "Launch from a Bash login shell"
-msgstr "Spustit z příkazové řádky terminálu Bash"
-
-#: diffuse:908
-msgid "Update paths for Cygwin"
-msgstr "Upravit cesty pro Cygwin"
-
-#: diffuse:911
-msgid "Version Control"
-msgstr "Správa verzí"
-
-#: diffuse:975
-msgid "Preferences"
-msgstr "Předvolby"
-
-#: diffuse:1013 diffuse:7276
-#, python-format
-msgid "Error writing %s."
-msgstr "Při ukládání %s došlo k chybě."
-
-#: diffuse:1630 diffuse:2193 diffuse:2321
-#, python-format
-msgid "Error parsing revision %s."
-msgstr "Při analýze revize %s došlo k chybě."
-
-#: diffuse:2528
-#, python-format
-msgid "Error parsing %s."
-msgstr "Při analýze %s došlo k chybě."
-
-#: diffuse:4737
-msgid "Align with Selection"
-msgstr "Zarovnat s výběrem"
-
-#: diffuse:4738
-msgid "Isolate"
-msgstr "Izolovat"
-
-#: diffuse:4739
-msgid "Merge Selection"
-msgstr "Sloučit výběr"
-
-#: diffuse:4741 diffuse:7563
-msgid "Cut"
-msgstr "Vyjmout"
-
-#: diffuse:4742 diffuse:7564
-msgid "Copy"
-msgstr "Kopírovat"
-
-#: diffuse:4743 diffuse:7565
-msgid "Paste"
-msgstr "Vložit"
-
-#: diffuse:4745
-msgid "Select All"
-msgstr "Vybrat vše"
-
-#: diffuse:4746 diffuse:7566
-msgid "Clear Edits"
-msgstr "Smazat úpravy"
-
-#: diffuse:4748
-msgid "Swap with Selected Pane"
-msgstr "Prohodit s vybraným podoknem"
-
-#: diffuse:6597
-msgid "Find..."
-msgstr "Najít..."
-
-#: diffuse:6603
-msgid "Search For: "
-msgstr "Vyhledat: "
-
-#: diffuse:6628
-msgid "Match Case"
-msgstr "Rozlišovat velikost písmen"
-
-#: diffuse:6633
-msgid "Search Backwards"
-msgstr "Hledat od konce"
-
-#: diffuse:6647
-#, python-format
-msgid "Closing this tab will quit %s."
-msgstr "Zavřením tohoto panelu ukončíte %s."
-
-#: diffuse:6659
-msgid "Encoding: "
-msgstr "Kódování: "
-
-#: diffuse:6669
-msgid "Revision: "
-msgstr "Revize: "
-
-#: diffuse:6733
-msgid "Diffuse is a graphical tool for merging and comparing text files."
-msgstr ""
-"Diffuse je grafický nástroj pro slučování a porovnávání textových souborů."
-
-#: diffuse:6736
-msgid "Derrick Moser <derrick_moser@yahoo.com>"
-msgstr "Derrick Moser <derrick_moser@yahoo.com>"
-
-#: diffuse:6737
-msgid "translator-credits"
-msgstr "Jindřich Šesták <khagaroth@gmail.com>"
-
-#: diffuse:6740
-msgid ""
-"This program is free software; you can redistribute it and/or modify it "
-"under the terms of the GNU General Public License as published by the Free "
-"Software Foundation; either version 2 of the licence, or (at your option) "
-"any later version.\n"
-"\n"
-"This program is distributed in the hope that it will be useful, but WITHOUT "
-"ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or "
-"FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for "
-"more details.\n"
-"\n"
-"You should have received a copy of the GNU General Public License along with "
-"this program.  You may also obtain a copy of the GNU General Public License "
-"from the Free Software Foundation by visiting their web site (http://www.fsf."
-"org/) or by writing to the Free Software Foundation, Inc., 51 Franklin St, "
-"Fifth Floor, Boston, MA  02110-1301  USA\n"
-msgstr ""
-"Tento program je svobodný software. Můžete ho upravovat a distribuovat za "
-"podmínky dodržení pravidel licence GNU General Public License verze 2 (dále "
-"jen GPL), nebo (pokud chcete) některé z jejích novějších verzí.\n"
-"\n"
-"Tento program je distribuován v naději, že bude užitečný, ale BEZ JAKÉKOLIV "
-"ZÁRUKY, tedy ani implicitní záruky OBCHODOVATELNOSTI nebo VHODNOSTI PRO "
-"URČITÝ ÚČEL. Další podrobnosti získáte přečtením GPL.\n"
-"\n"
-"Spolu s tímto programem by jste měli obdržet i kopii GPL. GPL můžete také "
-"získat na domovských stránkách Free Software Foundation (http://www.fsf."
-"org/), nebo můžete zaslat dopis na adresu Free Software Foundation, Inc., 51 "
-"Franclin St, Fifth Floor, Boston, MA 02110-1301 USA\n"
-
-#: diffuse:6774
-msgid "Close Tab"
-msgstr "Zavřít panel"
-
-#: diffuse:6829
-msgid "Open File..."
-msgstr "Otevřít soubor..."
-
-#: diffuse:6830
-msgid "Reload File"
-msgstr "Znovu načíst soubor"
-
-#: diffuse:6831
-msgid "Save File"
-msgstr "Uložit soubor"
-
-#: diffuse:6832
-msgid "Save File As..."
-msgstr "Uložit soubor jako..."
-
-#: diffuse:6912
-#, python-format
-msgid "Column %d"
-msgstr "Sloupec %d"
-
-#: diffuse:6977
-msgid "Save changes before loading the new file?"
-msgstr "Uložit změny před načtením nového souboru?"
-
-#: diffuse:7105
-#, python-format
-msgid "Error reading revision %(rev)s of %(file)s."
-msgstr "Při čtení revize %(rev)s souboru %(file)s došlo k chybě."
-
-#: diffuse:7107 diffuse:8322
-#, python-format
-msgid "Error reading %s."
-msgstr "Při čtení souboru %s došlo k chybě."
-
-#: diffuse:7130
-msgid "Open File"
-msgstr "Otevřít soubor"
-
-#: diffuse:7180
-#, python-format
-msgid "The file %s changed on disk.  Do you want to reload the file?"
-msgstr "Soubor %s byl změněn. Chcete ho znovu načíst?"
-
-#: diffuse:7200
-#, python-format
-msgid "Save %(title)s Pane %(pane)d"
-msgstr "Uložit podokno %(pane)d %(title)s"
-
-#: diffuse:7226
-#, python-format
-msgid "A file named %s already exists.  Do you want to overwrite it?"
-msgstr "Soubor s názvem %s již existuje. Chcete ho přepsat?"
-
-#: diffuse:7231
-#, python-format
-msgid ""
-"The file %s has been modified by another process since reading it.  If you "
-"save, all the external changes could be lost.  Save anyways?"
-msgstr ""
-"Soubor %s byl od načtení změněn jiným procesem. Pokud ho nyní uložíte, změny "
-"provedené tímto externím procesem mohou být ztraceny. Chcete ho přesto "
-"uložit?"
-
-#: diffuse:7272
-#, python-format
-msgid "Error encoding to %s."
-msgstr "Při změně kódování do %s došlo k chybě."
-
-#: diffuse:7306
-msgid "Go To Line..."
-msgstr "Přejít na řádek..."
-
-#: diffuse:7306
-msgid "Line Number: "
-msgstr "Řádek číslo: "
-
-#: diffuse:7332
-msgid ""
-"Press the enter key or double click to edit.  Press the space bar or use the "
-"RMB menu to manually align."
-msgstr ""
-"Pro aktivaci úprav stiskněte klávesu Enter, nebo na řádek dvakrát klikněte "
-"myší. Pro ruční zarovnání stiskněte Mezerník, nebo použijte místní nabídku "
-"dostupnou po kliknutí pravým tlačítkem myši."
-
-#: diffuse:7334
-msgid "Press the escape key to finish editing."
-msgstr "Editaci ukončíte pomocí klávesy escape."
-
-#: diffuse:7336
-msgid ""
-"Select target line and press the space bar to align.  Press the escape key "
-"to cancel."
-msgstr ""
-"Vyberte cílový řádek a proveďte zarovnání stisknutím klávesy Mezerník. Pro "
-"zrušení stiskněte klávesu Escape."
-
-#: diffuse:7436
-msgid "_File"
-msgstr "_Soubor"
-
-#: diffuse:7437
-msgid "_Open File..."
-msgstr "_Otevřít soubor..."
-
-#: diffuse:7438
-msgid "Open File In New _Tab..."
-msgstr "Otevřít soubor v novém _panelu..."
-
-#: diffuse:7439
-msgid "Open _Modified Files..."
-msgstr "Otevřít změněné soubory..."
-
-#: diffuse:7440
-msgid "Open Commi_t..."
-msgstr "Otevřít _revizi..."
-
-#: diffuse:7441
-msgid "_Reload File"
-msgstr "_Znovu načíst soubor"
-
-#: diffuse:7443
-msgid "_Save File"
-msgstr "_Uložit soubor"
-
-#: diffuse:7444
-msgid "Save File _As..."
-msgstr "Uložit soubor ­_jako..."
-
-#: diffuse:7445
-msgid "Save A_ll"
-msgstr "Uložit _vše"
-
-#: diffuse:7447
-msgid "New _2-Way File Merge"
-msgstr "Nové _2směrné slučování"
-
-#: diffuse:7448
-msgid "New _3-Way File Merge"
-msgstr "Nové _3směrné slučování"
-
-#: diffuse:7449
-msgid "New _N-Way File Merge..."
-msgstr "Nové _Nsměrné slučování"
-
-#: diffuse:7451
-msgid "_Close Tab"
-msgstr "_Zavřít panel"
-
-#: diffuse:7452
-msgid "_Undo Close Tab"
-msgstr "_Obnovit zavřený panel"
-
-#: diffuse:7453
-msgid "_Quit"
-msgstr "Kone_c"
-
-#: diffuse:7455
-msgid "_Edit"
-msgstr "Úpr_avy"
-
-#: diffuse:7456
-msgid "_Undo"
-msgstr "_Zpět"
-
-#: diffuse:7457
-msgid "_Redo"
-msgstr "Z_novu"
-
-#: diffuse:7459
-msgid "Cu_t"
-msgstr "_Vyjmout"
-
-#: diffuse:7460
-msgid "_Copy"
-msgstr "_Kopírovat"
-
-#: diffuse:7461
-msgid "_Paste"
-msgstr "V_ložit"
-
-#: diffuse:7463
-msgid "Select _All"
-msgstr "V_ybrat vše"
-
-#: diffuse:7464
-msgid "C_lear Edits"
-msgstr "_Smazat úpravy"
-
-#: diffuse:7465
-msgid "_Dismiss All Edits"
-msgstr "Z_rušit všechny úpravy"
-
-#: diffuse:7467
-msgid "_Find..."
-msgstr "_Najít"
-
-#: diffuse:7468
-msgid "Find _Next"
-msgstr "Najít _další"
-
-#: diffuse:7469
-msgid "Find Pre_vious"
-msgstr "Najít _předchozí"
-
-#: diffuse:7470
-msgid "_Go To Line..."
-msgstr "Pře_jít na řádek..."
-
-#: diffuse:7472
-msgid "Pr_eferences..."
-msgstr "Př_edvolby..."
-
-#: diffuse:7474
-msgid "None"
-msgstr "Nic"
-
-#: diffuse:7482
-msgid "_View"
-msgstr "_Zobrazit"
-
-#: diffuse:7483
-msgid "_Syntax Highlighting"
-msgstr "Zvýraznění _syntaxe"
-
-#: diffuse:7485
-msgid "Re_align All"
-msgstr "Znovu _zarovnat"
-
-#: diffuse:7486
-msgid "_Isolate"
-msgstr "_Izolovat"
-
-#: diffuse:7488
-msgid "_First Difference"
-msgstr "Pr_vní rozdíl"
-
-#: diffuse:7489
-msgid "_Previous Difference"
-msgstr "_Předchozí rozdíl"
-
-#: diffuse:7490
-msgid "_Next Difference"
-msgstr "_Další rozdíl"
-
-#: diffuse:7491
-msgid "_Last Difference"
-msgstr "P_oslední rozdíl"
-
-#: diffuse:7493
-msgid "Fir_st Tab"
-msgstr "Prv_ní panel"
-
-#: diffuse:7494
-msgid "Pre_vious Tab"
-msgstr "Předch_ozí panel"
-
-#: diffuse:7495
-msgid "Next _Tab"
-msgstr "D_alší panel"
-
-#: diffuse:7496
-msgid "Las_t Tab"
-msgstr "Posl_ední panel"
-
-#: diffuse:7498
-msgid "Shift Pane _Right"
-msgstr "Přesunout podokno dop_rava"
-
-#: diffuse:7499
-msgid "Shift Pane _Left"
-msgstr "Přesunout podokno do_leva"
-
-#: diffuse:7501
-msgid "F_ormat"
-msgstr "F_ormát"
-
-#: diffuse:7502
-msgid "Convert To _Upper Case"
-msgstr "Převést na _velká písmena"
-
-#: diffuse:7503
-msgid "Convert To _Lower Case"
-msgstr "Převést na _malá písmena"
-
-#: diffuse:7505
-msgid "Sort Lines In _Ascending Order"
-msgstr "Seřadit řádky v_zestupně"
-
-#: diffuse:7506
-msgid "Sort Lines In D_escending Order"
-msgstr "Seřadit řádky _sestupně"
-
-#: diffuse:7508
-msgid "Remove Trailing _White Space"
-msgstr "_Odstranit mezery na koncích řádků"
-
-#: diffuse:7509
-msgid "Convert Tabs To _Spaces"
-msgstr "_Nahradit tabulátory mezerami"
-
-#: diffuse:7510
-msgid "Convert Leading Spaces To _Tabs"
-msgstr "Nah_radit úvodní mezery tabulátory"
-
-#: diffuse:7512
-msgid "_Increase Indenting"
-msgstr "Zvětš_it odsazení"
-
-#: diffuse:7513
-msgid "De_crease Indenting"
-msgstr "Zmenši_t odsazení"
-
-#: diffuse:7515
-msgid "Convert To _DOS Format"
-msgstr "Převést na _DOS formát"
-
-#: diffuse:7516
-msgid "Convert To _Mac Format"
-msgstr "Převést na Ma_c formát"
-
-#: diffuse:7517
-msgid "Convert To Uni_x Format"
-msgstr "Převést na Uni_x formát"
-
-#: diffuse:7519
-msgid "_Merge"
-msgstr "S_loučit"
-
-#: diffuse:7520
-msgid "Copy Selection _Right"
-msgstr "_Kopírovat výběr doprava"
-
-#: diffuse:7521
-msgid "Copy Selection _Left"
-msgstr "K_opírovat výběr doleva"
-
-#: diffuse:7523
-msgid "Copy Left _Into Selection"
-msgstr "Ko_pírovat zleva do výběru"
-
-#: diffuse:7524
-msgid "Copy Right I_nto Selection"
-msgstr "Kopí_rovat zprava do výběru"
-
-#: diffuse:7525
-msgid "_Merge From Left Then Right"
-msgstr "_Sloučit zleva a poté zprava"
-
-#: diffuse:7526
-msgid "M_erge From Right Then Left"
-msgstr "S_loučit zprava a poté zleva"
-
-#: diffuse:7528
-msgid "_Help"
-msgstr "Nápo_věda"
-
-#: diffuse:7529
-msgid "_Help Contents..."
-msgstr "_Zobrazit nápovědu"
-
-#: diffuse:7531
+#: ../src/usr/bin/diffuse:7618
 #, python-format
 msgid "_About %s..."
 msgstr "_O programu %s..."
 
-#: diffuse:7545
-msgid "New 2-Way File Merge"
-msgstr "Nové 2směrné slučování"
+#: ../src/usr/bin/diffuse:7538
+msgid "_Close Tab"
+msgstr "_Zavřít panel"
 
-#: diffuse:7546
-msgid "New 3-Way File Merge"
-msgstr "Nové 3směrné slučování"
+#: ../src/usr/bin/diffuse:7547
+msgid "_Copy"
+msgstr "_Kopírovat"
 
-#: diffuse:7548
-msgid "Realign All"
-msgstr "Znovu zarovnat"
+#: ../src/usr/bin/diffuse:7552
+msgid "_Dismiss All Edits"
+msgstr "Z_rušit všechny úpravy"
 
-#: diffuse:7549
-msgid "First Difference"
-msgstr "První rozdíl"
+#: ../src/usr/bin/diffuse:7542
+msgid "_Edit"
+msgstr "Úpr_avy"
 
-#: diffuse:7550
-msgid "Previous Difference"
-msgstr "Předchozí rozdíl"
+#: ../src/usr/bin/diffuse:7523
+msgid "_File"
+msgstr "_Soubor"
 
-#: diffuse:7551
-msgid "Next Difference"
-msgstr "Další rozdíl"
+#: ../src/usr/bin/diffuse:7554
+msgid "_Find..."
+msgstr "_Najít"
 
-#: diffuse:7552
-msgid "Last Difference"
-msgstr "Poslední rozdíl"
+#: ../src/usr/bin/diffuse:7575
+msgid "_First Difference"
+msgstr "Pr_vní rozdíl"
 
-#: diffuse:7554
-msgid "Copy Selection Right"
-msgstr "Kopírovat výběr doprava"
+#: ../src/usr/bin/diffuse:7557
+msgid "_Go To Line..."
+msgstr "Pře_jít na řádek..."
 
-#: diffuse:7555
-msgid "Copy Selection Left"
-msgstr "Kopírovat výběr doleva"
+#: ../src/usr/bin/diffuse:7615
+msgid "_Help"
+msgstr "Nápo_věda"
 
-#: diffuse:7556
-msgid "Copy Left Into Selection"
-msgstr "Kopírovat zleva do výběru"
+#: ../src/usr/bin/diffuse:7616
+msgid "_Help Contents..."
+msgstr "_Zobrazit nápovědu"
 
-#: diffuse:7557
-msgid "Copy Right Into Selection"
-msgstr "Kopírovat zprava do výběru"
+#: ../src/usr/bin/diffuse:7599
+msgid "_Increase Indenting"
+msgstr "Zvětš_it odsazení"
 
-#: diffuse:7558
-msgid "Merge From Left Then Right"
-msgstr "Sloučit zleva a poté zprava"
+#: ../src/usr/bin/diffuse:7573
+msgid "_Isolate"
+msgstr "_Izolovat"
 
-#: diffuse:7559
-msgid "Merge From Right Then Left"
-msgstr "Sloučit zprava a poté zleva"
+#: ../src/usr/bin/diffuse:7578
+msgid "_Last Difference"
+msgstr "P_oslední rozdíl"
 
-#: diffuse:7561
-msgid "Undo"
-msgstr "Zpět"
+#: ../src/usr/bin/diffuse:7606
+msgid "_Merge"
+msgstr "S_loučit"
 
-#: diffuse:7562
-msgid "Redo"
-msgstr "Znovu"
+#: ../src/usr/bin/diffuse:7612
+msgid "_Merge From Left Then Right"
+msgstr "_Sloučit zleva a poté zprava"
 
-#: diffuse:7678
-msgid ""
-"Some files have unsaved changes.  Select the files to save before closing."
-msgstr ""
-"Některé změněné soubory nebyly uloženy. Vyberte soubory, které chcete před "
-"zavřením uložit."
+#: ../src/usr/bin/diffuse:7577
+msgid "_Next Difference"
+msgstr "_Další rozdíl"
 
-#: diffuse:7691
-msgid "Tab"
-msgstr "Panel"
+#: ../src/usr/bin/diffuse:7524
+msgid "_Open File..."
+msgstr "_Otevřít soubor..."
 
-#: diffuse:7696
-msgid "Pane"
-msgstr "Podokno"
+#: ../src/usr/bin/diffuse:7548
+msgid "_Paste"
+msgstr "V_ložit"
 
-#: diffuse:7707
-msgid "Close _Without Saving"
-msgstr "Zavřít _bez uložení"
+#: ../src/usr/bin/diffuse:7576
+msgid "_Previous Difference"
+msgstr "_Předchozí rozdíl"
 
-#: diffuse:7818
+#: ../src/usr/bin/diffuse:7540
+msgid "_Quit"
+msgstr "Kone_c"
+
+#: ../src/usr/bin/diffuse:7544
+msgid "_Redo"
+msgstr "Z_novu"
+
+#: ../src/usr/bin/diffuse:7528
+msgid "_Reload File"
+msgstr "_Znovu načíst soubor"
+
+#: ../src/usr/bin/diffuse:7530
+msgid "_Save File"
+msgstr "_Uložit soubor"
+
+#: ../src/usr/bin/diffuse:7570
+msgid "_Syntax Highlighting"
+msgstr "Zvýraznění _syntaxe"
+
+#: ../src/usr/bin/diffuse:7543
+msgid "_Undo"
+msgstr "_Zpět"
+
+#: ../src/usr/bin/diffuse:7539
+msgid "_Undo Close Tab"
+msgstr "_Obnovit zavřený panel"
+
+#: ../src/usr/bin/diffuse:7569
+msgid "_View"
+msgstr "_Zobrazit"
+
+#: ../src/usr/bin/diffuse:6815
+msgid "translator-credits"
+msgstr "Jindřich Šesták <khagaroth@gmail.com>"
+
 #, python-format
-msgid "File Merge %d"
-msgstr "Slučování %d"
-
-#: diffuse:7921
-#, python-format
-msgid "Error retrieving commits for %s."
-msgstr "Revize pro %s se nepodařilo načíst."
-
-#: diffuse:7952
-#, python-format
-msgid "Error retrieving modifications for %s."
-msgstr "Při načítání změn %s došlo k chybě."
-
-#: diffuse:7985
-msgid "Open File In New Tab"
-msgstr "Otevřít soubor v novém panelu"
-
-#: diffuse:8001
-msgid "Choose Folder With Modified Files"
-msgstr "Vyberte adresář se změněnými soubory"
-
-#: diffuse:8014
-msgid "No modified files found."
-msgstr "Nebyly nalezeny žádné změněné soubory."
-
-#: diffuse:8021
-msgid "Choose Folder With Commit"
-msgstr "Vyberte adresář se zapsanou revizí"
-
-#: diffuse:8034
-msgid "No committed files found."
-msgstr "Nebyly nalezeny žádné zapsané soubory."
-
-#: diffuse:8070
-msgid "New N-Way File Merge..."
-msgstr "Nové Nsměrné slučování"
-
-#: diffuse:8070
-msgid "Number of panes: "
-msgstr "Počet podoken: "
-
-#: diffuse:8135
-msgid "Phrase not found.  Continue from the end of the file?"
-msgstr "Hledaný výraz nebyl nalezen. Pokračovat v hledání od konce souboru?"
-
-#: diffuse:8137
-msgid "Phrase not found.  Continue from the start of the file?"
-msgstr "Hledaný výraz nebyl nalezen. Pokračovat v hledání od začátku souboru?"
-
-#: diffuse:8399
-msgid "Error parsing line number."
-msgstr "Při analýze čísla řádku došlo k chybě."
-
-#: diffuse:8409
-#, python-format
-msgid "Skipping unknown argument \"%s\"."
-msgstr "Ignorován neznámý parametr \"%s\"."
-
-#: diffuse:8416
-#, python-format
-msgid "Error processing argument \"%s\".  Directory not expected."
-msgstr "Při zpracování parametru \"%s\" došlo k chybě. Adresář nebyl očekáván."
+#~ msgid "Column %d"
+#~ msgstr "Sloupec %d"

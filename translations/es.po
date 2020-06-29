@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: diffuse-svn\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-20 15:02+0200\n"
-"PO-Revision-Date: \n"
+"POT-Creation-Date: 2020-06-29 14:49-0400\n"
+"PO-Revision-Date: 2020-06-29 14:49-0400\n"
 "Last-Translator: David Marín Carreño <davefx@gmail.com>\n"
 "Language-Team: Spanish <henrimenke4@aim.com>\n"
 "Language: es\n"
@@ -18,640 +18,621 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../src/usr/bin/diffuse:901
+#: ../src/usr/bin/diffuse:911
 msgid "\"co\" command"
 msgstr "Comando \"co\""
 
-#: ../src/usr/bin/diffuse:902
+#: ../src/usr/bin/diffuse:912
 msgid "\"rlog\" command"
 msgstr "Comando \"rlog\""
 
-#: ../src/usr/bin/diffuse:7226
+#: ../src/usr/bin/diffuse:7305
 #, python-format
 msgid "A file named %s already exists.  Do you want to overwrite it?"
 msgstr "Ya existe un archivo llamado %s. ¿Quiere reemplazarlo?"
 
-#: ../src/usr/bin/diffuse:4737
+#: ../src/usr/bin/diffuse:4820
 msgid "Align with Selection"
 msgstr "Alinear con la selección."
 
-#: ../src/usr/bin/diffuse:835
+#: ../src/usr/bin/diffuse:843
 msgid "Alignment"
 msgstr "Alineación"
 
-#: ../src/usr/bin/diffuse:852
+#: ../src/usr/bin/diffuse:860
 msgid "Always show the tab bar"
 msgstr "Mostrar siempre barra de pestañas"
 
-#: ../src/usr/bin/diffuse:725
+#: ../src/usr/bin/diffuse:733
 msgid "Auto Detect"
 msgstr "Reconocimiento automático"
 
-#: ../src/usr/bin/diffuse:845
+#: ../src/usr/bin/diffuse:853
 msgid "Auto indent"
 msgstr "Sangría automática"
 
-#: ../src/usr/bin/diffuse:7464
+#: ../src/usr/bin/diffuse:7551
 msgid "C_lear Edits"
 msgstr "_Deshacer todo"
 
-#: ../src/usr/bin/diffuse:8021
+#: ../src/usr/bin/diffuse:8116
 msgid "Choose Folder With Commit"
 msgstr "Seleccionar carpeta con revisiónes"
 
-#: ../src/usr/bin/diffuse:8001
+#: ../src/usr/bin/diffuse:8096
 msgid "Choose Folder With Modified Files"
 msgstr "Seleccionar carpeta con archivos modificados"
 
-#: ../src/usr/bin/diffuse:4746
-#: ../src/usr/bin/diffuse:7566
+#: ../src/usr/bin/diffuse:4829 ../src/usr/bin/diffuse:7653
 msgid "Clear Edits"
 msgstr "Deshacer todo"
 
-#: ../src/usr/bin/diffuse:6774
+#: ../src/usr/bin/diffuse:6853
 msgid "Close Tab"
 msgstr "Cerrar pestaña"
 
-#: ../src/usr/bin/diffuse:7707
+#: ../src/usr/bin/diffuse:7802
 msgid "Close _Without Saving"
 msgstr "Cerrar _sin guardar"
 
-#: ../src/usr/bin/diffuse:6647
+#: ../src/usr/bin/diffuse:6714
 #, python-format
 msgid "Closing this tab will quit %s."
 msgstr "Cerrar esta pestaña terminará %s."
 
-#: ../src/usr/bin/diffuse:6912
-#, python-format
-msgid "Column %d"
-msgstr "Columna %d"
-
-#: ../src/usr/bin/diffuse:904
+#: ../src/usr/bin/diffuse:914
 msgid "Command"
 msgstr "Comando"
 
-#: ../src/usr/bin/diffuse:7510
+#: ../src/usr/bin/diffuse:7597
 msgid "Convert Leading Spaces To _Tabs"
 msgstr "Transformar espacios iniciales en _tabuladores"
 
-#: ../src/usr/bin/diffuse:7509
+#: ../src/usr/bin/diffuse:7596
 msgid "Convert Tabs To _Spaces"
 msgstr "Transformar tabuladores en e_spacios"
 
-#: ../src/usr/bin/diffuse:7517
+#: ../src/usr/bin/diffuse:7604
 msgid "Convert To Uni_x Format"
 msgstr "Transformar a formato Uni_x"
 
-#: ../src/usr/bin/diffuse:7515
+#: ../src/usr/bin/diffuse:7602
 msgid "Convert To _DOS Format"
 msgstr "Transformar a formato _DOS"
 
-#: ../src/usr/bin/diffuse:7503
+#: ../src/usr/bin/diffuse:7590
 msgid "Convert To _Lower Case"
 msgstr "Transformar en letras minúsculas"
 
-#: ../src/usr/bin/diffuse:7516
+#: ../src/usr/bin/diffuse:7603
 msgid "Convert To _Mac Format"
 msgstr "Transformar a formato _Mac"
 
-#: ../src/usr/bin/diffuse:7502
+#: ../src/usr/bin/diffuse:7589
 msgid "Convert To _Upper Case"
 msgstr "Transformar en letras mayúsculas"
 
-#: ../src/usr/bin/diffuse:4742
-#: ../src/usr/bin/diffuse:7564
+#: ../src/usr/bin/diffuse:4825 ../src/usr/bin/diffuse:7651
 msgid "Copy"
 msgstr "Copiar"
 
-#: ../src/usr/bin/diffuse:7556
+#: ../src/usr/bin/diffuse:7643
 msgid "Copy Left Into Selection"
 msgstr "Copiar de izquierda a la selección"
 
-#: ../src/usr/bin/diffuse:7523
+#: ../src/usr/bin/diffuse:7610
 msgid "Copy Left _Into Selection"
 msgstr "Copiar de _izquierda a la selección"
 
-#: ../src/usr/bin/diffuse:7524
+#: ../src/usr/bin/diffuse:7611
 msgid "Copy Right I_nto Selection"
 msgstr "Copiar de de_recha a la selección"
 
-#: ../src/usr/bin/diffuse:7557
+#: ../src/usr/bin/diffuse:7644
 msgid "Copy Right Into Selection"
 msgstr "Copiar de derecha a la selección"
 
-#: ../src/usr/bin/diffuse:7555
+#: ../src/usr/bin/diffuse:7642
 msgid "Copy Selection Left"
 msgstr "Copiar selección a la izquierda"
 
-#: ../src/usr/bin/diffuse:7554
+#: ../src/usr/bin/diffuse:7641
 msgid "Copy Selection Right"
 msgstr "Copiar selección a la derecha"
 
-#: ../src/usr/bin/diffuse:7521
+#: ../src/usr/bin/diffuse:7608
 msgid "Copy Selection _Left"
 msgstr "Copiar selección a la i_zquierda"
 
-#: ../src/usr/bin/diffuse:7520
+#: ../src/usr/bin/diffuse:7607
 msgid "Copy Selection _Right"
 msgstr "Copiar selección a la de_recha"
 
-#: ../src/usr/bin/diffuse:68
-msgid "Copyright © 2006-2019 Derrick Moser"
-"Copyright © 2015-2020 Romain Failliot"
-msgstr "Copyright © 2006-2019 Derrick Moser"
-"Copyright © 2015-2020 Romain Failliot"
+#: ../src/usr/bin/diffuse:70
+msgid "Copyright"
+msgstr ""
 
-#: ../src/usr/bin/diffuse:7459
+#: ../src/usr/bin/diffuse:7546
 msgid "Cu_t"
 msgstr "Cor_tar"
 
-#: ../src/usr/bin/diffuse:4741
-#: ../src/usr/bin/diffuse:7563
+#: ../src/usr/bin/diffuse:4824 ../src/usr/bin/diffuse:7650
 msgid "Cut"
 msgstr "Cortar"
 
-#: ../src/usr/bin/diffuse:881
+#: ../src/usr/bin/diffuse:889
 msgid "Cygdrive prefix"
 msgstr "Prefijo de Cygdrive"
 
-#: ../src/usr/bin/diffuse:878
+#: ../src/usr/bin/diffuse:886
 msgid "Cygwin"
 msgstr "Cygwin"
 
-#: ../src/usr/bin/diffuse:7513
+#: ../src/usr/bin/diffuse:7600
 msgid "De_crease Indenting"
 msgstr "Dis_minuir sangría"
 
-#: ../src/usr/bin/diffuse:857
+#: ../src/usr/bin/diffuse:865
 msgid "Default codec"
 msgstr "Codificación estándar"
 
-#: ../src/usr/bin/diffuse:851
+#: ../src/usr/bin/diffuse:859
 msgid "Default panes"
 msgstr "Paneles predeterminados"
 
-#: ../src/usr/bin/diffuse:6736
-msgid "Derrick Moser <derrick_moser@yahoo.com>"
-msgstr "Derrick Moser <derrick_moser@yahoo.com>"
-
-#: ../src/usr/bin/diffuse:6733
+#: ../src/usr/bin/diffuse:6810
 msgid "Diffuse is a graphical tool for merging and comparing text files."
 msgstr "Diffuse es una herramienta para mezclar y comparar archivos de texto."
 
-#: ../src/usr/bin/diffuse:821
+#: ../src/usr/bin/diffuse:829
 msgid "Display"
 msgstr "Visualización"
 
-#: ../src/usr/bin/diffuse:843
+#: ../src/usr/bin/diffuse:851
 msgid "Editor"
 msgstr "Editor"
 
-#: ../src/usr/bin/diffuse:6659
+#: ../src/usr/bin/diffuse:6736
 msgid "Encoding: "
 msgstr "Codificación:"
 
-#: ../src/usr/bin/diffuse:7272
+#: ../src/usr/bin/diffuse:7351
 #, python-format
 msgid "Error encoding to %s."
 msgstr "Error codificando a %s."
 
-#: ../src/usr/bin/diffuse:2528
+#: ../src/usr/bin/diffuse:2657
 #, python-format
 msgid "Error parsing %s."
 msgstr "Error analizando %s."
 
-#: ../src/usr/bin/diffuse:8399
+#: ../src/usr/bin/diffuse:8498
 msgid "Error parsing line number."
 msgstr "Error analizando número de líneas."
 
-#: ../src/usr/bin/diffuse:1630
-#: ../src/usr/bin/diffuse:2193
-#: ../src/usr/bin/diffuse:2321
+#: ../src/usr/bin/diffuse:1655 ../src/usr/bin/diffuse:2272
+#: ../src/usr/bin/diffuse:2416
 #, python-format
 msgid "Error parsing revision %s."
 msgstr "Error analizando revisión %s."
 
-#: ../src/usr/bin/diffuse:8416
+#: ../src/usr/bin/diffuse:8515
 #, python-format
 msgid "Error processing argument \"%s\".  Directory not expected."
 msgstr "Error processando parámetro \"%s\".  No se esperaba un directorio."
 
-#: ../src/usr/bin/diffuse:706
+#: ../src/usr/bin/diffuse:714
 #, python-format
 msgid "Error processing line %(line)d of %(file)s."
 msgstr "Error procesando línea %(line)d de %(file)s."
 
-#: ../src/usr/bin/diffuse:7107
-#: ../src/usr/bin/diffuse:8322
+#: ../src/usr/bin/diffuse:7186 ../src/usr/bin/diffuse:8417
 #, python-format
 msgid "Error reading %s."
 msgstr "Error leyendo %s."
 
-#: ../src/usr/bin/diffuse:7105
+#: ../src/usr/bin/diffuse:7184
 #, python-format
 msgid "Error reading revision %(rev)s of %(file)s."
 msgstr "Error leyendo revisión %(rev)s de %(file)s."
 
-#: ../src/usr/bin/diffuse:7921
+#: ../src/usr/bin/diffuse:8016
 #, python-format
 msgid "Error retrieving commits for %s."
 msgstr "Error recibiendo commits de %s."
 
-#: ../src/usr/bin/diffuse:7952
+#: ../src/usr/bin/diffuse:8047
 #, python-format
 msgid "Error retrieving modifications for %s."
 msgstr "Error recibiendo modificaciones de %s."
 
-#: ../src/usr/bin/diffuse:1013
-#: ../src/usr/bin/diffuse:7276
+#: ../src/usr/bin/diffuse:1026 ../src/usr/bin/diffuse:7355
 #, python-format
 msgid "Error writing %s."
 msgstr "Error guardando %s."
 
-#: ../src/usr/bin/diffuse:846
+#: ../src/usr/bin/diffuse:854
 msgid "Expand tabs to spaces"
 msgstr "Ampliar tabuladores a espacios"
 
-#: ../src/usr/bin/diffuse:7501
+#: ../src/usr/bin/diffuse:7588
 msgid "F_ormat"
 msgstr "F_ormato"
 
-#: ../src/usr/bin/diffuse:7818
+#: ../src/usr/bin/diffuse:7913
 #, python-format
 msgid "File Merge %d"
 msgstr "Mezcla de archivo %d"
 
-#: ../src/usr/bin/diffuse:7469
+#: ../src/usr/bin/diffuse:7556
 msgid "Find Pre_vious"
 msgstr "Buscar an_terior"
 
-#: ../src/usr/bin/diffuse:7468
+#: ../src/usr/bin/diffuse:7555
 msgid "Find _Next"
 msgstr "Buscar siguie_nte"
 
-#: ../src/usr/bin/diffuse:6597
+#: ../src/usr/bin/diffuse:6662
 msgid "Find..."
 msgstr "Buscar..."
 
-#: ../src/usr/bin/diffuse:7493
+#: ../src/usr/bin/diffuse:7580
 msgid "Fir_st Tab"
 msgstr "Prime_ra pestaña"
 
-#: ../src/usr/bin/diffuse:7549
+#: ../src/usr/bin/diffuse:7636
 msgid "First Difference"
 msgstr "Primera diferencía"
 
-#: ../src/usr/bin/diffuse:823
+#: ../src/usr/bin/diffuse:831
 msgid "Font"
 msgstr "Tipo"
 
-#: ../src/usr/bin/diffuse:7306
+#: ../src/usr/bin/diffuse:7385
 msgid "Go To Line..."
 msgstr "Ir a línea..."
 
-#: ../src/usr/bin/diffuse:832
+#: ../src/usr/bin/diffuse:840
 msgid "Ignore blank line differences"
 msgstr "Ignorar diferencías de líneas vacías"
 
-#: ../src/usr/bin/diffuse:840
+#: ../src/usr/bin/diffuse:848
 msgid "Ignore blank lines"
 msgstr "Ignorar líneas vacías"
 
-#: ../src/usr/bin/diffuse:837
+#: ../src/usr/bin/diffuse:845
 msgid "Ignore case"
 msgstr "Ignorar capitalización"
 
-#: ../src/usr/bin/diffuse:829
+#: ../src/usr/bin/diffuse:837
 msgid "Ignore case differences"
 msgstr "Ignorar diferencías de capitalización"
 
-#: ../src/usr/bin/diffuse:831
-#: ../src/usr/bin/diffuse:839
+#: ../src/usr/bin/diffuse:839 ../src/usr/bin/diffuse:847
 msgid "Ignore changes to white space"
 msgstr "Ignorar cambios de espacios"
 
-#: ../src/usr/bin/diffuse:841
+#: ../src/usr/bin/diffuse:849
 msgid "Ignore end of line characters"
 msgstr "Ignorar caracteres de fin de línea"
 
-#: ../src/usr/bin/diffuse:833
+#: ../src/usr/bin/diffuse:841
 msgid "Ignore end of line differences"
 msgstr "Ignorar diferencias en caracteres de fin de línea"
 
-#: ../src/usr/bin/diffuse:838
+#: ../src/usr/bin/diffuse:846
 msgid "Ignore white space"
 msgstr "Ignorar espacios"
 
-#: ../src/usr/bin/diffuse:830
+#: ../src/usr/bin/diffuse:838
 msgid "Ignore white space differences"
 msgstr "Ignorar diferencías de espacios"
 
-#: ../src/usr/bin/diffuse:4738
+#: ../src/usr/bin/diffuse:4821
 msgid "Isolate"
 msgstr "Aislar"
 
-#: ../src/usr/bin/diffuse:7496
+#: ../src/usr/bin/diffuse:7583
 msgid "Las_t Tab"
 msgstr "Ul_tima pestaña"
 
-#: ../src/usr/bin/diffuse:7552
+#: ../src/usr/bin/diffuse:7639
 msgid "Last Difference"
 msgstr "Última diferencía"
 
-#: ../src/usr/bin/diffuse:906
+#: ../src/usr/bin/diffuse:916
 msgid "Launch from a Bash login shell"
 msgstr "Lanzar desde línea de comandos Bash"
 
-#: ../src/usr/bin/diffuse:7306
+#: ../src/usr/bin/diffuse:7385
 msgid "Line Number: "
 msgstr "Número de línea: "
 
-#: ../src/usr/bin/diffuse:7526
+#: ../src/usr/bin/diffuse:7613
 msgid "M_erge From Right Then Left"
 msgstr "M_ezclar desde derecha, después desde izquierda"
 
-#: ../src/usr/bin/diffuse:6628
+#: ../src/usr/bin/diffuse:6695
 msgid "Match Case"
 msgstr "Coincidencia de capitalización"
 
-#: ../src/usr/bin/diffuse:7558
+#: ../src/usr/bin/diffuse:7645
 msgid "Merge From Left Then Right"
 msgstr "Mezclar desde izquierda, después desde derecha"
 
-#: ../src/usr/bin/diffuse:7559
+#: ../src/usr/bin/diffuse:7646
 msgid "Merge From Right Then Left"
 msgstr "Mezclar desde derecha, después desde izquierda"
 
-#: ../src/usr/bin/diffuse:4739
+#: ../src/usr/bin/diffuse:4822
 msgid "Merge Selection"
 msgstr "Mezclar selección"
 
-#: ../src/usr/bin/diffuse:7545
+#: ../src/usr/bin/diffuse:7632
 msgid "New 2-Way File Merge"
 msgstr "Nueva mezcla de ficheros de 2 vías"
 
-#: ../src/usr/bin/diffuse:7546
+#: ../src/usr/bin/diffuse:7633
 msgid "New 3-Way File Merge"
 msgstr "Nueva mezcla de ficheros de 3 vías"
 
-#: ../src/usr/bin/diffuse:8070
+#: ../src/usr/bin/diffuse:8165
 msgid "New N-Way File Merge..."
 msgstr "Nueva mezcla de ficheros de N vías..."
 
-#: ../src/usr/bin/diffuse:7447
+#: ../src/usr/bin/diffuse:7534
 msgid "New _2-Way File Merge"
 msgstr "Nueva mezcla de ficheros de _2 vías"
 
-#: ../src/usr/bin/diffuse:7448
+#: ../src/usr/bin/diffuse:7535
 msgid "New _3-Way File Merge"
 msgstr "Nueva mezcla de ficheros de _3 vías"
 
-#: ../src/usr/bin/diffuse:7449
+#: ../src/usr/bin/diffuse:7536
 msgid "New _N-Way File Merge..."
 msgstr "Nueva mezcla de ficheros de _N vías..."
 
-#: ../src/usr/bin/diffuse:7551
+#: ../src/usr/bin/diffuse:7638
 msgid "Next Difference"
 msgstr "Siguiente diferencia"
 
-#: ../src/usr/bin/diffuse:7495
+#: ../src/usr/bin/diffuse:7582
 msgid "Next _Tab"
 msgstr "Siguiente _pestaña"
 
-#: ../src/usr/bin/diffuse:8034
+#: ../src/usr/bin/diffuse:8129
 msgid "No committed files found."
 msgstr "No se encontraron ficheros confirmados."
 
-#: ../src/usr/bin/diffuse:8014
+#: ../src/usr/bin/diffuse:8109
 msgid "No modified files found."
 msgstr "No se encontraron ficheros modificados."
 
-#: ../src/usr/bin/diffuse:7474
+#: ../src/usr/bin/diffuse:7561
 msgid "None"
 msgstr "Ninguno"
 
-#: ../src/usr/bin/diffuse:8070
+#: ../src/usr/bin/diffuse:8165
 msgid "Number of panes: "
 msgstr "Número de paneles: "
 
-#: ../src/usr/bin/diffuse:7440
+#: ../src/usr/bin/diffuse:7527
 msgid "Open Commi_t..."
 msgstr "Abrir revi_sión..."
 
-#: ../src/usr/bin/diffuse:7130
+#: ../src/usr/bin/diffuse:7209
 msgid "Open File"
 msgstr "Abrir fichero"
 
-#: ../src/usr/bin/diffuse:7985
+#: ../src/usr/bin/diffuse:8080
 msgid "Open File In New Tab"
 msgstr "Abrir fichero en nueva pestaña"
 
-#: ../src/usr/bin/diffuse:7438
+#: ../src/usr/bin/diffuse:7525
 msgid "Open File In New _Tab..."
 msgstr "Abrir fichero en nueva _pestaña..."
 
-#: ../src/usr/bin/diffuse:6829
+#: ../src/usr/bin/diffuse:6908
 msgid "Open File..."
 msgstr "Abrir fichero..."
 
-#: ../src/usr/bin/diffuse:7439
+#: ../src/usr/bin/diffuse:7526
 msgid "Open _Modified Files..."
 msgstr "Abrir ficheros _modificados..."
 
-#: ../src/usr/bin/diffuse:858
+#: ../src/usr/bin/diffuse:866
 msgid "Order of codecs used to identify encoding"
 msgstr "Orden de codificaciones en identificación"
 
-#: ../src/usr/bin/diffuse:7696
+#: ../src/usr/bin/diffuse:7791
 msgid "Pane"
 msgstr "Panel"
 
-#: ../src/usr/bin/diffuse:4743
-#: ../src/usr/bin/diffuse:7565
+#: ../src/usr/bin/diffuse:4826 ../src/usr/bin/diffuse:7652
 msgid "Paste"
 msgstr "Pegar"
 
-#: ../src/usr/bin/diffuse:8135
+#: ../src/usr/bin/diffuse:8230
 msgid "Phrase not found.  Continue from the end of the file?"
 msgstr "Frase no encontrada. ¿Continuar desde final del fichero?"
 
-#: ../src/usr/bin/diffuse:8137
+#: ../src/usr/bin/diffuse:8232
 msgid "Phrase not found.  Continue from the start of the file?"
 msgstr "Frase no encontrada. ¿Continuar desde principio del fichero?"
 
-#: ../src/usr/bin/diffuse:7472
+#: ../src/usr/bin/diffuse:7559
 msgid "Pr_eferences..."
 msgstr "Pr_eferencias..."
 
-#: ../src/usr/bin/diffuse:7494
+#: ../src/usr/bin/diffuse:7581
 msgid "Pre_vious Tab"
 msgstr "Pestaña ante_rior"
 
-#: ../src/usr/bin/diffuse:975
+#: ../src/usr/bin/diffuse:986
 msgid "Preferences"
 msgstr "Preferencias"
 
-#: ../src/usr/bin/diffuse:7332
+#: ../src/usr/bin/diffuse:7411
 msgid "Press the enter key or double click to edit.  Press the space bar or use the RMB menu to manually align."
 msgstr "Pulse Enter o haga doble clic para editar.  Pulse el espaciador o use el menú RMB para alinear manualmente."
 
-#: ../src/usr/bin/diffuse:7334
+#: ../src/usr/bin/diffuse:7413
 msgid "Press the escape key to finish editing."
 msgstr "Pulse Escape para finalizar la edición."
 
-#: ../src/usr/bin/diffuse:7550
+#: ../src/usr/bin/diffuse:7637
 msgid "Previous Difference"
 msgstr "Diferencía anterior"
 
-#: ../src/usr/bin/diffuse:7485
+#: ../src/usr/bin/diffuse:7572
 msgid "Re_align All"
 msgstr "Re_alinear todo"
 
-#: ../src/usr/bin/diffuse:7548
+#: ../src/usr/bin/diffuse:7635
 msgid "Realign All"
 msgstr "Realinear todo"
 
-#: ../src/usr/bin/diffuse:7562
+#: ../src/usr/bin/diffuse:7649
 msgid "Redo"
 msgstr "Rehacer"
 
-#: ../src/usr/bin/diffuse:855
+#: ../src/usr/bin/diffuse:863
 msgid "Regional Settings"
 msgstr "Ajustes regionales"
 
-#: ../src/usr/bin/diffuse:6830
+#: ../src/usr/bin/diffuse:6909
 msgid "Reload File"
 msgstr "Recargar fichero"
 
-#: ../src/usr/bin/diffuse:7508
+#: ../src/usr/bin/diffuse:7595
 msgid "Remove Trailing _White Space"
 msgstr "Quitar _espacios finales"
 
-#: ../src/usr/bin/diffuse:6669
+#: ../src/usr/bin/diffuse:6746
 msgid "Revision: "
 msgstr "Revision: "
 
-#: ../src/usr/bin/diffuse:826
+#: ../src/usr/bin/diffuse:834
 msgid "Right margin"
 msgstr "Margen derecho"
 
-#: ../src/usr/bin/diffuse:880
+#: ../src/usr/bin/diffuse:888
 msgid "Root directory"
 msgstr "Directorio raíz"
 
-#: ../src/usr/bin/diffuse:7200
+#: ../src/usr/bin/diffuse:7279
 #, python-format
 msgid "Save %(title)s Pane %(pane)d"
 msgstr "Guardar Panel %(title)s %(pane)d"
 
-#: ../src/usr/bin/diffuse:7445
+#: ../src/usr/bin/diffuse:7532
 msgid "Save A_ll"
 msgstr "Gu_ardar todo"
 
-#: ../src/usr/bin/diffuse:6831
+#: ../src/usr/bin/diffuse:6910
 msgid "Save File"
 msgstr "Guardar fichero"
 
-#: ../src/usr/bin/diffuse:6832
+#: ../src/usr/bin/diffuse:6911
 msgid "Save File As..."
 msgstr "Guardar fichero como..."
 
-#: ../src/usr/bin/diffuse:7444
+#: ../src/usr/bin/diffuse:7531
 msgid "Save File _As..."
 msgstr "Guardar _fichero como..."
 
-#: ../src/usr/bin/diffuse:6977
+#: ../src/usr/bin/diffuse:7056
 msgid "Save changes before loading the new file?"
 msgstr "¿Guardar cambios antes de abrir nuevo fichero?"
 
-#: ../src/usr/bin/diffuse:6633
+#: ../src/usr/bin/diffuse:6700
 msgid "Search Backwards"
 msgstr "Buscar hacia atrás"
 
-#: ../src/usr/bin/diffuse:6603
+#: ../src/usr/bin/diffuse:6670
 msgid "Search For: "
 msgstr "Buscar: "
 
-#: ../src/usr/bin/diffuse:4745
+#: ../src/usr/bin/diffuse:4828
 msgid "Select All"
 msgstr "Seleccionar todo"
 
-#: ../src/usr/bin/diffuse:7463
+#: ../src/usr/bin/diffuse:7550
 msgid "Select _All"
 msgstr "Seleccion_ar todo"
 
-#: ../src/usr/bin/diffuse:7336
+#: ../src/usr/bin/diffuse:7415
 msgid "Select target line and press the space bar to align.  Press the escape key to cancel."
 msgstr "Selecciona la línea y pulsa espacio para alinear.  Pulsa Escape para cancelar."
 
-#: ../src/usr/bin/diffuse:7499
+#: ../src/usr/bin/diffuse:7586
 msgid "Shift Pane _Left"
 msgstr "Cambiar panel _izquierdo"
 
-#: ../src/usr/bin/diffuse:7498
+#: ../src/usr/bin/diffuse:7585
 msgid "Shift Pane _Right"
 msgstr "Cambiar panel _derecho"
 
-#: ../src/usr/bin/diffuse:827
+#: ../src/usr/bin/diffuse:835
 msgid "Show line numbers"
 msgstr "Mostrar números de línea"
 
-#: ../src/usr/bin/diffuse:825
+#: ../src/usr/bin/diffuse:833
 msgid "Show right margin"
 msgstr "Mostrar margen derecho"
 
-#: ../src/usr/bin/diffuse:828
+#: ../src/usr/bin/diffuse:836
 msgid "Show white space characters"
 msgstr "Mostrar espacios"
 
-#: ../src/usr/bin/diffuse:8409
+#: ../src/usr/bin/diffuse:8508
 #, python-format
 msgid "Skipping unknown argument \"%s\"."
 msgstr "Omitiendo argumento desconocido \"%s\"."
 
-#: ../src/usr/bin/diffuse:847
+#: ../src/usr/bin/diffuse:855
 msgid "Soft tab width"
 msgstr "Tabuladores blandos"
 
-#: ../src/usr/bin/diffuse:7678
+#: ../src/usr/bin/diffuse:7773
 msgid "Some files have unsaved changes.  Select the files to save before closing."
 msgstr "Unos ficheros tienen cambios. Elige los ficheros a guardar antes de cerrar."
 
-#: ../src/usr/bin/diffuse:7506
+#: ../src/usr/bin/diffuse:7593
 msgid "Sort Lines In D_escending Order"
 msgstr "Ordenar lineas en orden _descendente"
 
-#: ../src/usr/bin/diffuse:7505
+#: ../src/usr/bin/diffuse:7592
 msgid "Sort Lines In _Ascending Order"
 msgstr "Ordenar lineas en orden _ascendente"
 
-#: ../src/usr/bin/diffuse:4748
+#: ../src/usr/bin/diffuse:4831
 msgid "Swap with Selected Pane"
 msgstr "Reemplazar con panel seleccionado"
 
-#: ../src/usr/bin/diffuse:7691
+#: ../src/usr/bin/diffuse:7786
 msgid "Tab"
 msgstr "Pestaña"
 
-#: ../src/usr/bin/diffuse:824
+#: ../src/usr/bin/diffuse:832
 msgid "Tab width"
 msgstr "Tamaño de tabulador"
 
-#: ../src/usr/bin/diffuse:849
+#: ../src/usr/bin/diffuse:857
 msgid "Tabs"
 msgstr "Pestañas"
 
-#: ../src/usr/bin/diffuse:7180
+#: ../src/usr/bin/diffuse:7259
 #, python-format
 msgid "The file %s changed on disk.  Do you want to reload the file?"
 msgstr "El fichero %s ha cambiado en disco.  ¿Quieres recargarlo?"
 
-#: ../src/usr/bin/diffuse:7231
+#: ../src/usr/bin/diffuse:7310
 #, python-format
 msgid "The file %s has been modified by another process since reading it.  If you save, all the external changes could be lost.  Save anyways?"
 msgstr "El fichero %s ha sido modificado por otro proceso desde que se cargó. Sí se guarda, todos los cambios realizados por procesos externos se perderán.  ¿Deseas guardar de todos modos?"
 
-#: ../src/usr/bin/diffuse:6740
+#: ../src/usr/bin/diffuse:6818
 msgid ""
 "This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the licence, or (at your option) any later version.\n"
 "\n"
@@ -665,15 +646,15 @@ msgstr ""
 "\n"
 "You should have received a copy of the GNU General Public License along with this program.  You may also obtain a copy of the GNU General Public License from the Free Software Foundation by visiting their web site (http://www.fsf.org/) or by writing to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA\n"
 
-#: ../src/usr/bin/diffuse:7561
+#: ../src/usr/bin/diffuse:7648
 msgid "Undo"
 msgstr "Deshacer"
 
-#: ../src/usr/bin/diffuse:908
+#: ../src/usr/bin/diffuse:918
 msgid "Update paths for Cygwin"
 msgstr "Actualizar rutas de Cygwin"
 
-#: ../src/usr/bin/diffuse:86
+#: ../src/usr/bin/diffuse:81
 msgid ""
 "Usage:\n"
 "    diffuse [ [OPTION...] [FILE...] ]...\n"
@@ -702,6 +683,7 @@ msgid ""
 "  ( -r | --revision ) <rev>        File revision <rev>\n"
 "  ( -s | --separate )              Create a new tab for each file\n"
 "  ( -t | --tab )                   Start a new tab\n"
+"  ( -V | --vcs ) <vcs-list>        Version control system search order\n"
 "  --line <line>                    Start with line <line> selected\n"
 "  --null-file                      Create a blank file comparison pane\n"
 "\n"
@@ -739,6 +721,8 @@ msgstr ""
 "  ( -r | --revision ) <rev>      Revisión de fichero <rev>\n"
 "  ( -s | --separate )            Crea nueva pestaña para cada fichero\n"
 "  ( -t | --tab )                 Inicia pestaña nueva\n"
+"  ( -V | --vcs ) <vcs-list>        Version control system search order\n"
+"  --line <line>                    Start with line <line> selected\n"
 "  --null-file                    Crea panel vacío de comparación de ficheros\n"
 "\n"
 "Opciones de visualización:\n"
@@ -748,130 +732,138 @@ msgstr ""
 "  ( -i | --ignore-case )         Ignorar cambios de capitalización\n"
 "  ( -w | --ignore-all-space )    Ignorar todos los cambios en espaciado"
 
-#: ../src/usr/bin/diffuse:911
+#: ../src/usr/bin/diffuse:922
 msgid "Version Control"
 msgstr "Control de versión"
 
-#: ../src/usr/bin/diffuse:853
+#: ../src/usr/bin/diffuse:905
+msgid "Version control system search order"
+msgstr ""
+
+#: ../src/usr/bin/diffuse:861
 #, python-format
 msgid "Warn me when closing a tab will quit %s"
 msgstr "Avísar sí cerrar la ultima pestaña cerrará la aplicación %s"
 
-#: ../src/usr/bin/diffuse:7531
+#: ../src/usr/bin/diffuse:7618
 #, python-format
 msgid "_About %s..."
 msgstr "_Acerca de %s..."
 
-#: ../src/usr/bin/diffuse:7451
+#: ../src/usr/bin/diffuse:7538
 msgid "_Close Tab"
 msgstr "_Cerrar pestaña"
 
-#: ../src/usr/bin/diffuse:7460
+#: ../src/usr/bin/diffuse:7547
 msgid "_Copy"
 msgstr "_Copiar"
 
-#: ../src/usr/bin/diffuse:7465
+#: ../src/usr/bin/diffuse:7552
 msgid "_Dismiss All Edits"
 msgstr "_Ignorar todas las ediciones"
 
-#: ../src/usr/bin/diffuse:7455
+#: ../src/usr/bin/diffuse:7542
 msgid "_Edit"
 msgstr "_Editar"
 
-#: ../src/usr/bin/diffuse:7436
+#: ../src/usr/bin/diffuse:7523
 msgid "_File"
 msgstr "_Fichero"
 
-#: ../src/usr/bin/diffuse:7467
+#: ../src/usr/bin/diffuse:7554
 msgid "_Find..."
 msgstr "_Buscar..."
 
-#: ../src/usr/bin/diffuse:7488
+#: ../src/usr/bin/diffuse:7575
 msgid "_First Difference"
 msgstr "Primera di_ferencia"
 
-#: ../src/usr/bin/diffuse:7470
+#: ../src/usr/bin/diffuse:7557
 msgid "_Go To Line..."
 msgstr "_Ir a la línea..."
 
-#: ../src/usr/bin/diffuse:7528
+#: ../src/usr/bin/diffuse:7615
 msgid "_Help"
 msgstr "_Ayuda"
 
-#: ../src/usr/bin/diffuse:7529
+#: ../src/usr/bin/diffuse:7616
 msgid "_Help Contents..."
 msgstr "Índ_ice de ayuda..."
 
-#: ../src/usr/bin/diffuse:7512
+#: ../src/usr/bin/diffuse:7599
 msgid "_Increase Indenting"
 msgstr "Aumentar sangr_ía"
 
-#: ../src/usr/bin/diffuse:7486
+#: ../src/usr/bin/diffuse:7573
 msgid "_Isolate"
 msgstr "A_islar"
 
-#: ../src/usr/bin/diffuse:7491
+#: ../src/usr/bin/diffuse:7578
 msgid "_Last Difference"
 msgstr "Ú_ltima diferencia"
 
-#: ../src/usr/bin/diffuse:7519
+#: ../src/usr/bin/diffuse:7606
 msgid "_Merge"
 msgstr "_Mezcla"
 
-#: ../src/usr/bin/diffuse:7525
+#: ../src/usr/bin/diffuse:7612
 msgid "_Merge From Left Then Right"
 msgstr "_Mezclar desde izquierda, después desde derecha"
 
-#: ../src/usr/bin/diffuse:7490
+#: ../src/usr/bin/diffuse:7577
 msgid "_Next Difference"
 msgstr "Diferencia siguie_nte"
 
-#: ../src/usr/bin/diffuse:7437
+#: ../src/usr/bin/diffuse:7524
 msgid "_Open File..."
 msgstr "_Abrir fichero"
 
-#: ../src/usr/bin/diffuse:7461
+#: ../src/usr/bin/diffuse:7548
 msgid "_Paste"
 msgstr "_Pegar"
 
-#: ../src/usr/bin/diffuse:7489
+#: ../src/usr/bin/diffuse:7576
 msgid "_Previous Difference"
 msgstr "Diferencia an_terior"
 
-#: ../src/usr/bin/diffuse:7453
+#: ../src/usr/bin/diffuse:7540
 msgid "_Quit"
 msgstr "_Salir"
 
-#: ../src/usr/bin/diffuse:7457
+#: ../src/usr/bin/diffuse:7544
 msgid "_Redo"
 msgstr "_Rehacer"
 
-#: ../src/usr/bin/diffuse:7441
+#: ../src/usr/bin/diffuse:7528
 msgid "_Reload File"
 msgstr "_Recargar fichero"
 
-#: ../src/usr/bin/diffuse:7443
+#: ../src/usr/bin/diffuse:7530
 msgid "_Save File"
 msgstr "_Guardar fichero"
 
-#: ../src/usr/bin/diffuse:7483
+#: ../src/usr/bin/diffuse:7570
 msgid "_Syntax Highlighting"
 msgstr "Coloreado _sintáctico"
 
-#: ../src/usr/bin/diffuse:7456
+#: ../src/usr/bin/diffuse:7543
 msgid "_Undo"
 msgstr "_Deshacer"
 
-#: ../src/usr/bin/diffuse:7452
+#: ../src/usr/bin/diffuse:7539
 msgid "_Undo Close Tab"
 msgstr "_Deshacer cerrar pestaña"
 
-#: ../src/usr/bin/diffuse:7482
+#: ../src/usr/bin/diffuse:7569
 msgid "_View"
 msgstr "_Ver"
 
-#: ../src/usr/bin/diffuse:6737
+#: ../src/usr/bin/diffuse:6815
 msgid "translator-credits"
 msgstr ""
 "Henri Menke <henrimenke4@aim.com>\n"
 "David Marín Carreño <davefx@gmail.com>"
+
+#, python-format
+#~ msgid "Column %d"
+#~ msgstr "Columna %d"
