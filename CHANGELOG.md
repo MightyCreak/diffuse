@@ -30,6 +30,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - fixed wrong icons directory for gtk-update-icon-cache
 - fixed missing directories when uninstalling
 - fixed bug introduced by r420 with RCS VCS
+- fixed broken drag'n'drop since migration to Python3/GTK3
 
 ## [0.4.8] - 2014-07-18
 ### Added
