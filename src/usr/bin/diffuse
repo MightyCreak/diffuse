@@ -148,6 +148,8 @@ import subprocess
 import unicodedata
 import webbrowser
 
+from urllib.parse import urlparse
+
 if not hasattr(__builtins__, 'WindowsError'):
     # define 'WindowsError' so 'except' statements will work on all platforms
     WindowsError = IOError
@@ -2919,43 +2921,6 @@ def path2url(path, proto='file'):
                 c = '%%%02X' % (v, )
         r.append(c)
     return ''.join(r)
-
-# returns a path to a file named by the file URL 's'
-def url2path(s):
-    n = len(s)
-    if n > 7 and s.startswith('file://'):
-        ss, i = [], 7
-        if isWindows():
-            if s[i] == '/':
-                i += 1
-            else:
-                # share
-                ss.append('//')
-        while i < n:
-            c = s[i]
-            i += 1
-            if c == '%':
-                v = 0
-                for j in 0, 1:
-                    if i < n:
-                        p = ord(s[i])
-                        if p >= 48 and p <= 57:
-                            p -= 48
-                        elif p >= 65 and p <= 70:
-                            p -= 55
-                        elif p >= 97 and p <= 102:
-                            p -= 87
-                        else:
-                            p = None
-                        if p is not None:
-                            v = 16 * v + p
-                            i += 1
-                c = chr(v)
-            elif c == '|' and isWindows():
-                c = ':'
-            ss.append(c)
-        s = ''.join(ss)
-        return s.replace('/', os.sep)
 
 # the file diff viewer is always in one of these modes defining the cursor,
 # and hotkey behaviour
@@ -7077,31 +7042,13 @@ class Diffuse(Gtk.Window):
 
         # callback used when receiving drag-n-drop data
         def drag_data_received_cb(self, widget, context, x, y, selection, targettype, eventtime, f):
-            # parse uri-list
-            s = selection.data
-            ss, i, n = [], 0, len(s)
-            while i < n:
-                # skip separators
-                while i < n:
-                    v = ord(s[i])
-                    if v > 32 and v < 127:
-                        break
-                    i += 1
-                start = i
-                # find end of item
-                while i < n:
-                    v = ord(s[i])
-                    if v <= 32 or v >= 127:
-                        break
-                    i += 1
-                if i > start:
-                    p = url2path(s[start:i])
-                    if p is not None:
-                        ss.append(p)
+            # get uri list
+            uris = selection.get_uris()
             # load the first valid file
-            for s in ss:
-                if os.path.isfile(s):
-                    self.loadFromInfo(f, FileInfo(s))
+            for uri in uris:
+                path = urlparse(uri).path
+                if os.path.isfile(path):
+                    self.loadFromInfo(f, FileInfo(path))
                     break
 
         # change the file info for pane 'f' to 'info'
