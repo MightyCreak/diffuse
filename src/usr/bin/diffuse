@@ -1334,7 +1334,6 @@ def relpath(a, b):
 # by prepending './' to the basename
 def safeRelativePath(abspath1, name, prefs, cygwin_pref):
     s = os.path.join(os.curdir, relpath(abspath1, os.path.abspath(name)))
-    s = codecs.encode(s, sys.getfilesystemencoding())
     if isWindows():
         if prefs.getBool(cygwin_pref):
             s = s.replace('\\', '/')
