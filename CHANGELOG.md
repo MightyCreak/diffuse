@@ -6,6 +6,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+### Changed
+- Remove `u` string prefixes since Python 3 is in UTF-8 by default
+- Replaced some interpolation operators (`%`) for the `f` string prefix
+- Use the window scale factor for the icons generation
+
+### Fixed
+
 ## [0.5.0] - 2020-07-18
 ### Added
 - added Pedro Albuquerque's Portuguese translation
