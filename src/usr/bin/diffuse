@@ -7404,12 +7404,15 @@ class Diffuse(Gtk.Window):
         DIFFUSE_STOCK_LEFT_RIGHT = 'diffuse-left-right'
         DIFFUSE_STOCK_RIGHT_LEFT = 'diffuse-right-left'
 
+        # get default theme and window scale factor
         default_theme = Gtk.IconTheme.get_default()
+        scale_factor = self.get_scale_factor()
+
         icon_size = Gtk.IconSize.lookup(Gtk.IconSize.LARGE_TOOLBAR).height
         factory = Gtk.IconFactory()
 
         # render the base item used to indicate a new document
-        p0 = default_theme.load_icon("document-new", icon_size, 0)
+        p0 = default_theme.load_icon_for_scale("document-new", icon_size, scale_factor, 0)
         w, h = p0.get_width(), p0.get_height()
 
         # render new 2-way merge icon
@@ -7435,8 +7438,8 @@ class Diffuse(Gtk.Window):
         factory.add(DIFFUSE_STOCK_NEW_3WAY_MERGE, Gtk.IconSet.new_from_pixbuf(p))
 
         # render the left and right arrow we will use in our custom icons
-        p0 = default_theme.load_icon("go-next", icon_size, 0)
-        p1 = default_theme.load_icon("go-previous", icon_size, 0)
+        p0 = default_theme.load_icon_for_scale("go-next", icon_size, scale_factor, 0)
+        p1 = default_theme.load_icon_for_scale("go-previous", icon_size, scale_factor, 0)
         w, h, s = p0.get_width(), p0.get_height(), 0.65
         sw, sh = int(s * w), int(s * h)
         w1, h1 = w - sw, h - sh
