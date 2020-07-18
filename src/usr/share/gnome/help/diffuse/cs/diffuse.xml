@@ -2,9 +2,9 @@
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd"
 [
   <!ENTITY app "Diffuse">
-  <!ENTITY app-version "0.4.8">
-  <!ENTITY app-year "2006-2014">
-  <!ENTITY manual-year "2009-2014">
+  <!ENTITY app-version "0.5.0">
+  <!ENTITY app-year "2006-2020">
+  <!ENTITY manual-year "2009-2020">
 ]>
 <book id="index" lang="cs">
   <title>Uživatelská příručka programu <application>&app;</application></title>
