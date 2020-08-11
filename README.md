@@ -53,15 +53,20 @@ fixed by removing the offending lines (or the entire file) from
 
 ## Installing on POSIX systems
 
-Run the `install.py` script to install Diffuse.  The script accepts several
-options for customising the installation behaviour.  Use the `--help` option
-to obtain a full listing.
+Diffuse build system is meson.
 
-Diffuse can be removed by running the `install.py` script with the `--remove`
-option.
+To install diffuse locally:
 
-Specify the `--destdir=` and `--files-only` options for the `install.py`
-script when using it to build a platform specific package of Diffuse.
+    meson builddir
+    meson install -C builddir
+
+To uninstall diffuse afterwards:
+
+    sudo ninja uninstall -C builddir
+    sudo rm -v /usr/local/share/locale/*/LC_MESSAGES/diffuse.mo
+
+Meson allows to change the default installation directories, see
+[command-line documentation](https://mesonbuild.com/Commands.html#configure).
 
 ## Installing on Windows
 
