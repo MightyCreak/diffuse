@@ -8345,7 +8345,7 @@ if __name__ == '__main__':
         if isWindows():
             rc_file = os.path.join(bin_dir, 'diffuserc')
         else:
-            rc_file = os.path.join(bin_dir, '../../etc/diffuserc')
+            rc_file = os.path.join(bin_dir, '@SYSCONFIGDIR@/diffuserc')
         for rc_file in rc_file, os.path.join(rc_dir, 'diffuserc'):
             if os.path.isfile(rc_file):
                 rc_files.append(rc_file)
