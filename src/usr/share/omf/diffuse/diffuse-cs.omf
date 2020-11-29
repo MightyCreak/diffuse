@@ -4,8 +4,8 @@
     <creator>Derrick Moser</creator>
     <maintainer>Derrick Moser</maintainer>
     <title>Uživatelská příručka programu Diffuse</title>
-    <date>2020-07-18</date>
-    <version identifier="0.5.0" date="2020-07-18"/>
+    <date>2020-11-29</date>
+    <version identifier="0.6.0" date="2020-11-29"/>
     <subject category="GNOME|Development|Applications"/>
     <description>Diffuse je grafický nástroj pro slučování a porovnávání textových souborů.</description>
     <type>manual</type>
