@@ -9,12 +9,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 ### Changed
+
+### Fixed
+
+## [0.6.0] - 2020-11-29
+
+### Added
+- New Flatpak package, published on Flathub: com.github.mightycreak.Diffuse
+
+### Changed
 - Replace old install.py with the more standard Meson
 - Remove `u` string prefixes since Python 3 is in UTF-8 by default
 - Replaced some interpolation operators (`%`) for the `f` string prefix
 - Use the window scale factor for the icons generation
-
-### Fixed
 
 ## [0.5.0] - 2020-07-18
 ### Added
@@ -290,7 +297,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - initial public release
 
-[Unreleased]: https://github.com/MightyCreak/diffuse/compare/v0.5.0...HEAD
+[Unreleased]: https://github.com/MightyCreak/diffuse/compare/v0.6.0...HEAD
+[0.6.0]: https://github.com/MightyCreak/diffuse/compare/v0.6.0...v0.5.0
 [0.5.0]: https://github.com/MightyCreak/diffuse/compare/v0.4.8...v0.5.0
 [0.4.8]: https://github.com/MightyCreak/diffuse/compare/v0.4.7...v0.4.8
 [0.4.7]: https://github.com/MightyCreak/diffuse/compare/v0.4.6...v0.4.7
