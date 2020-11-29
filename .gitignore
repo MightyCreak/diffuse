@@ -14,11 +14,13 @@ __pycache__/
 .Python
 build/
 builddir/
+builddir-flatpak/
 develop-eggs/
 dist/
 downloads/
 eggs/
 .eggs/
+.flatpak-builder/
 lib/
 lib64/
 parts/
