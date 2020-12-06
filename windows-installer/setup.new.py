@@ -250,7 +250,7 @@ copyDir('..\\src\\usr\\share\\icons', os.path.join(build_dir, 'share\\icons'))
 # translations
 mkdir(os.path.join(build_dir, 'share\\locale'))
 locale_dir = os.path.join(gnomeSiteDir, 'share\\locale')
-for s in glob.glob('..\\translations\\*.po'):
+for s in glob.glob('..\\po\\*.po'):
     lang = s[16:-3]
     # Diffuse localisations
     print('Compiling %s translation' % (lang, ))

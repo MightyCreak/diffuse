@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Changed AppID to io.github.mightycreak.Diffuse (as explained in
   [Flatpak documentation](https://docs.flatpak.org/en/latest/conventions.html#application-ids))
+- Renamed `translations/` to `po/`
 
 ### Fixed
 
