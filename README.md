@@ -83,15 +83,15 @@ writable directory on the pen drive).
 To install Diffuse locally:
 
     flatpak install flatpak install runtime/org.gnome.Sdk/$(uname -p)/3.38
-    flatpak-builder builddir-flatpak --user --install com.github.mightycreak.Diffuse.yml
+    flatpak-builder builddir-flatpak --user --install io.github.mightycreak.Diffuse.yml
 
 To run Diffuse through Flatpak:
 
-    flatpak run com.github.mightycreak.Diffuse
+    flatpak run io.github.mightycreak.Diffuse
 
 To uninstall Diffuse:
 
-    flatpak remove com.github.mightycreak.Diffuse
+    flatpak remove io.github.mightycreak.Diffuse
 
 ## Help Documentation
 
