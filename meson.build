@@ -20,9 +20,9 @@ sysconfdir = prefix / get_option('sysconfdir')
 pythondir = py_installation.get_path('purelib')
 
 pkgdatadir = join_paths(datadir, meson.project_name())
-podir = join_paths(meson.source_root(), 'translations')
+podir = join_paths(meson.source_root(), 'po')
 
-subdir('translations')
+subdir('po')
 subdir('src')
 
 meson.add_install_script('build-scripts/meson-postinstall.py')

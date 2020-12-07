@@ -125,7 +125,7 @@ copyDir('..\\src\\usr\\share\\icons', 'dist\\share\\icons')
 # translations
 mkdir('dist\\share\\locale')
 locale_dir = os.path.join(gtk_dir, 'share\\locale')
-for s in glob.glob('..\\translations\\*.po'):
+for s in glob.glob('..\\po\\*.po'):
     lang = s[16:-3]
     # Diffuse localisations
     print 'Compiling %s translation' % (lang, )
