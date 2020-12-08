@@ -13,6 +13,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Changed AppID to io.github.mightycreak.Diffuse (as explained in
   [Flatpak documentation](https://docs.flatpak.org/en/latest/conventions.html#application-ids))
 - Renamed `translations/` to `po/`
+- Now uses POTFILES.in to list the files to translate
+- Translation strings are no longer sorted alphabetically, this will help when there will be
+  several files in POTFILES.in
+- Updated the documentation and script in the `po/` directory
 
 ### Fixed
 

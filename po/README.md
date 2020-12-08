@@ -9,23 +9,30 @@ The example commands below show how to create and manage the Japanese
 translations.  Replace all instances of "ja" with the code for the desired
 language.
 
-Creating a new translation
---------------------------
+Create PO template
+------------------
 
-1. Create a .pot file for Diffuse:
+To create or update the PO template (`po/diffuse.pot`), use this command at the
+repo root:
 
-        $ xgettext -s -o diffuse.pot -L Python ../src/usr/bin/diffuse
+    xgettext -o po/diffuse.pot -f po/POTFILES.in
 
-2. Create a .po file for the translation:
+Create a new translation
+------------------------
 
-        $ msginit -l ja -o ja.po -i diffuse.pot
+To create a new translation file, you'll need a PO template. If not already
+created, refer to previous section "Create PO template".
 
-3. Manually complete in the translations in the .po file:
+1. Create a .po file for the translation:
 
-        $ vi ja.po
+        msginit -l ja -o ja.po -i diffuse.pot
 
-Updating an existing translation
---------------------------------
+2. Manually complete in the translations in the .po file:
+
+        vim ja.po
+
+Update a translation
+--------------------
 
 Use `update-translations.py` to update one or more PO files.
 
