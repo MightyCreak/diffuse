@@ -1,2 +1,5 @@
 # List of source files which contain translatable strings.
+# Copyright (C) 2020 Romain Failliot <romain.failliot@foolstep.com>
+
+data/diffuse.desktop.in
 src/usr/bin/diffuse.py.in

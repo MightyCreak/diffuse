@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: diffuse 0.4.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-08 13:04-0500\n"
+"POT-Creation-Date: 2020-12-08 13:51-0500\n"
 "PO-Revision-Date: 2020-06-29 14:49-0400\n"
 "Last-Translator: Wei-Lun Chao <bluebat@member.fsf.org>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -18,6 +18,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
+#: data/diffuse.desktop.in:3
+msgid "Diffuse Merge Tool"
+msgstr "Diffuse 比較合併工具"
+
+#: data/diffuse.desktop.in:4
+msgid "Graphical tool for merging and comparing text files"
+msgstr "比較與合併文字檔案的圖形化工具"
 
 #: src/usr/bin/diffuse.py.in:70
 msgid "Copyright"

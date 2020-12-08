@@ -2,8 +2,8 @@
 <component type="desktop-application">
   <id>io.github.mightycreak.Diffuse</id>
 
-  <name>Diffuse</name>
-  <summary>Graphical merge tool</summary>
+  <name>Diffuse Merge Tool</name>
+  <summary>Graphical tool for merging and comparing text files</summary>
   <description>
     <p>
       Diffuse is a graphical tool for comparing and merging text files. It can retrieve files for comparison from Bazaar, CVS, Darcs, Git, Mercurial, Monotone, RCS, Subversion, and SVK repositories.
