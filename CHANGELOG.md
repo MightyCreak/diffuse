@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Translation strings are no longer sorted alphabetically, this will help when there will be
   several files in POTFILES.in
 - Updated the documentation and script in the `po/` directory
+- Add .desktop translations in .po files
 
 ### Fixed
 
