@@ -26,12 +26,15 @@ configure_file(
 metainfo_file = join_paths(meson.source_root(), 'src/usr/share/metainfo/io.github.mightycreak.Diffuse.metainfo.xml')
 ascli_exe = find_program('appstreamcli', required: false)
 if ascli_exe.found()
-  test('validate metainfo file',
-        ascli_exe,
-        args: ['validate',
-               '--no-net',
-               '--pedantic',
-               metainfo_file]
+  test(
+    'validate metainfo file',
+    ascli_exe,
+    args: [
+      'validate',
+      '--no-net',
+      '--pedantic',
+      metainfo_file
+    ]
   )
 endif
 
