@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: diffuse-svn\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-08 13:04-0500\n"
+"POT-Creation-Date: 2020-12-08 13:51-0500\n"
 "PO-Revision-Date: 2020-06-29 14:49-0400\n"
 "Last-Translator: David Marín Carreño <davefx@gmail.com>\n"
 "Language-Team: Spanish <henrimenke4@aim.com>\n"
@@ -17,6 +17,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: data/diffuse.desktop.in:3
+msgid "Diffuse Merge Tool"
+msgstr "Diffuse utillaje de textos"
+
+#: data/diffuse.desktop.in:4
+msgid "Graphical tool for merging and comparing text files"
+msgstr "Un utillaje para juntar y comparar archivos de texto"
 
 #: src/usr/bin/diffuse.py.in:70
 msgid "Copyright"

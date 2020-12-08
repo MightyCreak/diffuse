@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: diffuse-svn r316\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-08 13:04-0500\n"
+"POT-Creation-Date: 2020-12-08 13:51-0500\n"
 "PO-Revision-Date: 2020-06-29 14:49-0400\n"
 "Last-Translator: Kang Bundo <bundo@bundo.biz>\n"
 "Language-Team: Korean\n"
@@ -16,6 +16,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
+#: data/diffuse.desktop.in:3
+msgid "Diffuse Merge Tool"
+msgstr "Diffuse 병합도구"
+
+#: data/diffuse.desktop.in:4
+msgid "Graphical tool for merging and comparing text files"
+msgstr "텍스트 파일을 병합하고 비교하기위한 도구"
 
 #: src/usr/bin/diffuse.py.in:70
 msgid "Copyright"

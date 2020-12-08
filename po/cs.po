@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: diffuse-svn\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-08 13:04-0500\n"
+"POT-Creation-Date: 2020-12-08 13:51-0500\n"
 "PO-Revision-Date: 2020-06-29 14:49-0400\n"
 "Last-Translator: Jindřich Šesták <khagaroth@gmail.com>\n"
 "Language-Team: NONE <NONE>\n"
@@ -21,6 +21,14 @@ msgstr ""
 "X-Poedit-Basepath: ..\\src\\usr\\bin\n"
 "X-Poedit-KeywordsList: _\n"
 "X-Poedit-SearchPath-0: .\n"
+
+#: data/diffuse.desktop.in:3
+msgid "Diffuse Merge Tool"
+msgstr "Diffuse"
+
+#: data/diffuse.desktop.in:4
+msgid "Graphical tool for merging and comparing text files"
+msgstr "Grafický nástroj pro slučování a porovnávání textových souborů"
 
 #: src/usr/bin/diffuse.py.in:70
 msgid "Copyright"

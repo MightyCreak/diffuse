@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: diffuse 0.4.7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-08 13:04-0500\n"
+"POT-Creation-Date: 2020-12-08 13:51-0500\n"
 "PO-Revision-Date: 2020-06-29 14:49-0400\n"
 "Last-Translator: Akom Chotiphantawanon <knight2000@gmail.com>\n"
 "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
@@ -17,6 +17,14 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Gtranslator 2.91.6\n"
+
+#: data/diffuse.desktop.in:3
+msgid "Diffuse Merge Tool"
+msgstr "Diffuse - เครื่องมือผสานแฟ้ม"
+
+#: data/diffuse.desktop.in:4
+msgid "Graphical tool for merging and comparing text files"
+msgstr "เครื่องมือแบบกราฟิกสำหรับเปรียบเทียบและผสานแฟ้มข้อความ"
 
 #: src/usr/bin/diffuse.py.in:70
 msgid "Copyright"
