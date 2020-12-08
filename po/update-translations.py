@@ -26,9 +26,6 @@ import subprocess
 import shutil
 import tempfile
 
-def generate_pot_file():
-    subprocess.run(["xgettext", "-s", "-o", "diffuse.pot", "-L", "Python", "../src/usr/bin/diffuse"])
-
 def check_translation(filename):
     subprocess.run(["msgfmt", "-c", "-v", filename])
 
@@ -61,8 +58,6 @@ parser.add_argument('po_files', metavar='filename.po', nargs='+',
                     help='the translation file')
 parser.add_argument('-c', '--check-only', action='store_true',
                     help='check the PO files')
-parser.add_argument('--no-pot-generation', action='store_true',
-                    help='don\'t generate the POT file')
 
 # Parse command-line arguments
 args = parser.parse_args()
@@ -76,11 +71,6 @@ if args.check_only:
         print(f"Validate {file}:")
         check_translation(file)
     exit(0)
-
-if not args.no_pot_generation:
-    # Generate diffuse.pot file
-    print("Generate 'diffuse.pot'.")
-    generate_pot_file()
 
 # Create temporary working directory
 tmpdir = tempfile.mkdtemp()
