@@ -1975,7 +1975,7 @@ def _get_git_repo(path, prefs):
         except (IOError, OSError, WindowsError):
             # working tree not found
             pass
-    # search for .git direcotry (project) or .git file (submodule)
+    # search for .git directory (project) or .git file (submodule)
     while True:
         name = os.path.join(path, '.git')
         if os.path.isdir(name) or os.path.isfile(name):
@@ -2789,7 +2789,7 @@ class ScrolledWindow(Gtk.Grid):
 # Enforcing manual alignment is accomplished by dividing the lines of text into
 # sections that are matched independently.  'blocks' is an array of integers
 # describing how many lines (including null lines for spacing) that are in each
-# section starting from the begining of the files.  When no manual alignment
+# section starting from the beginning of the files.  When no manual alignment
 # has been specified, all lines are in the same section so 'blocks' should
 # contain a single entry equal to the number of lines.  Zeros are not allowed
 # in this array so 'blocks' will be an empty array when there are no lines.  A
@@ -3000,7 +3000,7 @@ def __patience_subsequence(a, b):
 # difflib-style approximation of the longest common subsequence
 def __lcs_approx(a, b):
     count1, lookup = {}, {}
-    # count occurances of each element in 'a'
+    # count occurrences of each element in 'a'
     for s in a:
         count1[s] = count1.get(s, 0) + 1
     # construct a mapping from a element to where it can be found in 'b'
@@ -3122,7 +3122,7 @@ def patience_diff(a, b):
                     # if anything is after recurse on the section
                     if idx_a < end_a and idx_b < end_b:
                         blocks.append((idx_a, end_a, idx_b, end_b, match_idx))
-    # try matching from begining to first match block
+    # try matching from beginning to first match block
     if matches:
         end_a, end_b = matches[0][:2]
     else:
@@ -3529,7 +3529,7 @@ class FileDiffViewer(Gtk.Grid):
             self.emit('cursor_changed')
             self.emit('mode_changed')
 
-    # sets the syntax hightlighting rules
+    # sets the syntax highlighting rules
     def setSyntax(self, s):
         if self.syntax is not s:
             self.syntax = s
@@ -3788,7 +3788,7 @@ class FileDiffViewer(Gtk.Grid):
         line.modified_text = text
         line.compare_string = None
 
-        # update/invalidate all relevent caches and queue widgets for redraw
+        # update/invalidate all relevant caches and queue widgets for redraw
         if text is not None:
             pane.line_lengths = max(pane.line_lengths, self.digit_width * self.stringWidth(text))
         self.updateSize(False)
@@ -3834,7 +3834,7 @@ class FileDiffViewer(Gtk.Grid):
             self.addUndo(FileDiffViewer.InsertNullUndo(f, i, reverse))
         pane = self.panes[f]
         lines = pane.lines
-        # update/invalidate all relevent caches
+        # update/invalidate all relevant caches
         if reverse:
             del lines[i]
             if i < len(pane.syntax_cache):
@@ -3863,7 +3863,7 @@ class FileDiffViewer(Gtk.Grid):
         if self.undoblock is not None:
             # create an Undo object for the action
             self.addUndo(FileDiffViewer.InvalidateLineMatchingUndo(i, n, new_n))
-        # update/invalidate all relevent caches and queue widgets for redraw
+        # update/invalidate all relevant caches and queue widgets for redraw
         i2 = i + n
         for f, pane in enumerate(self.panes):
             if i < len(pane.diff_cache):
@@ -4030,7 +4030,7 @@ class FileDiffViewer(Gtk.Grid):
             self.addUndo(FileDiffViewer.ReplaceLinesUndo(f, lines, new_lines, max_num, new_max_num))
         pane = self.panes[f]
         pane.lines = new_lines
-        # update/invalidate all relevent caches and queue widgets for redraw
+        # update/invalidate all relevant caches and queue widgets for redraw
         old_num_edits = pane.num_edits
         pane.num_edits = 0
         for line in new_lines:
@@ -4153,7 +4153,7 @@ class FileDiffViewer(Gtk.Grid):
                             insert[j] = True
                         else:
                             # we have a null but didn't expect one we will not
-                            # obtain the pairing we expected by iserting nulls
+                            # obtain the pairing we expected by inserting nulls
                             accept = False
                 if accept:
                     # our lines will be correctly paired up
@@ -4352,7 +4352,7 @@ class FileDiffViewer(Gtk.Grid):
         # record the edit mode as we will be updating the selection too
         self.recordEditMode()
 
-        # find the smallest span of blocks that inclues line1 and line2
+        # find the smallest span of blocks that includes line1 and line2
         start = line1
         end = line2
         if end < start:
@@ -6170,7 +6170,7 @@ class FileDiffViewer(Gtk.Grid):
             for f in range(f_idx - 1, f_idx + 2):
                 if f >= 0 and f < npanes:
                     # clear the diff cache and redraw as the pane has a new
-                    # neighour
+                    # neighbour
                     del self.panes[f].diff_cache[:]
                     self.dareas[f].queue_draw()
         # queue redraw
@@ -8235,7 +8235,7 @@ class Diffuse(Gtk.Window):
     def button_cb(self, widget, data):
         self.getCurrentViewer().button_cb(widget, data)
 
-    # display help documenation
+    # display help documentation
     def help_contents_cb(self, widget, data):
         help_url = None
         if isWindows():
