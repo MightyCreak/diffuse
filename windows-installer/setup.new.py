@@ -17,7 +17,7 @@ gnomeSiteDir = os.path.join(siteDir, "gnome")
 #    3) This would return lists of all dll required by you program 
 #       in my case most of dll file were located in c:\python27\Lib\site-packages\gnome 
 #       (I am using PyGI (all in one) installer)
-#    4) Below is the list of gnome dll I recevied from listdlls.exe result. 
+#    4) Below is the list of gnome dll I received from listdlls.exe result. 
 
 # If you prefer you can import all dlls from c:\python27\Lib\site-packages\gnome folder
 #missingDll = glob.glob(gnomeSiteDir + "\\" + '*.dll')
