@@ -78,6 +78,10 @@ Diffuse.  The `XDG_CONFIG_HOME` and `XDG_DATA_DIR` environment variables
 indicate where Diffuse should store persistent settings (eg. the path to a
 writable directory on the pen drive).
 
+## Installing the Flatpak package
+
+    flatpak install io.github.mightycreak.Diffuse
+
 ## Building and testing the Flatpak package
 
 To install Diffuse locally:
