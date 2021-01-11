@@ -16,4 +16,3 @@ modules:
         url: https://github.com/MightyCreak/diffuse
         branch: v0.6.0
 rename-desktop-file: diffuse.desktop
-rename-icon: diffuse
