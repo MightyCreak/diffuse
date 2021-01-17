@@ -1,21 +1,21 @@
 # Swedish translation for Diffuse.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Åke Engelbrektson <eson@svenskasprakfiler.se>, 2017.
+# Åke Engelbrektson <eson@svenskasprakfiler.se>, 2017, 2021.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-08 13:51-0500\n"
-"PO-Revision-Date: 2020-06-29 14:49-0400\n"
+"PO-Revision-Date: 2021-01-17 22:14+0100\n"
 "Last-Translator: Åke Engelbrektson <eson@svenskasprakfiler.se>\n"
 "Language-Team: Svenska Språkfiler <contactform@svenskasprakfiler.se>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 2.3\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: data/diffuse.desktop.in:3
@@ -28,7 +28,7 @@ msgstr "Grafiskt verktyg för jämförelse och sammanfogning av textfiler"
 
 #: src/usr/bin/diffuse.py.in:70
 msgid "Copyright"
-msgstr ""
+msgstr "Copyright"
 
 #: src/usr/bin/diffuse.py.in:81
 msgid ""
@@ -244,7 +244,7 @@ msgstr "Cygdrive-prefix"
 
 #: src/usr/bin/diffuse.py.in:907
 msgid "Version control system search order"
-msgstr ""
+msgstr "Sökordning för versionskontrollsystem"
 
 #: src/usr/bin/diffuse.py.in:913
 msgid "\"co\" command"
@@ -404,7 +404,7 @@ msgstr "Vill du spara ändringar före inläsning av den ny filen?"
 #: src/usr/bin/diffuse.py.in:7124
 #, python-format
 msgid "Error reading revision %(rev)s of %(file)s."
-msgstr "Fel vid läsning av revision %(rev)s i %(file)s"
+msgstr "Fel vid läsning av revision %(rev)s i %(file)s."
 
 #: src/usr/bin/diffuse.py.in:7126 src/usr/bin/diffuse.py.in:8359
 #, python-format
@@ -830,7 +830,7 @@ msgstr "Välj mapp med ändrade filer"
 
 #: src/usr/bin/diffuse.py.in:8051
 msgid "No modified files found."
-msgstr "Inga ändrade filer hittades"
+msgstr "Inga ändrade filer hittades."
 
 #: src/usr/bin/diffuse.py.in:8058
 msgid "Choose Folder With Commit"
@@ -870,6 +870,5 @@ msgstr "Undantar okänt argument \"%s\"."
 msgid "Error processing argument \"%s\".  Directory not expected."
 msgstr "Fel vid bearbetning av argumentet \"%s\". Katalogen inte den förväntade."
 
-#, python-format
 #~ msgid "Column %d"
 #~ msgstr "Kolumn %d"
