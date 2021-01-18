@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Added MetaInfo file
+- New SVG icon (thanks @creepertron95, @jimmac and @freddii)
 
 ### Changed
 - Changed AppID to io.github.mightycreak.Diffuse (as explained in

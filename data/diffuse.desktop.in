@@ -2,7 +2,7 @@
 Name=Diffuse Merge Tool
 Comment=Graphical tool for merging and comparing text files
 Exec=diffuse -s %F
-Icon=diffuse
+Icon=io.github.mightycreak.Diffuse
 Terminal=false
 Type=Application
 MimeType=text/plain;text/x-csrc;text/x-chdr;

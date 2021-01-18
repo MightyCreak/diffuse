@@ -1,10 +1,5 @@
 # Diffuse
 
-Copyright (C) 2006-2019 Derrick Moser <derrick_moser@yahoo.com>  
-Copyright (C) 2015-2020 Romain Failliot <romain.failliot@foolstep.com>
-
-----
-
 Diffuse is a graphical tool for merging and comparing text files.  Diffuse is
 able to compare an arbitrary number of files side-by-side and gives users the
 ability to manually adjust line matching and directly edit files.  Diffuse can
@@ -103,3 +98,16 @@ Diffuse's help documentation is written in the DocBook format and can be easily
 converted into other formats using XSLT stylesheets.  If the local help
 documentation or its browser are unavailable, Diffuse will attempt to display
 the on-line help documentation using a web browser.
+
+## Licenses
+
+Diffuse is under the [GPLv2](COPYING).
+
+The file [io.github.mightycreak.Diffuse.metainfo.xml](src/usr/share/metainfo/io.github.mightycreak.Diffuse.metainfo.xml)
+is licensed under the [FSF-AP](https://www.gnu.org/prep/maintain/html_node/License-Notices-for-Other-Files.html)
+license.
+
+Copyright (C) 2006-2019 Derrick Moser <derrick_moser@yahoo.com>  
+Copyright (C) 2015-2021 Romain Failliot <romain.failliot@foolstep.com>
+
+Icon made by [@jimmac](https://github.com/jimmac).
