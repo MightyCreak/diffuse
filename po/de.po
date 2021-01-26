@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: diffuse-svn\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-08 13:51-0500\n"
-"PO-Revision-Date: 2020-06-29 14:49-0400\n"
+"PO-Revision-Date: 2021-01-26 04:29+0100\n"
 "Last-Translator: Henri Menke <henrimenke4@aim.com>\n"
 "Language-Team: German <henrimenke4@aim.com>\n"
 "Language: de\n"
@@ -17,9 +17,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Poedit-Language: German\n"
-"X-Poedit-Country: GERMANY\n"
 "X-Poedit-SourceCharset: utf-8\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #: data/diffuse.desktop.in:3
 msgid "Diffuse Merge Tool"
@@ -31,7 +30,7 @@ msgstr "Werkzeug zum Mischen und Vergleichen von Textdateien"
 
 #: src/usr/bin/diffuse.py.in:70
 msgid "Copyright"
-msgstr ""
+msgstr "Urheberrecht"
 
 #: src/usr/bin/diffuse.py.in:81
 msgid ""
@@ -249,7 +248,7 @@ msgstr "Cygdrive Präfix"
 
 #: src/usr/bin/diffuse.py.in:907
 msgid "Version control system search order"
-msgstr ""
+msgstr "Suchreihenfolge des Versionskontrollsystems"
 
 #: src/usr/bin/diffuse.py.in:913
 msgid "\"co\" command"
@@ -471,7 +470,7 @@ msgstr "_Datei"
 
 #: src/usr/bin/diffuse.py.in:7467
 msgid "_Open File..."
-msgstr "Datei _öffnen"
+msgstr "_Öffne Datei..."
 
 #: src/usr/bin/diffuse.py.in:7468
 msgid "Open File In New _Tab..."
