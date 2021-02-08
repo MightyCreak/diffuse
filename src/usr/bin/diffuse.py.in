@@ -86,7 +86,7 @@ Diffuse is a graphical tool for merging and comparing text files.  Diffuse is
 able to compare an arbitrary number of files side-by-side and gives users the
 ability to manually adjust line matching and directly edit files.  Diffuse can
 also retrieve revisions of files from Bazaar, CVS, Darcs, Git, Mercurial,
-Monotone, RCS, Subversion, and SVK repositories for comparison and merging.
+Monotone, RCS, SRC, Subversion, and SVK repositories for comparison and merging.
 
 Help Options:
   ( -h | -? | --help )             Display this usage information
@@ -900,11 +900,12 @@ class Preferences:
                 ('hg', 'Mercurial', 'hg'),
                 ('mtn', 'Monotone', 'mtn'),
                 ('rcs', 'RCS', None),
+                ('src', 'SRC', 'src'),
                 ('svn', 'Subversion', 'svn'),
                 ('svk', 'SVK', svk_bin) ]
 
         vcs_template = [ 'List',
-              [ 'String', 'vcs_search_order', 'bzr cvs darcs git hg mtn rcs svn svk', _('Version control system search order') ] ]
+              [ 'String', 'vcs_search_order', 'bzr cvs darcs git hg mtn rcs src svn svk', _('Version control system search order') ] ]
         vcs_folders_template = [ 'FolderSet' ]
         for key, name, cmd in vcs:
             temp = [ 'List' ]
@@ -2352,6 +2353,239 @@ def _get_rcs_repo(path, prefs):
         # the user specified an invalid folder name
         pass
 
+# SRC support
+class _Src:
+    def __init__(self, root):
+        self.root = root
+        self.url = None
+
+    def _getVcs(self):
+        return 'src'
+
+    def _getURLPrefix(self):
+        return 'URL: '
+
+    def _parseStatusLine(self, s):
+        # src status prints eg "M<TAB>filename" - as opposed to svn which expands the TAB!
+        if len(s) < 3 or s[0] not in 'ACDMR':
+            return
+        return s[0], s[2:]
+
+    def _getPreviousRevision(self, prefs, rev):
+        if rev is None:
+            return 'BASE'
+        m = int(rev)
+        if m > 1:
+            return str(m - 1)
+
+    def _getURL(self, prefs):
+        if self.url is None:
+            vcs, prefix = self._getVcs(), self._getURLPrefix()
+            n = len(prefix)
+            args = [ prefs.getString(vcs + '_bin'), 'info' ]
+            for s in popenReadLines(self.root, args, prefs, vcs + '_bash'):
+                if s.startswith(prefix):
+                    self.url = s[n:]
+                    break
+        return self.url
+
+    def getFileTemplate(self, prefs, name):
+        # FIXME: verify this
+        # merge conflict
+        left = glob.glob(name + '.merge-left.r*')
+        right = glob.glob(name + '.merge-right.r*')
+        if len(left) > 0 and len(right) > 0:
+            return [ (left[-1], None), (name, None), (right[-1], None) ]
+        # update conflict
+        left = sorted(glob.glob(name + '.r*'))
+        right = glob.glob(name + '.mine')
+        right.extend(glob.glob(name + '.working'))
+        if len(left) > 0 and len(right) > 0:
+            return [ (left[-1], None), (name, None), (right[0], None) ]
+        # default case
+        return [ (name, self._getPreviousRevision(prefs, None)), (name, None) ]
+
+    def _getCommitTemplate(self, prefs, rev, names):
+        # there's no concept like a 'commit' for src - each file
+        # has an independent history. So you can either:
+
+        # diffuse -c 14 todo.org
+        # or
+        # diffuse -m [files]
+
+        # Nothing else really makes much sense to me so let's assume that if we have a rev
+        # then we're doing a -m otherwise it's a -c
+
+        # FIXME: removed, added, conflicting files - only modified files work!!
+
+        result = []
+
+        # build command
+        vcs = self._getVcs()
+        vcs_bin, vcs_bash = prefs.getString(vcs + '_bin'), vcs + '_bash'
+        args = [ vcs_bin, 'status' ]
+        if rev is None:
+            if names == [ '.' ]:
+                names = glob.glob("*")
+            prev = 'BASE'
+        else:
+            prev = None
+            args.append(names[0])
+
+        #    args = [ vcs_bin, 'diff', '-c', rev + "-" ]
+        # build list of interesting files
+        pwd, isabs = os.path.abspath(os.curdir), False
+        for name in names:
+            isabs |= os.path.isabs(name)
+            if rev is None:
+                args.append(safeRelativePath(self.root, name, prefs, vcs + '_cygwin'))
+        # run command
+        fs = _VcsFolderSet(names)
+        modified, added, removed = {}, set(), set()
+        for s in popenReadLines(self.root, args, prefs, vcs_bash):
+
+            status = self._parseStatusLine(s)
+            if status is None:
+                continue
+            v, k = status
+            rel = prefs.convertToNativePath(k)
+            k = os.path.join(self.root, rel)
+            if fs.contains(k):
+                if v == 'D':
+                    # deleted file or directory
+                    # the contents of deleted folders are not reported
+                    # by "src diff --summarize -c <rev>"
+                    removed.add(rel)
+                elif v == 'A':
+                    # new file or directory
+                    added.add(rel)
+                elif v == 'M':
+                    # modified file or merge conflict
+                    k = os.path.join(self.root, k)
+                    if not isabs:
+                        k = relpath(pwd, k)
+                    modified[k] = [ (k, prev), (k, rev) ]
+                elif v == 'C':
+                    # merge conflict
+                    modified[k] = self.getFileTemplate(prefs, k)
+                elif v == 'R':
+                    # replaced file
+                    removed.add(rel)
+                    added.add(rel)
+        # look for files in the added items
+        if rev is None:
+            m, added = added, {}
+            for k in m:
+                if not os.path.isdir(k):
+                    # confirmed as added file
+                    k = os.path.join(self.root, k)
+                    if not isabs:
+                        k = relpath(pwd, k)
+                    added[k] = [ (None, None), (k, None) ]
+        else:
+            m = {}
+            for k in added:
+                d, b = os.path.dirname(k), os.path.basename(k)
+                if d not in m:
+                    m[d] = set()
+                m[d].add(b)
+            # remove items we can easily determine to be directories
+            for k in m.keys():
+                d = os.path.dirname(k)
+                if d in m:
+                    m[d].discard(os.path.basename(k))
+                    if not m[d]:
+                        del m[d]
+            # determine which are directories
+            added = {}
+            for p, v in m.items():
+                for s in popenReadLines(self.root, [ vcs_bin, 'list', '-r', rev, '{}/{}'.format(self._getURL(prefs), p.replace(os.sep, '/')) ], prefs, vcs_bash):
+                    if s in v:
+                        # confirmed as added file
+                        k = os.path.join(self.root, os.path.join(p, s))
+                        if not isabs:
+                            k = relpath(pwd, k)
+                        added[k] = [ (None, None), (k, rev) ]
+        # determine if removed items are files or directories
+        if prev == 'BASE':
+            m, removed = removed, {}
+            for k in m:
+                if not os.path.isdir(k):
+                    # confirmed item as file
+                    k = os.path.join(self.root, k)
+                    if not isabs:
+                        k = relpath(pwd, k)
+                    removed[k] = [ (k, prev), (None, None) ]
+        else:
+            m = {}
+            for k in removed:
+                d, b = os.path.dirname(k), os.path.basename(k)
+                if d not in m:
+                    m[d] = set()
+                m[d].add(b)
+            removed_dir, removed = set(), {}
+            for p, v in m.items():
+                for s in popenReadLines(self.root, [ vcs_bin, 'list', '-r', prev, '{}/{}'.format(self._getURL(prefs), p.replace(os.sep, '/')) ], prefs, vcs_bash):
+                    if s.endswith('/'):
+                        s = s[:-1]
+                        if s in v:
+                            # confirmed item as directory
+                            removed_dir.add(os.path.join(p, s))
+                    else:
+                        if s in v:
+                            # confirmed item as file
+                            k = os.path.join(self.root, os.path.join(p, s))
+                            if not isabs:
+                                k = relpath(pwd, k)
+                            removed[k] = [ (k, prev), (None, None) ]
+            # recursively find all unreported removed files
+            while removed_dir:
+                tmp = removed_dir
+                removed_dir = set()
+                for p in tmp:
+                    for s in popenReadLines(self.root, [ vcs_bin, 'list', '-r', prev, '{}/{}'.format(self._getURL(prefs), p.replace(os.sep, '/')) ], prefs, vcs_bash):
+                        if s.endswith('/'):
+                            # confirmed item as directory
+                            removed_dir.add(os.path.join(p, s[:-1]))
+                        else:
+                            # confirmed item as file
+                            k = os.path.join(self.root, os.path.join(p, s))
+                            if not isabs:
+                                k = relpath(pwd, k)
+                            removed[k] = [ (k, prev), (None, None) ]
+        # sort the results
+        r = set()
+        for m in removed, added, modified:
+            r.update(m.keys())
+        for k in sorted(r):
+            for m in removed, added, modified:
+                if k in m:
+                    result.append(m[k])
+        return result
+
+    def getCommitTemplate(self, prefs, rev, names):
+        return self._getCommitTemplate(prefs, rev, names)
+
+    def getFolderTemplate(self, prefs, names):
+        return self._getCommitTemplate(prefs, None, names)
+
+    def getRevision(self, prefs, name, rev):
+        if rev == "BASE":
+            # get the equivalent of svn's 'BASE':
+            # 'src list <fully qualified filename>' fails! Need to assume we're in
+            # the directory and just use basename()!!
+            ss = popenReadLines(self.root, [ prefs.getString('src_bin'), 'list', '-1', '-f', '{1}', os.path.basename(name) ], prefs, 'src_bash')
+            if len(ss) != 1:
+                raise IOError('Unknown working revision')
+            rev = ss[0]
+
+        return popenRead(self.root, [ prefs.getString('src_bin'), "cat", rev, os.path.basename(name) ], prefs, 'src_bash')
+
+def _get_src_repo(path, prefs):
+    p = _find_parent_dir_with(path, '.src')
+    if p:
+        return _Src(p)
+
 # Subversion support
 # SVK support subclasses from this
 class _Svn:
@@ -2660,7 +2894,7 @@ def _get_svk_repo(path, prefs):
 class VCSs:
     def __init__(self):
         # initialise the VCS objects
-        self._get_repo = { 'bzr': _get_bzr_repo, 'cvs': _get_cvs_repo, 'darcs': _get_darcs_repo, 'git': _get_git_repo, 'hg': _get_hg_repo, 'mtn': _get_mtn_repo, 'rcs': _get_rcs_repo, 'svk': _get_svk_repo, 'svn': _get_svn_repo }
+        self._get_repo = { 'bzr': _get_bzr_repo, 'cvs': _get_cvs_repo, 'darcs': _get_darcs_repo, 'git': _get_git_repo, 'hg': _get_hg_repo, 'mtn': _get_mtn_repo, 'rcs': _get_rcs_repo, 'src': _get_src_repo, 'svk': _get_svk_repo, 'svn': _get_svn_repo }
 
     def setSearchOrder(self, ordering):
         self._search_order = ordering
