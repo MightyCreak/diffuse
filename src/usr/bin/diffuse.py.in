@@ -1942,9 +1942,16 @@ class _Git:
         result, r = [], set()
         for m in modified, renamed:
             r.update(m.keys())
+        # list binary files (starting with '-' in git diff --numstat)
+        args = [prefs.getString('git_bin'), 'diff', '--numstat']
+        binaries = set()
+        for s in popenReadLines(self.root, args, prefs, 'git_bash', [0, 1]):
+            added, deleted, filename = s.split()
+            if added == '-':
+                binaries.add(filename)
         for k in sorted(r):
             for m in modified, renamed:
-                if k in m:
+                if k in m and k not in binaries:
                     result.append(m[k])
         return result
 
