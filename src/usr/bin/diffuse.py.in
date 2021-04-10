@@ -1168,6 +1168,7 @@ class Preferences:
 # convenience method for creating a menu according to a template
 def createMenu(specs, radio=None, accel_group=None):
     menu = Gtk.Menu.new()
+    icon_size = Gtk.IconSize.lookup(Gtk.IconSize.MENU)
     for spec in specs:
         if len(spec) > 0:
             if len(spec) > 7 and spec[7] is not None:
@@ -1179,15 +1180,29 @@ def createMenu(specs, radio=None, accel_group=None):
                     item = Gtk.RadioMenuItem.new_with_mnemonic_from_widget(radio[g][0], spec[0])
                 radio[g][1][k] = item
             else:
-                item = Gtk.ImageMenuItem.new_with_mnemonic(spec[0])
+                hbox = Gtk.Box.new(Gtk.Orientation.HORIZONTAL, 6)
+                label = Gtk.AccelLabel()
+                label.set_text_with_mnemonic(spec[0])
+                item = Gtk.MenuItem.new()
+                label.set_xalign(0)
+                label.set_accel_widget(item)
+                if len(spec) > 3 and spec[3] is not None:
+                    image = Gtk.Image.new()
+                    if callable(spec[3]):
+                        image.set_from_pixbuf(spec[3](Gtk.IconSize.MENU))
+                    else:
+                        image.set_from_icon_name(spec[3], Gtk.IconSize.MENU)
+                    hbox.add(image)
+                    menu.set_reserve_toggle_size(False)
+                else:
+                    label.set_margin_start(icon_size.width + 6)
+                hbox.pack_end(label, True, True, 0)
+                item.add(hbox)
+                item.show_all()
             cb = spec[1]
             if cb is not None:
                 data = spec[2]
                 item.connect('activate', cb, data)
-            if len(spec) > 3 and spec[3] is not None:
-                image = Gtk.Image.new()
-                image.set_from_stock(spec[3], Gtk.IconSize.MENU)
-                item.set_image(image)
             if accel_group is not None and len(spec) > 4:
                 a = theResources.getKeyBindings('menu', spec[4])
                 if len(a) > 0:
@@ -1224,7 +1239,10 @@ def appendButtons(box, size, specs):
             button.set_relief(Gtk.ReliefStyle.NONE)
             button.set_can_focus(False)
             image = Gtk.Image.new()
-            image.set_from_stock(spec[0], size)
+            if callable(spec[0]):
+                image.set_from_pixbuf(spec[0](Gtk.IconSize.LARGE_TOOLBAR))
+            else:
+                image.set_from_icon_name(spec[0], size)
             button.add(image)
             image.show()
             if len(spec) > 2:
@@ -6793,7 +6811,7 @@ class NotebookTab(Gtk.EventBox):
         hbox = Gtk.Box.new(Gtk.Orientation.HORIZONTAL, 0)
         if stock is not None:
             image = Gtk.Image.new()
-            image.set_from_stock(stock, Gtk.IconSize.MENU)
+            image.set_from_icon_name(stock, Gtk.IconSize.MENU)
             hbox.pack_start(image, False, False, 5)
             image.show()
         self.label = label = Gtk.Label.new(name)
@@ -6805,7 +6823,7 @@ class NotebookTab(Gtk.EventBox):
         self.button = button = Gtk.Button.new()
         button.set_relief(Gtk.ReliefStyle.NONE)
         image = Gtk.Image.new()
-        image.set_from_stock(Gtk.STOCK_CLOSE, Gtk.IconSize.MENU)
+        image.set_from_icon_name(Gtk.STOCK_CLOSE, Gtk.IconSize.MENU)
         button.add(image)
         image.show()
         button.set_tooltip_text(_('Close Tab'))
@@ -7399,69 +7417,6 @@ class Diffuse(Gtk.Window):
         # create a Box for our contents
         vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
 
-        # create some custom icons for merging
-        DIFFUSE_STOCK_NEW_2WAY_MERGE = 'diffuse-new-2way-merge'
-        DIFFUSE_STOCK_NEW_3WAY_MERGE = 'diffuse-new-3way-merge'
-        DIFFUSE_STOCK_LEFT_RIGHT = 'diffuse-left-right'
-        DIFFUSE_STOCK_RIGHT_LEFT = 'diffuse-right-left'
-
-        # get default theme and window scale factor
-        default_theme = Gtk.IconTheme.get_default()
-        scale_factor = self.get_scale_factor()
-
-        icon_size = Gtk.IconSize.lookup(Gtk.IconSize.LARGE_TOOLBAR).height
-        factory = Gtk.IconFactory()
-
-        # render the base item used to indicate a new document
-        p0 = default_theme.load_icon_for_scale("document-new", icon_size, scale_factor, 0)
-        w, h = p0.get_width(), p0.get_height()
-
-        # render new 2-way merge icon
-        s = 0.8
-        sw, sh = int(s * w), int(s * h)
-        w1, h1 = w - sw, h - sh
-        p = GdkPixbuf.Pixbuf.new(GdkPixbuf.Colorspace.RGB, True, 8, w, h)
-        p.fill(0)
-        p0.composite(p, 0, 0, sw, sh, 0, 0, s, s, GdkPixbuf.InterpType.BILINEAR, 255)
-        p0.composite(p, w1, h1, sw, sh, w1, h1, s, s, GdkPixbuf.InterpType.BILINEAR, 255)
-        factory.add(DIFFUSE_STOCK_NEW_2WAY_MERGE, Gtk.IconSet.new_from_pixbuf(p))
-
-        # render new 3-way merge icon
-        s = 0.7
-        sw, sh = int(s * w), int(s * h)
-        w1, h1 = (w - sw) / 2, (h - sh) / 2
-        w2, h2 = w - sw, h - sh
-        p = GdkPixbuf.Pixbuf.new(GdkPixbuf.Colorspace.RGB, True, 8, w, h)
-        p.fill(0)
-        p0.composite(p, 0, 0, sw, sh, 0, 0, s, s, GdkPixbuf.InterpType.BILINEAR, 255)
-        p0.composite(p, w1, h1, sw, sh, w1, h1, s, s, GdkPixbuf.InterpType.BILINEAR, 255)
-        p0.composite(p, w2, h2, sw, sh, w2, h2, s, s, GdkPixbuf.InterpType.BILINEAR, 255)
-        factory.add(DIFFUSE_STOCK_NEW_3WAY_MERGE, Gtk.IconSet.new_from_pixbuf(p))
-
-        # render the left and right arrow we will use in our custom icons
-        p0 = default_theme.load_icon_for_scale("go-next", icon_size, scale_factor, 0)
-        p1 = default_theme.load_icon_for_scale("go-previous", icon_size, scale_factor, 0)
-        w, h, s = p0.get_width(), p0.get_height(), 0.65
-        sw, sh = int(s * w), int(s * h)
-        w1, h1 = w - sw, h - sh
-
-        # create merge from left then right icon
-        p = GdkPixbuf.Pixbuf.new(GdkPixbuf.Colorspace.RGB, True, 8, w, h)
-        p.fill(0)
-        p1.composite(p, w1, h1, sw, sh, w1, h1, s, s, GdkPixbuf.InterpType.BILINEAR, 255)
-        p0.composite(p, 0, 0, sw, sh, 0, 0, s, s, GdkPixbuf.InterpType.BILINEAR, 255)
-        factory.add(DIFFUSE_STOCK_LEFT_RIGHT, Gtk.IconSet.new_from_pixbuf(p))
-
-        # create merge from right then left icon
-        p = GdkPixbuf.Pixbuf.new(GdkPixbuf.Colorspace.RGB, True, 8, w, h)
-        p.fill(0)
-        p0.composite(p, 0, h1, sw, sh, 0, h1, s, s, GdkPixbuf.InterpType.BILINEAR, 255)
-        p1.composite(p, w1, 0, sw, sh, w1, 0, s, s, GdkPixbuf.InterpType.BILINEAR, 255)
-        factory.add(DIFFUSE_STOCK_RIGHT_LEFT, Gtk.IconSet.new_from_pixbuf(p))
-
-        # make the icons available for use
-        factory.add_default()
-
         menuspecs = []
         menuspecs.append([ _('_File'), [
                      [_('_Open File...'), self.open_file_cb, None, Gtk.STOCK_OPEN, 'open_file'],
@@ -7474,8 +7429,8 @@ class Diffuse(Gtk.Window):
                      [_('Save File _As...'), self.save_file_as_cb, None, Gtk.STOCK_SAVE_AS, 'save_file_as'],
                      [_('Save A_ll'), self.save_all_cb, None, None, 'save_all'],
                      [],
-                     [_('New _2-Way File Merge'), self.new_2_way_file_merge_cb, None, DIFFUSE_STOCK_NEW_2WAY_MERGE, 'new_2_way_file_merge'],
-                     [_('New _3-Way File Merge'), self.new_3_way_file_merge_cb, None, DIFFUSE_STOCK_NEW_3WAY_MERGE, 'new_3_way_file_merge'],
+                     [_('New _2-Way File Merge'), self.new_2_way_file_merge_cb, None, self.diffuse_stock_new_2way_merge, 'new_2_way_file_merge'],
+                     [_('New _3-Way File Merge'), self.new_3_way_file_merge_cb, None, self.diffuse_stock_new_3way_merge, 'new_3_way_file_merge'],
                      [_('New _N-Way File Merge...'), self.new_n_way_file_merge_cb, None, None, 'new_n_way_file_merge'],
                      [],
                      [_('_Close Tab'), self.close_tab_cb, None, Gtk.STOCK_CLOSE, 'close_tab'],
@@ -7552,8 +7507,8 @@ class Diffuse(Gtk.Window):
                      [],
                      [_('Copy Left _Into Selection'), self.button_cb, 'copy_left_into_selection', Gtk.STOCK_GO_FORWARD, 'copy_left_into_selection'],
                      [_('Copy Right I_nto Selection'), self.button_cb, 'copy_right_into_selection', Gtk.STOCK_GO_BACK, 'copy_right_into_selection'],
-                     [_('_Merge From Left Then Right'), self.button_cb, 'merge_from_left_then_right', DIFFUSE_STOCK_LEFT_RIGHT, 'merge_from_left_then_right'],
-                     [_('M_erge From Right Then Left'), self.button_cb, 'merge_from_right_then_left', DIFFUSE_STOCK_RIGHT_LEFT, 'merge_from_right_then_left'] ] ])
+                     [_('_Merge From Left Then Right'), self.button_cb, 'merge_from_left_then_right', self.diffuse_stock_left_right, 'merge_from_left_then_right'],
+                     [_('M_erge From Right Then Left'), self.button_cb, 'merge_from_right_then_left', self.diffuse_stock_right_left, 'merge_from_right_then_left'] ] ])
 
         menuspecs.append([ _('_Help'), [
                      [_('_Help Contents...'), self.help_contents_cb, None, Gtk.STOCK_HELP, 'help_contents'],
@@ -7572,8 +7527,8 @@ class Diffuse(Gtk.Window):
         # create button bar
         hbox = Gtk.Box.new(Gtk.Orientation.HORIZONTAL, 0)
         appendButtons(hbox, Gtk.IconSize.LARGE_TOOLBAR, [
-           [ DIFFUSE_STOCK_NEW_2WAY_MERGE, self.new_2_way_file_merge_cb, None, _('New 2-Way File Merge') ],
-           [ DIFFUSE_STOCK_NEW_3WAY_MERGE, self.new_3_way_file_merge_cb, None, _('New 3-Way File Merge') ],
+           [ self.diffuse_stock_new_2way_merge, self.new_2_way_file_merge_cb, None, _('New 2-Way File Merge') ],
+           [ self.diffuse_stock_new_3way_merge, self.new_3_way_file_merge_cb, None, _('New 3-Way File Merge') ],
            [],
            [ Gtk.STOCK_EXECUTE, self.button_cb, 'realign_all', _('Realign All') ],
            [ Gtk.STOCK_GOTO_TOP, self.button_cb, 'first_difference', _('First Difference') ],
@@ -7585,8 +7540,8 @@ class Diffuse(Gtk.Window):
            [ Gtk.STOCK_GOTO_FIRST, self.button_cb, 'copy_selection_left', _('Copy Selection Left') ],
            [ Gtk.STOCK_GO_FORWARD, self.button_cb, 'copy_left_into_selection', _('Copy Left Into Selection') ],
            [ Gtk.STOCK_GO_BACK, self.button_cb, 'copy_right_into_selection', _('Copy Right Into Selection') ],
-           [ DIFFUSE_STOCK_LEFT_RIGHT, self.button_cb, 'merge_from_left_then_right', _('Merge From Left Then Right') ],
-           [ DIFFUSE_STOCK_RIGHT_LEFT, self.button_cb, 'merge_from_right_then_left', _('Merge From Right Then Left') ],
+           [ self.diffuse_stock_left_right, self.button_cb, 'merge_from_left_then_right', _('Merge From Left Then Right') ],
+           [ self.diffuse_stock_right_left, self.button_cb, 'merge_from_right_then_left', _('Merge From Right Then Left') ],
            [],
            [ Gtk.STOCK_UNDO, self.button_cb, 'undo', _('Undo') ],
            [ Gtk.STOCK_REDO, self.button_cb, 'redo', _('Redo') ],
@@ -7634,6 +7589,59 @@ class Diffuse(Gtk.Window):
     # record the window's maximised state
     def window_state_cb(self, window, event):
         self.bool_state['window_maximized'] = ((event.new_window_state & Gdk.WindowState.MAXIMIZED) != 0)
+
+    def composite_icon(self, icon_size, s, icons):
+        # get default theme and window scale factor
+        default_theme = Gtk.IconTheme.get_default()
+        scale_factor = self.get_scale_factor()
+        icon_size = Gtk.IconSize.lookup(icon_size).height
+
+        p0 = default_theme.load_icon_for_scale(icons[0][0], icon_size,
+                                               scale_factor, 0)
+        w, h = p0.get_width(), p0.get_height()
+        p = GdkPixbuf.Pixbuf.new(GdkPixbuf.Colorspace.RGB, True, 8, w, h)
+        p.fill(0)
+        sw, sh = int(s * w), int(s * h)
+        for name, x, y in icons:
+            p0 = default_theme.load_icon_for_scale(name, icon_size,
+                                                   scale_factor, 0)
+            w1, h1 = w * x, h * y
+            p0.composite(p, w1, h1, sw, sh, w1, h1, s, s,
+                         GdkPixbuf.InterpType.BILINEAR, 255)
+        return p
+
+    def diffuse_stock_new_2way_merge(self, icon_size):
+        # render new 2-way merge icon
+        s = 0.8
+        return self.composite_icon(icon_size, s, [
+            ("document-new", 0, 0),
+            ("document-new", 1 - s, 1 - s),
+        ])
+
+    def diffuse_stock_new_3way_merge(self, icon_size):
+        # render new 3-way merge icon
+        s = 0.7
+        return self.composite_icon(icon_size, s, [
+            ("document-new", 0, 0),
+            ("document-new", (1 - s) / 2, (1 - s) / 2),
+            ("document-new", 1 - s, 1 - s),
+        ])
+
+    def diffuse_stock_left_right(self, icon_size):
+        # create merge from left then right icon
+        s = 0.65
+        return self.composite_icon(icon_size, s, [
+            ("go-next", 0, 0),
+            ("go-previous", 1 - s, 1 - s),
+        ])
+
+    def diffuse_stock_right_left(self, icon_size):
+        # create merge from right then left icon
+        s = 0.65
+        return self.composite_icon(icon_size, s, [
+            ("go-next", 0, 1 - s),
+            ("go-previous", 1 - s, 0),
+        ])
 
     # load state information that should persist across sessions
     def loadState(self, statepath):
