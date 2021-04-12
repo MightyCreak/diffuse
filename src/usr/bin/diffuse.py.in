@@ -1866,7 +1866,8 @@ class _Git:
                     # modified
                     modified[k] = [ (k, prev), (k, rev) ]
         # sort the results
-        return [ modified[k] for k in sorted(modified.keys()) ]
+        binaries = self.list_binaries(prefs, prev)
+        return [ modified[k] for k in sorted(modified.keys()) if k not in binaries ]
 
     def _extractPath(self, s, prefs):
         return os.path.join(self.root, prefs.convertToNativePath(s.strip()))
@@ -1942,18 +1943,24 @@ class _Git:
         result, r = [], set()
         for m in modified, renamed:
             r.update(m.keys())
-        # list binary files (starting with '-' in git diff --numstat)
-        args = [prefs.getString('git_bin'), 'diff', '--numstat']
-        binaries = set()
-        for s in popenReadLines(self.root, args, prefs, 'git_bash', [0, 1]):
-            added, deleted, filename = s.split()
-            if added == '-':
-                binaries.add(filename)
+        binaries = self.list_binaries(prefs)
         for k in sorted(r):
             for m in modified, renamed:
                 if k in m and k not in binaries:
                     result.append(m[k])
         return result
+
+    def list_binaries(self, prefs, commit=None):
+        # list binary files (starting with '-' in git diff --numstat)
+        args = [prefs.getString('git_bin'), 'diff', '--numstat']
+        if commit:
+            args.append(commit)
+        binaries = set()
+        for s in popenReadLines(self.root, args, prefs, 'git_bash', [0, 1]):
+            added, deleted, filename = s.split()
+            if added == '-':
+                binaries.add(filename)
+        return binaries
 
     def getRevision(self, prefs, name, rev):
         return popenRead(self.root, [ prefs.getString('git_bin'), 'show', '{}:{}'.format(rev, relpath(self.root, os.path.abspath(name)).replace(os.sep, '/')) ], prefs, 'git_bash')
