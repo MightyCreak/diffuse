@@ -1,0 +1,77 @@
+# Rust syntax file for Diffuse
+# Copyright (C) 2008-2013 Derrick Moser <derrick_moser@yahoo.com>
+syntax Rust normal text
+syntax_files Rust '\.rs$'
+
+# colours
+colour rust_comment 0.502 0.847 1.0
+colour rust_fixme 1.0 0.5 0.0
+colour rust_import 0.77 0.63 0.0
+colour rust_keyword 0.77 0.63 0.0
+colour rust_type 0.3 0.6 0.02
+colour rust_literal 1.0 0.2 0.8
+colour rust_string 0.8 0.0 0.0
+colour rust_escapedchar 0.46 0.31 0.48
+colour rust_punctuation 0.5 0.5 0.5
+colour rust_macro 0.01 0.6 0.9
+
+# TODO
+#syntax_pattern normal cpp rust_macro '[a-z_]+[a-z0-9_]*!' ignorecase
+
+# TODO: https://doc.rust-lang.org/reference/whitespace.html
+# whitespace
+syntax_pattern normal normal text '[ \t\r\n]+'
+
+# C++ style comments
+syntax_pattern normal cpp_comment rust_comment '//'
+syntax_pattern cpp_comment normal rust_comment '(\r\n|\r|\n)$'
+syntax_pattern cpp_comment cpp_comment rust_comment '\\(\r\n|\r|\n)$'
+syntax_pattern cpp_comment cpp_comment rust_fixme '\b(TODO|FIXME|XXX|NOTE)\b'
+syntax_pattern cpp_comment cpp_comment rust_comment '.[^\\TFX\r\n]*'
+
+# C style comments
+# TODO: doc comments https://doc.rust-lang.org/reference/comments.html
+syntax_pattern normal comment rust_comment '/\*'
+syntax_pattern comment normal rust_comment '\*/'
+syntax_pattern comment comment rust_fixme '\b(TODO|FIXME|XXX|NOTE)\b'
+syntax_pattern comment comment rust_comment '.[^\*TFX]*'
+
+# char
+syntax_pattern normal char rust_string "'"
+syntax_pattern char normal rust_string "'"
+syntax_pattern char char rust_escapedchar '(\\([0-7]{1,3}|x[0-9a-f]{1,2}|u[0-9a-f]{1,4}|.))+' ignorecase # TODO
+syntax_pattern char char rust_string ".[^\\\\']*"
+
+# string
+# TODO: string literals
+syntax_pattern normal string rust_string '"'
+syntax_pattern string normal rust_string '"'
+syntax_pattern string string rust_escapedchar '(\\([0-7]{1,3}|x[0-9a-f]{1,2}|u[0-9a-f]{1,4}|.))+' ignorecase # TODO
+syntax_pattern string string rust_string '.[^\\"]*'
+
+# TODO: DRY
+# literals
+syntax_pattern normal normal rust_literal '\b[0-9_]+(isize|usize|char|bool|u8|u16|u32|u64|u128|f32|f64|i8|i16|i32|i64|i128|)\b'
+syntax_pattern normal normal rust_literal '\b0b[01_]+(isize|usize|char|bool|u8|u16|u32|u64|u128|f32|f64|i8|i16|i32|i64|i128|)\b'
+syntax_pattern normal normal rust_literal '\b0o[0-7_]+(isize|usize|char|bool|u8|u16|u32|u64|u128|f32|f64|i8|i16|i32|i64|i128|)\b'
+syntax_pattern normal normal rust_literal '\b0x[0-9a-f_]+(isize|usize|char|bool|u8|u16|u32|u64|u128|f32|f64|i8|i16|i32|i64|i128|)\b'
+syntax_pattern normal normal rust_literal '\b[0-9_]+E\+[0-9_]+(f32|f64)\b'
+syntax_pattern normal normal rust_literal '\b(true|false)\b'
+
+# import keywords
+syntax_pattern normal normal rust_import '\b(use|mod)\b'
+
+# typing keywords
+syntax_pattern normal normal rust_type '\b(isize|usize|char|bool|u8|u16|u32|u64|u128|f32|f64|i8|i16|i32|i64|i128|str|Self)\b'
+
+# keywords
+syntax_pattern normal normal rust_keyword '\b(as|break|const|continue|crate|else|enum|extern|false|fn|for|if|impl|in|let|loop|match|move|mut|pub|ref|return|self|Self|static|struct|super|trait|true|type|unsafe|where|while|async|await|dyn|abstract|become|box|do|final|macro|override|priv|typeof|unsized|virtual|yield|try)\b'
+
+# TODO: https://doc.rust-lang.org/reference/keywords.html#weak-keywords
+
+# punctuation
+syntax_pattern normal normal rust_punctuation '[!~%\|\&\^\(\)\<\>\*\-\+=\{\}\[\]:;,\?$]+'
+syntax_pattern normal normal rust_punctuation '[/\.]'
+
+# parsing optimisation
+syntax_pattern normal normal text '[a-z_][a-z_0-9]*' ignorecase
