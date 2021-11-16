@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+
+### Changed
+
+### Fixed
+
+## [0.7.0] - 2021-11-16
+
+### Added
 - Added MetaInfo file
 - New SVG icon (thanks @creepertron95, @jimmac and @freddii)
 - Started modularizing the code
