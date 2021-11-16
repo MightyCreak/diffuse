@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
   <id>io.github.mightycreak.Diffuse</id>
-
   <name>Diffuse Merge Tool</name>
   <summary>Graphical tool for merging and comparing text files</summary>
   <description>
@@ -9,23 +8,18 @@
       Diffuse is a graphical tool for comparing and merging text files. It can retrieve files for comparison from Bazaar, CVS, Darcs, Git, Mercurial, Monotone, RCS, Subversion, and SVK repositories.
     </p>
   </description>
-
   <metadata_license>FSFAP</metadata_license>
   <project_license>GPL-2.0-or-later</project_license>
-  <content_rating type="oars-1.1" />
-
+  <content_rating type="oars-1.1"/>
   <launchable type="desktop-id">io.github.mightycreak.Diffuse.desktop</launchable>
-
   <url type="homepage">https://mightycreak.github.io/diffuse/</url>
   <url type="bugtracker">https://github.com/MightyCreak/diffuse/issues</url>
-
   <screenshots>
     <screenshot type="default">
-      <image>https://mightycreak.github.io/diffuse/images/screenshot_v0.5.0.png</image>
       <caption>Main window: diff between two files</caption>
+      <image>https://mightycreak.github.io/diffuse/images/screenshot_v0.7.0.png</image>
     </screenshot>
   </screenshots>
-
   <releases>
     <release version="0.6.0" date="2020-11-29">
       <description>
@@ -102,7 +96,6 @@
       </description>
     </release>
   </releases>
-
   <developer_name>Romain Failliot</developer_name>
   <update_contact>romain.failliot@foolstep.com</update_contact>
 </component>

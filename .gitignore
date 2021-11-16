@@ -13,8 +13,7 @@ __pycache__/
 # Distribution / packaging
 .Python
 build/
-builddir/
-builddir-flatpak/
+build-flatpak/
 develop-eggs/
 dist/
 downloads/

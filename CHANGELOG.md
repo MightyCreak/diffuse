@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Added MetaInfo file
 - New SVG icon (thanks @creepertron95, @jimmac and @freddii)
+- Started modularizing the code
 
 ### Changed
 - Changed AppID to io.github.mightycreak.Diffuse (as explained in
@@ -21,6 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add .desktop translations in .po files
 
 ### Fixed
+- Fixed some GTK deprecation warnings
 
 ## [0.6.0] - 2020-11-29
 

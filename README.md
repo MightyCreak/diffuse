@@ -20,48 +20,71 @@ Some key features of Diffuse:
 
 ## Requirements
 
+Diffuse is implemented entirely in Python and should run on any platform with
+Python and PyGObject.
+
 * Python >= 3.4
 * PyGObject >= 3.18
 
-Diffuse is implemented entirely in Python and should run on any platform with
-Python and PyGTK.  If you need to manually install PyGTK, please be aware its
-dependencies should be installed prior to installing PyGTK.
+## Users
 
-Diffuse can be run directly from an untared source distribution on any POSIX
-system or installed with the instructions described in the next section.
+### Installing using Flatpak
 
-The location of the personal preferences, state, and initialisation files have
-changed in the 0.4.1 release.  Old settings may be migrated using the following
-commands:
+This is the easiest way to install Diffuse:
 
-    $ mkdir -p ~/.config/diffuse
-    $ mv ~/.diffuse/config ~/.config/diffuse/state
-    $ mv ~/.diffuse/* ~/.config/diffuse
-    $ rmdir ~/.diffuse
+```sh
+flatpak install io.github.mightycreak.Diffuse
+```
 
-The rules for parsing files in `~/.diffuse` changed in the 0.3.0 release.
-Non-fatal errors may be reported when parsing old files.  These errors can be
-fixed by removing the offending lines (or the entire file) from
-`~/.config/diffuse/diffuserc`.
+## Developers
 
-## Installing on POSIX systems
+### Setup
+
+#### Run Diffuse from source
+
+To run Diffuse from the source code, type this:
+```sh
+python main.py
+```
+
+To debug with VS Code, open the directory in VS Code, place your breakpoints and hit F5.
+
+#### Build Diffuse
+
+To build Diffuse, type this:
+```sh
+python setup.py build
+```
+
+To run from the build, type this:
+```sh
+PYTHONPATH=build/lib ./build/scripts-3.7/diffuse
+```
+
+#### Install Diffuse locally
 
 Diffuse build system is meson.
 
 To install diffuse locally:
 
-    meson builddir
-    meson install -C builddir
+```sh
+meson setup build
+cd build
+meson compile
+meson install # requires admin privileges
+```
 
 To uninstall diffuse afterwards:
 
-    sudo ninja uninstall -C builddir
-    sudo rm -v /usr/local/share/locale/*/LC_MESSAGES/diffuse.mo
+```sh
+sudo ninja uninstall -C build
+sudo rm -v /usr/local/share/locale/*/LC_MESSAGES/diffuse.mo
+```
 
 Meson allows to change the default installation directories, see
 [command-line documentation](https://mesonbuild.com/Commands.html#configure).
 
-## Installing on Windows
+### Installing on Windows
 
 The `windows-installer` directory contains scripts for building an installable
 package for Windows that includes all dependencies.
@@ -73,24 +96,26 @@ Diffuse.  The `XDG_CONFIG_HOME` and `XDG_DATA_DIR` environment variables
 indicate where Diffuse should store persistent settings (eg. the path to a
 writable directory on the pen drive).
 
-## Installing the Flatpak package
-
-    flatpak install io.github.mightycreak.Diffuse
-
 ## Building and testing the Flatpak package
 
 To install Diffuse locally:
 
-    flatpak install flatpak install runtime/org.gnome.Sdk/$(uname -p)/3.38
-    flatpak-builder builddir-flatpak --user --install io.github.mightycreak.Diffuse.yml
+```sh
+flatpak install runtime/org.gnome.Sdk/$(uname -p)/3.38
+flatpak-builder build-flatpak --user --install io.github.mightycreak.Diffuse.yml
+```
 
 To run Diffuse through Flatpak:
 
-    flatpak run io.github.mightycreak.Diffuse
+```sh
+flatpak run io.github.mightycreak.Diffuse
+```
 
 To uninstall Diffuse:
 
-    flatpak remove io.github.mightycreak.Diffuse
+```sh
+flatpak remove io.github.mightycreak.Diffuse
+```
 
 ## Help Documentation
 

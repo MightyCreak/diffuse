@@ -1,42 +1,28 @@
-# Diffuse binary file
-diffuse_conf = configuration_data()
-diffuse_conf.set('SYSCONFIGDIR', sysconfdir)
+pkgdatadir = join_paths(get_option('prefix'), get_option('datadir'), meson.project_name())
+moduledir = join_paths(pkgdatadir, meson.project_name())
+sysconfdir = join_paths(get_option('prefix'), get_option('sysconfdir'))
+
+python = import('python')
+
+conf = configuration_data()
+conf.set('PYTHON', python.find_installation('python3').path())
+conf.set('VERSION', meson.project_version())
+conf.set('localedir', join_paths(get_option('prefix'), get_option('localedir')))
+conf.set('pkgdatadir', pkgdatadir)
+conf.set('sysconfigdir', sysconfdir)
 
 configure_file(
-  input: 'usr/bin/diffuse.py.in',
+  input: 'diffuse.in',
   output: 'diffuse',
-  configuration: diffuse_conf,
+  configuration: conf,
   install: true,
-  install_dir: bindir
+  install_dir: get_option('bindir')
 )
 
-# Diffuse config file
-diffuserc_conf = configuration_data()
-diffuserc_conf.set('PKGDATADIR', pkgdatadir)
+diffuse_sources = [
+  '__init__.py',
+  'main.py',
+  'utils.py',
+]
 
-configure_file(
-  input: 'etc/diffuserc.py.in',
-  output: 'diffuserc',
-  configuration: diffuserc_conf,
-  install: true,
-  install_dir: sysconfdir
-)
-
-# Validate MetaInfo file
-metainfo_file = join_paths(meson.source_root(), 'src/usr/share/metainfo/io.github.mightycreak.Diffuse.metainfo.xml')
-ascli_exe = find_program('appstreamcli', required: false)
-if ascli_exe.found()
-  test(
-    'validate metainfo file',
-    ascli_exe,
-    args: [
-      'validate',
-      '--no-net',
-      '--pedantic',
-      metainfo_file
-    ]
-  )
-endif
-
-# Data files
-install_subdir('usr/share', install_dir: datadir, strip_directory: true)
+install_data(diffuse_sources, install_dir: moduledir)
