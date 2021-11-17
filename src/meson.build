@@ -10,6 +10,7 @@ conf.set('VERSION', meson.project_version())
 conf.set('localedir', join_paths(get_option('prefix'), get_option('localedir')))
 conf.set('pkgdatadir', pkgdatadir)
 conf.set('sysconfigdir', sysconfdir)
+conf.set('use_flatpak', get_option('use_flatpak'))
 
 configure_file(
   input: 'diffuse.in',
@@ -17,6 +18,14 @@ configure_file(
   configuration: conf,
   install: true,
   install_dir: get_option('bindir')
+)
+
+configure_file(
+  input: 'constants.py.in',
+  output: 'constants.py',
+  configuration: conf,
+  install: true,
+  install_dir: moduledir
 )
 
 diffuse_sources = [
