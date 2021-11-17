@@ -33,7 +33,7 @@ endif
 
 # Diffuse config file
 conf = configuration_data()
-conf.set('PKGDATADIR', pkgdatadir)
+conf.set('pkgdatadir', pkgdatadir)
 
 configure_file(
   input: 'diffuserc.in',

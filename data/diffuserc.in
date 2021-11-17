@@ -2,4 +2,4 @@
 #
 # Copyright (C) 2006-2009 Derrick Moser <derrick_moser@yahoo.com>
 
-import @PKGDATADIR@/syntax/*.syntax
+import @pkgdatadir@/syntax/*.syntax

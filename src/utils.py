@@ -20,11 +20,14 @@
 import os
 import sys
 import locale
+import subprocess
 
 import gi
 
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
+
+from diffuse import constants
 
 # convenience class for displaying a message dialogue
 class MessageDialog(Gtk.MessageDialog):
@@ -61,6 +64,71 @@ def make_subdirs(p, ss):
                 pass
     return p
 
+def useFlatpak():
+    return constants.use_flatpak
+
+# use popen to read the output of a command
+def popenRead(dn, cmd, prefs, bash_pref, success_results=None):
+    if success_results is None:
+        success_results = [ 0 ]
+    if isWindows() and prefs.getBool(bash_pref):
+        # launch the command from a bash shell is requested
+        cmd = [ prefs.convertToNativePath('/bin/bash.exe'), '-l', '-c', 'cd {}; {}'.format(bashEscape(dn), ' '.join([ bashEscape(arg) for arg in cmd ])) ]
+        dn = None
+    # use subprocess.Popen to retrieve the file contents
+    if isWindows():
+        info = subprocess.STARTUPINFO()
+        info.dwFlags |= subprocess.STARTF_USESHOWWINDOW
+        info.wShowWindow = subprocess.SW_HIDE
+    else:
+        info = None
+    if useFlatpak():
+        cmd = [ 'flatpak-spawn', '--host' ] + cmd
+    proc = subprocess.Popen(cmd, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=dn, startupinfo=info)
+    proc.stdin.close()
+    proc.stderr.close()
+    fd = proc.stdout
+    # read the command's output
+    s = fd.read()
+    fd.close()
+    if proc.wait() not in success_results:
+        raise IOError('Command failed.')
+    return s
+
+# use popen to read the output of a command
+def popenReadLines(dn, cmd, prefs, bash_pref, success_results=None):
+    return strip_eols(splitlines(popenRead(dn, cmd, prefs, bash_pref, success_results).decode('utf-8', errors='ignore')))
+
+# simulate use of popen with xargs to read the output of a command
+def popenXArgsReadLines(dn, cmd, args, prefs, bash_pref):
+    # os.sysconf() is only available on Unix
+    if hasattr(os, 'sysconf'):
+        maxsize = os.sysconf('SC_ARG_MAX')
+        maxsize -= sum([ len(k) + len(v) + 2 for k, v in os.environ.items() ])
+    else:
+        # assume the Window's limit to CreateProcess()
+        maxsize = 32767
+    maxsize -= sum([ len(k) + 1 for k in cmd ])
+
+    ss = []
+    i, s, a = 0, 0, []
+    while i < len(args):
+        f = (len(a) == 0)
+        if f:
+            # start a new command line
+            a = cmd[:]
+        elif s + len(args[i]) + 1 <= maxsize:
+            f = True
+        if f:
+            # append another argument to the current command line
+            a.append(args[i])
+            s += len(args[i]) + 1
+            i += 1
+        if i == len(args) or not f:
+            ss.extend(popenReadLines(dn, a, prefs, bash_pref))
+            s, a = 0, []
+    return ss
+
 # use the program's location as a starting place to search for supporting files
 # such as icon and help documentation
 if hasattr(sys, 'frozen'):
@@ -85,9 +153,3 @@ if isWindows():
     else:
         if lang is not None:
             os.environ['LANG'] = lang
-
-APP_NAME = 'Diffuse'
-VERSION = '0.0.0'
-COPYRIGHT =  '''{copyright} © 2006-2019 Derrick Moser
-{copyright} © 2015-2021 Romain Failliot'''.format(copyright=_("Copyright"))
-WEBSITE = 'https://mightycreak.github.io/diffuse/'
