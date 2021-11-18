@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+
+### Changed
+
+### Fixed
+
+## [0.7.2] - 2021-11-18
+
+### Added
 - New options: log_print_output and log_print_stack, to print the log messages
   on the output and code stack
 - New log function: utils.logErrorAndDialog, to both log and show a dialog
@@ -331,7 +339,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - initial public release
 
-[Unreleased]: https://github.com/MightyCreak/diffuse/compare/v0.7.1...HEAD
+[Unreleased]: https://github.com/MightyCreak/diffuse/compare/v0.7.2...HEAD
+[0.7.2]: https://github.com/MightyCreak/diffuse/compare/v0.7.1...v0.7.2
 [0.7.1]: https://github.com/MightyCreak/diffuse/compare/v0.7.0...v0.7.1
 [0.7.0]: https://github.com/MightyCreak/diffuse/compare/v0.6.0...v0.7.0
 [0.6.0]: https://github.com/MightyCreak/diffuse/compare/v0.5.0...v0.6.0

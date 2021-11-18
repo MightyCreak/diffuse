@@ -21,6 +21,34 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="0.7.2" date="2021-11-18">
+      <description>
+        <p>
+          Patch release that fixes an error about APP_NAME and the Brazilian translation.
+        </p>
+        <p>Added:</p>
+        <ul>
+          <li>
+            New options: log_print_output and log_print_stack, to print the log
+            messages on the output and code stack
+          </li>
+          <li>
+            New log function: utils.logErrorAndDialog, to both log and show a
+            dialog message
+          </li>
+        </ul>
+        <p>Changed:</p>
+        <ul>
+          <li>Modularized the VCSs (reducing main.py by around 1300 lines)</li>
+          <li>Bump GNOME runtime version from 3.38 to 41</li>
+        </ul>
+        <p>Fixed:</p>
+        <ul>
+          <li>Fixed 'APP_NAME' error when opening non existing file</li>
+          <li>Fixed the Portuguese Brazilian (pt_BR) translation</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.7.1" date="2021-11-17">
       <description>
         <p>

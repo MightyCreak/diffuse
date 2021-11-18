@@ -4,7 +4,7 @@
 
 #define MyAppName "Diffuse Merge Tool"
 #define MyAppGroupName "Diffuse"
-#define MyAppVersion "0.7.1"
+#define MyAppVersion "0.7.2
 #define MyAppPublisher "Diffuse Team"
 #define MyAppURL "https://github.com/MightyCreak/diffuse/"
 #define MyAppExeName "diffuse.exe"
