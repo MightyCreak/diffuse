@@ -61,6 +61,7 @@ from diffuse.vcs.git import Git
 from diffuse.vcs.hg import Hg
 from diffuse.vcs.mtn import Mtn
 from diffuse.vcs.rcs import Rcs
+from diffuse.vcs.svk import Svk
 from diffuse.vcs.svn import Svn
 
 if not hasattr(__builtins__, 'WindowsError'):
@@ -1291,43 +1292,6 @@ def _get_svn_repo(path, prefs):
     if p:
         return Svn(p)
 
-class _Svk(_Svn):
-    def __init__(self, root):
-        _Svn.__init__(self, root)
-
-    def _getVcs(self):
-        return 'svk'
-
-    def _getURLPrefix(self):
-        return 'Depot Path: '
-
-    def _parseStatusLine(self, s):
-        if len(s) < 4 or s[0] not in 'ACDMR':
-            return
-        return s[0], s[4:]
-
-    def _getPreviousRevision(self, rev):
-        if rev is None:
-            return 'HEAD'
-        if rev.endswith('@'):
-            return str(int(rev[:-1]) - 1) + '@'
-        return str(int(rev) - 1)
-
-    def getRevision(self, prefs, name, rev):
-        return utils.popenRead(
-            self.root,
-            [
-                prefs.getString('svk_bin'),
-                'cat',
-                '-r',
-                rev,
-                '{}/{}'.format(
-                    self._getURL(prefs),
-                    utils.relpath(self.root, os.path.abspath(name)).replace(os.sep, '/'))
-            ],
-            prefs,
-            'svk_bash')
-
 def _get_svk_repo(path, prefs):
     name = path
     # parse the ~/.svk/config file to discover which directories are part of
@@ -1386,7 +1350,7 @@ def _get_svk_repo(path, prefs):
                     break
             # check if the file belongs to one of the project directories
             if FolderSet(projs).contains(name):
-                return _Svk(path)
+                return Svk(path)
         except IOError:
             utils.logError(_('Error parsing %s.') % (svkconfig, ))
 
