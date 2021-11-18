@@ -8142,7 +8142,8 @@ def main():
 
     if argc == 2 and args[1] in [ '-v', '--version' ]:
         print('%s %s\n%s' % (constants.APP_NAME, constants.VERSION, constants.COPYRIGHT))
-        sys.exit(0)
+        return 0
+
     if argc == 2 and args[1] in [ '-h', '-?', '--help' ]:
         print(_('''Usage:
     diffuse [ [OPTION...] [FILE...] ]...
@@ -8181,22 +8182,27 @@ Display Options:
   ( -E | --ignore-end-of-line )    Ignore end of line differences
   ( -i | --ignore-case )           Ignore case differences
   ( -w | --ignore-all-space )      Ignore white space differences'''))
-        sys.exit(0)
+        return 0
 
     # find the config directory and create it if it didn't exist
-    rc_dir, subdirs = os.environ.get('XDG_CONFIG_HOME', None), ['diffuse']
+    rc_dir = os.environ.get('XDG_CONFIG_HOME', None)
+    subdirs = ['diffuse']
     if rc_dir is None:
         rc_dir = os.path.expanduser('~')
         subdirs.insert(0, '.config')
     rc_dir = utils.make_subdirs(rc_dir, subdirs)
+
     # find the local data directory and create it if it didn't exist
-    data_dir, subdirs = os.environ.get('XDG_DATA_HOME', None), ['diffuse']
+    data_dir = os.environ.get('XDG_DATA_HOME', None)
+    subdirs = ['diffuse']
     if data_dir is None:
         data_dir = os.path.expanduser('~')
         subdirs[:0] = [ '.local', 'share' ]
     data_dir = utils.make_subdirs(data_dir, subdirs)
+
     # load resource files
-    i, rc_files = 1, []
+    i = 1
+    rc_files = []
     if i < argc  and args[i] == '--no-rcfile':
         i += 1
     elif i + 1 < argc and args[i] == '--rcfile':
@@ -8230,13 +8236,20 @@ Display Options:
     diff.loadState(statepath)
 
     # process remaining command line arguments
-    encoding, revs, close_on_same = None, [], False
-    specs, had_specs, labels = [], False, []
-    funcs = { 'modified': diff.createModifiedFileTabs,
-              'commit': diff.createCommitFileTabs,
-              'separate': diff.createSeparateTabs,
-              'single': diff.createSingleTab }
-    mode, options = 'single', {}
+    encoding = None
+    revs = []
+    close_on_same = False
+    specs = []
+    had_specs = False
+    labels = []
+    funcs = {
+        'modified': diff.createModifiedFileTabs,
+        'commit': diff.createCommitFileTabs,
+        'separate': diff.createSeparateTabs,
+        'single': diff.createSingleTab
+    }
+    mode = 'single'
+    options = {}
     while i < argc:
         arg = args[i]
         if len(arg) > 0 and arg[0] == '-':
