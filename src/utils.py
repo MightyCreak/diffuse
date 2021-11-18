@@ -37,7 +37,7 @@ class MessageDialog(Gtk.MessageDialog):
         else:
             buttons = Gtk.ButtonsType.OK_CANCEL
         Gtk.MessageDialog.__init__(self, parent = parent, destroy_with_parent = True, message_type = type, buttons = buttons, text = s)
-        self.set_title(APP_NAME)
+        self.set_title(constants.APP_NAME)
 
 # platform test
 def isWindows():
@@ -45,7 +45,7 @@ def isWindows():
 
 # convenience function to display debug messages
 def logDebug(s):
-    pass #sys.stderr.write(f'{APP_NAME}: {s}\n')
+    pass #sys.stderr.write(f'{constants.APP_NAME}: {s}\n')
 
 # report error messages
 def logError(s):
