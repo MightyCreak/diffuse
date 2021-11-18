@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 ### Fixed
+
+## [0.7.1]
+
+### Fixed
 - Fixed #103: the flatpak app can now call binaries on the host, such as `git`,
   `svn`, etc. (PR #105)
 

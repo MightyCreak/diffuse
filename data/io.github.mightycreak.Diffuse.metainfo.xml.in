@@ -21,6 +21,20 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="0.7.1" date="2021-11-17">
+      <description>
+        <p>
+          Patch release to fix a bug when using the Flatpak package.
+        </p>
+        <p>Fixed:</p>
+        <ul>
+          <li>
+            Fixed a Flatpak bug where the app couldn't call binaries on the
+            host, such as `git`, `svn`, etc.
+          </li>
+        </ul>
+      </description>
+    </release>
     <release version="0.7.0" date="2021-11-16">
       <description>
         <p>
