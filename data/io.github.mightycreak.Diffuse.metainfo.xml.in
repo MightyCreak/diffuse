@@ -21,16 +21,57 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="0.7.0" date="2021-11-16">
+      <description>
+        <p>
+          With this release, the main end-user change is the <strong>new
+          icon</strong>. The rest is mainly maintenance improvements with a
+          much more standard folder structure and starting to modularize the
+          code. This is an ongoing effort as there is still a lot to do, but
+          hopefully this would motivate some to contribute ;)
+        </p>
+        <p>
+          An important note though: the application ID has changed and is now
+          io.github.mightycreak.Diffuse.
+        </p>
+        <p>Added:</p>
+        <ul>
+          <li>New icon and in SVG now</li>
+          <li>Started to modularize the code</li>
+        </ul>
+        <p>Changed:</p>
+        <ul>
+          <li>
+            Changed AppID to io.github.mightycreak.Diffuse (as explained in <a
+            href="https://docs.flatpak.org/en/latest/conventions.html#application-ids">
+            Flatpak documentation</a>)
+          </li>
+          <li>Renamed directory `translations/` to `po/`</li>
+          <li>Now uses POTFILES.in to list the files to translate</li>
+          <li>
+            Translation strings are no longer sorted alphabetically, this will
+            help when there will be several files in POTFILES.in
+          </li>
+          <li>Updated the documentation and script in the `po/` directory</li>
+          <li>Add .desktop translations in .po files</li>
+        </ul>
+        <p>Fixed:</p>
+        <ul>
+          <li>Fixed some GTK deprecation warnings</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.6.0" date="2020-11-29">
       <description>
         <p>
-          Mainly under the hood changes in this release, so nothing really visible to the users in this version. That
-          said, I figured it was a long time since the last release (4 months ago) and, as promised, I want Diffuse
-          development to be a bit more active and iterative.
+          Mainly under the hood changes in this release, so nothing really
+          visible to the users in this version. That said, I figured it was a
+          long time since the last release (4 months ago) and, as promised, I
+          want Diffuse development to be a bit more active and iterative.
         </p>
         <p>
-          Apart from the maintenance changes 🧰, I think the main improvement is that Diffuse will soon be available
-          through Flathub!
+          Apart from the maintenance changes 🧰, I think the main improvement
+          is that Diffuse will soon be available through Flathub!
         </p>
         <p>Added:</p>
         <ul>
@@ -48,16 +89,20 @@
     <release version="0.5.0" date="2020-07-18">
       <description>
         <p>
-          Here is the v0.5.0. Unintentionally, this release happens exactly 6 years after the previous v0.4.8 release!
+          Here is the v0.5.0. Unintentionally, this release happens exactly 6
+          years after the previous v0.4.8 release!
         </p>
         <p>
-          There is a lot to do on this application, and some features didn't make the release. The main one being the
-          Windows installers. I think 6 years is too long to continue to wait until this bug is fixed. The Python
-          scripts should work on Windows, but no executable is produced (yet) with the release.
+          There is a lot to do on this application, and some features didn't
+          make the release. The main one being the Windows installers. I think
+          6 years is too long to continue to wait until this bug is fixed. The
+          Python scripts should work on Windows, but no executable is produced
+          (yet) with the release.
         </p>
         <p>
-          Other than that, Diffuse v0.5.0 is now officially compatible with Python 3 and GTK 3! And it is synced to the
-          latest commits from upstream (which were never released).
+          Other than that, Diffuse v0.5.0 is now officially compatible with
+          Python 3 and GTK 3! And it is synced to the latest commits from
+          upstream (which were never released).
         </p>
         <p>
           The next version will not take 6 years, I promise you! 😄

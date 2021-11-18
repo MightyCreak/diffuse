@@ -2,9 +2,9 @@
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
 "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd" [
   <!ENTITY app "Diffuse">
-  <!ENTITY app-version "0.6.0">
-  <!ENTITY app-year "2006-2020">
-  <!ENTITY manual-year "2009-2020">
+  <!ENTITY app-version "0.7.0">
+  <!ENTITY app-year "2006-2021">
+  <!ENTITY manual-year "2009-2021">
 ]>
 <book id="index" lang="it">
   <title>Manuale utente di <application>&app;</application></title>
@@ -358,7 +358,7 @@
           </listitem>
         </varlistentry>
       </variablelist>
-    </sect1> 
+    </sect1>
 
     <sect1 id="resources-keybindings">
       <title>Keybinding</title>
@@ -1263,8 +1263,8 @@
             </listitem>
           </varlistentry>
         </variablelist>
-      </sect2> 
-    </sect1> 
+      </sect2>
+    </sect1>
 
     <sect1 id="resources-colours">
       <title>Colori</title>
@@ -1414,8 +1414,8 @@
           </varlistentry>
 
         </variablelist>
-      </sect2> 
-    </sect1> 
+      </sect2>
+    </sect1>
 
     <sect1 id="resources-floats">
       <title>Valori a virgola mobile</title>
@@ -1485,8 +1485,8 @@
           </varlistentry>
 
         </variablelist>
-      </sect2> 
-    </sect1> 
+      </sect2>
+    </sect1>
 
     <sect1 id="resources-syntax-highlighting">
       <title>Riconoscimento della sintassi</title>
@@ -1522,7 +1522,7 @@
         </varlistentry>
 
       </variablelist>
-    </sect1> 
+    </sect1>
   </chapter>
 
   <chapter id="files">

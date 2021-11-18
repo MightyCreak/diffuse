@@ -2,9 +2,9 @@
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
 "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd" [
   <!ENTITY app "Diffuse">
-  <!ENTITY app-version "0.6.0">
-  <!ENTITY app-year "2006-2020">
-  <!ENTITY manual-year "2009-2020">
+  <!ENTITY app-version "0.7.0">
+  <!ENTITY app-year "2006-2021">
+  <!ENTITY manual-year "2009-2021">
 ]>
 <book id="index" lang="ru">
   <title>Руководство Пользователя <application>&app;</application></title>
@@ -61,7 +61,7 @@
         распространять программу и/или изменять ее в соответствии с
         <citetitle>GNU General Public License</citetitle>, как опубликовано
         Free Software Foundation; либо версия 2 лицензии, либо (по вашему
-        выбору) любая более поздняя версия. 
+        выбору) любая более поздняя версия.
       </para>
       <para>
         Программа <application>&app;</application> распространяется в надежде, что она будет полезна, но
@@ -75,7 +75,7 @@
         копию <citetitle>GNU General Public License</citetitle> от Free
         Software Foundation, посетив
         <ulink type="http" url="http://www.fsf.org/">их web-сайт</ulink> или
-        написав по адресу: 
+        написав по адресу:
         <address>
           Free Software Foundation, Inc.
           <street>51 Franklin St</street>, Fifth Floor,
@@ -110,7 +110,7 @@
         <para>
           Если опция справки определена, только параметр должен быть указан в
           командной строке. Программа <application>&app;</application> немедленно закроется после
-          отображения справочной информации. 
+          отображения справочной информации.
         </para>
 
         <variablelist>
@@ -170,7 +170,7 @@
               <para>
                 Открыть отдельные вкладки сравнения файлов для всех файлов,
                 затрагиваемых фиксацией <replaceable>rev</replaceable> из
-                остающихся путей, определенных в параметрах командной строки. 
+                остающихся путей, определенных в параметрах командной строки.
               </para>
             </listitem>
           </varlistentry>
@@ -208,7 +208,7 @@
               <para>
                 Открыть отдельные вкладки сравнения файлов для всех
                 модифицированных файлов из остающихся путей, определенных в
-                параметрах командной строки. 
+                параметрах командной строки.
               </para>
             </listitem>
           </varlistentry>
@@ -269,7 +269,7 @@
 
         <para>
           Опции отображения, определенные в параметрах командной строки, имеют
-          приоритет над сохраненными значениями предпочтений. 
+          приоритет над сохраненными значениями предпочтений.
         </para>
 
         <variablelist>
@@ -340,7 +340,7 @@
     <para>
       Программа <application>&app;</application> отображает файлы бок о бок, вставляя разрывы для
       выравнивания подобных строк текста. Различия выделяются отличным цветом
-      фона. 
+      фона.
     </para>
 
     <sect1 id="file-comparison-summary">
@@ -502,7 +502,7 @@
         Ревизия по умолчанию файла будет использоваться для сравнения, если
         только один файл будет определен.  Например, чтобы отобразить 2-оконное
         слияние между ревизией по умолчанию <filename>foo.C</filename> и
-        локальным файлом <filename>foo.C</filename>: 
+        локальным файлом <filename>foo.C</filename>:
       </para>
 
       <para>
@@ -520,7 +520,7 @@
         Локальный файл будет использоваться для сравнения, если только одна
         ревизия файла будет определена.Например, чтобы отобразить 2-оконное
         слияние между ревизией 123 <filename>foo.C</filename> и локальным
-        файлом <filename>foo.C</filename>: 
+        файлом <filename>foo.C</filename>:
       </para>
 
       <para>
@@ -615,7 +615,7 @@
           </listitem>
         </varlistentry>
       </variablelist>
-    </sect1> 
+    </sect1>
 
     <sect1 id="resources-keybindings">
       <title>Привязки Клавиш</title>
@@ -1553,8 +1553,8 @@
             </listitem>
           </varlistentry>
         </variablelist>
-      </sect2> 
-    </sect1> 
+      </sect2>
+    </sect1>
 
     <sect1 id="resources-colours">
       <title>Цвета</title>
@@ -1566,7 +1566,7 @@
             <para>
               Объявить цветовой ресурс, называемый
               <replaceable>name</replaceable>. Отдельные компоненты цвета
-              должны быть выражены как значение между 0 и 1. 
+              должны быть выражены как значение между 0 и 1.
             </para>
           </listitem>
         </varlistentry>
@@ -1708,8 +1708,8 @@
           </varlistentry>
 
         </variablelist>
-      </sect2> 
-    </sect1> 
+      </sect2>
+    </sect1>
 
     <sect1 id="resources-floats">
       <title>Значения с Плавающей Точкой</title>
@@ -1783,8 +1783,8 @@
           </varlistentry>
 
         </variablelist>
-      </sect2> 
-    </sect1> 
+      </sect2>
+    </sect1>
 
     <sect1 id="resources-syntax-highlighting">
       <title>Подсветка Синтаксиса</title>
@@ -1861,7 +1861,7 @@
         </varlistentry>
 
       </variablelist>
-    </sect1> 
+    </sect1>
   </chapter>
 
   <chapter id="files">

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE xsl:stylesheet [
  <!ENTITY app "Diffuse">
- <!ENTITY app-version "0.6.0">
+ <!ENTITY app-version "0.7.0">
  <!ENTITY app-cmd "diffuse">
- <!ENTITY date "2020-11-29">
+ <!ENTITY date "2021-11-16">
 ]>
 <!--
   template for translating Diffuse's help documentation to a manual page
@@ -94,7 +94,7 @@
               </refsect2>
             </xsl:for-each>
           </refsect1>
-        </xsl:if> 
+        </xsl:if>
       </xsl:for-each>
 
       <refsect1>

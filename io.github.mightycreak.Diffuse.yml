@@ -18,9 +18,3 @@ modules:
     sources:
       - type: dir
         path: .
-    #   - type: git
-    #     url: file:///home/creak/dev/diffuse
-    #     branch: split-code-into-modules
-    #   - type: git
-    #     url: https://github.com/MightyCreak/diffuse
-    #     branch: v0.6.0
