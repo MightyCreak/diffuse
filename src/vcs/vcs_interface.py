@@ -1,5 +1,3 @@
-#!@PYTHON@
-
 # Diffuse: a graphical tool for merging and comparing text files.
 #
 # Copyright (C) 2019 Derrick Moser <derrick_moser@yahoo.com>
@@ -19,16 +17,23 @@
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-import sys
-import gettext
-import locale
+class VcsInterface:
+    def __init__(self, root):
+        """The object will initialized with the repository's root folder."""
 
-pkgdatadir = '@pkgdatadir@'
-localedir = '@localedir@'
+        self.root = root
 
-sys.path.insert(1, pkgdatadir)
-gettext.install('diffuse', localedir)
+    def getFileTemplate(self, prefs, name):
+        """Indicates which revisions to display for a file when none were explicitly requested."""
+        pass
 
-if __name__ == '__main__':
-    from diffuse import main
-    sys.exit(main.main())
+    def getCommitTemplate(self, prefs, rev, names):
+        """Indicates which file revisions to display for a commit."""
+        pass
+
+    def getFolderTemplate(self, prefs, names):
+        """Indicates which file revisions to display for a set of folders."""
+
+    def getRevision(self, prefs, name, rev):
+        """Returns the contents of the specified file revision"""
+        pass

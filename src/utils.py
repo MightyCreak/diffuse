@@ -79,6 +79,42 @@ def make_subdirs(p, ss):
 def useFlatpak():
     return constants.use_flatpak
 
+# constructs a relative path from 'a' to 'b', both should be absolute paths
+def relpath(a, b):
+    if isWindows():
+        if drive_from_path(a) != drive_from_path(b):
+            return b
+    c1 = [ c for c in a.split(os.sep) if c != '' ]
+    c2 = [ c for c in b.split(os.sep) if c != '' ]
+    i, n = 0, len(c1)
+    while i < n and i < len(c2) and c1[i] == c2[i]:
+        i += 1
+    r = (n - i) * [ os.pardir ]
+    r.extend(c2[i:])
+    return os.sep.join(r)
+
+# helper function prevent files from being confused with command line options
+# by prepending './' to the basename
+def safeRelativePath(abspath1, name, prefs, cygwin_pref):
+    s = os.path.join(os.curdir, utils.relpath(abspath1, os.path.abspath(name)))
+    if utils.isWindows():
+        if prefs.getBool(cygwin_pref):
+            s = s.replace('\\', '/')
+        else:
+            s = s.replace('/', '\\')
+    return s
+
+# returns the Windows drive or share from a from an absolute path
+def drive_from_path(s):
+    c = s.split(os.sep)
+    if len(c) > 3 and c[0] == '' and c[1] == '':
+        return os.path.join(c[:4])
+    return c[0]
+
+# escape arguments for use with bash
+def bashEscape(s):
+    return "'" + s.replace("'", "'\\''") + "'"
+
 # use popen to read the output of a command
 def popenRead(dn, cmd, prefs, bash_pref, success_results=None):
     if success_results is None:
@@ -140,6 +176,11 @@ def popenXArgsReadLines(dn, cmd, args, prefs, bash_pref):
             ss.extend(popenReadLines(dn, a, prefs, bash_pref))
             s, a = 0, []
     return ss
+
+# escape special glob characters
+def globEscape(s):
+    m = dict([ (c, f'[{c}]') for c in '[]?*' ])
+    return ''.join([ m.get(c, c) for c in s ])
 
 # use the program's location as a starting place to search for supporting files
 # such as icon and help documentation

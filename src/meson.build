@@ -37,3 +37,4 @@ diffuse_sources = [
 ]
 
 install_data(diffuse_sources, install_dir: moduledir)
+install_subdir('vcs', install_dir: moduledir, strip_directory: false)

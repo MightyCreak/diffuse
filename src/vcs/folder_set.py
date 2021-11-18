@@ -1,5 +1,3 @@
-#!@PYTHON@
-
 # Diffuse: a graphical tool for merging and comparing text files.
 #
 # Copyright (C) 2019 Derrick Moser <derrick_moser@yahoo.com>
@@ -19,16 +17,29 @@
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-import sys
-import gettext
-import locale
+import os
 
-pkgdatadir = '@pkgdatadir@'
-localedir = '@localedir@'
+class FolderSet:
+    '''Utility class to help support Git and Monotone.
+       Represents a set of files and folders of interest for "git status" or
+       "mtn automate inventory."'''
 
-sys.path.insert(1, pkgdatadir)
-gettext.install('diffuse', localedir)
+    def __init__(self, names):
+        self.folders = f = []
+        for name in names:
+            name = os.path.abspath(name)
+            # ensure all names end with os.sep
+            if not name.endswith(os.sep):
+                name += os.sep
+            f.append(name)
 
-if __name__ == '__main__':
-    from diffuse import main
-    sys.exit(main.main())
+    # returns True if the given abspath is a file that should be included in
+    # the interesting file subset
+    def contains(self, abspath):
+        if not abspath.endswith(os.sep):
+            abspath += os.sep
+        for f in self.folders:
+            if abspath.startswith(f):
+                return True
+        return False
+
