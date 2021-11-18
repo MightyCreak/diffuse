@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- New options: log_print_output and log_print_stack, to print the log messages
+  on the output and code stack
+- New log function: utils.logErrorAndDialog, to both log and show a dialog
+  message
 
 ### Changed
 

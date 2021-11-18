@@ -905,9 +905,7 @@ class Preferences:
                     f.write(s)
                 f.close()
             except IOError:
-                m = utils.MessageDialog(parent, Gtk.MessageType.ERROR, _('Error writing %s.') % (self.path, ))
-                m.run()
-                m.destroy()
+                utils.logErrorAndDialog(_('Error writing %s.') % (self.path, ), parent)
         dialog.destroy()
         return accept
 
@@ -6950,9 +6948,7 @@ class Diffuse(Gtk.Window):
                         msg = _('Error reading revision %(rev)s of %(file)s.') % { 'rev': rev, 'file': name }
                     else:
                         msg = _('Error reading %s.') % (name, )
-                    dialog = utils.MessageDialog(self.get_toplevel(), Gtk.MessageType.ERROR, msg)
-                    dialog.run()
-                    dialog.destroy()
+                    utils.logErrorAndDialog(msg, self.get_toplevel())
                     return
             # update the panes contents, last modified time, and title
             self.replaceContents(f, ss)
@@ -7114,13 +7110,9 @@ class Diffuse(Gtk.Window):
                     self.setSyntax(syntax)
                 return True
             except (UnicodeEncodeError, LookupError):
-                dialog = utils.MessageDialog(self.get_toplevel(), Gtk.MessageType.ERROR, _('Error encoding to %s.') % (encoding, ))
-                dialog.run()
-                dialog.destroy()
+                utils.logErrorAndDialog(_('Error encoding to %s.') % (encoding, ), self.get_toplevel())
             except IOError:
-                dialog = utils.MessageDialog(self.get_toplevel(), Gtk.MessageType.ERROR, _('Error writing %s.') % (name, ))
-                dialog.run()
-                dialog.destroy()
+                utils.logErrorAndDialog(_('Error writing %s.') % (name, ), self.get_toplevel())
             return False
 
         # callback for save file menu item
@@ -7782,9 +7774,7 @@ class Diffuse(Gtk.Window):
                             viewer.load(i, FileInfo(name, encoding, vcs, rev))
                         viewer.setOptions(options)
                 except (IOError, OSError, WindowsError):
-                    dialog = utils.MessageDialog(self.get_toplevel(), Gtk.MessageType.ERROR, _('Error retrieving commits for %s.') % (dn, ))
-                    dialog.run()
-                    dialog.destroy()
+                    utils.logErrorAndDialog(_('Error retrieving commits for %s.') % (dn, ), self.get_toplevel())
 
     # create a new viewer for each modified file found in 'items'
     def createModifiedFileTabs(self, items, labels, options):
@@ -7813,9 +7803,7 @@ class Diffuse(Gtk.Window):
                             viewer.load(i, FileInfo(name, encoding, vcs, rev))
                         viewer.setOptions(options)
                 except (IOError, OSError, WindowsError):
-                    dialog = utils.MessageDialog(self.get_toplevel(), Gtk.MessageType.ERROR, _('Error retrieving modifications for %s.') % (dn, ))
-                    dialog.run()
-                    dialog.destroy()
+                    utils.logErrorAndDialog(_('Error retrieving modifications for %s.') % (dn, ), self.get_toplevel())
 
     # close all tabs without differences
     def closeOnSame(self):
@@ -7874,9 +7862,7 @@ class Diffuse(Gtk.Window):
                 self.notebook.set_current_page(n)
                 self.getCurrentViewer().grab_focus()
             else:
-                m = utils.MessageDialog(parent, Gtk.MessageType.ERROR, _('No modified files found.'))
-                m.run()
-                m.destroy()
+                utils.logErrorAndDialog(_('No modified files found.'), parent)
 
     # callback for the open commit menu item
     def open_commit_cb(self, widget, data):
@@ -7894,9 +7880,7 @@ class Diffuse(Gtk.Window):
                 self.notebook.set_current_page(n)
                 self.getCurrentViewer().grab_focus()
             else:
-                m = utils.MessageDialog(parent, Gtk.MessageType.ERROR, _('No committed files found.'))
-                m.run()
-                m.destroy()
+                utils.logErrorAndDialog(_('No committed files found.'), parent)
 
     # callback for the reload file menu item
     def reload_file_cb(self, widget, data):

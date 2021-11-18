@@ -21,6 +21,7 @@ import os
 import sys
 import locale
 import subprocess
+import traceback
 
 import gi
 
@@ -43,15 +44,26 @@ class MessageDialog(Gtk.MessageDialog):
 def isWindows():
     return os.name == 'nt'
 
+def _logPrintOutput(msg):
+    if constants.log_print_output:
+        print(msg, file=sys.stderr)
+        if constants.log_print_stack:
+            traceback.print_stack()
+
 # convenience function to display debug messages
-def logDebug(s):
-    pass #sys.stderr.write(f'{constants.APP_NAME}: {s}\n')
+def logDebug(msg):
+    _logPrintOutput(f'DEBUG: {msg}')
 
 # report error messages
-def logError(s):
-    m = MessageDialog(None, Gtk.MessageType.ERROR, s)
-    m.run()
-    m.destroy()
+def logError(msg):
+    _logPrintOutput(f'ERROR: {msg}')
+
+# report error messages and show dialog
+def logErrorAndDialog(msg,parent=None):
+    logError(msg)
+    dialog = MessageDialog(parent, Gtk.MessageType.ERROR, msg)
+    dialog.run()
+    dialog.destroy()
 
 # create nested subdirectories and return the complete path
 def make_subdirs(p, ss):

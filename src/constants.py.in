@@ -24,4 +24,7 @@ COPYRIGHT =  '''{copyright} © 2006-2019 Derrick Moser
 WEBSITE = 'https://mightycreak.github.io/diffuse/'
 
 sysconfigdir = '@sysconfigdir@'
+
 use_flatpak = @use_flatpak@
+log_print_output = @log_print_output@
+log_print_stack = @log_print_stack@
