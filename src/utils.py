@@ -166,6 +166,11 @@ def popenXArgsReadLines(dn, cmd, args, prefs, bash_pref):
             s, a = 0, []
     return ss
 
+# escape special glob characters
+def globEscape(s):
+    m = dict([ (c, f'[{c}]') for c in '[]?*' ])
+    return ''.join([ m.get(c, c) for c in s ])
+
 # use the program's location as a starting place to search for supporting files
 # such as icon and help documentation
 if hasattr(sys, 'frozen'):
