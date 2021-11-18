@@ -93,6 +93,17 @@ def relpath(a, b):
     r.extend(c2[i:])
     return os.sep.join(r)
 
+# helper function prevent files from being confused with command line options
+# by prepending './' to the basename
+def safeRelativePath(abspath1, name, prefs, cygwin_pref):
+    s = os.path.join(os.curdir, utils.relpath(abspath1, os.path.abspath(name)))
+    if utils.isWindows():
+        if prefs.getBool(cygwin_pref):
+            s = s.replace('\\', '/')
+        else:
+            s = s.replace('/', '\\')
+    return s
+
 # use popen to read the output of a command
 def popenRead(dn, cmd, prefs, bash_pref, success_results=None):
     if success_results is None:

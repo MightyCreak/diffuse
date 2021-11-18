@@ -54,6 +54,7 @@ from urllib.parse import urlparse
 from diffuse import utils
 from diffuse import constants
 from diffuse.vcs.folder_set import FolderSet
+from diffuse.vcs.bzr import Bzr
 from diffuse.vcs.git import Git
 
 if not hasattr(__builtins__, 'WindowsError'):
@@ -1196,17 +1197,6 @@ def drive_from_path(s):
         return os.path.join(c[:4])
     return c[0]
 
-# helper function prevent files from being confused with command line options
-# by prepending './' to the basename
-def safeRelativePath(abspath1, name, prefs, cygwin_pref):
-    s = os.path.join(os.curdir, utils.relpath(abspath1, os.path.abspath(name)))
-    if utils.isWindows():
-        if prefs.getBool(cygwin_pref):
-            s = s.replace('\\', '/')
-        else:
-            s = s.replace('/', '\\')
-    return s
-
 # escape arguments for use with bash
 def bashEscape(s):
     return "'" + s.replace("'", "'\\''") + "'"
@@ -1222,183 +1212,10 @@ def _find_parent_dir_with(path, dir_name):
             break
         path = newpath
 
-# Bazaar support
-class _Bzr:
-    def __init__(self, root):
-        self.root = root
-
-    def getFileTemplate(self, prefs, name):
-        # merge conflict
-        left = name + '.OTHER'
-        right = name + '.THIS'
-        if os.path.isfile(left) and os.path.isfile(right):
-            return [ (left, None), (name, None), (right, None) ]
-        # default case
-        return [ (name, '-1'), (name, None) ]
-
-    def getCommitTemplate(self, prefs, rev, names):
-        # build command
-        args = [ prefs.getString('bzr_bin'), 'log', '-v', '-r', rev ]
-        # build list of interesting files
-        pwd, isabs = os.path.abspath(os.curdir), False
-        for name in names:
-            isabs |= os.path.isabs(name)
-            args.append(safeRelativePath(self.root, name, prefs, 'bzr_cygwin'))
-        # run command
-        ss = utils.popenReadLines(self.root, args, prefs, 'bzr_bash')
-        # parse response
-        prev = 'before:' + rev
-        fs = FolderSet(names)
-        added, modified, removed, renamed = {}, {}, {}, {}
-        i, n = 0, len(ss)
-        while i < n:
-            s = ss[i]
-            i += 1
-            if s.startswith('added:'):
-                # added files
-                while i < n and ss[i].startswith('  '):
-                    k = prefs.convertToNativePath(ss[i][2:])
-                    i += 1
-                    if not k.endswith(os.sep):
-                        k = os.path.join(self.root, k)
-                        if fs.contains(k):
-                            if not isabs:
-                                k = utils.relpath(pwd, k)
-                            added[k] = [ (None, None), (k, rev) ]
-            elif s.startswith('modified:'):
-                # modified files
-                while i < n and ss[i].startswith('  '):
-                    k = prefs.convertToNativePath(ss[i][2:])
-                    i += 1
-                    if not k.endswith(os.sep):
-                        k = os.path.join(self.root, k)
-                        if fs.contains(k):
-                            if not isabs:
-                                k = utils.relpath(pwd, k)
-                            modified[k] = [ (k, prev), (k, rev) ]
-            elif s.startswith('removed:'):
-                # removed files
-                while i < n and ss[i].startswith('  '):
-                    k = prefs.convertToNativePath(ss[i][2:])
-                    i += 1
-                    if not k.endswith(os.sep):
-                        k = os.path.join(self.root, k)
-                        if fs.contains(k):
-                            if not isabs:
-                                k = utils.relpath(pwd, k)
-                            removed[k] = [ (k, prev), (None, None) ]
-            elif s.startswith('renamed:'):
-                # renamed files
-                while i < n and ss[i].startswith('  '):
-                    k = ss[i][2:].split(' => ')
-                    i += 1
-                    if len(k) == 2:
-                        k0 = prefs.convertToNativePath(k[0])
-                        k1 = prefs.convertToNativePath(k[1])
-                        if not k0.endswith(os.sep) and not k1.endswith(os.sep):
-                            k0 = os.path.join(self.root, k0)
-                            k1 = os.path.join(self.root, k1)
-                            if fs.contains(k0) or fs.contains(k1):
-                                if not isabs:
-                                    k0 = utils.relpath(pwd, k0)
-                                    k1 = utils.relpath(pwd, k1)
-                                renamed[k1] = [ (k0, prev), (k1, rev) ]
-        # sort the results
-        result, r = [], set()
-        for m in removed, added, modified, renamed:
-            r.update(m.keys())
-        for k in sorted(r):
-            for m in removed, added, modified, renamed:
-                if k in m:
-                    result.append(m[k])
-        return result
-
-    def getFolderTemplate(self, prefs, names):
-        # build command
-        args = [ prefs.getString('bzr_bin'), 'status', '-SV' ]
-        # build list of interesting files
-        pwd, isabs = os.path.abspath(os.curdir), False
-        for name in names:
-            isabs |= os.path.isabs(name)
-            args.append(safeRelativePath(self.root, name, prefs, 'bzr_cygwin'))
-        # run command
-        prev = '-1'
-        fs = FolderSet(names)
-        added, modified, removed, renamed = {}, {}, {}, {}
-        for s in utils.popenReadLines(self.root, args, prefs, 'bzr_bash'):
-            # parse response
-            if len(s) < 5:
-                continue
-            y, k = s[1], s[4:]
-            if y == 'D':
-                # removed
-                k = prefs.convertToNativePath(k)
-                if not k.endswith(os.sep):
-                    k = os.path.join(self.root, k)
-                    if fs.contains(k):
-                        if not isabs:
-                            k = utils.relpath(pwd, k)
-                        removed[k] = [ (k, prev), (None, None) ]
-            elif y == 'N':
-                # added
-                k = prefs.convertToNativePath(k)
-                if not k.endswith(os.sep):
-                    k = os.path.join(self.root, k)
-                    if fs.contains(k):
-                        if not isabs:
-                            k = utils.relpath(pwd, k)
-                        added[k] = [ (None, None), (k, None) ]
-            elif y == 'M':
-                # modified or merge conflict
-                k = prefs.convertToNativePath(k)
-                if not k.endswith(os.sep):
-                    k = os.path.join(self.root, k)
-                    if fs.contains(k):
-                        if not isabs:
-                            k = utils.relpath(pwd, k)
-                        modified[k] = self.getFileTemplate(prefs, k)
-            elif s[0] == 'R':
-                # renamed
-                k = k.split(' => ')
-                if len(k) == 2:
-                    k0 = prefs.convertToNativePath(k[0])
-                    k1 = prefs.convertToNativePath(k[1])
-                    if not k0.endswith(os.sep) and not k1.endswith(os.sep):
-                        k0 = os.path.join(self.root, k0)
-                        k1 = os.path.join(self.root, k1)
-                        if fs.contains(k0) or fs.contains(k1):
-                            if not isabs:
-                                k0 = utils.relpath(pwd, k0)
-                                k1 = utils.relpath(pwd, k1)
-                            renamed[k1] = [ (k0, prev), (k1, None) ]
-        # sort the results
-        result, r = [], set()
-        for m in removed, added, modified, renamed:
-            r.update(m.keys())
-        for k in sorted(r):
-            for m in removed, added, modified, renamed:
-                if k in m:
-                    result.append(m[k])
-        return result
-
-    def getRevision(self, prefs, name, rev):
-        return utils.popenRead(
-            self.root,
-            [
-                prefs.getString('bzr_bin'),
-                'cat',
-                '--name-from-revision',
-                '-r',
-                rev,
-                safeRelativePath(self.root, name, prefs, 'bzr_cygwin')
-            ],
-            prefs,
-            'bzr_bash')
-
 def _get_bzr_repo(path, prefs):
     p = _find_parent_dir_with(path, '.bzr')
     if p:
-        return _Bzr(p)
+        return Bzr(p)
 
 # CVS support
 class _Cvs:
@@ -1437,7 +1254,7 @@ class _Cvs:
         pwd, isabs = os.path.abspath(os.curdir), False
         for name in names:
             isabs |= os.path.isabs(name)
-            args.append(safeRelativePath(self.root, name, prefs, 'cvs_cygwin'))
+            args.append(utils.safeRelativePath(self.root, name, prefs, 'cvs_cygwin'))
         # run command
         prev = 'BASE'
         fs = FolderSet(names)
@@ -1471,7 +1288,7 @@ class _Cvs:
                 [
                     prefs.getString('cvs_bin'),
                     'status',
-                    safeRelativePath(self.root, name, prefs, 'cvs_cygwin')
+                    utils.safeRelativePath(self.root, name, prefs, 'cvs_cygwin')
                 ],
                 prefs,
                 'cvs_bash'):
@@ -1486,7 +1303,7 @@ class _Cvs:
                 '-p',
                 '-r',
                 rev,
-                safeRelativePath(self.root, name, prefs, 'cvs_cygwin')
+                utils.safeRelativePath(self.root, name, prefs, 'cvs_cygwin')
             ],
             prefs,
             'cvs_bash')
@@ -1520,7 +1337,7 @@ class _Darcs:
         for name in names:
             isabs |= os.path.isabs(name)
             if mods:
-                args.append(safeRelativePath(self.root, name, prefs, 'darcs_cygwin'))
+                args.append(utils.safeRelativePath(self.root, name, prefs, 'darcs_cygwin'))
         # run command
         # 'darcs whatsnew' will return 1 if there are no changes
         ss = utils.popenReadLines(self.root, args, prefs, 'darcs_bash', [0, 1])
@@ -1615,7 +1432,7 @@ class _Darcs:
             args.extend([ '-n', str(int(rev)) ])
         except ValueError:
             args.extend([ '-h', rev ])
-        args.append(safeRelativePath(self.root, name, prefs, 'darcs_cygwin'))
+        args.append(utils.safeRelativePath(self.root, name, prefs, 'darcs_cygwin'))
         return utils.popenRead(self.root, args, prefs, 'darcs_bash')
 
 def _get_darcs_repo(path, prefs):
@@ -1689,7 +1506,7 @@ class _Hg:
         pwd, isabs = os.path.abspath(os.curdir), False
         for name in names:
             isabs |= os.path.isabs(name)
-            args.append(safeRelativePath(self.root, name, prefs, 'hg_cygwin'))
+            args.append(utils.safeRelativePath(self.root, name, prefs, 'hg_cygwin'))
         # run command
         prev = self._getPreviousRevision(prefs, rev)
         fs = FolderSet(names)
@@ -1728,7 +1545,7 @@ class _Hg:
                 'cat',
                 '-r',
                 rev,
-                safeRelativePath(self.root, name, prefs, 'hg_cygwin')
+                utils.safeRelativePath(self.root, name, prefs, 'hg_cygwin')
             ],
             prefs,
             'hg_bash')
@@ -1922,7 +1739,7 @@ class _Mtn:
                 '-q',
                 '-r',
                 rev,
-                safeRelativePath(self.root, name, prefs, 'mtn_cygwin')
+                utils.safeRelativePath(self.root, name, prefs, 'mtn_cygwin')
             ],
             prefs,
             'mtn_bash')
@@ -1938,7 +1755,7 @@ class _Rcs:
         self.root = root
 
     def getFileTemplate(self, prefs, name):
-        args = [ prefs.getString('rcs_bin_rlog'), '-L', '-h', safeRelativePath(self.root, name, prefs, 'rcs_cygwin') ]
+        args = [ prefs.getString('rcs_bin_rlog'), '-L', '-h', utils.safeRelativePath(self.root, name, prefs, 'rcs_cygwin') ]
         rev = ''
         for line in utils.popenReadLines(self.root, args, prefs, 'rcs_bash'):
             if line.startswith('head: '):
@@ -2013,7 +1830,7 @@ class _Rcs:
                     r.append(k)
         for k in r:
             isabs |= os.path.isabs(k)
-        args = [ safeRelativePath(self.root, k, prefs, 'rcs_cygwin') for k in r ]
+        args = [ utils.safeRelativePath(self.root, k, prefs, 'rcs_cygwin') for k in r ]
         # run command
         r, k = {}, ''
         for line in utils.popenXArgsReadLines(self.root, cmd, args, prefs, 'rcs_bash'):
@@ -2036,7 +1853,7 @@ class _Rcs:
                 '-p',
                 '-q',
                 '-r' + rev,
-                safeRelativePath(self.root, name, prefs, 'rcs_cygwin')
+                utils.safeRelativePath(self.root, name, prefs, 'rcs_cygwin')
             ],
             prefs,
             'rcs_bash')
@@ -2133,7 +1950,7 @@ class _Svn:
         for name in names:
             isabs |= os.path.isabs(name)
             if rev is None:
-                args.append(safeRelativePath(self.root, name, prefs, vcs + '_cygwin'))
+                args.append(utils.safeRelativePath(self.root, name, prefs, vcs + '_cygwin'))
         # run command
         fs = FolderSet(names)
         modified, added, removed = {}, set(), set()
@@ -2271,7 +2088,7 @@ class _Svn:
                 [
                     vcs_bin,
                     'cat',
-                    '{}@{}'.format(safeRelativePath(self.root, name, prefs, 'svn_cygwin'), rev)
+                    '{}@{}'.format(utils.safeRelativePath(self.root, name, prefs, 'svn_cygwin'), rev)
                 ],
                 prefs,
                 'svn_bash')
