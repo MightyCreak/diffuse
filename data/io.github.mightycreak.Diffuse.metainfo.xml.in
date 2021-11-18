@@ -38,11 +38,11 @@
     <release version="0.7.0" date="2021-11-16">
       <description>
         <p>
-          With this release, the main end-user change is the <strong>new
-          icon</strong>. The rest is mainly maintenance improvements with a
-          much more standard folder structure and starting to modularize the
-          code. This is an ongoing effort as there is still a lot to do, but
-          hopefully this would motivate some to contribute ;)
+          With this release, the main end-user change is the new icon. The rest
+          is mainly maintenance improvements with a much more standard folder
+          structure and starting to modularize the code. This is an ongoing
+          effort as there is still a lot to do, but hopefully this would
+          motivate some to contribute ;)
         </p>
         <p>
           An important note though: the application ID has changed and is now
@@ -56,9 +56,8 @@
         <p>Changed:</p>
         <ul>
           <li>
-            Changed AppID to io.github.mightycreak.Diffuse (as explained in <a
-            href="https://docs.flatpak.org/en/latest/conventions.html#application-ids">
-            Flatpak documentation</a>)
+            Changed AppID to io.github.mightycreak.Diffuse (as advised in the
+            Flatpak documentation)
           </li>
           <li>Renamed directory `translations/` to `po/`</li>
           <li>Now uses POTFILES.in to list the files to translate</li>
