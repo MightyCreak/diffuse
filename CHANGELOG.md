@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   message
 
 ### Changed
+- Modularized the VCSs (reducing main.py by around 1300 lines)
 
 ### Fixed
 - Fixed 'APP_NAME' error when opening non existing file
