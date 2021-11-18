@@ -104,6 +104,17 @@ def safeRelativePath(abspath1, name, prefs, cygwin_pref):
             s = s.replace('/', '\\')
     return s
 
+# returns the Windows drive or share from a from an absolute path
+def drive_from_path(s):
+    c = s.split(os.sep)
+    if len(c) > 3 and c[0] == '' and c[1] == '':
+        return os.path.join(c[:4])
+    return c[0]
+
+# escape arguments for use with bash
+def bashEscape(s):
+    return "'" + s.replace("'", "'\\''") + "'"
+
 # use popen to read the output of a command
 def popenRead(dn, cmd, prefs, bash_pref, success_results=None):
     if success_results is None:
