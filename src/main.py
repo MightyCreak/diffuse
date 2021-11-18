@@ -55,6 +55,7 @@ from diffuse import utils
 from diffuse import constants
 from diffuse.vcs.folder_set import FolderSet
 from diffuse.vcs.bzr import Bzr
+from diffuse.vcs.cvs import Cvs
 from diffuse.vcs.git import Git
 
 if not hasattr(__builtins__, 'WindowsError'):
@@ -1217,100 +1218,9 @@ def _get_bzr_repo(path, prefs):
     if p:
         return Bzr(p)
 
-# CVS support
-class _Cvs:
-    def __init__(self, root):
-        self.root = root
-
-    def getFileTemplate(self, prefs, name):
-        return [ (name, 'BASE'), (name, None) ]
-
-    def getCommitTemplate(self, prefs, rev, names):
-        result = []
-        try:
-            r, prev = rev.split('.'), None
-            if len(r) > 1:
-                m = int(r.pop())
-                if m > 1:
-                    r.append(str(m - 1))
-                else:
-                    m = int(r.pop())
-                if len(r):
-                    prev = '.'.join(r)
-            for k in sorted(names):
-                 if prev is None:
-                     k0 = None
-                 else:
-                     k0 = k
-                 result.append([ (k0, prev), (k, rev) ])
-        except ValueError:
-            utils.logError(_('Error parsing revision %s.') % (rev, ))
-        return result
-
-    def getFolderTemplate(self, prefs, names):
-        # build command
-        args = [ prefs.getString('cvs_bin'), '-nq', 'update', '-R' ]
-        # build list of interesting files
-        pwd, isabs = os.path.abspath(os.curdir), False
-        for name in names:
-            isabs |= os.path.isabs(name)
-            args.append(utils.safeRelativePath(self.root, name, prefs, 'cvs_cygwin'))
-        # run command
-        prev = 'BASE'
-        fs = FolderSet(names)
-        modified = {}
-        for s in utils.popenReadLines(self.root, args, prefs, 'cvs_bash'):
-            # parse response
-            if len(s) < 3 or s[0] not in 'ACMR':
-                continue
-            k = os.path.join(self.root, prefs.convertToNativePath(s[2:]))
-            if fs.contains(k):
-                if not isabs:
-                    k = utils.relpath(pwd, k)
-                if s[0] == 'R':
-                    # removed
-                    modified[k] = [ (k, prev), (None, None) ]
-                    pass
-                elif s[0] == 'A':
-                    # added
-                    modified[k] = [ (None, None), (k, None) ]
-                else:
-                    # modified
-                    modified[k] = [ (k, prev), (k, None) ]
-        # sort the results
-        return [ modified[k] for k in sorted(modified.keys()) ]
-
-    def getRevision(self, prefs, name, rev):
-        if rev == 'BASE' and not os.path.exists(name):
-            # find revision for removed files
-            for s in utils.popenReadLines(
-                self.root,
-                [
-                    prefs.getString('cvs_bin'),
-                    'status',
-                    utils.safeRelativePath(self.root, name, prefs, 'cvs_cygwin')
-                ],
-                prefs,
-                'cvs_bash'):
-                if s.startswith('   Working revision:\t-'):
-                    rev = s.split('\t')[1][1:]
-        return utils.popenRead(
-            self.root,
-            [
-                prefs.getString('cvs_bin'),
-                '-Q',
-                'update',
-                '-p',
-                '-r',
-                rev,
-                utils.safeRelativePath(self.root, name, prefs, 'cvs_cygwin')
-            ],
-            prefs,
-            'cvs_bash')
-
 def _get_cvs_repo(path, prefs):
     if os.path.isdir(os.path.join(path, 'CVS')):
-        return _Cvs(path)
+        return Cvs(path)
 
 # Darcs support
 class _Darcs:
