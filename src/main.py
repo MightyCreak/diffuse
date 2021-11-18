@@ -58,6 +58,7 @@ from diffuse.vcs.bzr import Bzr
 from diffuse.vcs.cvs import Cvs
 from diffuse.vcs.darcs import Darcs
 from diffuse.vcs.git import Git
+from diffuse.vcs.hg import Hg
 
 if not hasattr(__builtins__, 'WindowsError'):
     # define 'WindowsError' so 'except' statements will work on all platforms
@@ -1262,86 +1263,10 @@ def _get_git_repo(path, prefs):
             break
         path = newpath
 
-# Mercurial support
-class _Hg:
-    def __init__(self, root):
-        self.root = root
-        self.working_rev = None
-
-    def _getPreviousRevision(self, prefs, rev):
-        if rev is None:
-            if self.working_rev is None:
-                ss = utils.popenReadLines(self.root, [ prefs.getString('hg_bin'), 'id', '-i', '-t' ], prefs, 'hg_bash')
-                if len(ss) != 1:
-                    raise IOError('Unknown working revision')
-                ss = ss[0].split(' ')
-                prev = ss[-1]
-                if len(ss) == 1 and prev.endswith('+'):
-                    # remove local modifications indicator
-                    prev = prev[:-1]
-                self.working_rev = prev
-            return self.working_rev
-        return f'p1({rev})'
-
-    def getFileTemplate(self, prefs, name):
-        return [ (name, self._getPreviousRevision(prefs, None)), (name, None) ]
-
-    def _getCommitTemplate(self, prefs, names, cmd, rev):
-        # build command
-        args = [ prefs.getString('hg_bin') ]
-        args.extend(cmd)
-        # build list of interesting files
-        pwd, isabs = os.path.abspath(os.curdir), False
-        for name in names:
-            isabs |= os.path.isabs(name)
-            args.append(utils.safeRelativePath(self.root, name, prefs, 'hg_cygwin'))
-        # run command
-        prev = self._getPreviousRevision(prefs, rev)
-        fs = FolderSet(names)
-        modified = {}
-        for s in utils.popenReadLines(self.root, args, prefs, 'hg_bash'):
-            # parse response
-            if len(s) < 3 or s[0] not in 'AMR':
-                continue
-            k = os.path.join(self.root, prefs.convertToNativePath(s[2:]))
-            if fs.contains(k):
-                if not isabs:
-                    k = utils.relpath(pwd, k)
-                if s[0] == 'R':
-                    # removed
-                    modified[k] = [ (k, prev), (None, None) ]
-                elif s[0] == 'A':
-                    # added
-                    modified[k] = [ (None, None), (k, rev) ]
-                else:
-                    # modified or merge conflict
-                    modified[k] = [ (k, prev), (k, rev) ]
-        # sort the results
-        return [ modified[k] for k in sorted(modified.keys()) ]
-
-    def getCommitTemplate(self, prefs, rev, names):
-        return self._getCommitTemplate(prefs, names, [ 'log', '--template', 'A\t{file_adds}\nM\t{file_mods}\nR\t{file_dels}\n', '-r', rev ], rev)
-
-    def getFolderTemplate(self, prefs, names):
-        return self._getCommitTemplate(prefs, names, [ 'status', '-q' ], None)
-
-    def getRevision(self, prefs, name, rev):
-        return utils.popenRead(
-            self.root,
-            [
-                prefs.getString('hg_bin'),
-                'cat',
-                '-r',
-                rev,
-                utils.safeRelativePath(self.root, name, prefs, 'hg_cygwin')
-            ],
-            prefs,
-            'hg_bash')
-
 def _get_hg_repo(path, prefs):
     p = _find_parent_dir_with(path, '.hg')
     if p:
-        return _Hg(p)
+        return Hg(p)
 
 # Monotone support
 class _Mtn:
