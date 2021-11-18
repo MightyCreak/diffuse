@@ -53,6 +53,8 @@ from urllib.parse import urlparse
 
 from diffuse import utils
 from diffuse import constants
+from diffuse.vcs.folder_set import FolderSet
+from diffuse.vcs.git import Git
 
 if not hasattr(__builtins__, 'WindowsError'):
     # define 'WindowsError' so 'except' statements will work on all platforms
@@ -1194,24 +1196,10 @@ def drive_from_path(s):
         return os.path.join(c[:4])
     return c[0]
 
-# constructs a relative path from 'a' to 'b', both should be absolute paths
-def relpath(a, b):
-    if utils.isWindows():
-        if drive_from_path(a) != drive_from_path(b):
-            return b
-    c1 = [ c for c in a.split(os.sep) if c != '' ]
-    c2 = [ c for c in b.split(os.sep) if c != '' ]
-    i, n = 0, len(c1)
-    while i < n and i < len(c2) and c1[i] == c2[i]:
-        i += 1
-    r = (n - i) * [ os.pardir ]
-    r.extend(c2[i:])
-    return os.sep.join(r)
-
 # helper function prevent files from being confused with command line options
 # by prepending './' to the basename
 def safeRelativePath(abspath1, name, prefs, cygwin_pref):
-    s = os.path.join(os.curdir, relpath(abspath1, os.path.abspath(name)))
+    s = os.path.join(os.curdir, utils.relpath(abspath1, os.path.abspath(name)))
     if utils.isWindows():
         if prefs.getBool(cygwin_pref):
             s = s.replace('\\', '/')
@@ -1223,29 +1211,6 @@ def safeRelativePath(abspath1, name, prefs, cygwin_pref):
 def bashEscape(s):
     return "'" + s.replace("'", "'\\''") + "'"
 
-# utility class to help support Git and Monotone
-# represents a set of files and folders of interest for "git status" or
-# "mtn automate inventory"
-class _VcsFolderSet:
-    def __init__(self, names):
-        self.folders = f = []
-        for name in names:
-            name = os.path.abspath(name)
-            # ensure all names end with os.sep
-            if not name.endswith(os.sep):
-                name += os.sep
-            f.append(name)
-
-    # returns True if the given abspath is a file that should be included in
-    # the interesting file subset
-    def contains(self, abspath):
-        if not abspath.endswith(os.sep):
-            abspath += os.sep
-        for f in self.folders:
-            if abspath.startswith(f):
-                return True
-        return False
-
 # utility method to help find folders used by version control systems
 def _find_parent_dir_with(path, dir_name):
     while True:
@@ -1256,25 +1221,6 @@ def _find_parent_dir_with(path, dir_name):
         if newpath == path:
             break
         path = newpath
-
-# These class implement the set of supported version control systems.  Each
-# version control system should implement:
-#
-#   __init__():
-#       the object will initialised with the repository's root folder
-#
-#   getFileTemplate():
-#       indicates which revisions to display for a file when none were
-#       explicitly requested
-#
-#   getCommitTemplate():
-#       indicates which file revisions to display for a commit
-#
-#   getFolderTemplate():
-#       indicates which file revisions to display for a set of folders
-#
-#   getRevision():
-#       returns the contents of the specified file revision
 
 # Bazaar support
 class _Bzr:
@@ -1302,7 +1248,7 @@ class _Bzr:
         ss = utils.popenReadLines(self.root, args, prefs, 'bzr_bash')
         # parse response
         prev = 'before:' + rev
-        fs = _VcsFolderSet(names)
+        fs = FolderSet(names)
         added, modified, removed, renamed = {}, {}, {}, {}
         i, n = 0, len(ss)
         while i < n:
@@ -1317,7 +1263,7 @@ class _Bzr:
                         k = os.path.join(self.root, k)
                         if fs.contains(k):
                             if not isabs:
-                                k = relpath(pwd, k)
+                                k = utils.relpath(pwd, k)
                             added[k] = [ (None, None), (k, rev) ]
             elif s.startswith('modified:'):
                 # modified files
@@ -1328,7 +1274,7 @@ class _Bzr:
                         k = os.path.join(self.root, k)
                         if fs.contains(k):
                             if not isabs:
-                                k = relpath(pwd, k)
+                                k = utils.relpath(pwd, k)
                             modified[k] = [ (k, prev), (k, rev) ]
             elif s.startswith('removed:'):
                 # removed files
@@ -1339,7 +1285,7 @@ class _Bzr:
                         k = os.path.join(self.root, k)
                         if fs.contains(k):
                             if not isabs:
-                                k = relpath(pwd, k)
+                                k = utils.relpath(pwd, k)
                             removed[k] = [ (k, prev), (None, None) ]
             elif s.startswith('renamed:'):
                 # renamed files
@@ -1354,8 +1300,8 @@ class _Bzr:
                             k1 = os.path.join(self.root, k1)
                             if fs.contains(k0) or fs.contains(k1):
                                 if not isabs:
-                                    k0 = relpath(pwd, k0)
-                                    k1 = relpath(pwd, k1)
+                                    k0 = utils.relpath(pwd, k0)
+                                    k1 = utils.relpath(pwd, k1)
                                 renamed[k1] = [ (k0, prev), (k1, rev) ]
         # sort the results
         result, r = [], set()
@@ -1377,7 +1323,7 @@ class _Bzr:
             args.append(safeRelativePath(self.root, name, prefs, 'bzr_cygwin'))
         # run command
         prev = '-1'
-        fs = _VcsFolderSet(names)
+        fs = FolderSet(names)
         added, modified, removed, renamed = {}, {}, {}, {}
         for s in utils.popenReadLines(self.root, args, prefs, 'bzr_bash'):
             # parse response
@@ -1391,7 +1337,7 @@ class _Bzr:
                     k = os.path.join(self.root, k)
                     if fs.contains(k):
                         if not isabs:
-                            k = relpath(pwd, k)
+                            k = utils.relpath(pwd, k)
                         removed[k] = [ (k, prev), (None, None) ]
             elif y == 'N':
                 # added
@@ -1400,7 +1346,7 @@ class _Bzr:
                     k = os.path.join(self.root, k)
                     if fs.contains(k):
                         if not isabs:
-                            k = relpath(pwd, k)
+                            k = utils.relpath(pwd, k)
                         added[k] = [ (None, None), (k, None) ]
             elif y == 'M':
                 # modified or merge conflict
@@ -1409,7 +1355,7 @@ class _Bzr:
                     k = os.path.join(self.root, k)
                     if fs.contains(k):
                         if not isabs:
-                            k = relpath(pwd, k)
+                            k = utils.relpath(pwd, k)
                         modified[k] = self.getFileTemplate(prefs, k)
             elif s[0] == 'R':
                 # renamed
@@ -1422,8 +1368,8 @@ class _Bzr:
                         k1 = os.path.join(self.root, k1)
                         if fs.contains(k0) or fs.contains(k1):
                             if not isabs:
-                                k0 = relpath(pwd, k0)
-                                k1 = relpath(pwd, k1)
+                                k0 = utils.relpath(pwd, k0)
+                                k1 = utils.relpath(pwd, k1)
                             renamed[k1] = [ (k0, prev), (k1, None) ]
         # sort the results
         result, r = [], set()
@@ -1436,7 +1382,18 @@ class _Bzr:
         return result
 
     def getRevision(self, prefs, name, rev):
-        return utils.popenRead(self.root, [ prefs.getString('bzr_bin'), 'cat', '--name-from-revision', '-r', rev, safeRelativePath(self.root, name, prefs, 'bzr_cygwin') ], prefs, 'bzr_bash')
+        return utils.popenRead(
+            self.root,
+            [
+                prefs.getString('bzr_bin'),
+                'cat',
+                '--name-from-revision',
+                '-r',
+                rev,
+                safeRelativePath(self.root, name, prefs, 'bzr_cygwin')
+            ],
+            prefs,
+            'bzr_bash')
 
 def _get_bzr_repo(path, prefs):
     p = _find_parent_dir_with(path, '.bzr')
@@ -1483,7 +1440,7 @@ class _Cvs:
             args.append(safeRelativePath(self.root, name, prefs, 'cvs_cygwin'))
         # run command
         prev = 'BASE'
-        fs = _VcsFolderSet(names)
+        fs = FolderSet(names)
         modified = {}
         for s in utils.popenReadLines(self.root, args, prefs, 'cvs_bash'):
             # parse response
@@ -1492,7 +1449,7 @@ class _Cvs:
             k = os.path.join(self.root, prefs.convertToNativePath(s[2:]))
             if fs.contains(k):
                 if not isabs:
-                    k = relpath(pwd, k)
+                    k = utils.relpath(pwd, k)
                 if s[0] == 'R':
                     # removed
                     modified[k] = [ (k, prev), (None, None) ]
@@ -1509,10 +1466,30 @@ class _Cvs:
     def getRevision(self, prefs, name, rev):
         if rev == 'BASE' and not os.path.exists(name):
             # find revision for removed files
-            for s in utils.popenReadLines(self.root, [ prefs.getString('cvs_bin'), 'status', safeRelativePath(self.root, name, prefs, 'cvs_cygwin') ], prefs, 'cvs_bash'):
+            for s in utils.popenReadLines(
+                self.root,
+                [
+                    prefs.getString('cvs_bin'),
+                    'status',
+                    safeRelativePath(self.root, name, prefs, 'cvs_cygwin')
+                ],
+                prefs,
+                'cvs_bash'):
                 if s.startswith('   Working revision:\t-'):
                     rev = s.split('\t')[1][1:]
-        return utils.popenRead(self.root, [ prefs.getString('cvs_bin'), '-Q', 'update', '-p', '-r', rev, safeRelativePath(self.root, name, prefs, 'cvs_cygwin') ], prefs, 'cvs_bash')
+        return utils.popenRead(
+            self.root,
+            [
+                prefs.getString('cvs_bin'),
+                '-Q',
+                'update',
+                '-p',
+                '-r',
+                rev,
+                safeRelativePath(self.root, name, prefs, 'cvs_cygwin')
+            ],
+            prefs,
+            'cvs_bash')
 
 def _get_cvs_repo(path, prefs):
     if os.path.isdir(os.path.join(path, 'CVS')):
@@ -1561,7 +1538,7 @@ class _Darcs:
                     i += 1
             except (ValueError, IndexError):
                 i = n
-        fs = _VcsFolderSet(names)
+        fs = FolderSet(names)
         added, modified, removed, renamed = {}, {}, {}, {}
         while i < n:
             s = ss[i]
@@ -1581,7 +1558,7 @@ class _Darcs:
                     k = os.path.join(self.root, k)
                     if fs.contains(k):
                         if not isabs:
-                            k = relpath(pwd, k)
+                            k = utils.relpath(pwd, k)
                         removed[k] = [ (k, prev), (None, None) ]
             elif x == 'A':
                 # added
@@ -1590,7 +1567,7 @@ class _Darcs:
                     k = os.path.join(self.root, k)
                     if fs.contains(k):
                         if not isabs:
-                            k = relpath(pwd, k)
+                            k = utils.relpath(pwd, k)
                         added[k] = [ (None, None), (k, rev) ]
             elif x == 'M':
                 # modified
@@ -1599,7 +1576,7 @@ class _Darcs:
                     k = os.path.join(self.root, k)
                     if fs.contains(k):
                         if not isabs:
-                            k = relpath(pwd, k)
+                            k = utils.relpath(pwd, k)
                         if k not in renamed:
                             modified[k] = [ (k, prev), (k, rev) ]
             elif x == ' ':
@@ -1613,8 +1590,8 @@ class _Darcs:
                         k1 = os.path.join(self.root, k1)
                         if fs.contains(k0) or fs.contains(k1):
                             if not isabs:
-                                k0 = relpath(pwd, k0)
-                                k1 = relpath(pwd, k1)
+                                k0 = utils.relpath(pwd, k0)
+                                k1 = utils.relpath(pwd, k1)
                             renamed[k1] = [ (k0, prev), (k1, rev) ]
         # sort the results
         result, r = [], set()
@@ -1646,128 +1623,6 @@ def _get_darcs_repo(path, prefs):
     if p:
         return _Darcs(p)
 
-# Git support
-class _Git:
-    def __init__(self, root):
-        self.root = root
-
-    def getFileTemplate(self, prefs, name):
-        return [ (name, 'HEAD'), (name, None) ]
-
-    def getCommitTemplate(self, prefs, rev, names):
-        # build command
-        args = [ prefs.getString('git_bin'), 'show', '--pretty=format:', '--name-status', rev ]
-        # build list of interesting files
-        pwd, isabs = os.path.abspath(os.curdir), False
-        for name in names:
-            isabs |= os.path.isabs(name)
-        # run command
-        prev = rev + '^'
-        fs = _VcsFolderSet(names)
-        modified = {}
-        for s in utils.popenReadLines(self.root, args, prefs, 'git_bash'):
-            # parse response
-            if len(s) < 2 or s[0] not in 'ADM':
-                continue
-            k = self._extractPath(s[2:], prefs)
-            if fs.contains(k):
-                if not isabs:
-                    k = relpath(pwd, k)
-                if s[0] == 'D':
-                    # removed
-                    modified[k] = [ (k, prev), (None, None) ]
-                elif s[0] == 'A':
-                    # added
-                    modified[k] = [ (None, None), (k, rev) ]
-                else:
-                    # modified
-                    modified[k] = [ (k, prev), (k, rev) ]
-        # sort the results
-        return [ modified[k] for k in sorted(modified.keys()) ]
-
-    def _extractPath(self, s, prefs):
-        return os.path.join(self.root, prefs.convertToNativePath(s.strip()))
-
-    def getFolderTemplate(self, prefs, names):
-        # build command
-        args = [ prefs.getString('git_bin'), 'status', '--porcelain', '-s', '--untracked-files=no', '--ignore-submodules=all' ]
-        # build list of interesting files
-        pwd, isabs = os.path.abspath(os.curdir), False
-        for name in names:
-            isabs |= os.path.isabs(name)
-        # run command
-        prev = 'HEAD'
-        fs = _VcsFolderSet(names)
-        modified, renamed = {}, {}
-        # 'git status' will return 1 when a commit would fail
-        for s in utils.popenReadLines(self.root, args, prefs, 'git_bash', [0, 1]):
-            # parse response
-            if len(s) < 3:
-                continue
-            x, y, k = s[0], s[1], s[2:]
-            if x == 'R':
-                # renamed
-                k = k.split(' -> ')
-                if len(k) == 2:
-                    k0 = self._extractPath(k[0], prefs)
-                    k1 = self._extractPath(k[1], prefs)
-                    if fs.contains(k0) or fs.contains(k1):
-                        if not isabs:
-                            k0 = relpath(pwd, k0)
-                            k1 = relpath(pwd, k1)
-                        renamed[k1] = [ (k0, prev), (k1, None) ]
-            elif x == 'U' or y == 'U' or (x == 'D' and y == 'D'):
-                # merge conflict
-                k = self._extractPath(k, prefs)
-                if fs.contains(k):
-                    if not isabs:
-                        k = relpath(pwd, k)
-                    if x == 'D':
-                        panes = [ (None, None) ]
-                    else:
-                        panes = [ (k, ':2') ]
-                    panes.append((k, None))
-                    if y == 'D':
-                        panes.append((None, None))
-                    else:
-                        panes.append((k, ':3'))
-                    if x != 'A' and y != 'A':
-                        panes.append((k, ':1'))
-                    modified[k] = panes
-            else:
-                k = self._extractPath(k, prefs)
-                if fs.contains(k):
-                    if not isabs:
-                        k = relpath(pwd, k)
-                    if x == 'A':
-                        # added
-                        panes = [ (None, None) ]
-                    else:
-                        panes = [ (k, prev) ]
-                    # staged changes
-                    if x == 'D':
-                        panes.append((None, None))
-                    elif x != ' ':
-                        panes.append((k, ':0'))
-                    # working copy changes
-                    if y == 'D':
-                        panes.append((None, None))
-                    elif y != ' ':
-                        panes.append((k, None))
-                    modified[k] = panes
-        # sort the results
-        result, r = [], set()
-        for m in modified, renamed:
-            r.update(m.keys())
-        for k in sorted(r):
-            for m in modified, renamed:
-                if k in m:
-                    result.append(m[k])
-        return result
-
-    def getRevision(self, prefs, name, rev):
-        return utils.popenRead(self.root, [ prefs.getString('git_bin'), 'show', '{}:{}'.format(rev, relpath(self.root, os.path.abspath(name)).replace(os.sep, '/')) ], prefs, 'git_bash')
-
 def _get_git_repo(path, prefs):
     if 'GIT_DIR' in os.environ:
         try:
@@ -1788,7 +1643,7 @@ def _get_git_repo(path, prefs):
                     d = os.curdir
                 else:
                     d = os.sep.join(d)
-            return _Git(d)
+            return Git(d)
         except (IOError, OSError, WindowsError):
             # working tree not found
             pass
@@ -1796,7 +1651,7 @@ def _get_git_repo(path, prefs):
     while True:
         name = os.path.join(path, '.git')
         if os.path.isdir(name) or os.path.isfile(name):
-            return _Git(path)
+            return Git(path)
         newpath = os.path.dirname(path)
         if newpath == path:
             break
@@ -1837,7 +1692,7 @@ class _Hg:
             args.append(safeRelativePath(self.root, name, prefs, 'hg_cygwin'))
         # run command
         prev = self._getPreviousRevision(prefs, rev)
-        fs = _VcsFolderSet(names)
+        fs = FolderSet(names)
         modified = {}
         for s in utils.popenReadLines(self.root, args, prefs, 'hg_bash'):
             # parse response
@@ -1846,7 +1701,7 @@ class _Hg:
             k = os.path.join(self.root, prefs.convertToNativePath(s[2:]))
             if fs.contains(k):
                 if not isabs:
-                    k = relpath(pwd, k)
+                    k = utils.relpath(pwd, k)
                 if s[0] == 'R':
                     # removed
                     modified[k] = [ (k, prev), (None, None) ]
@@ -1866,7 +1721,17 @@ class _Hg:
         return self._getCommitTemplate(prefs, names, [ 'status', '-q' ], None)
 
     def getRevision(self, prefs, name, rev):
-        return utils.popenRead(self.root, [ prefs.getString('hg_bin'), 'cat', '-r', rev, safeRelativePath(self.root, name, prefs, 'hg_cygwin') ], prefs, 'hg_bash')
+        return utils.popenRead(
+            self.root,
+            [
+                prefs.getString('hg_bin'),
+                'cat',
+                '-r',
+                rev,
+                safeRelativePath(self.root, name, prefs, 'hg_cygwin')
+            ],
+            prefs,
+            'hg_bash')
 
 def _get_hg_repo(path, prefs):
     p = _find_parent_dir_with(path, '.hg')
@@ -1890,7 +1755,7 @@ class _Mtn:
             raise IOError('Ambiguous revision specifier')
         args = [ vcs_bin, 'automate', 'get_revision', ss[0] ]
         # build list of interesting files
-        fs = _VcsFolderSet(names)
+        fs = FolderSet(names)
         pwd, isabs = os.path.abspath(os.curdir), False
         for name in names:
             isabs |= os.path.isabs(name)
@@ -1960,12 +1825,12 @@ class _Mtn:
             if k in removed:
                 k = removed[k]
                 if not isabs:
-                    k = relpath(pwd, k)
+                    k = utils.relpath(pwd, k)
                 result.append([ (k, prev), (None, None) ])
             elif k in added:
                 k = added[k]
                 if not isabs:
-                    k = relpath(pwd, k)
+                    k = utils.relpath(pwd, k)
                 result.append([ (None, None), (k, rev) ])
             else:
                 if k in renamed:
@@ -1973,13 +1838,13 @@ class _Mtn:
                 else:
                     k0 = k1 = modified[k]
                 if not isabs:
-                    k0 = relpath(pwd, k0)
-                    k1 = relpath(pwd, k1)
+                    k0 = utils.relpath(pwd, k0)
+                    k1 = utils.relpath(pwd, k1)
                 result.append([ (k0, prev), (k1, rev) ])
         return result
 
     def getFolderTemplate(self, prefs, names):
-        fs = _VcsFolderSet(names)
+        fs = FolderSet(names)
         result = []
         pwd, isabs = os.path.abspath(os.curdir), False
         args = [ prefs.getString('mtn_bin'), 'automate', 'inventory', '--no-ignored', '--no-unchanged', '--no-unknown' ]
@@ -2009,7 +1874,7 @@ class _Mtn:
                     k = os.path.join(self.root, prefs.convertToNativePath(p))
                     if fs.contains(k):
                         if not isabs:
-                            k = relpath(pwd, k)
+                            k = utils.relpath(pwd, k)
                         removed[k] = [ (k, prev), (None, None) ]
                     processed = True
                 if 'added' in s and 'file' in m.get('new_type', []):
@@ -2017,7 +1882,7 @@ class _Mtn:
                     k = os.path.join(self.root, prefs.convertToNativePath(p))
                     if fs.contains(k):
                         if not isabs:
-                            k = relpath(pwd, k)
+                            k = utils.relpath(pwd, k)
                         added[k] = [ (None, None), (k, None) ]
                     processed = True
                 if 'rename_target' in s and 'file' in m.get('new_type', []) and len(m.get('old_path', [])) > 0:
@@ -2026,8 +1891,8 @@ class _Mtn:
                     k1 = os.path.join(self.root, prefs.convertToNativePath(p))
                     if fs.contains(k0) or fs.contains(k1):
                         if not isabs:
-                            k0 = relpath(pwd, k0)
-                            k1 = relpath(pwd, k1)
+                            k0 = utils.relpath(pwd, k0)
+                            k1 = utils.relpath(pwd, k1)
                         renamed[k1] = [ (k0, prev), (k1, None) ]
                     processed = True
                 if not processed and 'file' in m.get('fs_type', []):
@@ -2035,7 +1900,7 @@ class _Mtn:
                     k = os.path.join(self.root, prefs.convertToNativePath(p))
                     if fs.contains(k):
                         if not isabs:
-                            k = relpath(pwd, k)
+                            k = utils.relpath(pwd, k)
                         modified[k] = [ (k, prev), (k, None) ]
         # sort the results
         r = set()
@@ -2048,7 +1913,19 @@ class _Mtn:
         return result
 
     def getRevision(self, prefs, name, rev):
-        return utils.popenRead(self.root, [ prefs.getString('mtn_bin'), 'automate', 'get_file_of', '-q', '-r', rev, safeRelativePath(self.root, name, prefs, 'mtn_cygwin') ], prefs, 'mtn_bash')
+        return utils.popenRead(
+            self.root,
+            [
+                prefs.getString('mtn_bin'),
+                'automate',
+                'get_file_of',
+                '-q',
+                '-r',
+                rev,
+                safeRelativePath(self.root, name, prefs, 'mtn_cygwin')
+            ],
+            prefs,
+            'mtn_bash')
 
 def _get_mtn_repo(path, prefs):
     p = _find_parent_dir_with(path, '_MTN')
@@ -2145,14 +2022,24 @@ class _Rcs:
                 k = prefs.convertToNativePath(line[14:])
                 k = os.path.join(self.root, os.path.normpath(k))
                 if not isabs:
-                    k = relpath(pwd, k)
+                    k = utils.relpath(pwd, k)
             elif line.startswith('head: '):
                 r[k] = line[6:]
         # sort the results
         return [ [ (k, r[k]), (k, None) ] for k in sorted(r.keys()) ]
 
     def getRevision(self, prefs, name, rev):
-        return utils.popenRead(self.root, [ prefs.getString('rcs_bin_co'), '-p', '-q', '-r' + rev, safeRelativePath(self.root, name, prefs, 'rcs_cygwin') ], prefs, 'rcs_bash')
+        return utils.popenRead(
+            self.root,
+            [
+                prefs.getString('rcs_bin_co'),
+                '-p',
+                '-q',
+                '-r' + rev,
+                safeRelativePath(self.root, name, prefs, 'rcs_cygwin')
+            ],
+            prefs,
+            'rcs_bash')
 
 def _get_rcs_repo(path, prefs):
     if os.path.isdir(os.path.join(path, 'RCS')):
@@ -2248,7 +2135,7 @@ class _Svn:
             if rev is None:
                 args.append(safeRelativePath(self.root, name, prefs, vcs + '_cygwin'))
         # run command
-        fs = _VcsFolderSet(names)
+        fs = FolderSet(names)
         modified, added, removed = {}, set(), set()
         for s in utils.popenReadLines(self.root, args, prefs, vcs_bash):
             status = self._parseStatusLine(s)
@@ -2270,7 +2157,7 @@ class _Svn:
                     # modified file or merge conflict
                     k = os.path.join(self.root, k)
                     if not isabs:
-                        k = relpath(pwd, k)
+                        k = utils.relpath(pwd, k)
                     modified[k] = [ (k, prev), (k, rev) ]
                 elif v == 'C':
                     # merge conflict
@@ -2287,7 +2174,7 @@ class _Svn:
                     # confirmed as added file
                     k = os.path.join(self.root, k)
                     if not isabs:
-                        k = relpath(pwd, k)
+                        k = utils.relpath(pwd, k)
                     added[k] = [ (None, None), (k, None) ]
         else:
             m = {}
@@ -2311,7 +2198,7 @@ class _Svn:
                         # confirmed as added file
                         k = os.path.join(self.root, os.path.join(p, s))
                         if not isabs:
-                            k = relpath(pwd, k)
+                            k = utils.relpath(pwd, k)
                         added[k] = [ (None, None), (k, rev) ]
         # determine if removed items are files or directories
         if prev == 'BASE':
@@ -2321,7 +2208,7 @@ class _Svn:
                     # confirmed item as file
                     k = os.path.join(self.root, k)
                     if not isabs:
-                        k = relpath(pwd, k)
+                        k = utils.relpath(pwd, k)
                     removed[k] = [ (k, prev), (None, None) ]
         else:
             m = {}
@@ -2343,7 +2230,7 @@ class _Svn:
                             # confirmed item as file
                             k = os.path.join(self.root, os.path.join(p, s))
                             if not isabs:
-                                k = relpath(pwd, k)
+                                k = utils.relpath(pwd, k)
                             removed[k] = [ (k, prev), (None, None) ]
             # recursively find all unreported removed files
             while removed_dir:
@@ -2358,7 +2245,7 @@ class _Svn:
                             # confirmed item as file
                             k = os.path.join(self.root, os.path.join(p, s))
                             if not isabs:
-                                k = relpath(pwd, k)
+                                k = utils.relpath(pwd, k)
                             removed[k] = [ (k, prev), (None, None) ]
         # sort the results
         r = set()
@@ -2379,8 +2266,27 @@ class _Svn:
     def getRevision(self, prefs, name, rev):
         vcs_bin = prefs.getString('svn_bin')
         if rev in [ 'BASE', 'COMMITTED', 'PREV' ]:
-            return utils.popenRead(self.root, [ vcs_bin, 'cat', '{}@{}'.format(safeRelativePath(self.root, name, prefs, 'svn_cygwin'), rev) ], prefs, 'svn_bash')
-        return utils.popenRead(self.root, [ vcs_bin, 'cat', '{}/{}@{}'.format(self._getURL(prefs), relpath(self.root, os.path.abspath(name)).replace(os.sep, '/'), rev) ], prefs, 'svn_bash')
+            return utils.popenRead(
+                self.root,
+                [
+                    vcs_bin,
+                    'cat',
+                    '{}@{}'.format(safeRelativePath(self.root, name, prefs, 'svn_cygwin'), rev)
+                ],
+                prefs,
+                'svn_bash')
+        return utils.popenRead(
+            self.root,
+            [
+                vcs_bin,
+                'cat',
+                '{}/{}@{}'.format(
+                    self._getURL(prefs),
+                    utils.relpath(self.root, os.path.abspath(name)).replace(os.sep, '/'),
+                    rev)
+            ],
+            prefs,
+            'svn_bash')
 
 def _get_svn_repo(path, prefs):
     p = _find_parent_dir_with(path, '.svn')
@@ -2410,7 +2316,19 @@ class _Svk(_Svn):
         return str(int(rev) - 1)
 
     def getRevision(self, prefs, name, rev):
-        return utils.popenRead(self.root, [ prefs.getString('svk_bin'), 'cat', '-r', rev, '{}/{}'.format(self._getURL(prefs), relpath(self.root, os.path.abspath(name)).replace(os.sep, '/')) ], prefs, 'svk_bash')
+        return utils.popenRead(
+            self.root,
+            [
+                prefs.getString('svk_bin'),
+                'cat',
+                '-r',
+                rev,
+                '{}/{}'.format(
+                    self._getURL(prefs),
+                    utils.relpath(self.root, os.path.abspath(name)).replace(os.sep, '/'))
+            ],
+            prefs,
+            'svk_bash')
 
 def _get_svk_repo(path, prefs):
     name = path
@@ -2469,7 +2387,7 @@ def _get_svk_repo(path, prefs):
                             projs.append(key)
                     break
             # check if the file belongs to one of the project directories
-            if _VcsFolderSet(projs).contains(name):
+            if FolderSet(projs).contains(name):
                 return _Svk(path)
         except IOError:
             utils.logError(_('Error parsing %s.') % (svkconfig, ))

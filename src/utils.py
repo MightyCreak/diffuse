@@ -79,6 +79,20 @@ def make_subdirs(p, ss):
 def useFlatpak():
     return constants.use_flatpak
 
+# constructs a relative path from 'a' to 'b', both should be absolute paths
+def relpath(a, b):
+    if isWindows():
+        if drive_from_path(a) != drive_from_path(b):
+            return b
+    c1 = [ c for c in a.split(os.sep) if c != '' ]
+    c2 = [ c for c in b.split(os.sep) if c != '' ]
+    i, n = 0, len(c1)
+    while i < n and i < len(c2) and c1[i] == c2[i]:
+        i += 1
+    r = (n - i) * [ os.pardir ]
+    r.extend(c2[i:])
+    return os.sep.join(r)
+
 # use popen to read the output of a command
 def popenRead(dn, cmd, prefs, bash_pref, success_results=None):
     if success_results is None:
