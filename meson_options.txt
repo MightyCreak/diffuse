@@ -1,1 +1,3 @@
+option('log_print_output', type: 'boolean', value: false)
+option('log_print_stack', type: 'boolean', value: false)
 option('use_flatpak', type: 'boolean', value: false)

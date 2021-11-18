@@ -10,6 +10,8 @@ conf.set('VERSION', meson.project_version())
 conf.set('localedir', join_paths(get_option('prefix'), get_option('localedir')))
 conf.set('pkgdatadir', pkgdatadir)
 conf.set('sysconfigdir', sysconfdir)
+conf.set('log_print_output', get_option('log_print_output'))
+conf.set('log_print_stack', get_option('log_print_stack'))
 conf.set('use_flatpak', get_option('use_flatpak'))
 
 configure_file(

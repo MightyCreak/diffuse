@@ -21,6 +21,7 @@ import os
 import sys
 import locale
 import subprocess
+import traceback
 
 import gi
 
@@ -43,12 +44,19 @@ class MessageDialog(Gtk.MessageDialog):
 def isWindows():
     return os.name == 'nt'
 
+def _logPrintOutput(msg):
+    if constants.log_print_output:
+        print(msg, file=sys.stderr)
+        if constants.log_print_stack:
+            traceback.print_stack()
+
 # convenience function to display debug messages
 def logDebug(s):
-    pass #sys.stderr.write(f'{constants.APP_NAME}: {s}\n')
+    _logPrintOutput(f'DEBUG: {s}')
 
 # report error messages
 def logError(s):
+    _logPrintOutput(f'ERROR: {s}')
     m = MessageDialog(None, Gtk.MessageType.ERROR, s)
     m.run()
     m.destroy()

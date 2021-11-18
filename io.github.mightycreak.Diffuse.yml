@@ -4,16 +4,18 @@ runtime-version: '3.38'
 sdk: org.gnome.Sdk
 command: diffuse
 finish-args:
+  - --filesystem=home
+  - --share=ipc
   - --socket=wayland
   - --socket=fallback-x11
-  - --share=ipc
-  - --filesystem=home
   - --talk-name=org.freedesktop.Flatpak
 modules:
   - name: diffuse
     builddir: true
     buildsystem: meson
     config-opts:
+      - -Dlog_print_output=true
+      - -Dlog_print_stack=true
       - -Duse_flatpak=true
     sources:
       - type: dir
