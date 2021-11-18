@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - Modularized the VCSs (reducing main.py by around 1300 lines)
+- Bump GNOME runtime version from 3.38 to 41
 
 ### Fixed
 - Fixed 'APP_NAME' error when opening non existing file
