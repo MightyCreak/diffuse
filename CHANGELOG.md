@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - Fixed 'APP_NAME' error when opening non existing file
+- Fixed the Portuguese Brazilian (pt_BR) translation
 
 ## [0.7.1] - 2021-11-17
 
