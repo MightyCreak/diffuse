@@ -60,6 +60,7 @@ from diffuse.vcs.darcs import Darcs
 from diffuse.vcs.git import Git
 from diffuse.vcs.hg import Hg
 from diffuse.vcs.mtn import Mtn
+from diffuse.vcs.rcs import Rcs
 
 if not hasattr(__builtins__, 'WindowsError'):
     # define 'WindowsError' so 'except' statements will work on all platforms
@@ -1274,118 +1275,9 @@ def _get_mtn_repo(path, prefs):
     if p:
         return Mtn(p)
 
-# RCS support
-class _Rcs:
-    def __init__(self, root):
-        self.root = root
-
-    def getFileTemplate(self, prefs, name):
-        args = [ prefs.getString('rcs_bin_rlog'), '-L', '-h', utils.safeRelativePath(self.root, name, prefs, 'rcs_cygwin') ]
-        rev = ''
-        for line in utils.popenReadLines(self.root, args, prefs, 'rcs_bash'):
-            if line.startswith('head: '):
-                rev = line[6:]
-        return [ (name, rev), (name, None) ]
-
-    def getCommitTemplate(self, prefs, rev, names):
-        result = []
-        try:
-            r, prev = rev.split('.'), None
-            if len(r) > 1:
-                m = int(r.pop())
-                if m > 1:
-                    r.append(str(m - 1))
-                else:
-                    m = int(r.pop())
-                if len(r):
-                    prev = '.'.join(r)
-            for k in sorted(names):
-                if prev is None:
-                    k0 = None
-                else:
-                    k0 = k
-                result.append([ (k0, prev), (k, rev) ])
-        except ValueError:
-            utils.logError(_('Error parsing revision %s.') % (rev, ))
-        return result
-
-    def getFolderTemplate(self, prefs, names):
-        # build command
-        cmd = [ prefs.getString('rcs_bin_rlog'), '-L', '-h' ]
-        # build list of interesting files
-        pwd, isabs = os.path.abspath(os.curdir), False
-        r = []
-        for k in names:
-            if os.path.isdir(k):
-                # the user specified a folder
-                n, ex = [ k ], True
-                while len(n) > 0:
-                    s = n.pop()
-                    recurse = os.path.isdir(os.path.join(s, 'RCS'))
-                    if ex or recurse:
-                        ex = False
-                        for v in os.listdir(s):
-                            dn = os.path.join(s, v)
-                            if v.endswith(',v') and os.path.isfile(dn):
-                                # map to checkout name
-                                r.append(dn[:-2])
-                            elif v == 'RCS' and os.path.isdir(dn):
-                                for v in os.listdir(dn):
-                                    if os.path.isfile(os.path.join(dn, v)):
-                                        if v.endswith(',v'):
-                                            v = v[:-2]
-                                        r.append(os.path.join(s, v))
-                            elif recurse and os.path.isdir(dn) and not os.path.islink(dn):
-                                n.append(dn)
-            else:
-                # the user specified a file
-                s = k + ',v'
-                if os.path.isfile(s):
-                    r.append(k)
-                    continue
-                s = k.split(os.sep)
-                s.insert(-1, 'RCS')
-                # old-style RCS repository
-                if os.path.isfile(os.sep.join(s)):
-                    r.append(k)
-                    continue
-                # new-style RCS repository
-                s[-1] += ',v'
-                if os.path.isfile(os.sep.join(s)):
-                    r.append(k)
-        for k in r:
-            isabs |= os.path.isabs(k)
-        args = [ utils.safeRelativePath(self.root, k, prefs, 'rcs_cygwin') for k in r ]
-        # run command
-        r, k = {}, ''
-        for line in utils.popenXArgsReadLines(self.root, cmd, args, prefs, 'rcs_bash'):
-            # parse response
-            if line.startswith('Working file: '):
-                k = prefs.convertToNativePath(line[14:])
-                k = os.path.join(self.root, os.path.normpath(k))
-                if not isabs:
-                    k = utils.relpath(pwd, k)
-            elif line.startswith('head: '):
-                r[k] = line[6:]
-        # sort the results
-        return [ [ (k, r[k]), (k, None) ] for k in sorted(r.keys()) ]
-
-    def getRevision(self, prefs, name, rev):
-        return utils.popenRead(
-            self.root,
-            [
-                prefs.getString('rcs_bin_co'),
-                '-p',
-                '-q',
-                '-r' + rev,
-                utils.safeRelativePath(self.root, name, prefs, 'rcs_cygwin')
-            ],
-            prefs,
-            'rcs_bash')
-
 def _get_rcs_repo(path, prefs):
     if os.path.isdir(os.path.join(path, 'RCS')):
-        return _Rcs(path)
+        return Rcs(path)
 
     # [rfailliot] this code doesn't seem to work, but was in 0.4.8 too.
     # I'm letting it here until further tests are done, but it is possible
@@ -1393,7 +1285,7 @@ def _get_rcs_repo(path, prefs):
     try:
         for s in os.listdir(path):
             if s.endswith(',v') and os.path.isfile(os.path.join(path, s)):
-                return _Rcs(path)
+                return Rcs(path)
     except OSError:
         # the user specified an invalid folder name
         pass
