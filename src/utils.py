@@ -51,15 +51,19 @@ def _logPrintOutput(msg):
             traceback.print_stack()
 
 # convenience function to display debug messages
-def logDebug(s):
-    _logPrintOutput(f'DEBUG: {s}')
+def logDebug(msg):
+    _logPrintOutput(f'DEBUG: {msg}')
 
 # report error messages
-def logError(s):
-    _logPrintOutput(f'ERROR: {s}')
-    m = MessageDialog(None, Gtk.MessageType.ERROR, s)
-    m.run()
-    m.destroy()
+def logError(msg):
+    _logPrintOutput(f'ERROR: {msg}')
+
+# report error messages and show dialog
+def logErrorAndDialog(msg,parent=None):
+    logError(msg)
+    dialog = MessageDialog(parent, Gtk.MessageType.ERROR, msg)
+    dialog.run()
+    dialog.destroy()
 
 # create nested subdirectories and return the complete path
 def make_subdirs(p, ss):
