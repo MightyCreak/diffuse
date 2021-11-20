@@ -47,6 +47,29 @@ class MessageDialog(Gtk.MessageDialog):
             text=s)
         self.set_title(constants.APP_NAME)
 
+# widget to help pick an encoding
+class EncodingMenu(Gtk.Box):
+    def __init__(self, prefs, autodetect=False):
+        Gtk.Box.__init__(self, orientation=Gtk.Orientation.HORIZONTAL)
+        self.combobox = combobox = Gtk.ComboBoxText.new()
+        self.encodings = prefs.getEncodings()[:]
+        for e in self.encodings:
+            combobox.append_text(e)
+        if autodetect:
+            self.encodings.insert(0, None)
+            combobox.prepend_text(_('Auto Detect'))
+        self.pack_start(combobox, False, False, 0) # pylint: disable=no-member
+        combobox.show()
+
+    def set_text(self, encoding):
+        encoding = norm_encoding(encoding)
+        if encoding in self.encodings:
+            self.combobox.set_active(self.encodings.index(encoding))
+
+    def get_text(self):
+        i = self.combobox.get_active()
+        return self.encodings[i] if i >= 0 else None
+
 # platform test
 def isWindows():
     return os.name == 'nt'
@@ -69,7 +92,7 @@ def logError(msg):
 def logErrorAndDialog(msg,parent=None):
     logError(msg)
     dialog = MessageDialog(parent, Gtk.MessageType.ERROR, msg)
-    dialog.run()
+    dialog.run() # pylint: disable=no-member
     dialog.destroy()
 
 # create nested subdirectories and return the complete path
@@ -229,6 +252,18 @@ def splitlines(text: str) -> list[str]:
 # also recognize old Mac OS line endings
 def readlines(fd):
     return _strip_eols(splitlines(fd.read()))
+
+# map an encoding name to its standard form
+def norm_encoding(e):
+    if e is not None:
+        return e.replace('-', '_').lower()
+    return None
+
+def null_to_empty(s):
+    if s is None:
+        s = ''
+    return s
+
 
 # use the program's location as a starting place to search for supporting files
 # such as icon and help documentation

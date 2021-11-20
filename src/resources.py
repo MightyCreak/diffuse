@@ -222,7 +222,7 @@ class Resources:
             elif token == 'Ctrl':
                 modifiers |= Gdk.ModifierType.CONTROL_MASK
             elif token == 'Alt':
-                modifiers |= Gdk.ModifierType.MOD1_MASK
+                modifiers |= Gdk.ModifierType.MOD1_MASK # pylint: disable=no-member
             elif len(token) == 0 or token[0] == '_':
                 raise ValueError()
             else:

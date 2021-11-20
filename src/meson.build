@@ -33,6 +33,7 @@ configure_file(
 diffuse_sources = [
   '__init__.py',
   'main.py',
+  'preferences.py',
   'resources.py',
   'utils.py',
 ]
