@@ -87,23 +87,24 @@ disable=raw-checker-failed,
         deprecated-pragma,
         use-symbolic-message-instead,
 
-        # temporary silenced messages
+        # temporary silenced messages (ordered alphabetically)
+        duplicate-code,
+        fixme,
+        import-error,
         invalid-name,
-        missing-module-docstring,
         missing-class-docstring,
         missing-function-docstring,
-        import-error,
+        missing-module-docstring,
         no-self-use,
+        too-few-public-methods,
         too-many-arguments,
         too-many-branches,
+        too-many-instance-attributes,
         too-many-locals,
-        too-many-statements,
         too-many-nested-blocks,
-        too-few-public-methods,
-        unused-argument,
-        fixme,
+        too-many-statements,
         unnecessary-dict-index-lookup,
-        duplicate-code
+        unused-argument
 
 # Enable the message, report, category or checker with the given id(s). You can
 # either give multiple identifier separated by comma (,) or put this option
