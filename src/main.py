@@ -22,8 +22,6 @@ import sys
 import codecs
 import difflib
 import encodings
-import glob
-import re
 import shlex
 import stat
 import unicodedata
@@ -42,8 +40,9 @@ from gi.repository import GObject, Gtk, Gdk, GdkPixbuf, Pango, PangoCairo
 
 from urllib.parse import urlparse
 
-from diffuse import utils
 from diffuse import constants
+from diffuse import utils
+from diffuse.dialogs import AboutDialog, FileChooserDialog, NumericDialog, SearchDialog
 from diffuse.preferences import Preferences
 from diffuse.resources import Resources
 from diffuse.vcs.vcs_registry import VcsRegistry
@@ -146,7 +145,7 @@ def has_unix_line_ending(s):
     return s.endswith('\n') and not s.endswith('\r\n')
 
 # returns the format mask for a list of strings
-def getFormat(ss):
+def get_format(ss):
     flags = 0
     for s in ss:
         if s is not None:
@@ -161,7 +160,7 @@ def getFormat(ss):
 # convenience method to change the line ending of a string
 def convert_to_format(s, format):
     if s is not None and format != 0:
-        old_format = getFormat([ s ])
+        old_format = get_format([ s ])
         if old_format != 0 and (old_format & format) == 0:
             s = utils.strip_eol(s)
             # prefer the host line ending style
@@ -436,7 +435,7 @@ def getCharacterClass(c):
     return OTHER_CLASS
 
 # longest common subsequence of unique elements common to 'a' and 'b'
-def __patience_subsequence(a, b):
+def _patience_subsequence(a, b):
     # value unique lines by their order in each list
     value_a, value_b = {}, {}
     # find unique values in 'a'
@@ -491,7 +490,7 @@ def __patience_subsequence(a, b):
     return result
 
 # difflib-style approximation of the longest common subsequence
-def __lcs_approx(a, b):
+def _lcs_approx(a, b):
     count1, lookup = {}, {}
     # count occurrences of each element in 'a'
     for s in a:
@@ -562,8 +561,8 @@ def __lcs_approx(a, b):
                     aidx, bidx, nidx = ai, bi, n
             return aidx, bidx, nidx
 
-# patinence diff with difflib-style fallback
-def patience_diff(a, b):
+# patience diff with difflib-style fallback
+def _patience_diff(a, b):
     matches, len_a, len_b = [], len(a), len(b)
     if len_a and len_b:
         blocks = [ (0, len_a, 0, len_b, 0) ]
@@ -571,7 +570,7 @@ def patience_diff(a, b):
             start_a, end_a, start_b, end_b, match_idx = blocks.pop()
             aa, bb = a[start_a:end_a], b[start_b:end_b]
             # try patience
-            pivots = __patience_subsequence(aa, bb)
+            pivots = _patience_subsequence(aa, bb)
             if pivots:
                 offset_a, offset_b = start_a, start_b
                 for pivot_a, pivot_b in pivots:
@@ -599,7 +598,7 @@ def patience_diff(a, b):
                     blocks.append((start_a, end_a, start_b, end_b, match_idx))
             else:
                 # fallback if patience fails
-                pivots = __lcs_approx(aa, bb)
+                pivots = _lcs_approx(aa, bb)
                 if pivots:
                     idx_a, idx_b, n = pivots
                     idx_a += start_a
@@ -1600,7 +1599,7 @@ class FileDiffViewer(Gtk.Grid):
         # align s1 and s2 by inserting spacer lines
         # this will be used to determine which lines from the inner lists of
         # lines should be neighbours
-        for block in patience_diff(t1, t2):
+        for block in _patience_diff(t1, t2):
             delta = (n1 + block[0]) - (n2 + block[1])
             if delta < 0:
                 # insert spacer lines in s1
@@ -1679,7 +1678,7 @@ class FileDiffViewer(Gtk.Grid):
     def replaceContents(self, f, ss):
         self.alignmentChange(False)
         # determine the format for the text
-        self.setFormat(f, getFormat(ss))
+        self.setFormat(f, get_format(ss))
 
         # create an initial set of blocks for the lines
         blocks = []
@@ -1786,7 +1785,7 @@ class FileDiffViewer(Gtk.Grid):
             ss.append('')
         # change the format to that of the target pane
         if pane.format == 0:
-            self.setFormat(f, getFormat(ss))
+            self.setFormat(f, get_format(ss))
         ss = [ convert_to_format(s, pane.format) for s in ss ]
         # prepend original text that was before the selection
         if col0 > 0:
@@ -3968,7 +3967,7 @@ class FileDiffViewer(Gtk.Grid):
         if pane.format == 0:
             # copy the format of the source pane if the format for the
             # destination pane as not yet been determined
-            self.setFormat(f_dst, getFormat(ss))
+            self.setFormat(f_dst, get_format(ss))
         for i, s in enumerate(ss):
             self.updateText(f_dst, start + i, convert_to_format(s, pane.format))
         n = len(ss)
@@ -4107,180 +4106,12 @@ GObject.signal_new('cursor-changed', FileDiffViewer, GObject.SignalFlags.RUN_LAS
 GObject.signal_new('syntax-changed', FileDiffViewer, GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, (str, ))
 GObject.signal_new('format-changed', FileDiffViewer, GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, (int, int))
 
-# dialogue used to search for text
-class SearchDialog(Gtk.Dialog):
-    def __init__(self, parent, pattern=None, history=None):
-        Gtk.Dialog.__init__(self, title=_('Find...'), parent=parent, destroy_with_parent=True)
-        self.add_button(Gtk.STOCK_CANCEL, Gtk.ResponseType.REJECT)
-        self.add_button(Gtk.STOCK_OK, Gtk.ResponseType.ACCEPT)
-
-        vbox = Gtk.Box.new(Gtk.Orientation.VERTICAL, 0)
-        vbox.set_border_width(10)
-
-        hbox = Gtk.Box.new(Gtk.Orientation.HORIZONTAL, 0)
-        label = Gtk.Label.new(_('Search For: '))
-        hbox.pack_start(label, False, False, 0)
-        label.show()
-        combo = Gtk.ComboBoxText.new_with_entry()
-        self.entry = combo.get_child()
-        self.entry.connect('activate', self.entry_cb)
-
-        if pattern is not None:
-            self.entry.set_text(pattern)
-
-        if history is not None:
-            completion = Gtk.EntryCompletion.new()
-            liststore = Gtk.ListStore(GObject.TYPE_STRING)
-            completion.set_model(liststore)
-            completion.set_text_column(0)
-            for h in history:
-                liststore.append([h])
-                combo.append_text(h)
-            self.entry.set_completion(completion)
-
-        hbox.pack_start(combo, True, True, 0)
-        combo.show()
-        vbox.pack_start(hbox, False, False, 0)
-        hbox.show()
-
-        button = Gtk.CheckButton.new_with_mnemonic(_('Match Case'))
-        self.match_case_button = button
-        vbox.pack_start(button, False, False, 0)
-        button.show()
-
-        button = Gtk.CheckButton.new_with_mnemonic(_('Search Backwards'))
-        self.backwards_button = button
-        vbox.pack_start(button, False, False, 0)
-        button.show()
-
-        self.vbox.pack_start(vbox, False, False, 0) # pylint: disable=no-member
-        vbox.show()
-
-    # callback used when the Enter key is pressed
-    def entry_cb(self, widget):
-        self.response(Gtk.ResponseType.ACCEPT)
-
 # convenience method to request confirmation when closing the last tab
 def confirmTabClose(parent):
     dialog = utils.MessageDialog(parent, Gtk.MessageType.WARNING, _('Closing this tab will quit %s.') % (constants.APP_NAME, ))
     end = (dialog.run() == Gtk.ResponseType.OK)
     dialog.destroy()
     return end
-
-# custom dialogue for picking files with widgets for specifying the encoding
-# and revision
-class FileChooserDialog(Gtk.FileChooserDialog):
-    # record last chosen folder so the file chooser can start at a more useful
-    # location for empty panes
-    last_chosen_folder = os.path.realpath(os.curdir)
-
-    def __current_folder_changed_cb(self, widget):
-        FileChooserDialog.last_chosen_folder = widget.get_current_folder()
-
-    def __init__(self, title, parent, prefs, action, accept, rev=False):
-        Gtk.FileChooserDialog.__init__(self, title=title, parent=parent, action=action)
-        self.add_button(Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL)
-        self.add_button(accept, Gtk.ResponseType.OK)
-        self.prefs = prefs
-        hbox = Gtk.Box.new(Gtk.Orientation.HORIZONTAL, 0)
-        hbox.set_border_width(5)
-        label = Gtk.Label.new(_('Encoding: '))
-        hbox.pack_start(label, False, False, 0)
-        label.show()
-        self.encoding = entry = utils.EncodingMenu(prefs, action in [ Gtk.FileChooserAction.OPEN, Gtk.FileChooserAction.SELECT_FOLDER ])
-        hbox.pack_start(entry, False, False, 5)
-        entry.show()
-        if rev:
-            self.revision = entry = Gtk.Entry.new()
-            hbox.pack_end(entry, False, False, 0)
-            entry.show()
-            label = Gtk.Label.new(_('Revision: '))
-            hbox.pack_end(label, False, False, 0)
-            label.show()
-
-        self.vbox.pack_start(hbox, False, False, 0) # pylint: disable=no-member
-        hbox.show()
-        self.set_current_folder(self.last_chosen_folder)
-        self.connect('current-folder-changed', self.__current_folder_changed_cb)
-
-    def set_encoding(self, encoding):
-        self.encoding.set_text(encoding)
-
-    def get_encoding(self):
-        return self.encoding.get_text()
-
-    def get_revision(self):
-        return self.revision.get_text()
-
-    def get_filename(self):
-        # convert from UTF-8 string to unicode
-        return Gtk.FileChooserDialog.get_filename(self)
-
-# dialogue used to search for text
-class NumericDialog(Gtk.Dialog):
-    def __init__(self, parent, title, text, val, lower, upper, step=1, page=0):
-        Gtk.Dialog.__init__(self, title=title, parent=parent, destroy_with_parent=True)
-        self.add_button(Gtk.STOCK_CANCEL, Gtk.ResponseType.REJECT)
-        self.add_button(Gtk.STOCK_OK, Gtk.ResponseType.ACCEPT)
-
-        vbox = Gtk.Box.new(Gtk.Orientation.VERTICAL, 0)
-        vbox.set_border_width(10)
-
-        hbox = Gtk.Box.new(Gtk.Orientation.HORIZONTAL, 0)
-        label = Gtk.Label.new(text)
-        hbox.pack_start(label, False, False, 0)
-        label.show()
-        adj = Gtk.Adjustment.new(val, lower, upper, step, page, 0)
-        self.button = button = Gtk.SpinButton.new(adj, 1.0, 0)
-        button.connect('activate', self.button_cb)
-        hbox.pack_start(button, True, True, 0)
-        button.show()
-
-        vbox.pack_start(hbox, True, True, 0)
-        hbox.show()
-
-        self.vbox.pack_start(vbox, False, False, 0) # pylint: disable=no-member
-        vbox.show()
-
-    def button_cb(self, widget):
-        self.response(Gtk.ResponseType.ACCEPT)
-
-# establish callback for the about dialog's link to Diffuse's web site
-def url_hook(dialog, link, userdata):
-    webbrowser.open(link)
-
-
-
-# the about dialog
-class AboutDialog(Gtk.AboutDialog):
-    def __init__(self):
-        Gtk.AboutDialog.__init__(self)
-        self.set_logo_icon_name('io.github.mightycreak.Diffuse')
-        self.set_program_name(constants.APP_NAME)
-        self.set_version(constants.VERSION)
-        self.set_comments(_('Diffuse is a graphical tool for merging and comparing text files.'))
-        self.set_copyright(constants.COPYRIGHT)
-        self.set_website(constants.WEBSITE)
-        self.set_authors([ 'Derrick Moser <derrick_moser@yahoo.com>',
-                           'Romain Failliot <romain.failliot@foolstep.com>' ])
-        self.set_translator_credits(_('translator-credits'))
-        license_text = [
-            constants.APP_NAME + ' ' + constants.VERSION + '\n\n',
-            constants.COPYRIGHT + '\n\n',
-            _('''This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 2 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License along
-with this program; if not, write to the Free Software Foundation, Inc.,
-51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.''') ]
-        self.set_license(''.join(license_text))
 
 # widget classed to create notebook tabs with labels and a close button
 # use notebooktab.button.connect() to be notified when the button is pressed
