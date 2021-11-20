@@ -96,8 +96,8 @@ def relpath(a, b):
 # helper function prevent files from being confused with command line options
 # by prepending './' to the basename
 def safeRelativePath(abspath1, name, prefs, cygwin_pref):
-    s = os.path.join(os.curdir, utils.relpath(abspath1, os.path.abspath(name)))
-    if utils.isWindows():
+    s = os.path.join(os.curdir, relpath(abspath1, os.path.abspath(name)))
+    if isWindows():
         if prefs.getBool(cygwin_pref):
             s = s.replace('\\', '/')
         else:
@@ -181,6 +181,55 @@ def popenXArgsReadLines(dn, cmd, args, prefs, bash_pref):
 def globEscape(s):
     m = dict([ (c, f'[{c}]') for c in '[]?*' ])
     return ''.join([ m.get(c, c) for c in s ])
+
+# returns the number of characters in the string excluding any line ending
+# characters
+def len_minus_line_ending(s):
+    if s is None:
+        return 0
+    n = len(s)
+    if s.endswith('\r\n'):
+        n -= 2
+    elif s.endswith('\r') or s.endswith('\n'):
+        n -= 1
+    return n
+
+# returns the string without the line ending characters
+def strip_eol(s):
+    if s is not None:
+        return s[:len_minus_line_ending(s)]
+
+# split string into lines based upon DOS, Mac, and Unix line endings
+def splitlines(s):
+    # split on new line characters
+    temp, i, n = [], 0, len(s)
+    while i < n:
+        j = s.find('\n', i)
+        if j < 0:
+            temp.append(s[i:])
+            break
+        j += 1
+        temp.append(s[i:j])
+        i = j
+    # split on carriage return characters
+    ss = []
+    for s in temp:
+        i, n = 0, len(s)
+        while i < n:
+            j = s.find('\r', i)
+            if j < 0:
+                ss.append(s[i:])
+                break
+            j += 1
+            if j < n and s[j] == '\n':
+                j += 1
+            ss.append(s[i:j])
+            i = j
+    return ss
+
+# also recognize old Mac OS line endings
+def readlines(fd):
+    return [ strip_eol(s) for s in splitlines(fd.read()) ]
 
 # use the program's location as a starting place to search for supporting files
 # such as icon and help documentation

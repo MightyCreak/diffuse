@@ -39,7 +39,7 @@ class Svn(VcsInterface):
 
     def _parseStatusLine(self, s):
         if len(s) < 8 or s[0] not in 'ACDMR':
-            return
+            return '', ''
         # subversion 1.6 adds a new column
         k = 7
         if k < len(s) and s[k] == ' ':
@@ -50,8 +50,7 @@ class Svn(VcsInterface):
         if rev is None:
             return 'BASE'
         m = int(rev)
-        if m > 1:
-            return str(m - 1)
+        return str(max(m > 1, 0))
 
     def _getURL(self, prefs):
         if self.url is None:
@@ -152,7 +151,7 @@ class Svn(VcsInterface):
                     m[d] = set()
                 m[d].add(b)
             # remove items we can easily determine to be directories
-            for k in m.keys():
+            for k in m:
                 d = os.path.dirname(k)
                 if d in m:
                     m[d].discard(os.path.basename(k))
@@ -161,7 +160,18 @@ class Svn(VcsInterface):
             # determine which are directories
             added = {}
             for p, v in m.items():
-                for s in utils.popenReadLines(self.root, [ vcs_bin, 'list', '-r', rev, '{}/{}'.format(self._getURL(prefs), p.replace(os.sep, '/')) ], prefs, vcs_bash):
+                lines = utils.popenReadLines(
+                    self.root,
+                    [
+                        vcs_bin,
+                        'list',
+                        '-r',
+                        rev,
+                        f"{self._getURL(prefs)}/{p.replace(os.sep, '/')}"
+                    ],
+                    prefs,
+                    vcs_bash)
+                for s in lines:
                     if s in v:
                         # confirmed as added file
                         k = os.path.join(self.root, os.path.join(p, s))
@@ -187,7 +197,18 @@ class Svn(VcsInterface):
                 m[d].add(b)
             removed_dir, removed = set(), {}
             for p, v in m.items():
-                for s in utils.popenReadLines(self.root, [ vcs_bin, 'list', '-r', prev, '{}/{}'.format(self._getURL(prefs), p.replace(os.sep, '/')) ], prefs, vcs_bash):
+                lines = utils.popenReadLines(
+                    self.root,
+                    [
+                        vcs_bin,
+                        'list',
+                        '-r',
+                        prev,
+                        f"{self._getURL(prefs)}/{p.replace(os.sep, '/')}"
+                    ],
+                    prefs,
+                    vcs_bash)
+                for s in lines:
                     if s.endswith('/'):
                         s = s[:-1]
                         if s in v:
@@ -205,7 +226,18 @@ class Svn(VcsInterface):
                 tmp = removed_dir
                 removed_dir = set()
                 for p in tmp:
-                    for s in utils.popenReadLines(self.root, [ vcs_bin, 'list', '-r', prev, '{}/{}'.format(self._getURL(prefs), p.replace(os.sep, '/')) ], prefs, vcs_bash):
+                    lines = utils.popenReadLines(
+                        self.root,
+                        [
+                            vcs_bin,
+                            'list',
+                            '-r',
+                            prev,
+                            f"{self._getURL(prefs)}/{p.replace(os.sep, '/')}"
+                        ],
+                        prefs,
+                        vcs_bash)
+                    for s in lines:
                         if s.endswith('/'):
                             # confirmed item as directory
                             removed_dir.add(os.path.join(p, s[:-1]))
@@ -239,7 +271,7 @@ class Svn(VcsInterface):
                 [
                     vcs_bin,
                     'cat',
-                    '{}@{}'.format(utils.safeRelativePath(self.root, name, prefs, 'svn_cygwin'), rev)
+                    f"{utils.safeRelativePath(self.root, name, prefs, 'svn_cygwin')}@{rev}"
                 ],
                 prefs,
                 'svn_bash')
@@ -248,10 +280,10 @@ class Svn(VcsInterface):
             [
                 vcs_bin,
                 'cat',
-                '{}/{}@{}'.format(
-                    self._getURL(prefs),
-                    utils.relpath(self.root, os.path.abspath(name)).replace(os.sep, '/'),
-                    rev)
+                (
+                    f"{self._getURL(prefs)}/"
+                    f"{utils.relpath(self.root, os.path.abspath(name)).replace(os.sep, '/')}@{rev}"
+                )
             ],
             prefs,
             'svn_bash')

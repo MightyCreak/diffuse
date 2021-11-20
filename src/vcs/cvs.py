@@ -41,11 +41,11 @@ class Cvs(VcsInterface):
                 if len(r):
                     prev = '.'.join(r)
             for k in sorted(names):
-                 if prev is None:
-                     k0 = None
-                 else:
-                     k0 = k
-                 result.append([ (k0, prev), (k, rev) ])
+                if prev is None:
+                    k0 = None
+                else:
+                    k0 = k
+                result.append([ (k0, prev), (k, rev) ])
         except ValueError:
             utils.logError(_('Error parsing revision %s.') % (rev, ))
         return result
@@ -73,7 +73,6 @@ class Cvs(VcsInterface):
                 if s[0] == 'R':
                     # removed
                     modified[k] = [ (k, prev), (None, None) ]
-                    pass
                 elif s[0] == 'A':
                     # added
                     modified[k] = [ (None, None), (k, None) ]

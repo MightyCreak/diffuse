@@ -32,7 +32,11 @@ class Hg(VcsInterface):
     def _getPreviousRevision(self, prefs, rev):
         if rev is None:
             if self.working_rev is None:
-                ss = utils.popenReadLines(self.root, [ prefs.getString('hg_bin'), 'id', '-i', '-t' ], prefs, 'hg_bash')
+                ss = utils.popenReadLines(
+                    self.root,
+                    [ prefs.getString('hg_bin'), 'id', '-i', '-t' ],
+                    prefs,
+                    'hg_bash')
                 if len(ss) != 1:
                     raise IOError('Unknown working revision')
                 ss = ss[0].split(' ')
@@ -81,7 +85,11 @@ class Hg(VcsInterface):
         return [ modified[k] for k in sorted(modified.keys()) ]
 
     def getCommitTemplate(self, prefs, rev, names):
-        return self._getCommitTemplate(prefs, names, [ 'log', '--template', 'A\t{file_adds}\nM\t{file_mods}\nR\t{file_dels}\n', '-r', rev ], rev)
+        return self._getCommitTemplate(
+            prefs,
+            names,
+            [ 'log', '--template', 'A\t{file_adds}\nM\t{file_mods}\nR\t{file_dels}\n', '-r', rev ],
+            rev)
 
     def getFolderTemplate(self, prefs, names):
         return self._getCommitTemplate(prefs, names, [ 'status', '-q' ], None)

@@ -55,10 +55,6 @@ from diffuse import utils
 from diffuse import constants
 from diffuse.vcs.vcs_registry import VcsRegistry
 
-if not hasattr(__builtins__, 'WindowsError'):
-    # define 'WindowsError' so 'except' statements will work on all platforms
-    WindowsError = IOError
-
 # avoid some dictionary lookups when string.whitespace is used in loops
 # this is sorted based upon frequency to speed up code for stripping whitespace
 whitespace = ' \t\n\r\x0b\x0c'
@@ -130,38 +126,6 @@ class SyntaxParser:
                 blocks.append([start, end, token_type])
             start = end
         return state_name, blocks
-
-# split string into lines based upon DOS, Mac, and Unix line endings
-def splitlines(s):
-    # split on new line characters
-    temp, i, n = [], 0, len(s)
-    while i < n:
-        j = s.find('\n', i)
-        if j < 0:
-            temp.append(s[i:])
-            break
-        j += 1
-        temp.append(s[i:j])
-        i = j
-    # split on carriage return characters
-    ss = []
-    for s in temp:
-        i, n = 0, len(s)
-        while i < n:
-            j = s.find('\r', i)
-            if j < 0:
-                ss.append(s[i:])
-                break
-            j += 1
-            if j < n and s[j] == '\n':
-                j += 1
-            ss.append(s[i:j])
-            i = j
-    return ss
-
-# also recognise old Mac OS line endings
-def readlines(fd):
-    return strip_eols(splitlines(fd.read()))
 
 def readconfiglines(fd):
     return fd.read().replace('\r', '').split('\n')
@@ -1141,33 +1105,12 @@ def getFormat(ss):
                 flags |= UNIX_FORMAT
     return flags
 
-# returns the number of characters in the string excluding any line ending
-# characters
-def len_minus_line_ending(s):
-    if s is None:
-        return 0
-    n = len(s)
-    if s.endswith('\r\n'):
-        n -= 2
-    elif s.endswith('\r') or s.endswith('\n'):
-        n -= 1
-    return n
-
-# returns the string without the line ending characters
-def strip_eol(s):
-    if s is not None:
-        return s[:len_minus_line_ending(s)]
-
-# returns the list of strings without line ending characters
-def strip_eols(ss):
-    return [ strip_eol(s) for s in ss ]
-
 # convenience method to change the line ending of a string
 def convert_to_format(s, format):
     if s is not None and format != 0:
         old_format = getFormat([ s ])
         if old_format != 0 and (old_format & format) == 0:
-            s = strip_eol(s)
+            s = utils.strip_eol(s)
             # prefer the host line ending style
             if (format & DOS_FORMAT) and os.linesep == '\r\n':
                 s += os.linesep
@@ -1913,7 +1856,7 @@ class FileDiffViewer(Gtk.Grid):
     # This is an inline loop over self.characterWidth() for performance reasons.
     def stringWidth(self, s):
         if not self.prefs.getBool('display_show_whitespace'):
-            s = strip_eol(s)
+            s = utils.strip_eol(s)
         col = 0
         for c in s:
             try:
@@ -1965,7 +1908,7 @@ class FileDiffViewer(Gtk.Grid):
     def expand(self, s):
         visible = self.prefs.getBool('display_show_whitespace')
         if not visible:
-            s = strip_eol(s)
+            s = utils.strip_eol(s)
         tab_width = self.prefs.getInt('display_tab_width')
         col = 0
         result = []
@@ -2563,7 +2506,7 @@ class FileDiffViewer(Gtk.Grid):
             # hashes for non-null lines should start with '+' to distinguish
             # them from blank lines
             if pref('align_ignore_endofline'):
-                text = strip_eol(text)
+                text = utils.strip_eol(text)
             if pref('align_ignore_blanklines') and isBlank(text):
                 # consider all lines containing only white space as the same
                 return ''
@@ -2792,8 +2735,8 @@ class FileDiffViewer(Gtk.Grid):
         if text is None:
             text = ''
         # split the replacement text into lines
-        ss = splitlines(text)
-        if len(ss) == 0 or len(ss[-1]) != len_minus_line_ending(ss[-1]):
+        ss = utils.splitlines(text)
+        if len(ss) == 0 or len(ss[-1]) != utils.len_minus_line_ending(ss[-1]):
             ss.append('')
         # change the format to that of the target pane
         if pane.format == 0:
@@ -2807,7 +2750,7 @@ class FileDiffViewer(Gtk.Grid):
         lastcol = 0
         if len(ss) > 0:
             last = ss[-1]
-            if len(last) == len_minus_line_ending(last):
+            if len(last) == utils.len_minus_line_ending(last):
                 del ss[-1]
                 lastcol = len(last)
         cur_line = line0 + len(ss)
@@ -3200,7 +3143,7 @@ class FileDiffViewer(Gtk.Grid):
             x, y = -1, 0
         i = min(y // self.font_height, len(self.panes[f].lines))
         if self.mode == CHAR_MODE and f == self.current_pane:
-            text = strip_eol(self.getLineText(f, i))
+            text = utils.strip_eol(self.getLineText(f, i))
             j = self._getPickedCharacter(text, x, True)
             if extend:
                 si, sj = self.selection_line, self.selection_char
@@ -3241,7 +3184,7 @@ class FileDiffViewer(Gtk.Grid):
                     self.emit('mode_changed')
                 elif self.mode == CHAR_MODE and self.current_pane == f:
                     # select word
-                    text = strip_eol(self.getLineText(f, i))
+                    text = utils.strip_eol(self.getLineText(f, i))
                     if text is not None:
                         n = len(text)
                         j = self._getPickedCharacter(text, x, False)
@@ -3323,7 +3266,7 @@ class FileDiffViewer(Gtk.Grid):
             else:
                 s = s2
             if self.prefs.getBool('display_ignore_endofline'):
-                s = strip_eol(s)
+                s = utils.strip_eol(s)
 
             s1 = nullToEmpty(self.getCompareString(f, i))
             s2 = nullToEmpty(self.getCompareString(f + 1, i))
@@ -3394,7 +3337,7 @@ class FileDiffViewer(Gtk.Grid):
         s = line.getText()
         if s is not None:
             if self.prefs.getBool('display_ignore_endofline'):
-                s = strip_eol(s)
+                s = utils.strip_eol(s)
             if self.prefs.getBool('display_ignore_blanklines') and isBlank(s):
                 return None
             if self.prefs.getBool('display_ignore_whitespace'):
@@ -3906,7 +3849,7 @@ class FileDiffViewer(Gtk.Grid):
     # returns the maximum valid offset for a cursor position
     # cursors cannot be moved to the right of line ending characters
     def getMaxCharPosition(self, i):
-        return len_minus_line_ending(self.getLineText(self.current_pane, i))
+        return utils.len_minus_line_ending(self.getLineText(self.current_pane, i))
 
     # 'enter_align_mode' keybinding action
     def _line_mode_enter_align_mode(self):
@@ -4132,7 +4075,7 @@ class FileDiffViewer(Gtk.Grid):
                     # move the cursor to column 'col' if possible
                     s = self.getLineText(f, i)
                     if s is not None:
-                        s = strip_eol(s)
+                        s = utils.strip_eol(s)
                         idx = 0
                         for c in s:
                             w = self.characterWidth(idx, c)
@@ -4282,7 +4225,7 @@ class FileDiffViewer(Gtk.Grid):
                     self.recordEditMode()
                     for i in range(start, end + 1):
                         text = self.getLineText(f, i)
-                        if text is not None and len_minus_line_ending(text) > 0:
+                        if text is not None and utils.len_minus_line_ending(text) > 0:
                             # count spacing before the first non-whitespace character
                             j, w = 0, 0
                             while j < len(text) and text[j] in ' \t':
@@ -4807,7 +4750,7 @@ class FileDiffViewer(Gtk.Grid):
             text = self.getLineText(f, i)
             if text is not None:
                 # locate trailing whitespace
-                old_n = n = len_minus_line_ending(text)
+                old_n = n = utils.len_minus_line_ending(text)
                 while n > 0 and text[n - 1] in whitespace:
                     n -= 1
                 # update line if it changed
@@ -4914,7 +4857,7 @@ class FileDiffViewer(Gtk.Grid):
         self.recordEditMode()
         for i in range(start, end + 1):
             text = self.getLineText(f, i)
-            if text is not None and len_minus_line_ending(text) > 0:
+            if text is not None and utils.len_minus_line_ending(text) > 0:
                 # count spacing before the first non-whitespace character
                 j, w = 0, 0
                 while j < len(text) and text[j] in ' \t':
@@ -5628,8 +5571,8 @@ class Diffuse(Gtk.Window):
                         s, encoding = self.prefs.convertToUnicode(s)
                     else:
                         s = str(s, encoding=encoding)
-                    ss = splitlines(s)
-                except (IOError, OSError, UnicodeDecodeError, WindowsError, LookupError):
+                    ss = utils.splitlines(s)
+                except (IOError, OSError, UnicodeDecodeError, LookupError):
                     # FIXME: this can occur before the toplevel window is drawn
                     if rev is not None:
                         msg = _('Error reading revision %(rev)s of %(file)s.') % { 'rev': rev, 'file': name }
@@ -6460,7 +6403,7 @@ class Diffuse(Gtk.Window):
                             name, rev = spec
                             viewer.load(i, FileInfo(name, encoding, vcs, rev))
                         viewer.setOptions(options)
-                except (IOError, OSError, WindowsError):
+                except (IOError, OSError):
                     utils.logErrorAndDialog(_('Error retrieving commits for %s.') % (dn, ), self.get_toplevel())
 
     # create a new viewer for each modified file found in 'items'
@@ -6489,7 +6432,7 @@ class Diffuse(Gtk.Window):
                             name, rev = spec
                             viewer.load(i, FileInfo(name, encoding, vcs, rev))
                         viewer.setOptions(options)
-                except (IOError, OSError, WindowsError):
+                except (IOError, OSError):
                     utils.logErrorAndDialog(_('Error retrieving modifications for %s.') % (dn, ), self.get_toplevel())
 
     # close all tabs without differences

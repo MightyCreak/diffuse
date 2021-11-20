@@ -46,9 +46,6 @@ class VcsRegistry:
             'svn': _get_svn_repo
         }
 
-    def setSearchOrder(self, ordering):
-        self._search_order = ordering
-
     # determines which VCS to use for files in the named folder
     def findByFolder(self, path, prefs):
         path = os.path.abspath(path)
@@ -57,11 +54,13 @@ class VcsRegistry:
                 repo = self._get_repo[vcs](path, prefs)
                 if repo:
                     return repo
+        return None
 
     # determines which VCS to use for the named file
     def findByFilename(self, name, prefs):
         if name is not None:
             return self.findByFolder(os.path.dirname(name), prefs)
+        return None
 
 
 # utility method to help find folders used by version control systems
@@ -77,29 +76,34 @@ def _find_parent_dir_with(path, dir_name):
 
 def _get_bzr_repo(path, prefs):
     p = _find_parent_dir_with(path, '.bzr')
-    if p:
-        return Bzr(p)
+    return Bzr(p) if p else None
 
 def _get_cvs_repo(path, prefs):
-    if os.path.isdir(os.path.join(path, 'CVS')):
-        return Cvs(path)
+    return Cvs(path) if os.path.isdir(os.path.join(path, 'CVS')) else None
 
 def _get_darcs_repo(path, prefs):
     p = _find_parent_dir_with(path, '_darcs')
-    if p:
-        return Darcs(p)
+    return Darcs(p) if p else None
 
 def _get_git_repo(path, prefs):
     if 'GIT_DIR' in os.environ:
         try:
             d = path
-            ss = utils.popenReadLines(d, [ prefs.getString('git_bin'), 'rev-parse', '--show-prefix' ], prefs, 'git_bash')
+            ss = utils.popenReadLines(
+                d,
+                [
+                    prefs.getString('git_bin'),
+                    'rev-parse',
+                    '--show-prefix'
+                ],
+                prefs,
+                'git_bash')
             if len(ss) > 0:
                 # be careful to handle trailing slashes
                 d = d.split(os.sep)
                 if d[-1] != '':
                     d.append('')
-                ss = strip_eol(ss[0]).split('/')
+                ss = utils.strip_eol(ss[0]).split('/')
                 if ss[-1] != '':
                     ss.append('')
                 n = len(ss)
@@ -110,7 +114,7 @@ def _get_git_repo(path, prefs):
                 else:
                     d = os.sep.join(d)
             return Git(d)
-        except (IOError, OSError, WindowsError):
+        except (IOError, OSError):
             # working tree not found
             pass
     # search for .git directory (project) or .git file (submodule)
@@ -125,13 +129,11 @@ def _get_git_repo(path, prefs):
 
 def _get_hg_repo(path, prefs):
     p = _find_parent_dir_with(path, '.hg')
-    if p:
-        return Hg(p)
+    return Hg(p) if p else None
 
 def _get_mtn_repo(path, prefs):
     p = _find_parent_dir_with(path, '_MTN')
-    if p:
-        return Mtn(p)
+    return Mtn(p) if p else None
 
 def _get_rcs_repo(path, prefs):
     if os.path.isdir(os.path.join(path, 'RCS')):
@@ -147,11 +149,11 @@ def _get_rcs_repo(path, prefs):
     except OSError:
         # the user specified an invalid folder name
         pass
+    return None
 
 def _get_svn_repo(path, prefs):
     p = _find_parent_dir_with(path, '.svn')
-    if p:
-        return Svn(p)
+    return Svn(p) if p else None
 
 def _get_svk_repo(path, prefs):
     name = path
@@ -166,9 +168,8 @@ def _get_svk_repo(path, prefs):
     if os.path.isfile(svkconfig):
         try:
             # find working copies by parsing the config file
-            f = open(svkconfig, 'r')
-            ss = readlines(f)
-            f.close()
+            with open(svkconfig, 'r', encoding='utf-8') as f:
+                ss = utils.readlines(f)
             projs, sep = [], os.sep
             # find the separator character
             for s in ss:
@@ -183,7 +184,11 @@ def _get_svk_repo(path, prefs):
                     while i < len(ss) and ss[i].startswith('    '):
                         s = ss[i]
                         i += 1
-                        if s.endswith(': ') and i < len(ss) and ss[i].startswith('      depotpath: '):
+                        if (
+                            s.endswith(': ') and
+                            i < len(ss) and
+                            ss[i].startswith('      depotpath: ')
+                        ):
                             key = s[4:-2].replace(sep, os.sep)
                             # parse directory path
                             j, n, tt = 0, len(key), []
@@ -195,7 +200,7 @@ def _get_svk_repo(path, prefs):
                                         if key[j] == '"':
                                             j += 1
                                             break
-                                        elif key[j] == '\\':
+                                        if key[j] == '\\':
                                             # escaped character
                                             j += 1
                                         if j < n:
@@ -214,3 +219,4 @@ def _get_svk_repo(path, prefs):
                 return Svk(path)
         except IOError:
             utils.logError(_('Error parsing %s.') % (svkconfig, ))
+    return None

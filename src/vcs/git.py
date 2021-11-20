@@ -65,7 +65,14 @@ class Git(VcsInterface):
 
     def getFolderTemplate(self, prefs, names):
         # build command
-        args = [ prefs.getString('git_bin'), 'status', '--porcelain', '-s', '--untracked-files=no', '--ignore-submodules=all' ]
+        args = [
+            prefs.getString('git_bin'),
+            'status',
+            '--porcelain',
+            '-s',
+            '--untracked-files=no',
+            '--ignore-submodules=all'
+        ]
         # build list of interesting files
         pwd = os.path.abspath(os.curdir)
         isabs = False
@@ -142,14 +149,13 @@ class Git(VcsInterface):
         return result
 
     def getRevision(self, prefs, name, rev):
+        relpath = utils.relpath(self.root, os.path.abspath(name)).replace(os.sep, '/')
         return utils.popenRead(
             self.root,
             [
                 prefs.getString('git_bin'),
                 'show',
-                '{}:{}'.format(
-                    rev,
-                    utils.relpath(self.root, os.path.abspath(name)).replace(os.sep, '/'))
+                f'{rev}:{relpath}'
             ],
             prefs,
             'git_bash')
