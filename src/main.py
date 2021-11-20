@@ -29,25 +29,16 @@ import stat
 import unicodedata
 import webbrowser
 
+# pylint: disable=wrong-import-position
 import gi
-
 gi.require_version('GObject', '2.0')
-from gi.repository import GObject
-
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk
-
 gi.require_version('Gdk', '3.0')
-from gi.repository import Gdk
-
 gi.require_version('GdkPixbuf', '2.0')
-from gi.repository import GdkPixbuf
-
 gi.require_version('Pango', '1.0')
-from gi.repository import Pango
-
 gi.require_version('PangoCairo', '1.0')
-from gi.repository import PangoCairo
+from gi.repository import GObject, Gtk, Gdk, GdkPixbuf, Pango, PangoCairo
+# pylint: enable=wrong-import-position
 
 from urllib.parse import urlparse
 
@@ -6088,7 +6079,7 @@ class Diffuse(Gtk.Window):
         if os.path.isfile(statepath):
             try:
                 f = open(statepath, 'r')
-                ss = readlines(f)
+                ss = utils.readlines(f)
                 f.close()
                 for j, s in enumerate(ss):
                     try:
