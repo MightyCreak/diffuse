@@ -16,31 +16,46 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
 
-      - name: Pylint
-        uses: cclauss/GitHub-Action-for-pylint@master
-        with:
-          args: "pylint src/vcs/"
+    - name: Pylint
+      uses: cclauss/GitHub-Action-for-pylint@master
+      with:
+        args: "pylint src/vcs/"
 
-  build:
+  meson-build-test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
 
-      - name: Install dependencies
-        run: sudo apt-get -y install appstream appstream-util desktop-file-utils gettext
+    - name: Install dependencies
+      run: sudo apt-get -y install appstream appstream-util desktop-file-utils gettext
 
-      - name: Meson build
-        uses: BSFishy/meson-build@v1.0.3
-        with:
-          action: build
+    - name: Meson build
+      uses: BSFishy/meson-build@v1.0.3
+      with:
+        action: build
 
-      - name: Meson test
-        uses: BSFishy/meson-build@v1.0.3
-        with:
-          action: test
+    - name: Meson test
+      uses: BSFishy/meson-build@v1.0.3
+      with:
+        action: test
+
+  flatpak-build-test:
+    runs-on: ubuntu-latest
+    container:
+      image: bilelmoussaoui/flatpak-github-actions:gnome-40
+      options: --privileged
+    steps:
+    - uses: actions/checkout@v2
+    - name: Flatpak builder
+      uses: bilelmoussaoui/flatpak-github-actions/flatpak-builder@v3
+      with:
+        bundle: "diffuse.flatpak"
+        manifest-path: "io.github.mightycreak.Diffuse.yml"
+        cache-key: flatpak-builder-${{ github.sha }}
+        run-tests: "true"
