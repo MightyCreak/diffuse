@@ -59,6 +59,36 @@ class Rcs(VcsInterface):
             utils.logError(_('Error parsing revision %s.') % (rev, ))
         return result
 
+    # simulate use of popen with xargs to read the output of a command
+    def _popen_xargs_readlines(self, dn, cmd, args, prefs, bash_pref):
+        # os.sysconf() is only available on Unix
+        if hasattr(os, 'sysconf'):
+            maxsize = os.sysconf('SC_ARG_MAX')
+            maxsize -= sum([ len(k) + len(v) + 2 for k, v in os.environ.items() ])
+        else:
+            # assume the Window's limit to CreateProcess()
+            maxsize = 32767
+        maxsize -= sum([ len(k) + 1 for k in cmd ])
+
+        ss = []
+        i, s, a = 0, 0, []
+        while i < len(args):
+            f = (len(a) == 0)
+            if f:
+                # start a new command line
+                a = cmd[:]
+            elif s + len(args[i]) + 1 <= maxsize:
+                f = True
+            if f:
+                # append another argument to the current command line
+                a.append(args[i])
+                s += len(args[i]) + 1
+                i += 1
+            if i == len(args) or not f:
+                ss.extend(utils.popenReadLines(dn, a, prefs, bash_pref))
+                s, a = 0, []
+        return ss
+
     def getFolderTemplate(self, prefs, names):
         # build command
         cmd = [ prefs.getString('rcs_bin_rlog'), '-L', '-h' ]
@@ -108,7 +138,7 @@ class Rcs(VcsInterface):
         args = [ utils.safeRelativePath(self.root, k, prefs, 'rcs_cygwin') for k in r ]
         # run command
         r, k = {}, ''
-        for line in utils.popenXArgsReadLines(self.root, cmd, args, prefs, 'rcs_bash'):
+        for line in self._popen_xargs_readlines(self.root, cmd, args, prefs, 'rcs_bash'):
             # parse response
             if line.startswith('Working file: '):
                 k = prefs.convertToNativePath(line[14:])
