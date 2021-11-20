@@ -24,7 +24,11 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
+
+      - name: Lint
+        uses: cclauss/GitHub-Action-for-pylint@master
+        with:
+          args: "pylint src/vcs/"
 
       - name: Install dependencies
         run: sudo apt-get -y install appstream appstream-util desktop-file-utils gettext
