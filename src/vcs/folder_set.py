@@ -42,4 +42,3 @@ class FolderSet:
             if abspath.startswith(f):
                 return True
         return False
-

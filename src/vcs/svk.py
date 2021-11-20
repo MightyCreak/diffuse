@@ -18,7 +18,6 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 import os
-import glob
 
 from diffuse import utils
 from diffuse.vcs.svn import Svn
@@ -32,7 +31,7 @@ class Svk(Svn):
 
     def _parseStatusLine(self, s):
         if len(s) < 4 or s[0] not in 'ACDMR':
-            return
+            return '', ''
         return s[0], s[4:]
 
     def _getPreviousRevision(self, rev):
@@ -43,6 +42,7 @@ class Svk(Svn):
         return str(int(rev) - 1)
 
     def getRevision(self, prefs, name, rev):
+        relpath = utils.relpath(self.root, os.path.abspath(name)).replace(os.sep, '/')
         return utils.popenRead(
             self.root,
             [
@@ -50,9 +50,7 @@ class Svk(Svn):
                 'cat',
                 '-r',
                 rev,
-                '{}/{}'.format(
-                    self._getURL(prefs),
-                    utils.relpath(self.root, os.path.abspath(name)).replace(os.sep, '/'))
+                f'{self._getURL(prefs)}/{relpath}'
             ],
             prefs,
             'svk_bash')

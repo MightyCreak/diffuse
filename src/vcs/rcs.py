@@ -25,7 +25,12 @@ from diffuse.vcs.vcs_interface import VcsInterface
 # RCS support
 class Rcs(VcsInterface):
     def getFileTemplate(self, prefs, name):
-        args = [ prefs.getString('rcs_bin_rlog'), '-L', '-h', utils.safeRelativePath(self.root, name, prefs, 'rcs_cygwin') ]
+        args = [
+            prefs.getString('rcs_bin_rlog'),
+            '-L',
+            '-h',
+            utils.safeRelativePath(self.root, name, prefs, 'rcs_cygwin')
+        ]
         rev = ''
         for line in utils.popenReadLines(self.root, args, prefs, 'rcs_bash'):
             if line.startswith('head: '):
@@ -69,12 +74,12 @@ class Rcs(VcsInterface):
                     recurse = os.path.isdir(os.path.join(s, 'RCS'))
                     if ex or recurse:
                         ex = False
-                        for v in os.listdir(s):
-                            dn = os.path.join(s, v)
-                            if v.endswith(',v') and os.path.isfile(dn):
+                        for d in os.listdir(s):
+                            dn = os.path.join(s, d)
+                            if d.endswith(',v') and os.path.isfile(dn):
                                 # map to checkout name
                                 r.append(dn[:-2])
-                            elif v == 'RCS' and os.path.isdir(dn):
+                            elif d == 'RCS' and os.path.isdir(dn):
                                 for v in os.listdir(dn):
                                     if os.path.isfile(os.path.join(dn, v)):
                                         if v.endswith(',v'):

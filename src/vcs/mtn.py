@@ -33,7 +33,11 @@ class Mtn(VcsInterface):
     def getCommitTemplate(self, prefs, rev, names):
         # build command
         vcs_bin = prefs.getString('mtn_bin')
-        ss = utils.popenReadLines(self.root, [ vcs_bin, 'automate', 'select', '-q', rev ], prefs, 'mtn_bash')
+        ss = utils.popenReadLines(
+            self.root,
+            [ vcs_bin, 'automate', 'select', '-q', rev ],
+            prefs,
+            'mtn_bash')
         if len(ss) != 1:
             raise IOError('Ambiguous revision specifier')
         args = [ vcs_bin, 'automate', 'get_revision', ss[0] ]
@@ -59,7 +63,7 @@ class Mtn(VcsInterface):
                     break
                 prev = arg1[1:-1]
                 continue
-            elif prev is None:
+            if prev is None:
                 continue
             if arg == 'delete':
                 # deleted file
@@ -88,7 +92,11 @@ class Mtn(VcsInterface):
         if removed or renamed:
             # remove directories
             removed_dirs = set()
-            for s in utils.popenReadLines(self.root, [ vcs_bin, 'automate', 'get_manifest_of', prev ], prefs, 'mtn_bash'):
+            for s in utils.popenReadLines(
+                self.root,
+                [ vcs_bin, 'automate', 'get_manifest_of', prev ],
+                prefs,
+                'mtn_bash'):
                 s = shlex.split(s)
                 if len(s) > 1 and s[0] == 'dir':
                     removed_dirs.add(s[1])
@@ -130,7 +138,14 @@ class Mtn(VcsInterface):
         fs = FolderSet(names)
         result = []
         pwd, isabs = os.path.abspath(os.curdir), False
-        args = [ prefs.getString('mtn_bin'), 'automate', 'inventory', '--no-ignored', '--no-unchanged', '--no-unknown' ]
+        args = [
+            prefs.getString('mtn_bin'),
+            'automate',
+            'inventory',
+            '--no-ignored',
+            '--no-unchanged',
+            '--no-unknown'
+        ]
         for name in names:
             isabs |= os.path.isabs(name)
         # build list of interesting files
@@ -168,7 +183,11 @@ class Mtn(VcsInterface):
                             k = utils.relpath(pwd, k)
                         added[k] = [ (None, None), (k, None) ]
                     processed = True
-                if 'rename_target' in s and 'file' in m.get('new_type', []) and len(m.get('old_path', [])) > 0:
+                if (
+                    'rename_target' in s and
+                    'file' in m.get('new_type', []) and
+                    len(m.get('old_path', [])) > 0
+                ):
                     # renamed file
                     k0 = os.path.join(self.root, prefs.convertToNativePath(m['old_path'][0]))
                     k1 = os.path.join(self.root, prefs.convertToNativePath(p))
