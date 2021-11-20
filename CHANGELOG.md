@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Added a linter (pylint) and fixed some errors
+- Added a lint step in the CI
 
 ### Changed
 
