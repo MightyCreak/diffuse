@@ -8,7 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Added a linter (pylint) and fixed some errors
-- Added a lint step in the CI
+- Added a lint job in the CI
+- Added a flatpak job in the CI
 
 ### Changed
 
