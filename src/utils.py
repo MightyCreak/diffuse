@@ -190,6 +190,9 @@ def popenReadLines(dn, cmd, prefs, bash_pref, success_results=None):
     return _strip_eols(splitlines(popenRead(
         dn, cmd, prefs, bash_pref, success_results).decode('utf-8', errors='ignore')))
 
+def readconfiglines(fd):
+    return fd.read().replace('\r', '').split('\n')
+
 # escape special glob characters
 def globEscape(s):
     m = { c: f'[{c}]' for c in '[]?*' }
