@@ -23,18 +23,22 @@ from diffuse import utils
 from diffuse.vcs.svn import Svn
 
 class Svk(Svn):
-    def _getVcs(self):
+    @staticmethod
+    def _getVcs():
         return 'svk'
 
-    def _getURLPrefix(self):
+    @staticmethod
+    def _getURLPrefix():
         return 'Depot Path: '
 
-    def _parseStatusLine(self, s):
+    @staticmethod
+    def _parseStatusLine(s):
         if len(s) < 4 or s[0] not in 'ACDMR':
             return '', ''
         return s[0], s[4:]
 
-    def _getPreviousRevision(self, rev):
+    @staticmethod
+    def _getPreviousRevision(rev):
         if rev is None:
             return 'HEAD'
         if rev.endswith('@'):

@@ -31,13 +31,16 @@ class Svn(VcsInterface):
         VcsInterface.__init__(self, root)
         self.url = None
 
-    def _getVcs(self):
+    @staticmethod
+    def _getVcs():
         return 'svn'
 
-    def _getURLPrefix(self):
+    @staticmethod
+    def _getURLPrefix():
         return 'URL: '
 
-    def _parseStatusLine(self, s):
+    @staticmethod
+    def _parseStatusLine(s):
         if len(s) < 8 or s[0] not in 'ACDMR':
             return '', ''
         # subversion 1.6 adds a new column
@@ -46,7 +49,8 @@ class Svn(VcsInterface):
             k += 1
         return s[0], s[k:]
 
-    def _getPreviousRevision(self, rev):
+    @staticmethod
+    def _getPreviousRevision(rev):
         if rev is None:
             return 'BASE'
         m = int(rev)

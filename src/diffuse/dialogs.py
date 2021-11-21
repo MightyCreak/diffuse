@@ -26,7 +26,9 @@ gi.require_version('Gtk', '3.0')
 from gi.repository import GObject, Gtk
 # pylint: enable=wrong-import-position
 
+# pylint: disable-next=no-name-in-module
 from diffuse import constants
+
 from diffuse import utils
 
 # the about dialog
@@ -67,7 +69,8 @@ class FileChooserDialog(Gtk.FileChooserDialog):
     # location for empty panes
     last_chosen_folder = os.path.realpath(os.curdir)
 
-    def __current_folder_changed_cb(self, widget):
+    @staticmethod
+    def _current_folder_changed_cb(widget):
         FileChooserDialog.last_chosen_folder = widget.get_current_folder()
 
     def __init__(self, title, parent, prefs, action, accept, rev=False):
@@ -96,7 +99,7 @@ class FileChooserDialog(Gtk.FileChooserDialog):
         self.vbox.pack_start(hbox, False, False, 0) # pylint: disable=no-member
         hbox.show()
         self.set_current_folder(self.last_chosen_folder)
-        self.connect('current-folder-changed', self.__current_folder_changed_cb)
+        self.connect('current-folder-changed', self._current_folder_changed_cb)
 
     def set_encoding(self, encoding):
         self.encoding.set_text(encoding)
@@ -107,6 +110,7 @@ class FileChooserDialog(Gtk.FileChooserDialog):
     def get_revision(self):
         return self.revision.get_text()
 
+    # pylint: disable-next=arguments-differ
     def get_filename(self):
         # convert from UTF-8 string to unicode
         return Gtk.FileChooserDialog.get_filename(self) # pylint: disable=no-member

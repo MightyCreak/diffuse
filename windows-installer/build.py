@@ -37,7 +37,7 @@ def mkdir(s):
 
 # copies a file to 'dest'
 def copyFile(src, dest, use_text_mode=False,enc=None):
-    print 'copying "%s" to "%s"' % (src, dest)
+    print('copying "%s" to "%s"' % (src, dest))
     if use_text_mode:
         r, w = 'r', 'w'
     else:
@@ -53,7 +53,7 @@ def copyFile(src, dest, use_text_mode=False,enc=None):
 
 # recursively copies a directory to 'dest'
 def copyDir(src, dest):
-    print 'copying "%s" to "%s"' % (src, dest)
+    print('copying "%s" to "%s"' % (src, dest))
     mkdir(dest)
     for f in os.listdir(src):
         s = os.path.join(src, f)
@@ -128,7 +128,7 @@ locale_dir = os.path.join(gtk_dir, 'share\\locale')
 for s in glob.glob('..\\po\\*.po'):
     lang = s[16:-3]
     # Diffuse localisations
-    print 'Compiling %s translation' % (lang, )
+    print('Compiling %s translation' % (lang, ))
     d = 'dist'
     for p in [ 'locale', lang, 'LC_MESSAGES' ]:
         d = os.path.join(d, p)
@@ -236,4 +236,4 @@ if os.system('iscc diffuse.iss /F%s' % (INSTALLER, )) != 0:
 # Declare success.
 #
 
-print 'Successfully created "%s".' % (INSTALLER, )
+print('Successfully created "%s".' % (INSTALLER, ))
