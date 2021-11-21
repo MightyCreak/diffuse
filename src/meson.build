@@ -32,10 +32,12 @@ configure_file(
 
 diffuse_sources = [
   '__init__.py',
+  'dialogs.py',
   'main.py',
   'preferences.py',
   'resources.py',
   'utils.py',
+  'widgets.py',
 ]
 
 install_data(diffuse_sources, install_dir: moduledir)
