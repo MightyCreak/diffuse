@@ -534,7 +534,7 @@ class Diffuse(Gtk.Window):
                 info.name, info.encoding, info.revision, info.label = name, encoding, None, label
                 info.last_stat = info.stat = os.stat(name)
                 self.setFileInfo(f, info)
-                # update the syntax highlighting in case we changed the file
+                # update the syntax highlighting incase we changed the file
                 # extension
                 syntax = theResources.guessSyntaxForFile(name, ss)
                 if syntax is not None:
