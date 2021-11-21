@@ -1,0 +1,2 @@
+PyGObject~=3.40
+pylint~=2.11
