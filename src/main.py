@@ -1190,7 +1190,7 @@ class Diffuse(Gtk.Window):
         new_items = []
         for item in items:
             name, data = item
-            # get full path to an existing ancessor directory
+            # get full path to an existing ancestor directory
             dn = os.path.abspath(name)
             while not os.path.isdir(dn):
                 dn, old_dn = os.path.dirname(dn), dn
