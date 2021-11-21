@@ -1833,7 +1833,7 @@ class FileDiffViewer(Gtk.Grid):
             can_swap = (f != self.current_pane)
 
             # pylint: disable=line-too-long
-            menu = utils.createMenu(
+            menu = createMenu(
                       [ [_('Align with Selection'), self.align_with_selection_cb, [f, i], Gtk.STOCK_EXECUTE, None, can_align],
                       [_('Isolate'), self.button_cb, 'isolate', None, None, can_isolate ],
                       [_('Merge Selection'), self.merge_lines_cb, f, None, None, can_merge],
@@ -3684,6 +3684,50 @@ class FileDiffViewer(Gtk.Grid):
     # 'merge_from_right_then_left' keybinding action
     def merge_from_right_then_left(self):
         self._mergeBoth(True)
+
+# convenience method for creating a menu according to a template
+def createMenu(specs, radio=None, accel_group=None):
+    menu = Gtk.Menu.new()
+    for spec in specs:
+        if len(spec) > 0:
+            if len(spec) > 7 and spec[7] is not None:
+                g, k = spec[7]
+                if g not in radio:
+                    item = Gtk.RadioMenuItem.new_with_mnemonic_from_widget(None, spec[0])
+                    radio[g] = (item, {})
+                else:
+                    item = Gtk.RadioMenuItem.new_with_mnemonic_from_widget(radio[g][0], spec[0])
+                radio[g][1][k] = item
+            else:
+                item = Gtk.ImageMenuItem.new_with_mnemonic(spec[0])
+            cb = spec[1]
+            if cb is not None:
+                data = spec[2]
+                item.connect('activate', cb, data)
+            if len(spec) > 3 and spec[3] is not None:
+                image = Gtk.Image.new()
+                image.set_from_stock(spec[3], Gtk.IconSize.MENU) # pylint: disable=no-member
+                item.set_image(image)
+            if accel_group is not None and len(spec) > 4:
+                a = theResources.getKeyBindings('menu', spec[4])
+                if len(a) > 0:
+                    key, modifier = a[0]
+                    item.add_accelerator(
+                        'activate',
+                        accel_group,
+                        key,
+                        modifier,
+                        Gtk.AccelFlags.VISIBLE)
+            if len(spec) > 5:
+                item.set_sensitive(spec[5])
+            if len(spec) > 6 and spec[6] is not None:
+                item.set_submenu(createMenu(spec[6], radio, accel_group))
+            item.set_use_underline(True)
+        else:
+            item = Gtk.SeparatorMenuItem.new()
+        item.show()
+        menu.append(item)
+    return menu
 
 ALPHANUMERIC_CLASS = 0
 WHITESPACE_CLASS = 1

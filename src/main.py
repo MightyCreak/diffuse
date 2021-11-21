@@ -45,7 +45,7 @@ from diffuse.preferences import Preferences
 from diffuse.resources import theResources
 from diffuse.vcs.vcs_registry import VcsRegistry
 from diffuse.widgets import FileDiffViewer
-from diffuse.widgets import LINE_MODE, CHAR_MODE, ALIGN_MODE
+from diffuse.widgets import createMenu, LINE_MODE, CHAR_MODE, ALIGN_MODE
 
 theVCSs = VcsRegistry()
 
@@ -1550,7 +1550,7 @@ def _create_menu_bar(specs, radio, accel_group):
     menu_bar = Gtk.MenuBar.new()
     for label, spec in specs:
         menu = Gtk.MenuItem.new_with_mnemonic(label)
-        menu.set_submenu(utils.createMenu(spec, radio, accel_group))
+        menu.set_submenu(createMenu(spec, radio, accel_group))
         menu.set_use_underline(True)
         menu.show()
         menu_bar.append(menu)
