@@ -110,6 +110,7 @@ class FileChooserDialog(Gtk.FileChooserDialog):
     def get_revision(self):
         return self.revision.get_text()
 
+    # pylint: disable-next=arguments-differ
     def get_filename(self):
         # convert from UTF-8 string to unicode
         return Gtk.FileChooserDialog.get_filename(self) # pylint: disable=no-member

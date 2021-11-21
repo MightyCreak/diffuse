@@ -23,7 +23,7 @@ jobs:
     - name: Pylint
       uses: cclauss/GitHub-Action-for-pylint@master
       with:
-        args: "pylint src/**/*.py"
+        args: "apk add --no-cache gtk+3.0-dev gobject-introspection-dev ; pip install -r requirements.txt ; pylint src/**/*.py"
 
   meson-build-test:
     runs-on: ubuntu-latest
