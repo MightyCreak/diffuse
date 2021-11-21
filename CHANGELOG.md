@@ -16,6 +16,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - The new widgets.py is a bit fat though (~4000 lines)
 
 ### Fixed
+- The intense code cleaning seems to have fixed a bug with the `-c` argument
+  (#120)
 
 ## [0.7.2] - 2021-11-18
 
