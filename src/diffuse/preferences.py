@@ -29,8 +29,10 @@ gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 # pylint: enable=wrong-import-position
 
-from diffuse import utils
+# pylint: disable-next=no-name-in-module
 from diffuse import constants
+
+from diffuse import utils
 
 # class to store preferences and construct a dialogue for manipulating them
 class Preferences:

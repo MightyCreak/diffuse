@@ -60,7 +60,7 @@ class Rcs(VcsInterface):
         return result
 
     # simulate use of popen with xargs to read the output of a command
-    def _popen_xargs_readlines(self, dn, cmd, args, prefs, bash_pref):
+    def _popen_xargs_readlines(self, cmd, args, prefs, bash_pref):
         # os.sysconf() is only available on Unix
         if hasattr(os, 'sysconf'):
             maxsize = os.sysconf('SC_ARG_MAX')
@@ -85,7 +85,7 @@ class Rcs(VcsInterface):
                 s += len(args[i]) + 1
                 i += 1
             if i == len(args) or not f:
-                ss.extend(utils.popenReadLines(dn, a, prefs, bash_pref))
+                ss.extend(utils.popenReadLines(self.root, a, prefs, bash_pref))
                 s, a = 0, []
         return ss
 
@@ -138,7 +138,7 @@ class Rcs(VcsInterface):
         args = [ utils.safeRelativePath(self.root, k, prefs, 'rcs_cygwin') for k in r ]
         # run command
         r, k = {}, ''
-        for line in self._popen_xargs_readlines(self.root, cmd, args, prefs, 'rcs_bash'):
+        for line in self._popen_xargs_readlines(cmd, args, prefs, 'rcs_bash'):
             # parse response
             if line.startswith('Working file: '):
                 k = prefs.convertToNativePath(line[14:])
