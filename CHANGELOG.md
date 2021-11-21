@@ -12,7 +12,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added a flatpak job in the CI
 
 ### Changed
-- main.py slimmed down by about 1000 lines
+- main.py slimmed down by about 5000 lines
+- The new widgets.py is a bit fat though (~4000 lines)
 
 ### Fixed
 
