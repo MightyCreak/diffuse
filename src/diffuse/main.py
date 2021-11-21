@@ -38,7 +38,9 @@ from gi.repository import GObject, Gtk, Gdk, GdkPixbuf, Pango, PangoCairo
 
 from urllib.parse import urlparse
 
+# pylint: disable-next=no-name-in-module
 from diffuse import constants
+
 from diffuse import utils
 from diffuse.dialogs import AboutDialog, FileChooserDialog, NumericDialog, SearchDialog
 from diffuse.preferences import Preferences
@@ -931,11 +933,11 @@ class Diffuse(Gtk.Window):
             utils.logDebug(f'Error writing {statepath}.')
 
     # select viewer for a newly selected file in the confirm close dialogue
-    def __confirmClose_row_activated_cb(self, tree, path, col, model):
+    def _confirmClose_row_activated_cb(self, tree, path, col, model):
         self.notebook.set_current_page(self.notebook.page_num(model[path][3]))
 
     # toggle save state for a file listed in the confirm close dialogue
-    def __confirmClose_toggle_cb(self, cell, path, model):
+    def _confirmClose_toggle_cb(self, cell, path, model):
         model[path][0] = not model[path][0]
 
     # returns True if the list of viewers can be closed.  The user will be
@@ -968,7 +970,7 @@ class Diffuse(Gtk.Window):
         sw.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
         treeview = Gtk.TreeView.new_with_model(model)
         r = Gtk.CellRendererToggle.new()
-        r.connect('toggled', self.__confirmClose_toggle_cb, model)
+        r.connect('toggled', self._confirmClose_toggle_cb, model)
         column = Gtk.TreeViewColumn(None, r)
         column.add_attribute(r, 'active', 0)
         treeview.append_column(column)
@@ -982,7 +984,7 @@ class Diffuse(Gtk.Window):
         column.set_resizable(True)
         column.set_sort_column_id(2)
         treeview.append_column(column)
-        treeview.connect('row-activated', self.__confirmClose_row_activated_cb, model)
+        treeview.connect('row-activated', self._confirmClose_row_activated_cb, model)
         sw.add(treeview)
         treeview.show()
         dialog.vbox.pack_start(sw, True, True, 0) # pylint: disable=no-member

@@ -29,6 +29,7 @@ gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 # pylint: enable=wrong-import-position
 
+# pylint: disable-next=no-name-in-module
 from diffuse import constants
 
 # convenience class for displaying a message dialogue

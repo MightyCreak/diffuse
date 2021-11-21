@@ -1649,7 +1649,8 @@ class FileDiffViewer(Gtk.Grid):
         # scroll vertically to current line
         self._ensure_line_is_visible(current_line)
 
-    def __set_clipboard_text(self, clipboard, s):
+    @staticmethod
+    def _set_clipboard_text(clipboard, s):
         # remove embedded nulls as the clipboard cannot handle them
         Gtk.Clipboard.get(clipboard).set_text(s.replace('\0', ''), -1)
 
@@ -1673,7 +1674,7 @@ class FileDiffViewer(Gtk.Grid):
         self.selection_char = sj
 
         if extend:
-            self.__set_clipboard_text(Gdk.SELECTION_PRIMARY, self.getSelectedText())
+            self._set_clipboard_text(Gdk.SELECTION_PRIMARY, self.getSelectedText())
 
         self._cursor_position_changed(True)
         self.emit('cursor_changed')
@@ -2922,7 +2923,7 @@ class FileDiffViewer(Gtk.Grid):
     # 'copy' action
     def copy(self):
         if self.mode in (LINE_MODE, CHAR_MODE):
-            self.__set_clipboard_text(Gdk.SELECTION_CLIPBOARD, self.getSelectedText())
+            self._set_clipboard_text(Gdk.SELECTION_CLIPBOARD, self.getSelectedText())
 
     # 'cut' action
     def cut(self):
