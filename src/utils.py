@@ -264,6 +264,14 @@ def null_to_empty(s):
         s = ''
     return s
 
+# utility method to step advance an adjustment
+def step_adjustment(adj, delta):
+    v = adj.get_value() + delta
+    # clamp to the allowed range
+    v = max(v, int(adj.get_lower()))
+    v = min(v, int(adj.get_upper() - adj.get_page_size()))
+    adj.set_value(v)
+
 
 # use the program's location as a starting place to search for supporting files
 # such as icon and help documentation
@@ -279,9 +287,9 @@ lang = locale.getdefaultlocale()[0]
 if isWindows():
     # gettext looks for the language using environment variables which
     # are normally not set on Windows so we try setting it for them
-    for v in 'LC_ALL', 'LC_CTYPE', 'LANG', 'LANGUAGE':
-        if v in os.environ:
-            lang = os.environ[v]
+    for lang_env in 'LC_ALL', 'LC_CTYPE', 'LANG', 'LANGUAGE':
+        if lang_env in os.environ:
+            lang = os.environ[lang_env]
             # remove any additional languages, encodings, or modifications
             for c in ':.@':
                 lang = lang.split(c)[0]
