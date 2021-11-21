@@ -25,6 +25,13 @@ import platform
 import subprocess
 import sys
 
+try:
+    unichr
+    unicode
+except NameError:
+    unichr = chr
+    unicode = str
+
 VERSION='0.7.2'
 PACKAGE='1'
 PLATFORM='win' + ''.join([ c for c in platform.architecture()[0] if c.isdigit() ])
