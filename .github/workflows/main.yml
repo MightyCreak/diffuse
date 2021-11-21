@@ -22,7 +22,8 @@ jobs:
     - uses: actions/setup-python@v2
     - run: pip install --upgrade pip wheel
     - run: pip install pylint
-    - run: pylint .
+    - run: pylint **/*.py
+    
 
   meson-build-test:
     runs-on: ubuntu-latest
