@@ -53,7 +53,7 @@ def copyFile(src, dest, use_text_mode=False,enc=None):
 
 # recursively copies a directory to 'dest'
 def copyDir(src, dest):
-    print 'copying "%s" to "%s"' % (src, dest)
+    print('copying "%s" to "%s"' % (src, dest))
     mkdir(dest)
     for f in os.listdir(src):
         s = os.path.join(src, f)
