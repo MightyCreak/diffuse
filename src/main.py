@@ -51,66 +51,6 @@ from diffuse.widgets import LINE_MODE, CHAR_MODE, ALIGN_MODE
 
 theVCSs = VcsRegistry()
 
-# convenience method for creating a menu bar according to a template
-def createMenuBar(specs, radio, accel_group):
-    menu_bar = Gtk.MenuBar.new()
-    for label, spec in specs:
-        menu = Gtk.MenuItem.new_with_mnemonic(label)
-        menu.set_submenu(utils.createMenu(spec, radio, accel_group))
-        menu.set_use_underline(True)
-        menu.show()
-        menu_bar.append(menu)
-    return menu_bar
-
-# convenience method for packing buttons into a container according to a
-# template
-def appendButtons(box, size, specs):
-    for spec in specs:
-        if len(spec) > 0:
-            button = Gtk.Button.new()
-            button.set_relief(Gtk.ReliefStyle.NONE)
-            button.set_can_focus(False)
-            image = Gtk.Image.new()
-            image.set_from_stock(spec[0], size)
-            button.add(image)
-            image.show()
-            if len(spec) > 2:
-                button.connect('clicked', spec[1], spec[2])
-                if len(spec) > 3:
-                    button.set_tooltip_text(spec[3])
-            box.pack_start(button, False, False, 0)
-            button.show()
-        else:
-            separator = Gtk.Separator.new(Gtk.Orientation.VERTICAL)
-            box.pack_start(separator, False, False, 5)
-            separator.show()
-
-# constructs a full URL for the named file
-def path2url(path, proto='file'):
-    r = [ proto, ':///' ]
-    s = os.path.abspath(path)
-    i = 0
-    while i < len(s) and s[i] == os.sep:
-        i += 1
-    for c in s[i:]:
-        if c == os.sep:
-            c = '/'
-        elif c == ':' and utils.isWindows():
-            c = '|'
-        else:
-            v = ord(c)
-            if v <= 0x20 or v >= 0x7b or c in '$&+,/:;=?@"<>#%\\^[]`':
-                c = '%%%02X' % (v, )
-        r.append(c)
-    return ''.join(r)
-
-# convenience method to request confirmation when closing the last tab
-def confirmTabClose(parent):
-    dialog = utils.MessageDialog(parent, Gtk.MessageType.WARNING, _('Closing this tab will quit %s.') % (constants.APP_NAME, ))
-    end = (dialog.run() == Gtk.ResponseType.OK)
-    dialog.destroy()
-    return end
-
 # widget classed to create notebook tabs with labels and a close button
 # use notebooktab.button.connect() to be notified when the button is pressed
 # make this a Gtk.EventBox so signals can be connected for MMB and RMB button
@@ -169,18 +109,6 @@ class FileInfo:
         # to warn about changes to file on disk
         self.last_stat = None
 
-# assign user specified labels to the corresponding files
-def assign_file_labels(items, labels):
-    new_items = []
-    ss = labels[::-1]
-    for name, data in items:
-        if ss:
-            s = ss.pop()
-        else:
-            s = None
-        new_items.append((name, data, s))
-    return new_items
-
 # the main application class containing a set of file viewers
 # this class displays tab for switching between viewers and dispatches menu
 # commands to the current viewer
@@ -191,7 +119,7 @@ class Diffuse(Gtk.Window):
         class PaneHeader(Gtk.Box):
             def __init__(self):
                 Gtk.Box.__init__(self, orientation = Gtk.Orientation.HORIZONTAL, spacing = 0)
-                appendButtons(self, Gtk.IconSize.MENU, [
+                _append_buttons(self, Gtk.IconSize.MENU, [
                    [ Gtk.STOCK_OPEN, self.button_cb, 'open', _('Open File...') ],
                    [ Gtk.STOCK_REFRESH, self.button_cb, 'reload', _('Reload File') ],
                    [ Gtk.STOCK_SAVE, self.button_cb, 'save', _('Save File') ],
@@ -430,9 +358,8 @@ class Diffuse(Gtk.Window):
                 try:
                     if rev is None:
                         # load the contents of a plain file
-                        fd = open(name, 'rb')
-                        s = fd.read()
-                        fd.close()
+                        with open(name, 'rb') as fd:
+                            s = fd.read()
                         # get the file's modification times so we can detect changes
                         stat = os.stat(name)
                     else:
@@ -596,9 +523,8 @@ class Diffuse(Gtk.Window):
                 encoded = codecs.encode(''.join(ss), encoding)
 
                 # write file
-                fd = open(name, 'wb')
-                fd.write(encoded)
-                fd.close()
+                with open(name, 'wb') as fd:
+                    fd.write(encoded)
 
                 # make the edits look permanent
                 self.openUndoBlock()
@@ -691,8 +617,8 @@ class Diffuse(Gtk.Window):
                 footer.updateCursor(self, f)
 
         # callback to display the format of a pane
-        def format_changed_cb(self, widget, f, format):
-            self.footers[f].setFormat(format)
+        def format_changed_cb(self, widget, f, fmt):
+            self.footers[f].setFormat(fmt)
 
     def __init__(self, rc_dir):
         Gtk.Window.__init__(self, type = Gtk.WindowType.TOPLEVEL)
@@ -888,13 +814,13 @@ class Diffuse(Gtk.Window):
         # build list of radio menu items so we can update them to match the
         # currently viewed pane
         self.radio_menus = radio_menus = {}
-        menu_bar = createMenuBar(menuspecs, radio_menus, accel_group)
+        menu_bar = _create_menu_bar(menuspecs, radio_menus, accel_group)
         vbox.pack_start(menu_bar, False, False, 0)
         menu_bar.show()
 
         # create button bar
         hbox = Gtk.Box.new(Gtk.Orientation.HORIZONTAL, 0)
-        appendButtons(hbox, Gtk.IconSize.LARGE_TOOLBAR, [
+        _append_buttons(hbox, Gtk.IconSize.LARGE_TOOLBAR, [
            [ DIFFUSE_STOCK_NEW_2WAY_MERGE, self.new_2_way_file_merge_cb, None, _('New 2-Way File Merge') ],
            [ DIFFUSE_STOCK_NEW_3WAY_MERGE, self.new_3_way_file_merge_cb, None, _('New 3-Way File Merge') ],
            [],
@@ -1096,8 +1022,15 @@ class Diffuse(Gtk.Window):
                 self.closed_tabs.append((nb.page_num(data), data, nb.get_tab_label(data)))
                 nb.remove(data)
                 nb.set_show_tabs(self.prefs.getBool('tabs_always_show') or nb.get_n_pages() > 1)
-        elif not self.prefs.getBool('tabs_warn_before_quit') or confirmTabClose(self.get_toplevel()):
+        elif not self.prefs.getBool('tabs_warn_before_quit') or self._confirm_tab_close():
             self.quit_cb(widget, data)
+
+    # convenience method to request confirmation when closing the last tab
+    def _confirm_tab_close(self):
+        dialog = utils.MessageDialog(self.get_toplevel(), Gtk.MessageType.WARNING, _('Closing this tab will quit %s.') % (constants.APP_NAME, ))
+        end = (dialog.run() == Gtk.ResponseType.OK)
+        dialog.destroy()
+        return end
 
     # callback for RMB menu on notebook tabs
     def notebooktab_pick_cb(self, widget, data):
@@ -1243,13 +1176,13 @@ class Diffuse(Gtk.Window):
     # create a new viewer for 'items'
     def createSingleTab(self, items, labels, options):
         if len(items) > 0:
-            self.newLoadedFileDiffViewer(assign_file_labels(items, labels)).setOptions(options)
+            self.newLoadedFileDiffViewer(_assign_file_labels(items, labels)).setOptions(options)
 
     # create a new viewer for each item in 'items'
     def createSeparateTabs(self, items, labels, options):
         # all tabs inherit the first tab's revision and encoding specifications
         items = [ (name, items[0][1]) for name, data in items ]
-        for item in assign_file_labels(items, labels):
+        for item in _assign_file_labels(items, labels):
             self.newLoadedFileDiffViewer([ item ]).setOptions(options)
 
     # create a new viewer for each modified file found in 'items'
@@ -1564,7 +1497,7 @@ class Diffuse(Gtk.Window):
                 help_file = os.path.join(utils.bin_dir, '_'.join(parts) + '.html')
                 if os.path.isfile(help_file):
                     # we found a help file
-                    help_url = path2url(help_file)
+                    help_url = _path2url(help_file)
                     break
                 del parts[-1]
         else:
@@ -1592,7 +1525,7 @@ class Diffuse(Gtk.Window):
                         d = 'C'
                     help_file = os.path.join(os.path.join(s, d), 'diffuse.xml')
                     if os.path.isfile(help_file):
-                        args = [ browser, path2url(help_file, 'ghelp') ]
+                        args = [ browser, _path2url(help_file, 'ghelp') ]
                         # spawnvp is not available on some systems, use spawnv instead
                         os.spawnv(os.P_NOWAIT, args[0], args)
                         return
@@ -1613,6 +1546,71 @@ class Diffuse(Gtk.Window):
         dialog = AboutDialog()
         dialog.run()
         dialog.destroy()
+
+# convenience method for creating a menu bar according to a template
+def _create_menu_bar(specs, radio, accel_group):
+    menu_bar = Gtk.MenuBar.new()
+    for label, spec in specs:
+        menu = Gtk.MenuItem.new_with_mnemonic(label)
+        menu.set_submenu(utils.createMenu(spec, radio, accel_group))
+        menu.set_use_underline(True)
+        menu.show()
+        menu_bar.append(menu)
+    return menu_bar
+
+# convenience method for packing buttons into a container according to a
+# template
+def _append_buttons(box, size, specs):
+    for spec in specs:
+        if len(spec) > 0:
+            button = Gtk.Button.new()
+            button.set_relief(Gtk.ReliefStyle.NONE)
+            button.set_can_focus(False)
+            image = Gtk.Image.new()
+            image.set_from_stock(spec[0], size)
+            button.add(image)
+            image.show()
+            if len(spec) > 2:
+                button.connect('clicked', spec[1], spec[2])
+                if len(spec) > 3:
+                    button.set_tooltip_text(spec[3])
+            box.pack_start(button, False, False, 0)
+            button.show()
+        else:
+            separator = Gtk.Separator.new(Gtk.Orientation.VERTICAL)
+            box.pack_start(separator, False, False, 5)
+            separator.show()
+
+# constructs a full URL for the named file
+def _path2url(path, proto='file'):
+    r = [ proto, ':///' ]
+    s = os.path.abspath(path)
+    i = 0
+    while i < len(s) and s[i] == os.sep:
+        i += 1
+    for c in s[i:]:
+        if c == os.sep:
+            c = '/'
+        elif c == ':' and utils.isWindows():
+            c = '|'
+        else:
+            v = ord(c)
+            if v <= 0x20 or v >= 0x7b or c in '$&+,/:;=?@"<>#%\\^[]`':
+                c = '%%%02X' % (v, )
+        r.append(c)
+    return ''.join(r)
+
+# assign user specified labels to the corresponding files
+def _assign_file_labels(items, labels):
+    new_items = []
+    ss = labels[::-1]
+    for name, data in items:
+        if ss:
+            s = ss.pop()
+        else:
+            s = None
+        new_items.append((name, data, s))
+    return new_items
 
 GObject.signal_new('title-changed', Diffuse.FileDiffViewer, GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, (str, ))
 GObject.signal_new('status-changed', Diffuse.FileDiffViewer, GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, (str, ))
