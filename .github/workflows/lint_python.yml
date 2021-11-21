@@ -4,6 +4,7 @@ jobs:
   lint_python:
     runs-on: ubuntu-latest
     steps:
+      - run: sudo apt install libgirepository1.0-dev
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
       - run: pip install --upgrade pip wheel
