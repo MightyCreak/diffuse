@@ -535,3 +535,5 @@ class _SyntaxParser:
                 blocks.append([start, end, token_type])
             start = end
         return state_name, blocks
+
+theResources = Resources()

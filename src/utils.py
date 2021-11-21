@@ -30,6 +30,7 @@ from gi.repository import Gtk
 # pylint: enable=wrong-import-position
 
 from diffuse import constants
+from diffuse.resources import theResources
 
 # convenience class for displaying a message dialogue
 class MessageDialog(Gtk.MessageDialog):
@@ -155,8 +156,7 @@ def popenRead(dn, cmd, prefs, bash_pref, success_results=None):
             prefs.convertToNativePath('/bin/bash.exe'),
             '-l',
             '-c',
-            f"cd {_bash_escape(dn)}; {' '.join([ _bash_escape(arg) for arg in cmd ])}"
-        ]
+            f"cd {_bash_escape(dn)}; {' '.join([ _bash_escape(arg) for arg in cmd ])}" ]
         dn = None
     # use subprocess.Popen to retrieve the file contents
     if isWindows():
@@ -272,6 +272,59 @@ def step_adjustment(adj, delta):
     v = min(v, int(adj.get_upper() - adj.get_page_size()))
     adj.set_value(v)
 
+# convenience method for creating a menu according to a template
+def createMenu(specs, radio=None, accel_group=None):
+    menu = Gtk.Menu.new()
+    for spec in specs:
+        if len(spec) > 0:
+            if len(spec) > 7 and spec[7] is not None:
+                g, k = spec[7]
+                if g not in radio:
+                    item = Gtk.RadioMenuItem.new_with_mnemonic_from_widget(None, spec[0])
+                    radio[g] = (item, {})
+                else:
+                    item = Gtk.RadioMenuItem.new_with_mnemonic_from_widget(radio[g][0], spec[0])
+                radio[g][1][k] = item
+            else:
+                item = Gtk.ImageMenuItem.new_with_mnemonic(spec[0])
+            cb = spec[1]
+            if cb is not None:
+                data = spec[2]
+                item.connect('activate', cb, data)
+            if len(spec) > 3 and spec[3] is not None:
+                image = Gtk.Image.new()
+                image.set_from_stock(spec[3], Gtk.IconSize.MENU) # pylint: disable=no-member
+                item.set_image(image)
+            if accel_group is not None and len(spec) > 4:
+                a = theResources.getKeyBindings('menu', spec[4])
+                if len(a) > 0:
+                    key, modifier = a[0]
+                    item.add_accelerator(
+                        'activate',
+                        accel_group,
+                        key,
+                        modifier,
+                        Gtk.AccelFlags.VISIBLE)
+            if len(spec) > 5:
+                item.set_sensitive(spec[5])
+            if len(spec) > 6 and spec[6] is not None:
+                item.set_submenu(createMenu(spec[6], radio, accel_group))
+            item.set_use_underline(True)
+        else:
+            item = Gtk.SeparatorMenuItem.new()
+        item.show()
+        menu.append(item)
+    return menu
+
+
+# masks used to indicate the presence of particular line endings
+DOS_FORMAT = 1
+MAC_FORMAT = 2
+UNIX_FORMAT = 4
+
+# avoid some dictionary lookups when string.whitespace is used in loops
+# this is sorted based upon frequency to speed up code for stripping whitespace
+whitespace = ' \t\n\r\x0b\x0c'
 
 # use the program's location as a starting place to search for supporting files
 # such as icon and help documentation
