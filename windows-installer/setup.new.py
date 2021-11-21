@@ -1,9 +1,15 @@
+import codecs
 import os
 import site
 import sys
 import glob
 import subprocess
 from cx_Freeze import setup, Executable
+
+try:
+    unicode
+except NameError:
+    unicode = str
 
 siteDir = site.getsitepackages()[1]
 gnomeSiteDir = os.path.join(siteDir, "gnome")
