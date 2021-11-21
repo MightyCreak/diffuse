@@ -20,11 +20,9 @@
 import os
 import sys
 import codecs
-import difflib
 import encodings
 import shlex
 import stat
-import unicodedata
 import webbrowser
 
 # pylint: disable=wrong-import-position
@@ -44,9 +42,9 @@ from diffuse import constants
 from diffuse import utils
 from diffuse.dialogs import AboutDialog, FileChooserDialog, NumericDialog, SearchDialog
 from diffuse.preferences import Preferences
-from diffuse.resources import Resources, theResources
+from diffuse.resources import theResources
 from diffuse.vcs.vcs_registry import VcsRegistry
-from diffuse.widgets import FileDiffViewer, ScrolledWindow
+from diffuse.widgets import FileDiffViewer
 from diffuse.widgets import LINE_MODE, CHAR_MODE, ALIGN_MODE
 
 theVCSs = VcsRegistry()
