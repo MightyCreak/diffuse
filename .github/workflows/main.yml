@@ -23,7 +23,7 @@ jobs:
     - name: Pylint
       uses: cclauss/GitHub-Action-for-pylint@master
       with:
-        args: "pylint src/vcs/ src/dialogs.py src/preferences.py src/resources.py src/utils.py src/widgets.py"
+        args: "pylint src/**/*.py"
 
   meson-build-test:
     runs-on: ubuntu-latest
