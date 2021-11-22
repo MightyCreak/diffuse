@@ -46,7 +46,7 @@ def copyFile(src, dest, use_text_mode=False,enc=None):
     s = f.read()
     f.close()
     if enc is not None:
-        s = codecs.encode(unicode(s, 'utf_8'), enc)
+        s = codecs.encode(str(s, encoding='utf_8'), enc)
     f = open(dest, w)
     f.write(s)
     f.close()
@@ -190,12 +190,12 @@ for lang in os.listdir(d):
         while True:
             i = s.find('&#', idx)
             if i < 0:
-                a.append(unicode(s[idx:], 'latin_1'))
+                a.append(str(s[idx:], encoding='latin_1'))
                 break
-            a.append(unicode(s[idx:i], 'latin_1'))
+            a.append(str(s[idx:i], encoding='latin_1'))
             i += 2
             j = s.find(';', i)
-            a.append(unichr(int(s[i:j])))
+            a.append(chr(int(s[i:j])))
             idx = j + 1
         s = ''.join(a)
         s = codecs.encode(s, 'utf-8')

@@ -10,14 +10,14 @@ gnomeSiteDir = os.path.join(siteDir, "gnome")
 
 # This is the list of dll which are required by PyGI.
 # I get this list of DLL using http://technet.microsoft.com/en-us/sysinternals/bb896656.aspx
-#   Procedure: 
+#   Procedure:
 #    1) Run your from from your IDE
 #    2) Command for using listdlls.exe
 #        c:/path/to/listdlls.exe python.exe > output.txt
-#    3) This would return lists of all dll required by you program 
-#       in my case most of dll file were located in c:\python27\Lib\site-packages\gnome 
+#    3) This would return lists of all dll required by you program
+#       in my case most of dll file were located in c:\python27\Lib\site-packages\gnome
 #       (I am using PyGI (all in one) installer)
-#    4) Below is the list of gnome dll I received from listdlls.exe result. 
+#    4) Below is the list of gnome dll I received from listdlls.exe result.
 
 # If you prefer you can import all dlls from c:\python27\Lib\site-packages\gnome folder
 #missingDll = glob.glob(gnomeSiteDir + "\\" + '*.dll')
@@ -142,10 +142,10 @@ for dll in missingDll:
     includeFiles.append((os.path.join(gnomeSiteDir, dll), dll))
     #includeFiles.append(dll)
 
-# You can import all Gtk Runtime data from gtk folder              
+# You can import all Gtk Runtime data from gtk folder
 #gnomeLibs= ['etc','lib','share']
 
-# You can import only important Gtk Runtime data from gtk folder  
+# You can import only important Gtk Runtime data from gtk folder
 gnomeLibs = [
     'lib\\gdk-pixbuf-2.0',
     'lib\\girepository-1.0',
@@ -196,7 +196,7 @@ def copyFile(src, dest, use_text_mode=False,enc=None):
     s = f.read()
     f.close()
     if enc is not None:
-        s = codecs.encode(unicode(s, 'utf_8'), enc)
+        s = codecs.encode(str(s, encoding='utf_8'), enc)
     f = open(dest, w)
     f.write(s)
     f.close()
