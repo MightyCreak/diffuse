@@ -25,22 +25,9 @@ import shlex
 import stat
 import webbrowser
 
-# pylint: disable=wrong-import-position
-import gi
-gi.require_version('GObject', '2.0')
-gi.require_version('Gtk', '3.0')
-gi.require_version('Gdk', '3.0')
-gi.require_version('GdkPixbuf', '2.0')
-gi.require_version('Pango', '1.0')
-gi.require_version('PangoCairo', '1.0')
-from gi.repository import GObject, Gtk, Gdk, GdkPixbuf, Pango, PangoCairo
-# pylint: enable=wrong-import-position
-
 from urllib.parse import urlparse
 
-# pylint: disable-next=no-name-in-module
 from diffuse import constants
-
 from diffuse import utils
 from diffuse.dialogs import AboutDialog, FileChooserDialog, NumericDialog, SearchDialog
 from diffuse.preferences import Preferences
@@ -48,6 +35,16 @@ from diffuse.resources import theResources
 from diffuse.vcs.vcs_registry import VcsRegistry
 from diffuse.widgets import FileDiffViewer
 from diffuse.widgets import createMenu, LINE_MODE, CHAR_MODE, ALIGN_MODE
+
+import gi
+gi.require_version('GObject', '2.0')
+gi.require_version('Gtk', '3.0')
+gi.require_version('Gdk', '3.0')
+gi.require_version('GdkPixbuf', '2.0')
+gi.require_version('Pango', '1.0')
+gi.require_version('PangoCairo', '1.0')
+from gi.repository import GObject, Gtk, Gdk, GdkPixbuf, Pango, PangoCairo  # noqa: E402
+
 
 theVCSs = VcsRegistry()
 
@@ -120,10 +117,10 @@ class Diffuse(Gtk.Window):
             def __init__(self):
                 Gtk.Box.__init__(self, orientation = Gtk.Orientation.HORIZONTAL, spacing = 0)
                 _append_buttons(self, Gtk.IconSize.MENU, [
-                   [ Gtk.STOCK_OPEN, self.button_cb, 'open', _('Open File...') ],
-                   [ Gtk.STOCK_REFRESH, self.button_cb, 'reload', _('Reload File') ],
-                   [ Gtk.STOCK_SAVE, self.button_cb, 'save', _('Save File') ],
-                   [ Gtk.STOCK_SAVE_AS, self.button_cb, 'save_as', _('Save File As...') ] ])
+                   [Gtk.STOCK_OPEN, self.button_cb, 'open', _('Open File...')],
+                   [Gtk.STOCK_REFRESH, self.button_cb, 'reload', _('Reload File')],
+                   [Gtk.STOCK_SAVE, self.button_cb, 'save', _('Save File')],
+                   [Gtk.STOCK_SAVE_AS, self.button_cb, 'save_as', _('Save File As...') ]])
 
                 self.label = label = Gtk.Label.new()
                 label.set_selectable(True)
@@ -258,7 +255,7 @@ class Diffuse(Gtk.Window):
             self.connect('format-changed', self.format_changed_cb)
 
             for i, darea in enumerate(self.dareas):
-                darea.drag_dest_set(Gtk.DestDefaults.ALL, [ Gtk.TargetEntry.new('text/uri-list', 0, 0) ], Gdk.DragAction.COPY)
+                darea.drag_dest_set(Gtk.DestDefaults.ALL, [Gtk.TargetEntry.new('text/uri-list', 0, 0)], Gdk.DragAction.COPY)
                 darea.connect('drag-data-received', self.drag_data_received_cb, i)
             # initialise status
             self.updateStatus()
@@ -749,7 +746,7 @@ class Diffuse(Gtk.Window):
                      [],
                      [_('Pr_eferences...'), self.preferences_cb, None, Gtk.STOCK_PREFERENCES, 'preferences'] ] ])
 
-        submenudef = [ [_('None'), self.syntax_cb, None, None, 'no_syntax_highlighting', True, None, ('syntax', None) ] ]
+        submenudef = [[_('None'), self.syntax_cb, None, None, 'no_syntax_highlighting', True, None, ('syntax', None) ]]
         names = theResources.getSyntaxNames()
         if len(names) > 0:
             submenudef.append([])
@@ -820,28 +817,28 @@ class Diffuse(Gtk.Window):
         # create button bar
         hbox = Gtk.Box.new(Gtk.Orientation.HORIZONTAL, 0)
         _append_buttons(hbox, Gtk.IconSize.LARGE_TOOLBAR, [
-           [ DIFFUSE_STOCK_NEW_2WAY_MERGE, self.new_2_way_file_merge_cb, None, _('New 2-Way File Merge') ],
-           [ DIFFUSE_STOCK_NEW_3WAY_MERGE, self.new_3_way_file_merge_cb, None, _('New 3-Way File Merge') ],
+           [DIFFUSE_STOCK_NEW_2WAY_MERGE, self.new_2_way_file_merge_cb, None, _('New 2-Way File Merge')],
+           [DIFFUSE_STOCK_NEW_3WAY_MERGE, self.new_3_way_file_merge_cb, None, _('New 3-Way File Merge')],
            [],
-           [ Gtk.STOCK_EXECUTE, self.button_cb, 'realign_all', _('Realign All') ],
-           [ Gtk.STOCK_GOTO_TOP, self.button_cb, 'first_difference', _('First Difference') ],
-           [ Gtk.STOCK_GO_UP, self.button_cb, 'previous_difference', _('Previous Difference') ],
-           [ Gtk.STOCK_GO_DOWN, self.button_cb, 'next_difference', _('Next Difference') ],
-           [ Gtk.STOCK_GOTO_BOTTOM, self.button_cb, 'last_difference', _('Last Difference') ],
+           [Gtk.STOCK_EXECUTE, self.button_cb, 'realign_all', _('Realign All')],
+           [Gtk.STOCK_GOTO_TOP, self.button_cb, 'first_difference', _('First Difference')],
+           [Gtk.STOCK_GO_UP, self.button_cb, 'previous_difference', _('Previous Difference')],
+           [Gtk.STOCK_GO_DOWN, self.button_cb, 'next_difference', _('Next Difference')],
+           [Gtk.STOCK_GOTO_BOTTOM, self.button_cb, 'last_difference', _('Last Difference')],
            [],
-           [ Gtk.STOCK_GOTO_LAST, self.button_cb, 'copy_selection_right', _('Copy Selection Right') ],
-           [ Gtk.STOCK_GOTO_FIRST, self.button_cb, 'copy_selection_left', _('Copy Selection Left') ],
-           [ Gtk.STOCK_GO_FORWARD, self.button_cb, 'copy_left_into_selection', _('Copy Left Into Selection') ],
-           [ Gtk.STOCK_GO_BACK, self.button_cb, 'copy_right_into_selection', _('Copy Right Into Selection') ],
-           [ DIFFUSE_STOCK_LEFT_RIGHT, self.button_cb, 'merge_from_left_then_right', _('Merge From Left Then Right') ],
-           [ DIFFUSE_STOCK_RIGHT_LEFT, self.button_cb, 'merge_from_right_then_left', _('Merge From Right Then Left') ],
+           [Gtk.STOCK_GOTO_LAST, self.button_cb, 'copy_selection_right', _('Copy Selection Right')],
+           [Gtk.STOCK_GOTO_FIRST, self.button_cb, 'copy_selection_left', _('Copy Selection Left')],
+           [Gtk.STOCK_GO_FORWARD, self.button_cb, 'copy_left_into_selection', _('Copy Left Into Selection')],
+           [Gtk.STOCK_GO_BACK, self.button_cb, 'copy_right_into_selection', _('Copy Right Into Selection')],
+           [DIFFUSE_STOCK_LEFT_RIGHT, self.button_cb, 'merge_from_left_then_right', _('Merge From Left Then Right')],
+           [DIFFUSE_STOCK_RIGHT_LEFT, self.button_cb, 'merge_from_right_then_left', _('Merge From Right Then Left')],
            [],
-           [ Gtk.STOCK_UNDO, self.button_cb, 'undo', _('Undo') ],
-           [ Gtk.STOCK_REDO, self.button_cb, 'redo', _('Redo') ],
-           [ Gtk.STOCK_CUT, self.button_cb, 'cut', _('Cut') ],
-           [ Gtk.STOCK_COPY, self.button_cb, 'copy', _('Copy') ],
-           [ Gtk.STOCK_PASTE, self.button_cb, 'paste', _('Paste') ],
-           [ Gtk.STOCK_CLEAR, self.button_cb, 'clear_edits', _('Clear Edits') ] ])
+           [Gtk.STOCK_UNDO, self.button_cb, 'undo', _('Undo')],
+           [Gtk.STOCK_REDO, self.button_cb, 'redo', _('Redo')],
+           [Gtk.STOCK_CUT, self.button_cb, 'cut', _('Cut')],
+           [Gtk.STOCK_COPY, self.button_cb, 'copy', _('Copy')],
+           [Gtk.STOCK_PASTE, self.button_cb, 'paste', _('Paste')],
+           [Gtk.STOCK_CLEAR, self.button_cb, 'clear_edits', _('Clear Edits') ]])
         # avoid the button bar from dictating the minimum window size
         hbox.set_size_request(0, hbox.get_size_request()[1])
         vbox.pack_start(hbox, False, False, 0)
@@ -986,7 +983,7 @@ class Diffuse(Gtk.Window):
         treeview.connect('row-activated', self._confirmClose_row_activated_cb, model)
         sw.add(treeview)
         treeview.show()
-        dialog.vbox.pack_start(sw, True, True, 0) # pylint: disable=no-member
+        dialog.vbox.pack_start(sw, True, True, 0)
         sw.show()
         # add custom set of action buttons
         dialog.add_button(Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL)
@@ -1017,7 +1014,7 @@ class Diffuse(Gtk.Window):
         nb = self.notebook
         if nb.get_n_pages() > 1:
             # warn about losing unsaved changes before removing a tab
-            if self.confirmCloseViewers([ data ]):
+            if self.confirmCloseViewers([data]):
                 self.closed_tabs.append((nb.page_num(data), data, nb.get_tab_label(data)))
                 nb.remove(data)
                 nb.set_show_tabs(self.prefs.getBool('tabs_always_show') or nb.get_n_pages() > 1)
@@ -1180,9 +1177,9 @@ class Diffuse(Gtk.Window):
     # create a new viewer for each item in 'items'
     def createSeparateTabs(self, items, labels, options):
         # all tabs inherit the first tab's revision and encoding specifications
-        items = [ (name, items[0][1]) for name, data in items ]
+        items = [(name, items[0][1]) for name, data in items]
         for item in _assign_file_labels(items, labels):
-            self.newLoadedFileDiffViewer([ item ]).setOptions(options)
+            self.newLoadedFileDiffViewer([item]).setOptions(options)
 
     # create a new viewer for each modified file found in 'items'
     def createCommitFileTabs(self, items, labels, options):
@@ -1196,7 +1193,7 @@ class Diffuse(Gtk.Window):
                 if dn == old_dn:
                     break
             if len(new_items) == 0 or dn != new_items[-1][0]:
-                new_items.append([ dn, None, [] ])
+                new_items.append([dn, None, []])
             dst = new_items[-1]
             dst[1] = data[-1][1]
             dst[2].append(name)
@@ -1225,7 +1222,7 @@ class Diffuse(Gtk.Window):
                 if dn == old_dn:
                     break
             if len(new_items) == 0 or dn != new_items[-1][0]:
-                new_items.append([ dn, None, [] ])
+                new_items.append([dn, None, []])
             dst = new_items[-1]
             dst[1] = data[-1][1]
             dst[2].append(name)
@@ -1251,7 +1248,7 @@ class Diffuse(Gtk.Window):
     # returns True if the application can safely quit
     def confirmQuit(self):
         nb = self.notebook
-        return self.confirmCloseViewers([ nb.get_nth_page(i) for i in range(nb.get_n_pages()) ])
+        return self.confirmCloseViewers([nb.get_nth_page(i) for i in range(nb.get_n_pages())])
 
     # respond to close window request from the window manager
     def delete_cb(self, widget, event):
@@ -1279,7 +1276,7 @@ class Diffuse(Gtk.Window):
             rev = None
         dialog.destroy()
         if accept:
-            viewer = self.newLoadedFileDiffViewer([ (name, [ (rev, encoding) ], None) ])
+            viewer = self.newLoadedFileDiffViewer([(name, [(rev, encoding)], None)])
             self.notebook.set_current_page(self.notebook.get_n_pages() - 1)
             viewer.grab_focus()
 
@@ -1293,7 +1290,7 @@ class Diffuse(Gtk.Window):
         dialog.destroy()
         if accept:
             n = self.notebook.get_n_pages()
-            self.createModifiedFileTabs([ (name, [ (None, encoding) ]) ], [], {})
+            self.createModifiedFileTabs([(name, [(None, encoding)])], [], {})
             if self.notebook.get_n_pages() > n:
                 # we added some new tabs, focus on the first one
                 self.notebook.set_current_page(n)
@@ -1311,7 +1308,7 @@ class Diffuse(Gtk.Window):
         dialog.destroy()
         if accept:
             n = self.notebook.get_n_pages()
-            self.createCommitFileTabs([ (name, [ (None, encoding) ]) ], [], { 'commit': rev })
+            self.createCommitFileTabs([(name, [(None, encoding)])], [], { 'commit': rev })
             if self.notebook.get_n_pages() > n:
                 # we added some new tabs, focus on the first one
                 self.notebook.set_current_page(n)
@@ -1488,9 +1485,9 @@ class Diffuse(Gtk.Window):
         if utils.isWindows():
             # help documentation is distributed as local HTML files
             # search for localised manual first
-            parts = [ 'manual' ]
+            parts = ['manual']
             if utils.lang is not None:
-                parts = [ 'manual' ]
+                parts = ['manual']
                 parts.extend(utils.lang.split('_'))
             while len(parts) > 0:
                 help_file = os.path.join(utils.bin_dir, '_'.join(parts) + '.html')
@@ -1524,7 +1521,7 @@ class Diffuse(Gtk.Window):
                         d = 'C'
                     help_file = os.path.join(os.path.join(s, d), 'diffuse.xml')
                     if os.path.isfile(help_file):
-                        args = [ browser, _path2url(help_file, 'ghelp') ]
+                        args = [browser, _path2url(help_file, 'ghelp')]
                         # spawnvp is not available on some systems, use spawnv instead
                         os.spawnv(os.P_NOWAIT, args[0], args)
                         return
@@ -1582,7 +1579,7 @@ def _append_buttons(box, size, specs):
 
 # constructs a full URL for the named file
 def _path2url(path, proto='file'):
-    r = [ proto, ':///' ]
+    r = [proto, ':///']
     s = os.path.abspath(path)
     i = 0
     while i < len(s) and s[i] == os.sep:
@@ -1626,11 +1623,11 @@ def main():
     args = sys.argv
     argc = len(args)
 
-    if argc == 2 and args[1] in [ '-v', '--version' ]:
+    if argc == 2 and args[1] in ['-v', '--version']:
         print('%s %s\n%s' % (constants.APP_NAME, constants.VERSION, constants.COPYRIGHT))
         return 0
 
-    if argc == 2 and args[1] in [ '-h', '-?', '--help' ]:
+    if argc == 2 and args[1] in ['-h', '-?', '--help']:
         print(_('''Usage:
     diffuse [ [OPTION...] [FILE...] ]...
     diffuse ( -h | -? | --help | -v | --version )
@@ -1683,7 +1680,7 @@ Display Options:
     subdirs = ['diffuse']
     if data_dir is None:
         data_dir = os.path.expanduser('~')
-        subdirs[:0] = [ '.local', 'share' ]
+        subdirs[:0] = ['.local', 'share']
     data_dir = utils.make_subdirs(data_dir, subdirs)
 
     # load resource files
@@ -1739,58 +1736,58 @@ Display Options:
     while i < argc:
         arg = args[i]
         if len(arg) > 0 and arg[0] == '-':
-            if i + 1 < argc and arg in [ '-c', '--commit' ]:
+            if i + 1 < argc and arg in ['-c', '--commit']:
                 # specified revision
                 funcs[mode](specs, labels, options)
                 i += 1
                 rev = args[i]
                 specs, labels, options = [], [], { 'commit': args[i] }
                 mode = 'commit'
-            elif arg in [ '-D', '--close-if-same' ]:
+            elif arg in ['-D', '--close-if-same']:
                 close_on_same = True
-            elif i + 1 < argc and arg in [ '-e', '--encoding' ]:
+            elif i + 1 < argc and arg in ['-e', '--encoding']:
                 i += 1
                 encoding = args[i]
                 encoding = encodings.aliases.aliases.get(encoding, encoding)
-            elif arg in [ '-m', '--modified' ]:
+            elif arg in ['-m', '--modified']:
                 funcs[mode](specs, labels, options)
                 specs, labels, options = [], [], {}
                 mode = 'modified'
-            elif i + 1 < argc and arg in [ '-r', '--revision' ]:
+            elif i + 1 < argc and arg in ['-r', '--revision']:
                 # specified revision
                 i += 1
                 revs.append((args[i], encoding))
-            elif arg in [ '-s', '--separate' ]:
+            elif arg in ['-s', '--separate']:
                 funcs[mode](specs, labels, options)
                 specs, labels, options = [], [], {}
                 # open items in separate tabs
                 mode = 'separate'
-            elif arg in [ '-t', '--tab' ]:
+            elif arg in ['-t', '--tab']:
                 funcs[mode](specs, labels, options)
                 specs, labels, options = [], [], {}
                 # start a new tab
                 mode = 'single'
-            elif i + 1 < argc and arg in [ '-V', '--vcs' ]:
+            elif i + 1 < argc and arg in ['-V', '--vcs']:
                 i += 1
                 diff.prefs.setString('vcs_search_order', args[i])
                 diff.preferences_updated()
-            elif arg in [ '-b', '--ignore-space-change' ]:
+            elif arg in ['-b', '--ignore-space-change']:
                 diff.prefs.setBool('display_ignore_whitespace_changes', True)
                 diff.prefs.setBool('align_ignore_whitespace_changes', True)
                 diff.preferences_updated()
-            elif arg in [ '-B', '--ignore-blank-lines' ]:
+            elif arg in ['-B', '--ignore-blank-lines']:
                 diff.prefs.setBool('display_ignore_blanklines', True)
                 diff.prefs.setBool('align_ignore_blanklines', True)
                 diff.preferences_updated()
-            elif arg in [ '-E', '--ignore-end-of-line' ]:
+            elif arg in ['-E', '--ignore-end-of-line']:
                 diff.prefs.setBool('display_ignore_endofline', True)
                 diff.prefs.setBool('align_ignore_endofline', True)
                 diff.preferences_updated()
-            elif arg in [ '-i', '--ignore-case' ]:
+            elif arg in ['-i', '--ignore-case']:
                 diff.prefs.setBool('display_ignore_case', True)
                 diff.prefs.setBool('align_ignore_case', True)
                 diff.preferences_updated()
-            elif arg in [ '-w', '--ignore-all-space' ]:
+            elif arg in ['-w', '--ignore-all-space']:
                 diff.prefs.setBool('display_ignore_whitespace', True)
                 diff.prefs.setBool('align_ignore_whitespace', True)
                 diff.preferences_updated()
@@ -1828,8 +1825,8 @@ Display Options:
                 revs = []
             had_specs = True
         i += 1
-    if mode in [ 'modified', 'commit' ] and len(specs) == 0:
-        specs.append((os.curdir, [ (None, encoding) ]))
+    if mode in ['modified', 'commit'] and len(specs) == 0:
+        specs.append((os.curdir, [(None, encoding)]))
         had_specs = True
     funcs[mode](specs, labels, options)
 

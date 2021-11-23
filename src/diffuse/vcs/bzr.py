@@ -23,6 +23,7 @@ from diffuse import utils
 from diffuse.vcs.folder_set import FolderSet
 from diffuse.vcs.vcs_interface import VcsInterface
 
+
 # Bazaar support
 class Bzr(VcsInterface):
     def getFileTemplate(self, prefs, name):
@@ -30,13 +31,13 @@ class Bzr(VcsInterface):
         left = name + '.OTHER'
         right = name + '.THIS'
         if os.path.isfile(left) and os.path.isfile(right):
-            return [ (left, None), (name, None), (right, None) ]
+            return [(left, None), (name, None), (right, None)]
         # default case
-        return [ (name, '-1'), (name, None) ]
+        return [(name, '-1'), (name, None)]
 
     def getCommitTemplate(self, prefs, rev, names):
         # build command
-        args = [ prefs.getString('bzr_bin'), 'log', '-v', '-r', rev ]
+        args = [prefs.getString('bzr_bin'), 'log', '-v', '-r', rev]
         # build list of interesting files
         pwd, isabs = os.path.abspath(os.curdir), False
         for name in names:
@@ -62,7 +63,7 @@ class Bzr(VcsInterface):
                         if fs.contains(k):
                             if not isabs:
                                 k = utils.relpath(pwd, k)
-                            added[k] = [ (None, None), (k, rev) ]
+                            added[k] = [(None, None), (k, rev)]
             elif s.startswith('modified:'):
                 # modified files
                 while i < n and ss[i].startswith('  '):
@@ -73,7 +74,7 @@ class Bzr(VcsInterface):
                         if fs.contains(k):
                             if not isabs:
                                 k = utils.relpath(pwd, k)
-                            modified[k] = [ (k, prev), (k, rev) ]
+                            modified[k] = [(k, prev), (k, rev)]
             elif s.startswith('removed:'):
                 # removed files
                 while i < n and ss[i].startswith('  '):
@@ -84,7 +85,7 @@ class Bzr(VcsInterface):
                         if fs.contains(k):
                             if not isabs:
                                 k = utils.relpath(pwd, k)
-                            removed[k] = [ (k, prev), (None, None) ]
+                            removed[k] = [(k, prev), (None, None)]
             elif s.startswith('renamed:'):
                 # renamed files
                 while i < n and ss[i].startswith('  '):
@@ -100,7 +101,7 @@ class Bzr(VcsInterface):
                                 if not isabs:
                                     k0 = utils.relpath(pwd, k0)
                                     k1 = utils.relpath(pwd, k1)
-                                renamed[k1] = [ (k0, prev), (k1, rev) ]
+                                renamed[k1] = [(k0, prev), (k1, rev)]
         # sort the results
         result, r = [], set()
         for m in removed, added, modified, renamed:
@@ -113,7 +114,7 @@ class Bzr(VcsInterface):
 
     def getFolderTemplate(self, prefs, names):
         # build command
-        args = [ prefs.getString('bzr_bin'), 'status', '-SV' ]
+        args = [prefs.getString('bzr_bin'), 'status', '-SV']
         # build list of interesting files
         pwd, isabs = os.path.abspath(os.curdir), False
         for name in names:
@@ -136,7 +137,7 @@ class Bzr(VcsInterface):
                     if fs.contains(k):
                         if not isabs:
                             k = utils.relpath(pwd, k)
-                        removed[k] = [ (k, prev), (None, None) ]
+                        removed[k] = [(k, prev), (None, None)]
             elif y == 'N':
                 # added
                 k = prefs.convertToNativePath(k)
@@ -145,7 +146,7 @@ class Bzr(VcsInterface):
                     if fs.contains(k):
                         if not isabs:
                             k = utils.relpath(pwd, k)
-                        added[k] = [ (None, None), (k, None) ]
+                        added[k] = [(None, None), (k, None)]
             elif y == 'M':
                 # modified or merge conflict
                 k = prefs.convertToNativePath(k)
@@ -168,7 +169,7 @@ class Bzr(VcsInterface):
                             if not isabs:
                                 k0 = utils.relpath(pwd, k0)
                                 k1 = utils.relpath(pwd, k1)
-                            renamed[k1] = [ (k0, prev), (k1, None) ]
+                            renamed[k1] = [(k0, prev), (k1, None)]
         # sort the results
         result, r = [], set()
         for m in removed, added, modified, renamed:

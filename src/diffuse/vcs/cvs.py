@@ -23,10 +23,11 @@ from diffuse import utils
 from diffuse.vcs.folder_set import FolderSet
 from diffuse.vcs.vcs_interface import VcsInterface
 
+
 # CVS support
 class Cvs(VcsInterface):
     def getFileTemplate(self, prefs, name):
-        return [ (name, 'BASE'), (name, None) ]
+        return [(name, 'BASE'), (name, None)]
 
     def getCommitTemplate(self, prefs, rev, names):
         result = []
@@ -45,14 +46,14 @@ class Cvs(VcsInterface):
                     k0 = None
                 else:
                     k0 = k
-                result.append([ (k0, prev), (k, rev) ])
+                result.append([(k0, prev), (k, rev)])
         except ValueError:
             utils.logError(_('Error parsing revision %s.') % (rev, ))
         return result
 
     def getFolderTemplate(self, prefs, names):
         # build command
-        args = [ prefs.getString('cvs_bin'), '-nq', 'update', '-R' ]
+        args = [prefs.getString('cvs_bin'), '-nq', 'update', '-R']
         # build list of interesting files
         pwd, isabs = os.path.abspath(os.curdir), False
         for name in names:
@@ -72,15 +73,15 @@ class Cvs(VcsInterface):
                     k = utils.relpath(pwd, k)
                 if s[0] == 'R':
                     # removed
-                    modified[k] = [ (k, prev), (None, None) ]
+                    modified[k] = [(k, prev), (None, None)]
                 elif s[0] == 'A':
                     # added
-                    modified[k] = [ (None, None), (k, None) ]
+                    modified[k] = [(None, None), (k, None)]
                 else:
                     # modified
-                    modified[k] = [ (k, prev), (k, None) ]
+                    modified[k] = [(k, prev), (k, None)]
         # sort the results
-        return [ modified[k] for k in sorted(modified.keys()) ]
+        return [modified[k] for k in sorted(modified.keys())]
 
     def getRevision(self, prefs, name, rev):
         if rev == 'BASE' and not os.path.exists(name):
@@ -93,7 +94,8 @@ class Cvs(VcsInterface):
                     utils.safeRelativePath(self.root, name, prefs, 'cvs_cygwin')
                 ],
                 prefs,
-                'cvs_bash'):
+                'cvs_bash'
+            ):
                 if s.startswith('   Working revision:\t-'):
                     rev = s.split('\t')[1][1:]
         return utils.popenRead(

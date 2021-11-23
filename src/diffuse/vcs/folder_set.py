@@ -19,6 +19,7 @@
 
 import os
 
+
 class FolderSet:
     '''Utility class to help support Git and Monotone.
        Represents a set of files and folders of interest for "git status" or

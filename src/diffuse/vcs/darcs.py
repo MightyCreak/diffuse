@@ -23,15 +23,16 @@ from diffuse import utils
 from diffuse.vcs.folder_set import FolderSet
 from diffuse.vcs.vcs_interface import VcsInterface
 
+
 # Darcs support
 class Darcs(VcsInterface):
     def getFileTemplate(self, prefs, name):
-        return [ (name, ''), (name, None) ]
+        return [(name, ''), (name, None)]
 
     def _getCommitTemplate(self, prefs, names, rev):
         mods = (rev is None)
         # build command
-        args = [ prefs.getString('darcs_bin') ]
+        args = [prefs.getString('darcs_bin')]
         if mods:
             args.extend(['whatsnew', '-s'])
         else:
@@ -84,7 +85,7 @@ class Darcs(VcsInterface):
                     if fs.contains(k):
                         if not isabs:
                             k = utils.relpath(pwd, k)
-                        removed[k] = [ (k, prev), (None, None) ]
+                        removed[k] = [(k, prev), (None, None)]
             elif x == 'A':
                 # added
                 k = prefs.convertToNativePath(s[2:])
@@ -93,7 +94,7 @@ class Darcs(VcsInterface):
                     if fs.contains(k):
                         if not isabs:
                             k = utils.relpath(pwd, k)
-                        added[k] = [ (None, None), (k, rev) ]
+                        added[k] = [(None, None), (k, rev)]
             elif x == 'M':
                 # modified
                 k = prefs.convertToNativePath(s[2:].split(' ')[0])
@@ -103,7 +104,7 @@ class Darcs(VcsInterface):
                         if not isabs:
                             k = utils.relpath(pwd, k)
                         if k not in renamed:
-                            modified[k] = [ (k, prev), (k, rev) ]
+                            modified[k] = [(k, prev), (k, rev)]
             elif x == ' ':
                 # renamed
                 k = s[1:].split(' -> ')
@@ -117,7 +118,7 @@ class Darcs(VcsInterface):
                             if not isabs:
                                 k0 = utils.relpath(pwd, k0)
                                 k1 = utils.relpath(pwd, k1)
-                            renamed[k1] = [ (k0, prev), (k1, rev) ]
+                            renamed[k1] = [(k0, prev), (k1, rev)]
         # sort the results
         result, r = [], set()
         for m in added, modified, removed, renamed:
@@ -135,10 +136,10 @@ class Darcs(VcsInterface):
         return self._getCommitTemplate(prefs, names, None)
 
     def getRevision(self, prefs, name, rev):
-        args = [ prefs.getString('darcs_bin'), 'show', 'contents' ]
+        args = [prefs.getString('darcs_bin'), 'show', 'contents']
         try:
-            args.extend([ '-n', str(int(rev)) ])
+            args.extend(['-n', str(int(rev))])
         except ValueError:
-            args.extend([ '-h', rev ])
+            args.extend(['-h', rev])
         args.append(utils.safeRelativePath(self.root, name, prefs, 'darcs_cygwin'))
         return utils.popenRead(self.root, args, prefs, 'darcs_bash')

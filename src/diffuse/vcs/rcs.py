@@ -22,6 +22,7 @@ import os
 from diffuse import utils
 from diffuse.vcs.vcs_interface import VcsInterface
 
+
 # RCS support
 class Rcs(VcsInterface):
     def getFileTemplate(self, prefs, name):
@@ -35,7 +36,7 @@ class Rcs(VcsInterface):
         for line in utils.popenReadLines(self.root, args, prefs, 'rcs_bash'):
             if line.startswith('head: '):
                 rev = line[6:]
-        return [ (name, rev), (name, None) ]
+        return [(name, rev), (name, None)]
 
     def getCommitTemplate(self, prefs, rev, names):
         result = []
@@ -54,7 +55,7 @@ class Rcs(VcsInterface):
                     k0 = None
                 else:
                     k0 = k
-                result.append([ (k0, prev), (k, rev) ])
+                result.append([(k0, prev), (k, rev)])
         except ValueError:
             utils.logError(_('Error parsing revision %s.') % (rev, ))
         return result
@@ -64,11 +65,11 @@ class Rcs(VcsInterface):
         # os.sysconf() is only available on Unix
         if hasattr(os, 'sysconf'):
             maxsize = os.sysconf('SC_ARG_MAX')
-            maxsize -= sum([ len(k) + len(v) + 2 for k, v in os.environ.items() ])
+            maxsize -= sum([len(k) + len(v) + 2 for k, v in os.environ.items()])
         else:
             # assume the Window's limit to CreateProcess()
             maxsize = 32767
-        maxsize -= sum([ len(k) + 1 for k in cmd ])
+        maxsize -= sum([len(k) + 1 for k in cmd])
 
         ss = []
         i, s, a = 0, 0, []
@@ -91,14 +92,14 @@ class Rcs(VcsInterface):
 
     def getFolderTemplate(self, prefs, names):
         # build command
-        cmd = [ prefs.getString('rcs_bin_rlog'), '-L', '-h' ]
+        cmd = [prefs.getString('rcs_bin_rlog'), '-L', '-h']
         # build list of interesting files
         pwd, isabs = os.path.abspath(os.curdir), False
         r = []
         for k in names:
             if os.path.isdir(k):
                 # the user specified a folder
-                n, ex = [ k ], True
+                n, ex = [k], True
                 while len(n) > 0:
                     s = n.pop()
                     recurse = os.path.isdir(os.path.join(s, 'RCS'))
@@ -135,7 +136,7 @@ class Rcs(VcsInterface):
                     r.append(k)
         for k in r:
             isabs |= os.path.isabs(k)
-        args = [ utils.safeRelativePath(self.root, k, prefs, 'rcs_cygwin') for k in r ]
+        args = [utils.safeRelativePath(self.root, k, prefs, 'rcs_cygwin') for k in r]
         # run command
         r, k = {}, ''
         for line in self._popen_xargs_readlines(cmd, args, prefs, 'rcs_bash'):
@@ -148,7 +149,7 @@ class Rcs(VcsInterface):
             elif line.startswith('head: '):
                 r[k] = line[6:]
         # sort the results
-        return [ [ (k, r[k]), (k, None) ] for k in sorted(r.keys()) ]
+        return [[(k, r[k]), (k, None)] for k in sorted(r.keys())]
 
     def getRevision(self, prefs, name, rev):
         return utils.popenRead(

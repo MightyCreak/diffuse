@@ -23,16 +23,13 @@ import os
 import shlex
 import sys
 
-# pylint: disable=wrong-import-position
+from diffuse import constants
+from diffuse import utils
+
 import gi
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk
-# pylint: enable=wrong-import-position
+from gi.repository import Gtk  # noqa: E402
 
-# pylint: disable-next=no-name-in-module
-from diffuse import constants
-
-from diffuse import utils
 
 # class to store preferences and construct a dialogue for manipulating them
 class Preferences:
@@ -52,7 +49,7 @@ class Preferences:
         else:
             svk_bin = 'svk'
 
-        auto_detect_codecs = [ 'utf_8', 'utf_16', 'latin_1' ]
+        auto_detect_codecs = ['utf_8', 'utf_16', 'latin_1']
         e = utils.norm_encoding(sys.getfilesystemencoding())
         if e not in auto_detect_codecs:
             # insert after UTF-8 as the default encoding may prevent UTF-8 from
@@ -75,50 +72,53 @@ class Preferences:
         #    [ 'String', name, default, label ]
         #    [ 'File', name, default, label ]
         #    [ 'Font', name, default, label ]
-        # pylint: disable=line-too-long
         self.template = [
             'FolderSet',
             _('Display'),
-            [ 'List',
-              [ 'Font', 'display_font', 'Monospace 10', _('Font') ],
-              [ 'Integer', 'display_tab_width', 8, _('Tab width'), 1, 1024 ],
-              [ 'Boolean', 'display_show_right_margin', True, _('Show right margin') ],
-              [ 'Integer', 'display_right_margin', 80, _('Right margin'), 1, 8192 ],
-              [ 'Boolean', 'display_show_line_numbers', True, _('Show line numbers') ],
-              [ 'Boolean', 'display_show_whitespace', False, _('Show white space characters') ],
-              [ 'Boolean', 'display_ignore_case', False, _('Ignore case differences') ],
-              [ 'Boolean', 'display_ignore_whitespace', False, _('Ignore white space differences') ],
-              [ 'Boolean', 'display_ignore_whitespace_changes', False, _('Ignore changes to white space') ],
-              [ 'Boolean', 'display_ignore_blanklines', False, _('Ignore blank line differences') ],
-              [ 'Boolean', 'display_ignore_endofline', False, _('Ignore end of line differences') ]
+            [
+                'List',
+                ['Font', 'display_font', 'Monospace 10', _('Font')],
+                ['Integer', 'display_tab_width', 8, _('Tab width'), 1, 1024],
+                ['Boolean', 'display_show_right_margin', True, _('Show right margin')],
+                ['Integer', 'display_right_margin', 80, _('Right margin'), 1, 8192],
+                ['Boolean', 'display_show_line_numbers', True, _('Show line numbers')],
+                ['Boolean', 'display_show_whitespace', False, _('Show white space characters')],
+                ['Boolean', 'display_ignore_case', False, _('Ignore case differences')],
+                ['Boolean', 'display_ignore_whitespace', False, _('Ignore white space differences')],  # noqa: E501
+                ['Boolean', 'display_ignore_whitespace_changes', False, _('Ignore changes to white space')],  # noqa: E501
+                ['Boolean', 'display_ignore_blanklines', False, _('Ignore blank line differences')],
+                ['Boolean', 'display_ignore_endofline', False, _('Ignore end of line differences')]
             ],
             _('Alignment'),
-            [ 'List',
-              [ 'Boolean', 'align_ignore_case', False, _('Ignore case') ],
-              [ 'Boolean', 'align_ignore_whitespace', True, _('Ignore white space') ],
-              [ 'Boolean', 'align_ignore_whitespace_changes', False, _('Ignore changes to white space') ],
-              [ 'Boolean', 'align_ignore_blanklines', False, _('Ignore blank lines') ],
-              [ 'Boolean', 'align_ignore_endofline', True, _('Ignore end of line characters') ]
+            [
+                'List',
+                ['Boolean', 'align_ignore_case', False, _('Ignore case')],
+                ['Boolean', 'align_ignore_whitespace', True, _('Ignore white space')],
+                ['Boolean', 'align_ignore_whitespace_changes', False, _('Ignore changes to white space')],  # noqa: E501
+                ['Boolean', 'align_ignore_blanklines', False, _('Ignore blank lines')],
+                ['Boolean', 'align_ignore_endofline', True, _('Ignore end of line characters')]
             ],
             _('Editor'),
-            [ 'List',
-              [ 'Boolean', 'editor_auto_indent', True, _('Auto indent') ],
-              [ 'Boolean', 'editor_expand_tabs', False, _('Expand tabs to spaces') ],
-              [ 'Integer', 'editor_soft_tab_width', 8, _('Soft tab width'), 1, 1024 ]
+            [
+                'List',
+                ['Boolean', 'editor_auto_indent', True, _('Auto indent')],
+                ['Boolean', 'editor_expand_tabs', False, _('Expand tabs to spaces')],
+                ['Integer', 'editor_soft_tab_width', 8, _('Soft tab width'), 1, 1024]
             ],
             _('Tabs'),
-            [ 'List',
-              [ 'Integer', 'tabs_default_panes', 2, _('Default panes'), 2, 16 ],
-              [ 'Boolean', 'tabs_always_show', False, _('Always show the tab bar') ],
-              [ 'Boolean', 'tabs_warn_before_quit', True, _('Warn me when closing a tab will quit %s') % constants.APP_NAME ]
+            [
+                'List',
+                ['Integer', 'tabs_default_panes', 2, _('Default panes'), 2, 16],
+                ['Boolean', 'tabs_always_show', False, _('Always show the tab bar')],
+                ['Boolean', 'tabs_warn_before_quit', True, _('Warn me when closing a tab will quit %s') % constants.APP_NAME]  # noqa: E501
             ],
             _('Regional Settings'),
-            [ 'List',
-              [ 'Encoding', 'encoding_default_codec', sys.getfilesystemencoding(), _('Default codec') ],
-              [ 'String', 'encoding_auto_detect_codecs', ' '.join(auto_detect_codecs), _('Order of codecs used to identify encoding') ]
+            [
+                'List',
+                ['Encoding', 'encoding_default_codec', sys.getfilesystemencoding(), _('Default codec')],  # noqa: E501
+                ['String', 'encoding_auto_detect_codecs', ' '.join(auto_detect_codecs), _('Order of codecs used to identify encoding')]  # noqa: E501
             ],
         ]
-        # pylint: disable=line-too-long
 
         # conditions used to determine if a preference should be greyed out
         self.disable_when = {
@@ -138,22 +138,21 @@ class Preferences:
                 root += '\\'
             self.template.extend([
                     _('Cygwin'),
-                    [ 'List',
-                      [ 'File', 'cygwin_root', os.path.join(root, 'cygwin'), _('Root directory') ],
-                      [ 'String', 'cygwin_cygdrive_prefix', '/cygdrive', _('Cygdrive prefix') ]
-                    ]
+                    ['List',
+                        ['File', 'cygwin_root', os.path.join(root, 'cygwin'), _('Root directory')],
+                        ['String', 'cygwin_cygdrive_prefix', '/cygdrive', _('Cygdrive prefix')]]
                 ])
 
         # create template for Version Control options
-        vcs = [ ('bzr', 'Bazaar', 'bzr'),
-                ('cvs', 'CVS', 'cvs'),
-                ('darcs', 'Darcs', 'darcs'),
-                ('git', 'Git', 'git'),
-                ('hg', 'Mercurial', 'hg'),
-                ('mtn', 'Monotone', 'mtn'),
-                ('rcs', 'RCS', None),
-                ('svn', 'Subversion', 'svn'),
-                ('svk', 'SVK', svk_bin) ]
+        vcs = [('bzr', 'Bazaar', 'bzr'),
+               ('cvs', 'CVS', 'cvs'),
+               ('darcs', 'Darcs', 'darcs'),
+               ('git', 'Git', 'git'),
+               ('hg', 'Mercurial', 'hg'),
+               ('mtn', 'Monotone', 'mtn'),
+               ('rcs', 'RCS', None),
+               ('svn', 'Subversion', 'svn'),
+               ('svk', 'SVK', svk_bin)]
 
         vcs_template = [
             'List', [
@@ -163,15 +162,15 @@ class Preferences:
                 _('Version control system search order')
             ]
         ]
-        vcs_folders_template = [ 'FolderSet' ]
+        vcs_folders_template = ['FolderSet']
         for key, name, cmd in vcs:
-            temp = [ 'List' ]
+            temp = ['List']
             if key == 'rcs':
                 # RCS uses multiple commands
-                temp.extend([ [ 'File', key + '_bin_co', 'co', _('"co" command') ],
-                              [ 'File', key + '_bin_rlog', 'rlog', _('"rlog" command') ] ])
+                temp.extend([['File', key + '_bin_co', 'co', _('"co" command')],
+                             ['File', key + '_bin_rlog', 'rlog', _('"rlog" command')]])
             else:
-                temp.extend([ [ 'File', key + '_bin', cmd, _('Command') ] ])
+                temp.extend([['File', key + '_bin', cmd, _('Command')]])
             if utils.isWindows():
                 temp.append([
                     'Boolean',
@@ -186,10 +185,10 @@ class Preferences:
                         False,
                         _('Update paths for Cygwin')
                     ])
-            vcs_folders_template.extend([ name, temp ])
+            vcs_folders_template.extend([name, temp])
         vcs_template.append(vcs_folders_template)
 
-        self.template.extend([ _('Version Control'), vcs_template ])
+        self.template.extend([_('Version Control'), vcs_template])
         self._initFromTemplate(self.template)
         self.default_bool_prefs = self.bool_prefs.copy()
         self.default_int_prefs = self.int_prefs.copy()
@@ -208,7 +207,9 @@ class Preferences:
                             if len(a) == 2 and p in self.bool_prefs:
                                 self.bool_prefs[p] = (a[1] == 'True')
                             elif len(a) == 2 and p in self.int_prefs:
-                                self.int_prefs[p] = max(self.int_prefs_min[p], min(int(a[1]), self.int_prefs_max[p]))
+                                self.int_prefs[p] = max(
+                                    self.int_prefs_min[p],
+                                    min(int(a[1]), self.int_prefs_max[p]))
                             elif len(a) == 2 and p in self.string_prefs:
                                 self.string_prefs[p] = a[1]
                             else:
@@ -238,7 +239,7 @@ class Preferences:
             self.int_prefs[template[1]] = template[2]
             self.int_prefs_min[template[1]] = template[4]
             self.int_prefs_max[template[1]] = template[5]
-        elif template[0] in [ 'String', 'File', 'Font', 'Encoding' ]:
+        elif template[0] in ['String', 'File', 'Font', 'Encoding']:
             self.string_prefs[template[1]] = template[2]
 
     # callback used when a preference is toggled
@@ -263,10 +264,10 @@ class Preferences:
             p, t = v
             if widgets[p].get_active() == t:
                 widgets[k].set_sensitive(False)
-        dialog.vbox.add(w) # pylint: disable=no-member
+        dialog.vbox.add(w)
         w.show()
 
-        accept = (dialog.run() == Gtk.ResponseType.OK) # pylint: disable=no-member
+        accept = (dialog.run() == Gtk.ResponseType.OK)
         if accept:
             for k in self.bool_prefs:
                 self.bool_prefs[k] = widgets[k].get_active()
@@ -288,8 +289,7 @@ class Preferences:
                         ss.append(f'{k} "{v_escaped}"\n')
                 ss.sort()
                 with open(self.path, 'w', encoding='utf-8') as f:
-                    # pylint: disable-next=line-too-long
-                    f.write(f'# This prefs file was generated by {constants.APP_NAME} {constants.VERSION}.\n\n')
+                    f.write(f'# This prefs file was generated by {constants.APP_NAME} {constants.VERSION}.\n\n')  # noqa: E501
                     for s in ss:
                         f.write(s)
             except IOError:
@@ -337,7 +337,7 @@ class Preferences:
                 label.set_yalign(0.5)
                 table.attach(label, 0, i, 1, 1)
                 label.show()
-                if tpl[0] in [ 'Font', 'Integer' ]:
+                if tpl[0] in ['Font', 'Integer']:
                     entry = Gtk.Box.new(Gtk.Orientation.HORIZONTAL, 0)
                     if tpl[0] == 'Font':
                         button = _FontButton()
@@ -393,12 +393,12 @@ class Preferences:
     # attempt to convert a string to unicode from an unknown encoding
     def convertToUnicode(self, s):
         # a BOM is required for autodetecting UTF16 and UTF32
-        magic = { 'utf16': [ codecs.BOM_UTF16_BE, codecs.BOM_UTF16_LE ],
-                  'utf32': [ codecs.BOM_UTF32_BE, codecs.BOM_UTF32_LE ] }
+        magic = {'utf16': [codecs.BOM_UTF16_BE, codecs.BOM_UTF16_LE],
+                 'utf32': [codecs.BOM_UTF32_BE, codecs.BOM_UTF32_LE]}
         for encoding in self._getDefaultEncodings():
             try:
                 encoding = encoding.lower().replace('-', '').replace('_', '')
-                for m in magic.get(encoding, [ b'' ]):
+                for m in magic.get(encoding, [b'']):
                     if s.startswith(m):
                         break
                 else:
@@ -406,7 +406,7 @@ class Preferences:
                 return str(s, encoding=encoding), encoding
             except (UnicodeDecodeError, LookupError):
                 pass
-        return ''.join([ chr(ord(c)) for c in s ]), None
+        return ''.join([chr(ord(c)) for c in s]), None
 
     # cygwin and native applications can be used on windows, use this method
     # to convert a path to the usual form expected on sys.platform
@@ -415,23 +415,24 @@ class Preferences:
             # treat as a cygwin path
             s = s.replace(os.sep, '/')
             # convert to a Windows native style path
-            p = [ a for a in s.split('/') if a != '' ]
+            p = [a for a in s.split('/') if a != '']
             if s.startswith('//'):
-                p[:0] = [ '', '' ]
+                p[:0] = ['', '']
             elif s.startswith('/'):
-                pr = [ a for a in self.getString('cygwin_cygdrive_prefix').split('/') if a != '' ]
+                pr = [a for a in self.getString('cygwin_cygdrive_prefix').split('/') if a != '']
                 n = len(pr)
                 if len(p) > n and len(p[n]) == 1 and p[:n] == pr:
                     # path starts with cygdrive prefix
-                    p[:n + 1] = [ p[n] + ':' ]
+                    p[:n + 1] = [p[n] + ':']
                 else:
                     # full path
-                    p[:0] = [ a for a in self.getString('cygwin_root').split(os.sep) if a != '' ]
+                    p[:0] = [a for a in self.getString('cygwin_root').split(os.sep) if a != '']
             # add trailing slash
             if p[-1] != '' and s.endswith('/'):
                 p.append('')
             s = os.sep.join(p)
         return s
+
 
 # adaptor class to allow a Gtk.FontButton to be read like a Gtk.Entry
 class _FontButton(Gtk.FontButton):
@@ -439,13 +440,12 @@ class _FontButton(Gtk.FontButton):
         Gtk.FontButton.__init__(self)
 
     def get_text(self):
-        # pylint: disable=no-member
         return self.get_font_name()
+
 
 # text entry widget with a button to help pick file names
 class _FileEntry(Gtk.Box):
     def __init__(self, parent, title):
-        # pylint: disable=no-member
         Gtk.Box.__init__(self, orientation=Gtk.Orientation.HORIZONTAL)
         self.toplevel = parent
         self.title = title
@@ -463,7 +463,6 @@ class _FileEntry(Gtk.Box):
 
     # action performed when the pick file button is pressed
     def chooseFile(self, widget):
-        # pylint: disable=no-member
         dialog = Gtk.FileChooserDialog(
             self.title,
             self.toplevel,

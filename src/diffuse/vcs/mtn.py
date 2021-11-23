@@ -24,23 +24,24 @@ from diffuse import utils
 from diffuse.vcs.folder_set import FolderSet
 from diffuse.vcs.vcs_interface import VcsInterface
 
+
 # Monotone support
 class Mtn(VcsInterface):
     def getFileTemplate(self, prefs, name):
         # FIXME: merge conflicts?
-        return [ (name, 'h:'), (name, None) ]
+        return [(name, 'h:'), (name, None)]
 
     def getCommitTemplate(self, prefs, rev, names):
         # build command
         vcs_bin = prefs.getString('mtn_bin')
         ss = utils.popenReadLines(
             self.root,
-            [ vcs_bin, 'automate', 'select', '-q', rev ],
+            [vcs_bin, 'automate', 'select', '-q', rev],
             prefs,
             'mtn_bash')
         if len(ss) != 1:
             raise IOError('Ambiguous revision specifier')
-        args = [ vcs_bin, 'automate', 'get_revision', ss[0] ]
+        args = [vcs_bin, 'automate', 'get_revision', ss[0]]
         # build list of interesting files
         fs = FolderSet(names)
         pwd, isabs = os.path.abspath(os.curdir), False
@@ -94,9 +95,10 @@ class Mtn(VcsInterface):
             removed_dirs = set()
             for s in utils.popenReadLines(
                 self.root,
-                [ vcs_bin, 'automate', 'get_manifest_of', prev ],
+                [vcs_bin, 'automate', 'get_manifest_of', prev],
                 prefs,
-                'mtn_bash'):
+                'mtn_bash'
+            ):
                 s = shlex.split(s)
                 if len(s) > 1 and s[0] == 'dir':
                     removed_dirs.add(s[1])
@@ -117,12 +119,12 @@ class Mtn(VcsInterface):
                 k = removed[k]
                 if not isabs:
                     k = utils.relpath(pwd, k)
-                result.append([ (k, prev), (None, None) ])
+                result.append([(k, prev), (None, None)])
             elif k in added:
                 k = added[k]
                 if not isabs:
                     k = utils.relpath(pwd, k)
-                result.append([ (None, None), (k, rev) ])
+                result.append([(None, None), (k, rev)])
             else:
                 if k in renamed:
                     arg1, k0, k1 = renamed[k]
@@ -131,7 +133,7 @@ class Mtn(VcsInterface):
                 if not isabs:
                     k0 = utils.relpath(pwd, k0)
                     k1 = utils.relpath(pwd, k1)
-                result.append([ (k0, prev), (k1, rev) ])
+                result.append([(k0, prev), (k1, rev)])
         return result
 
     def getFolderTemplate(self, prefs, names):
@@ -173,7 +175,7 @@ class Mtn(VcsInterface):
                     if fs.contains(k):
                         if not isabs:
                             k = utils.relpath(pwd, k)
-                        removed[k] = [ (k, prev), (None, None) ]
+                        removed[k] = [(k, prev), (None, None)]
                     processed = True
                 if 'added' in s and 'file' in m.get('new_type', []):
                     # new file
@@ -181,7 +183,7 @@ class Mtn(VcsInterface):
                     if fs.contains(k):
                         if not isabs:
                             k = utils.relpath(pwd, k)
-                        added[k] = [ (None, None), (k, None) ]
+                        added[k] = [(None, None), (k, None)]
                     processed = True
                 if (
                     'rename_target' in s and
@@ -195,7 +197,7 @@ class Mtn(VcsInterface):
                         if not isabs:
                             k0 = utils.relpath(pwd, k0)
                             k1 = utils.relpath(pwd, k1)
-                        renamed[k1] = [ (k0, prev), (k1, None) ]
+                        renamed[k1] = [(k0, prev), (k1, None)]
                     processed = True
                 if not processed and 'file' in m.get('fs_type', []):
                     # modified file or merge conflict
@@ -203,7 +205,7 @@ class Mtn(VcsInterface):
                     if fs.contains(k):
                         if not isabs:
                             k = utils.relpath(pwd, k)
-                        modified[k] = [ (k, prev), (k, None) ]
+                        modified[k] = [(k, prev), (k, None)]
         # sort the results
         r = set()
         for m in removed, added, modified, renamed:

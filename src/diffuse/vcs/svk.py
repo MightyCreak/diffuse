@@ -22,6 +22,7 @@ import os
 from diffuse import utils
 from diffuse.vcs.svn import Svn
 
+
 class Svk(Svn):
     @staticmethod
     def _getVcs():

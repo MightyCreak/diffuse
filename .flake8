@@ -1,0 +1,6 @@
+[flake8]
+builtins = _
+max-line-length = 100
+
+# Temporary
+exclude = src/diffuse/main.py

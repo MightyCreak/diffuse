@@ -31,6 +31,7 @@ from diffuse.vcs.rcs import Rcs
 from diffuse.vcs.svk import Svk
 from diffuse.vcs.svn import Svn
 
+
 class VcsRegistry:
     def __init__(self):
         # initialise the VCS objects
@@ -74,16 +75,20 @@ def _find_parent_dir_with(path, dir_name):
             break
         path = newpath
 
+
 def _get_bzr_repo(path, prefs):
     p = _find_parent_dir_with(path, '.bzr')
     return Bzr(p) if p else None
 
+
 def _get_cvs_repo(path, prefs):
     return Cvs(path) if os.path.isdir(os.path.join(path, 'CVS')) else None
+
 
 def _get_darcs_repo(path, prefs):
     p = _find_parent_dir_with(path, '_darcs')
     return Darcs(p) if p else None
+
 
 def _get_git_repo(path, prefs):
     if 'GIT_DIR' in os.environ:
@@ -127,13 +132,16 @@ def _get_git_repo(path, prefs):
             break
         path = newpath
 
+
 def _get_hg_repo(path, prefs):
     p = _find_parent_dir_with(path, '.hg')
     return Hg(p) if p else None
 
+
 def _get_mtn_repo(path, prefs):
     p = _find_parent_dir_with(path, '_MTN')
     return Mtn(p) if p else None
+
 
 def _get_rcs_repo(path, prefs):
     if os.path.isdir(os.path.join(path, 'RCS')):
@@ -151,9 +159,11 @@ def _get_rcs_repo(path, prefs):
         pass
     return None
 
+
 def _get_svn_repo(path, prefs):
     p = _find_parent_dir_with(path, '.svn')
     return Svn(p) if p else None
+
 
 def _get_svk_repo(path, prefs):
     name = path
