@@ -5,7 +5,7 @@
     <maintainer>Derrick Moser</maintainer>
     <title>Manuale utente di Diffuse</title>
     <date>2021-11-17</date>
-    <version identifier="0.7.2" date="2021-11-18"/>
+    <version identifier="0.7.3" date="2021-11-22"/>
     <subject category="GNOME|Development|Applications"/>
     <description>Diffuse è uno strumento grafico per l'unione e il confronto di file di testo.</description>
     <type>manual</type>

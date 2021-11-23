@@ -6,14 +6,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.7.3] - 2021-11-22
+
 ### Added
-- Added a linter (pylint) and fixed some errors
-- Added a lint job in the CI
+- Added linters (flake8 and mypy) and fixed some errors
+- Added lint jobs for both in the CI
 - Added a flatpak job in the CI
 
 ### Changed
 - main.py slimmed down by about 5000 lines
 - The new widgets.py is a bit fat though (~4000 lines)
+- Updated the translation files
 
 ### Fixed
 - The intense code cleaning seems to have fixed a bug with the `-c` argument

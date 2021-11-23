@@ -21,6 +21,31 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="0.7.3" date="2021-11-22">
+      <description>
+        <p>
+          Patch release that introduces linters (flake8 and mypy).
+        </p>
+        <p>Added:</p>
+        <ul>
+          <li>Added linters (flake8 and mypy) and fixed some errors</li>
+          <li>Added lint jobs for both in the CI</li>
+          <li>Added a flatpak job in the CI</li>
+        </ul>
+        <p>Changed:</p>
+        <ul>
+          <li>main.py slimmed down by about 5000 lines</li>
+          <li>The new widgets.py is a bit fat though (~4000 lines)</li>
+          <li>Updated the translation files</li>
+        </ul>
+        <p>Fixed:</p>
+        <ul>
+          <li>
+            The intense code cleaning seems to have fixed a bug with the `-c` argument (#120)
+          </li>
+        </ul>
+      </description>
+    </release>
     <release version="0.7.2" date="2021-11-18">
       <description>
         <p>
