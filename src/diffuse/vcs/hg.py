@@ -23,6 +23,7 @@ from diffuse import utils
 from diffuse.vcs.folder_set import FolderSet
 from diffuse.vcs.vcs_interface import VcsInterface
 
+
 # Mercurial support
 class Hg(VcsInterface):
     def __init__(self, root):
@@ -34,7 +35,7 @@ class Hg(VcsInterface):
             if self.working_rev is None:
                 ss = utils.popenReadLines(
                     self.root,
-                    [ prefs.getString('hg_bin'), 'id', '-i', '-t' ],
+                    [prefs.getString('hg_bin'), 'id', '-i', '-t'],
                     prefs,
                     'hg_bash')
                 if len(ss) != 1:
@@ -49,11 +50,11 @@ class Hg(VcsInterface):
         return f'p1({rev})'
 
     def getFileTemplate(self, prefs, name):
-        return [ (name, self._getPreviousRevision(prefs, None)), (name, None) ]
+        return [(name, self._getPreviousRevision(prefs, None)), (name, None)]
 
     def _getCommitTemplate(self, prefs, names, cmd, rev):
         # build command
-        args = [ prefs.getString('hg_bin') ]
+        args = [prefs.getString('hg_bin')]
         args.extend(cmd)
         # build list of interesting files
         pwd, isabs = os.path.abspath(os.curdir), False
@@ -74,25 +75,25 @@ class Hg(VcsInterface):
                     k = utils.relpath(pwd, k)
                 if s[0] == 'R':
                     # removed
-                    modified[k] = [ (k, prev), (None, None) ]
+                    modified[k] = [(k, prev), (None, None)]
                 elif s[0] == 'A':
                     # added
-                    modified[k] = [ (None, None), (k, rev) ]
+                    modified[k] = [(None, None), (k, rev)]
                 else:
                     # modified or merge conflict
-                    modified[k] = [ (k, prev), (k, rev) ]
+                    modified[k] = [(k, prev), (k, rev)]
         # sort the results
-        return [ modified[k] for k in sorted(modified.keys()) ]
+        return [modified[k] for k in sorted(modified.keys())]
 
     def getCommitTemplate(self, prefs, rev, names):
         return self._getCommitTemplate(
             prefs,
             names,
-            [ 'log', '--template', 'A\t{file_adds}\nM\t{file_mods}\nR\t{file_dels}\n', '-r', rev ],
+            ['log', '--template', 'A\t{file_adds}\nM\t{file_mods}\nR\t{file_dels}\n', '-r', rev],
             rev)
 
     def getFolderTemplate(self, prefs, names):
-        return self._getCommitTemplate(prefs, names, [ 'status', '-q' ], None)
+        return self._getCommitTemplate(prefs, names, ['status', '-q'], None)
 
     def getRevision(self, prefs, name, rev):
         return utils.popenRead(

@@ -23,14 +23,15 @@ from diffuse import utils
 from diffuse.vcs.folder_set import FolderSet
 from diffuse.vcs.vcs_interface import VcsInterface
 
+
 # Git support
 class Git(VcsInterface):
     def getFileTemplate(self, prefs, name):
-        return [ (name, 'HEAD'), (name, None) ]
+        return [(name, 'HEAD'), (name, None)]
 
     def getCommitTemplate(self, prefs, rev, names):
         # build command
-        args = [ prefs.getString('git_bin'), 'show', '--pretty=format:', '--name-status', rev ]
+        args = [prefs.getString('git_bin'), 'show', '--pretty=format:', '--name-status', rev]
         # build list of interesting files
         pwd = os.path.abspath(os.curdir)
         isabs = False
@@ -50,15 +51,15 @@ class Git(VcsInterface):
                     k = utils.relpath(pwd, k)
                 if s[0] == 'D':
                     # removed
-                    modified[k] = [ (k, prev), (None, None) ]
+                    modified[k] = [(k, prev), (None, None)]
                 elif s[0] == 'A':
                     # added
-                    modified[k] = [ (None, None), (k, rev) ]
+                    modified[k] = [(None, None), (k, rev)]
                 else:
                     # modified
-                    modified[k] = [ (k, prev), (k, rev) ]
+                    modified[k] = [(k, prev), (k, rev)]
         # sort the results
-        return [ modified[k] for k in sorted(modified.keys()) ]
+        return [modified[k] for k in sorted(modified.keys())]
 
     def _extractPath(self, s, prefs):
         return os.path.join(self.root, prefs.convertToNativePath(s.strip()))
@@ -98,7 +99,7 @@ class Git(VcsInterface):
                         if not isabs:
                             k0 = utils.relpath(pwd, k0)
                             k1 = utils.relpath(pwd, k1)
-                        renamed[k1] = [ (k0, prev), (k1, None) ]
+                        renamed[k1] = [(k0, prev), (k1, None)]
             elif x == 'U' or y == 'U' or (x == 'D' and y == 'D'):
                 # merge conflict
                 k = self._extractPath(k, prefs)
@@ -106,9 +107,9 @@ class Git(VcsInterface):
                     if not isabs:
                         k = utils.relpath(pwd, k)
                     if x == 'D':
-                        panes = [ (None, None) ]
+                        panes = [(None, None)]
                     else:
-                        panes = [ (k, ':2') ]
+                        panes = [(k, ':2')]
                     panes.append((k, None))
                     if y == 'D':
                         panes.append((None, None))
@@ -124,9 +125,9 @@ class Git(VcsInterface):
                         k = utils.relpath(pwd, k)
                     if x == 'A':
                         # added
-                        panes = [ (None, None) ]
+                        panes = [(None, None)]
                     else:
-                        panes = [ (k, prev) ]
+                        panes = [(k, prev)]
                     # staged changes
                     if x == 'D':
                         panes.append((None, None))

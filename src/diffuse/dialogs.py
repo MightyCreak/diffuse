@@ -19,17 +19,14 @@
 
 import os
 
-# pylint: disable=wrong-import-position
-import gi
+from diffuse import constants  # type: ignore
+from diffuse import utils
+
+import gi  # type: ignore
 gi.require_version('GObject', '2.0')
 gi.require_version('Gtk', '3.0')
-from gi.repository import GObject, Gtk
-# pylint: enable=wrong-import-position
+from gi.repository import GObject, Gtk  # type: ignore # noqa: E402
 
-# pylint: disable-next=no-name-in-module
-from diffuse import constants
-
-from diffuse import utils
 
 # the about dialog
 class AboutDialog(Gtk.AboutDialog):
@@ -41,8 +38,8 @@ class AboutDialog(Gtk.AboutDialog):
         self.set_comments(_('Diffuse is a graphical tool for merging and comparing text files.'))
         self.set_copyright(constants.COPYRIGHT)
         self.set_website(constants.WEBSITE)
-        self.set_authors([ 'Derrick Moser <derrick_moser@yahoo.com>',
-                           'Romain Failliot <romain.failliot@foolstep.com>' ])
+        self.set_authors(['Derrick Moser <derrick_moser@yahoo.com>',
+                          'Romain Failliot <romain.failliot@foolstep.com>'])
         self.set_translator_credits(_('translator-credits'))
         license_text = [
             constants.APP_NAME + ' ' + constants.VERSION + '\n\n',
@@ -59,8 +56,9 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License along
 with this program; if not, write to the Free Software Foundation, Inc.,
-51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.''') ]
+51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.''')]
         self.set_license(''.join(license_text))
+
 
 # custom dialogue for picking files with widgets for specifying the encoding
 # and revision
@@ -85,7 +83,7 @@ class FileChooserDialog(Gtk.FileChooserDialog):
         label.show()
         self.encoding = entry = utils.EncodingMenu(
             prefs,
-            action in [ Gtk.FileChooserAction.OPEN, Gtk.FileChooserAction.SELECT_FOLDER ])
+            action in [Gtk.FileChooserAction.OPEN, Gtk.FileChooserAction.SELECT_FOLDER])
         hbox.pack_start(entry, False, False, 5)
         entry.show()
         if rev:
@@ -96,7 +94,7 @@ class FileChooserDialog(Gtk.FileChooserDialog):
             hbox.pack_end(label, False, False, 0)
             label.show()
 
-        self.vbox.pack_start(hbox, False, False, 0) # pylint: disable=no-member
+        self.vbox.pack_start(hbox, False, False, 0)
         hbox.show()
         self.set_current_folder(self.last_chosen_folder)
         self.connect('current-folder-changed', self._current_folder_changed_cb)
@@ -110,10 +108,10 @@ class FileChooserDialog(Gtk.FileChooserDialog):
     def get_revision(self):
         return self.revision.get_text()
 
-    # pylint: disable-next=arguments-differ
     def get_filename(self):
         # convert from UTF-8 string to unicode
-        return Gtk.FileChooserDialog.get_filename(self) # pylint: disable=no-member
+        return Gtk.FileChooserDialog.get_filename(self)
+
 
 # dialogue used to search for text
 class NumericDialog(Gtk.Dialog):
@@ -138,11 +136,12 @@ class NumericDialog(Gtk.Dialog):
         vbox.pack_start(hbox, True, True, 0)
         hbox.show()
 
-        self.vbox.pack_start(vbox, False, False, 0) # pylint: disable=no-member
+        self.vbox.pack_start(vbox, False, False, 0)
         vbox.show()
 
     def button_cb(self, widget):
         self.response(Gtk.ResponseType.ACCEPT)
+
 
 # dialogue used to search for text
 class SearchDialog(Gtk.Dialog):
@@ -190,7 +189,7 @@ class SearchDialog(Gtk.Dialog):
         vbox.pack_start(button, False, False, 0)
         button.show()
 
-        self.vbox.pack_start(vbox, False, False, 0) # pylint: disable=no-member
+        self.vbox.pack_start(vbox, False, False, 0)
         vbox.show()
 
     # callback used when the Enter key is pressed

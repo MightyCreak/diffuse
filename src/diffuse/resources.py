@@ -29,13 +29,12 @@ import os
 import re
 import shlex
 
-# pylint: disable=wrong-import-position
-import gi
-gi.require_version('Gdk', '3.0')
-from gi.repository import Gdk
-# pylint: enable=wrong-import-position
-
 from diffuse import utils
+
+import gi  # type: ignore
+gi.require_version('Gdk', '3.0')
+from gi.repository import Gdk  # type: ignore # noqa: E402
+
 
 class Resources:
     def __init__(self):
@@ -142,8 +141,8 @@ class Resources:
         set_binding('line_mode', 'next_difference', 'n')
         set_binding('line_mode', 'last_difference', 'Ctrl+End')
         set_binding('line_mode', 'last_difference', 'Shift+N')
-        #set_binding('line_mode', 'copy_selection_right', 'Shift+L')
-        #set_binding('line_mode', 'copy_selection_left', 'Shift+H')
+        # set_binding('line_mode', 'copy_selection_right', 'Shift+L')
+        # set_binding('line_mode', 'copy_selection_left', 'Shift+H')
         set_binding('line_mode', 'copy_left_into_selection', 'Shift+L')
         set_binding('line_mode', 'copy_right_into_selection', 'Shift+H')
         set_binding('line_mode', 'merge_from_left_then_right', 'm')
@@ -170,31 +169,33 @@ class Resources:
 
         # default colours
         self.colours = {
-            'alignment' : _Colour(1.0, 1.0, 0.0),
-            'character_selection' : _Colour(0.7, 0.7, 1.0),
-            'cursor' : _Colour(0.0, 0.0, 0.0),
-            'difference_1' : _Colour(1.0, 0.625, 0.625),
-            'difference_2' : _Colour(0.85, 0.625, 0.775),
-            'difference_3' : _Colour(0.85, 0.775, 0.625),
-            'hatch' : _Colour(0.8, 0.8, 0.8),
-            'line_number' : _Colour(0.0, 0.0, 0.0),
-            'line_number_background' : _Colour(0.75, 0.75, 0.75),
-            'line_selection' : _Colour(0.7, 0.7, 1.0),
-            'map_background' : _Colour(0.6, 0.6, 0.6),
-            'margin' : _Colour(0.8, 0.8, 0.8),
-            'edited' : _Colour(0.5, 1.0, 0.5),
-            'preedit' : _Colour(0.0, 0.0, 0.0),
-            'text' : _Colour(0.0, 0.0, 0.0),
-            'text_background' : _Colour(1.0, 1.0, 1.0) }
+            'alignment': _Colour(1.0, 1.0, 0.0),
+            'character_selection': _Colour(0.7, 0.7, 1.0),
+            'cursor': _Colour(0.0, 0.0, 0.0),
+            'difference_1': _Colour(1.0, 0.625, 0.625),
+            'difference_2': _Colour(0.85, 0.625, 0.775),
+            'difference_3': _Colour(0.85, 0.775, 0.625),
+            'hatch': _Colour(0.8, 0.8, 0.8),
+            'line_number': _Colour(0.0, 0.0, 0.0),
+            'line_number_background': _Colour(0.75, 0.75, 0.75),
+            'line_selection': _Colour(0.7, 0.7, 1.0),
+            'map_background': _Colour(0.6, 0.6, 0.6),
+            'margin': _Colour(0.8, 0.8, 0.8),
+            'edited': _Colour(0.5, 1.0, 0.5),
+            'preedit': _Colour(0.0, 0.0, 0.0),
+            'text': _Colour(0.0, 0.0, 0.0),
+            'text_background': _Colour(1.0, 1.0, 1.0)
+        }
 
         # default floats
         self.floats = {
-            'alignment_opacity' : 1.0,
-            'character_difference_opacity' : 0.4,
-            'character_selection_opacity' : 0.4,
-            'edited_opacity' : 0.4,
-            'line_difference_opacity' : 0.3,
-            'line_selection_opacity' : 0.4 }
+            'alignment_opacity': 1.0,
+            'character_difference_opacity': 0.4,
+            'character_selection_opacity': 0.4,
+            'edited_opacity': 0.4,
+            'line_difference_opacity': 0.3,
+            'line_selection_opacity': 0.4
+        }
 
         # default strings
         self.strings = {}
@@ -222,7 +223,7 @@ class Resources:
             elif token == 'Ctrl':
                 modifiers |= Gdk.ModifierType.CONTROL_MASK
             elif token == 'Alt':
-                modifiers |= Gdk.ModifierType.MOD1_MASK # pylint: disable=no-member
+                modifiers |= Gdk.ModifierType.MOD1_MASK
             elif len(token) == 0 or token[0] == '_':
                 raise ValueError()
             else:
@@ -265,7 +266,7 @@ class Resources:
 
     def getKeyBindings(self, ctx, s):
         try:
-            return [ t for c, t in self.keybindings[(ctx, s)].keys() ]
+            return [t for c, t in self.keybindings[(ctx, s)].keys()]
         except KeyError:
             return []
 
@@ -351,7 +352,7 @@ class Resources:
                     path = os.path.join(utils.globEscape(os.path.dirname(file_name)), path)
                     paths = glob.glob(path)
                     if len(paths) == 0:
-                        paths = [ path ]
+                        paths = [path]
                     for path in paths:
                         # convert to absolute path so the location of
                         # any processing errors are reported with
@@ -363,7 +364,7 @@ class Resources:
                     self.setKeyBinding(args[1], args[2], args[3])
                 # eg. set the regular background colour to white
                 #    colour text_background 1.0 1.0 1.0
-                elif args[0] in [ 'colour', 'color' ] and len(args) == 5:
+                elif args[0] in ['colour', 'color'] and len(args) == 5:
                     self.colours[args[1]] = _Colour(float(args[2]), float(args[3]), float(args[4]))
                 # eg. set opacity of the line_selection colour
                 #    float line_selection_opacity 0.4
@@ -459,10 +460,10 @@ class Resources:
                         self.syntax_magic_patterns[key] = re.compile(args[2], flags)
                 else:
                     raise ValueError()
-            # pylint: disable-next=bare-except
-            except: # Grr... the 're' module throws weird errors
-            #except ValueError:
+            # except ValueError:
+            except:  # noqa: E722 # Grr... the 're' module throws weird errors
                 utils.logError(_(f'Error processing line {i + 1} of {file_name}.'))
+
 
 # colour resources
 class _Colour:
@@ -489,6 +490,7 @@ class _Colour:
     def over(self, other):
         return self + other * (1 - self.alpha)
 
+
 # class to build and run a finite state machine for identifying syntax tokens
 class _SyntaxParser:
     # create a new state machine that begins in initial_state and classifies
@@ -502,7 +504,7 @@ class _SyntaxParser:
         # mappings from a state to a list of (pattern, token_type, next_state)
         # tuples indicating the new state for the state machine when 'pattern'
         # is matched and how to classify the matched characters
-        self.transitions_lookup = { initial_state : [] }
+        self.transitions_lookup = {initial_state: []}
 
     # Adds a new edge to the finite state machine from prev_state to
     # next_state.  Characters will be identified as token_type when pattern is
@@ -535,5 +537,6 @@ class _SyntaxParser:
                 blocks.append([start, end, token_type])
             start = end
         return state_name, blocks
+
 
 theResources = Resources()

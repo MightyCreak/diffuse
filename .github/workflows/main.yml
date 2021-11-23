@@ -17,20 +17,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-      with:
-        fetch-depth: 0
+    - uses: actions/setup-python@v2
+    - run: sudo apt install libgirepository1.0-dev
+    - run: pip install -r requirements.txt
 
-    - name: Pylint
-      uses: cclauss/GitHub-Action-for-pylint@master
-      with:
-        args: "apk add --no-cache gtk+3.0-dev gobject-introspection-dev ; pip install -r requirements.txt ; pylint src/**/*.py"
+    - name: Flake8
+      run: flake8 src/
+
+    - name: MyPy
+      run: mypy src/
 
   meson-build-test:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-      with:
-        fetch-depth: 0
+    - uses: actions/setup-python@v2
 
     - name: Install dependencies
       run: sudo apt-get -y install appstream appstream-util desktop-file-utils gettext
@@ -52,6 +53,7 @@ jobs:
       options: --privileged
     steps:
     - uses: actions/checkout@v2
+    - uses: actions/setup-python@v2
     - name: Flatpak builder
       uses: bilelmoussaoui/flatpak-github-actions/flatpak-builder@v3
       with:

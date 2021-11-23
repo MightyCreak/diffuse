@@ -24,6 +24,7 @@ from diffuse import utils
 from diffuse.vcs.folder_set import FolderSet
 from diffuse.vcs.vcs_interface import VcsInterface
 
+
 # Subversion support
 # SVK support subclasses from this
 class Svn(VcsInterface):
@@ -60,7 +61,7 @@ class Svn(VcsInterface):
         if self.url is None:
             vcs, prefix = self._getVcs(), self._getURLPrefix()
             n = len(prefix)
-            args = [ prefs.getString(vcs + '_bin'), 'info' ]
+            args = [prefs.getString(vcs + '_bin'), 'info']
             for s in utils.popenReadLines(self.root, args, prefs, vcs + '_bash'):
                 if s.startswith(prefix):
                     self.url = s[n:]
@@ -74,15 +75,15 @@ class Svn(VcsInterface):
         left = glob.glob(escaped_name + '.merge-left.r*')
         right = glob.glob(escaped_name + '.merge-right.r*')
         if len(left) > 0 and len(right) > 0:
-            return [ (left[-1], None), (name, None), (right[-1], None) ]
+            return [(left[-1], None), (name, None), (right[-1], None)]
         # update conflict
         left = sorted(glob.glob(escaped_name + '.r*'))
         right = glob.glob(escaped_name + '.mine')
         right.extend(glob.glob(escaped_name + '.working'))
         if len(left) > 0 and len(right) > 0:
-            return [ (left[-1], None), (name, None), (right[0], None) ]
+            return [(left[-1], None), (name, None), (right[0], None)]
         # default case
-        return [ (name, self._getPreviousRevision(None)), (name, None) ]
+        return [(name, self._getPreviousRevision(None)), (name, None)]
 
     def _getCommitTemplate(self, prefs, rev, names):
         result = []
@@ -96,9 +97,9 @@ class Svn(VcsInterface):
         vcs = self._getVcs()
         vcs_bin, vcs_bash = prefs.getString(vcs + '_bin'), vcs + '_bash'
         if rev is None:
-            args = [ vcs_bin, 'status', '-q' ]
+            args = [vcs_bin, 'status', '-q']
         else:
-            args = [ vcs_bin, 'diff', '--summarize', '-c', rev ]
+            args = [vcs_bin, 'diff', '--summarize', '-c', rev]
         # build list of interesting files
         pwd, isabs = os.path.abspath(os.curdir), False
         for name in names:
@@ -129,7 +130,7 @@ class Svn(VcsInterface):
                     k = os.path.join(self.root, k)
                     if not isabs:
                         k = utils.relpath(pwd, k)
-                    modified[k] = [ (k, prev), (k, rev) ]
+                    modified[k] = [(k, prev), (k, rev)]
                 elif v == 'C':
                     # merge conflict
                     modified[k] = self.getFileTemplate(prefs, k)
@@ -146,7 +147,7 @@ class Svn(VcsInterface):
                     k = os.path.join(self.root, k)
                     if not isabs:
                         k = utils.relpath(pwd, k)
-                    added[k] = [ (None, None), (k, None) ]
+                    added[k] = [(None, None), (k, None)]
         else:
             m = {}
             for k in added:
@@ -181,7 +182,7 @@ class Svn(VcsInterface):
                         k = os.path.join(self.root, os.path.join(p, s))
                         if not isabs:
                             k = utils.relpath(pwd, k)
-                        added[k] = [ (None, None), (k, rev) ]
+                        added[k] = [(None, None), (k, rev)]
         # determine if removed items are files or directories
         if prev == 'BASE':
             m, removed = removed, {}
@@ -191,7 +192,7 @@ class Svn(VcsInterface):
                     k = os.path.join(self.root, k)
                     if not isabs:
                         k = utils.relpath(pwd, k)
-                    removed[k] = [ (k, prev), (None, None) ]
+                    removed[k] = [(k, prev), (None, None)]
         else:
             m = {}
             for k in removed:
@@ -224,7 +225,7 @@ class Svn(VcsInterface):
                             k = os.path.join(self.root, os.path.join(p, s))
                             if not isabs:
                                 k = utils.relpath(pwd, k)
-                            removed[k] = [ (k, prev), (None, None) ]
+                            removed[k] = [(k, prev), (None, None)]
             # recursively find all unreported removed files
             while removed_dir:
                 tmp = removed_dir
@@ -250,7 +251,7 @@ class Svn(VcsInterface):
                             k = os.path.join(self.root, os.path.join(p, s))
                             if not isabs:
                                 k = utils.relpath(pwd, k)
-                            removed[k] = [ (k, prev), (None, None) ]
+                            removed[k] = [(k, prev), (None, None)]
         # sort the results
         r = set()
         for m in removed, added, modified:
@@ -269,7 +270,7 @@ class Svn(VcsInterface):
 
     def getRevision(self, prefs, name, rev):
         vcs_bin = prefs.getString('svn_bin')
-        if rev in [ 'BASE', 'COMMITTED', 'PREV' ]:
+        if rev in ['BASE', 'COMMITTED', 'PREV']:
             return utils.popenRead(
                 self.root,
                 [
