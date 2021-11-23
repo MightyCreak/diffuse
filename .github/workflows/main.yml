@@ -24,6 +24,9 @@ jobs:
     - name: Flake8
       run: flake8 src/
 
+    - name: MyPy
+      run: mypy src/
+
   meson-build-test:
     runs-on: ubuntu-latest
     steps:
