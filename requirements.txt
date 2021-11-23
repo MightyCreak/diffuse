@@ -1,2 +1,2 @@
-PyGObject~=3.40
-pylint~=2.11
+flake8 ~= 3.8
+PyGObject ~= 3.40
