@@ -23,11 +23,11 @@ import locale
 import subprocess
 import traceback
 
-from diffuse import constants
+from diffuse import constants  # type: ignore
 
-import gi
+import gi  # type: ignore
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk  # noqa: E402
+from gi.repository import Gtk  # type: ignore # noqa: E402
 
 
 # convenience class for displaying a message dialogue

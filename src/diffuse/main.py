@@ -27,23 +27,23 @@ import webbrowser
 
 from urllib.parse import urlparse
 
-from diffuse import constants
+from diffuse import constants  # type: ignore
 from diffuse import utils
 from diffuse.dialogs import AboutDialog, FileChooserDialog, NumericDialog, SearchDialog
 from diffuse.preferences import Preferences
 from diffuse.resources import theResources
 from diffuse.vcs.vcs_registry import VcsRegistry
-from diffuse.widgets import FileDiffViewer
+from diffuse.widgets import FileDiffViewerBase
 from diffuse.widgets import createMenu, LINE_MODE, CHAR_MODE, ALIGN_MODE
 
-import gi
+import gi  # type: ignore
 gi.require_version('GObject', '2.0')
 gi.require_version('Gtk', '3.0')
 gi.require_version('Gdk', '3.0')
 gi.require_version('GdkPixbuf', '2.0')
 gi.require_version('Pango', '1.0')
 gi.require_version('PangoCairo', '1.0')
-from gi.repository import GObject, Gtk, Gdk, GdkPixbuf, Pango, PangoCairo  # noqa: E402
+from gi.repository import GObject, Gtk, Gdk, GdkPixbuf, Pango, PangoCairo  # type: ignore # noqa: E402
 
 
 theVCSs = VcsRegistry()
@@ -110,8 +110,8 @@ class FileInfo:
 # this class displays tab for switching between viewers and dispatches menu
 # commands to the current viewer
 class Diffuse(Gtk.Window):
-    # specialisation of FileDiffViewer for Diffuse
-    class FileDiffViewer(FileDiffViewer):
+    # specialization of FileDiffViewerBase for Diffuse
+    class FileDiffViewer(FileDiffViewerBase):
         # pane header
         class PaneHeader(Gtk.Box):
             def __init__(self):
@@ -223,7 +223,7 @@ class Diffuse(Gtk.Window):
                 self.encoding.set_text(s)
 
         def __init__(self, n, prefs, title):
-            FileDiffViewer.__init__(self, n, prefs)
+            FileDiffViewerBase.__init__(self, n, prefs)
 
             self.title = title
             self.status = ''

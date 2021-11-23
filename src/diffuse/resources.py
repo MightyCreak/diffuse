@@ -31,9 +31,9 @@ import shlex
 
 from diffuse import utils
 
-import gi
+import gi  # type: ignore
 gi.require_version('Gdk', '3.0')
-from gi.repository import Gdk  # noqa: E402
+from gi.repository import Gdk  # type: ignore # noqa: E402
 
 
 class Resources:

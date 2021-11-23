@@ -23,12 +23,12 @@ import os
 import shlex
 import sys
 
-from diffuse import constants
+from diffuse import constants  # type: ignore
 from diffuse import utils
 
-import gi
+import gi  # type: ignore
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk  # noqa: E402
+from gi.repository import Gtk  # type: ignore # noqa: E402
 
 
 # class to store preferences and construct a dialogue for manipulating them

@@ -19,13 +19,13 @@
 
 import os
 
-from diffuse import constants
+from diffuse import constants  # type: ignore
 from diffuse import utils
 
-import gi
+import gi  # type: ignore
 gi.require_version('GObject', '2.0')
 gi.require_version('Gtk', '3.0')
-from gi.repository import GObject, Gtk  # noqa: E402
+from gi.repository import GObject, Gtk  # type: ignore # noqa: E402
 
 
 # the about dialog

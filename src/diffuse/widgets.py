@@ -21,23 +21,25 @@ import difflib
 import os
 import unicodedata
 
+from typing import Dict
+
 from diffuse import utils
 from diffuse.resources import theResources
 
-import gi
+import gi  # type: ignore
 gi.require_version('GObject', '2.0')
 gi.require_version('Gdk', '3.0')
 gi.require_version('Gtk', '3.0')
 gi.require_version('Pango', '1.0')
 gi.require_version('PangoCairo', '1.0')
-from gi.repository import GObject, Gdk, Gtk, Pango, PangoCairo  # noqa: E402
+from gi.repository import GObject, Gdk, Gtk, Pango, PangoCairo  # type: ignore # noqa: E402
 
 
 # mapping to column width of a character (tab will never be in this map)
-_char_width_cache = {}
+_char_width_cache: Dict[str, str] = {}
 
 # the file diff viewer is always in one of these modes defining the cursor,
-# and hotkey behaviour
+# and hotkey behavior
 LINE_MODE = 0
 CHAR_MODE = 1
 ALIGN_MODE = 2
@@ -142,7 +144,7 @@ class ScrolledWindow(Gtk.Grid):
 
 
 # widget used to compare and merge text files
-class FileDiffViewer(Gtk.Grid):
+class FileDiffViewerBase(Gtk.Grid):
     # class describing a text pane
     class Pane:
         def __init__(self):
@@ -315,7 +317,7 @@ class FileDiffViewer(Gtk.Grid):
         self.hadj = Gtk.Adjustment.new(0, 0, 0, 0, 0, 0)
         self.vadj = Gtk.Adjustment.new(0, 0, 0, 0, 0, 0)
         for i in range(n):
-            pane = FileDiffViewer.Pane()
+            pane = FileDiffViewerBase.Pane()
             self.panes.append(pane)
 
             # pane contents
@@ -712,7 +714,7 @@ class FileDiffViewer(Gtk.Grid):
         pane = self.panes[f]
         if self.undoblock is not None:
             # create an Undo object for the action
-            self.addUndo(FileDiffViewer.SetFormatUndo(f, fmt, pane.format))
+            self.addUndo(FileDiffViewerBase.SetFormatUndo(f, fmt, pane.format))
         pane.format = fmt
         self.emit('format_changed', f, fmt)
 
@@ -734,12 +736,12 @@ class FileDiffViewer(Gtk.Grid):
     def instanceLine(self, f, i, reverse=False):
         if self.undoblock is not None:
             # create an Undo object for the action
-            self.addUndo(FileDiffViewer.InstanceLineUndo(f, i, reverse))
+            self.addUndo(FileDiffViewerBase.InstanceLineUndo(f, i, reverse))
         pane = self.panes[f]
         if reverse:
             pane.lines[i] = None
         else:
-            line = FileDiffViewer.Line()
+            line = FileDiffViewerBase.Line()
             pane.lines[i] = line
 
     # Undo for changing the text for a Line object
@@ -774,7 +776,7 @@ class FileDiffViewer(Gtk.Grid):
         flags = self.getMapFlags(f, i)
         if self.undoblock is not None:
             # create an Undo object for the action
-            self.addUndo(FileDiffViewer.UpdateLineTextUndo(
+            self.addUndo(FileDiffViewerBase.UpdateLineTextUndo(
                 f,
                 i,
                 line.is_modified,
@@ -835,7 +837,7 @@ class FileDiffViewer(Gtk.Grid):
     def insertNull(self, f, i, reverse):
         if self.undoblock is not None:
             # create an Undo object for the action
-            self.addUndo(FileDiffViewer.InsertNullUndo(f, i, reverse))
+            self.addUndo(FileDiffViewerBase.InsertNullUndo(f, i, reverse))
         pane = self.panes[f]
         lines = pane.lines
         # update/invalidate all relevant caches
@@ -866,7 +868,7 @@ class FileDiffViewer(Gtk.Grid):
     def invalidateLineMatching(self, i, n, new_n):
         if self.undoblock is not None:
             # create an Undo object for the action
-            self.addUndo(FileDiffViewer.InvalidateLineMatchingUndo(i, n, new_n))
+            self.addUndo(FileDiffViewerBase.InvalidateLineMatchingUndo(i, n, new_n))
         # update/invalidate all relevant caches and queue widgets for redraw
         i2 = i + n
         for f, pane in enumerate(self.panes):
@@ -896,7 +898,7 @@ class FileDiffViewer(Gtk.Grid):
     def alignmentChange(self, finished):
         if self.undoblock is not None:
             # create an Undo object for the action
-            self.addUndo(FileDiffViewer.AlignmentChangeUndo(finished))
+            self.addUndo(FileDiffViewerBase.AlignmentChangeUndo(finished))
         if finished:
             self.updateSize(False)
 
@@ -939,7 +941,7 @@ class FileDiffViewer(Gtk.Grid):
     def updateBlocks(self, blocks):
         if self.undoblock is not None:
             # create an Undo object for the action
-            self.addUndo(FileDiffViewer.UpdateBlocksUndo(self.blocks, blocks))
+            self.addUndo(FileDiffViewerBase.UpdateBlocksUndo(self.blocks, blocks))
         self.blocks = blocks
 
     # insert 'n' blank lines in all panes
@@ -1031,7 +1033,8 @@ class FileDiffViewer(Gtk.Grid):
     def replaceLines(self, f, lines, new_lines, max_num, new_max_num):
         if self.undoblock is not None:
             # create an Undo object for the action
-            self.addUndo(FileDiffViewer.ReplaceLinesUndo(f, lines, new_lines, max_num, new_max_num))
+            self.addUndo(FileDiffViewerBase.ReplaceLinesUndo(
+                f, lines, new_lines, max_num, new_max_num))
         pane = self.panes[f]
         pane.lines = new_lines
         # update/invalidate all relevant caches and queue widgets for redraw
@@ -1198,7 +1201,7 @@ class FileDiffViewer(Gtk.Grid):
         if n > 0:
             blocks.append(n)
         # create line objects for the text
-        Line = FileDiffViewer.Line
+        Line = FileDiffViewerBase.Line
         mid = [[Line(j + 1, ss[j]) for j in range(n)]]
 
         if f > 0:
@@ -1256,7 +1259,7 @@ class FileDiffViewer(Gtk.Grid):
                 lines.append(None)
             else:
                 line_num += 1
-                lines.append(FileDiffViewer.Line(line_num, s))
+                lines.append(FileDiffViewerBase.Line(line_num, s))
 
         # update loaded pane
         self.replaceLines(f, pane.lines, lines, pane.max_line_number, line_num)
@@ -1490,7 +1493,7 @@ class FileDiffViewer(Gtk.Grid):
     # selection
     def recordEditMode(self):
         if self.undoblock is not None:
-            self.addUndo(FileDiffViewer.EditModeUndo(
+            self.addUndo(FileDiffViewerBase.EditModeUndo(
                 self.mode,
                 self.current_pane,
                 self.current_line,
@@ -3243,7 +3246,7 @@ class FileDiffViewer(Gtk.Grid):
     # swap the contents of two panes
     def swapPanes(self, f_dst, f_src):
         if self.undoblock is not None:
-            self.addUndo(FileDiffViewer.SwapPanesUndo(f_dst, f_src))
+            self.addUndo(FileDiffViewerBase.SwapPanesUndo(f_dst, f_src))
         self.current_pane = f_dst
         f0 = self.panes[f_dst]
         f1 = self.panes[f_src]
@@ -4128,10 +4131,10 @@ def _pixels(size):
     return int(size / Pango.SCALE + 0.5)
 
 
-# create 'title_changed' signal for FileDiffViewer
-GObject.signal_new('swapped-panes', FileDiffViewer, GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, (int, int))  # noqa: E501
-GObject.signal_new('num-edits-changed', FileDiffViewer, GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, (int, ))  # noqa: E501
-GObject.signal_new('mode-changed', FileDiffViewer, GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, ())  # noqa: E501
-GObject.signal_new('cursor-changed', FileDiffViewer, GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, ())  # noqa: E501
-GObject.signal_new('syntax-changed', FileDiffViewer, GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, (str, ))  # noqa: E501
-GObject.signal_new('format-changed', FileDiffViewer, GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, (int, int))  # noqa: E501
+# create 'title_changed' signal for FileDiffViewerBase
+GObject.signal_new('swapped-panes', FileDiffViewerBase, GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, (int, int))  # noqa: E501
+GObject.signal_new('num-edits-changed', FileDiffViewerBase, GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, (int, ))  # noqa: E501
+GObject.signal_new('mode-changed', FileDiffViewerBase, GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, ())  # noqa: E501
+GObject.signal_new('cursor-changed', FileDiffViewerBase, GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, ())  # noqa: E501
+GObject.signal_new('syntax-changed', FileDiffViewerBase, GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, (str, ))  # noqa: E501
+GObject.signal_new('format-changed', FileDiffViewerBase, GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, (int, int))  # noqa: E501
