@@ -4,9 +4,9 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## Unreleased
 
-## [0.7.3] - 2021-11-22
+## 0.7.3 - 2021-11-22
 
 ### Added
 - Added linters (flake8 and mypy) and fixed some errors
@@ -22,7 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - The intense code cleaning seems to have fixed a bug with the `-c` argument
   (#120)
 
-## [0.7.2] - 2021-11-18
+## 0.7.2 - 2021-11-18
 
 ### Added
 - New options: log_print_output and log_print_stack, to print the log messages
@@ -38,13 +38,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed 'APP_NAME' error when opening non existing file
 - Fixed the Portuguese Brazilian (pt_BR) translation
 
-## [0.7.1] - 2021-11-17
+## 0.7.1 - 2021-11-17
 
 ### Fixed
 - Fixed #103: the flatpak app can now call binaries on the host, such as `git`,
   `svn`, etc. (PR #105)
 
-## [0.7.0] - 2021-11-16
+## 0.7.0 - 2021-11-16
 
 ### Added
 - Added MetaInfo file
@@ -64,7 +64,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Fixed some GTK deprecation warnings
 
-## [0.6.0] - 2020-11-29
+## 0.6.0 - 2020-11-29
 
 ### Added
 - New Flatpak package, published on Flathub: com.github.mightycreak.Diffuse
@@ -75,7 +75,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Replaced some interpolation operators (`%`) for the `f` string prefix
 - Use the window scale factor for the icons generation
 
-## [0.5.0] - 2020-07-18
+## 0.5.0 - 2020-07-18
+
 ### Added
 - added Pedro Albuquerque's Portuguese translation
 - added Åke Engelbrektson's Swedish translation
@@ -104,7 +105,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - fixed broken drag'n'drop since migration to Python3/GTK3
 - fixed error when using '-m' in an SVN repo
 
-## [0.4.8] - 2014-07-18
+## 0.4.8 - 2014-07-18
 ### Added
 - updated use of gtk.SpinButton and gtk.Entry to avoid quirks seen on some platforms
 - updated C/C++ syntax highlighting to recognise C11/C++11 keywords
@@ -115,7 +116,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - fixed a bug that prevented Diffuse from reviewing large git merge conflicts
 - fixed a bug that prevented drag-and-drop of file paths with non-ASCII characters
 
-## [0.4.7] - 2013-05-13
+## 0.4.7 - 2013-05-13
 ### Added
 - added Jindřich Šesták's Czech translation
 - improved character editing to allow easy indenting and moving the cursor by whole words
@@ -124,7 +125,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - added "New N-Way File Merge..." menu item
 - added syntax highlighting for Erlang and OpenCL files
 
-## [0.4.6] - 2011-11-02
+## 0.4.6 - 2011-11-02
 ### Added
 - added support for Subversion 1.7
 - added "Open Commit..." menu item
@@ -135,7 +136,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - fixed a bug that caused the wrong revision to be shown when working on a branch in Mercurial
 
-## [0.4.5] - 2011-07-13
+## 0.4.5 - 2011-07-13
 ### Added
 - added syntax highlighting for JSON files
 - added menu items and keyboard shortcuts for "First Tab" and "Last Tab"
@@ -154,7 +155,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - fixed a bug that incorrectly encoded pasted text if utf_8 was not specified in the Region Settings preferences
 - fixed a bug that could cause "Save As..." to fail with some user specified encodings
 
-## [0.4.4] - 2010-10-21
+## 0.4.4 - 2010-10-21
 ### Added
 - Git support now recognises conflicts when re-applying the stash
 - search dialog is now automatically populated with the currently selected text
@@ -167,11 +168,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - double clicking on text can now select full words with non-English characters
 - fixed a bug that prevented opening files with non-ASCII characters in their path
 
-## [0.4.3] - 2010-04-15
+## 0.4.3 - 2010-04-15
 ### Fixed
 - fixed a bug that prevented the "-m" option from opening a 3-way merge for Subversion and Bazaar conflicts
 
-## [0.4.2] - 2010-04-13
+## 0.4.2 - 2010-04-13
 ### Added
 - support for detached Git repositories
 - better removal of unnecessary spacer lines
@@ -184,7 +185,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - syntax highlighting is now indicated by radio menu items
 
-## [0.4.1] - 2009-10-12
+## 0.4.1 - 2009-10-12
 ### Added
 - added Japanese translation
 - added Liu Hao's simplified Chinese translation
@@ -203,7 +204,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - RMB on a notebook tab creates a popup menu to set the current page
 - changed the default hotkeys for merging to reflect the direction text "moves"
 
-## [0.4.0] - 2009-08-17
+## 0.4.0 - 2009-08-17
 ### Added
 - added format menu with new items for changing case, sorting, and manipulating white space
 - optimised redraws when only the cursor position has changed
@@ -221,7 +222,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - graceful handling of non-zero exit codes from 'git status'
 - minor bug fixes
 
-## [0.3.4] - 2009-07-03
+## 0.3.4 - 2009-07-03
 ### Added
 - syntax highlighting for .plist, GLSL, SConscript, and SConstruct files
 - status bar now explains how to navigate between modes
@@ -234,11 +235,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - minor bug fixes
 
-## [0.3.3] - 2009-04-13
+## 0.3.3 - 2009-04-13
 ### Fixed
 - fixed a bug handling the backspace key with the cursor in the first column
 
-## [0.3.2] - 2009-04-13
+## 0.3.2 - 2009-04-13
 ### Added
 - POSIX installer with `--destdir=` and `--files-only` options for packagers
 - vi-like keybindings for line mode
@@ -267,11 +268,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - minor bug fixes
 
-## [0.3.1] - 2009-03-05
+## 0.3.1 - 2009-03-05
 ### Fixed
 - fixed a typo that broke the 'Find...' dialogue
 
-## [0.3.0] - 2009-03-03
+## 0.3.0 - 2009-03-03
 ### Added
 - new Windows installer
 - notification on focus change when files change on disk
@@ -284,7 +285,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - minor bug fixes
 
-## [0.2.15] - 2008-12-03
+## 0.2.15 - 2008-12-03
 ### Added
 - smoother scrolling
 - panes and tabs can now be manually re-organised
@@ -300,7 +301,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - minor bug fixes
 
-## [0.2.14] - 2008-10-20
+## 0.2.14 - 2008-10-20
 ### Added
 - svk support
 - syntax files for more file types
@@ -317,7 +318,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - minor bug fixes
 
-## [0.2.13] - 2008-05-16
+## 0.2.13 - 2008-05-16
 ### Added
 - bazaar, darcs, and monotone support
 - configurable key bindings
@@ -327,7 +328,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - minor bug fixes
 
-## [0.2.12] - 2008-05-06
+## 0.2.12 - 2008-05-06
 ### Added
 - alternate codecs for reading and writing files
 - more search options
@@ -336,7 +337,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - minor bug fixes
 
-## [0.2.11] - 2008-04-27
+## 0.2.11 - 2008-04-27
 ### Added
 - cvs, subversion, git, mercurial support
 - python re-write
@@ -345,33 +346,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - customisable through configuration files
 - tabbed viewer panes
 
-## [0.1.14] - 2006-01-28
+## 0.1.14 - 2006-01-28
 ### Added
 - initial public release
-
-[Unreleased]: https://github.com/MightyCreak/diffuse/compare/v0.7.2...HEAD
-[0.7.2]: https://github.com/MightyCreak/diffuse/compare/v0.7.1...v0.7.2
-[0.7.1]: https://github.com/MightyCreak/diffuse/compare/v0.7.0...v0.7.1
-[0.7.0]: https://github.com/MightyCreak/diffuse/compare/v0.6.0...v0.7.0
-[0.6.0]: https://github.com/MightyCreak/diffuse/compare/v0.5.0...v0.6.0
-[0.5.0]: https://github.com/MightyCreak/diffuse/compare/v0.4.8...v0.5.0
-[0.4.8]: https://github.com/MightyCreak/diffuse/compare/v0.4.7...v0.4.8
-[0.4.7]: https://github.com/MightyCreak/diffuse/compare/v0.4.6...v0.4.7
-[0.4.6]: https://github.com/MightyCreak/diffuse/compare/v0.4.5...v0.4.6
-[0.4.5]: https://github.com/MightyCreak/diffuse/compare/v0.4.4...v0.4.5
-[0.4.4]: https://github.com/MightyCreak/diffuse/compare/v0.4.3...v0.4.4
-[0.4.3]: https://github.com/MightyCreak/diffuse/compare/v0.4.2...v0.4.3
-[0.4.2]: https://github.com/MightyCreak/diffuse/compare/v0.4.1...v0.4.2
-[0.4.1]: https://github.com/MightyCreak/diffuse/compare/v0.4.0...v0.4.1
-[0.4.0]: https://github.com/MightyCreak/diffuse/compare/v0.3.4...v0.4.0
-[0.3.4]: https://github.com/MightyCreak/diffuse/compare/v0.3.3...v0.3.4
-[0.3.3]: https://github.com/MightyCreak/diffuse/compare/v0.3.2...v0.3.3
-[0.3.2]: https://github.com/MightyCreak/diffuse/compare/v0.3.1...v0.3.2
-[0.3.1]: https://github.com/MightyCreak/diffuse/compare/v0.3.0...v0.3.1
-[0.3.0]: https://github.com/MightyCreak/diffuse/compare/v0.2.15...v0.3.0
-[0.2.15]: https://github.com/MightyCreak/diffuse/compare/v0.2.14...v0.2.15
-[0.2.14]: https://github.com/MightyCreak/diffuse/compare/v0.2.13...v0.2.14
-[0.2.13]: https://github.com/MightyCreak/diffuse/compare/v0.2.12...v0.2.13
-[0.2.12]: https://github.com/MightyCreak/diffuse/compare/v0.2.11...v0.2.12
-[0.2.11]: https://github.com/MightyCreak/diffuse/compare/v0.1.14...v0.2.11
-[0.1.14]: https://github.com/MightyCreak/diffuse/releases/tag/v0.1.14
