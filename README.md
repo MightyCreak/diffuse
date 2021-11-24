@@ -36,6 +36,10 @@ This is the easiest way to install Diffuse:
 flatpak install io.github.mightycreak.Diffuse
 ```
 
+## Translators
+
+Please refer to the [translation documentation](po/README.md).
+
 ## Developers
 
 ### Setup
@@ -128,7 +132,7 @@ the on-line help documentation using a web browser.
 
 Diffuse is under the [GPLv2](COPYING).
 
-The file [io.github.mightycreak.Diffuse.metainfo.xml](src/usr/share/metainfo/io.github.mightycreak.Diffuse.metainfo.xml)
+The file [io.github.mightycreak.Diffuse.appdata.xml.in](data/io.github.mightycreak.Diffuse.appdata.xml.in)
 is licensed under the [FSF-AP](https://www.gnu.org/prep/maintain/html_node/License-Notices-for-Other-Files.html)
 license.
 

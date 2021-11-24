@@ -17,8 +17,8 @@ if desktop_utils.found()
 endif
 
 appstream_file = i18n.merge_file(
-  input: 'io.github.mightycreak.Diffuse.metainfo.xml.in',
-  output: 'io.github.mightycreak.Diffuse.metainfo.xml',
+  input: 'io.github.mightycreak.Diffuse.appdata.xml.in',
+  output: 'io.github.mightycreak.Diffuse.appdata.xml',
   po_dir: '../po',
   install: true,
   install_dir: join_paths(get_option('datadir'), 'appdata')

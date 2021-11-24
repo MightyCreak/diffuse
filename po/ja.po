@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: diffuse-svn r316\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-18 15:21-0500\n"
+"POT-Creation-Date: 2021-11-24 10:26-0500\n"
 "PO-Revision-Date: 2020-06-29 14:49-0400\n"
 "Last-Translator: Derrick Moser <derrick_moser@yahoo.com>\n"
 "Language-Team: Japanese\n"
@@ -18,994 +18,569 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: data/io.github.mightycreak.Diffuse.desktop.in:3
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:4
+#: data/io.github.mightycreak.Diffuse.appdata.xml.in:4
 msgid "Diffuse Merge Tool"
 msgstr "Diffuse マージツール"
 
 #: data/io.github.mightycreak.Diffuse.desktop.in:4
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:5
+#: data/io.github.mightycreak.Diffuse.appdata.xml.in:5
 msgid "Graphical tool for merging and comparing text files"
 msgstr "テキストファイルをマージして比較するためのグラフィックツール"
 
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:7
-msgid "Diffuse is a graphical tool for comparing and merging text files. It can retrieve files for comparison from Bazaar, CVS, Darcs, Git, Mercurial, Monotone, RCS, Subversion, and SVK repositories."
+#: data/io.github.mightycreak.Diffuse.appdata.xml.in:7
+msgid ""
+"Diffuse is a graphical tool for comparing and merging text files. It can "
+"retrieve files for comparison from Bazaar, CVS, Darcs, Git, Mercurial, "
+"Monotone, RCS, Subversion, and SVK repositories."
 msgstr ""
 
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:19
+#: data/io.github.mightycreak.Diffuse.appdata.xml.in:21
 msgid "Main window: diff between two files"
 msgstr ""
 
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:26
-msgid "Patch release to fix a bug when using the Flatpak package."
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:29
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:71
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:146
-msgid "Fixed:"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:31
-msgid "Fixed a Flatpak bug where the app couldn't call binaries on the host, such as `git`, `svn`, etc."
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:40
-msgid "With this release, the main end-user change is the new icon. The rest is mainly maintenance improvements with a much more standard folder structure and starting to modularize the code. This is an ongoing effort as there is still a lot to do, but hopefully this would motivate some to contribute ;)"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:47
-msgid "An important note though: the application ID has changed and is now io.github.mightycreak.Diffuse."
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:51
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:89
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:123
-msgid "Added:"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:53
-msgid "New icon and in SVG now"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:54
-msgid "Started to modularize the code"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:56
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:93
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:136
-msgid "Changed:"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:58
-msgid "Changed AppID to io.github.mightycreak.Diffuse (as advised in the Flatpak documentation)"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:62
-msgid "Renamed directory `translations/` to `po/`"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:63
-msgid "Now uses POTFILES.in to list the files to translate"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:64
-msgid "Translation strings are no longer sorted alphabetically, this will help when there will be several files in POTFILES.in"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:68
-msgid "Updated the documentation and script in the `po/` directory"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:69
-msgid "Add .desktop translations in .po files"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:73
-msgid "Fixed some GTK deprecation warnings"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:79
-msgid "Mainly under the hood changes in this release, so nothing really visible to the users in this version. That said, I figured it was a long time since the last release (4 months ago) and, as promised, I want Diffuse development to be a bit more active and iterative."
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:85
-msgid "Apart from the maintenance changes 🧰, I think the main improvement is that Diffuse will soon be available through Flathub!"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:91
-msgid "New Flatpak package, published on Flathub: com.github.mightycreak.Diffuse"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:95
-msgid "Replace old install.py with the more standard Meson"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:96
-msgid "Remove u string prefixes since Python 3 is in UTF-8 by default"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:97
-msgid "Replaced some interpolation operators (%) for the f string prefix"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:98
-msgid "Use the window scale factor for the icons generation"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:104
-msgid "Here is the v0.5.0. Unintentionally, this release happens exactly 6 years after the previous v0.4.8 release!"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:108
-msgid "There is a lot to do on this application, and some features didn't make the release. The main one being the Windows installers. I think 6 years is too long to continue to wait until this bug is fixed. The Python scripts should work on Windows, but no executable is produced (yet) with the release."
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:115
-msgid "Other than that, Diffuse v0.5.0 is now officially compatible with Python 3 and GTK 3! And it is synced to the latest commits from upstream (which were never released)."
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:120
-msgid "The next version will not take 6 years, I promise you! 😄"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:125
-msgid "Added Pedro Albuquerque's Portuguese translation"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:126
-msgid "Added Åke Engelbrektson's Swedish translation"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:127
-msgid "Added Guillaume Hoffmann's Darcs support improvements"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:128
-msgid "Added Akom Chotiphantawanon's Thai translation"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:129
-msgid "Added support for Git submodules"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:130
-msgid "Added a preference and command line option to specify the version control system search order"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:131
-msgid "Added .editorconfig file"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:132
-msgid "Added .gitignore file"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:133
-msgid "Added message when removing files during uninstallation"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:134
-msgid "Added Python script to update all the translation files at once"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:138
-msgid "Convert to Python 3"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:139
-msgid "Convert to GTK 3"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:140
-msgid "Updated Python highlighting for Python 3 grammar"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:141
-msgid "Updated copyrights years and authors"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:142
-msgid "Improve Spanish translation"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:143
-msgid "Convert translation README to MarkDown"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:144
-msgid "Updated all the translation files"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:148
-msgid "Fixed wrong icons directory for gtk-update-icon-cache"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:149
-msgid "Fixed missing directories when uninstalling"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:150
-msgid "Fixed bug introduced by r420 with RCS VCS"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:151
-msgid "Fixed broken drag'n'drop since migration to Python3/GTK3"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:152
-msgid "Fixed error when using '-m' in an SVN repo"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:157
-msgid "Romain Failliot"
-msgstr ""
-
-#: src/constants.py.in:23
+#: src/diffuse/constants.py.in:23
 msgid "Copyright"
 msgstr ""
 
-#: src/main.py:591
-#, python-format
-msgid "Error processing line %(line)d of %(file)s."
-msgstr "%(file)s の %(line)d行 を処理しているときにエラーが生じました。"
-
-#: src/main.py:610
-msgid "Auto Detect"
-msgstr "自動検出"
-
-#: src/main.py:706
-msgid "Display"
-msgstr "表示"
-
-#: src/main.py:708
-msgid "Font"
-msgstr "フォント"
-
-#: src/main.py:709
-msgid "Tab width"
-msgstr "タブの幅"
-
-#: src/main.py:710
-msgid "Show right margin"
-msgstr "右マージンを表示"
-
-#: src/main.py:711
-msgid "Right margin"
-msgstr "右マージン"
-
-#: src/main.py:712
-msgid "Show line numbers"
-msgstr "行番号を表示"
-
-#: src/main.py:713
-msgid "Show white space characters"
-msgstr "空白文字を表示"
-
-#: src/main.py:714
-msgid "Ignore case differences"
-msgstr "大文字小文字の違いを無視"
-
-#: src/main.py:715
-msgid "Ignore white space differences"
-msgstr "空白の違いを無視"
-
-#: src/main.py:716 src/main.py:724
-msgid "Ignore changes to white space"
-msgstr "空白の変更を無視"
-
-#: src/main.py:717
-msgid "Ignore blank line differences"
-msgstr "空白行の違いを無視"
-
-#: src/main.py:718
-msgid "Ignore end of line differences"
-msgstr "行の最後の違いを無視"
-
-#: src/main.py:720
-msgid "Alignment"
-msgstr "整列"
-
-#: src/main.py:722
-msgid "Ignore case"
-msgstr "大文字小文字を無視"
-
-#: src/main.py:723
-msgid "Ignore white space"
-msgstr "空白を無視"
-
-#: src/main.py:725
-msgid "Ignore blank lines"
-msgstr "空白行を無視"
-
-#: src/main.py:726
-msgid "Ignore end of line characters"
-msgstr "行の最後の文字を無視"
-
-#: src/main.py:728
-msgid "Editor"
-msgstr "エディタ"
-
-#: src/main.py:730
-msgid "Auto indent"
-msgstr "自動インデント"
-
-#: src/main.py:731
-msgid "Expand tabs to spaces"
-msgstr "タブの代わりに空白を挿入"
-
-#: src/main.py:732
-msgid "Soft tab width"
-msgstr "ソフトタブの幅"
-
-#: src/main.py:734
-msgid "Tabs"
-msgstr "タブ"
-
-#: src/main.py:736
-msgid "Default panes"
-msgstr "枠のデフォルトの数"
-
-#: src/main.py:737
-msgid "Always show the tab bar"
-msgstr "常にタブバーを表示"
-
-#: src/main.py:738
-#, python-format
-msgid "Warn me when closing a tab will quit %s"
-msgstr "タブを閉じるとき、%s を終了すると警告"
-
-#: src/main.py:740
-msgid "Regional Settings"
-msgstr "地域設定"
-
-#: src/main.py:742
-msgid "Default codec"
-msgstr "デフォルトのコーデック"
-
-#: src/main.py:743
-msgid "Order of codecs used to identify encoding"
-msgstr "エンコーディングを特定するためのコーデックの優先順位"
-
-#: src/main.py:763
-msgid "Cygwin"
-msgstr "Cygwin"
-
-#: src/main.py:765
-msgid "Root directory"
-msgstr "ルートディレクトリ"
-
-#: src/main.py:766
-msgid "Cygdrive prefix"
-msgstr "Cygdrive 接頭辞"
-
-#: src/main.py:782
-msgid "Version control system search order"
-msgstr ""
-
-#: src/main.py:788
-msgid "\"co\" command"
-msgstr "co というコマンド"
-
-#: src/main.py:789
-msgid "\"rlog\" command"
-msgstr "rlog というコマンド"
-
-#: src/main.py:791
-msgid "Command"
-msgstr "コマンド"
-
-#: src/main.py:793
-msgid "Launch from a Bash login shell"
-msgstr "Bashログインシェルから始める"
-
-#: src/main.py:795
-msgid "Update paths for Cygwin"
-msgstr "Cygwin のためにパスを更新"
-
-#: src/main.py:799
-msgid "Version Control"
-msgstr "バージョンコントロール"
-
-#: src/main.py:863
-msgid "Preferences"
-msgstr "設定"
-
-#: src/main.py:904 src/main.py:5802
-#, python-format
-msgid "Error writing %s."
-msgstr "%s へ書き込む際にエラーが生じました。"
-
-#: src/main.py:3282
-msgid "Align with Selection"
-msgstr "選択と整列"
-
-#: src/main.py:3283
-msgid "Isolate"
-msgstr "分離"
-
-#: src/main.py:3284
-msgid "Merge Selection"
-msgstr "選択をマージ"
-
-#: src/main.py:3286 src/main.py:6098
-msgid "Cut"
-msgstr "切り取り"
-
-#: src/main.py:3287 src/main.py:6099
-msgid "Copy"
-msgstr "コピー"
-
-#: src/main.py:3288 src/main.py:6100
-msgid "Paste"
-msgstr "貼り付け"
-
-#: src/main.py:3290
-msgid "Select All"
-msgstr "全て選択"
-
-#: src/main.py:3291 src/main.py:6101
-msgid "Clear Edits"
-msgstr "編集をクリア"
-
-#: src/main.py:3293
-msgid "Swap with Selected Pane"
-msgstr "選択された枠と交換"
-
-#: src/main.py:5124
-msgid "Find..."
-msgstr "検索..."
-
-#: src/main.py:5132
-msgid "Search For: "
-msgstr "検索する文字列: "
-
-#: src/main.py:5157
-msgid "Match Case"
-msgstr "大文字/小文字を区別"
-
-#: src/main.py:5162
-msgid "Search Backwards"
-msgstr "先頭に向かって検索"
-
-#: src/main.py:5176
-#, python-format
-msgid "Closing this tab will quit %s."
-msgstr "このタブを閉じると、%sは終了します。"
-
-#: src/main.py:5198
-msgid "Encoding: "
-msgstr "エンコーディング: "
-
-#: src/main.py:5208
-msgid "Revision: "
-msgstr "リビジョン: "
-
-#: src/main.py:5272
-msgid "Diffuse is a graphical tool for merging and comparing text files."
-msgstr "Diffuse は、テキストファイルをマージして比較するためのグラフィックツールです。"
-
-#: src/main.py:5277
-msgid "translator-credits"
-msgstr "Derrick Moser <derrick_moser@yahoo.com>"
-
-#: src/main.py:5281
-#, fuzzy
-msgid ""
-"This program is free software; you can redistribute it and/or modify\n"
-"it under the terms of the GNU General Public License as published by\n"
-"the Free Software Foundation; either version 2 of the License, or\n"
-"(at your option) any later version.\n"
-"\n"
-"This program is distributed in the hope that it will be useful,\n"
-"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
-"GNU General Public License for more details.\n"
-"\n"
-"You should have received a copy of the GNU General Public License along\n"
-"with this program; if not, write to the Free Software Foundation, Inc.,\n"
-"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA."
-msgstr ""
-"このプログラムはフリーソフトウェアです。あなたはこれを、フリーソフトウェア財団によって発行された GNU 一般公衆利用許諾契約書(バージョン2か、希望によってはそれ以降のバージョンのうちどれか)の定める条件の下で再頒布または改変することができます。\n"
-"\n"
-"このプログラムは有用であることを願って頒布されますが、*全くの無保証*です。商業可能性の保証や特定の目的への適合性は、言外に示されたものも含め全く存在しません。詳しくはGNU 一般公衆利用許諾契約書をご覧ください。\n"
-"\n"
-"あなたはこのプログラムと共に、GNU 一般公衆利用許諾契約書の複製物を一部受け取ったはずです。もし受け取っていなければ、フリーソフトウェア財団まで請求してください(宛先は the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA)。\n"
-
-#: src/main.py:5322
+#: src/diffuse/main.py:77
 msgid "Close Tab"
 msgstr "タブを閉じる"
 
-#: src/main.py:5377
+#: src/diffuse/main.py:120
 msgid "Open File..."
 msgstr "ファイルを開く..."
 
-#: src/main.py:5378
+#: src/diffuse/main.py:121
 msgid "Reload File"
 msgstr "ファイルを再読込み"
 
-#: src/main.py:5379
+#: src/diffuse/main.py:122
 msgid "Save File"
 msgstr "ファイルを保存"
 
-#: src/main.py:5380
+#: src/diffuse/main.py:123
 msgid "Save File As..."
 msgstr "ファイルとして保存..."
 
-#: src/main.py:5525
+#: src/diffuse/main.py:268
 msgid "Save changes before loading the new file?"
 msgstr "新しいファイルをロードする前に、変更したデータを保存しますか？"
 
-#: src/main.py:5635
+#: src/diffuse/main.py:377
 #, python-format
 msgid "Error reading revision %(rev)s of %(file)s."
 msgstr "%(file)s の %(rev)s というリビジョンを読み込む際にエラーが生じました。"
 
-#: src/main.py:5637 src/main.py:6900
+#: src/diffuse/main.py:379 src/diffuse/main.py:1712
 #, python-format
 msgid "Error reading %s."
 msgstr "%s を読み込む際にエラーが生じました。"
 
-#: src/main.py:5658
+#: src/diffuse/main.py:400
 msgid "Open File"
 msgstr "ファイルを開く"
 
-#: src/main.py:5708
+#: src/diffuse/main.py:450
 #, python-format
 msgid "The file %s changed on disk.  Do you want to reload the file?"
 msgstr "ファイル %s が変更されたようです。 そのファイルを再読み込みしますか？"
 
-#: src/main.py:5728
+#: src/diffuse/main.py:470
 #, python-format
 msgid "Save %(title)s Pane %(pane)d"
 msgstr "%(title)s の%(pane)d番目の枠を保存"
 
-#: src/main.py:5754
+#: src/diffuse/main.py:496
 #, python-format
 msgid "A file named %s already exists.  Do you want to overwrite it?"
 msgstr "%s というファイルは既に存在しています。それを上書きしますか？"
 
-#: src/main.py:5759
+#: src/diffuse/main.py:501
 #, python-format
-msgid "The file %s has been modified by another process since reading it.  If you save, all the external changes could be lost.  Save anyways?"
-msgstr "ファイル %s は、変更されています。保存する場合は、これらの変更が失われることがあります。保存しますか?"
+msgid ""
+"The file %s has been modified by another process since reading it.  If you "
+"save, all the external changes could be lost.  Save anyways?"
+msgstr ""
+"ファイル %s は、変更されています。保存する場合は、これらの変更が失われること"
+"があります。保存しますか?"
 
-#: src/main.py:5800
+#: src/diffuse/main.py:540
 #, python-format
 msgid "Error encoding to %s."
 msgstr "%s に変える際にエラーが生じました。"
 
-#: src/main.py:5830
+#: src/diffuse/main.py:542
+#, python-format
+msgid "Error writing %s."
+msgstr "%s へ書き込む際にエラーが生じました。"
+
+#: src/diffuse/main.py:570
 msgid "Go To Line..."
 msgstr "指定行へジャンプ..."
 
-#: src/main.py:5830
+#: src/diffuse/main.py:570
 msgid "Line Number: "
 msgstr "行番号: "
 
-#: src/main.py:5856
-msgid "Press the enter key or double click to edit.  Press the space bar or use the RMB menu to manually align."
-msgstr "編集するためにエンターキーを押すか、ダブルクリックします。手動で整列させるためにスペースバーを押すか、RMBを使います。"
+#: src/diffuse/main.py:596
+msgid ""
+"Press the enter key or double click to edit.  Press the space bar or use the "
+"RMB menu to manually align."
+msgstr ""
+"編集するためにエンターキーを押すか、ダブルクリックします。手動で整列させるた"
+"めにスペースバーを押すか、RMBを使います。"
 
-#: src/main.py:5858
+#: src/diffuse/main.py:598
 msgid "Press the escape key to finish editing."
 msgstr "ESCキーを押して、編集を終了します。"
 
-#: src/main.py:5860
-msgid "Select target line and press the space bar to align.  Press the escape key to cancel."
-msgstr "目標行を選択してスペースバーを押すと整列します。取り消す場合は、ESCキーを押します。"
+#: src/diffuse/main.py:600
+msgid ""
+"Select target line and press the space bar to align.  Press the escape key "
+"to cancel."
+msgstr ""
+"目標行を選択してスペースバーを押すと整列します。取り消す場合は、ESCキーを押し"
+"ます。"
 
-#: src/main.py:5971
+#: src/diffuse/main.py:711
 msgid "_File"
 msgstr "ファイル(_F)"
 
-#: src/main.py:5972
+#: src/diffuse/main.py:712
 msgid "_Open File..."
 msgstr "ファイルを開く...(_O)"
 
-#: src/main.py:5973
+#: src/diffuse/main.py:713
 msgid "Open File In New _Tab..."
 msgstr "新しいタブにファイルを開く...(_T)"
 
-#: src/main.py:5974
+#: src/diffuse/main.py:714
 msgid "Open _Modified Files..."
 msgstr "変更のあるファイルを開く...(_M)"
 
-#: src/main.py:5975
+#: src/diffuse/main.py:715
 msgid "Open Commi_t..."
 msgstr "コミットを開く...(_T)"
 
-#: src/main.py:5976
+#: src/diffuse/main.py:716
 msgid "_Reload File"
 msgstr "ファイルの再読込み(_R)"
 
-#: src/main.py:5978
+#: src/diffuse/main.py:718
 msgid "_Save File"
 msgstr "ファイルを保存(_S)"
 
-#: src/main.py:5979
+#: src/diffuse/main.py:719
 msgid "Save File _As..."
 msgstr "ファイルとして保存...(_A)"
 
-#: src/main.py:5980
+#: src/diffuse/main.py:720
 msgid "Save A_ll"
 msgstr "全て保存(_L)"
 
-#: src/main.py:5982
+#: src/diffuse/main.py:722
 msgid "New _2-Way File Merge"
 msgstr "新しい２つのファイルの比較(_2)"
 
-#: src/main.py:5983
+#: src/diffuse/main.py:723
 msgid "New _3-Way File Merge"
 msgstr "新しい３つのファイルの比較(_3)"
 
-#: src/main.py:5984
+#: src/diffuse/main.py:724
 msgid "New _N-Way File Merge..."
 msgstr "新しい複数のファイルの比較...(_N)"
 
-#: src/main.py:5986
+#: src/diffuse/main.py:726
 msgid "_Close Tab"
 msgstr "タブを閉じる(_C)"
 
-#: src/main.py:5987
+#: src/diffuse/main.py:727
 msgid "_Undo Close Tab"
 msgstr "閉じたタブを元に戻す(_U)"
 
-#: src/main.py:5988
+#: src/diffuse/main.py:728
 msgid "_Quit"
 msgstr "終了(_Q)"
 
-#: src/main.py:5990
+#: src/diffuse/main.py:730
 msgid "_Edit"
 msgstr "編集(_E)"
 
-#: src/main.py:5991
+#: src/diffuse/main.py:731
 msgid "_Undo"
 msgstr "元に戻す(_U)"
 
-#: src/main.py:5992
+#: src/diffuse/main.py:732
 msgid "_Redo"
 msgstr "やり直す(_R)"
 
-#: src/main.py:5994
+#: src/diffuse/main.py:734
 msgid "Cu_t"
 msgstr "切り取り(_T)"
 
-#: src/main.py:5995
+#: src/diffuse/main.py:735
 msgid "_Copy"
 msgstr "コピー(_C)"
 
-#: src/main.py:5996
+#: src/diffuse/main.py:736
 msgid "_Paste"
 msgstr "貼り付け(_P)"
 
-#: src/main.py:5998
+#: src/diffuse/main.py:738
 msgid "Select _All"
 msgstr "全て選択(_A)"
 
-#: src/main.py:5999
+#: src/diffuse/main.py:739
 msgid "C_lear Edits"
 msgstr "編集をクリア(_L)"
 
-#: src/main.py:6000
+#: src/diffuse/main.py:740
 msgid "_Dismiss All Edits"
 msgstr "全ての編集を破棄(_D)"
 
-#: src/main.py:6002
+#: src/diffuse/main.py:742
 msgid "_Find..."
 msgstr "検索...(_F)"
 
-#: src/main.py:6003
+#: src/diffuse/main.py:743
 msgid "Find _Next"
 msgstr "次の検索(_N)"
 
-#: src/main.py:6004
+#: src/diffuse/main.py:744
 msgid "Find Pre_vious"
 msgstr "前の検索(_V)"
 
-#: src/main.py:6005
+#: src/diffuse/main.py:745
 msgid "_Go To Line..."
 msgstr "指定行へジャンプ...(_G)"
 
-#: src/main.py:6007
+#: src/diffuse/main.py:747
 msgid "Pr_eferences..."
 msgstr "設定...(_E)"
 
-#: src/main.py:6009
+#: src/diffuse/main.py:749
 msgid "None"
 msgstr "なし"
 
-#: src/main.py:6017
+#: src/diffuse/main.py:757
 msgid "_View"
 msgstr "表示(_V)"
 
-#: src/main.py:6018
+#: src/diffuse/main.py:758
 msgid "_Syntax Highlighting"
 msgstr "構文の強調表示(_S)"
 
-#: src/main.py:6020
+#: src/diffuse/main.py:760
 msgid "Re_align All"
 msgstr "全て再整列(_A)"
 
-#: src/main.py:6021
+#: src/diffuse/main.py:761
 msgid "_Isolate"
 msgstr "分離(_I)"
 
-#: src/main.py:6023
+#: src/diffuse/main.py:763
 msgid "_First Difference"
 msgstr "最初の差分(_F)"
 
-#: src/main.py:6024
+#: src/diffuse/main.py:764
 msgid "_Previous Difference"
 msgstr "前の差分(_P)"
 
-#: src/main.py:6025
+#: src/diffuse/main.py:765
 msgid "_Next Difference"
 msgstr "次の差分(_N)"
 
-#: src/main.py:6026
+#: src/diffuse/main.py:766
 msgid "_Last Difference"
 msgstr "最後の差分(_L)"
 
-#: src/main.py:6028
+#: src/diffuse/main.py:768
 msgid "Fir_st Tab"
 msgstr "最初のタブ(_S)"
 
-#: src/main.py:6029
+#: src/diffuse/main.py:769
 msgid "Pre_vious Tab"
 msgstr "前のタブ(_V)"
 
-#: src/main.py:6030
+#: src/diffuse/main.py:770
 msgid "Next _Tab"
 msgstr "次のタブ(_T)"
 
-#: src/main.py:6031
+#: src/diffuse/main.py:771
 msgid "Las_t Tab"
 msgstr "最後のタブ(_T)"
 
-#: src/main.py:6033
+#: src/diffuse/main.py:773
 msgid "Shift Pane _Right"
 msgstr "枠を右に動かす(_R)"
 
-#: src/main.py:6034
+#: src/diffuse/main.py:774
 msgid "Shift Pane _Left"
 msgstr "枠を左に動かす(_L)"
 
-#: src/main.py:6036
+#: src/diffuse/main.py:776
 msgid "F_ormat"
 msgstr "フォーマット(_O)"
 
-#: src/main.py:6037
+#: src/diffuse/main.py:777
 msgid "Convert To _Upper Case"
 msgstr "大文字に変換(_U)"
 
-#: src/main.py:6038
+#: src/diffuse/main.py:778
 msgid "Convert To _Lower Case"
 msgstr "小文字に変換(_L)"
 
-#: src/main.py:6040
+#: src/diffuse/main.py:780
 msgid "Sort Lines In _Ascending Order"
 msgstr "行を昇順に並べる(_A)"
 
-#: src/main.py:6041
+#: src/diffuse/main.py:781
 msgid "Sort Lines In D_escending Order"
 msgstr "行を降順に並べる(_E)"
 
-#: src/main.py:6043
+#: src/diffuse/main.py:783
 msgid "Remove Trailing _White Space"
 msgstr "末尾の空白を削除(_W)"
 
-#: src/main.py:6044
+#: src/diffuse/main.py:784
 msgid "Convert Tabs To _Spaces"
 msgstr "タブをスペースに変換(_S)"
 
-#: src/main.py:6045
+#: src/diffuse/main.py:785
 msgid "Convert Leading Spaces To _Tabs"
 msgstr "先頭のスペースをタブに変換(_T)"
 
-#: src/main.py:6047
+#: src/diffuse/main.py:787
 msgid "_Increase Indenting"
 msgstr "インデントを増やす(_I)"
 
-#: src/main.py:6048
+#: src/diffuse/main.py:788
 msgid "De_crease Indenting"
 msgstr "インデントを減らす(_C)"
 
-#: src/main.py:6050
+#: src/diffuse/main.py:790
 msgid "Convert To _DOS Format"
 msgstr "DOS 形式に変換(_D)"
 
-#: src/main.py:6051
+#: src/diffuse/main.py:791
 msgid "Convert To _Mac Format"
 msgstr "Mac 形式に変換(_M)"
 
-#: src/main.py:6052
+#: src/diffuse/main.py:792
 msgid "Convert To Uni_x Format"
 msgstr "Unix 形式に変換(_X)"
 
-#: src/main.py:6054
+#: src/diffuse/main.py:794
 msgid "_Merge"
 msgstr "マージ(_M)"
 
-#: src/main.py:6055
+#: src/diffuse/main.py:795
 msgid "Copy Selection _Right"
 msgstr "選択を右にコピー(_R)"
 
-#: src/main.py:6056
+#: src/diffuse/main.py:796
 msgid "Copy Selection _Left"
 msgstr "選択を左にコピー(_L)"
 
-#: src/main.py:6058
+#: src/diffuse/main.py:798
 msgid "Copy Left _Into Selection"
 msgstr "左から選択枠にコピー(_I)"
 
-#: src/main.py:6059
+#: src/diffuse/main.py:799
 msgid "Copy Right I_nto Selection"
 msgstr "右から選択枠にコピー(_N)"
 
-#: src/main.py:6060
+#: src/diffuse/main.py:800
 msgid "_Merge From Left Then Right"
 msgstr "左からマージした後、右からマージ(_M)"
 
-#: src/main.py:6061
+#: src/diffuse/main.py:801
 msgid "M_erge From Right Then Left"
 msgstr "右からマージした後、左からマージ(_E)"
 
-#: src/main.py:6063
+#: src/diffuse/main.py:803
 msgid "_Help"
 msgstr "ヘルプ(_H)"
 
-#: src/main.py:6064
+#: src/diffuse/main.py:804
 msgid "_Help Contents..."
 msgstr "ヘルプの目次...(_H)"
 
-#: src/main.py:6066
+#: src/diffuse/main.py:806
 #, python-format
 msgid "_About %s..."
 msgstr "%s について...(_A)"
 
-#: src/main.py:6080
+#: src/diffuse/main.py:820
 msgid "New 2-Way File Merge"
 msgstr "新しい２つのファイルの比較"
 
-#: src/main.py:6081
+#: src/diffuse/main.py:821
 msgid "New 3-Way File Merge"
 msgstr "新しい３つのファイルの比較"
 
-#: src/main.py:6083
+#: src/diffuse/main.py:823
 msgid "Realign All"
 msgstr "全て再整列"
 
-#: src/main.py:6084
+#: src/diffuse/main.py:824
 msgid "First Difference"
 msgstr "最初の差分"
 
-#: src/main.py:6085
+#: src/diffuse/main.py:825
 msgid "Previous Difference"
 msgstr "前の差分"
 
-#: src/main.py:6086
+#: src/diffuse/main.py:826
 msgid "Next Difference"
 msgstr "次の差分"
 
-#: src/main.py:6087
+#: src/diffuse/main.py:827
 msgid "Last Difference"
 msgstr "最後の差分"
 
-#: src/main.py:6089
+#: src/diffuse/main.py:829
 msgid "Copy Selection Right"
 msgstr "選択を右にコピー"
 
-#: src/main.py:6090
+#: src/diffuse/main.py:830
 msgid "Copy Selection Left"
 msgstr "選択を左にコピー"
 
-#: src/main.py:6091
+#: src/diffuse/main.py:831
 msgid "Copy Left Into Selection"
 msgstr "左から選択枠にコピー"
 
-#: src/main.py:6092
+#: src/diffuse/main.py:832
 msgid "Copy Right Into Selection"
 msgstr "右から選択枠にコピー"
 
-#: src/main.py:6093
+#: src/diffuse/main.py:833
 msgid "Merge From Left Then Right"
 msgstr "左からマージした後、右からマージ"
 
-#: src/main.py:6094
+#: src/diffuse/main.py:834
 msgid "Merge From Right Then Left"
 msgstr "右からマージした後、左からマージ"
 
-#: src/main.py:6096
+#: src/diffuse/main.py:836
 msgid "Undo"
 msgstr "元に戻す"
 
-#: src/main.py:6097
+#: src/diffuse/main.py:837
 msgid "Redo"
 msgstr "やり直す"
 
-#: src/main.py:6221
-msgid "Some files have unsaved changes.  Select the files to save before closing."
-msgstr "変更が保存されていないファイルがあります。終了前に保存するファイルを選択します。"
+#: src/diffuse/main.py:838
+msgid "Cut"
+msgstr "切り取り"
 
-#: src/main.py:6234
+#: src/diffuse/main.py:839
+msgid "Copy"
+msgstr "コピー"
+
+#: src/diffuse/main.py:840
+msgid "Paste"
+msgstr "貼り付け"
+
+#: src/diffuse/main.py:841
+msgid "Clear Edits"
+msgstr "編集をクリア"
+
+#: src/diffuse/main.py:961
+msgid ""
+"Some files have unsaved changes.  Select the files to save before closing."
+msgstr ""
+"変更が保存されていないファイルがあります。終了前に保存するファイルを選択しま"
+"す。"
+
+#: src/diffuse/main.py:974
 msgid "Tab"
 msgstr "タブ"
 
-#: src/main.py:6239
+#: src/diffuse/main.py:979
 msgid "Pane"
 msgstr "枠"
 
-#: src/main.py:6250
+#: src/diffuse/main.py:990
 msgid "Close _Without Saving"
 msgstr "保存せずに閉じる(_W)"
 
-#: src/main.py:6361
+#: src/diffuse/main.py:1026
+#, python-format
+msgid "Closing this tab will quit %s."
+msgstr "このタブを閉じると、%sは終了します。"
+
+#: src/diffuse/main.py:1108
 #, python-format
 msgid "File Merge %d"
 msgstr "ファイルマージ%d"
 
-#: src/main.py:6464
+#: src/diffuse/main.py:1211
 #, python-format
 msgid "Error retrieving commits for %s."
 msgstr "%s のコミットの取得中にエラーが生じました。"
 
-#: src/main.py:6493
+#: src/diffuse/main.py:1240
 #, python-format
 msgid "Error retrieving modifications for %s."
 msgstr "%s の変更の取得中にエラーが生じました。"
 
-#: src/main.py:6523
+#: src/diffuse/main.py:1270
 msgid "Open File In New Tab"
 msgstr "新しいタブにファイルを開く"
 
-#: src/main.py:6539
+#: src/diffuse/main.py:1286
 msgid "Choose Folder With Modified Files"
 msgstr "変更なったファイルがあるフォルダを選択"
 
-#: src/main.py:6552
+#: src/diffuse/main.py:1299
 msgid "No modified files found."
 msgstr "変更なったファイルが見つかりませんでした。"
 
-#: src/main.py:6557
+#: src/diffuse/main.py:1304
 msgid "Choose Folder With Commit"
 msgstr "コミットがあるフォルダを選択"
 
-#: src/main.py:6570
+#: src/diffuse/main.py:1317
 msgid "No committed files found."
 msgstr "コミットされたファイルが見つかりませんでした。"
 
-#: src/main.py:6604
+#: src/diffuse/main.py:1351
 msgid "New N-Way File Merge..."
 msgstr "新しい複数のファイルの比較..."
 
-#: src/main.py:6604
+#: src/diffuse/main.py:1351
 msgid "Number of panes: "
 msgstr "枠の数: "
 
-#: src/main.py:6669
+#: src/diffuse/main.py:1416
 msgid "Phrase not found.  Continue from the end of the file?"
 msgstr "文字列が見つかりませんでした。ファイルの終わりから続けますか。"
 
-#: src/main.py:6671
+#: src/diffuse/main.py:1418
 msgid "Phrase not found.  Continue from the start of the file?"
 msgstr "文字列が見つかりませんでした。ファイルの始めから続けますか。"
 
-#: src/main.py:6819
+#: src/diffuse/main.py:1631
 msgid ""
 "Usage:\n"
 "    diffuse [ [OPTION...] [FILE...] ]...\n"
 "    diffuse ( -h | -? | --help | -v | --version )\n"
 "\n"
-"Diffuse is a graphical tool for merging and comparing text files.  Diffuse is\n"
-"able to compare an arbitrary number of files side-by-side and gives users the\n"
-"ability to manually adjust line matching and directly edit files.  Diffuse can\n"
+"Diffuse is a graphical tool for merging and comparing text files.  Diffuse "
+"is\n"
+"able to compare an arbitrary number of files side-by-side and gives users "
+"the\n"
+"ability to manually adjust line matching and directly edit files.  Diffuse "
+"can\n"
 "also retrieve revisions of files from Bazaar, CVS, Darcs, Git, Mercurial,\n"
 "Monotone, RCS, Subversion, and SVK repositories for comparison and merging.\n"
 "\n"
 "Help Options:\n"
 "  ( -h | -? | --help )             Display this usage information\n"
-"  ( -v | --version )               Display version and copyright information\n"
+"  ( -v | --version )               Display version and copyright "
+"information\n"
 "\n"
 "Configuration Options:\n"
 "  --no-rcfile                      Do not read any resource files\n"
@@ -1035,9 +610,11 @@ msgstr ""
 "    diffuse [ [オプション...] [ファイル...] ]...\n"
 "    diffuse ( -h | -? | --help | -v | --version )\n"
 "\n"
-"Diffuse は、テキストファイルをマージして比較するためのグラフィックツールです。\n"
+"Diffuse は、テキストファイルをマージして比較するためのグラフィックツールで"
+"す。\n"
 "任意の数の並行なファイルを比較できます。ユーザは、手動で行を再整列し、\n"
-"ファイルを直接編集できます。また、Diffuse は比較やマージするためにBazaar、CVS、\n"
+"ファイルを直接編集できます。また、Diffuse は比較やマージするためにBazaar、"
+"CVS、\n"
 "Darcs、Git、Mercurial、Monotone、RCS、Subversion、および SVK リポジトリから\n"
 "ファイルリビジョンを取得できます。\n"
 "\n"
@@ -1050,11 +627,13 @@ msgstr ""
 "  --rcfile <file>                  指定されたリソースファイルを読む\n"
 "\n"
 "一般的なオプション:\n"
-"  ( -c | --commit ) <rev>          <rev-1> と <rev> というファイルリビジョン\n"
+"  ( -c | --commit ) <rev>          <rev-1> と <rev> というファイルリビジョ"
+"ン\n"
 "  ( -D | --close-if-same )         差分がないタブを閉じる\n"
 "  ( -e | --encoding ) <codec>      <codec> でファイルを読み書き\n"
 "  ( -L | --label ) <label>         ファイル名の代わりに <label> を表示\n"
-"  ( -m | --modified )              変更になったファイルのために新しいタブを作る\n"
+"  ( -m | --modified )              変更になったファイルのために新しいタブを作"
+"る\n"
 "  ( -r | --revision ) <rev>        <rev> というファイルリビジョン\n"
 "  ( -s | --separate )              各ファイルのために新しいタブを作る\n"
 "  ( -t | --tab )                   新しいタブを始める\n"
@@ -1069,30 +648,29 @@ msgstr ""
 "  ( -i | --ignore-case )           大文字小文字の違いを無視\n"
 "  ( -w | --ignore-all-space )      空白の違いを無視"
 
-#: src/main.py:6990
+#: src/diffuse/main.py:1802
 msgid "Error parsing line number."
 msgstr "行番号をパースする際にエラーが生じました。"
 
-#: src/main.py:7000
+#: src/diffuse/main.py:1812
 #, python-format
 msgid "Skipping unknown argument \"%s\"."
 msgstr "未知の引数「%s」を飛ばします。"
 
-#: src/main.py:7007
+#: src/diffuse/main.py:1819
 #, python-format
 msgid "Error processing argument \"%s\".  Directory not expected."
-msgstr "%s の引数を処理しているときにエラーが生じました。ディレクトリは予測できませんでした。"
+msgstr ""
+"%s の引数を処理しているときにエラーが生じました。ディレクトリは予測できません"
+"でした。"
 
-#: src/vcs/cvs.py:50 src/vcs/rcs.py:54 src/vcs/svn.py:89
+#: src/diffuse/vcs/cvs.py:51 src/diffuse/vcs/rcs.py:60
+#: src/diffuse/vcs/svn.py:93
 #, python-format
 msgid "Error parsing revision %s."
 msgstr "%s というリビジョンをパースする際にエラーが生じました。"
 
-#: src/vcs/vcs_registry.py:216
+#: src/diffuse/vcs/vcs_registry.py:231
 #, python-format
 msgid "Error parsing %s."
 msgstr "%s をパースする際にエラーが生じました。"
-
-#, python-format
-#~ msgid "Column %d"
-#~ msgstr "%d列"

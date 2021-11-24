@@ -1,0 +1,12 @@
+# List of source files which contain translatable strings.
+# Copyright (C) 2020 Romain Failliot <romain.failliot@foolstep.com>
+
+data/io.github.mightycreak.Diffuse.desktop.in
+data/io.github.mightycreak.Diffuse.appdata.xml.in
+src/diffuse/constants.py.in
+src/diffuse/diffuse.in
+src/diffuse/main.py
+src/diffuse/vcs/cvs.py
+src/diffuse/vcs/rcs.py
+src/diffuse/vcs/svn.py
+src/diffuse/vcs/vcs_registry.py

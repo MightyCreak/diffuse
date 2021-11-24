@@ -22,10 +22,10 @@ jobs:
     - run: pip install -r requirements.txt
 
     - name: Flake8
-      run: flake8 src/
+      run: flake8 src/ po/
 
     - name: MyPy
-      run: mypy src/
+      run: mypy src/ po/
 
   meson-build-test:
     runs-on: ubuntu-latest
