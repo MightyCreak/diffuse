@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: diffuse-svn r316\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-24 10:26-0500\n"
+"POT-Creation-Date: 2021-11-24 13:44-0500\n"
 "PO-Revision-Date: 2020-06-29 14:49-0400\n"
 "Last-Translator: Kang Bundo <bundo@bundo.biz>\n"
 "Language-Team: Korean\n"
@@ -29,9 +29,9 @@ msgstr "텍스트 파일을 병합하고 비교하기위한 도구"
 
 #: data/io.github.mightycreak.Diffuse.appdata.xml.in:7
 msgid ""
-"Diffuse is a graphical tool for comparing and merging text files. It can "
-"retrieve files for comparison from Bazaar, CVS, Darcs, Git, Mercurial, "
-"Monotone, RCS, Subversion, and SVK repositories."
+"Diffuse is a graphical tool for comparing and merging text files. It can retrieve "
+"files for comparison from Bazaar, CVS, Darcs, Git, Mercurial, Monotone, RCS, "
+"Subversion, and SVK repositories."
 msgstr ""
 
 #: data/io.github.mightycreak.Diffuse.appdata.xml.in:21
@@ -41,6 +41,67 @@ msgstr ""
 #: src/diffuse/constants.py.in:23
 msgid "Copyright"
 msgstr ""
+
+#: src/diffuse/dialogs.py:38
+msgid "Diffuse is a graphical tool for merging and comparing text files."
+msgstr "Diffuse는 텍스트 파일을 병합하고 비교하기 위한 그래픽 도구입니다."
+
+#: src/diffuse/dialogs.py:43
+msgid "translator-credits"
+msgstr "강분도 <bundo@bundo.biz>"
+
+#: src/diffuse/dialogs.py:47
+#, fuzzy
+msgid ""
+"This program is free software; you can redistribute it and/or modify\n"
+"it under the terms of the GNU General Public License as published by\n"
+"the Free Software Foundation; either version 2 of the License, or\n"
+"(at your option) any later version.\n"
+"\n"
+"This program is distributed in the hope that it will be useful,\n"
+"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+"GNU General Public License for more details.\n"
+"\n"
+"You should have received a copy of the GNU General Public License along\n"
+"with this program; if not, write to the Free Software Foundation, Inc.,\n"
+"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA."
+msgstr ""
+"이 프로그램은 자유 소프트웨어입니다. 당신은 이것을 자유 소프트웨어 재단에 의해 발"
+"행된 GNU 일반 공중 사용 허가서 (버전 2, 희망은 이후 버전 중 하나)을 결정하는 조건 "
+"하에서 재배포 또는 수정 할 수 있습니다.\n"
+"\n"
+"본 프로그램은 도움이 될 것이라는 희망 배포되지만, * 완전한 무보증 *입니다. 상업적"
+"인 가능성의 보증이나 특정 목적에의 적합성은 안다 보이는 것도 포함 전혀 존재하지 않"
+"습니다. 자세한 사항은 GNU 일반 공중 사용 허가서를 참조하십시오.\n"
+"\n"
+"당신은이 프로그램과 함께 GNU 일반 공중 사용 허가서의 복제물을 일부받은 것입니다. "
+"만약받지면 자유 소프트웨어 재단으로 문의하시기 바랍니다 (주소는 the Free Software "
+"Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA).\n"
+
+#: src/diffuse/dialogs.py:81
+msgid "Encoding: "
+msgstr "인코딩: "
+
+#: src/diffuse/dialogs.py:93
+msgid "Revision: "
+msgstr "수정: "
+
+#: src/diffuse/dialogs.py:149
+msgid "Find..."
+msgstr "찾기..."
+
+#: src/diffuse/dialogs.py:157
+msgid "Search For: "
+msgstr "검색 문자열:"
+
+#: src/diffuse/dialogs.py:182
+msgid "Match Case"
+msgstr "대소문자 구분"
+
+#: src/diffuse/dialogs.py:187
+msgid "Search Backwards"
+msgstr "위 방향으로 검색"
 
 #: src/diffuse/main.py:77
 msgid "Close Tab"
@@ -98,18 +159,18 @@ msgstr "%s라는 파일이 이미 있습니다. 그것을 덮어 쓰시겠습니
 #: src/diffuse/main.py:501
 #, python-format
 msgid ""
-"The file %s has been modified by another process since reading it.  If you "
-"save, all the external changes could be lost.  Save anyways?"
+"The file %s has been modified by another process since reading it.  If you save, "
+"all the external changes could be lost.  Save anyways?"
 msgstr ""
-"%s 파일은 수정되었습니다. 저장하게되면 이러한 변경 내용이 손실될 수 있습니"
-"다. 저장하시겠습니까?"
+"%s 파일은 수정되었습니다. 저장하게되면 이러한 변경 내용이 손실될 수 있습니다. 저장"
+"하시겠습니까?"
 
 #: src/diffuse/main.py:540
 #, python-format
 msgid "Error encoding to %s."
 msgstr "%s 바꾸는 데 오류가 발생했습니다."
 
-#: src/diffuse/main.py:542
+#: src/diffuse/main.py:542 src/diffuse/preferences.py:296
 #, python-format
 msgid "Error writing %s."
 msgstr "%s에 쓸 때 오류가 발생했습니다."
@@ -124,11 +185,11 @@ msgstr "줄번호: "
 
 #: src/diffuse/main.py:596
 msgid ""
-"Press the enter key or double click to edit.  Press the space bar or use the "
-"RMB menu to manually align."
+"Press the enter key or double click to edit.  Press the space bar or use the RMB "
+"menu to manually align."
 msgstr ""
-"편집하려면 엔터키를 누르거나 두 번 클릭합니다. 수동으로 정렬하기 위해 스페이"
-"스 바를 누르거나, RMB를 사용합니다."
+"편집하려면 엔터키를 누르거나 두 번 클릭합니다. 수동으로 정렬하기 위해 스페이스 바"
+"를 누르거나, RMB를 사용합니다."
 
 #: src/diffuse/main.py:598
 msgid "Press the escape key to finish editing."
@@ -136,11 +197,11 @@ msgstr "ESC 키를 눌러 편집을 끝냅니다."
 
 #: src/diffuse/main.py:600
 msgid ""
-"Select target line and press the space bar to align.  Press the escape key "
-"to cancel."
+"Select target line and press the space bar to align.  Press the escape key to "
+"cancel."
 msgstr ""
-"목표 행을 선택하고 스페이스 바를 누르면 정렬합니다. 취소하려면 ESC 키를 누르"
-"십시오."
+"목표 행을 선택하고 스페이스 바를 누르면 정렬합니다. 취소하려면 ESC 키를 누르십시"
+"오."
 
 #: src/diffuse/main.py:711
 msgid "_File"
@@ -471,28 +532,26 @@ msgstr "실행 취소"
 msgid "Redo"
 msgstr "작업 재 실행"
 
-#: src/diffuse/main.py:838
+#: src/diffuse/main.py:838 src/diffuse/widgets.py:1846
 msgid "Cut"
 msgstr "잘라내기"
 
-#: src/diffuse/main.py:839
+#: src/diffuse/main.py:839 src/diffuse/widgets.py:1847
 msgid "Copy"
 msgstr "복사"
 
-#: src/diffuse/main.py:840
+#: src/diffuse/main.py:840 src/diffuse/widgets.py:1848
 msgid "Paste"
 msgstr "붙여넣기"
 
-#: src/diffuse/main.py:841
+#: src/diffuse/main.py:841 src/diffuse/widgets.py:1851
 msgid "Clear Edits"
 msgstr "편집 삭제"
 
 #: src/diffuse/main.py:961
-msgid ""
-"Some files have unsaved changes.  Select the files to save before closing."
+msgid "Some files have unsaved changes.  Select the files to save before closing."
 msgstr ""
-"변경 내용이 저장되지 않은 파일이 있습니다. 종료하기 전에 저장할 파일을 선택합"
-"니다."
+"변경 내용이 저장되지 않은 파일이 있습니다. 종료하기 전에 저장할 파일을 선택합니다."
 
 #: src/diffuse/main.py:974
 msgid "Tab"
@@ -568,19 +627,15 @@ msgid ""
 "    diffuse [ [OPTION...] [FILE...] ]...\n"
 "    diffuse ( -h | -? | --help | -v | --version )\n"
 "\n"
-"Diffuse is a graphical tool for merging and comparing text files.  Diffuse "
-"is\n"
-"able to compare an arbitrary number of files side-by-side and gives users "
-"the\n"
-"ability to manually adjust line matching and directly edit files.  Diffuse "
-"can\n"
+"Diffuse is a graphical tool for merging and comparing text files.  Diffuse is\n"
+"able to compare an arbitrary number of files side-by-side and gives users the\n"
+"ability to manually adjust line matching and directly edit files.  Diffuse can\n"
 "also retrieve revisions of files from Bazaar, CVS, Darcs, Git, Mercurial,\n"
 "Monotone, RCS, Subversion, and SVK repositories for comparison and merging.\n"
 "\n"
 "Help Options:\n"
 "  ( -h | -? | --help )             Display this usage information\n"
-"  ( -v | --version )               Display version and copyright "
-"information\n"
+"  ( -v | --version )               Display version and copyright information\n"
 "\n"
 "Configuration Options:\n"
 "  --no-rcfile                      Do not read any resource files\n"
@@ -611,10 +666,8 @@ msgstr ""
 "    diffuse ( -h | -? | --help | -v | --version )\n"
 "\n"
 "Diffuse은 텍스트 파일을 병합하며 비교를 위한 그래픽 도구입니다.  사용자가\n"
-"수동으로 행을 다시 정렬하고, 임의의 숫자를 병행하여 파일을 비교할 수 있습니"
-"다.\n"
-"파일을 직접 편집할 수 있습니다. 또한 Diffuse 비교 및 병합하기 위해 Bazaar, "
-"CVS,\n"
+"수동으로 행을 다시 정렬하고, 임의의 숫자를 병행하여 파일을 비교할 수 있습니다.\n"
+"파일을 직접 편집할 수 있습니다. 또한 Diffuse 비교 및 병합하기 위해 Bazaar, CVS,\n"
 "Darcs, Git, Mercurial, Monotone, RCS, Subversion 및 SVK 저장소에서 파일\n"
 "수정된것을 얻을 수 있습니다.\n"
 "\n"
@@ -658,11 +711,175 @@ msgstr "알수 없는 인수「%s」 유지 합니다."
 #: src/diffuse/main.py:1819
 #, python-format
 msgid "Error processing argument \"%s\".  Directory not expected."
-msgstr ""
-"%s 인수를 처리하는 동안 오류가 발생했습니다. 디렉토리를 예측할 수 없습니다."
+msgstr "%s 인수를 처리하는 동안 오류가 발생했습니다. 디렉토리를 예측할 수 없습니다."
 
-#: src/diffuse/vcs/cvs.py:51 src/diffuse/vcs/rcs.py:60
-#: src/diffuse/vcs/svn.py:93
+#: src/diffuse/preferences.py:77
+msgid "Display"
+msgstr "표시"
+
+#: src/diffuse/preferences.py:80
+msgid "Font"
+msgstr "글꼴"
+
+#: src/diffuse/preferences.py:81
+msgid "Tab width"
+msgstr "탭 너비"
+
+#: src/diffuse/preferences.py:82
+msgid "Show right margin"
+msgstr "오른쪽 여백 표시"
+
+#: src/diffuse/preferences.py:83
+msgid "Right margin"
+msgstr "오른쪽 여백"
+
+#: src/diffuse/preferences.py:84
+msgid "Show line numbers"
+msgstr "줄번호 표시"
+
+#: src/diffuse/preferences.py:85
+msgid "Show white space characters"
+msgstr "여백 표시"
+
+#: src/diffuse/preferences.py:86
+msgid "Ignore case differences"
+msgstr "대소문자 차이를 무시"
+
+#: src/diffuse/preferences.py:87
+msgid "Ignore white space differences"
+msgstr "공백을 차이를 무시"
+
+#: src/diffuse/preferences.py:88 src/diffuse/preferences.py:97
+msgid "Ignore changes to white space"
+msgstr "빈 변화를 무시"
+
+#: src/diffuse/preferences.py:89
+msgid "Ignore blank line differences"
+msgstr "공백 행은 무시"
+
+#: src/diffuse/preferences.py:90
+msgid "Ignore end of line differences"
+msgstr "행의 마지막 차이를 무시"
+
+#: src/diffuse/preferences.py:92
+msgid "Alignment"
+msgstr "정렬"
+
+#: src/diffuse/preferences.py:95
+msgid "Ignore case"
+msgstr "대소문자 무시"
+
+#: src/diffuse/preferences.py:96
+msgid "Ignore white space"
+msgstr "공백을 무시"
+
+#: src/diffuse/preferences.py:98
+msgid "Ignore blank lines"
+msgstr "빈 줄을 무시"
+
+#: src/diffuse/preferences.py:99
+msgid "Ignore end of line characters"
+msgstr "행의 마지막 문자를 무시"
+
+#: src/diffuse/preferences.py:101
+msgid "Editor"
+msgstr "편집기"
+
+#: src/diffuse/preferences.py:104
+msgid "Auto indent"
+msgstr "자동 들여쓰기"
+
+#: src/diffuse/preferences.py:105
+msgid "Expand tabs to spaces"
+msgstr "탭 대신에 공백을 삽입"
+
+#: src/diffuse/preferences.py:106
+msgid "Soft tab width"
+msgstr "소프트 탭 너비"
+
+#: src/diffuse/preferences.py:108
+msgid "Tabs"
+msgstr "탭"
+
+#: src/diffuse/preferences.py:111
+msgid "Default panes"
+msgstr "프레임의 기본 수"
+
+#: src/diffuse/preferences.py:112
+msgid "Always show the tab bar"
+msgstr "항상 탭 모음 표시"
+
+#: src/diffuse/preferences.py:113
+#, python-format
+msgid "Warn me when closing a tab will quit %s"
+msgstr "탭을 닫을때 %s 종료 및 경고"
+
+#: src/diffuse/preferences.py:115
+msgid "Regional Settings"
+msgstr "국가별 설정"
+
+#: src/diffuse/preferences.py:118
+msgid "Default codec"
+msgstr "기본 코덱"
+
+#: src/diffuse/preferences.py:119
+msgid "Order of codecs used to identify encoding"
+msgstr "인코딩을 확인하기 위한 코덱을 주문"
+
+#: src/diffuse/preferences.py:140
+msgid "Cygwin"
+msgstr "Cygwin"
+
+#: src/diffuse/preferences.py:142
+msgid "Root directory"
+msgstr "루트 디렉터리"
+
+#: src/diffuse/preferences.py:143
+msgid "Cygdrive prefix"
+msgstr "Cygdrive 접두어"
+
+#: src/diffuse/preferences.py:162
+msgid "Version control system search order"
+msgstr ""
+
+#: src/diffuse/preferences.py:170
+msgid "\"co\" command"
+msgstr "co 명령어"
+
+#: src/diffuse/preferences.py:171
+msgid "\"rlog\" command"
+msgstr "rlog 명령어"
+
+#: src/diffuse/preferences.py:173
+msgid "Command"
+msgstr "명령어"
+
+#: src/diffuse/preferences.py:179
+msgid "Launch from a Bash login shell"
+msgstr "Bash 로그인 쉘에서 시작"
+
+#: src/diffuse/preferences.py:186
+msgid "Update paths for Cygwin"
+msgstr "Cygwin을 위해 경로를 업데이트"
+
+#: src/diffuse/preferences.py:191
+msgid "Version Control"
+msgstr "버전 컨트롤"
+
+#: src/diffuse/preferences.py:256
+msgid "Preferences"
+msgstr "기본 설정"
+
+#: src/diffuse/resources.py:465
+#, fuzzy
+msgid "Error processing line {i + 1} of {file_name}."
+msgstr "%(file)s %(line)d 행을 처리하는 도중 오류가 발생했습니다."
+
+#: src/diffuse/utils.py:60
+msgid "Auto Detect"
+msgstr "자동추출"
+
+#: src/diffuse/vcs/cvs.py:51 src/diffuse/vcs/rcs.py:60 src/diffuse/vcs/svn.py:93
 #, python-format
 msgid "Error parsing revision %s."
 msgstr "%s 버전을 구문 분석하는 동안 오류가 발생했습니다."
@@ -671,3 +888,27 @@ msgstr "%s 버전을 구문 분석하는 동안 오류가 발생했습니다."
 #, python-format
 msgid "Error parsing %s."
 msgstr "%s를 구문 분석하는 동안 오류가 발생했습니다."
+
+#: src/diffuse/widgets.py:1842
+msgid "Align with Selection"
+msgstr "선택 정렬"
+
+#: src/diffuse/widgets.py:1843
+msgid "Isolate"
+msgstr "분리"
+
+#: src/diffuse/widgets.py:1844
+msgid "Merge Selection"
+msgstr "선택 병합"
+
+#: src/diffuse/widgets.py:1850
+msgid "Select All"
+msgstr "모두 선택"
+
+#: src/diffuse/widgets.py:1853
+msgid "Swap with Selected Pane"
+msgstr "선택된 프레임 대신"
+
+#, python-format
+#~ msgid "Column %d"
+#~ msgstr "%d열"
