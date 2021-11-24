@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Added
+- Added a `--remove-obsolete` option for the update-translation.py script
+
 ### Changed
 - Updated the translation files
 - Renamed POTFILES.in to POTFILES

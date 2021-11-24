@@ -22,12 +22,17 @@
 import argparse
 import os
 import subprocess
-import shutil
 import tempfile
 
 
 def check_translation(filename):
+    print(f'Validate file "{filename}":')
     subprocess.run(['msgfmt', '-c', '-v', filename])
+
+
+def remove_obsolete_messages(filename):
+    print(f'Removing obsolete messages in file "{filename}"...')
+    subprocess.run(['msgattrib', '--no-obsolete', '-o', filename, filename])
 
 
 def update_translation(filename):
@@ -36,66 +41,56 @@ def update_translation(filename):
     # Get language
     lang = os.path.splitext(filename)[0]
 
-    # Move existing .po file to working directory
-    tmpfile = os.path.join(tmpdir, filename)
-    shutil.move(filename, tmpfile)
+    with tempfile.NamedTemporaryFile() as ftmp:
+        # Create temporary .po file for this language
+        subprocess.run([
+            'msginit',
+            '--no-translator',
+            '-l',
+            lang,
+            '-o',
+            ftmp.name,
+            '-i',
+            'diffuse.pot'])
 
-    # Create a new .po file for this language
-    emptypofile = os.path.join(tmpdir, f'{lang}.empty.po')
-    subprocess.run([
-        'msginit',
-        '--no-wrap',
-        '--no-translator',
-        '-l',
-        lang,
-        '-o',
-        emptypofile,
-        '-i',
-        'diffuse.pot'])
-
-    # Merge with the old translation
-    subprocess.run([
-        'msgmerge',
-        '-q',
-        '--no-wrap',
-        tmpfile,
-        emptypofile,
-        '-o',
-        filename])
+        # Merge with the previous translation
+        subprocess.run(['msgmerge', '-q', '--no-wrap', '-o', filename, filename, ftmp.name])
 
     # Validate translation
-    print(f'Validate "{filename}":')
     check_translation(filename)
 
     print('Update done.')
 
 
-# Setup argument parser
-parser = argparse.ArgumentParser(description='Update translation files (.po).')
-parser.add_argument('po_files', metavar='filename.po', nargs='+',
-                    help='the translation file')
-parser.add_argument('-c', '--check-only', action='store_true',
-                    help='check the PO files')
+if __name__ == '__main__':
+    # Setup argument parser
+    parser = argparse.ArgumentParser(description='Update translation files (.po).')
+    parser.add_argument('po_files', metavar='filename.po', nargs='+',
+                        help='the translation file')
+    parser.add_argument('--remove-obsolete', action='store_true',
+                        help='remove obsolete (#~) messages')
+    parser.add_argument('--check-only', action='store_true',
+                        help='check the PO files')
 
-# Parse command-line arguments
-args = parser.parse_args()
+    # Parse command-line arguments
+    args = parser.parse_args()
 
-# Get PO files from command-line
-po_files = args.po_files
-po_files.sort()
+    # Get PO files from command-line
+    po_files = args.po_files
+    po_files.sort()
 
-if args.check_only:
-    for file in po_files:
-        print(f'Validate "{file}":')
-        check_translation(file)
-    exit(0)
+    if args.check_only:
+        # Validate PO files
+        for file in po_files:
+            check_translation(file)
+        exit(0)
 
-# Create temporary working directory
-tmpdir = tempfile.mkdtemp()
-try:
+    if args.remove_obsolete:
+        # Remove obsolete messages
+        for file in po_files:
+            remove_obsolete_messages(file)
+        exit(0)
+
     # Update PO files
     for file in po_files:
         update_translation(file)
-finally:
-    # Remove working directory
-    shutil.rmtree(tmpdir)
