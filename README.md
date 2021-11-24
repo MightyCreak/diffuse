@@ -1,4 +1,22 @@
-# Diffuse
+<h1 align="center">
+  <img src="data/icons/hicolor/scalable/apps/io.github.mightycreak.Diffuse.svg" alt="Diffuse" width="192" height="192"/><br/>
+  Diffuse
+</h1>
+
+<p align="center" style="margin-top: 2em">
+  <a href="https://flathub.org/apps/details/io.github.mightycreak.Diffuse">
+    <img width="200" alt="Download on Flathub" src="https://flathub.org/assets/badges/flathub-badge-en.png"/>
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/MightyCreak/diffuse/actions/workflows/main.yml">
+    <img src="https://github.com/MightyCreak/diffuse/actions/workflows/main.yml/badge.svg" alt="CI status"/>
+  </a>
+  <a href="https://repology.org/project/diffuse/versions">
+    <img src="https://repology.org/badge/tiny-repos/diffuse.svg" alt="Packaging status">
+  </a>
+</p>
 
 Diffuse is a graphical tool for merging and comparing text files.  Diffuse is
 able to compare an arbitrary number of files side-by-side and gives users the
@@ -17,14 +35,6 @@ Some key features of Diffuse:
 * Unicode support
 * Unlimited undo
 * Easy keyboard navigation
-
-## Installation
-
-This is the easiest way to install Diffuse:
-
-```sh
-flatpak install io.github.mightycreak.Diffuse
-```
 
 ## Documentation
 
