@@ -20,17 +20,18 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 import argparse
-import glob
 import os
 import subprocess
 import shutil
 import tempfile
 
+
 def check_translation(filename):
-    subprocess.run(["msgfmt", "-c", "-v", filename])
+    subprocess.run(['msgfmt', '-c', '-v', filename])
+
 
 def update_translation(filename):
-    print(f"Updating translation file '{filename}'...")
+    print(f'Updating translation file "{filename}"...')
 
     # Get language
     lang = os.path.splitext(filename)[0]
@@ -40,17 +41,34 @@ def update_translation(filename):
     shutil.move(filename, tmpfile)
 
     # Create a new .po file for this language
-    emptypofile = os.path.join(tmpdir, f"{lang}.empty.po")
-    subprocess.run(["msginit", "--no-wrap", "--no-translator", "-l", lang, "-o", emptypofile, "-i", "diffuse.pot"])
+    emptypofile = os.path.join(tmpdir, f'{lang}.empty.po')
+    subprocess.run([
+        'msginit',
+        '--no-wrap',
+        '--no-translator',
+        '-l',
+        lang,
+        '-o',
+        emptypofile,
+        '-i',
+        'diffuse.pot'])
 
     # Merge with the old translation
-    subprocess.run(["msgmerge", "-q", "--no-wrap", tmpfile, emptypofile, "-o", filename])
+    subprocess.run([
+        'msgmerge',
+        '-q',
+        '--no-wrap',
+        tmpfile,
+        emptypofile,
+        '-o',
+        filename])
 
     # Validate translation
-    print(f"Validate {filename}:")
+    print(f'Validate "{filename}":')
     check_translation(filename)
 
-    print(f"Update done.")
+    print('Update done.')
+
 
 # Setup argument parser
 parser = argparse.ArgumentParser(description='Update translation files (.po).')
@@ -68,7 +86,7 @@ po_files.sort()
 
 if args.check_only:
     for file in po_files:
-        print(f"Validate {file}:")
+        print(f'Validate "{file}":')
         check_translation(file)
     exit(0)
 
