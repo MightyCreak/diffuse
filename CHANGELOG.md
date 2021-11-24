@@ -25,6 +25,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - main.py slimmed down by about 5000 lines
 - The new widgets.py is a bit fat though (~4000 lines)
+- Cleaned the README.md and moved the documentation to docs/
 
 ### Fixed
 - The intense code cleaning seems to have fixed a bug with the `-c` argument
