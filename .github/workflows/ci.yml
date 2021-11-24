@@ -18,33 +18,37 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-python@v2
-    - run: sudo apt install libgirepository1.0-dev
-    - run: pip install -r requirements.txt
-
-    - name: Flake8
-      run: flake8 src/ po/
-
-    - name: MyPy
-      run: mypy src/ po/
-
-  meson-build-test:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-python@v2
 
     - name: Install dependencies
-      run: sudo apt-get -y install appstream appstream-util desktop-file-utils gettext
+      run: |
+        sudo apt-get -y install libgirepository1.0-dev appstream appstream-util desktop-file-utils gettext
+        pip install -r requirements.txt
 
     - name: Meson build
       uses: BSFishy/meson-build@v1.0.3
       with:
         action: build
+        setup-options: --prefix=/tmp/diffuse
 
     - name: Meson test
       uses: BSFishy/meson-build@v1.0.3
       with:
         action: test
+
+    - name: Meson install
+      uses: BSFishy/meson-build@v1.0.3
+      with:
+        action: install
+
+    - name: Flake8
+      run: |
+        flake8 /tmp/diffuse/
+        flake8 po/
+
+    - name: MyPy
+      run: |
+        mypy /tmp/diffuse/
+        mypy po/
 
   flatpak-build-test:
     runs-on: ubuntu-latest

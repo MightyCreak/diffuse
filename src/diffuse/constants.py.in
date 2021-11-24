@@ -23,9 +23,8 @@ COPYRIGHT = '''{copyright} © 2006-2019 Derrick Moser
 {copyright} © 2015-2021 Romain Failliot'''.format(copyright=_("Copyright"))  # type: ignore
 WEBSITE = 'https://mightycreak.github.io/diffuse/'
 
-LOCALEDIR = '@LOCALEDIR@'
 SYSCONFIGDIR = '@SYSCONFIGDIR@'
 
-USE_FLATPAK = @USE_FLATPAK@
 LOG_PRINT_OUTPUT = @LOG_PRINT_OUTPUT@
 LOG_PRINT_STACK = @LOG_PRINT_STACK@
+USE_FLATPAK = @USE_FLATPAK@

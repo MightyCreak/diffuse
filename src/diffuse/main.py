@@ -21,7 +21,6 @@ import os
 import sys
 import codecs
 import encodings
-import gettext
 import shlex
 import stat
 import webbrowser
@@ -1754,8 +1753,6 @@ GObject.signal_new('save-as', Diffuse.FileDiffViewer.PaneHeader, GObject.SignalF
 
 
 def main():
-    gettext.install('diffuse', LOCALEDIR)
-
     # app = Application()
     # return app.run(sys.argv)
 

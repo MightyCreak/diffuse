@@ -5,7 +5,8 @@ python = import('python')
 
 conf = configuration_data()
 conf.set('PYTHON', python.find_installation('python3').path())
-conf.set('pkgdatadir', pkgdatadir)
+conf.set('PKGDATADIR', pkgdatadir)
+conf.set('LOCALEDIR', join_paths(get_option('prefix'), get_option('localedir')))
 
 configure_file(
   input: 'diffuse.in',
@@ -17,7 +18,6 @@ configure_file(
 
 conf = configuration_data()
 conf.set('VERSION', meson.project_version())
-conf.set('LOCALEDIR', join_paths(get_option('prefix'), get_option('localedir')))
 conf.set('SYSCONFIGDIR', join_paths(get_option('prefix'), get_option('sysconfdir')))
 conf.set('LOG_PRINT_OUTPUT', get_option('log_print_output'))
 conf.set('LOG_PRINT_STACK', get_option('log_print_stack'))

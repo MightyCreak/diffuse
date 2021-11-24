@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   io.github.mightycreak.Diffuse.appdata.xml.in
 - Leaner README.md
 - Moved the documentation to docs/
+- In the CI, call the linters on the installed directory
 
 ### Fixed
 - Removed the lasting lint errors (i.e. in main.py)

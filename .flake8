@@ -2,6 +2,3 @@
 builtins = _
 max-line-length = 100
 show-source = true
-
-# Temporary
-exclude = src/diffuse/main.py
