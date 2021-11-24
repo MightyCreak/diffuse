@@ -29,7 +29,7 @@ created, refer to previous section "Create PO template".
 1. Create a .po file for the translation (replace `<lang>` with your language):
 
    ```sh
-   msginit -l <lang> -o <lang>.po -i diffuse.pot
+   msginit -w 84 -l <lang> -o <lang>.po -i diffuse.pot
    ```
 
 2. Manually complete in the translations in the .po file using either an
