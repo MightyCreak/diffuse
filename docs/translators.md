@@ -14,8 +14,12 @@ To create or update the PO template (`po/diffuse.pot`), use this command at the
 repo root:
 
 ```sh
-xgettext -o po/diffuse.pot -f po/POTFILES.in
+xgettext -w 84 -o po/diffuse.pot -f po/POTFILES.in
 ```
+
+_Note:_ why 84 characters, you ask? because the usage text has to be 80-char
+wide, plus the beginning and ending `"` and the final `\n` (literally two
+characters).
 
 ## Create a new translation
 

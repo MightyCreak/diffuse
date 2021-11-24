@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2020 Romain Failliot <romain.failliot@foolstep.com>
+# Copyright (C) 2021 Romain Failliot <romain.failliot@foolstep.com>
 #
 # This program is free software; you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free Software
@@ -46,15 +46,19 @@ def update_translation(filename):
         subprocess.run([
             'msginit',
             '--no-translator',
-            '-l',
-            lang,
-            '-o',
-            ftmp.name,
-            '-i',
-            'diffuse.pot'])
+            '--width=84',
+            f'--locale={lang}',
+            f'--output-file={ftmp.name}',
+            '--input=diffuse.pot'])
 
         # Merge with the previous translation
-        subprocess.run(['msgmerge', '-q', '--no-wrap', '-o', filename, filename, ftmp.name])
+        subprocess.run([
+            'msgmerge',
+            '--quiet',
+            '--width=84',
+            f'--output-file={filename}',
+            filename,
+            ftmp.name])
 
     # Validate translation
     check_translation(filename)

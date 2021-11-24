@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: diffuse 0.4.7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-24 10:26-0500\n"
+"POT-Creation-Date: 2021-11-24 13:44-0500\n"
 "PO-Revision-Date: 2020-06-29 14:49-0400\n"
 "Last-Translator: Akom Chotiphantawanon <knight2000@gmail.com>\n"
 "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
@@ -30,9 +30,9 @@ msgstr "เครื่องมือแบบกราฟิกสำหรั
 
 #: data/io.github.mightycreak.Diffuse.appdata.xml.in:7
 msgid ""
-"Diffuse is a graphical tool for comparing and merging text files. It can "
-"retrieve files for comparison from Bazaar, CVS, Darcs, Git, Mercurial, "
-"Monotone, RCS, Subversion, and SVK repositories."
+"Diffuse is a graphical tool for comparing and merging text files. It can retrieve "
+"files for comparison from Bazaar, CVS, Darcs, Git, Mercurial, Monotone, RCS, "
+"Subversion, and SVK repositories."
 msgstr ""
 
 #: data/io.github.mightycreak.Diffuse.appdata.xml.in:21
@@ -42,6 +42,68 @@ msgstr ""
 #: src/diffuse/constants.py.in:23
 msgid "Copyright"
 msgstr ""
+
+#: src/diffuse/dialogs.py:38
+msgid "Diffuse is a graphical tool for merging and comparing text files."
+msgstr "Diffuse เป็นเครื่องมือแบบกราฟิกสำหรับผสานและเปรียบเทียบแฟ้มข้อความ"
+
+#: src/diffuse/dialogs.py:43
+msgid "translator-credits"
+msgstr "Akom Chotiphantawanon <knight2000@gmail.com> "
+
+#: src/diffuse/dialogs.py:47
+#, fuzzy
+msgid ""
+"This program is free software; you can redistribute it and/or modify\n"
+"it under the terms of the GNU General Public License as published by\n"
+"the Free Software Foundation; either version 2 of the License, or\n"
+"(at your option) any later version.\n"
+"\n"
+"This program is distributed in the hope that it will be useful,\n"
+"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+"GNU General Public License for more details.\n"
+"\n"
+"You should have received a copy of the GNU General Public License along\n"
+"with this program; if not, write to the Free Software Foundation, Inc.,\n"
+"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA."
+msgstr ""
+"โปรแกรมนี้เป็นซอฟต์แวร์เสรี คุณสามารถแจกจ่ายต่อ และ/หรือ แก้ไขโปรแกรมได้ ภายใต้เงื่อนไขของ GNU "
+"General Public License ที่เผยแพร่โดยมูลนิธิซอฟต์แวร์เสรี ไม่ว่าจะเป็นสัญญาอนุญาตรุ่นที่ 2 หรือรุ่นถัดมา "
+"(ตามแต่คุณจะเลือก)\n"
+"\n"
+"โปรแกรมนี้ เผยแพร่ด้วยความหวังว่าโปรแกรมจะมีประโยชน์ แต่ *ไม่มีการรับประกันใดๆ* "
+"ไม่มีแม้การรับประกัน *อรรถประโยชน์เชิงพาณิชย์* หรือ *ความเหมาะสมสำหรับวัตถุประสงค์เฉพาะกิจใดๆ* "
+"กรุณาอ่าน GNU General Public License เพื่อดูรายละเอียดเพิ่มเติม\n"
+"\n"
+"คุณควรจะได้รับสำเนาของ GNU General Public License มาพร้อมกับโปรแกรมนี้  "
+"และคุณยังอาจรับสำเนาของ GNU General Public License จาก Free Software Foundation "
+"โดยเข้าเยี่ยมชมเว็บไซต์ของมูลนิธิ (http://www.fsf.org/) หรือโดยการเขียนไปที่ Free Software "
+"Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA\n"
+
+#: src/diffuse/dialogs.py:81
+msgid "Encoding: "
+msgstr "รหัสอักขระ: "
+
+#: src/diffuse/dialogs.py:93
+msgid "Revision: "
+msgstr "ฉบับแก้ไข: "
+
+#: src/diffuse/dialogs.py:149
+msgid "Find..."
+msgstr "หา..."
+
+#: src/diffuse/dialogs.py:157
+msgid "Search For: "
+msgstr "ค้นหา: "
+
+#: src/diffuse/dialogs.py:182
+msgid "Match Case"
+msgstr "ตัวพิมพ์ใหญ่-เล็กตรงกัน"
+
+#: src/diffuse/dialogs.py:187
+msgid "Search Backwards"
+msgstr "ค้นถอยหลัง"
 
 #: src/diffuse/main.py:77
 msgid "Close Tab"
@@ -99,8 +161,8 @@ msgstr "แฟ้มชื่อ \"%s\" มีอยู่ก่อนแล้�
 #: src/diffuse/main.py:501
 #, python-format
 msgid ""
-"The file %s has been modified by another process since reading it.  If you "
-"save, all the external changes could be lost.  Save anyways?"
+"The file %s has been modified by another process since reading it.  If you save, "
+"all the external changes could be lost.  Save anyways?"
 msgstr ""
 "แฟ้ม \"%s\" ถูกเปลี่ยนแปลงโดยโพรเซสอื่นนับตั้งแต่ที่อ่านไว้  ถ้าคุณบันทึก "
 "การเปลี่ยนแปลงภายนอกทั้งหมดอาจสูญหายได้  ยังคงบันทึกหรือไม่?"
@@ -110,7 +172,7 @@ msgstr ""
 msgid "Error encoding to %s."
 msgstr "เกิดข้อผิดพลาดขณะลงรหัส %s"
 
-#: src/diffuse/main.py:542
+#: src/diffuse/main.py:542 src/diffuse/preferences.py:296
 #, python-format
 msgid "Error writing %s."
 msgstr "เกิดข้อผิดพลาดขณะเขียน %s"
@@ -125,10 +187,9 @@ msgstr "หมายเลขบรรทัด: "
 
 #: src/diffuse/main.py:596
 msgid ""
-"Press the enter key or double click to edit.  Press the space bar or use the "
-"RMB menu to manually align."
-msgstr ""
-"กดปุ่ม Enter หรือดับเบิลคลิกเพื่อแก้ไข  กดแคร่เว้นวรรคหรือใช้เมนูคลิกขวาเพื่อจัดเรียงด้วยมือ"
+"Press the enter key or double click to edit.  Press the space bar or use the RMB "
+"menu to manually align."
+msgstr "กดปุ่ม Enter หรือดับเบิลคลิกเพื่อแก้ไข  กดแคร่เว้นวรรคหรือใช้เมนูคลิกขวาเพื่อจัดเรียงด้วยมือ"
 
 #: src/diffuse/main.py:598
 msgid "Press the escape key to finish editing."
@@ -136,8 +197,8 @@ msgstr "กดปุ่ม Escape เพื่อจบการแก้ไข"
 
 #: src/diffuse/main.py:600
 msgid ""
-"Select target line and press the space bar to align.  Press the escape key "
-"to cancel."
+"Select target line and press the space bar to align.  Press the escape key to "
+"cancel."
 msgstr "เลือกบรรทัดเป้าหมายแล้วกดแคร่เว้นวรรคเพื่อจัดเรียง  กดปุ่ม Escape เพื่อยกเลิก"
 
 #: src/diffuse/main.py:711
@@ -469,25 +530,24 @@ msgstr "เรียกคืน"
 msgid "Redo"
 msgstr "ทำซ้ำ"
 
-#: src/diffuse/main.py:838
+#: src/diffuse/main.py:838 src/diffuse/widgets.py:1846
 msgid "Cut"
 msgstr "ตัด"
 
-#: src/diffuse/main.py:839
+#: src/diffuse/main.py:839 src/diffuse/widgets.py:1847
 msgid "Copy"
 msgstr "คัดลอก"
 
-#: src/diffuse/main.py:840
+#: src/diffuse/main.py:840 src/diffuse/widgets.py:1848
 msgid "Paste"
 msgstr "แปะ"
 
-#: src/diffuse/main.py:841
+#: src/diffuse/main.py:841 src/diffuse/widgets.py:1851
 msgid "Clear Edits"
 msgstr "ล้างการแก้ไข"
 
 #: src/diffuse/main.py:961
-msgid ""
-"Some files have unsaved changes.  Select the files to save before closing."
+msgid "Some files have unsaved changes.  Select the files to save before closing."
 msgstr "บางแฟ้มมีการเปลี่ยนแปลงที่ไม่ได้บันทึก เลือกแฟ้มเพื่อบันทึกก่อนปิด"
 
 #: src/diffuse/main.py:974
@@ -564,19 +624,15 @@ msgid ""
 "    diffuse [ [OPTION...] [FILE...] ]...\n"
 "    diffuse ( -h | -? | --help | -v | --version )\n"
 "\n"
-"Diffuse is a graphical tool for merging and comparing text files.  Diffuse "
-"is\n"
-"able to compare an arbitrary number of files side-by-side and gives users "
-"the\n"
-"ability to manually adjust line matching and directly edit files.  Diffuse "
-"can\n"
+"Diffuse is a graphical tool for merging and comparing text files.  Diffuse is\n"
+"able to compare an arbitrary number of files side-by-side and gives users the\n"
+"ability to manually adjust line matching and directly edit files.  Diffuse can\n"
 "also retrieve revisions of files from Bazaar, CVS, Darcs, Git, Mercurial,\n"
 "Monotone, RCS, Subversion, and SVK repositories for comparison and merging.\n"
 "\n"
 "Help Options:\n"
 "  ( -h | -? | --help )             Display this usage information\n"
-"  ( -v | --version )               Display version and copyright "
-"information\n"
+"  ( -v | --version )               Display version and copyright information\n"
 "\n"
 "Configuration Options:\n"
 "  --no-rcfile                      Do not read any resource files\n"
@@ -654,8 +710,173 @@ msgstr "ขอข้ามอาร์กิวเมนต์ \"%s\" ที่�
 msgid "Error processing argument \"%s\".  Directory not expected."
 msgstr "เกิดข้อผิดพลาดขณะประมวลผลอาร์กิวเมนต์ \"%s\"  ไม่คาดหมายว่าจะพบไดเรกทอรี"
 
-#: src/diffuse/vcs/cvs.py:51 src/diffuse/vcs/rcs.py:60
-#: src/diffuse/vcs/svn.py:93
+#: src/diffuse/preferences.py:77
+msgid "Display"
+msgstr "การแสดงผล"
+
+#: src/diffuse/preferences.py:80
+msgid "Font"
+msgstr "แบบอักษร"
+
+#: src/diffuse/preferences.py:81
+msgid "Tab width"
+msgstr "ความกว้างแท็บ"
+
+#: src/diffuse/preferences.py:82
+msgid "Show right margin"
+msgstr "แสดงขอบขวา"
+
+#: src/diffuse/preferences.py:83
+msgid "Right margin"
+msgstr "ขอบขวา"
+
+#: src/diffuse/preferences.py:84
+msgid "Show line numbers"
+msgstr "แสดงเลขบรรทัด"
+
+#: src/diffuse/preferences.py:85
+msgid "Show white space characters"
+msgstr "แสดงอักขระช่องว่าง"
+
+#: src/diffuse/preferences.py:86
+msgid "Ignore case differences"
+msgstr "ไม่สนใจความแตกต่างของตัวพิมพ์ใหญ่-เล็ก"
+
+#: src/diffuse/preferences.py:87
+msgid "Ignore white space differences"
+msgstr "ไม่สนใจความแตกต่างของช่องว่างทั้งหมด"
+
+#: src/diffuse/preferences.py:88 src/diffuse/preferences.py:97
+msgid "Ignore changes to white space"
+msgstr "ไม่สนใจการเปลี่ยนแปลงของช่องว่าง"
+
+#: src/diffuse/preferences.py:89
+msgid "Ignore blank line differences"
+msgstr "ไม่สนใจความแตกต่างของบรรทัดเปล่า"
+
+#: src/diffuse/preferences.py:90
+msgid "Ignore end of line differences"
+msgstr "ไม่สนใจความแตกต่างของอักขระจบบรรทัด"
+
+#: src/diffuse/preferences.py:92
+msgid "Alignment"
+msgstr "การจัดเรียง"
+
+#: src/diffuse/preferences.py:95
+msgid "Ignore case"
+msgstr "ไม่สนใจตัวพิมพ์ใหญ่-เล็ก"
+
+#: src/diffuse/preferences.py:96
+msgid "Ignore white space"
+msgstr "ไม่สนใจช่องว่าง"
+
+#: src/diffuse/preferences.py:98
+msgid "Ignore blank lines"
+msgstr "ไม่สนใจบรรทัดเปล่า"
+
+#: src/diffuse/preferences.py:99
+msgid "Ignore end of line characters"
+msgstr "ไม่สนใจอักขระจบบรรทัด"
+
+#: src/diffuse/preferences.py:101
+msgid "Editor"
+msgstr "เครื่องมือแก้ไข"
+
+#: src/diffuse/preferences.py:104
+msgid "Auto indent"
+msgstr "ร่นบรรทัดอัตโนมัติ"
+
+#: src/diffuse/preferences.py:105
+msgid "Expand tabs to spaces"
+msgstr "กระจายแท็บเป็นช่องว่าง"
+
+#: src/diffuse/preferences.py:106
+msgid "Soft tab width"
+msgstr "ความกว้างของแท็บแบบซอฟต์"
+
+#: src/diffuse/preferences.py:108
+msgid "Tabs"
+msgstr "แท็บ"
+
+#: src/diffuse/preferences.py:111
+msgid "Default panes"
+msgstr "ช่องปริยาย"
+
+#: src/diffuse/preferences.py:112
+msgid "Always show the tab bar"
+msgstr "แสดงแถบแท็บเสมอ"
+
+#: src/diffuse/preferences.py:113
+#, python-format
+msgid "Warn me when closing a tab will quit %s"
+msgstr "เตือนเมื่อการปิดแท็บจะออกจาก %s"
+
+#: src/diffuse/preferences.py:115
+msgid "Regional Settings"
+msgstr "ค่าตั้งภูมิภาค"
+
+#: src/diffuse/preferences.py:118
+msgid "Default codec"
+msgstr "ตัวอ่าน-ลงรหัสปริยาย"
+
+#: src/diffuse/preferences.py:119
+msgid "Order of codecs used to identify encoding"
+msgstr "ลำดับตัวอ่าน-ลงรหัสที่ใช้ในการตรวจสอบรหัสอักขระ"
+
+#: src/diffuse/preferences.py:140
+msgid "Cygwin"
+msgstr "Cygwin"
+
+#: src/diffuse/preferences.py:142
+msgid "Root directory"
+msgstr "ไดเรกทอรีราก"
+
+#: src/diffuse/preferences.py:143
+msgid "Cygdrive prefix"
+msgstr "พาธส่วนต้นของ Cygdrive"
+
+#: src/diffuse/preferences.py:162
+msgid "Version control system search order"
+msgstr ""
+
+#: src/diffuse/preferences.py:170
+msgid "\"co\" command"
+msgstr "คำสั่ง \"co\""
+
+#: src/diffuse/preferences.py:171
+msgid "\"rlog\" command"
+msgstr "คำสั่ง \"rlog\""
+
+#: src/diffuse/preferences.py:173
+msgid "Command"
+msgstr "คำสั่ง"
+
+#: src/diffuse/preferences.py:179
+msgid "Launch from a Bash login shell"
+msgstr "เรียกจากเชลล์ล็อกอินของ Bash"
+
+#: src/diffuse/preferences.py:186
+msgid "Update paths for Cygwin"
+msgstr "ปรับข้อมูลพาธสำหรับ Cygwin"
+
+#: src/diffuse/preferences.py:191
+msgid "Version Control"
+msgstr "การควบคุมรุ่น"
+
+#: src/diffuse/preferences.py:256
+msgid "Preferences"
+msgstr "ปรับแต่ง"
+
+#: src/diffuse/resources.py:465
+#, fuzzy
+msgid "Error processing line {i + 1} of {file_name}."
+msgstr "เกิดข้อผิดพลาดขณะประมวลผลบรรทัดที่ %(line)d ของ %(file)s"
+
+#: src/diffuse/utils.py:60
+msgid "Auto Detect"
+msgstr "ตรวจสอบอัตโนมัติ"
+
+#: src/diffuse/vcs/cvs.py:51 src/diffuse/vcs/rcs.py:60 src/diffuse/vcs/svn.py:93
 #, python-format
 msgid "Error parsing revision %s."
 msgstr "เกิดข้อผิดพลาดขณะแจงฉบับแก้ไข %s"
@@ -664,3 +885,27 @@ msgstr "เกิดข้อผิดพลาดขณะแจงฉบับ
 #, python-format
 msgid "Error parsing %s."
 msgstr "เกิดข้อผิดพลาดขณะแจง %s"
+
+#: src/diffuse/widgets.py:1842
+msgid "Align with Selection"
+msgstr "เรียงตรงกับบรรทัดที่เลือก"
+
+#: src/diffuse/widgets.py:1843
+msgid "Isolate"
+msgstr "แยก"
+
+#: src/diffuse/widgets.py:1844
+msgid "Merge Selection"
+msgstr "ผสานบรรทัดที่เลือก"
+
+#: src/diffuse/widgets.py:1850
+msgid "Select All"
+msgstr "เลือกทั้งหมด"
+
+#: src/diffuse/widgets.py:1853
+msgid "Swap with Selected Pane"
+msgstr "สลับกับช่องที่เลือก"
+
+#, python-format
+#~ msgid "Column %d"
+#~ msgstr "คอลัมน์ %d"
