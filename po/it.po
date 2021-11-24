@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Diffuse 0.4.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-18 15:21-0500\n"
+"POT-Creation-Date: 2021-11-24 10:26-0500\n"
 "PO-Revision-Date: 2020-06-29 14:49-0400\n"
 "Last-Translator: Cristian Marchi <cri.penta@gmail.com>\n"
 "Language-Team: Italian\n"
@@ -18,980 +18,533 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: data/io.github.mightycreak.Diffuse.desktop.in:3
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:4
+#: data/io.github.mightycreak.Diffuse.appdata.xml.in:4
 msgid "Diffuse Merge Tool"
 msgstr "Diffuse - strumento di unione"
 
 #: data/io.github.mightycreak.Diffuse.desktop.in:4
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:5
+#: data/io.github.mightycreak.Diffuse.appdata.xml.in:5
 msgid "Graphical tool for merging and comparing text files"
 msgstr "Strumento grafico per l'unione e il confronto di file"
 
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:7
+#: data/io.github.mightycreak.Diffuse.appdata.xml.in:7
 msgid "Diffuse is a graphical tool for comparing and merging text files. It can retrieve files for comparison from Bazaar, CVS, Darcs, Git, Mercurial, Monotone, RCS, Subversion, and SVK repositories."
 msgstr ""
 
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:19
+#: data/io.github.mightycreak.Diffuse.appdata.xml.in:21
 msgid "Main window: diff between two files"
 msgstr ""
 
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:26
-msgid "Patch release to fix a bug when using the Flatpak package."
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:29
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:71
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:146
-msgid "Fixed:"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:31
-msgid "Fixed a Flatpak bug where the app couldn't call binaries on the host, such as `git`, `svn`, etc."
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:40
-msgid "With this release, the main end-user change is the new icon. The rest is mainly maintenance improvements with a much more standard folder structure and starting to modularize the code. This is an ongoing effort as there is still a lot to do, but hopefully this would motivate some to contribute ;)"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:47
-msgid "An important note though: the application ID has changed and is now io.github.mightycreak.Diffuse."
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:51
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:89
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:123
-msgid "Added:"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:53
-msgid "New icon and in SVG now"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:54
-msgid "Started to modularize the code"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:56
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:93
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:136
-msgid "Changed:"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:58
-msgid "Changed AppID to io.github.mightycreak.Diffuse (as advised in the Flatpak documentation)"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:62
-msgid "Renamed directory `translations/` to `po/`"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:63
-msgid "Now uses POTFILES.in to list the files to translate"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:64
-msgid "Translation strings are no longer sorted alphabetically, this will help when there will be several files in POTFILES.in"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:68
-msgid "Updated the documentation and script in the `po/` directory"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:69
-msgid "Add .desktop translations in .po files"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:73
-msgid "Fixed some GTK deprecation warnings"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:79
-msgid "Mainly under the hood changes in this release, so nothing really visible to the users in this version. That said, I figured it was a long time since the last release (4 months ago) and, as promised, I want Diffuse development to be a bit more active and iterative."
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:85
-msgid "Apart from the maintenance changes 🧰, I think the main improvement is that Diffuse will soon be available through Flathub!"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:91
-msgid "New Flatpak package, published on Flathub: com.github.mightycreak.Diffuse"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:95
-msgid "Replace old install.py with the more standard Meson"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:96
-msgid "Remove u string prefixes since Python 3 is in UTF-8 by default"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:97
-msgid "Replaced some interpolation operators (%) for the f string prefix"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:98
-msgid "Use the window scale factor for the icons generation"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:104
-msgid "Here is the v0.5.0. Unintentionally, this release happens exactly 6 years after the previous v0.4.8 release!"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:108
-msgid "There is a lot to do on this application, and some features didn't make the release. The main one being the Windows installers. I think 6 years is too long to continue to wait until this bug is fixed. The Python scripts should work on Windows, but no executable is produced (yet) with the release."
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:115
-msgid "Other than that, Diffuse v0.5.0 is now officially compatible with Python 3 and GTK 3! And it is synced to the latest commits from upstream (which were never released)."
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:120
-msgid "The next version will not take 6 years, I promise you! 😄"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:125
-msgid "Added Pedro Albuquerque's Portuguese translation"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:126
-msgid "Added Åke Engelbrektson's Swedish translation"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:127
-msgid "Added Guillaume Hoffmann's Darcs support improvements"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:128
-msgid "Added Akom Chotiphantawanon's Thai translation"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:129
-msgid "Added support for Git submodules"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:130
-msgid "Added a preference and command line option to specify the version control system search order"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:131
-msgid "Added .editorconfig file"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:132
-msgid "Added .gitignore file"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:133
-msgid "Added message when removing files during uninstallation"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:134
-msgid "Added Python script to update all the translation files at once"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:138
-msgid "Convert to Python 3"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:139
-msgid "Convert to GTK 3"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:140
-msgid "Updated Python highlighting for Python 3 grammar"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:141
-msgid "Updated copyrights years and authors"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:142
-msgid "Improve Spanish translation"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:143
-msgid "Convert translation README to MarkDown"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:144
-msgid "Updated all the translation files"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:148
-msgid "Fixed wrong icons directory for gtk-update-icon-cache"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:149
-msgid "Fixed missing directories when uninstalling"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:150
-msgid "Fixed bug introduced by r420 with RCS VCS"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:151
-msgid "Fixed broken drag'n'drop since migration to Python3/GTK3"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:152
-msgid "Fixed error when using '-m' in an SVN repo"
-msgstr ""
-
-#: data/io.github.mightycreak.Diffuse.metainfo.xml.in:157
-msgid "Romain Failliot"
-msgstr ""
-
-#: src/constants.py.in:23
+#: src/diffuse/constants.py.in:23
 msgid "Copyright"
 msgstr ""
 
-#: src/main.py:591
-#, python-format
-msgid "Error processing line %(line)d of %(file)s."
-msgstr "Errore nell'elaborare la riga  %(line)d di «%(file)s»."
-
-#: src/main.py:610
-msgid "Auto Detect"
-msgstr "Automatico"
-
-#: src/main.py:706
-msgid "Display"
-msgstr "Visualizzazione"
-
-#: src/main.py:708
-msgid "Font"
-msgstr "Carattere"
-
-#: src/main.py:709
-msgid "Tab width"
-msgstr "Larghezza scheda"
-
-#: src/main.py:710
-msgid "Show right margin"
-msgstr "Mostra margine destro"
-
-#: src/main.py:711
-msgid "Right margin"
-msgstr "Margine destro"
-
-#: src/main.py:712
-msgid "Show line numbers"
-msgstr "Mostra i numeri di riga"
-
-#: src/main.py:713
-msgid "Show white space characters"
-msgstr "Mostra i caratteri di spaziatura"
-
-#: src/main.py:714
-msgid "Ignore case differences"
-msgstr "Ignora la differenza tra lettere maiuscole e minuscole"
-
-#: src/main.py:715
-msgid "Ignore white space differences"
-msgstr "Ignora le differenze tra spazi vuoti"
-
-#: src/main.py:716 src/main.py:724
-msgid "Ignore changes to white space"
-msgstr "Ignora le modifiche agli spazi vuoti"
-
-#: src/main.py:717
-msgid "Ignore blank line differences"
-msgstr "Ignora le differenze tra le righe vuote"
-
-#: src/main.py:718
-msgid "Ignore end of line differences"
-msgstr "Ignora le differenze alla fine della riga"
-
-#: src/main.py:720
-msgid "Alignment"
-msgstr "Allineamento"
-
-#: src/main.py:722
-msgid "Ignore case"
-msgstr "Ignora MAIUSCOLE/minuscole"
-
-#: src/main.py:723
-msgid "Ignore white space"
-msgstr "Ignora gli spazi vuoti"
-
-#: src/main.py:725
-msgid "Ignore blank lines"
-msgstr "Ignora le righe vuote"
-
-#: src/main.py:726
-msgid "Ignore end of line characters"
-msgstr "Ignora i caratteri di fine linea"
-
-#: src/main.py:728
-msgid "Editor"
-msgstr "Editor"
-
-#: src/main.py:730
-msgid "Auto indent"
-msgstr "Indentazione automatica"
-
-#: src/main.py:731
-msgid "Expand tabs to spaces"
-msgstr "Espandi le tabulazioni in spazi"
-
-#: src/main.py:732
-msgid "Soft tab width"
-msgstr "Larghezza scheda"
-
-#: src/main.py:734
-msgid "Tabs"
-msgstr "Schede"
-
-#: src/main.py:736
-msgid "Default panes"
-msgstr "Riquadri predefiniti"
-
-#: src/main.py:737
-msgid "Always show the tab bar"
-msgstr "Mostra sempre la barra delle schede"
-
-#: src/main.py:738
-#, python-format
-msgid "Warn me when closing a tab will quit %s"
-msgstr "Avvisami se chiudendo una scheda anche %s verrà chiuso"
-
-#: src/main.py:740
-msgid "Regional Settings"
-msgstr "Impostazioni regionali"
-
-#: src/main.py:742
-msgid "Default codec"
-msgstr "Codec predefinito"
-
-#: src/main.py:743
-msgid "Order of codecs used to identify encoding"
-msgstr "Ordine dei codici utilizzati per identificare la codifica"
-
-#: src/main.py:763
-msgid "Cygwin"
-msgstr "Cygwin"
-
-#: src/main.py:765
-msgid "Root directory"
-msgstr "Cartella radice"
-
-#: src/main.py:766
-msgid "Cygdrive prefix"
-msgstr "Prefisso Cygdrive"
-
-#: src/main.py:782
-msgid "Version control system search order"
-msgstr ""
-
-#: src/main.py:788
-msgid "\"co\" command"
-msgstr "Comando \"co\""
-
-#: src/main.py:789
-msgid "\"rlog\" command"
-msgstr "Comando \"rlog\""
-
-#: src/main.py:791
-msgid "Command"
-msgstr "Comando"
-
-#: src/main.py:793
-msgid "Launch from a Bash login shell"
-msgstr "Avvia dalla Bash di una shell di login"
-
-#: src/main.py:795
-msgid "Update paths for Cygwin"
-msgstr "Aggiorna i percorsi per Cygwin"
-
-#: src/main.py:799
-msgid "Version Control"
-msgstr "Controllo di versione"
-
-#: src/main.py:863
-msgid "Preferences"
-msgstr "Preferenze"
-
-#: src/main.py:904 src/main.py:5802
-#, python-format
-msgid "Error writing %s."
-msgstr "Errore scrivendo il %s."
-
-#: src/main.py:3282
-msgid "Align with Selection"
-msgstr "Allinea con la selezione"
-
-#: src/main.py:3283
-msgid "Isolate"
-msgstr "Isola"
-
-#: src/main.py:3284
-msgid "Merge Selection"
-msgstr "Unisci selezione"
-
-#: src/main.py:3286 src/main.py:6098
-msgid "Cut"
-msgstr "Taglia"
-
-#: src/main.py:3287 src/main.py:6099
-msgid "Copy"
-msgstr "Copia"
-
-#: src/main.py:3288 src/main.py:6100
-msgid "Paste"
-msgstr "Incolla"
-
-#: src/main.py:3290
-msgid "Select All"
-msgstr "Seleziona tutto"
-
-#: src/main.py:3291 src/main.py:6101
-msgid "Clear Edits"
-msgstr "Annulla le modifiche"
-
-#: src/main.py:3293
-msgid "Swap with Selected Pane"
-msgstr "Scambia con il riquadro selezionato"
-
-#: src/main.py:5124
-msgid "Find..."
-msgstr "Trova..."
-
-#: src/main.py:5132
-msgid "Search For: "
-msgstr "Cerca: "
-
-#: src/main.py:5157
-msgid "Match Case"
-msgstr "Distingui MAIUSCOLE/minuscole"
-
-#: src/main.py:5162
-msgid "Search Backwards"
-msgstr "Cerca all'indietro"
-
-#: src/main.py:5176
-#, python-format
-msgid "Closing this tab will quit %s."
-msgstr "Chiudendo questa scheda %s verrà chiuso."
-
-#: src/main.py:5198
-msgid "Encoding: "
-msgstr "Codifica: "
-
-#: src/main.py:5208
-msgid "Revision: "
-msgstr "Revisione: "
-
-#: src/main.py:5272
-msgid "Diffuse is a graphical tool for merging and comparing text files."
-msgstr "Diffuse è uno strumento grafico per l'unione e la comparazione di file di testo."
-
-#: src/main.py:5277
-msgid "translator-credits"
-msgstr "Cristian Marchi <cri.penta@gmail.com>,  2011."
-
-#: src/main.py:5281
-#, fuzzy
-msgid ""
-"This program is free software; you can redistribute it and/or modify\n"
-"it under the terms of the GNU General Public License as published by\n"
-"the Free Software Foundation; either version 2 of the License, or\n"
-"(at your option) any later version.\n"
-"\n"
-"This program is distributed in the hope that it will be useful,\n"
-"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
-"GNU General Public License for more details.\n"
-"\n"
-"You should have received a copy of the GNU General Public License along\n"
-"with this program; if not, write to the Free Software Foundation, Inc.,\n"
-"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA."
-msgstr ""
-"This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the licence, or (at your option) any later version.\n"
-"\n"
-"This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.\n"
-"\n"
-"You should have received a copy of the GNU General Public License along with this program.  You may also obtain a copy of the GNU General Public License from the Free Software Foundation by visiting their web site (http://www.fsf.org/) or by writing to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA\n"
-
-#: src/main.py:5322
+#: src/diffuse/main.py:77
 msgid "Close Tab"
 msgstr "Chiudi scheda"
 
-#: src/main.py:5377
+#: src/diffuse/main.py:120
 msgid "Open File..."
 msgstr "Apri file..."
 
-#: src/main.py:5378
+#: src/diffuse/main.py:121
 msgid "Reload File"
 msgstr "Ricarica file"
 
-#: src/main.py:5379
+#: src/diffuse/main.py:122
 msgid "Save File"
 msgstr "Salva file"
 
-#: src/main.py:5380
+#: src/diffuse/main.py:123
 msgid "Save File As..."
 msgstr "Salva con nome..."
 
-#: src/main.py:5525
+#: src/diffuse/main.py:268
 msgid "Save changes before loading the new file?"
 msgstr "Salvare i cambiamenti prima di caricare il nuovo file?"
 
-#: src/main.py:5635
+#: src/diffuse/main.py:377
 #, python-format
 msgid "Error reading revision %(rev)s of %(file)s."
 msgstr "Errore durante la lettura della revisione \"%(rev)s\" di «%(file)s»."
 
-#: src/main.py:5637 src/main.py:6900
+#: src/diffuse/main.py:379 src/diffuse/main.py:1712
 #, python-format
 msgid "Error reading %s."
 msgstr "Errore leggendo il %s."
 
-#: src/main.py:5658
+#: src/diffuse/main.py:400
 msgid "Open File"
 msgstr "Apertura file"
 
-#: src/main.py:5708
+#: src/diffuse/main.py:450
 #, python-format
 msgid "The file %s changed on disk.  Do you want to reload the file?"
 msgstr "Il file «%s» è cambiato sul disco. Ricaricarlo?"
 
-#: src/main.py:5728
+#: src/diffuse/main.py:470
 #, python-format
 msgid "Save %(title)s Pane %(pane)d"
 msgstr "Salva %(title)s riquadro %(pane)d"
 
-#: src/main.py:5754
+#: src/diffuse/main.py:496
 #, python-format
 msgid "A file named %s already exists.  Do you want to overwrite it?"
 msgstr "Il file «%s» esiste già. Sovrascrivere?"
 
-#: src/main.py:5759
+#: src/diffuse/main.py:501
 #, python-format
 msgid "The file %s has been modified by another process since reading it.  If you save, all the external changes could be lost.  Save anyways?"
 msgstr "Il file «%s» è stato modificato da un'altro processo dopo la lettura. Se si salva, tutte le modifiche esterne potrebbero essere perdute. Salvare comunque?"
 
-#: src/main.py:5800
+#: src/diffuse/main.py:540
 #, python-format
 msgid "Error encoding to %s."
 msgstr "Errore codificando %s"
 
-#: src/main.py:5830
+#: src/diffuse/main.py:542
+#, python-format
+msgid "Error writing %s."
+msgstr "Errore scrivendo il %s."
+
+#: src/diffuse/main.py:570
 msgid "Go To Line..."
 msgstr "Vai alla linea..."
 
-#: src/main.py:5830
+#: src/diffuse/main.py:570
 msgid "Line Number: "
 msgstr "Numero di riga: "
 
-#: src/main.py:5856
+#: src/diffuse/main.py:596
 msgid "Press the enter key or double click to edit.  Press the space bar or use the RMB menu to manually align."
 msgstr "Premere il tasto \"Invio\" o fare doppio clic per modificare. Premere \"spazio\" o usare il tasto destro del mouse per allineare manualmente."
 
-#: src/main.py:5858
+#: src/diffuse/main.py:598
 msgid "Press the escape key to finish editing."
 msgstr "Premere il tasto \"Esc\" per terminare le modifiche"
 
-#: src/main.py:5860
+#: src/diffuse/main.py:600
 msgid "Select target line and press the space bar to align.  Press the escape key to cancel."
 msgstr "Selezionare la riga di destinazione e premere spazio per allineare. Premere \"Esc\" per annullare."
 
-#: src/main.py:5971
+#: src/diffuse/main.py:711
 msgid "_File"
 msgstr "_File"
 
-#: src/main.py:5972
+#: src/diffuse/main.py:712
 msgid "_Open File..."
 msgstr "_Apri file"
 
-#: src/main.py:5973
+#: src/diffuse/main.py:713
 msgid "Open File In New _Tab..."
 msgstr "Apri file in una nuova sc_heda..."
 
-#: src/main.py:5974
+#: src/diffuse/main.py:714
 msgid "Open _Modified Files..."
 msgstr "Apri file _modificati..."
 
-#: src/main.py:5975
+#: src/diffuse/main.py:715
 msgid "Open Commi_t..."
 msgstr "Apri c_ommit..."
 
-#: src/main.py:5976
+#: src/diffuse/main.py:716
 msgid "_Reload File"
 msgstr "_Ricarica file"
 
-#: src/main.py:5978
+#: src/diffuse/main.py:718
 msgid "_Save File"
 msgstr "_Salva file"
 
-#: src/main.py:5979
+#: src/diffuse/main.py:719
 msgid "Save File _As..."
 msgstr "S_alva con nome..."
 
-#: src/main.py:5980
+#: src/diffuse/main.py:720
 msgid "Save A_ll"
 msgstr "Salva _tutti"
 
-#: src/main.py:5982
+#: src/diffuse/main.py:722
 msgid "New _2-Way File Merge"
 msgstr "Nuova unione a _2 file"
 
-#: src/main.py:5983
+#: src/diffuse/main.py:723
 msgid "New _3-Way File Merge"
 msgstr "Nuova unione a _3 file"
 
-#: src/main.py:5984
+#: src/diffuse/main.py:724
 msgid "New _N-Way File Merge..."
 msgstr "Nuova unione a _N file"
 
-#: src/main.py:5986
+#: src/diffuse/main.py:726
 msgid "_Close Tab"
 msgstr "_Chiudi scheda"
 
-#: src/main.py:5987
+#: src/diffuse/main.py:727
 msgid "_Undo Close Tab"
 msgstr "Annulla chi_usura scheda"
 
-#: src/main.py:5988
+#: src/diffuse/main.py:728
 msgid "_Quit"
 msgstr "_Esci"
 
-#: src/main.py:5990
+#: src/diffuse/main.py:730
 msgid "_Edit"
 msgstr "_Modifica"
 
-#: src/main.py:5991
+#: src/diffuse/main.py:731
 msgid "_Undo"
 msgstr "Ann_ulla"
 
-#: src/main.py:5992
+#: src/diffuse/main.py:732
 msgid "_Redo"
 msgstr "_Ripeti"
 
-#: src/main.py:5994
+#: src/diffuse/main.py:734
 msgid "Cu_t"
 msgstr "_Taglia"
 
-#: src/main.py:5995
+#: src/diffuse/main.py:735
 msgid "_Copy"
 msgstr "_Copia"
 
-#: src/main.py:5996
+#: src/diffuse/main.py:736
 msgid "_Paste"
 msgstr "_Incolla"
 
-#: src/main.py:5998
+#: src/diffuse/main.py:738
 msgid "Select _All"
 msgstr "Selezion_a tutto"
 
-#: src/main.py:5999
+#: src/diffuse/main.py:739
 msgid "C_lear Edits"
 msgstr "Annulla _modifiche"
 
-#: src/main.py:6000
+#: src/diffuse/main.py:740
 msgid "_Dismiss All Edits"
 msgstr "Scarta tutte le mo_difiche"
 
-#: src/main.py:6002
+#: src/diffuse/main.py:742
 msgid "_Find..."
 msgstr "Tr_ova..."
 
-#: src/main.py:6003
+#: src/diffuse/main.py:743
 msgid "Find _Next"
 msgstr "Trova _successivo"
 
-#: src/main.py:6004
+#: src/diffuse/main.py:744
 msgid "Find Pre_vious"
 msgstr "Trova _precedente"
 
-#: src/main.py:6005
+#: src/diffuse/main.py:745
 msgid "_Go To Line..."
 msgstr "_Vai alla riga..."
 
-#: src/main.py:6007
+#: src/diffuse/main.py:747
 msgid "Pr_eferences..."
 msgstr "Pr_eferenze..."
 
-#: src/main.py:6009
+#: src/diffuse/main.py:749
 msgid "None"
 msgstr "Nessuna"
 
-#: src/main.py:6017
+#: src/diffuse/main.py:757
 msgid "_View"
 msgstr "_Visualizza"
 
-#: src/main.py:6018
+#: src/diffuse/main.py:758
 msgid "_Syntax Highlighting"
 msgstr "Si_ntassi"
 
-#: src/main.py:6020
+#: src/diffuse/main.py:760
 msgid "Re_align All"
 msgstr "Ria_llinea tutti"
 
-#: src/main.py:6021
+#: src/diffuse/main.py:761
 msgid "_Isolate"
 msgstr "_Isola"
 
-#: src/main.py:6023
+#: src/diffuse/main.py:763
 msgid "_First Difference"
 msgstr "_Prima differenza"
 
-#: src/main.py:6024
+#: src/diffuse/main.py:764
 msgid "_Previous Difference"
 msgstr "Differenza p_recedente"
 
-#: src/main.py:6025
+#: src/diffuse/main.py:765
 msgid "_Next Difference"
 msgstr "Differenza s_uccessiva"
 
-#: src/main.py:6026
+#: src/diffuse/main.py:766
 msgid "_Last Difference"
 msgstr "Ulti_ma differenza"
 
-#: src/main.py:6028
+#: src/diffuse/main.py:768
 msgid "Fir_st Tab"
 msgstr "Prim_a scheda"
 
-#: src/main.py:6029
+#: src/diffuse/main.py:769
 msgid "Pre_vious Tab"
 msgstr "Scheda pr_ecedente"
 
-#: src/main.py:6030
+#: src/diffuse/main.py:770
 msgid "Next _Tab"
 msgstr "Scheda su_ccessiva"
 
-#: src/main.py:6031
+#: src/diffuse/main.py:771
 msgid "Las_t Tab"
 msgstr "Ul_tima scheda"
 
-#: src/main.py:6033
+#: src/diffuse/main.py:773
 msgid "Shift Pane _Right"
 msgstr "Sposta riquadro a _destra"
 
-#: src/main.py:6034
+#: src/diffuse/main.py:774
 msgid "Shift Pane _Left"
 msgstr "Sposta riquadro a _sinistra"
 
-#: src/main.py:6036
+#: src/diffuse/main.py:776
 msgid "F_ormat"
 msgstr "F_ormato"
 
-#: src/main.py:6037
+#: src/diffuse/main.py:777
 msgid "Convert To _Upper Case"
 msgstr "Converti in M_AIUSCOLO"
 
-#: src/main.py:6038
+#: src/diffuse/main.py:778
 msgid "Convert To _Lower Case"
 msgstr "Converti in m_inuscolo"
 
-#: src/main.py:6040
+#: src/diffuse/main.py:780
 msgid "Sort Lines In _Ascending Order"
 msgstr "Disponi le righe in ordine a_scendente"
 
-#: src/main.py:6041
+#: src/diffuse/main.py:781
 msgid "Sort Lines In D_escending Order"
 msgstr "Disponi le righe in ordine _discendente"
 
-#: src/main.py:6043
+#: src/diffuse/main.py:783
 msgid "Remove Trailing _White Space"
 msgstr "Rimuovi gli spazi _vuoti alla fine della riga"
 
-#: src/main.py:6044
+#: src/diffuse/main.py:784
 msgid "Convert Tabs To _Spaces"
 msgstr "Converti le _tabulazioni in spazi"
 
-#: src/main.py:6045
+#: src/diffuse/main.py:785
 msgid "Convert Leading Spaces To _Tabs"
 msgstr "Converti gli spa_zi iniziali in tabulazioni"
 
-#: src/main.py:6047
+#: src/diffuse/main.py:787
 msgid "_Increase Indenting"
 msgstr "Au_menta indentazione"
 
-#: src/main.py:6048
+#: src/diffuse/main.py:788
 msgid "De_crease Indenting"
 msgstr "Dimi_nuisci indentazione"
 
-#: src/main.py:6050
+#: src/diffuse/main.py:790
 msgid "Convert To _DOS Format"
 msgstr "Converti nel formato D_OS"
 
-#: src/main.py:6051
+#: src/diffuse/main.py:791
 msgid "Convert To _Mac Format"
 msgstr "Converti nel formato MA_C"
 
-#: src/main.py:6052
+#: src/diffuse/main.py:792
 msgid "Convert To Uni_x Format"
 msgstr "Converti nel formato Uni_x"
 
-#: src/main.py:6054
+#: src/diffuse/main.py:794
 msgid "_Merge"
 msgstr "_Unione"
 
-#: src/main.py:6055
+#: src/diffuse/main.py:795
 msgid "Copy Selection _Right"
 msgstr "Copia selezione a _destra"
 
-#: src/main.py:6056
+#: src/diffuse/main.py:796
 msgid "Copy Selection _Left"
 msgstr "Copia selezione a _sinistra"
 
-#: src/main.py:6058
+#: src/diffuse/main.py:798
 msgid "Copy Left _Into Selection"
 msgstr "Copia s_inistra nella selezione"
 
-#: src/main.py:6059
+#: src/diffuse/main.py:799
 msgid "Copy Right I_nto Selection"
 msgstr "Copia d_estra nella selezione"
 
-#: src/main.py:6060
+#: src/diffuse/main.py:800
 msgid "_Merge From Left Then Right"
 msgstr "_Unisci sinistra poi destra"
 
-#: src/main.py:6061
+#: src/diffuse/main.py:801
 msgid "M_erge From Right Then Left"
 msgstr "U_nisci destra poi sinistra"
 
-#: src/main.py:6063
+#: src/diffuse/main.py:803
 msgid "_Help"
 msgstr "A_iuto"
 
-#: src/main.py:6064
+#: src/diffuse/main.py:804
 msgid "_Help Contents..."
 msgstr "_Sommario"
 
-#: src/main.py:6066
+#: src/diffuse/main.py:806
 #, python-format
 msgid "_About %s..."
 msgstr "I_nformazioni su %s"
 
-#: src/main.py:6080
+#: src/diffuse/main.py:820
 msgid "New 2-Way File Merge"
 msgstr "Nuova unione a 2 file"
 
-#: src/main.py:6081
+#: src/diffuse/main.py:821
 msgid "New 3-Way File Merge"
 msgstr "Nuova unione a 3 file"
 
-#: src/main.py:6083
+#: src/diffuse/main.py:823
 msgid "Realign All"
 msgstr "Riallinea tutti"
 
-#: src/main.py:6084
+#: src/diffuse/main.py:824
 msgid "First Difference"
 msgstr "Prima differenza"
 
-#: src/main.py:6085
+#: src/diffuse/main.py:825
 msgid "Previous Difference"
 msgstr "Differenza precedente"
 
-#: src/main.py:6086
+#: src/diffuse/main.py:826
 msgid "Next Difference"
 msgstr "Differenza successiva"
 
-#: src/main.py:6087
+#: src/diffuse/main.py:827
 msgid "Last Difference"
 msgstr "Ultima differenza"
 
-#: src/main.py:6089
+#: src/diffuse/main.py:829
 msgid "Copy Selection Right"
 msgstr "Copia la selezione a destra"
 
-#: src/main.py:6090
+#: src/diffuse/main.py:830
 msgid "Copy Selection Left"
 msgstr "Copia la selezione a sinistra"
 
-#: src/main.py:6091
+#: src/diffuse/main.py:831
 msgid "Copy Left Into Selection"
 msgstr "Copia sinistra nella selezione"
 
-#: src/main.py:6092
+#: src/diffuse/main.py:832
 msgid "Copy Right Into Selection"
 msgstr "Copia destra nella selezione"
 
-#: src/main.py:6093
+#: src/diffuse/main.py:833
 msgid "Merge From Left Then Right"
 msgstr "Unisce prima da sinistra poi da destra"
 
-#: src/main.py:6094
+#: src/diffuse/main.py:834
 msgid "Merge From Right Then Left"
 msgstr "Unisce prima da destra poi da sinistra"
 
-#: src/main.py:6096
+#: src/diffuse/main.py:836
 msgid "Undo"
 msgstr "Annulla"
 
-#: src/main.py:6097
+#: src/diffuse/main.py:837
 msgid "Redo"
 msgstr "Ripeti"
 
-#: src/main.py:6221
+#: src/diffuse/main.py:838
+msgid "Cut"
+msgstr "Taglia"
+
+#: src/diffuse/main.py:839
+msgid "Copy"
+msgstr "Copia"
+
+#: src/diffuse/main.py:840
+msgid "Paste"
+msgstr "Incolla"
+
+#: src/diffuse/main.py:841
+msgid "Clear Edits"
+msgstr "Annulla le modifiche"
+
+#: src/diffuse/main.py:961
 msgid "Some files have unsaved changes.  Select the files to save before closing."
 msgstr "Alcune modifiche ai file non sono ancora state salvate. Selezionare i file da salvare prima di uscire."
 
-#: src/main.py:6234
+#: src/diffuse/main.py:974
 msgid "Tab"
 msgstr "Scheda"
 
-#: src/main.py:6239
+#: src/diffuse/main.py:979
 msgid "Pane"
 msgstr "Riquadro"
 
-#: src/main.py:6250
+#: src/diffuse/main.py:990
 msgid "Close _Without Saving"
 msgstr "_Chiudi senza salvare"
 
-#: src/main.py:6361
+#: src/diffuse/main.py:1026
+#, python-format
+msgid "Closing this tab will quit %s."
+msgstr "Chiudendo questa scheda %s verrà chiuso."
+
+#: src/diffuse/main.py:1108
 #, python-format
 msgid "File Merge %d"
 msgstr "Unione file # %d"
 
-#: src/main.py:6464
+#: src/diffuse/main.py:1211
 #, python-format
 msgid "Error retrieving commits for %s."
 msgstr "Errore nel recupero dei commit per «%s»"
 
-#: src/main.py:6493
+#: src/diffuse/main.py:1240
 #, python-format
 msgid "Error retrieving modifications for %s."
 msgstr "Errore nel recupero delle modifiche per «%s»"
 
-#: src/main.py:6523
+#: src/diffuse/main.py:1270
 msgid "Open File In New Tab"
 msgstr "Apre ilo file in una nuova scheda"
 
-#: src/main.py:6539
+#: src/diffuse/main.py:1286
 msgid "Choose Folder With Modified Files"
 msgstr "Selezionare la cartella con i file modificati"
 
-#: src/main.py:6552
+#: src/diffuse/main.py:1299
 msgid "No modified files found."
 msgstr "Non sono stati trovati file modificati."
 
-#: src/main.py:6557
+#: src/diffuse/main.py:1304
 msgid "Choose Folder With Commit"
 msgstr "Selezionare la cartella con i commit"
 
-#: src/main.py:6570
+#: src/diffuse/main.py:1317
 msgid "No committed files found."
 msgstr "Non sono stati trovati file di cui è stato eseguito il commit."
 
-#: src/main.py:6604
+#: src/diffuse/main.py:1351
 msgid "New N-Way File Merge..."
 msgstr "Nuova unione a N file..."
 
-#: src/main.py:6604
+#: src/diffuse/main.py:1351
 msgid "Number of panes: "
 msgstr "Numero di riquadri"
 
-#: src/main.py:6669
+#: src/diffuse/main.py:1416
 msgid "Phrase not found.  Continue from the end of the file?"
 msgstr "Frase non trovata. Continuare dalla fine del file?"
 
-#: src/main.py:6671
+#: src/diffuse/main.py:1418
 msgid "Phrase not found.  Continue from the start of the file?"
 msgstr "Frase non trovata. Continuare dall'inizio del file?"
 
-#: src/main.py:6819
+#: src/diffuse/main.py:1631
 msgid ""
 "Usage:\n"
 "    diffuse [ [OPTION...] [FILE...] ]...\n"
@@ -1070,29 +623,213 @@ msgstr ""
 "  ( -i | --ignore-case )           Ignora differenze tra MAIUSCOLE/minuscole\n"
 "  ( -w | --ignore-all-space )      Ignora le differenze tra spazi vuoti"
 
-#: src/main.py:6990
+#: src/diffuse/main.py:1802
 msgid "Error parsing line number."
 msgstr "Errore nell'analizzare il numero di riga."
 
-#: src/main.py:7000
+#: src/diffuse/main.py:1812
 #, python-format
 msgid "Skipping unknown argument \"%s\"."
 msgstr "L'argomento sconosciuto \"%s\" verrà tralasciato"
 
-#: src/main.py:7007
+#: src/diffuse/main.py:1819
 #, python-format
 msgid "Error processing argument \"%s\".  Directory not expected."
 msgstr "Errore nell'elaborazione dell'argomento \"%s\". Cartella non attesa."
 
-#: src/vcs/cvs.py:50 src/vcs/rcs.py:54 src/vcs/svn.py:89
+#: src/diffuse/vcs/cvs.py:51 src/diffuse/vcs/rcs.py:60
+#: src/diffuse/vcs/svn.py:93
 #, python-format
 msgid "Error parsing revision %s."
 msgstr "Eroore analizzando la revisione %s."
 
-#: src/vcs/vcs_registry.py:216
+#: src/diffuse/vcs/vcs_registry.py:231
 #, python-format
 msgid "Error parsing %s."
 msgstr "Errore analizzando %s."
+
+#, python-format
+#~ msgid "Error processing line %(line)d of %(file)s."
+#~ msgstr "Errore nell'elaborare la riga  %(line)d di «%(file)s»."
+
+#~ msgid "Auto Detect"
+#~ msgstr "Automatico"
+
+#~ msgid "Display"
+#~ msgstr "Visualizzazione"
+
+#~ msgid "Font"
+#~ msgstr "Carattere"
+
+#~ msgid "Tab width"
+#~ msgstr "Larghezza scheda"
+
+#~ msgid "Show right margin"
+#~ msgstr "Mostra margine destro"
+
+#~ msgid "Right margin"
+#~ msgstr "Margine destro"
+
+#~ msgid "Show line numbers"
+#~ msgstr "Mostra i numeri di riga"
+
+#~ msgid "Show white space characters"
+#~ msgstr "Mostra i caratteri di spaziatura"
+
+#~ msgid "Ignore case differences"
+#~ msgstr "Ignora la differenza tra lettere maiuscole e minuscole"
+
+#~ msgid "Ignore white space differences"
+#~ msgstr "Ignora le differenze tra spazi vuoti"
+
+#~ msgid "Ignore changes to white space"
+#~ msgstr "Ignora le modifiche agli spazi vuoti"
+
+#~ msgid "Ignore blank line differences"
+#~ msgstr "Ignora le differenze tra le righe vuote"
+
+#~ msgid "Ignore end of line differences"
+#~ msgstr "Ignora le differenze alla fine della riga"
+
+#~ msgid "Alignment"
+#~ msgstr "Allineamento"
+
+#~ msgid "Ignore case"
+#~ msgstr "Ignora MAIUSCOLE/minuscole"
+
+#~ msgid "Ignore white space"
+#~ msgstr "Ignora gli spazi vuoti"
+
+#~ msgid "Ignore blank lines"
+#~ msgstr "Ignora le righe vuote"
+
+#~ msgid "Ignore end of line characters"
+#~ msgstr "Ignora i caratteri di fine linea"
+
+#~ msgid "Editor"
+#~ msgstr "Editor"
+
+#~ msgid "Auto indent"
+#~ msgstr "Indentazione automatica"
+
+#~ msgid "Expand tabs to spaces"
+#~ msgstr "Espandi le tabulazioni in spazi"
+
+#~ msgid "Soft tab width"
+#~ msgstr "Larghezza scheda"
+
+#~ msgid "Tabs"
+#~ msgstr "Schede"
+
+#~ msgid "Default panes"
+#~ msgstr "Riquadri predefiniti"
+
+#~ msgid "Always show the tab bar"
+#~ msgstr "Mostra sempre la barra delle schede"
+
+#, python-format
+#~ msgid "Warn me when closing a tab will quit %s"
+#~ msgstr "Avvisami se chiudendo una scheda anche %s verrà chiuso"
+
+#~ msgid "Regional Settings"
+#~ msgstr "Impostazioni regionali"
+
+#~ msgid "Default codec"
+#~ msgstr "Codec predefinito"
+
+#~ msgid "Order of codecs used to identify encoding"
+#~ msgstr "Ordine dei codici utilizzati per identificare la codifica"
+
+#~ msgid "Cygwin"
+#~ msgstr "Cygwin"
+
+#~ msgid "Root directory"
+#~ msgstr "Cartella radice"
+
+#~ msgid "Cygdrive prefix"
+#~ msgstr "Prefisso Cygdrive"
+
+#~ msgid "\"co\" command"
+#~ msgstr "Comando \"co\""
+
+#~ msgid "\"rlog\" command"
+#~ msgstr "Comando \"rlog\""
+
+#~ msgid "Command"
+#~ msgstr "Comando"
+
+#~ msgid "Launch from a Bash login shell"
+#~ msgstr "Avvia dalla Bash di una shell di login"
+
+#~ msgid "Update paths for Cygwin"
+#~ msgstr "Aggiorna i percorsi per Cygwin"
+
+#~ msgid "Version Control"
+#~ msgstr "Controllo di versione"
+
+#~ msgid "Preferences"
+#~ msgstr "Preferenze"
+
+#~ msgid "Align with Selection"
+#~ msgstr "Allinea con la selezione"
+
+#~ msgid "Isolate"
+#~ msgstr "Isola"
+
+#~ msgid "Merge Selection"
+#~ msgstr "Unisci selezione"
+
+#~ msgid "Select All"
+#~ msgstr "Seleziona tutto"
+
+#~ msgid "Swap with Selected Pane"
+#~ msgstr "Scambia con il riquadro selezionato"
+
+#~ msgid "Find..."
+#~ msgstr "Trova..."
+
+#~ msgid "Search For: "
+#~ msgstr "Cerca: "
+
+#~ msgid "Match Case"
+#~ msgstr "Distingui MAIUSCOLE/minuscole"
+
+#~ msgid "Search Backwards"
+#~ msgstr "Cerca all'indietro"
+
+#~ msgid "Encoding: "
+#~ msgstr "Codifica: "
+
+#~ msgid "Revision: "
+#~ msgstr "Revisione: "
+
+#~ msgid "Diffuse is a graphical tool for merging and comparing text files."
+#~ msgstr "Diffuse è uno strumento grafico per l'unione e la comparazione di file di testo."
+
+#~ msgid "translator-credits"
+#~ msgstr "Cristian Marchi <cri.penta@gmail.com>,  2011."
+
+#, fuzzy
+#~ msgid ""
+#~ "This program is free software; you can redistribute it and/or modify\n"
+#~ "it under the terms of the GNU General Public License as published by\n"
+#~ "the Free Software Foundation; either version 2 of the License, or\n"
+#~ "(at your option) any later version.\n"
+#~ "\n"
+#~ "This program is distributed in the hope that it will be useful,\n"
+#~ "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+#~ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+#~ "GNU General Public License for more details.\n"
+#~ "\n"
+#~ "You should have received a copy of the GNU General Public License along\n"
+#~ "with this program; if not, write to the Free Software Foundation, Inc.,\n"
+#~ "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA."
+#~ msgstr ""
+#~ "This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the licence, or (at your option) any later version.\n"
+#~ "\n"
+#~ "This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.\n"
+#~ "\n"
+#~ "You should have received a copy of the GNU General Public License along with this program.  You may also obtain a copy of the GNU General Public License from the Free Software Foundation by visiting their web site (http://www.fsf.org/) or by writing to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA\n"
 
 #, python-format
 #~ msgid "Column %d"
