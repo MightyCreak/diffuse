@@ -32,7 +32,10 @@ msgid "Graphical tool for merging and comparing text files"
 msgstr "Графический инструмент для слияния и сравнения текстовых файлов"
 
 #: data/io.github.mightycreak.Diffuse.appdata.xml.in:7
-msgid "Diffuse is a graphical tool for comparing and merging text files. It can retrieve files for comparison from Bazaar, CVS, Darcs, Git, Mercurial, Monotone, RCS, Subversion, and SVK repositories."
+msgid ""
+"Diffuse is a graphical tool for comparing and merging text files. It can "
+"retrieve files for comparison from Bazaar, CVS, Darcs, Git, Mercurial, "
+"Monotone, RCS, Subversion, and SVK repositories."
 msgstr ""
 
 #: data/io.github.mightycreak.Diffuse.appdata.xml.in:21
@@ -98,8 +101,12 @@ msgstr "Файл под именем %s уже существует.  Вы хо�
 
 #: src/diffuse/main.py:501
 #, python-format
-msgid "The file %s has been modified by another process since reading it.  If you save, all the external changes could be lost.  Save anyways?"
-msgstr "Файл %s был изменен другим процессом после его прочтения.  На сохранении все внешние изменения будут потеряны.  Сохранить все равно?"
+msgid ""
+"The file %s has been modified by another process since reading it.  If you "
+"save, all the external changes could be lost.  Save anyways?"
+msgstr ""
+"Файл %s был изменен другим процессом после его прочтения.  На сохранении все "
+"внешние изменения будут потеряны.  Сохранить все равно?"
 
 #: src/diffuse/main.py:540
 #, python-format
@@ -120,16 +127,24 @@ msgid "Line Number: "
 msgstr "Номер строки: "
 
 #: src/diffuse/main.py:596
-msgid "Press the enter key or double click to edit.  Press the space bar or use the RMB menu to manually align."
-msgstr "Нажатие Enter или двойной щелчок для редактирования.  Нажатие Space или меню правого щелчка для выравнивания вручную."
+msgid ""
+"Press the enter key or double click to edit.  Press the space bar or use the "
+"RMB menu to manually align."
+msgstr ""
+"Нажатие Enter или двойной щелчок для редактирования.  Нажатие Space или меню "
+"правого щелчка для выравнивания вручную."
 
 #: src/diffuse/main.py:598
 msgid "Press the escape key to finish editing."
 msgstr "Нажмите клавишу Escape, чтобы закончить редактирование."
 
 #: src/diffuse/main.py:600
-msgid "Select target line and press the space bar to align.  Press the escape key to cancel."
-msgstr "Выберите целевую строку и нажмите клавишу Space, чтобы выровнять.  Нажмите Еscape для отмены."
+msgid ""
+"Select target line and press the space bar to align.  Press the escape key "
+"to cancel."
+msgstr ""
+"Выберите целевую строку и нажмите клавишу Space, чтобы выровнять.  Нажмите "
+"Еscape для отмены."
 
 #: src/diffuse/main.py:711
 msgid "_File"
@@ -477,7 +492,8 @@ msgid "Clear Edits"
 msgstr "Очистить Правки"
 
 #: src/diffuse/main.py:961
-msgid "Some files have unsaved changes.  Select the files to save before closing."
+msgid ""
+"Some files have unsaved changes.  Select the files to save before closing."
 msgstr ""
 "Некоторые файлы имеют несохраненные изменения.\n"
 "Выберите файлы для сохранения перед закрытием."
@@ -556,15 +572,19 @@ msgid ""
 "    diffuse [ [OPTION...] [FILE...] ]...\n"
 "    diffuse ( -h | -? | --help | -v | --version )\n"
 "\n"
-"Diffuse is a graphical tool for merging and comparing text files.  Diffuse is\n"
-"able to compare an arbitrary number of files side-by-side and gives users the\n"
-"ability to manually adjust line matching and directly edit files.  Diffuse can\n"
+"Diffuse is a graphical tool for merging and comparing text files.  Diffuse "
+"is\n"
+"able to compare an arbitrary number of files side-by-side and gives users "
+"the\n"
+"ability to manually adjust line matching and directly edit files.  Diffuse "
+"can\n"
 "also retrieve revisions of files from Bazaar, CVS, Darcs, Git, Mercurial,\n"
 "Monotone, RCS, Subversion, and SVK repositories for comparison and merging.\n"
 "\n"
 "Help Options:\n"
 "  ( -h | -? | --help )             Display this usage information\n"
-"  ( -v | --version )               Display version and copyright information\n"
+"  ( -v | --version )               Display version and copyright "
+"information\n"
 "\n"
 "Configuration Options:\n"
 "  --no-rcfile                      Do not read any resource files\n"
@@ -598,12 +618,14 @@ msgstr ""
 "файлов. Может сравнить произвольное число файлов в представлении бок о бок,\n"
 "предоставляет пользователям возможность вручную корректировать соответствие\n"
 "строк и редактировать файлы напрямую. Diffuse может также извлекать ревизии\n"
-"файлов из Bazaar, CVS, Darcs, Git, Mercurial, Monotone, RCS, Subversion и SVK\n"
+"файлов из Bazaar, CVS, Darcs, Git, Mercurial, Monotone, RCS, Subversion и "
+"SVK\n"
 "репозиториев для их сравнения и слияния.\n"
 "\n"
 "Параметры Справки:\n"
 "  ( -h | -? | --help )             Отобразить информацию по использованию\n"
-"  ( -v | --version )               Отобразить номер версии и авторские права\n"
+"  ( -v | --version )               Отобразить номер версии и авторские "
+"права\n"
 "\n"
 "Параметры Конфигурации:\n"
 "  --no-rcfile                      Не читать файлы инициализации\n"
@@ -612,11 +634,15 @@ msgstr ""
 "Общие Параметры:\n"
 "  ( -c | --commit ) <rev>          Ревизии файла <rev-1> и <rev>\n"
 "  ( -D | --close-if-same )         Закрыть все не имеющие различий вкладки\n"
-"  ( -e | --encoding ) <codec>      Использовать <codec> для чтения и записи файлов\n"
-"  ( -L | --label ) <label>         Отображать <label> ярлык вместо имени файла\n"
-"  ( -m | --modified )              Создавать новую вкладку для каждого измененного файла\n"
+"  ( -e | --encoding ) <codec>      Использовать <codec> для чтения и записи "
+"файлов\n"
+"  ( -L | --label ) <label>         Отображать <label> ярлык вместо имени "
+"файла\n"
+"  ( -m | --modified )              Создавать новую вкладку для каждого "
+"измененного файла\n"
 "  ( -r | --revision ) <rev>        Файл ревизии <rev>\n"
-"  ( -s | --separate )              Создавать новую вкладку для каждого файла\n"
+"  ( -s | --separate )              Создавать новую вкладку для каждого "
+"файла\n"
 "  ( -t | --tab )                   Запустить новую вкладку\n"
 "  ( -V | --vcs ) <vcs-list>        Version control system search order\n"
 "  --line <line>                    Начать с выбранной <line> строки\n"
@@ -653,190 +679,3 @@ msgstr "Ошибка анализа ревизии %s."
 #, python-format
 msgid "Error parsing %s."
 msgstr "Ошибка анализа %s."
-
-#, python-format
-#~ msgid "Error processing line %(line)d of %(file)s."
-#~ msgstr "Ошибка обработки строки %(line)d из %(file)s."
-
-#~ msgid "Auto Detect"
-#~ msgstr "Автообнаружение "
-
-#~ msgid "Display"
-#~ msgstr "Отображение"
-
-#~ msgid "Font"
-#~ msgstr "Шрифт"
-
-#~ msgid "Tab width"
-#~ msgstr "Ширина табулятора"
-
-#~ msgid "Show right margin"
-#~ msgstr "Показывать правое поле"
-
-#~ msgid "Right margin"
-#~ msgstr "Правое поле"
-
-#~ msgid "Show line numbers"
-#~ msgstr "Показывать номера строк"
-
-#~ msgid "Show white space characters"
-#~ msgstr "Показывать символы пробелов"
-
-#~ msgid "Ignore case differences"
-#~ msgstr "Игнорировать различия в регистре"
-
-#~ msgid "Ignore white space differences"
-#~ msgstr "Игнорировать различия пробелов, символов табуляции и пустой строки"
-
-#~ msgid "Ignore changes to white space"
-#~ msgstr "Игнорировать изменения пробелов, символов табуляции и пустой строки"
-
-#~ msgid "Ignore blank line differences"
-#~ msgstr "Игнорировать различия пустых строк"
-
-#~ msgid "Ignore end of line differences"
-#~ msgstr "Игнорировать различия окончания строк (терминаторы)"
-
-#~ msgid "Alignment"
-#~ msgstr "Выравнивание"
-
-#~ msgid "Ignore case"
-#~ msgstr "Игнорировать регистр символов"
-
-#~ msgid "Ignore white space"
-#~ msgstr "Игнорировать пробелы, символы табуляции и пустой строки"
-
-#~ msgid "Ignore blank lines"
-#~ msgstr "Игнорировать пустые строки"
-
-#~ msgid "Ignore end of line characters"
-#~ msgstr "Игнорировать символы окончания строк (терминаторы)"
-
-#~ msgid "Editor"
-#~ msgstr "Редактор"
-
-#~ msgid "Auto indent"
-#~ msgstr "Автоматический отступ"
-
-#~ msgid "Expand tabs to spaces"
-#~ msgstr "Расширить табуляторы до пробелов"
-
-#~ msgid "Soft tab width"
-#~ msgstr "Ширина мягкого табулятора"
-
-#~ msgid "Tabs"
-#~ msgstr "Вкладки"
-
-#~ msgid "Default panes"
-#~ msgstr "Субокон по умолчанию"
-
-#~ msgid "Always show the tab bar"
-#~ msgstr "Всегда показывать панель вкладок"
-
-#, python-format
-#~ msgid "Warn me when closing a tab will quit %s"
-#~ msgstr "Предупреждение, когда закрытие вкладки закроет %s"
-
-#~ msgid "Regional Settings"
-#~ msgstr "Настройки Региона"
-
-#~ msgid "Default codec"
-#~ msgstr "Кодек по умолчанию"
-
-#~ msgid "Order of codecs used to identify encoding"
-#~ msgstr "Порядок кодеков, используемых для распознания кодировки"
-
-#~ msgid "Cygwin"
-#~ msgstr "Cygwin"
-
-#~ msgid "Root directory"
-#~ msgstr "Корневой каталог"
-
-#~ msgid "Cygdrive prefix"
-#~ msgstr "Cygdrive префикс"
-
-#~ msgid "\"co\" command"
-#~ msgstr "\"co\" команда"
-
-#~ msgid "\"rlog\" command"
-#~ msgstr "\"rlog\" команда"
-
-#~ msgid "Command"
-#~ msgstr "Команда"
-
-#~ msgid "Launch from a Bash login shell"
-#~ msgstr "Запуск из оболочки Bash login"
-
-#~ msgid "Update paths for Cygwin"
-#~ msgstr "Обновлять пути для Cygwin"
-
-#~ msgid "Version Control"
-#~ msgstr "Контроль Версий"
-
-#~ msgid "Preferences"
-#~ msgstr "Предпочтения"
-
-#~ msgid "Align with Selection"
-#~ msgstr "Выровнять с Выборкой"
-
-#~ msgid "Isolate"
-#~ msgstr "Изолировать"
-
-#~ msgid "Merge Selection"
-#~ msgstr "Объединить Выборку"
-
-#~ msgid "Select All"
-#~ msgstr "Выбрать Все"
-
-#~ msgid "Swap with Selected Pane"
-#~ msgstr "Обменять с Выбранным Субокном"
-
-#~ msgid "Find..."
-#~ msgstr "Найти..."
-
-#~ msgid "Search For: "
-#~ msgstr "Искать: "
-
-#~ msgid "Match Case"
-#~ msgstr "Учитывать регистр"
-
-#~ msgid "Search Backwards"
-#~ msgstr "Поиск в обратном направлении"
-
-#~ msgid "Encoding: "
-#~ msgstr "Кодировка: "
-
-#~ msgid "Revision: "
-#~ msgstr "Ревизия: "
-
-#~ msgid "Diffuse is a graphical tool for merging and comparing text files."
-#~ msgstr "Diffuse является графическим инструментом для слияния и сравнения текстовых файлов."
-
-#~ msgid "translator-credits"
-#~ msgstr "v.01 О.Ю.Пахтусов (Oleg Pakhtusov) <oupakhtusov@gmail.com> "
-
-#, fuzzy
-#~ msgid ""
-#~ "This program is free software; you can redistribute it and/or modify\n"
-#~ "it under the terms of the GNU General Public License as published by\n"
-#~ "the Free Software Foundation; either version 2 of the License, or\n"
-#~ "(at your option) any later version.\n"
-#~ "\n"
-#~ "This program is distributed in the hope that it will be useful,\n"
-#~ "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-#~ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
-#~ "GNU General Public License for more details.\n"
-#~ "\n"
-#~ "You should have received a copy of the GNU General Public License along\n"
-#~ "with this program; if not, write to the Free Software Foundation, Inc.,\n"
-#~ "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA."
-#~ msgstr ""
-#~ "Эта программа является бесплатным ПО; Вы можете распространять программу и/или изменять ее в соответствии с GNU General Public License, как опубликовано Free Software Foundation; либо версия 2 лицензии, либо (по вашему выбору) любая более поздняя версия.\n"
-#~ "\n"
-#~ "Эта программа распространяется в надежде, что она будет полезна, но БЕЗ КАКИХ-ЛИБО ГАРАНТИЙ; без даже подразумеваемой гарантии ТОВАРНОГО СОСТОЯНИЯ или ПРИГОДНОСТИ ДЛЯ КОНКРЕТНОЙ ЦЕЛИ. Смотрите GNU General Public License для дополнительных подробностей.\n"
-#~ "\n"
-#~ "Вам Следует получить копию GNU General Public License вместе с этой программой.  Вы можете также получить копию GNU General Public License от Free Software Foundation, посетив их web-сайт (http://www.fsf.org/) или написав по адресу: Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA\n"
-
-#, python-format
-#~ msgid "Column %d"
-#~ msgstr "Столбец %d"

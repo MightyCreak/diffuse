@@ -33,7 +33,10 @@ msgid "Graphical tool for merging and comparing text files"
 msgstr "Ferramenta gráfica para unificar e comparar arquivos de texto"
 
 #: data/io.github.mightycreak.Diffuse.appdata.xml.in:7
-msgid "Diffuse is a graphical tool for comparing and merging text files. It can retrieve files for comparison from Bazaar, CVS, Darcs, Git, Mercurial, Monotone, RCS, Subversion, and SVK repositories."
+msgid ""
+"Diffuse is a graphical tool for comparing and merging text files. It can "
+"retrieve files for comparison from Bazaar, CVS, Darcs, Git, Mercurial, "
+"Monotone, RCS, Subversion, and SVK repositories."
 msgstr ""
 
 #: data/io.github.mightycreak.Diffuse.appdata.xml.in:21
@@ -99,8 +102,13 @@ msgstr "Já existe um arquivo chamado %s. Quer substituí-lo?"
 
 #: src/diffuse/main.py:501
 #, python-format
-msgid "The file %s has been modified by another process since reading it.  If you save, all the external changes could be lost.  Save anyways?"
-msgstr "O arquivo %s foi modificado por outro processo desde o último carregamento. Se salvar agora, perderá todas as alterações feitas fora deste programa. Salvar de qualquer forma?"
+msgid ""
+"The file %s has been modified by another process since reading it.  If you "
+"save, all the external changes could be lost.  Save anyways?"
+msgstr ""
+"O arquivo %s foi modificado por outro processo desde o último carregamento. "
+"Se salvar agora, perderá todas as alterações feitas fora deste programa. "
+"Salvar de qualquer forma?"
 
 #: src/diffuse/main.py:540
 #, python-format
@@ -121,16 +129,24 @@ msgid "Line Number: "
 msgstr "Número de linha: "
 
 #: src/diffuse/main.py:596
-msgid "Press the enter key or double click to edit.  Press the space bar or use the RMB menu to manually align."
-msgstr "Pressione Enter ou faça duplo clique para editar. Pressione a barra de espaço ou use o menu RMB para alinhar manualmente."
+msgid ""
+"Press the enter key or double click to edit.  Press the space bar or use the "
+"RMB menu to manually align."
+msgstr ""
+"Pressione Enter ou faça duplo clique para editar. Pressione a barra de "
+"espaço ou use o menu RMB para alinhar manualmente."
 
 #: src/diffuse/main.py:598
 msgid "Press the escape key to finish editing."
 msgstr "Pressione Esc para terminar a edição."
 
 #: src/diffuse/main.py:600
-msgid "Select target line and press the space bar to align.  Press the escape key to cancel."
-msgstr "Selecione a linha alvo e pressione a barra de espaço para alinhar. Pressione Esc para cancelar."
+msgid ""
+"Select target line and press the space bar to align.  Press the escape key "
+"to cancel."
+msgstr ""
+"Selecione a linha alvo e pressione a barra de espaço para alinhar. Pressione "
+"Esc para cancelar."
 
 #: src/diffuse/main.py:711
 msgid "_File"
@@ -478,8 +494,11 @@ msgid "Clear Edits"
 msgstr "Limpar edições"
 
 #: src/diffuse/main.py:961
-msgid "Some files have unsaved changes.  Select the files to save before closing."
-msgstr "Alguns arquivos têm alterações não salvas. Selecione os arquivos para salvar antes de fechar."
+msgid ""
+"Some files have unsaved changes.  Select the files to save before closing."
+msgstr ""
+"Alguns arquivos têm alterações não salvas. Selecione os arquivos para salvar "
+"antes de fechar."
 
 #: src/diffuse/main.py:974
 msgid "Tab"
@@ -555,15 +574,19 @@ msgid ""
 "    diffuse [ [OPTION...] [FILE...] ]...\n"
 "    diffuse ( -h | -? | --help | -v | --version )\n"
 "\n"
-"Diffuse is a graphical tool for merging and comparing text files.  Diffuse is\n"
-"able to compare an arbitrary number of files side-by-side and gives users the\n"
-"ability to manually adjust line matching and directly edit files.  Diffuse can\n"
+"Diffuse is a graphical tool for merging and comparing text files.  Diffuse "
+"is\n"
+"able to compare an arbitrary number of files side-by-side and gives users "
+"the\n"
+"ability to manually adjust line matching and directly edit files.  Diffuse "
+"can\n"
 "also retrieve revisions of files from Bazaar, CVS, Darcs, Git, Mercurial,\n"
 "Monotone, RCS, Subversion, and SVK repositories for comparison and merging.\n"
 "\n"
 "Help Options:\n"
 "  ( -h | -? | --help )             Display this usage information\n"
-"  ( -v | --version )               Display version and copyright information\n"
+"  ( -v | --version )               Display version and copyright "
+"information\n"
 "\n"
 "Configuration Options:\n"
 "  --no-rcfile                      Do not read any resource files\n"
@@ -593,15 +616,19 @@ msgstr ""
 "    diffuse [ [OPÇÃO...] [ARQUIVO...] ]...\n"
 "    diffuse ( -h | -? | --help | -v | --version )\n"
 "\n"
-"O Diffuse é uma ferramenta gráfica para unificar e comparar arquivos de texto.\n"
+"O Diffuse é uma ferramenta gráfica para unificar e comparar arquivos de "
+"texto.\n"
 "É capaz de comparar um número arbitrário de arquivos lado-a-lado e dá aos\n"
-"usuários a possibilidade de ajustar manualmente as linhas com edição directa.\n"
-"Também pode obter revisões de arquivos de repositórios Bazaar, CVS, Darcs, Git,\n"
+"usuários a possibilidade de ajustar manualmente as linhas com edição "
+"directa.\n"
+"Também pode obter revisões de arquivos de repositórios Bazaar, CVS, Darcs, "
+"Git,\n"
 "Mercurial, Monotone, RCS, Subversion e SVK para comparação e unificação.\n"
 "\n"
 "Opções de ajuda:\n"
 "  ( -h | -? | --help )             mostra esta ajuda\n"
-"  ( -v | --version )               mostra informação da versão e direitos autorais\n"
+"  ( -v | --version )               mostra informação da versão e direitos "
+"autorais\n"
 "\n"
 "Opções de configuração:\n"
 "  --no-rcfile                      não lê qualquer arquivo de recursos\n"
@@ -611,8 +638,10 @@ msgstr ""
 "  ( -c | --commit ) <rev>          revisões de arquivos <rev-1> e <rev>\n"
 "  ( -D | --close-if-same )         fecha todas as abas sem diferenças\n"
 "  ( -e | --encoding ) <codec>      usa <codec> para ler e escrever arquivos\n"
-"  ( -L | --label ) <etiqueta>      mostra <etiqueta> em vez do nome do arquivos\n"
-"  ( -m | --modified )              cria uma nova aba para cada arquivo modificado\n"
+"  ( -L | --label ) <etiqueta>      mostra <etiqueta> em vez do nome do "
+"arquivos\n"
+"  ( -m | --modified )              cria uma nova aba para cada arquivo "
+"modificado\n"
 "  ( -r | --revision ) <rev>        revisão de arquivo <rev>\n"
 "  ( -s | --separate )              cria uma nova aba para cada arquivo\n"
 "  ( -t | --tab )                   executa uma nova aba\n"
@@ -651,190 +680,3 @@ msgstr "Erro ao analisar a revisão %s."
 #, python-format
 msgid "Error parsing %s."
 msgstr "Erro ao analisar %s."
-
-#, python-format
-#~ msgid "Error processing line %(line)d of %(file)s."
-#~ msgstr "Erro ao processar a linha %(line)d de %(file)s."
-
-#~ msgid "Auto Detect"
-#~ msgstr "Detecção automática"
-
-#~ msgid "Display"
-#~ msgstr "Mostrar"
-
-#~ msgid "Font"
-#~ msgstr "Letra"
-
-#~ msgid "Tab width"
-#~ msgstr "Largura de tabulação"
-
-#~ msgid "Show right margin"
-#~ msgstr "Mostrar margem direita"
-
-#~ msgid "Right margin"
-#~ msgstr "Margem direita"
-
-#~ msgid "Show line numbers"
-#~ msgstr "Mostrar números de linha"
-
-#~ msgid "Show white space characters"
-#~ msgstr "Mostrar espaços em branco"
-
-#~ msgid "Ignore case differences"
-#~ msgstr "Ignorar diferenças de maiúsculas"
-
-#~ msgid "Ignore white space differences"
-#~ msgstr "Ignorar diferenças de espaços"
-
-#~ msgid "Ignore changes to white space"
-#~ msgstr "Ignorar alterações para espaços"
-
-#~ msgid "Ignore blank line differences"
-#~ msgstr "Ignorar diferenças de linhas em branco"
-
-#~ msgid "Ignore end of line differences"
-#~ msgstr "Ignorar diferenças de fins de linha"
-
-#~ msgid "Alignment"
-#~ msgstr "Alinhamento"
-
-#~ msgid "Ignore case"
-#~ msgstr "Ignorar maiúsculas"
-
-#~ msgid "Ignore white space"
-#~ msgstr "Ignorar espaços"
-
-#~ msgid "Ignore blank lines"
-#~ msgstr "Ignorar linhas em branco"
-
-#~ msgid "Ignore end of line characters"
-#~ msgstr "Ignorar caracteres de fim de linha"
-
-#~ msgid "Editor"
-#~ msgstr "Editor"
-
-#~ msgid "Auto indent"
-#~ msgstr "Indentação automática"
-
-#~ msgid "Expand tabs to spaces"
-#~ msgstr "Expandir tabulações para espaços"
-
-#~ msgid "Soft tab width"
-#~ msgstr "Largura de tabulação suave"
-
-#~ msgid "Tabs"
-#~ msgstr "Abas"
-
-#~ msgid "Default panes"
-#~ msgstr "Painéis padrão"
-
-#~ msgid "Always show the tab bar"
-#~ msgstr "Mostrar sempre a barra de abas"
-
-#, python-format
-#~ msgid "Warn me when closing a tab will quit %s"
-#~ msgstr "Avise quando fechamento da aba resultará em saída do %s"
-
-#~ msgid "Regional Settings"
-#~ msgstr "Definições regionais"
-
-#~ msgid "Default codec"
-#~ msgstr "Codificação padrão"
-
-#~ msgid "Order of codecs used to identify encoding"
-#~ msgstr "Ordem de codificações para identificar a codificação"
-
-#~ msgid "Cygwin"
-#~ msgstr "Cygwin"
-
-#~ msgid "Root directory"
-#~ msgstr "Pasta Root"
-
-#~ msgid "Cygdrive prefix"
-#~ msgstr "Prefixo Cygdrive"
-
-#~ msgid "\"co\" command"
-#~ msgstr "comando \"co\""
-
-#~ msgid "\"rlog\" command"
-#~ msgstr "comando \"rlog\""
-
-#~ msgid "Command"
-#~ msgstr "Comando"
-
-#~ msgid "Launch from a Bash login shell"
-#~ msgstr "Iniciar numa consola de sessão Bash"
-
-#~ msgid "Update paths for Cygwin"
-#~ msgstr "Actualizar caminhos para o Cygwin"
-
-#~ msgid "Version Control"
-#~ msgstr "Controlo de versões"
-
-#~ msgid "Preferences"
-#~ msgstr "Preferências"
-
-#~ msgid "Align with Selection"
-#~ msgstr "Alinhar com a seleção"
-
-#~ msgid "Isolate"
-#~ msgstr "Isolar"
-
-#~ msgid "Merge Selection"
-#~ msgstr "Unir seleção"
-
-#~ msgid "Select All"
-#~ msgstr "Selecionar tudo"
-
-#~ msgid "Swap with Selected Pane"
-#~ msgstr "Trocar com o painel selecionado"
-
-#~ msgid "Find..."
-#~ msgstr "Encontrar..."
-
-#~ msgid "Search For: "
-#~ msgstr "Procurar por: "
-
-#~ msgid "Match Case"
-#~ msgstr "Combinar maiúsculas"
-
-#~ msgid "Search Backwards"
-#~ msgstr "Procurar para trás"
-
-#~ msgid "Encoding: "
-#~ msgstr "Codificação: "
-
-#~ msgid "Revision: "
-#~ msgstr "Revisão: "
-
-#~ msgid "Diffuse is a graphical tool for merging and comparing text files."
-#~ msgstr "O Diffuse é uma ferramenta gráfica para unificar e comparar arquivos de texto."
-
-#~ msgid "translator-credits"
-#~ msgstr "Pedro Albuquerque <pmra@gmx.com>"
-
-#, fuzzy
-#~ msgid ""
-#~ "This program is free software; you can redistribute it and/or modify\n"
-#~ "it under the terms of the GNU General Public License as published by\n"
-#~ "the Free Software Foundation; either version 2 of the License, or\n"
-#~ "(at your option) any later version.\n"
-#~ "\n"
-#~ "This program is distributed in the hope that it will be useful,\n"
-#~ "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-#~ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
-#~ "GNU General Public License for more details.\n"
-#~ "\n"
-#~ "You should have received a copy of the GNU General Public License along\n"
-#~ "with this program; if not, write to the Free Software Foundation, Inc.,\n"
-#~ "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA."
-#~ msgstr ""
-#~ "Este programa é de software livre; pode redistribuí-lo e/ou modificá-lo sob os termos da GNU General Public License como publicada pela Free Software Foundation; seja a versão 2 da licença, ou (por opção sua) qualquer versão mais recente.\n"
-#~ "\n"
-#~ "Este programa é distribuído na esperança de ser útil, mas SEM QUALQUER GARANTIA; nem mesmo a garantia implícita de COMERCIALIZAÇÃO ou ADEQUAÇÃO A UM PROPÓSITO EM PARTICULAR. Veja a GNU General Public License para mais detalhes.\n"
-#~ "\n"
-#~ "Deverá ter recebido uma cópia da GNU General Public License juntamente com o programa. Também pode obter uma cópia da GNU General Public License da Free Software Foundation visitando a sua página web (http://www.fsf.org/) ou escrevendo para Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA\n"
-
-#, python-format
-#~ msgid "Column %d"
-#~ msgstr "Coluna %d"

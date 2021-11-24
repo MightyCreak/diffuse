@@ -28,7 +28,10 @@ msgid "Graphical tool for merging and comparing text files"
 msgstr "テキストファイルをマージして比較するためのグラフィックツール"
 
 #: data/io.github.mightycreak.Diffuse.appdata.xml.in:7
-msgid "Diffuse is a graphical tool for comparing and merging text files. It can retrieve files for comparison from Bazaar, CVS, Darcs, Git, Mercurial, Monotone, RCS, Subversion, and SVK repositories."
+msgid ""
+"Diffuse is a graphical tool for comparing and merging text files. It can "
+"retrieve files for comparison from Bazaar, CVS, Darcs, Git, Mercurial, "
+"Monotone, RCS, Subversion, and SVK repositories."
 msgstr ""
 
 #: data/io.github.mightycreak.Diffuse.appdata.xml.in:21
@@ -94,8 +97,12 @@ msgstr "%s というファイルは既に存在しています。それを上書
 
 #: src/diffuse/main.py:501
 #, python-format
-msgid "The file %s has been modified by another process since reading it.  If you save, all the external changes could be lost.  Save anyways?"
-msgstr "ファイル %s は、変更されています。保存する場合は、これらの変更が失われることがあります。保存しますか?"
+msgid ""
+"The file %s has been modified by another process since reading it.  If you "
+"save, all the external changes could be lost.  Save anyways?"
+msgstr ""
+"ファイル %s は、変更されています。保存する場合は、これらの変更が失われること"
+"があります。保存しますか?"
 
 #: src/diffuse/main.py:540
 #, python-format
@@ -116,16 +123,24 @@ msgid "Line Number: "
 msgstr "行番号: "
 
 #: src/diffuse/main.py:596
-msgid "Press the enter key or double click to edit.  Press the space bar or use the RMB menu to manually align."
-msgstr "編集するためにエンターキーを押すか、ダブルクリックします。手動で整列させるためにスペースバーを押すか、RMBを使います。"
+msgid ""
+"Press the enter key or double click to edit.  Press the space bar or use the "
+"RMB menu to manually align."
+msgstr ""
+"編集するためにエンターキーを押すか、ダブルクリックします。手動で整列させるた"
+"めにスペースバーを押すか、RMBを使います。"
 
 #: src/diffuse/main.py:598
 msgid "Press the escape key to finish editing."
 msgstr "ESCキーを押して、編集を終了します。"
 
 #: src/diffuse/main.py:600
-msgid "Select target line and press the space bar to align.  Press the escape key to cancel."
-msgstr "目標行を選択してスペースバーを押すと整列します。取り消す場合は、ESCキーを押します。"
+msgid ""
+"Select target line and press the space bar to align.  Press the escape key "
+"to cancel."
+msgstr ""
+"目標行を選択してスペースバーを押すと整列します。取り消す場合は、ESCキーを押し"
+"ます。"
 
 #: src/diffuse/main.py:711
 msgid "_File"
@@ -473,8 +488,11 @@ msgid "Clear Edits"
 msgstr "編集をクリア"
 
 #: src/diffuse/main.py:961
-msgid "Some files have unsaved changes.  Select the files to save before closing."
-msgstr "変更が保存されていないファイルがあります。終了前に保存するファイルを選択します。"
+msgid ""
+"Some files have unsaved changes.  Select the files to save before closing."
+msgstr ""
+"変更が保存されていないファイルがあります。終了前に保存するファイルを選択しま"
+"す。"
 
 #: src/diffuse/main.py:974
 msgid "Tab"
@@ -550,15 +568,19 @@ msgid ""
 "    diffuse [ [OPTION...] [FILE...] ]...\n"
 "    diffuse ( -h | -? | --help | -v | --version )\n"
 "\n"
-"Diffuse is a graphical tool for merging and comparing text files.  Diffuse is\n"
-"able to compare an arbitrary number of files side-by-side and gives users the\n"
-"ability to manually adjust line matching and directly edit files.  Diffuse can\n"
+"Diffuse is a graphical tool for merging and comparing text files.  Diffuse "
+"is\n"
+"able to compare an arbitrary number of files side-by-side and gives users "
+"the\n"
+"ability to manually adjust line matching and directly edit files.  Diffuse "
+"can\n"
 "also retrieve revisions of files from Bazaar, CVS, Darcs, Git, Mercurial,\n"
 "Monotone, RCS, Subversion, and SVK repositories for comparison and merging.\n"
 "\n"
 "Help Options:\n"
 "  ( -h | -? | --help )             Display this usage information\n"
-"  ( -v | --version )               Display version and copyright information\n"
+"  ( -v | --version )               Display version and copyright "
+"information\n"
 "\n"
 "Configuration Options:\n"
 "  --no-rcfile                      Do not read any resource files\n"
@@ -588,9 +610,11 @@ msgstr ""
 "    diffuse [ [オプション...] [ファイル...] ]...\n"
 "    diffuse ( -h | -? | --help | -v | --version )\n"
 "\n"
-"Diffuse は、テキストファイルをマージして比較するためのグラフィックツールです。\n"
+"Diffuse は、テキストファイルをマージして比較するためのグラフィックツールで"
+"す。\n"
 "任意の数の並行なファイルを比較できます。ユーザは、手動で行を再整列し、\n"
-"ファイルを直接編集できます。また、Diffuse は比較やマージするためにBazaar、CVS、\n"
+"ファイルを直接編集できます。また、Diffuse は比較やマージするためにBazaar、"
+"CVS、\n"
 "Darcs、Git、Mercurial、Monotone、RCS、Subversion、および SVK リポジトリから\n"
 "ファイルリビジョンを取得できます。\n"
 "\n"
@@ -603,11 +627,13 @@ msgstr ""
 "  --rcfile <file>                  指定されたリソースファイルを読む\n"
 "\n"
 "一般的なオプション:\n"
-"  ( -c | --commit ) <rev>          <rev-1> と <rev> というファイルリビジョン\n"
+"  ( -c | --commit ) <rev>          <rev-1> と <rev> というファイルリビジョ"
+"ン\n"
 "  ( -D | --close-if-same )         差分がないタブを閉じる\n"
 "  ( -e | --encoding ) <codec>      <codec> でファイルを読み書き\n"
 "  ( -L | --label ) <label>         ファイル名の代わりに <label> を表示\n"
-"  ( -m | --modified )              変更になったファイルのために新しいタブを作る\n"
+"  ( -m | --modified )              変更になったファイルのために新しいタブを作"
+"る\n"
 "  ( -r | --revision ) <rev>        <rev> というファイルリビジョン\n"
 "  ( -s | --separate )              各ファイルのために新しいタブを作る\n"
 "  ( -t | --tab )                   新しいタブを始める\n"
@@ -634,7 +660,9 @@ msgstr "未知の引数「%s」を飛ばします。"
 #: src/diffuse/main.py:1819
 #, python-format
 msgid "Error processing argument \"%s\".  Directory not expected."
-msgstr "%s の引数を処理しているときにエラーが生じました。ディレクトリは予測できませんでした。"
+msgstr ""
+"%s の引数を処理しているときにエラーが生じました。ディレクトリは予測できません"
+"でした。"
 
 #: src/diffuse/vcs/cvs.py:51 src/diffuse/vcs/rcs.py:60
 #: src/diffuse/vcs/svn.py:93
@@ -646,190 +674,3 @@ msgstr "%s というリビジョンをパースする際にエラーが生じま
 #, python-format
 msgid "Error parsing %s."
 msgstr "%s をパースする際にエラーが生じました。"
-
-#, python-format
-#~ msgid "Error processing line %(line)d of %(file)s."
-#~ msgstr "%(file)s の %(line)d行 を処理しているときにエラーが生じました。"
-
-#~ msgid "Auto Detect"
-#~ msgstr "自動検出"
-
-#~ msgid "Display"
-#~ msgstr "表示"
-
-#~ msgid "Font"
-#~ msgstr "フォント"
-
-#~ msgid "Tab width"
-#~ msgstr "タブの幅"
-
-#~ msgid "Show right margin"
-#~ msgstr "右マージンを表示"
-
-#~ msgid "Right margin"
-#~ msgstr "右マージン"
-
-#~ msgid "Show line numbers"
-#~ msgstr "行番号を表示"
-
-#~ msgid "Show white space characters"
-#~ msgstr "空白文字を表示"
-
-#~ msgid "Ignore case differences"
-#~ msgstr "大文字小文字の違いを無視"
-
-#~ msgid "Ignore white space differences"
-#~ msgstr "空白の違いを無視"
-
-#~ msgid "Ignore changes to white space"
-#~ msgstr "空白の変更を無視"
-
-#~ msgid "Ignore blank line differences"
-#~ msgstr "空白行の違いを無視"
-
-#~ msgid "Ignore end of line differences"
-#~ msgstr "行の最後の違いを無視"
-
-#~ msgid "Alignment"
-#~ msgstr "整列"
-
-#~ msgid "Ignore case"
-#~ msgstr "大文字小文字を無視"
-
-#~ msgid "Ignore white space"
-#~ msgstr "空白を無視"
-
-#~ msgid "Ignore blank lines"
-#~ msgstr "空白行を無視"
-
-#~ msgid "Ignore end of line characters"
-#~ msgstr "行の最後の文字を無視"
-
-#~ msgid "Editor"
-#~ msgstr "エディタ"
-
-#~ msgid "Auto indent"
-#~ msgstr "自動インデント"
-
-#~ msgid "Expand tabs to spaces"
-#~ msgstr "タブの代わりに空白を挿入"
-
-#~ msgid "Soft tab width"
-#~ msgstr "ソフトタブの幅"
-
-#~ msgid "Tabs"
-#~ msgstr "タブ"
-
-#~ msgid "Default panes"
-#~ msgstr "枠のデフォルトの数"
-
-#~ msgid "Always show the tab bar"
-#~ msgstr "常にタブバーを表示"
-
-#, python-format
-#~ msgid "Warn me when closing a tab will quit %s"
-#~ msgstr "タブを閉じるとき、%s を終了すると警告"
-
-#~ msgid "Regional Settings"
-#~ msgstr "地域設定"
-
-#~ msgid "Default codec"
-#~ msgstr "デフォルトのコーデック"
-
-#~ msgid "Order of codecs used to identify encoding"
-#~ msgstr "エンコーディングを特定するためのコーデックの優先順位"
-
-#~ msgid "Cygwin"
-#~ msgstr "Cygwin"
-
-#~ msgid "Root directory"
-#~ msgstr "ルートディレクトリ"
-
-#~ msgid "Cygdrive prefix"
-#~ msgstr "Cygdrive 接頭辞"
-
-#~ msgid "\"co\" command"
-#~ msgstr "co というコマンド"
-
-#~ msgid "\"rlog\" command"
-#~ msgstr "rlog というコマンド"
-
-#~ msgid "Command"
-#~ msgstr "コマンド"
-
-#~ msgid "Launch from a Bash login shell"
-#~ msgstr "Bashログインシェルから始める"
-
-#~ msgid "Update paths for Cygwin"
-#~ msgstr "Cygwin のためにパスを更新"
-
-#~ msgid "Version Control"
-#~ msgstr "バージョンコントロール"
-
-#~ msgid "Preferences"
-#~ msgstr "設定"
-
-#~ msgid "Align with Selection"
-#~ msgstr "選択と整列"
-
-#~ msgid "Isolate"
-#~ msgstr "分離"
-
-#~ msgid "Merge Selection"
-#~ msgstr "選択をマージ"
-
-#~ msgid "Select All"
-#~ msgstr "全て選択"
-
-#~ msgid "Swap with Selected Pane"
-#~ msgstr "選択された枠と交換"
-
-#~ msgid "Find..."
-#~ msgstr "検索..."
-
-#~ msgid "Search For: "
-#~ msgstr "検索する文字列: "
-
-#~ msgid "Match Case"
-#~ msgstr "大文字/小文字を区別"
-
-#~ msgid "Search Backwards"
-#~ msgstr "先頭に向かって検索"
-
-#~ msgid "Encoding: "
-#~ msgstr "エンコーディング: "
-
-#~ msgid "Revision: "
-#~ msgstr "リビジョン: "
-
-#~ msgid "Diffuse is a graphical tool for merging and comparing text files."
-#~ msgstr "Diffuse は、テキストファイルをマージして比較するためのグラフィックツールです。"
-
-#~ msgid "translator-credits"
-#~ msgstr "Derrick Moser <derrick_moser@yahoo.com>"
-
-#, fuzzy
-#~ msgid ""
-#~ "This program is free software; you can redistribute it and/or modify\n"
-#~ "it under the terms of the GNU General Public License as published by\n"
-#~ "the Free Software Foundation; either version 2 of the License, or\n"
-#~ "(at your option) any later version.\n"
-#~ "\n"
-#~ "This program is distributed in the hope that it will be useful,\n"
-#~ "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-#~ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
-#~ "GNU General Public License for more details.\n"
-#~ "\n"
-#~ "You should have received a copy of the GNU General Public License along\n"
-#~ "with this program; if not, write to the Free Software Foundation, Inc.,\n"
-#~ "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA."
-#~ msgstr ""
-#~ "このプログラムはフリーソフトウェアです。あなたはこれを、フリーソフトウェア財団によって発行された GNU 一般公衆利用許諾契約書(バージョン2か、希望によってはそれ以降のバージョンのうちどれか)の定める条件の下で再頒布または改変することができます。\n"
-#~ "\n"
-#~ "このプログラムは有用であることを願って頒布されますが、*全くの無保証*です。商業可能性の保証や特定の目的への適合性は、言外に示されたものも含め全く存在しません。詳しくはGNU 一般公衆利用許諾契約書をご覧ください。\n"
-#~ "\n"
-#~ "あなたはこのプログラムと共に、GNU 一般公衆利用許諾契約書の複製物を一部受け取ったはずです。もし受け取っていなければ、フリーソフトウェア財団まで請求してください(宛先は the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA)。\n"
-
-#, python-format
-#~ msgid "Column %d"
-#~ msgstr "%d列"
