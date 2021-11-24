@@ -19,12 +19,13 @@
 
 APP_NAME = 'Diffuse'
 VERSION = '@VERSION@'
-COPYRIGHT =  '''{copyright} © 2006-2019 Derrick Moser
-{copyright} © 2015-2021 Romain Failliot'''.format(copyright=_("Copyright"))
+COPYRIGHT = '''{copyright} © 2006-2019 Derrick Moser
+{copyright} © 2015-2021 Romain Failliot'''.format(copyright=_("Copyright"))  # type: ignore
 WEBSITE = 'https://mightycreak.github.io/diffuse/'
 
-sysconfigdir = '@sysconfigdir@'
+LOCALEDIR = '@LOCALEDIR@'
+SYSCONFIGDIR = '@SYSCONFIGDIR@'
 
-use_flatpak = @use_flatpak@
-log_print_output = @log_print_output@
-log_print_stack = @log_print_stack@
+USE_FLATPAK = @USE_FLATPAK@
+LOG_PRINT_OUTPUT = @LOG_PRINT_OUTPUT@
+LOG_PRINT_STACK = @LOG_PRINT_STACK@

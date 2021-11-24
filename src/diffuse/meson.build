@@ -1,13 +1,11 @@
 pkgdatadir = join_paths(get_option('prefix'), get_option('datadir'), meson.project_name())
 moduledir = join_paths(pkgdatadir, 'diffuse')
-sysconfdir = join_paths(get_option('prefix'), get_option('sysconfdir'))
 
 python = import('python')
 
 conf = configuration_data()
 conf.set('PYTHON', python.find_installation('python3').path())
 conf.set('pkgdatadir', pkgdatadir)
-conf.set('localedir', join_paths(get_option('prefix'), get_option('localedir')))
 
 configure_file(
   input: 'diffuse.in',
@@ -19,10 +17,11 @@ configure_file(
 
 conf = configuration_data()
 conf.set('VERSION', meson.project_version())
-conf.set('sysconfigdir', sysconfdir)
-conf.set('log_print_output', get_option('log_print_output'))
-conf.set('log_print_stack', get_option('log_print_stack'))
-conf.set('use_flatpak', get_option('use_flatpak'))
+conf.set('LOCALEDIR', join_paths(get_option('prefix'), get_option('localedir')))
+conf.set('SYSCONFIGDIR', join_paths(get_option('prefix'), get_option('sysconfdir')))
+conf.set('LOG_PRINT_OUTPUT', get_option('log_print_output'))
+conf.set('LOG_PRINT_STACK', get_option('log_print_stack'))
+conf.set('USE_FLATPAK', get_option('use_flatpak'))
 
 configure_file(
   input: 'constants.py.in',
