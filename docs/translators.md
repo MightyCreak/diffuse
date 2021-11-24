@@ -1,5 +1,4 @@
-User Interface
-==============
+# Translators documentation
 
 Below are basic instructions for adding and maintaining Gettext translations
 for Diffuse.  The installer will discover .po files in this directory and
@@ -9,8 +8,7 @@ The example commands below show how to create and manage the Japanese
 translations.  Replace all instances of "ja" with the code for the desired
 language.
 
-Create PO template
-------------------
+## Create PO template
 
 To create or update the PO template (`po/diffuse.pot`), use this command at the
 repo root:
@@ -19,8 +17,7 @@ repo root:
 xgettext -o po/diffuse.pot -f po/POTFILES.in
 ```
 
-Create a new translation
-------------------------
+## Create a new translation
 
 To create a new translation file, you'll need a PO template. If not already
 created, refer to previous section "Create PO template".
@@ -39,8 +36,7 @@ created, refer to previous section "Create PO template".
 [gedit]: https://www.flathub.org/apps/details/org.gnome.gedit
 [vim]: https://www.vim.org/
 
-Update a translation
---------------------
+## Update a translation
 
 Use `update-translations.py` to update one or more PO files.
 
@@ -57,8 +53,7 @@ This command also validate the files, so if you see a message saying "N
 untranslated messages", use the text editor of your choice to complete the
 translations.
 
-Validate a translation
-----------------------
+## Validate a translation
 
 Use `update-translations.py` to validate one or more PO files.
 
@@ -69,8 +64,9 @@ Command-line:
 ./update-translations.py --check-only ja.po ko.po
 ```
 
-System Integration
-==================
+## Windows-specific files
+
+### Installer
 
 Localized text for the Microsoft Windows installer is stored in separate ISL
 files. Copy the [English version][english-win-docs] and replace the text to the
@@ -78,16 +74,19 @@ right of each equal sign.
 
 [english-win-docs]: ../windows-installer/en.isl
 
-Documentation
-=============
+### DocBook
 
-Documentation is stored in DocBook format.  Start a new translation of the
-manual by copying the English version of the [DocBook manual][docbook-manual]
-and then edit the contents.
+Diffuse's help documentation is written in the DocBook format and can be easily
+converted into other formats using XSLT stylesheets. If the local help
+documentation or its browser are unavailable, Diffuse will attempt to display
+the on-line help documentation using a web browser.
+
+Start a new translation of the manual by copying the English version of the
+[DocBook manual][docbook-manual] and then edit the contents.
 
 The DocBook manual is converted to HTML for Windows and Unix man pages for
-POSIX platforms.  The conversion tools insert some English text that gets
-localized using search and replace.  Manually add new search and replace rules
+POSIX platforms. The conversion tools insert some English text that gets
+localized using search and replace. Manually add new search and replace rules
 to these files:
 
     ../windows-installer/translations.txt
