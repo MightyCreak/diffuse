@@ -36,6 +36,10 @@ This is the easiest way to install Diffuse:
 flatpak install io.github.mightycreak.Diffuse
 ```
 
+## Translators
+
+Please refer to the [translation documentation](po/README.md).
+
 ## Developers
 
 ### Setup

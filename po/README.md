@@ -15,7 +15,9 @@ Create PO template
 To create or update the PO template (`po/diffuse.pot`), use this command at the
 repo root:
 
-    xgettext -o po/diffuse.pot -f po/POTFILES.in
+```sh
+xgettext -o po/diffuse.pot -f po/POTFILES.in
+```
 
 Create a new translation
 ------------------------
@@ -23,42 +25,37 @@ Create a new translation
 To create a new translation file, you'll need a PO template. If not already
 created, refer to previous section "Create PO template".
 
-1. Create a .po file for the translation:
+1. Create a .po file for the translation (replace `<lang>` with your language):
 
-        msginit -l ja -o ja.po -i diffuse.pot
+   ```sh
+   msginit -l <lang> -o <lang>.po -i diffuse.pot
+   ```
 
-2. Manually complete in the translations in the .po file:
+2. Manually complete in the translations in the .po file using either an
+   application for that such as [Gtranslator][gtranslator] or directly with a
+   text editor such as [gedit][gedit] or [vim][vim].
 
-        vim ja.po
+[gtranslator]: https://www.flathub.org/apps/details/org.gnome.Gtranslator
+[gedit]: https://www.flathub.org/apps/details/org.gnome.gedit
+[vim]: https://www.vim.org/
 
 Update a translation
 --------------------
 
 Use `update-translations.py` to update one or more PO files.
 
-Here is an example with `ja.po` and `ko.po`:
+Here is an example with the Japanese and Korean translations, respectively
+`ja.po` and `ko.po`:
 
 Command-line:
+
 ```sh
 ./update-translations.py ja.po ko.po
 ```
 
-Output:
-```
-Generate 'diffuse.pot'.
-Updating translation file 'ja.po'...
-Created /tmp/tmp0gtniydu/ja.empty.po.
-Validate ja.po:
-183 translated messages, 2 untranslated messages.
-Update done.
-Updating translation file 'ko.po'...
-Created /tmp/tmp0gtniydu/ko.empty.po.
-Validate ko.po:
-183 translated messages, 2 untranslated messages.
-Update done.
-```
-
-Then use the text editor of your choice to complete the translations.
+This command also validate the files, so if you see a message saying "N
+untranslated messages", use the text editor of your choice to complete the
+translations.
 
 Validate a translation
 ----------------------
@@ -72,40 +69,30 @@ Command-line:
 ./update-translations.py --check-only ja.po ko.po
 ```
 
-Output:
-```
-Validate ja.po:
-183 translated messages, 2 untranslated messages.
-Validate ko.po:
-183 translated messages, 2 untranslated messages.
-```
-
 System Integration
 ==================
 
-Localised text for the system menu (name and comment) should be manually
-added to the desktop file:
+Localized text for the Microsoft Windows installer is stored in separate ISL
+files. Copy the [English version][english-win-docs] and replace the text to the
+right of each equal sign.
 
-    ../src/usr/share/applications/diffuse.desktop
-
-Localised text for the Microsoft Windows installer is stored in separate ISL
-files.  Copy the English version (../windows-installer/en.isl) and replace the
-text to the right of each equal sign.
+[english-win-docs]: ../windows-installer/en.isl
 
 Documentation
 =============
 
 Documentation is stored in DocBook format.  Start a new translation of the
-manual by copying the English version of the DocBook manual
-(../src/usr/share/gnome/help/diffuse/C/diffuse.xml) and then edit the
-contents.
+manual by copying the English version of the [DocBook manual][docbook-manual]
+and then edit the contents.
 
 The DocBook manual is converted to HTML for Windows and Unix man pages for
 POSIX platforms.  The conversion tools insert some English text that gets
-localised using search and replace.  Manually add new search and replace rules
+localized using search and replace.  Manually add new search and replace rules
 to these files:
 
     ../windows-installer/translations.txt
     ../utils/translations.txt
 
 The format of each line is: \<language id\>:\<English text\>:\<localised text\>
+
+[docbook-manual]: ../data/usr/share/gnome/help/diffuse/C/diffuse.xml
