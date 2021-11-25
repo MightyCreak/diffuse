@@ -22,11 +22,8 @@
 import sys
 import gettext
 
-PKGDATADIR = '@pkgdatadir@'
-LOCALEDIR = '@localedir@'
-
-sys.path.insert(1, PKGDATADIR)
-gettext.install('diffuse', LOCALEDIR)
+sys.path.insert(1, '@PKGDATADIR@')
+gettext.install('diffuse', '@LOCALEDIR@')
 
 if __name__ == '__main__':
     from diffuse import main

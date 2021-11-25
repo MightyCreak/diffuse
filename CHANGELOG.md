@@ -16,6 +16,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   io.github.mightycreak.Diffuse.appdata.xml.in
 - Leaner README.md
 - Moved the documentation to docs/
+- In the CI, call the linters on the installed directory
+
+### Fixed
+- Removed the lasting lint errors (i.e. in main.py)
 
 ## 0.7.3 - 2021-11-22
 
@@ -23,6 +27,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added linters (flake8 and mypy) and fixed some errors
 - Added lint jobs for both in the CI
 - Added a flatpak job in the CI
+- Created a requirements.dev.txt just for the developers
 
 ### Changed
 - main.py slimmed down by about 5000 lines

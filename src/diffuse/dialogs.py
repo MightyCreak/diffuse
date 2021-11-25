@@ -19,7 +19,7 @@
 
 import os
 
-from diffuse import constants  # type: ignore
+from diffuse import constants
 from diffuse import utils
 
 import gi  # type: ignore
