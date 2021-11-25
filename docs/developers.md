@@ -2,11 +2,17 @@
 
 ## Requirements
 
-Diffuse is implemented in Python and should run on any platform with Python and
-PyGObject.
+To install the requirements just to execute the binary, run:
 
-* Python >= 3.4
-* PyGObject >= 3.18
+```sh
+pip install -r requirements.txt
+```
+
+For developer tools, run this one instead (it includes requirements.txt):
+
+```sh
+pip install -r requirements.dev.txt
+```
 
 ## Setup on Linux
 

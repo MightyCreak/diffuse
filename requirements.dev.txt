@@ -1,0 +1,4 @@
+-r requirements.txt
+flake8 ~= 3.8
+flake8-noqa ~= 1.2
+mypy ~= 0.910
