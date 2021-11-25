@@ -11,7 +11,7 @@
 
 <p align="center">
   <a href="https://github.com/MightyCreak/diffuse/actions/workflows/main.yml">
-    <img src="https://github.com/MightyCreak/diffuse/actions/workflows/main.yml/badge.svg" alt="CI status"/>
+    <img src="https://github.com/MightyCreak/diffuse/actions/workflows/ci.yml/badge.svg" alt="CI status"/>
   </a>
   <a href="https://repology.org/project/diffuse/versions">
     <img src="https://repology.org/badge/tiny-repos/diffuse.svg" alt="Packaging status">
