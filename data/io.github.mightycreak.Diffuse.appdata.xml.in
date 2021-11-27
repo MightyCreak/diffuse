@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
   <id>io.github.mightycreak.Diffuse</id>
-  <name>Diffuse Merge Tool</name>
+  <name>Diffuse</name>
   <summary>Graphical tool for merging and comparing text files</summary>
   <description>
     <p>

@@ -25,18 +25,20 @@ import platform
 import subprocess
 import sys
 
-VERSION='0.7.3'
-PACKAGE='1'
-PLATFORM='win' + ''.join([ c for c in platform.architecture()[0] if c.isdigit() ])
-INSTALLER='diffuse-%s-%s.%s' % (VERSION, PACKAGE, PLATFORM)
+VERSION = '0.7.3'
+PACKAGE = '1'
+PLATFORM = 'win' + ''.join([c for c in platform.architecture()[0] if c.isdigit()])
+INSTALLER = 'diffuse-%s-%s.%s' % (VERSION, PACKAGE, PLATFORM)
+
 
 # makes a directory without complaining if it already exists
 def mkdir(s):
     if not os.path.isdir(s):
         os.mkdir(s)
 
+
 # copies a file to 'dest'
-def copyFile(src, dest, use_text_mode=False,enc=None):
+def copyFile(src, dest, use_text_mode=False, enc=None):
     print('copying "%s" to "%s"' % (src, dest))
     if use_text_mode:
         r, w = 'r', 'w'
@@ -51,6 +53,7 @@ def copyFile(src, dest, use_text_mode=False,enc=None):
     f.write(s)
     f.close()
 
+
 # recursively copies a directory to 'dest'
 def copyDir(src, dest):
     print('copying "%s" to "%s"' % (src, dest))
@@ -63,6 +66,7 @@ def copyDir(src, dest):
         elif os.path.isdir(s):
             copyDir(s, d)
 
+
 # helper to clean up the resulting HTML
 def extract_tag(s, start, end):
     i = s.find(start)
@@ -72,6 +76,7 @@ def extract_tag(s, start, end):
         j = s.find(end, i)
         if j >= 0:
             return pre, start, s[i:j], end, s[j+len(end):]
+
 
 #
 # Make sure we are in the correct directory.
@@ -92,14 +97,26 @@ for p in 'temp\\diffuse.py', 'temp\\diffusew.pyw':
     copyFile('..\\src\\usr\\bin\\diffuse', p, True)
 
 # build executable in 'dist' from diffuse.py and diffusew.pyw
-args = [ sys.executable, 'setup.py', 'py2exe' ]
+args = [sys.executable, 'setup.py', 'py2exe']
 if os.spawnv(os.P_WAIT, args[0], args) != 0:
     raise OSError('Could not run setup.py')
 
 # include Microsoft redistributables needed by Python 2.6 and above
 for f in 'msvcm90.dll', 'msvcp90.dll', 'msvcr90.dll':
-    copyFile(os.path.join(os.environ['SYSTEMROOT'], 'WinSxS\\x86_Microsoft.VC90.CRT_1fc8b3b9a1e18e3b_9.0.21022.8_x-ww_d08d0375\\' + f), 'dist\\' + f)
-copyFile(os.path.join(os.environ['SYSTEMROOT'], 'WinSxS\\Manifests\\x86_Microsoft.VC90.CRT_1fc8b3b9a1e18e3b_9.0.21022.8_x-ww_d08d0375.manifest'), 'dist\\Microsoft.VC90.CRT.manifest')
+    copyFile(
+        os.path.join(
+            os.environ['SYSTEMROOT'],
+            'WinSxS\\x86_Microsoft.VC90.CRT_1fc8b3b9a1e18e3b_9.0.21022.8_x-ww_d08d0375\\' + f
+        ),
+        'dist\\' + f
+    )
+copyFile(
+    os.path.join(
+        os.environ['SYSTEMROOT'],
+        'WinSxS\\Manifests\\x86_Microsoft.VC90.CRT_1fc8b3b9a1e18e3b_9.0.21022.8_x-ww_d08d0375.manifest'  # noqa: E501
+    ),
+    'dist\\Microsoft.VC90.CRT.manifest'
+)
 
 # include GTK dependencies
 gtk_dir = os.environ['GTK_BASEPATH']
@@ -130,7 +147,7 @@ for s in glob.glob('..\\po\\*.po'):
     # Diffuse localisations
     print('Compiling %s translation' % (lang, ))
     d = 'dist'
-    for p in [ 'locale', lang, 'LC_MESSAGES' ]:
+    for p in ['locale', lang, 'LC_MESSAGES']:
         d = os.path.join(d, p)
         mkdir(d)
     d = os.path.join(d, 'diffuse.mo')
@@ -148,7 +165,7 @@ for s in glob.glob('..\\po\\*.po'):
 # license and other documentation
 for p in 'AUTHORS', 'ChangeLog', 'COPYING', 'README':
     copyFile(os.path.join('..', p), os.path.join('dist', p + '.txt'), True)
-for p, enc in [ ('ChangeLog_ru', 'cp1251'), ('README_ru', 'cp1251') ]:
+for p, enc in [('ChangeLog_ru', 'cp1251'), ('README_ru', 'cp1251')]:
     copyFile(os.path.join('..', p), os.path.join('dist', p + '.txt'), True, enc)
 
 # fetch translations for English text hard coded in the stylesheets
@@ -158,7 +175,7 @@ for v in f.read().split('\n'):
     v = v.split(':')
     if len(v) == 3:
         lang = v[0]
-        if not translations.has_key(lang):
+        if lang not in translations:
             translations[lang] = []
         translations[lang].append(v[1:])
 f.close()
@@ -168,11 +185,16 @@ d = '..\\src\\usr\\share\\gnome\\help\\diffuse'
 for lang in os.listdir(d):
     p = os.path.join(os.path.join(d, lang), 'diffuse.xml')
     if os.path.isfile(p):
-        cmd = [ 'xsltproc', '/usr/share/sgml/docbook/xsl-stylesheets/html/docbook.xsl', p ]
+        cmd = ['xsltproc', '/usr/share/sgml/docbook/xsl-stylesheets/html/docbook.xsl', p]
         info = subprocess.STARTUPINFO()
         info.dwFlags |= subprocess.STARTF_USESHOWWINDOW
         info.wShowWindow = subprocess.SW_HIDE
-        proc = subprocess.Popen(cmd, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, startupinfo=info)
+        proc = subprocess.Popen(
+            cmd,
+            stdin=subprocess.PIPE,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            startupinfo=info)
         proc.stdin.close()
         proc.stderr.close()
         fd = proc.stdout
@@ -181,11 +203,17 @@ for lang in os.listdir(d):
         if proc.wait() != 0:
             raise OSError('Could not run xsltproc')
         # add link to style sheet
-        s = s.replace('</head>', '<link rel="stylesheet" href="style.css" type="text/css"/></head>')
+        s = s.replace(
+            '</head>',
+            '<link rel="stylesheet" href="style.css" type="text/css"/></head>'
+        )
         s = s.replace('<p>\n        </p>', '')
         s = s.replace('<p>\n      </p>', '')
         # cleanup HTML to simpler UTF-8 form
-        s = s.replace('<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">', '<meta http-equiv="Content-Type" content="text/html; charset=utf-8">')
+        s = s.replace(
+            '<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">',
+            '<meta http-equiv="Content-Type" content="text/html; charset=utf-8">'
+        )
         a, idx = [], 0
         while True:
             i = s.find('&#', idx)
@@ -202,13 +230,32 @@ for lang in os.listdir(d):
         # clean up translator credit portion
         div = extract_tag(s, '<div class="othercredit">', '</div>')
         if div is not None:
-           firstname = extract_tag(div[2], '<span class="firstname">', '</span>')
-           surname = extract_tag(div[2], '<span class="surname">', '</span>')
-           contrib = extract_tag(div[2], '<span class="contrib">', '</span>')
-           email = extract_tag(div[2], '<code class="email">', '</code>')
-           copyright = extract_tag(div[4], '<p class="copyright">', '</p>')
-           if firstname is not None and surname is not None and contrib is not None and email is not None and copyright is not None:
-               s = '%s%s<p><span class="contrib">%s:</span> <span class="firstname">%s</span> <span class="surname">%s</span> <code class="email">%s</code></p>%s' % (div[0], ''.join(copyright[:4]), contrib[2], firstname[2], surname[2], email[2], copyright[4])
+            firstname = extract_tag(div[2], '<span class="firstname">', '</span>')
+            surname = extract_tag(div[2], '<span class="surname">', '</span>')
+            contrib = extract_tag(div[2], '<span class="contrib">', '</span>')
+            email = extract_tag(div[2], '<code class="email">', '</code>')
+            copyright = extract_tag(div[4], '<p class="copyright">', '</p>')
+            if (
+                firstname is not None and
+                surname is not None and
+                contrib is not None and
+                email is not None and
+                copyright is not None
+            ):
+                s = (
+                    '%s%s<p><span class="contrib">%s:</span> '
+                    '<span class="firstname">%s</span> '
+                    '<span class="surname">%s</span> '
+                    '<code class="email">%s</code></p>%s'
+                ) % (
+                    div[0],
+                    ''.join(copyright[:4]),
+                    contrib[2],
+                    firstname[2],
+                    surname[2],
+                    email[2],
+                    copyright[4]
+                )
         # translate extra text
         for k, v in translations.get(lang, []):
             s = s.replace(k, v)
