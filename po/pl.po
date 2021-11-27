@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: diffuse-0.4.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-27 17:44-0500\n"
+"POT-Creation-Date: 2021-11-27 18:30-0500\n"
 "PO-Revision-Date: 2020-06-29 14:49-0400\n"
 "Last-Translator: Miś Uszatek <adres.email@ymail.com>, 2012\n"
 "Language-Team: Polish <manpages-pl-list@lists.sourceforge.net>\n"
@@ -865,9 +865,9 @@ msgid "Preferences"
 msgstr "Preferencje"
 
 #: src/diffuse/resources.py:465
-#, fuzzy
-msgid "Error processing line {i + 1} of {file_name}."
-msgstr "Błąd przetwarzania linii %(line)d w %(file)s."
+#, python-brace-format
+msgid "Error processing line {line} of {file}."
+msgstr "Błąd przetwarzania linii {line} w {file}."
 
 #: src/diffuse/utils.py:60
 msgid "Auto Detect"

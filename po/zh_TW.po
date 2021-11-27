@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: diffuse 0.4.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-27 17:44-0500\n"
+"POT-Creation-Date: 2021-11-27 18:30-0500\n"
 "PO-Revision-Date: 2020-06-29 14:49-0400\n"
 "Last-Translator: Wei-Lun Chao <bluebat@member.fsf.org>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -869,9 +869,9 @@ msgid "Preferences"
 msgstr "選項"
 
 #: src/diffuse/resources.py:465
-#, fuzzy
-msgid "Error processing line {i + 1} of {file_name}."
-msgstr "處理到檔案 %(file)s 的第 %(line)d 列時出錯。"
+#, python-brace-format
+msgid "Error processing line {line} of {file}."
+msgstr "處理到檔案 {file} 的第 {line} 列時出錯。"
 
 #: src/diffuse/utils.py:60
 msgid "Auto Detect"

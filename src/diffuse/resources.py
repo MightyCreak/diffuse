@@ -462,7 +462,10 @@ class Resources:
                     raise ValueError()
             # except ValueError:
             except:  # noqa: E722 # Grr... the 're' module throws weird errors
-                utils.logError(_(f'Error processing line {i + 1} of {file_name}.'))
+                utils.logError(_('Error processing line {line} of {file}.'.format(
+                    line=i + 1,
+                    file=file_name
+                )))
 
 
 # colour resources

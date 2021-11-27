@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-27 17:44-0500\n"
+"POT-Creation-Date: 2021-11-27 18:30-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -814,7 +814,8 @@ msgid "Preferences"
 msgstr ""
 
 #: src/diffuse/resources.py:465
-msgid "Error processing line {i + 1} of {file_name}."
+#, python-brace-format
+msgid "Error processing line {line} of {file}."
 msgstr ""
 
 #: src/diffuse/utils.py:60

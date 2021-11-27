@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: diffuse 0.4.7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-27 17:44-0500\n"
+"POT-Creation-Date: 2021-11-27 18:30-0500\n"
 "PO-Revision-Date: 2020-06-29 14:49-0400\n"
 "Last-Translator: Akom Chotiphantawanon <knight2000@gmail.com>\n"
 "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
@@ -868,9 +868,9 @@ msgid "Preferences"
 msgstr "ปรับแต่ง"
 
 #: src/diffuse/resources.py:465
-#, fuzzy
-msgid "Error processing line {i + 1} of {file_name}."
-msgstr "เกิดข้อผิดพลาดขณะประมวลผลบรรทัดที่ %(line)d ของ %(file)s"
+#, python-brace-format
+msgid "Error processing line {line} of {file}."
+msgstr "เกิดข้อผิดพลาดขณะประมวลผลบรรทัดที่ {line} ของ {file}"
 
 #: src/diffuse/utils.py:60
 msgid "Auto Detect"

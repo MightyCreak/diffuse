@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: diffuse-svn\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-27 17:44-0500\n"
+"POT-Creation-Date: 2021-11-27 18:30-0500\n"
 "PO-Revision-Date: 2021-01-26 04:29+0100\n"
 "Last-Translator: Henri Menke <henrimenke4@aim.com>\n"
 "Language-Team: German <henrimenke4@aim.com>\n"
@@ -882,9 +882,9 @@ msgid "Preferences"
 msgstr "Einstellungen"
 
 #: src/diffuse/resources.py:465
-#, fuzzy
-msgid "Error processing line {i + 1} of {file_name}."
-msgstr "Fehler bei der Analyse der Zeilen %(line)d von %(file)s."
+#, python-brace-format
+msgid "Error processing line {line} of {file}."
+msgstr "Fehler bei der Analyse der Zeilen {line} von {file}."
 
 #: src/diffuse/utils.py:60
 msgid "Auto Detect"

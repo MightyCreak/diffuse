@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-27 17:44-0500\n"
+"POT-Creation-Date: 2021-11-27 18:30-0500\n"
 "PO-Revision-Date: 2021-01-17 22:14+0100\n"
 "Last-Translator: Åke Engelbrektson <eson@svenskasprakfiler.se>\n"
 "Language-Team: Svenska Språkfiler <contactform@svenskasprakfiler.se>\n"
@@ -188,7 +188,6 @@ msgid "Line Number: "
 msgstr "Radnummer: "
 
 #: src/diffuse/main.py:645
-#, fuzzy
 msgid ""
 "Press the enter key or double click to edit. Press the space bar or use the RMB "
 "menu to manually align."
@@ -875,9 +874,9 @@ msgid "Preferences"
 msgstr "Inställningar"
 
 #: src/diffuse/resources.py:465
-#, fuzzy
-msgid "Error processing line {i + 1} of {file_name}."
-msgstr "Fel vid bearbetning av rad %(line)d i %(file)s."
+#, python-brace-format
+msgid "Error processing line {line} of {file}."
+msgstr "Fel vid bearbetning av rad {line} i {file}."
 
 #: src/diffuse/utils.py:60
 msgid "Auto Detect"
