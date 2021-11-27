@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: diffuse-svn\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-24 13:44-0500\n"
+"POT-Creation-Date: 2021-11-27 17:44-0500\n"
 "PO-Revision-Date: 2020-06-29 14:49-0400\n"
 "Last-Translator: Oleg Pakhtusov <opakhtusov@gmail.com>\n"
 "Language-Team: Russian <opakhtusov@gmail.com>\n"
@@ -23,8 +23,8 @@ msgstr ""
 
 #: data/io.github.mightycreak.Diffuse.desktop.in:3
 #: data/io.github.mightycreak.Diffuse.appdata.xml.in:4
-msgid "Diffuse Merge Tool"
-msgstr "Diffuse Инструмент Слияния"
+msgid "Diffuse"
+msgstr ""
 
 #: data/io.github.mightycreak.Diffuse.desktop.in:4
 #: data/io.github.mightycreak.Diffuse.appdata.xml.in:5
@@ -113,536 +113,537 @@ msgstr "Учитывать регистр"
 msgid "Search Backwards"
 msgstr "Поиск в обратном направлении"
 
-#: src/diffuse/main.py:77
+#: src/diffuse/main.py:78
 msgid "Close Tab"
 msgstr "Закрыть Вкладку"
 
-#: src/diffuse/main.py:120
+#: src/diffuse/main.py:123
 msgid "Open File..."
 msgstr "Открыть Файл..."
 
-#: src/diffuse/main.py:121
+#: src/diffuse/main.py:124
 msgid "Reload File"
 msgstr "Перезагрузить Файл"
 
-#: src/diffuse/main.py:122
+#: src/diffuse/main.py:125
 msgid "Save File"
 msgstr "Сохранить Файл"
 
-#: src/diffuse/main.py:123
+#: src/diffuse/main.py:126
 msgid "Save File As..."
 msgstr "Сохранить Файл Как..."
 
-#: src/diffuse/main.py:268
+#: src/diffuse/main.py:279
 msgid "Save changes before loading the new file?"
 msgstr "Сохранить изменения перед загрузкой нового файла?"
 
-#: src/diffuse/main.py:377
+#: src/diffuse/main.py:390
 #, python-format
 msgid "Error reading revision %(rev)s of %(file)s."
 msgstr "Ошибка считывания ревизии %(rev)s из %(file)s."
 
-#: src/diffuse/main.py:379 src/diffuse/main.py:1712
+#: src/diffuse/main.py:393 src/diffuse/main.py:1847
 #, python-format
 msgid "Error reading %s."
 msgstr "Ошибка чтения %s."
 
-#: src/diffuse/main.py:400
+#: src/diffuse/main.py:415
 msgid "Open File"
 msgstr "Открыть Файл"
 
-#: src/diffuse/main.py:450
+#: src/diffuse/main.py:472
 #, python-format
-msgid "The file %s changed on disk.  Do you want to reload the file?"
-msgstr "Файл %s изменен на диске.  Вы хотите перезагрузить этот файл?"
+msgid "The file %s changed on disk. Do you want to reload the file?"
+msgstr "Файл %s изменен на диске. Вы хотите перезагрузить этот файл?"
 
-#: src/diffuse/main.py:470
+#: src/diffuse/main.py:498
 #, python-format
 msgid "Save %(title)s Pane %(pane)d"
 msgstr "Сохранить %(title)s Субокно %(pane)d"
 
-#: src/diffuse/main.py:496
+#: src/diffuse/main.py:530
 #, python-format
-msgid "A file named %s already exists.  Do you want to overwrite it?"
-msgstr "Файл под именем %s уже существует.  Вы хотите перезаписать его?"
+msgid "A file named %s already exists. Do you want to overwrite it?"
+msgstr "Файл под именем %s уже существует. Вы хотите перезаписать его?"
 
-#: src/diffuse/main.py:501
+#: src/diffuse/main.py:537
 #, python-format
 msgid ""
-"The file %s has been modified by another process since reading it.  If you save, "
-"all the external changes could be lost.  Save anyways?"
+"The file %s has been modified by another process since reading it. If you save, "
+"all the external changes could be lost. Save anyways?"
 msgstr ""
-"Файл %s был изменен другим процессом после его прочтения.  На сохранении все "
-"внешние изменения будут потеряны.  Сохранить все равно?"
+"Файл %s был изменен другим процессом после его прочтения. На сохранении все "
+"внешние изменения будут потеряны. Сохранить все равно?"
 
-#: src/diffuse/main.py:540
+#: src/diffuse/main.py:579
 #, python-format
 msgid "Error encoding to %s."
 msgstr "Ошибка кодирования в %s."
 
-#: src/diffuse/main.py:542 src/diffuse/preferences.py:296
+#: src/diffuse/main.py:583 src/diffuse/preferences.py:296
 #, python-format
 msgid "Error writing %s."
 msgstr "Ошибка записи %s."
 
-#: src/diffuse/main.py:570
+#: src/diffuse/main.py:613
 msgid "Go To Line..."
 msgstr "Перейти на Строку..."
 
-#: src/diffuse/main.py:570
+#: src/diffuse/main.py:614
 msgid "Line Number: "
 msgstr "Номер строки: "
 
-#: src/diffuse/main.py:596
+#: src/diffuse/main.py:645
 msgid ""
-"Press the enter key or double click to edit.  Press the space bar or use the RMB "
+"Press the enter key or double click to edit. Press the space bar or use the RMB "
 "menu to manually align."
 msgstr ""
-"Нажатие Enter или двойной щелчок для редактирования.  Нажатие Space или меню "
+"Нажатие Enter или двойной щелчок для редактирования. Нажатие Space или меню "
 "правого щелчка для выравнивания вручную."
 
-#: src/diffuse/main.py:598
+#: src/diffuse/main.py:649
 msgid "Press the escape key to finish editing."
 msgstr "Нажмите клавишу Escape, чтобы закончить редактирование."
 
-#: src/diffuse/main.py:600
+#: src/diffuse/main.py:652
 msgid ""
-"Select target line and press the space bar to align.  Press the escape key to "
+"Select target line and press the space bar to align. Press the escape key to "
 "cancel."
 msgstr ""
-"Выберите целевую строку и нажмите клавишу Space, чтобы выровнять.  Нажмите Еscape "
+"Выберите целевую строку и нажмите клавишу Space, чтобы выровнять. Нажмите Еscape "
 "для отмены."
 
-#: src/diffuse/main.py:711
+#: src/diffuse/main.py:775
 msgid "_File"
 msgstr "Фа_йл"
 
-#: src/diffuse/main.py:712
+#: src/diffuse/main.py:776
 msgid "_Open File..."
 msgstr "О_ткрыть Файл..."
 
-#: src/diffuse/main.py:713
+#: src/diffuse/main.py:777
 msgid "Open File In New _Tab..."
 msgstr "Открыт_ь Файл в Новой Вкладке..."
 
-#: src/diffuse/main.py:714
+#: src/diffuse/main.py:778
 msgid "Open _Modified Files..."
 msgstr "Открыть И_змененные Файлы..."
 
-#: src/diffuse/main.py:715
+#: src/diffuse/main.py:779
 msgid "Open Commi_t..."
 msgstr "Открыть Зафи_ксированные..."
 
-#: src/diffuse/main.py:716
+#: src/diffuse/main.py:780
 msgid "_Reload File"
 msgstr "Пер_езагрузить Файл"
 
-#: src/diffuse/main.py:718
+#: src/diffuse/main.py:782
 msgid "_Save File"
 msgstr "С_охранить Файл"
 
-#: src/diffuse/main.py:719
+#: src/diffuse/main.py:783
 msgid "Save File _As..."
 msgstr "Сохра_нить Файл Как..."
 
-#: src/diffuse/main.py:720
+#: src/diffuse/main.py:784
 msgid "Save A_ll"
 msgstr "Сохран_ить Все"
 
-#: src/diffuse/main.py:722
+#: src/diffuse/main.py:786
 msgid "New _2-Way File Merge"
 msgstr "Новое _2-Оконное Слияние Файлов"
 
-#: src/diffuse/main.py:723
+#: src/diffuse/main.py:787
 msgid "New _3-Way File Merge"
 msgstr "Новое _3-Оконное Слияние Файлов"
 
-#: src/diffuse/main.py:724
+#: src/diffuse/main.py:788
 msgid "New _N-Way File Merge..."
 msgstr "Новое _Многооконное Слияние Файлов..."
 
-#: src/diffuse/main.py:726
+#: src/diffuse/main.py:790
 msgid "_Close Tab"
 msgstr "З_акрыть Вкладку"
 
-#: src/diffuse/main.py:727
+#: src/diffuse/main.py:791
 msgid "_Undo Close Tab"
 msgstr "От_менить Закрытие Вкладки"
 
-#: src/diffuse/main.py:728
+#: src/diffuse/main.py:792
 msgid "_Quit"
 msgstr "В_ыход"
 
-#: src/diffuse/main.py:730
+#: src/diffuse/main.py:795
 msgid "_Edit"
 msgstr "Пра_вка"
 
-#: src/diffuse/main.py:731
+#: src/diffuse/main.py:796
 msgid "_Undo"
 msgstr "От_менить"
 
-#: src/diffuse/main.py:732
+#: src/diffuse/main.py:797
 msgid "_Redo"
 msgstr "Вер_нуть"
 
-#: src/diffuse/main.py:734
+#: src/diffuse/main.py:799
 msgid "Cu_t"
 msgstr "Выре_зать"
 
-#: src/diffuse/main.py:735
+#: src/diffuse/main.py:800
 msgid "_Copy"
 msgstr "Ко_пировать"
 
-#: src/diffuse/main.py:736
+#: src/diffuse/main.py:801
 msgid "_Paste"
 msgstr "В_ставить"
 
-#: src/diffuse/main.py:738
+#: src/diffuse/main.py:803
 msgid "Select _All"
 msgstr "В_ыбрать Все"
 
-#: src/diffuse/main.py:739
+#: src/diffuse/main.py:804
 msgid "C_lear Edits"
 msgstr "Оч_истить Правки"
 
-#: src/diffuse/main.py:740
+#: src/diffuse/main.py:805
 msgid "_Dismiss All Edits"
 msgstr "Сбр_осить Все Правки"
 
-#: src/diffuse/main.py:742
+#: src/diffuse/main.py:807
 msgid "_Find..."
 msgstr "На_йти..."
 
-#: src/diffuse/main.py:743
+#: src/diffuse/main.py:808
 msgid "Find _Next"
 msgstr "Н_айти Следующее"
 
-#: src/diffuse/main.py:744
+#: src/diffuse/main.py:809
 msgid "Find Pre_vious"
 msgstr "Най_ти Предыдущее"
 
-#: src/diffuse/main.py:745
+#: src/diffuse/main.py:810
 msgid "_Go To Line..."
 msgstr "Пер_ейти на Строку..."
 
-#: src/diffuse/main.py:747
+#: src/diffuse/main.py:812
 msgid "Pr_eferences..."
 msgstr "Предпо_чтения..."
 
-#: src/diffuse/main.py:749
+#: src/diffuse/main.py:816
 msgid "None"
 msgstr "Нет"
 
-#: src/diffuse/main.py:757
+#: src/diffuse/main.py:834
 msgid "_View"
 msgstr "В_ид"
 
-#: src/diffuse/main.py:758
+#: src/diffuse/main.py:835
 msgid "_Syntax Highlighting"
 msgstr "Подсве_тка Синтаксиса"
 
-#: src/diffuse/main.py:760
+#: src/diffuse/main.py:837
 msgid "Re_align All"
 msgstr "Пере_строить Все"
 
-#: src/diffuse/main.py:761
+#: src/diffuse/main.py:838
 msgid "_Isolate"
 msgstr "И_золировать"
 
-#: src/diffuse/main.py:763
+#: src/diffuse/main.py:840
 msgid "_First Difference"
 msgstr "Пер_вое Различие"
 
-#: src/diffuse/main.py:764
+#: src/diffuse/main.py:841
 msgid "_Previous Difference"
 msgstr "Предыдуще_е Различие"
 
-#: src/diffuse/main.py:765
+#: src/diffuse/main.py:842
 msgid "_Next Difference"
 msgstr "Следу_ющее Различие"
 
-#: src/diffuse/main.py:766
+#: src/diffuse/main.py:843
 msgid "_Last Difference"
 msgstr "П_оследнее Различие"
 
-#: src/diffuse/main.py:768
+#: src/diffuse/main.py:845
 msgid "Fir_st Tab"
 msgstr "Перв_ая Вкладка"
 
-#: src/diffuse/main.py:769
+#: src/diffuse/main.py:846
 msgid "Pre_vious Tab"
 msgstr "Предыдуща_я Вкладка"
 
-#: src/diffuse/main.py:770
+#: src/diffuse/main.py:847
 msgid "Next _Tab"
 msgstr "С_ледующая Вкладка"
 
-#: src/diffuse/main.py:771
+#: src/diffuse/main.py:848
 msgid "Las_t Tab"
 msgstr "Послед_няя Вкладка"
 
-#: src/diffuse/main.py:773
+#: src/diffuse/main.py:850
 msgid "Shift Pane _Right"
 msgstr "Пере_местить Субокно Вправо"
 
-#: src/diffuse/main.py:774
+#: src/diffuse/main.py:851
 msgid "Shift Pane _Left"
 msgstr "Перемест_ить Субокно Влево"
 
-#: src/diffuse/main.py:776
+#: src/diffuse/main.py:854
 msgid "F_ormat"
 msgstr "Фор_мат"
 
-#: src/diffuse/main.py:777
+#: src/diffuse/main.py:855
 msgid "Convert To _Upper Case"
 msgstr "Пр_еобразовать в Верхний Регистр"
 
-#: src/diffuse/main.py:778
+#: src/diffuse/main.py:856
 msgid "Convert To _Lower Case"
 msgstr "Пре_образовать в Нижний Регистр"
 
-#: src/diffuse/main.py:780
+#: src/diffuse/main.py:858
 msgid "Sort Lines In _Ascending Order"
 msgstr "Сор_тировать Строки в Порядке Возрастания"
 
-#: src/diffuse/main.py:781
+#: src/diffuse/main.py:859
 msgid "Sort Lines In D_escending Order"
 msgstr "Сорт_ировать Строки в Порядке Убывания"
 
-#: src/diffuse/main.py:783
+#: src/diffuse/main.py:861
 msgid "Remove Trailing _White Space"
 msgstr "Уда_лить Замыкающие Пробелы"
 
-#: src/diffuse/main.py:784
+#: src/diffuse/main.py:862
 msgid "Convert Tabs To _Spaces"
 msgstr "Преобр_азовать Табуляторы в Пробелы"
 
-#: src/diffuse/main.py:785
+#: src/diffuse/main.py:863
 msgid "Convert Leading Spaces To _Tabs"
 msgstr "Преобра_зовать Вводные Пробелы в Табуляторы"
 
-#: src/diffuse/main.py:787
+#: src/diffuse/main.py:865
 msgid "_Increase Indenting"
 msgstr "У_величить Отступ"
 
-#: src/diffuse/main.py:788
+#: src/diffuse/main.py:866
 msgid "De_crease Indenting"
 msgstr "У_меньшить Отступ"
 
-#: src/diffuse/main.py:790
+#: src/diffuse/main.py:868
 msgid "Convert To _DOS Format"
 msgstr "Преобразоват_ь в DOS Формат"
 
-#: src/diffuse/main.py:791
+#: src/diffuse/main.py:869
 msgid "Convert To _Mac Format"
 msgstr "Преобразовать в Ma_с Формат"
 
-#: src/diffuse/main.py:792
+#: src/diffuse/main.py:870
 msgid "Convert To Uni_x Format"
 msgstr "Преобразовать в Uni_х Формат"
 
-#: src/diffuse/main.py:794
+#: src/diffuse/main.py:873
 msgid "_Merge"
 msgstr "С_лияние"
 
-#: src/diffuse/main.py:795
+#: src/diffuse/main.py:874
 msgid "Copy Selection _Right"
 msgstr "К_опировать Выборку Вправо"
 
-#: src/diffuse/main.py:796
+#: src/diffuse/main.py:875
 msgid "Copy Selection _Left"
 msgstr "Ко_пировать Выборку Влево"
 
-#: src/diffuse/main.py:798
+#: src/diffuse/main.py:877
 msgid "Copy Left _Into Selection"
 msgstr "Копиро_вать Слева в Выборку"
 
-#: src/diffuse/main.py:799
+#: src/diffuse/main.py:878
 msgid "Copy Right I_nto Selection"
 msgstr "Копиров_ать Справа в Выборку"
 
-#: src/diffuse/main.py:800
+#: src/diffuse/main.py:879
 msgid "_Merge From Left Then Right"
 msgstr "С_лияние Слева Затем Справа"
 
-#: src/diffuse/main.py:801
+#: src/diffuse/main.py:880
 msgid "M_erge From Right Then Left"
 msgstr "Сл_ияние Справа Затем Слева"
 
-#: src/diffuse/main.py:803
+#: src/diffuse/main.py:883
 msgid "_Help"
 msgstr "Спр_авка"
 
-#: src/diffuse/main.py:804
+#: src/diffuse/main.py:884
 msgid "_Help Contents..."
 msgstr "Содер_жание Справки..."
 
-#: src/diffuse/main.py:806
+#: src/diffuse/main.py:886
 #, python-format
 msgid "_About %s..."
 msgstr "О пр_ограмме %s..."
 
-#: src/diffuse/main.py:820
+#: src/diffuse/main.py:901
 msgid "New 2-Way File Merge"
 msgstr "Новое 2-Оконное Слияние Файлов"
 
-#: src/diffuse/main.py:821
+#: src/diffuse/main.py:902
 msgid "New 3-Way File Merge"
 msgstr "Новое 3-Оконное Слияние Файлов"
 
-#: src/diffuse/main.py:823
+#: src/diffuse/main.py:904
 msgid "Realign All"
 msgstr "Перестроить Все"
 
-#: src/diffuse/main.py:824
+#: src/diffuse/main.py:905
 msgid "First Difference"
 msgstr "Первое Различие"
 
-#: src/diffuse/main.py:825
+#: src/diffuse/main.py:906
 msgid "Previous Difference"
 msgstr "Предыдущее Различие"
 
-#: src/diffuse/main.py:826
+#: src/diffuse/main.py:907
 msgid "Next Difference"
 msgstr "Следующее Различие"
 
-#: src/diffuse/main.py:827
+#: src/diffuse/main.py:908
 msgid "Last Difference"
 msgstr "Последнее Различие"
 
-#: src/diffuse/main.py:829
+#: src/diffuse/main.py:910
 msgid "Copy Selection Right"
 msgstr "Копировать Выборку Вправо"
 
-#: src/diffuse/main.py:830
+#: src/diffuse/main.py:911
 msgid "Copy Selection Left"
 msgstr "Копировать Выборку Влево"
 
-#: src/diffuse/main.py:831
+#: src/diffuse/main.py:912
 msgid "Copy Left Into Selection"
 msgstr "Копировать Слева в Выборку"
 
-#: src/diffuse/main.py:832
+#: src/diffuse/main.py:913
 msgid "Copy Right Into Selection"
 msgstr "Копировать Справа в Выборку"
 
-#: src/diffuse/main.py:833
+#: src/diffuse/main.py:914
 msgid "Merge From Left Then Right"
 msgstr "Слияние Слева Затем Справа"
 
-#: src/diffuse/main.py:834
+#: src/diffuse/main.py:915
 msgid "Merge From Right Then Left"
 msgstr "Слияние Справа Затем Слева"
 
-#: src/diffuse/main.py:836
+#: src/diffuse/main.py:917
 msgid "Undo"
 msgstr "Отменить"
 
-#: src/diffuse/main.py:837
+#: src/diffuse/main.py:918
 msgid "Redo"
 msgstr "Вернуть"
 
-#: src/diffuse/main.py:838 src/diffuse/widgets.py:1846
+#: src/diffuse/main.py:919 src/diffuse/widgets.py:1846
 msgid "Cut"
 msgstr "Вырезать"
 
-#: src/diffuse/main.py:839 src/diffuse/widgets.py:1847
+#: src/diffuse/main.py:920 src/diffuse/widgets.py:1847
 msgid "Copy"
 msgstr "Копировать"
 
-#: src/diffuse/main.py:840 src/diffuse/widgets.py:1848
+#: src/diffuse/main.py:921 src/diffuse/widgets.py:1848
 msgid "Paste"
 msgstr "Вставить"
 
-#: src/diffuse/main.py:841 src/diffuse/widgets.py:1851
+#: src/diffuse/main.py:922 src/diffuse/widgets.py:1851
 msgid "Clear Edits"
 msgstr "Очистить Правки"
 
-#: src/diffuse/main.py:961
-msgid "Some files have unsaved changes.  Select the files to save before closing."
+#: src/diffuse/main.py:1045
+#, fuzzy
+msgid "Some files have unsaved changes. Select the files to save before closing."
 msgstr ""
 "Некоторые файлы имеют несохраненные изменения.\n"
 "Выберите файлы для сохранения перед закрытием."
 
-#: src/diffuse/main.py:974
+#: src/diffuse/main.py:1059
 msgid "Tab"
 msgstr "Вкладка"
 
-#: src/diffuse/main.py:979
+#: src/diffuse/main.py:1064
 msgid "Pane"
 msgstr "Субокно"
 
-#: src/diffuse/main.py:990
+#: src/diffuse/main.py:1075
 msgid "Close _Without Saving"
 msgstr "Закр_ыть Без Сохранения"
 
-#: src/diffuse/main.py:1026
+#: src/diffuse/main.py:1114
 #, python-format
 msgid "Closing this tab will quit %s."
 msgstr "Закрытие этой вкладки закроет %s."
 
-#: src/diffuse/main.py:1108
+#: src/diffuse/main.py:1197
 #, python-format
 msgid "File Merge %d"
 msgstr "Слияние Файлов %d"
 
-#: src/diffuse/main.py:1211
+#: src/diffuse/main.py:1303
 #, python-format
 msgid "Error retrieving commits for %s."
 msgstr "Ошибка извлечения фиксаций для %s."
 
-#: src/diffuse/main.py:1240
+#: src/diffuse/main.py:1335
 #, python-format
 msgid "Error retrieving modifications for %s."
 msgstr "Ошибка извлечения модификаций для %s."
 
-#: src/diffuse/main.py:1270
+#: src/diffuse/main.py:1368
 msgid "Open File In New Tab"
 msgstr "Открыть Файл в Новой Вкладке"
 
-#: src/diffuse/main.py:1286
+#: src/diffuse/main.py:1391
 msgid "Choose Folder With Modified Files"
 msgstr "Выбрать Папку с Измененными Файлами"
 
-#: src/diffuse/main.py:1299
+#: src/diffuse/main.py:1409
 msgid "No modified files found."
 msgstr "Модифицированные файлы не найдены."
 
-#: src/diffuse/main.py:1304
+#: src/diffuse/main.py:1415
 msgid "Choose Folder With Commit"
 msgstr "Выбрать Папку с Зафиксированными Изменениями"
 
-#: src/diffuse/main.py:1317
+#: src/diffuse/main.py:1435
 msgid "No committed files found."
 msgstr "Файлы с фиксациями не найдены."
 
-#: src/diffuse/main.py:1351
+#: src/diffuse/main.py:1471
 msgid "New N-Way File Merge..."
 msgstr "Новое Многооконное Слияние Файлов..."
 
-#: src/diffuse/main.py:1351
+#: src/diffuse/main.py:1472
 msgid "Number of panes: "
 msgstr "Количество субокна: "
 
-#: src/diffuse/main.py:1416
+#: src/diffuse/main.py:1546
 msgid "Phrase not found.  Continue from the end of the file?"
 msgstr "Фраза не найдена.  Продолжить с конца файла?"
 
-#: src/diffuse/main.py:1418
+#: src/diffuse/main.py:1548
 msgid "Phrase not found.  Continue from the start of the file?"
 msgstr "Фраза не найдена.  Продолжить с начала файла?"
 
-#: src/diffuse/main.py:1631
+#: src/diffuse/main.py:1767
+#, fuzzy
 msgid ""
 "Usage:\n"
-"    diffuse [ [OPTION...] [FILE...] ]...\n"
+"    diffuse [OPTION...] [FILE...]\n"
 "    diffuse ( -h | -? | --help | -v | --version )\n"
 "\n"
-"Diffuse is a graphical tool for merging and comparing text files.  Diffuse is\n"
+"Diffuse is a graphical tool for merging and comparing text files. Diffuse is\n"
 "able to compare an arbitrary number of files side-by-side and gives users the\n"
-"ability to manually adjust line matching and directly edit files.  Diffuse can\n"
-"also retrieve revisions of files from Bazaar, CVS, Darcs, Git, Mercurial,\n"
-"Monotone, RCS, Subversion, and SVK repositories for comparison and merging.\n"
+"ability to manually adjust line matching and directly edit files. Diffuse can\n"
+"also retrieve revisions of files from several VCSs for comparison and merging.\n"
 "\n"
 "Help Options:\n"
 "  ( -h | -? | --help )             Display this usage information\n"
@@ -713,16 +714,16 @@ msgstr ""
 "  ( -i | --ignore-case )           Игнорировать различия регистра символов\n"
 "  ( -w | --ignore-all-space )      Игнорировать различия свободного места"
 
-#: src/diffuse/main.py:1802
+#: src/diffuse/main.py:1936
 msgid "Error parsing line number."
 msgstr "Ошибка анализа номера строки."
 
-#: src/diffuse/main.py:1812
+#: src/diffuse/main.py:1946
 #, python-format
 msgid "Skipping unknown argument \"%s\"."
 msgstr "Пропуск неизвестного параметра \"%s\"."
 
-#: src/diffuse/main.py:1819
+#: src/diffuse/main.py:1954
 #, python-format
 msgid "Error processing argument \"%s\".  Directory not expected."
 msgstr "Ошибка обработки параметра \"%s\".  Каталог не ожидался."
@@ -922,6 +923,9 @@ msgstr "Выбрать Все"
 #: src/diffuse/widgets.py:1853
 msgid "Swap with Selected Pane"
 msgstr "Обменять с Выбранным Субокном"
+
+#~ msgid "Diffuse Merge Tool"
+#~ msgstr "Diffuse Инструмент Слияния"
 
 #, python-format
 #~ msgid "Column %d"
