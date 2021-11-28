@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: diffuse-svn\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-27 18:30-0500\n"
+"POT-Creation-Date: 2021-11-27 21:56-0500\n"
 "PO-Revision-Date: 2020-06-29 14:49-0400\n"
 "Last-Translator: Jindřich Šesták <khagaroth@gmail.com>\n"
 "Language-Team: NONE <NONE>\n"
@@ -43,19 +43,19 @@ msgstr ""
 msgid "Main window: diff between two files"
 msgstr ""
 
-#: src/diffuse/constants.py.in:23
+#: src/diffuse/constants.py:24
 msgid "Copyright"
 msgstr ""
 
-#: src/diffuse/dialogs.py:38
+#: src/diffuse/dialogs.py:40
 msgid "Diffuse is a graphical tool for merging and comparing text files."
 msgstr "Diffuse je grafický nástroj pro slučování a porovnávání textových souborů."
 
-#: src/diffuse/dialogs.py:43
+#: src/diffuse/dialogs.py:45
 msgid "translator-credits"
 msgstr "Jindřich Šesták <khagaroth@gmail.com>"
 
-#: src/diffuse/dialogs.py:47
+#: src/diffuse/dialogs.py:49
 #, fuzzy
 msgid ""
 "This program is free software; you can redistribute it and/or modify\n"
@@ -85,84 +85,84 @@ msgstr ""
 "můžete zaslat dopis na adresu Free Software Foundation, Inc., 51 Franclin St, "
 "Fifth Floor, Boston, MA 02110-1301 USA\n"
 
-#: src/diffuse/dialogs.py:81
+#: src/diffuse/dialogs.py:83
 msgid "Encoding: "
 msgstr "Kódování: "
 
-#: src/diffuse/dialogs.py:93
+#: src/diffuse/dialogs.py:95
 msgid "Revision: "
 msgstr "Revize: "
 
-#: src/diffuse/dialogs.py:149
+#: src/diffuse/dialogs.py:151
 msgid "Find..."
 msgstr "Najít..."
 
-#: src/diffuse/dialogs.py:157
+#: src/diffuse/dialogs.py:159
 msgid "Search For: "
 msgstr "Vyhledat: "
 
-#: src/diffuse/dialogs.py:182
+#: src/diffuse/dialogs.py:184
 msgid "Match Case"
 msgstr "Rozlišovat velikost písmen"
 
-#: src/diffuse/dialogs.py:187
+#: src/diffuse/dialogs.py:189
 msgid "Search Backwards"
 msgstr "Hledat od konce"
 
-#: src/diffuse/main.py:78
+#: src/diffuse/main.py:79
 msgid "Close Tab"
 msgstr "Zavřít panel"
 
-#: src/diffuse/main.py:123
+#: src/diffuse/main.py:124
 msgid "Open File..."
 msgstr "Otevřít soubor..."
 
-#: src/diffuse/main.py:124
+#: src/diffuse/main.py:125
 msgid "Reload File"
 msgstr "Znovu načíst soubor"
 
-#: src/diffuse/main.py:125
+#: src/diffuse/main.py:126
 msgid "Save File"
 msgstr "Uložit soubor"
 
-#: src/diffuse/main.py:126
+#: src/diffuse/main.py:127
 msgid "Save File As..."
 msgstr "Uložit soubor jako..."
 
-#: src/diffuse/main.py:279
+#: src/diffuse/main.py:280
 msgid "Save changes before loading the new file?"
 msgstr "Uložit změny před načtením nového souboru?"
 
-#: src/diffuse/main.py:390
+#: src/diffuse/main.py:391
 #, python-format
 msgid "Error reading revision %(rev)s of %(file)s."
 msgstr "Při čtení revize %(rev)s souboru %(file)s došlo k chybě."
 
-#: src/diffuse/main.py:393 src/diffuse/main.py:1847
+#: src/diffuse/main.py:394 src/diffuse/main.py:1849
 #, python-format
 msgid "Error reading %s."
 msgstr "Při čtení souboru %s došlo k chybě."
 
-#: src/diffuse/main.py:415
+#: src/diffuse/main.py:416
 msgid "Open File"
 msgstr "Otevřít soubor"
 
-#: src/diffuse/main.py:472
+#: src/diffuse/main.py:473
 #, python-format
 msgid "The file %s changed on disk. Do you want to reload the file?"
 msgstr "Soubor %s byl změněn. Chcete ho znovu načíst?"
 
-#: src/diffuse/main.py:498
+#: src/diffuse/main.py:499
 #, python-format
 msgid "Save %(title)s Pane %(pane)d"
 msgstr "Uložit podokno %(pane)d %(title)s"
 
-#: src/diffuse/main.py:530
+#: src/diffuse/main.py:531
 #, python-format
 msgid "A file named %s already exists. Do you want to overwrite it?"
 msgstr "Soubor s názvem %s již existuje. Chcete ho přepsat?"
 
-#: src/diffuse/main.py:537
+#: src/diffuse/main.py:538
 #, python-format
 msgid ""
 "The file %s has been modified by another process since reading it. If you save, "
@@ -171,25 +171,25 @@ msgstr ""
 "Soubor %s byl od načtení změněn jiným procesem. Pokud ho nyní uložíte, změny "
 "provedené tímto externím procesem mohou být ztraceny. Chcete ho přesto uložit?"
 
-#: src/diffuse/main.py:579
+#: src/diffuse/main.py:580
 #, python-format
 msgid "Error encoding to %s."
 msgstr "Při změně kódování do %s došlo k chybě."
 
-#: src/diffuse/main.py:583 src/diffuse/preferences.py:296
+#: src/diffuse/main.py:584 src/diffuse/preferences.py:298
 #, python-format
 msgid "Error writing %s."
 msgstr "Při ukládání %s došlo k chybě."
 
-#: src/diffuse/main.py:613
+#: src/diffuse/main.py:614
 msgid "Go To Line..."
 msgstr "Přejít na řádek..."
 
-#: src/diffuse/main.py:614
+#: src/diffuse/main.py:615
 msgid "Line Number: "
 msgstr "Řádek číslo: "
 
-#: src/diffuse/main.py:645
+#: src/diffuse/main.py:646
 msgid ""
 "Press the enter key or double click to edit. Press the space bar or use the RMB "
 "menu to manually align."
@@ -198,11 +198,11 @@ msgstr ""
 "Pro ruční zarovnání stiskněte Mezerník, nebo použijte místní nabídku dostupnou po "
 "kliknutí pravým tlačítkem myši."
 
-#: src/diffuse/main.py:649
+#: src/diffuse/main.py:650
 msgid "Press the escape key to finish editing."
 msgstr "Editaci ukončíte pomocí klávesy escape."
 
-#: src/diffuse/main.py:652
+#: src/diffuse/main.py:653
 msgid ""
 "Select target line and press the space bar to align. Press the escape key to "
 "cancel."
@@ -210,426 +210,426 @@ msgstr ""
 "Vyberte cílový řádek a proveďte zarovnání stisknutím klávesy Mezerník. Pro "
 "zrušení stiskněte klávesu Escape."
 
-#: src/diffuse/main.py:775
+#: src/diffuse/main.py:776
 msgid "_File"
 msgstr "_Soubor"
 
-#: src/diffuse/main.py:776
+#: src/diffuse/main.py:777
 msgid "_Open File..."
 msgstr "_Otevřít soubor..."
 
-#: src/diffuse/main.py:777
+#: src/diffuse/main.py:778
 msgid "Open File In New _Tab..."
 msgstr "Otevřít soubor v novém _panelu..."
 
-#: src/diffuse/main.py:778
+#: src/diffuse/main.py:779
 msgid "Open _Modified Files..."
 msgstr "Otevřít změněné soubory..."
 
-#: src/diffuse/main.py:779
+#: src/diffuse/main.py:780
 msgid "Open Commi_t..."
 msgstr "Otevřít _revizi..."
 
-#: src/diffuse/main.py:780
+#: src/diffuse/main.py:781
 msgid "_Reload File"
 msgstr "_Znovu načíst soubor"
 
-#: src/diffuse/main.py:782
+#: src/diffuse/main.py:783
 msgid "_Save File"
 msgstr "_Uložit soubor"
 
-#: src/diffuse/main.py:783
+#: src/diffuse/main.py:784
 msgid "Save File _As..."
 msgstr "Uložit soubor ­_jako..."
 
-#: src/diffuse/main.py:784
+#: src/diffuse/main.py:785
 msgid "Save A_ll"
 msgstr "Uložit _vše"
 
-#: src/diffuse/main.py:786
+#: src/diffuse/main.py:787
 msgid "New _2-Way File Merge"
 msgstr "Nové _2směrné slučování"
 
-#: src/diffuse/main.py:787
+#: src/diffuse/main.py:788
 msgid "New _3-Way File Merge"
 msgstr "Nové _3směrné slučování"
 
-#: src/diffuse/main.py:788
+#: src/diffuse/main.py:789
 msgid "New _N-Way File Merge..."
 msgstr "Nové _Nsměrné slučování"
 
-#: src/diffuse/main.py:790
+#: src/diffuse/main.py:791
 msgid "_Close Tab"
 msgstr "_Zavřít panel"
 
-#: src/diffuse/main.py:791
+#: src/diffuse/main.py:792
 msgid "_Undo Close Tab"
 msgstr "_Obnovit zavřený panel"
 
-#: src/diffuse/main.py:792
+#: src/diffuse/main.py:793
 msgid "_Quit"
 msgstr "Kone_c"
 
-#: src/diffuse/main.py:795
+#: src/diffuse/main.py:796
 msgid "_Edit"
 msgstr "Úpr_avy"
 
-#: src/diffuse/main.py:796
+#: src/diffuse/main.py:797
 msgid "_Undo"
 msgstr "_Zpět"
 
-#: src/diffuse/main.py:797
+#: src/diffuse/main.py:798
 msgid "_Redo"
 msgstr "Z_novu"
 
-#: src/diffuse/main.py:799
+#: src/diffuse/main.py:800
 msgid "Cu_t"
 msgstr "_Vyjmout"
 
-#: src/diffuse/main.py:800
+#: src/diffuse/main.py:801
 msgid "_Copy"
 msgstr "_Kopírovat"
 
-#: src/diffuse/main.py:801
+#: src/diffuse/main.py:802
 msgid "_Paste"
 msgstr "V_ložit"
 
-#: src/diffuse/main.py:803
+#: src/diffuse/main.py:804
 msgid "Select _All"
 msgstr "V_ybrat vše"
 
-#: src/diffuse/main.py:804
+#: src/diffuse/main.py:805
 msgid "C_lear Edits"
 msgstr "_Smazat úpravy"
 
-#: src/diffuse/main.py:805
+#: src/diffuse/main.py:806
 msgid "_Dismiss All Edits"
 msgstr "Z_rušit všechny úpravy"
 
-#: src/diffuse/main.py:807
+#: src/diffuse/main.py:808
 msgid "_Find..."
 msgstr "_Najít"
 
-#: src/diffuse/main.py:808
+#: src/diffuse/main.py:809
 msgid "Find _Next"
 msgstr "Najít _další"
 
-#: src/diffuse/main.py:809
+#: src/diffuse/main.py:810
 msgid "Find Pre_vious"
 msgstr "Najít _předchozí"
 
-#: src/diffuse/main.py:810
+#: src/diffuse/main.py:811
 msgid "_Go To Line..."
 msgstr "Pře_jít na řádek..."
 
-#: src/diffuse/main.py:812
+#: src/diffuse/main.py:813
 msgid "Pr_eferences..."
 msgstr "Př_edvolby..."
 
-#: src/diffuse/main.py:816
+#: src/diffuse/main.py:817
 msgid "None"
 msgstr "Nic"
 
-#: src/diffuse/main.py:834
+#: src/diffuse/main.py:835
 msgid "_View"
 msgstr "_Zobrazit"
 
-#: src/diffuse/main.py:835
+#: src/diffuse/main.py:836
 msgid "_Syntax Highlighting"
 msgstr "Zvýraznění _syntaxe"
 
-#: src/diffuse/main.py:837
+#: src/diffuse/main.py:838
 msgid "Re_align All"
 msgstr "Znovu _zarovnat"
 
-#: src/diffuse/main.py:838
+#: src/diffuse/main.py:839
 msgid "_Isolate"
 msgstr "_Izolovat"
 
-#: src/diffuse/main.py:840
+#: src/diffuse/main.py:841
 msgid "_First Difference"
 msgstr "Pr_vní rozdíl"
 
-#: src/diffuse/main.py:841
+#: src/diffuse/main.py:842
 msgid "_Previous Difference"
 msgstr "_Předchozí rozdíl"
 
-#: src/diffuse/main.py:842
+#: src/diffuse/main.py:843
 msgid "_Next Difference"
 msgstr "_Další rozdíl"
 
-#: src/diffuse/main.py:843
+#: src/diffuse/main.py:844
 msgid "_Last Difference"
 msgstr "P_oslední rozdíl"
 
-#: src/diffuse/main.py:845
+#: src/diffuse/main.py:846
 msgid "Fir_st Tab"
 msgstr "Prv_ní panel"
 
-#: src/diffuse/main.py:846
+#: src/diffuse/main.py:847
 msgid "Pre_vious Tab"
 msgstr "Předch_ozí panel"
 
-#: src/diffuse/main.py:847
+#: src/diffuse/main.py:848
 msgid "Next _Tab"
 msgstr "D_alší panel"
 
-#: src/diffuse/main.py:848
+#: src/diffuse/main.py:849
 msgid "Las_t Tab"
 msgstr "Posl_ední panel"
 
-#: src/diffuse/main.py:850
+#: src/diffuse/main.py:851
 msgid "Shift Pane _Right"
 msgstr "Přesunout podokno dop_rava"
 
-#: src/diffuse/main.py:851
+#: src/diffuse/main.py:852
 msgid "Shift Pane _Left"
 msgstr "Přesunout podokno do_leva"
 
-#: src/diffuse/main.py:854
+#: src/diffuse/main.py:855
 msgid "F_ormat"
 msgstr "F_ormát"
 
-#: src/diffuse/main.py:855
+#: src/diffuse/main.py:856
 msgid "Convert To _Upper Case"
 msgstr "Převést na _velká písmena"
 
-#: src/diffuse/main.py:856
+#: src/diffuse/main.py:857
 msgid "Convert To _Lower Case"
 msgstr "Převést na _malá písmena"
 
-#: src/diffuse/main.py:858
+#: src/diffuse/main.py:859
 msgid "Sort Lines In _Ascending Order"
 msgstr "Seřadit řádky v_zestupně"
 
-#: src/diffuse/main.py:859
+#: src/diffuse/main.py:860
 msgid "Sort Lines In D_escending Order"
 msgstr "Seřadit řádky _sestupně"
 
-#: src/diffuse/main.py:861
+#: src/diffuse/main.py:862
 msgid "Remove Trailing _White Space"
 msgstr "_Odstranit mezery na koncích řádků"
 
-#: src/diffuse/main.py:862
+#: src/diffuse/main.py:863
 msgid "Convert Tabs To _Spaces"
 msgstr "_Nahradit tabulátory mezerami"
 
-#: src/diffuse/main.py:863
+#: src/diffuse/main.py:864
 msgid "Convert Leading Spaces To _Tabs"
 msgstr "Nah_radit úvodní mezery tabulátory"
 
-#: src/diffuse/main.py:865
+#: src/diffuse/main.py:866
 msgid "_Increase Indenting"
 msgstr "Zvětš_it odsazení"
 
-#: src/diffuse/main.py:866
+#: src/diffuse/main.py:867
 msgid "De_crease Indenting"
 msgstr "Zmenši_t odsazení"
 
-#: src/diffuse/main.py:868
+#: src/diffuse/main.py:869
 msgid "Convert To _DOS Format"
 msgstr "Převést na _DOS formát"
 
-#: src/diffuse/main.py:869
+#: src/diffuse/main.py:870
 msgid "Convert To _Mac Format"
 msgstr "Převést na Ma_c formát"
 
-#: src/diffuse/main.py:870
+#: src/diffuse/main.py:871
 msgid "Convert To Uni_x Format"
 msgstr "Převést na Uni_x formát"
 
-#: src/diffuse/main.py:873
+#: src/diffuse/main.py:874
 msgid "_Merge"
 msgstr "S_loučit"
 
-#: src/diffuse/main.py:874
+#: src/diffuse/main.py:875
 msgid "Copy Selection _Right"
 msgstr "_Kopírovat výběr doprava"
 
-#: src/diffuse/main.py:875
+#: src/diffuse/main.py:876
 msgid "Copy Selection _Left"
 msgstr "K_opírovat výběr doleva"
 
-#: src/diffuse/main.py:877
+#: src/diffuse/main.py:878
 msgid "Copy Left _Into Selection"
 msgstr "Ko_pírovat zleva do výběru"
 
-#: src/diffuse/main.py:878
+#: src/diffuse/main.py:879
 msgid "Copy Right I_nto Selection"
 msgstr "Kopí_rovat zprava do výběru"
 
-#: src/diffuse/main.py:879
+#: src/diffuse/main.py:880
 msgid "_Merge From Left Then Right"
 msgstr "_Sloučit zleva a poté zprava"
 
-#: src/diffuse/main.py:880
+#: src/diffuse/main.py:881
 msgid "M_erge From Right Then Left"
 msgstr "S_loučit zprava a poté zleva"
 
-#: src/diffuse/main.py:883
+#: src/diffuse/main.py:884
 msgid "_Help"
 msgstr "Nápo_věda"
 
-#: src/diffuse/main.py:884
+#: src/diffuse/main.py:885
 msgid "_Help Contents..."
 msgstr "_Zobrazit nápovědu"
 
-#: src/diffuse/main.py:886
+#: src/diffuse/main.py:887
 #, python-format
 msgid "_About %s..."
 msgstr "_O programu %s..."
 
-#: src/diffuse/main.py:901
+#: src/diffuse/main.py:902
 msgid "New 2-Way File Merge"
 msgstr "Nové 2směrné slučování"
 
-#: src/diffuse/main.py:902
+#: src/diffuse/main.py:903
 msgid "New 3-Way File Merge"
 msgstr "Nové 3směrné slučování"
 
-#: src/diffuse/main.py:904
+#: src/diffuse/main.py:905
 msgid "Realign All"
 msgstr "Znovu zarovnat"
 
-#: src/diffuse/main.py:905
+#: src/diffuse/main.py:906
 msgid "First Difference"
 msgstr "První rozdíl"
 
-#: src/diffuse/main.py:906
+#: src/diffuse/main.py:907
 msgid "Previous Difference"
 msgstr "Předchozí rozdíl"
 
-#: src/diffuse/main.py:907
+#: src/diffuse/main.py:908
 msgid "Next Difference"
 msgstr "Další rozdíl"
 
-#: src/diffuse/main.py:908
+#: src/diffuse/main.py:909
 msgid "Last Difference"
 msgstr "Poslední rozdíl"
 
-#: src/diffuse/main.py:910
+#: src/diffuse/main.py:911
 msgid "Copy Selection Right"
 msgstr "Kopírovat výběr doprava"
 
-#: src/diffuse/main.py:911
+#: src/diffuse/main.py:912
 msgid "Copy Selection Left"
 msgstr "Kopírovat výběr doleva"
 
-#: src/diffuse/main.py:912
+#: src/diffuse/main.py:913
 msgid "Copy Left Into Selection"
 msgstr "Kopírovat zleva do výběru"
 
-#: src/diffuse/main.py:913
+#: src/diffuse/main.py:914
 msgid "Copy Right Into Selection"
 msgstr "Kopírovat zprava do výběru"
 
-#: src/diffuse/main.py:914
+#: src/diffuse/main.py:915
 msgid "Merge From Left Then Right"
 msgstr "Sloučit zleva a poté zprava"
 
-#: src/diffuse/main.py:915
+#: src/diffuse/main.py:916
 msgid "Merge From Right Then Left"
 msgstr "Sloučit zprava a poté zleva"
 
-#: src/diffuse/main.py:917
+#: src/diffuse/main.py:918
 msgid "Undo"
 msgstr "Zpět"
 
-#: src/diffuse/main.py:918
+#: src/diffuse/main.py:919
 msgid "Redo"
 msgstr "Znovu"
 
-#: src/diffuse/main.py:919 src/diffuse/widgets.py:1846
+#: src/diffuse/main.py:920 src/diffuse/widgets.py:1847
 msgid "Cut"
 msgstr "Vyjmout"
 
-#: src/diffuse/main.py:920 src/diffuse/widgets.py:1847
+#: src/diffuse/main.py:921 src/diffuse/widgets.py:1848
 msgid "Copy"
 msgstr "Kopírovat"
 
-#: src/diffuse/main.py:921 src/diffuse/widgets.py:1848
+#: src/diffuse/main.py:922 src/diffuse/widgets.py:1849
 msgid "Paste"
 msgstr "Vložit"
 
-#: src/diffuse/main.py:922 src/diffuse/widgets.py:1851
+#: src/diffuse/main.py:923 src/diffuse/widgets.py:1852
 msgid "Clear Edits"
 msgstr "Smazat úpravy"
 
-#: src/diffuse/main.py:1045
+#: src/diffuse/main.py:1046
 msgid "Some files have unsaved changes. Select the files to save before closing."
 msgstr ""
 "Některé změněné soubory nebyly uloženy. Vyberte soubory, které chcete před "
 "zavřením uložit."
 
-#: src/diffuse/main.py:1059
+#: src/diffuse/main.py:1060
 msgid "Tab"
 msgstr "Panel"
 
-#: src/diffuse/main.py:1064
+#: src/diffuse/main.py:1065
 msgid "Pane"
 msgstr "Podokno"
 
-#: src/diffuse/main.py:1075
+#: src/diffuse/main.py:1076
 msgid "Close _Without Saving"
 msgstr "Zavřít _bez uložení"
 
-#: src/diffuse/main.py:1114
+#: src/diffuse/main.py:1115
 #, python-format
 msgid "Closing this tab will quit %s."
 msgstr "Zavřením tohoto panelu ukončíte %s."
 
-#: src/diffuse/main.py:1197
+#: src/diffuse/main.py:1198
 #, python-format
 msgid "File Merge %d"
 msgstr "Slučování %d"
 
-#: src/diffuse/main.py:1303
+#: src/diffuse/main.py:1304
 #, python-format
 msgid "Error retrieving commits for %s."
 msgstr "Revize pro %s se nepodařilo načíst."
 
-#: src/diffuse/main.py:1335
+#: src/diffuse/main.py:1336
 #, python-format
 msgid "Error retrieving modifications for %s."
 msgstr "Při načítání změn %s došlo k chybě."
 
-#: src/diffuse/main.py:1368
+#: src/diffuse/main.py:1369
 msgid "Open File In New Tab"
 msgstr "Otevřít soubor v novém panelu"
 
-#: src/diffuse/main.py:1391
+#: src/diffuse/main.py:1392
 msgid "Choose Folder With Modified Files"
 msgstr "Vyberte adresář se změněnými soubory"
 
-#: src/diffuse/main.py:1409
+#: src/diffuse/main.py:1410
 msgid "No modified files found."
 msgstr "Nebyly nalezeny žádné změněné soubory."
 
-#: src/diffuse/main.py:1415
+#: src/diffuse/main.py:1416
 msgid "Choose Folder With Commit"
 msgstr "Vyberte adresář se zapsanou revizí"
 
-#: src/diffuse/main.py:1435
+#: src/diffuse/main.py:1436
 msgid "No committed files found."
 msgstr "Nebyly nalezeny žádné zapsané soubory."
 
-#: src/diffuse/main.py:1471
+#: src/diffuse/main.py:1472
 msgid "New N-Way File Merge..."
 msgstr "Nové Nsměrné slučování"
 
-#: src/diffuse/main.py:1472
+#: src/diffuse/main.py:1473
 msgid "Number of panes: "
 msgstr "Počet podoken: "
 
-#: src/diffuse/main.py:1546
+#: src/diffuse/main.py:1547
 msgid "Phrase not found.  Continue from the end of the file?"
 msgstr "Hledaný výraz nebyl nalezen. Pokračovat v hledání od konce souboru?"
 
-#: src/diffuse/main.py:1548
+#: src/diffuse/main.py:1549
 msgid "Phrase not found.  Continue from the start of the file?"
 msgstr "Hledaný výraz nebyl nalezen. Pokračovat v hledání od začátku souboru?"
 
-#: src/diffuse/main.py:1767
+#: src/diffuse/main.py:1770
 #, fuzzy
 msgid ""
 "Usage:\n"
@@ -715,213 +715,289 @@ msgstr ""
 "  ( -w | --ignore-all-space )      Bude ignorovat změny pokud, jde o "
 "netisknutelné znaky"
 
-#: src/diffuse/main.py:1936
+#: src/diffuse/main.py:1937
 msgid "Error parsing line number."
 msgstr "Při analýze čísla řádku došlo k chybě."
 
-#: src/diffuse/main.py:1946
+#: src/diffuse/main.py:1947
 #, python-format
 msgid "Skipping unknown argument \"%s\"."
 msgstr "Ignorován neznámý parametr \"%s\"."
 
-#: src/diffuse/main.py:1954
+#: src/diffuse/main.py:1955
 #, python-format
 msgid "Error processing argument \"%s\".  Directory not expected."
 msgstr "Při zpracování parametru \"%s\" došlo k chybě. Adresář nebyl očekáván."
 
-#: src/diffuse/preferences.py:77
+#: src/diffuse/preferences.py:79
 msgid "Display"
 msgstr "Zobrazení"
 
-#: src/diffuse/preferences.py:80
+#: src/diffuse/preferences.py:82
 msgid "Font"
 msgstr "Písmo"
 
-#: src/diffuse/preferences.py:81
+#: src/diffuse/preferences.py:83
 msgid "Tab width"
 msgstr "Šířka tabulátoru"
 
-#: src/diffuse/preferences.py:82
+#: src/diffuse/preferences.py:84
 msgid "Show right margin"
 msgstr "Zobrazit pravý okraj"
 
-#: src/diffuse/preferences.py:83
+#: src/diffuse/preferences.py:85
 msgid "Right margin"
 msgstr "Pravý okraj"
 
-#: src/diffuse/preferences.py:84
+#: src/diffuse/preferences.py:86
 msgid "Show line numbers"
 msgstr "Zobrazit čísla řádků"
 
-#: src/diffuse/preferences.py:85
+#: src/diffuse/preferences.py:87
 msgid "Show white space characters"
 msgstr "Zobrazit netisknutelné znaky"
 
-#: src/diffuse/preferences.py:86
+#: src/diffuse/preferences.py:88
 msgid "Ignore case differences"
 msgstr "Ignorovat velikost písmen"
 
-#: src/diffuse/preferences.py:87
+#: src/diffuse/preferences.py:89
 msgid "Ignore white space differences"
 msgstr "Ignorovat netisknutelné znaky"
 
-#: src/diffuse/preferences.py:88 src/diffuse/preferences.py:97
+#: src/diffuse/preferences.py:90 src/diffuse/preferences.py:99
 msgid "Ignore changes to white space"
 msgstr "Ignorovat znaky mezer"
 
-#: src/diffuse/preferences.py:89
+#: src/diffuse/preferences.py:91
 msgid "Ignore blank line differences"
 msgstr "Ignorovat prázdné řádky"
 
-#: src/diffuse/preferences.py:90
+#: src/diffuse/preferences.py:92
 msgid "Ignore end of line differences"
 msgstr "Ignorovat znaky konce řádku"
 
-#: src/diffuse/preferences.py:92
+#: src/diffuse/preferences.py:94
 msgid "Alignment"
 msgstr "Zarovnání"
 
-#: src/diffuse/preferences.py:95
+#: src/diffuse/preferences.py:97
 msgid "Ignore case"
 msgstr "Ignorovat velikost písmen"
 
-#: src/diffuse/preferences.py:96
+#: src/diffuse/preferences.py:98
 msgid "Ignore white space"
 msgstr "Ignorovat netisknutelné znaky"
 
-#: src/diffuse/preferences.py:98
+#: src/diffuse/preferences.py:100
 msgid "Ignore blank lines"
 msgstr "Ignorovat prázdné řádky"
 
-#: src/diffuse/preferences.py:99
+#: src/diffuse/preferences.py:101
 msgid "Ignore end of line characters"
 msgstr "Ignorovat znaky konce řádku"
 
-#: src/diffuse/preferences.py:101
+#: src/diffuse/preferences.py:103
 msgid "Editor"
 msgstr "Editor"
 
-#: src/diffuse/preferences.py:104
+#: src/diffuse/preferences.py:106
 msgid "Auto indent"
 msgstr "Automaticky odsazovat"
 
-#: src/diffuse/preferences.py:105
+#: src/diffuse/preferences.py:107
 msgid "Expand tabs to spaces"
 msgstr "Nahradit tabulátory mezerami"
 
-#: src/diffuse/preferences.py:106
+#: src/diffuse/preferences.py:108
 msgid "Soft tab width"
 msgstr "Šířka tabulátoru"
 
-#: src/diffuse/preferences.py:108
+#: src/diffuse/preferences.py:110
 msgid "Tabs"
 msgstr "Panely"
 
-#: src/diffuse/preferences.py:111
+#: src/diffuse/preferences.py:113
 msgid "Default panes"
 msgstr "Výchozí počet podoken"
 
-#: src/diffuse/preferences.py:112
+#: src/diffuse/preferences.py:114
 msgid "Always show the tab bar"
 msgstr "Vždy zobrazovat lištu s panely"
 
-#: src/diffuse/preferences.py:113
+#: src/diffuse/preferences.py:115
 #, python-format
 msgid "Warn me when closing a tab will quit %s"
 msgstr "Zobrazit upozornění, pokud zavření panelu ukončí %s"
 
-#: src/diffuse/preferences.py:115
+#: src/diffuse/preferences.py:117
 msgid "Regional Settings"
 msgstr "Místní nastavení"
 
-#: src/diffuse/preferences.py:118
+#: src/diffuse/preferences.py:120
 msgid "Default codec"
 msgstr "Výchozí kódování"
 
-#: src/diffuse/preferences.py:119
+#: src/diffuse/preferences.py:121
 msgid "Order of codecs used to identify encoding"
 msgstr "Pořadí kodeků pro rozpoznání kódování"
 
-#: src/diffuse/preferences.py:140
+#: src/diffuse/preferences.py:142
 msgid "Cygwin"
 msgstr "Cygwin"
 
-#: src/diffuse/preferences.py:142
+#: src/diffuse/preferences.py:144
 msgid "Root directory"
 msgstr "Kořenový adresář"
 
-#: src/diffuse/preferences.py:143
+#: src/diffuse/preferences.py:145
 msgid "Cygdrive prefix"
 msgstr "Předpona cygdrive"
 
-#: src/diffuse/preferences.py:162
+#: src/diffuse/preferences.py:164
 msgid "Version control system search order"
 msgstr ""
 
-#: src/diffuse/preferences.py:170
+#: src/diffuse/preferences.py:172
 msgid "\"co\" command"
 msgstr "příkaz \"co\""
 
-#: src/diffuse/preferences.py:171
+#: src/diffuse/preferences.py:173
 msgid "\"rlog\" command"
 msgstr "příkaz \"rlog\""
 
-#: src/diffuse/preferences.py:173
+#: src/diffuse/preferences.py:175
 msgid "Command"
 msgstr "Příkaz"
 
-#: src/diffuse/preferences.py:179
+#: src/diffuse/preferences.py:181
 msgid "Launch from a Bash login shell"
 msgstr "Spustit z příkazové řádky terminálu Bash"
 
-#: src/diffuse/preferences.py:186
+#: src/diffuse/preferences.py:188
 msgid "Update paths for Cygwin"
 msgstr "Upravit cesty pro Cygwin"
 
-#: src/diffuse/preferences.py:191
+#: src/diffuse/preferences.py:193
 msgid "Version Control"
 msgstr "Správa verzí"
 
-#: src/diffuse/preferences.py:256
+#: src/diffuse/preferences.py:258
 msgid "Preferences"
 msgstr "Předvolby"
 
-#: src/diffuse/resources.py:465
+#: src/diffuse/resources.py:238 src/diffuse/resources.py:242
+#: src/diffuse/resources.py:245
 #, python-brace-format
-msgid "Error processing line {line} of {file}."
+msgid "The key binding \"{key}\" is invalid"
+msgstr ""
+
+#: src/diffuse/resources.py:372
+msgid "Imports must have one argument"
+msgstr ""
+
+#: src/diffuse/resources.py:388
+msgid "Key bindings must have three arguments"
+msgstr ""
+
+#: src/diffuse/resources.py:394
+msgid "Colors must have four arguments"
+msgstr ""
+
+#: src/diffuse/resources.py:400
+msgid "Floats must have two arguments"
+msgstr ""
+
+#: src/diffuse/resources.py:406
+msgid "Options must have two arguments"
+msgstr ""
+
+#: src/diffuse/resources.py:409
+#, python-brace-format
+msgid "Options \"{option}\" is unknown"
+msgstr ""
+
+#: src/diffuse/resources.py:416
+msgid "Strings must have two arguments"
+msgstr ""
+
+#: src/diffuse/resources.py:427
+msgid "Syntaxes must have two or three arguments"
+msgstr ""
+
+#: src/diffuse/resources.py:455
+msgid "Syntax patterns must have at least four arguments"
+msgstr ""
+
+#: src/diffuse/resources.py:461 src/diffuse/resources.py:505
+#, python-brace-format
+msgid "Value \"{value}\" is unknown"
+msgstr ""
+
+#: src/diffuse/resources.py:472
+msgid "Syntax files must have one or two arguments"
+msgstr ""
+
+#: src/diffuse/resources.py:490
+msgid "Syntax magics must have at least one argument"
+msgstr ""
+
+#: src/diffuse/resources.py:509
+#, python-brace-format
+msgid "Keyword \"{keyword}\" is unknown"
+msgstr ""
+
+#: src/diffuse/resources.py:511
+#, fuzzy, python-brace-format
+msgid "Syntax error at line {line} of {file}"
 msgstr "Při zpracování řádku {line} souboru {file} došlo k chybě."
 
-#: src/diffuse/utils.py:60
+#: src/diffuse/resources.py:517
+#, fuzzy, python-brace-format
+msgid "Value error at line {line} of {file}"
+msgstr "Při zpracování řádku {line} souboru {file} došlo k chybě."
+
+#: src/diffuse/resources.py:523
+#, fuzzy, python-brace-format
+msgid "Regex error at line {line} of {file}."
+msgstr "Při zpracování řádku {line} souboru {file} došlo k chybě."
+
+#: src/diffuse/resources.py:526
+#, fuzzy, python-brace-format
+msgid "Unhandled error at line {line} of {file}."
+msgstr "Při zpracování řádku {line} souboru {file} došlo k chybě."
+
+#: src/diffuse/utils.py:63
 msgid "Auto Detect"
 msgstr "Automaticky rozpoznat"
 
-#: src/diffuse/vcs/cvs.py:51 src/diffuse/vcs/rcs.py:60 src/diffuse/vcs/svn.py:93
+#: src/diffuse/vcs/cvs.py:53 src/diffuse/vcs/rcs.py:62 src/diffuse/vcs/svn.py:95
 #, python-format
 msgid "Error parsing revision %s."
 msgstr "Při analýze revize %s došlo k chybě."
 
-#: src/diffuse/vcs/vcs_registry.py:231
+#: src/diffuse/vcs/vcs_registry.py:233
 #, python-format
 msgid "Error parsing %s."
 msgstr "Při analýze %s došlo k chybě."
 
-#: src/diffuse/widgets.py:1842
+#: src/diffuse/widgets.py:1843
 msgid "Align with Selection"
 msgstr "Zarovnat s výběrem"
 
-#: src/diffuse/widgets.py:1843
+#: src/diffuse/widgets.py:1844
 msgid "Isolate"
 msgstr "Izolovat"
 
-#: src/diffuse/widgets.py:1844
+#: src/diffuse/widgets.py:1845
 msgid "Merge Selection"
 msgstr "Sloučit výběr"
 
-#: src/diffuse/widgets.py:1850
+#: src/diffuse/widgets.py:1851
 msgid "Select All"
 msgstr "Vybrat vše"
 
-#: src/diffuse/widgets.py:1853
+#: src/diffuse/widgets.py:1854
 msgid "Swap with Selected Pane"
 msgstr "Prohodit s vybraným podoknem"
 

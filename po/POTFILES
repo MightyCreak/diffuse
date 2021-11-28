@@ -3,7 +3,7 @@
 
 data/io.github.mightycreak.Diffuse.desktop.in
 data/io.github.mightycreak.Diffuse.appdata.xml.in
-src/diffuse/constants.py.in
+src/diffuse/constants.py
 src/diffuse/dialogs.py
 src/diffuse/diffuse.in
 src/diffuse/main.py

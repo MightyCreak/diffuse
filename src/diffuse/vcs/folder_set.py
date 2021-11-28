@@ -22,8 +22,10 @@ import os
 
 class FolderSet:
     '''Utility class to help support Git and Monotone.
-       Represents a set of files and folders of interest for "git status" or
-       "mtn automate inventory."'''
+
+    Represents a set of files and folders of interest for "git status" or
+    "mtn automate inventory."
+    '''
 
     def __init__(self, names):
         self.folders = f = []

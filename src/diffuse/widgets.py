@@ -21,6 +21,7 @@ import difflib
 import os
 import unicodedata
 
+from gettext import gettext as _
 from typing import Dict
 
 from diffuse import utils
@@ -641,7 +642,7 @@ class FileDiffViewerBase(Gtk.Grid):
                 panes = self.panes
             else:
                 panes = [self.panes[f]]
-            for _, pane in enumerate(panes):
+            for pane in panes:
                 del pane.syntax_cache[:]
                 del pane.diff_cache[:]
                 # re-compute the high water mark

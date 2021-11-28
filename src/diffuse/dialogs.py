@@ -19,6 +19,8 @@
 
 import os
 
+from gettext import gettext as _
+
 from diffuse import constants
 from diffuse import utils
 

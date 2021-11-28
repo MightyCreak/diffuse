@@ -17,14 +17,12 @@
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
+from gettext import gettext as _
+
 APP_NAME = 'Diffuse'
-VERSION = '@VERSION@'
 COPYRIGHT = '''{copyright} © 2006-2019 Derrick Moser
-{copyright} © 2015-2021 Romain Failliot'''.format(copyright=_("Copyright"))  # type: ignore
+{copyright} © 2015-2021 Romain Failliot'''.format(copyright=_("Copyright"))
 WEBSITE = 'https://mightycreak.github.io/diffuse/'
 
-SYSCONFIGDIR = '@SYSCONFIGDIR@'
-
-LOG_PRINT_OUTPUT = @LOG_PRINT_OUTPUT@
-LOG_PRINT_STACK = @LOG_PRINT_STACK@
-USE_FLATPAK = @USE_FLATPAK@
+# Constants are set in main()
+VERSION = '0.0.0'

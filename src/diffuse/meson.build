@@ -5,8 +5,10 @@ python = import('python')
 
 conf = configuration_data()
 conf.set('PYTHON', python.find_installation('python3').path())
+conf.set('VERSION', meson.project_version())
 conf.set('PKGDATADIR', pkgdatadir)
 conf.set('LOCALEDIR', join_paths(get_option('prefix'), get_option('localedir')))
+conf.set('SYSCONFIGDIR', join_paths(get_option('prefix'), get_option('sysconfdir')))
 
 configure_file(
   input: 'diffuse.in',
@@ -16,23 +18,9 @@ configure_file(
   install_dir: get_option('bindir')
 )
 
-conf = configuration_data()
-conf.set('VERSION', meson.project_version())
-conf.set('SYSCONFIGDIR', join_paths(get_option('prefix'), get_option('sysconfdir')))
-conf.set('LOG_PRINT_OUTPUT', get_option('log_print_output'))
-conf.set('LOG_PRINT_STACK', get_option('log_print_stack'))
-conf.set('USE_FLATPAK', get_option('use_flatpak'))
-
-configure_file(
-  input: 'constants.py.in',
-  output: 'constants.py',
-  configuration: conf,
-  install: true,
-  install_dir: moduledir
-)
-
 diffuse_sources = [
   '__init__.py',
+  'constants.py',
   'dialogs.py',
   'main.py',
   'preferences.py',

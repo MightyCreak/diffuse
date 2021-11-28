@@ -17,17 +17,20 @@
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-# This class to hold all customisable behaviour not exposed in the preferences
+# This class to hold all customizable behavior not exposed in the preferences
 # dialogue: hotkey assignment, colours, syntax highlighting, etc.
 # Syntax highlighting is implemented in supporting '*.syntax' files normally
-# read from the system wide initialisation file '/etc/diffuserc'.
-# The personal initialisation file '~/diffuse/diffuserc' can be used to change
-# default behaviour.
+# read from the system wide initialization file '/etc/diffuserc'.
+# The personal initialization file '~/diffuse/diffuserc' can be used to change
+# default behavior.
 
 import glob
 import os
 import re
 import shlex
+
+from distutils import util
+from gettext import gettext as _
 
 from diffuse import utils
 
@@ -197,6 +200,13 @@ class Resources:
             'line_selection_opacity': 0.4
         }
 
+        # default options
+        self.options = {
+            'log_print_output': 'False',
+            'log_print_stack': 'False',
+            'use_flatpak': 'False'
+        }
+
         # default strings
         self.strings = {}
 
@@ -225,14 +235,14 @@ class Resources:
             elif token == 'Alt':
                 modifiers |= Gdk.ModifierType.MOD1_MASK
             elif len(token) == 0 or token[0] == '_':
-                raise ValueError()
+                raise ValueError(_('The key binding "{key}" is invalid').format(key=v))
             else:
                 token = 'KEY_' + token
                 if not hasattr(Gdk, token):
-                    raise ValueError()
+                    raise ValueError(_('The key binding "{key}" is invalid').format(key=v))
                 key = getattr(Gdk, token)
         if key is None:
-            raise ValueError()
+            raise ValueError(_('The key binding "{key}" is invalid').format(key=v))
         key_tuple = (ctx, (key, modifiers))
 
         # remove any existing binding
@@ -298,14 +308,25 @@ class Resources:
             self.floats[symbol] = v = 0.5
             return v
 
+    def getOption(self, option: str) -> str:
+        '''Get the option value.'''
+        try:
+            return self.options[option]
+        except KeyError:
+            utils.logDebug(f'Warning: unknown option "{option}"')
+            return ''
+
+    def getOptionAsBool(self, option: str) -> bool:
+        '''Get the option value, casted as a boolean.'''
+        return util.strtobool(self.getOption(option))
+
     # string resources
     def getString(self, symbol):
         try:
             return self.strings[symbol]
         except KeyError:
             utils.logDebug(f'Warning: unknown string "{symbol}"')
-            self.strings[symbol] = v = ''
-            return v
+            return ''
 
     # syntax highlighting
     def getSyntaxNames(self):
@@ -346,7 +367,9 @@ class Resources:
             try:
                 # eg. add Python syntax highlighting:
                 #    import /usr/share/diffuse/syntax/python.syntax
-                if args[0] == 'import' and len(args) == 2:
+                if args[0] == 'import':
+                    if len(args) != 2:
+                        raise SyntaxError(_('Imports must have one argument'))
                     path = os.path.expanduser(args[1])
                     # relative paths are relative to the parsed file
                     path = os.path.join(utils.globEscape(os.path.dirname(file_name)), path)
@@ -356,23 +379,41 @@ class Resources:
                     for path in paths:
                         # convert to absolute path so the location of
                         # any processing errors are reported with
-                        # normalised file names
+                        # normalized file names
                         self.parse(os.path.abspath(path))
                 # eg. make Ctrl+o trigger the open_file menu item
                 #    keybinding menu open_file Ctrl+o
-                elif args[0] == 'keybinding' and len(args) == 4:
+                elif args[0] == 'keybinding':
+                    if len(args) != 4:
+                        raise SyntaxError(_('Key bindings must have three arguments'))
                     self.setKeyBinding(args[1], args[2], args[3])
                 # eg. set the regular background colour to white
                 #    colour text_background 1.0 1.0 1.0
-                elif args[0] in ['colour', 'color'] and len(args) == 5:
+                elif args[0] in ['colour', 'color']:
+                    if len(args) != 5:
+                        raise SyntaxError(_('Colors must have four arguments'))
                     self.colours[args[1]] = _Colour(float(args[2]), float(args[3]), float(args[4]))
                 # eg. set opacity of the line_selection colour
                 #    float line_selection_opacity 0.4
-                elif args[0] == 'float' and len(args) == 3:
+                elif args[0] == 'float':
+                    if len(args) != 3:
+                        raise SyntaxError(_('Floats must have two arguments'))
                     self.floats[args[1]] = float(args[2])
+                # eg. enable option log_print_output
+                #    option log_print_output true
+                elif args[0] == 'option':
+                    if len(args) != 3:
+                        raise SyntaxError(_('Options must have two arguments'))
+                    if args[1] not in self.options:
+                        raise SyntaxError(
+                            _('Options "{option}" is unknown').format(option=args[1])
+                        )
+                    self.options[args[1]] = args[2]
                 # eg. set the help browser
                 #    string help_browser gnome-help
-                elif args[0] == 'string' and len(args) == 3:
+                elif args[0] == 'string':
+                    if len(args) != 3:
+                        raise SyntaxError(_('Strings must have two arguments'))
                     self.strings[args[1]] = args[2]
                     if args[1] == 'difference_colours':
                         self.setDifferenceColours(args[2])
@@ -381,7 +422,9 @@ class Resources:
                 # where 'normal' is the name of the default state and
                 # 'text' is the classification of all characters not
                 # explicitly matched by a syntax highlighting rule
-                elif args[0] == 'syntax' and (len(args) == 2 or len(args) == 4):
+                elif args[0] == 'syntax':
+                    if len(args) != 3 and len(args) != 4:
+                        raise SyntaxError(_('Syntaxes must have two or three arguments'))
                     key = args[1]
                     if len(args) == 2:
                         # remove file pattern for a syntax specification
@@ -407,17 +450,15 @@ class Resources:
                 # the pattern '#' is matched and classify the matched
                 # characters as 'python_comment'
                 #    syntax_pattern normal comment python_comment '#'
-                elif (
-                    args[0] == 'syntax_pattern' and
-                    self.current_syntax is not None and
-                    len(args) >= 5
-                ):
+                elif args[0] == 'syntax_pattern' and self.current_syntax is not None:
+                    if len(args) < 5:
+                        raise SyntaxError(_('Syntax patterns must have at least four arguments'))
                     flags = 0
                     for arg in args[5:]:
                         if arg == 'ignorecase':
                             flags |= re.IGNORECASE
                         else:
-                            raise ValueError()
+                            raise SyntaxError(_('Value "{value}" is unknown').format(value=arg))
                     self.current_syntax.addPattern(
                         args[1],
                         args[2],
@@ -426,7 +467,9 @@ class Resources:
                 # eg. default to the Python syntax rules when viewing
                 # a file ending with '.py' or '.pyw'
                 #    syntax_files Python '\.pyw?$'
-                elif args[0] == 'syntax_files' and (len(args) == 2 or len(args) == 3):
+                elif args[0] == 'syntax_files':
+                    if len(args) != 2 and len(args) != 3:
+                        raise SyntaxError(_('Syntax files must have one or two arguments'))
                     key = args[1]
                     if len(args) == 2:
                         # remove file pattern for a syntax specification
@@ -442,7 +485,9 @@ class Resources:
                 # eg. default to the Python syntax rules when viewing
                 # a files starting with patterns like #!/usr/bin/python
                 #    syntax_magic Python '^#!/usr/bin/python$'
-                elif args[0] == 'syntax_magic' and len(args) > 1:
+                elif args[0] == 'syntax_magic':
+                    if len(args) < 2:
+                        raise SyntaxError(_('Syntax magics must have at least one argument'))
                     key = args[1]
                     if len(args) == 2:
                         # remove magic pattern for a syntax specification
@@ -456,16 +501,30 @@ class Resources:
                             if arg == 'ignorecase':
                                 flags |= re.IGNORECASE
                             else:
-                                raise ValueError()
+                                raise SyntaxError(
+                                    _('Value "{value}" is unknown').format(value=arg)
+                                )
                         self.syntax_magic_patterns[key] = re.compile(args[2], flags)
                 else:
-                    raise ValueError()
-            # except ValueError:
-            except:  # noqa: E722 # Grr... the 're' module throws weird errors
-                utils.logError(_('Error processing line {line} of {file}.'.format(
+                    raise SyntaxError(_('Keyword "{keyword}" is unknown').format(keyword=args[0]))
+            except SyntaxError as e:
+                error_msg = _('Syntax error at line {line} of {file}').format(
                     line=i + 1,
                     file=file_name
-                )))
+                )
+                utils.logError(f'{error_msg}: {e.msg}')
+            except ValueError as e:
+                error_msg = _('Value error at line {line} of {file}').format(
+                    line=i + 1,
+                    file=file_name
+                )
+                utils.logError(f'{error_msg}: {e.msg}')
+            except re.error:
+                error_msg = _('Regex error at line {line} of {file}.')
+                utils.logError(error_msg.format(line=i + 1, file=file_name))
+            except:  # noqa: E722
+                error_msg = _('Unhandled error at line {line} of {file}.')
+                utils.logError(error_msg.format(line=i + 1, file=file_name))
 
 
 # colour resources
