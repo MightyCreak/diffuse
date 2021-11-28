@@ -18,11 +18,10 @@
   </a>
 </p>
 
-Diffuse is a graphical tool for merging and comparing text files.  Diffuse is
+Diffuse is a graphical tool for merging and comparing text files. Diffuse is
 able to compare an arbitrary number of files side-by-side and gives users the
-ability to manually adjust line matching and directly edit files.  Diffuse can
-also retrieve revisions of files from Bazaar, CVS, Darcs, Git, Mercurial,
-Monotone, RCS, Subversion, and SVK repositories for comparison and merging.
+ability to manually adjust line matching and directly edit files. Diffuse can
+also retrieve revisions of files from several VCSs for comparison and merging.
 
 Some key features of Diffuse:
 
@@ -31,10 +30,22 @@ Some key features of Diffuse:
 * Line matching can be manually corrected by the user
 * Ability to directly edit files
 * Syntax highlighting
-* Bazaar, CVS, Darcs, Git, Mercurial, Monotone, RCS, Subversion, and SVK support
+* Supports several VCS: [Bazaar][bzr], [CVS][cvs], [Darcs][darcs], [Git][git],
+  [Mercurial][hg], [Monotone][mtn], [RCS][rcs], [Subversion][svn] and
+  [SVK][svk]
 * Unicode support
 * Unlimited undo
 * Easy keyboard navigation
+
+[bzr]: https://bazaar.canonical.com
+[cvs]: https://cvs.nongnu.org
+[darcs]: http://darcs.net
+[git]: https://git-scm.com
+[hg]: https://www.mercurial-scm.org
+[mtn]: https://www.monotone.ca
+[rcs]: https://www.gnu.org/software/rcs/
+[svn]: https://subversion.apache.org
+[svk]: https://metacpan.org/dist/SVK
 
 ## Documentation
 

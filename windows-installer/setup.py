@@ -19,19 +19,27 @@
 # This program creates EXE versions of diffuse and diffusew using py2exe.
 
 from distutils.core import setup
-import py2exe
 
 setup(
-    name = 'diffuse',
-    description = 'Diffuse Merge Tool',
-    version = '1.0',
+    name='diffuse',
+    description='Diffuse',
+    version='1.0',
 
-    console = [ { 'script': 'temp/diffuse.py', 'icon_resources': [(1, 'diffuse.ico')] } ],
-    windows = [ { 'script': 'temp/diffusew.pyw', 'icon_resources': [(1, 'diffuse.ico')] } ],
-    options = { 'py2exe': {
-                   'packages': 'encodings, gtk',
-                   'includes': 'cairo, pango, pangocairo, atk, gobject',
-                   'excludes': [ '_ssl', 'pyreadline', 'doctest', 'pickle', 'calendar', 'unittest', 'inspect', 'pdb' ],
-                   'dll_excludes': [ 'libglade-2.0-0.dll' ] }
-              }
+    console=[{'script': 'temp/diffuse.py', 'icon_resources': [(1, 'diffuse.ico')]}],
+    windows=[{'script': 'temp/diffusew.pyw', 'icon_resources': [(1, 'diffuse.ico')]}],
+    options={'py2exe': {
+        'packages': 'encodings, gtk',
+        'includes': 'cairo, pango, pangocairo, atk, gobject',
+        'excludes': [
+            '_ssl',
+            'pyreadline',
+            'doctest',
+            'pickle',
+            'calendar',
+            'unittest',
+            'inspect',
+            'pdb'
+        ],
+        'dll_excludes': ['libglade-2.0-0.dll']
+    }}
  )
