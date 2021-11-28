@@ -20,9 +20,12 @@
 import os
 
 from gettext import gettext as _
+from typing import Optional
 
 from diffuse import utils
+from diffuse.preferences import Preferences
 from diffuse.vcs.folder_set import FolderSet
+from diffuse.vcs.vcs_interface import VcsInterface
 from diffuse.vcs.bzr import Bzr
 from diffuse.vcs.cvs import Cvs
 from diffuse.vcs.darcs import Darcs
@@ -35,7 +38,7 @@ from diffuse.vcs.svn import Svn
 
 
 class VcsRegistry:
-    def __init__(self):
+    def __init__(self) -> None:
         # initialise the VCS objects
         self._get_repo = {
             'bzr': _get_bzr_repo,
@@ -50,7 +53,7 @@ class VcsRegistry:
         }
 
     # determines which VCS to use for files in the named folder
-    def findByFolder(self, path, prefs):
+    def findByFolder(self, path: str, prefs: Preferences) -> Optional[VcsInterface]:
         path = os.path.abspath(path)
         for vcs in prefs.getString('vcs_search_order').split():
             if vcs in self._get_repo:
@@ -60,14 +63,14 @@ class VcsRegistry:
         return None
 
     # determines which VCS to use for the named file
-    def findByFilename(self, name, prefs):
+    def findByFilename(self, name: str, prefs: Preferences) -> Optional[VcsInterface]:
         if name is not None:
             return self.findByFolder(os.path.dirname(name), prefs)
         return None
 
 
 # utility method to help find folders used by version control systems
-def _find_parent_dir_with(path, dir_name):
+def _find_parent_dir_with(path: str, dir_name: str) -> Optional[str]:
     while True:
         name = os.path.join(path, dir_name)
         if os.path.isdir(name):
@@ -76,28 +79,28 @@ def _find_parent_dir_with(path, dir_name):
         if newpath == path:
             break
         path = newpath
+    return None
 
 
-def _get_bzr_repo(path, prefs):
+def _get_bzr_repo(path: str, prefs: Preferences) -> Optional[VcsInterface]:
     p = _find_parent_dir_with(path, '.bzr')
     return Bzr(p) if p else None
 
 
-def _get_cvs_repo(path, prefs):
+def _get_cvs_repo(path: str, prefs: Preferences) -> Optional[VcsInterface]:
     return Cvs(path) if os.path.isdir(os.path.join(path, 'CVS')) else None
 
 
-def _get_darcs_repo(path, prefs):
+def _get_darcs_repo(path: str, prefs: Preferences) -> Optional[VcsInterface]:
     p = _find_parent_dir_with(path, '_darcs')
     return Darcs(p) if p else None
 
 
-def _get_git_repo(path, prefs):
+def _get_git_repo(path: str, prefs: Preferences) -> Optional[VcsInterface]:
     if 'GIT_DIR' in os.environ:
         try:
-            d = path
-            ss = utils.popenReadLines(
-                d,
+            ss: list[str] = utils.popenReadLines(
+                path,
                 [
                     prefs.getString('git_bin'),
                     'rev-parse',
@@ -107,20 +110,20 @@ def _get_git_repo(path, prefs):
                 'git_bash')
             if len(ss) > 0:
                 # be careful to handle trailing slashes
-                d = d.split(os.sep)
-                if d[-1] != '':
-                    d.append('')
+                dirs = path.split(os.sep)
+                if dirs[-1] != '':
+                    dirs.append('')
                 ss = utils.strip_eol(ss[0]).split('/')
                 if ss[-1] != '':
                     ss.append('')
                 n = len(ss)
-                if n <= len(d):
-                    del d[-n:]
-                if len(d) == 0:
-                    d = os.curdir
+                if n <= len(dirs):
+                    del dirs[-n:]
+                if len(dirs) == 0:
+                    path = os.curdir
                 else:
-                    d = os.sep.join(d)
-            return Git(d)
+                    path = os.sep.join(dirs)
+            return Git(path)
         except (IOError, OSError):
             # working tree not found
             pass
@@ -133,19 +136,20 @@ def _get_git_repo(path, prefs):
         if newpath == path:
             break
         path = newpath
+    return None
 
 
-def _get_hg_repo(path, prefs):
+def _get_hg_repo(path: str, prefs: Preferences) -> Optional[VcsInterface]:
     p = _find_parent_dir_with(path, '.hg')
     return Hg(p) if p else None
 
 
-def _get_mtn_repo(path, prefs):
+def _get_mtn_repo(path: str, prefs: Preferences) -> Optional[VcsInterface]:
     p = _find_parent_dir_with(path, '_MTN')
     return Mtn(p) if p else None
 
 
-def _get_rcs_repo(path, prefs):
+def _get_rcs_repo(path: str, prefs: Preferences) -> Optional[VcsInterface]:
     if os.path.isdir(os.path.join(path, 'RCS')):
         return Rcs(path)
 
@@ -162,12 +166,12 @@ def _get_rcs_repo(path, prefs):
     return None
 
 
-def _get_svn_repo(path, prefs):
+def _get_svn_repo(path: str, prefs: Preferences) -> Optional[VcsInterface]:
     p = _find_parent_dir_with(path, '.svn')
     return Svn(p) if p else None
 
 
-def _get_svk_repo(path, prefs):
+def _get_svk_repo(path: str, prefs: Preferences) -> Optional[VcsInterface]:
     name = path
     # parse the ~/.svk/config file to discover which directories are part of
     # SVK repositories
@@ -181,7 +185,7 @@ def _get_svk_repo(path, prefs):
         try:
             # find working copies by parsing the config file
             with open(svkconfig, 'r', encoding='utf-8') as f:
-                ss = utils.readlines(f)
+                ss: list[str] = utils.readlines(f)
             projs, sep = [], os.sep
             # find the separator character
             for s in ss:

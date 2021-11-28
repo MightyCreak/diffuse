@@ -21,6 +21,7 @@ import os
 import glob
 
 from gettext import gettext as _
+from typing import Optional
 
 from diffuse import utils
 from diffuse.vcs.folder_set import FolderSet
@@ -30,20 +31,20 @@ from diffuse.vcs.vcs_interface import VcsInterface
 # Subversion support
 # SVK support subclasses from this
 class Svn(VcsInterface):
-    def __init__(self, root):
+    def __init__(self, root: str):
         VcsInterface.__init__(self, root)
-        self.url = None
+        self.url: Optional[str] = None
 
     @staticmethod
-    def _getVcs():
+    def _getVcs() -> str:
         return 'svn'
 
     @staticmethod
-    def _getURLPrefix():
+    def _getURLPrefix() -> str:
         return 'URL: '
 
     @staticmethod
-    def _parseStatusLine(s):
+    def _parseStatusLine(s: str) -> tuple[str, str]:
         if len(s) < 8 or s[0] not in 'ACDMR':
             return '', ''
         # subversion 1.6 adds a new column
@@ -53,7 +54,7 @@ class Svn(VcsInterface):
         return s[0], s[k:]
 
     @staticmethod
-    def _getPreviousRevision(rev):
+    def _getPreviousRevision(rev: str) -> str:
         if rev is None:
             return 'BASE'
         m = int(rev)

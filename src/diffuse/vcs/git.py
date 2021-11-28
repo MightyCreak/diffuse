@@ -20,6 +20,7 @@
 import os
 
 from diffuse import utils
+from diffuse.preferences import Preferences
 from diffuse.vcs.folder_set import FolderSet
 from diffuse.vcs.vcs_interface import VcsInterface
 
@@ -61,7 +62,7 @@ class Git(VcsInterface):
         # sort the results
         return [modified[k] for k in sorted(modified.keys())]
 
-    def _extractPath(self, s, prefs):
+    def _extractPath(self, s: str, prefs: Preferences) -> str:
         return os.path.join(self.root, prefs.convertToNativePath(s.strip()))
 
     def getFolderTemplate(self, prefs, names):

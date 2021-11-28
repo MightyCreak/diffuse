@@ -20,7 +20,7 @@
 class VcsInterface:
     """Interface for the VCSs."""
 
-    def __init__(self, root):
+    def __init__(self, root: str):
         """The object will initialized with the repository's root folder."""
         self.root = root
 
