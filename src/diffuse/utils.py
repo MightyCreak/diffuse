@@ -23,7 +23,10 @@ import locale
 import subprocess
 import traceback
 
+from gettext import gettext as _
+
 from diffuse import constants
+from diffuse.resources import theResources
 
 import gi  # type: ignore
 gi.require_version('Gtk', '3.0')
@@ -77,9 +80,9 @@ def isWindows():
 
 
 def _logPrintOutput(msg):
-    if constants.LOG_PRINT_OUTPUT:
+    if theResources.getOptionAsBool('log_print_output'):
         print(msg, file=sys.stderr)
-        if constants.LOG_PRINT_STACK:
+        if theResources.getOptionAsBool('log_print_stack'):
             traceback.print_stack()
 
 
@@ -154,7 +157,7 @@ def _bash_escape(s):
 
 
 def _use_flatpak():
-    return constants.USE_FLATPAK
+    return theResources.getOptionAsBool('use_flatpak')
 
 
 # use popen to read the output of a command

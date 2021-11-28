@@ -22,9 +22,16 @@
 import sys
 import gettext
 
-sys.path.insert(1, '@PKGDATADIR@')
-gettext.install('diffuse', '@LOCALEDIR@')
+VERSION = '@VERSION@'
+PKGDATADIR = '@PKGDATADIR@'
+LOCALEDIR = '@LOCALEDIR@'
+SYSCONFIGDIR = '@SYSCONFIGDIR@'
+
+sys.path.insert(1, PKGDATADIR)
+
+gettext.bindtextdomain('diffuse', localedir=LOCALEDIR)
+gettext.textdomain('diffuse')
 
 if __name__ == '__main__':
     from diffuse import main
-    sys.exit(main.main())
+    sys.exit(main.main(VERSION, SYSCONFIGDIR))

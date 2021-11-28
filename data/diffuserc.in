@@ -1,5 +1,7 @@
-# /etc/diffuserc: System-wide initialisation file for Diffuse
-#
-# Copyright (C) 2006-2009 Derrick Moser <derrick_moser@yahoo.com>
+# System-wide initialization file for Diffuse
+
+option log_print_output @LOG_PRINT_OUTPUT@
+option log_print_stack @LOG_PRINT_STACK@
+option use_flatpak @USE_FLATPAK@
 
 import @PKGDATADIR@/syntax/*.syntax

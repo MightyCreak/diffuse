@@ -20,6 +20,8 @@
 import os
 import glob
 
+from gettext import gettext as _
+
 from diffuse import utils
 from diffuse.vcs.folder_set import FolderSet
 from diffuse.vcs.vcs_interface import VcsInterface

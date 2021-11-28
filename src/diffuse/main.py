@@ -25,6 +25,7 @@ import shlex
 import stat
 import webbrowser
 
+from gettext import gettext as _
 from urllib.parse import urlparse
 
 from diffuse import constants
@@ -958,7 +959,7 @@ class Diffuse(Gtk.Window):
             self.int_state['window_width'] = event.width
             self.int_state['window_height'] = event.height
 
-    # record the window's maximised state
+    # record the window's maximized state
     def window_state_cb(self, window, event):
         self.bool_state['window_maximized'] = (
             (event.new_window_state & Gdk.WindowState.MAXIMIZED) != 0
@@ -1309,7 +1310,7 @@ class Diffuse(Gtk.Window):
         new_items = []
         for item in items:
             name, data = item
-            # get full path to an existing ancessor directory
+            # get full path to an existing ancestor directory
             dn = os.path.abspath(name)
             while not os.path.isdir(dn):
                 dn, old_dn = os.path.dirname(dn), dn
@@ -1614,7 +1615,7 @@ class Diffuse(Gtk.Window):
         help_url = None
         if utils.isWindows():
             # help documentation is distributed as local HTML files
-            # search for localised manual first
+            # search for localized manual first
             parts = ['manual']
             if utils.lang is not None:
                 parts = ['manual']
@@ -1637,7 +1638,7 @@ class Diffuse(Gtk.Window):
                         browser = fp
                         break
             if browser is not None:
-                # find localised help file
+                # find localized help file
                 if utils.lang is None:
                     parts = []
                 else:
@@ -1661,7 +1662,7 @@ class Diffuse(Gtk.Window):
         if help_url is None:
             # no local help file is available, show on-line help
             help_url = constants.WEBSITE + 'manual.html'
-            # ask for localised manual
+            # ask for localized manual
             if utils.lang is not None:
                 help_url += '?lang=' + utils.lang
         # use a web browser to display the help documentation
@@ -1752,12 +1753,14 @@ GObject.signal_new('save', Diffuse.FileDiffViewer.PaneHeader, GObject.SignalFlag
 GObject.signal_new('save-as', Diffuse.FileDiffViewer.PaneHeader, GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, ())  # noqa: E501
 
 
-def main():
+def main(version, sysconfigdir):
     # app = Application()
     # return app.run(sys.argv)
 
     args = sys.argv
     argc = len(args)
+
+    constants.VERSION = version
 
     if argc == 2 and args[1] in ['-v', '--version']:
         print('%s %s\n%s' % (constants.APP_NAME, constants.VERSION, constants.COPYRIGHT))
@@ -1828,25 +1831,23 @@ Display Options:
         rc_files.append(args[i])
         i += 1
     else:
-        # parse system wide then personal initialisation files
+        # parse system wide then personal initialization files
         if utils.isWindows():
             rc_file = os.path.join(utils.bin_dir, 'diffuserc')
         else:
-            rc_file = os.path.join(utils.bin_dir, f'{constants.SYSCONFIGDIR}/diffuserc')
+            rc_file = os.path.join(utils.bin_dir, f'{sysconfigdir}/diffuserc')
         for rc_file in rc_file, os.path.join(rc_dir, 'diffuserc'):
             if os.path.isfile(rc_file):
                 rc_files.append(rc_file)
     for rc_file in rc_files:
         # convert to absolute path so the location of any processing errors are
-        # reported with normalised file names
+        # reported with normalized file names
         rc_file = os.path.abspath(rc_file)
         try:
-            # diffuse.theResources.parse(rc_file) # Modularization
             theResources.parse(rc_file)
         except IOError:
             utils.logError(_('Error reading %s.') % (rc_file, ))
 
-    # diff = diffuse.Diffuse(rc_dir) # Modularization
     diff = Diffuse(rc_dir)
 
     # load state

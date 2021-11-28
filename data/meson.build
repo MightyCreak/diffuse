@@ -33,6 +33,9 @@ endif
 
 # Diffuse config file
 conf = configuration_data()
+conf.set('LOG_PRINT_OUTPUT', get_option('log_print_output'))
+conf.set('LOG_PRINT_STACK', get_option('log_print_stack'))
+conf.set('USE_FLATPAK', get_option('use_flatpak'))
 conf.set('PKGDATADIR', pkgdatadir)
 
 configure_file(
