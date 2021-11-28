@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Added a `--remove-obsolete` option for the update-translation.py script
+- Added links to VCSs in README.md
+- New keyword in config file: "option"
 
 ### Changed
 - Updated the translation files
@@ -17,6 +19,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Leaner README.md
 - Moved the documentation to docs/
 - In the CI, call the linters on the installed directory
+- Renamed application name from "Diffuse Merge Tool" to "Diffuse"
+- Linters can be run sooner (before installation)
+- Better messages when an error occurs while parsing the config file
 
 ### Fixed
 - Removed the lasting lint errors (i.e. in main.py)
