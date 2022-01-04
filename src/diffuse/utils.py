@@ -182,14 +182,13 @@ def popenRead(dn, cmd, prefs, bash_pref, success_results=None):
         info = None
     if _use_flatpak():
         cmd = ['flatpak-spawn', '--host'] + cmd
-    with (subprocess.Popen(
-        cmd,
-        stdin=subprocess.PIPE,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
-        cwd=dn,
-        startupinfo=info) as proc
-    ):
+    with subprocess.Popen(
+            cmd,
+            stdin=subprocess.PIPE,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            cwd=dn,
+            startupinfo=info) as proc:
         proc.stdin.close()
         proc.stderr.close()
         fd = proc.stdout
