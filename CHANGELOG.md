@@ -25,6 +25,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - Removed the lasting lint errors (i.e. in main.py)
+- Fix Flatpak runtime version in documentation
 
 ## 0.7.3 - 2021-11-22
 
