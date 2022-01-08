@@ -21,8 +21,8 @@ pip install -r requirements.dev.txt
 To install Diffuse locally:
 
 ```sh
-flatpak install runtime/org.gnome.Sdk/$(uname -p)/3.38
-flatpak-builder build-flatpak --user --install io.github.mightycreak.Diffuse.yml
+flatpak install runtime/org.gnome.Sdk/$(uname -p)/41
+flatpak-builder --user --install build-flatpak io.github.mightycreak.Diffuse.yml
 ```
 
 To run Diffuse through Flatpak:
