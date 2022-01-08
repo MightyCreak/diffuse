@@ -199,7 +199,7 @@ class Preferences:
         self.path = path
         if os.path.isfile(self.path):
             try:
-                with open(self.path, 'r',  encoding='utf-8') as f:
+                with open(self.path, 'r', encoding='utf-8') as f:
                     ss = utils.readconfiglines(f)
                 for j, s in enumerate(ss):
                     try:
@@ -342,7 +342,7 @@ class Preferences:
                 if tpl[0] in ['Font', 'Integer']:
                     entry = Gtk.Box.new(Gtk.Orientation.HORIZONTAL, 0)
                     if tpl[0] == 'Font':
-                        button = _FontButton()
+                        button = Gtk.FontButton()
                         button.set_font(self.string_prefs[tpl[1]])
                     else:
                         button = Gtk.SpinButton.new(
@@ -368,28 +368,28 @@ class Preferences:
         return table
 
     # get/set methods to manipulate the preference values
-    def getBool(self, name):
+    def getBool(self, name: str) -> bool:
         return self.bool_prefs[name]
 
-    def setBool(self, name, value):
+    def setBool(self, name: str, value: bool) -> None:
         self.bool_prefs[name] = value
 
-    def getInt(self, name):
+    def getInt(self, name: str) -> int:
         return self.int_prefs[name]
 
-    def getString(self, name):
+    def getString(self, name: str) -> str:
         return self.string_prefs[name]
 
-    def setString(self, name, value):
+    def setString(self, name: str, value: str) -> None:
         self.string_prefs[name] = value
 
     def getEncodings(self):
         return self.encodings
 
-    def _getDefaultEncodings(self):
+    def _getDefaultEncodings(self) -> list[str]:
         return self.string_prefs['encoding_auto_detect_codecs'].split()
 
-    def getDefaultEncoding(self):
+    def getDefaultEncoding(self) -> str:
         return self.string_prefs['encoding_default_codec']
 
     # attempt to convert a string to unicode from an unknown encoding
@@ -412,7 +412,7 @@ class Preferences:
 
     # cygwin and native applications can be used on windows, use this method
     # to convert a path to the usual form expected on sys.platform
-    def convertToNativePath(self, s):
+    def convertToNativePath(self, s: str) -> str:
         if utils.isWindows() and s.find('/') >= 0:
             # treat as a cygwin path
             s = s.replace(os.sep, '/')
@@ -434,15 +434,6 @@ class Preferences:
                 p.append('')
             s = os.sep.join(p)
         return s
-
-
-# adaptor class to allow a Gtk.FontButton to be read like a Gtk.Entry
-class _FontButton(Gtk.FontButton):
-    def __init__(self):
-        Gtk.FontButton.__init__(self)
-
-    def get_text(self):
-        return self.get_font_name()
 
 
 # text entry widget with a button to help pick file names
@@ -475,8 +466,8 @@ class _FileEntry(Gtk.Box):
             self.entry.set_text(dialog.get_filename())
         dialog.destroy()
 
-    def set_text(self, s):
+    def set_text(self, s: str) -> None:
         self.entry.set_text(s)
 
-    def get_text(self):
+    def get_text(self) -> str:
         return self.entry.get_text()

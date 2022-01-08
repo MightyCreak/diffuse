@@ -22,10 +22,11 @@ import os
 import unicodedata
 
 from gettext import gettext as _
-from typing import Dict
+from typing import Any, Dict, List
 
 from diffuse import utils
 from diffuse.resources import theResources
+from diffuse.utils import LineEnding
 
 import gi  # type: ignore
 gi.require_version('GObject', '2.0')
@@ -148,9 +149,9 @@ class ScrolledWindow(Gtk.Grid):
 class FileDiffViewerBase(Gtk.Grid):
     # class describing a text pane
     class Pane:
-        def __init__(self):
+        def __init__(self) -> None:
             # list of lines displayed in this pane (including spacing lines)
-            self.lines = []
+            self.lines: List[FileDiffViewerBase.Line] = []
             # high water mark for line length in Pango units (used to determine
             # the required horizontal scroll range)
             self.line_lengths = 0
@@ -160,11 +161,11 @@ class FileDiffViewerBase(Gtk.Grid):
             # self.syntax_cache[i] corresponds to self.lines[i]
             # the list is truncated when a change to a line invalidates a
             # portion of the cache
-            self.syntax_cache = []
+            self.syntax_cache: List[List[Any]] = []
             # cache of character differences for each line
             # self.diff_cache[i] corresponds to self.lines[i]
             # portion of the cache are cleared by setting entries to None
-            self.diff_cache = []
+            self.diff_cache: List[List[Any]] = []
             # mask indicating the type of line endings present
             self.format = 0
             # number of lines with edits
@@ -314,7 +315,7 @@ class FileDiffViewerBase(Gtk.Grid):
 
         # create panes
         self.dareas = []
-        self.panes = []
+        self.panes: List[FileDiffViewerBase.Pane] = []
         self.hadj = Gtk.Adjustment.new(0, 0, 0, 0, 0, 0)
         self.vadj = Gtk.Adjustment.new(0, 0, 0, 0, 0, 0)
         for i in range(n):
@@ -3539,15 +3540,15 @@ class FileDiffViewerBase(Gtk.Grid):
 
     # 'convert_to_dos' action
     def convert_to_dos(self):
-        self.convert_format(utils.DOS_FORMAT)
+        self.convert_format(LineEnding.DOS_FORMAT)
 
     # 'convert_to_mac' action
     def convert_to_mac(self):
-        self.convert_format(utils.MAC_FORMAT)
+        self.convert_format(LineEnding.MAC_FORMAT)
 
     # 'convert_to_unix' action
     def convert_to_unix(self):
-        self.convert_format(utils.UNIX_FORMAT)
+        self.convert_format(LineEnding.UNIX_FORMAT)
 
     # copies the selected range of lines from pane 'f_src' to 'f_dst'
     def merge_lines(self, f_dst, f_src):
@@ -3985,11 +3986,11 @@ def _get_format(ss):
     for s in ss:
         if s is not None:
             if _has_dos_line_ending(s):
-                flags |= utils.DOS_FORMAT
+                flags |= LineEnding.DOS_FORMAT
             elif _has_mac_line_ending(s):
-                flags |= utils.MAC_FORMAT
+                flags |= LineEnding.MAC_FORMAT
             elif _has_unix_line_ending(s):
-                flags |= utils.UNIX_FORMAT
+                flags |= LineEnding.UNIX_FORMAT
     return flags
 
 
@@ -4000,17 +4001,17 @@ def _convert_to_format(s, fmt):
         if old_format != 0 and (old_format & fmt) == 0:
             s = utils.strip_eol(s)
             # prefer the host line ending style
-            if (fmt & utils.DOS_FORMAT) and os.linesep == '\r\n':
+            if (fmt & LineEnding.DOS_FORMAT) and os.linesep == '\r\n':
                 s += os.linesep
-            elif (fmt & utils.MAC_FORMAT) and os.linesep == '\r':
+            elif (fmt & LineEnding.MAC_FORMAT) and os.linesep == '\r':
                 s += os.linesep
-            elif (fmt & utils.UNIX_FORMAT) and os.linesep == '\n':
+            elif (fmt & LineEnding.UNIX_FORMAT) and os.linesep == '\n':
                 s += os.linesep
-            elif fmt & utils.UNIX_FORMAT:
+            elif fmt & LineEnding.UNIX_FORMAT:
                 s += '\n'
-            elif fmt & utils.DOS_FORMAT:
+            elif fmt & LineEnding.DOS_FORMAT:
                 s += '\r\n'
-            elif fmt & utils.MAC_FORMAT:
+            elif fmt & LineEnding.MAC_FORMAT:
                 s += '\r'
     return s
 

@@ -26,6 +26,7 @@ import stat
 import webbrowser
 
 from gettext import gettext as _
+from typing import Optional
 from urllib.parse import urlparse
 
 from diffuse import constants
@@ -33,6 +34,7 @@ from diffuse import utils
 from diffuse.dialogs import AboutDialog, FileChooserDialog, NumericDialog, SearchDialog
 from diffuse.preferences import Preferences
 from diffuse.resources import theResources
+from diffuse.utils import LineEnding
 from diffuse.vcs.vcs_registry import VcsRegistry
 from diffuse.widgets import FileDiffViewerBase
 from diffuse.widgets import createMenu, LINE_MODE, CHAR_MODE, ALIGN_MODE
@@ -118,7 +120,7 @@ class Diffuse(Gtk.Window):
     class FileDiffViewer(FileDiffViewerBase):
         # pane header
         class PaneHeader(Gtk.Box):
-            def __init__(self):
+            def __init__(self) -> None:
                 Gtk.Box.__init__(self, orientation=Gtk.Orientation.HORIZONTAL, spacing=0)
                 _append_buttons(self, Gtk.IconSize.MENU, [
                     [Gtk.STOCK_OPEN, self.button_cb, 'open', _('Open File...')],
@@ -171,7 +173,7 @@ class Diffuse(Gtk.Window):
 
         # pane footer
         class PaneFooter(Gtk.Box):
-            def __init__(self):
+            def __init__(self) -> None:
                 Gtk.Box.__init__(self, orientation=Gtk.Orientation.HORIZONTAL, spacing=0)
                 self.cursor = label = Gtk.Label.new()
                 self.cursor.set_size_request(-1, -1)
@@ -212,11 +214,11 @@ class Diffuse(Gtk.Window):
             # set the format label
             def setFormat(self, s):
                 v = []
-                if s & utils.DOS_FORMAT:
+                if s & LineEnding.DOS_FORMAT:
                     v.append('DOS')
-                if s & utils.MAC_FORMAT:
+                if s & LineEnding.MAC_FORMAT:
                     v.append('Mac')
-                if s & utils.UNIX_FORMAT:
+                if s & LineEnding.UNIX_FORMAT:
                     v.append('Unix')
                 self.format.set_text('/'.join(v))
 
@@ -1108,7 +1110,7 @@ class Diffuse(Gtk.Window):
             self.quit_cb(widget, data)
 
     # convenience method to request confirmation when closing the last tab
-    def _confirm_tab_close(self):
+    def _confirm_tab_close(self) -> bool:
         dialog = utils.MessageDialog(
             self.get_toplevel(),
             Gtk.MessageType.WARNING,
@@ -1193,7 +1195,7 @@ class Diffuse(Gtk.Window):
             self.setSyntax(s)
 
     # create an empty viewer with 'n' panes
-    def newFileDiffViewer(self, n):
+    def newFileDiffViewer(self, n: int) -> FileDiffViewer:
         self.viewer_count += 1
         tabname = _('File Merge %d') % (self.viewer_count, )
         tab = NotebookTab(tabname, Gtk.STOCK_FILE)
@@ -1338,13 +1340,13 @@ class Diffuse(Gtk.Window):
                     )
 
     # close all tabs without differences
-    def closeOnSame(self):
+    def closeOnSame(self) -> None:
         for i in range(self.notebook.get_n_pages() - 1, -1, -1):
             if not self.notebook.get_nth_page(i).hasDifferences():
                 self.notebook.remove_page(i)
 
     # returns True if the application can safely quit
-    def confirmQuit(self):
+    def confirmQuit(self) -> bool:
         nb = self.notebook
         return self.confirmCloseViewers([nb.get_nth_page(i) for i in range(nb.get_n_pages())])
 
@@ -1356,7 +1358,7 @@ class Diffuse(Gtk.Window):
         return True
 
     # returns the currently focused viewer
-    def getCurrentViewer(self):
+    def getCurrentViewer(self) -> Optional[Gtk.Widget]:
         return self.notebook.get_nth_page(self.notebook.get_current_page())
 
     # callback for the open file menu item
@@ -1570,7 +1572,7 @@ class Diffuse(Gtk.Window):
         self.getCurrentViewer().go_to_line_cb(widget, data)
 
     # notify all viewers of changes to the preferences
-    def preferences_updated(self):
+    def preferences_updated(self) -> None:
         n = self.notebook.get_n_pages()
         self.notebook.set_show_tabs(self.prefs.getBool('tabs_always_show') or n > 1)
         for i in range(n):
@@ -1712,7 +1714,7 @@ def _append_buttons(box, size, specs):
 
 
 # constructs a full URL for the named file
-def _path2url(path, proto='file'):
+def _path2url(path: str, proto: str = 'file') -> str:
     r = [proto, ':///']
     s = os.path.abspath(path)
     i = 0

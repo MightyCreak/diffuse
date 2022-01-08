@@ -23,7 +23,9 @@ import locale
 import subprocess
 import traceback
 
+from enum import IntFlag
 from gettext import gettext as _
+from typing import Final, Optional, TextIO
 
 from diffuse import constants
 from diffuse.resources import theResources
@@ -74,38 +76,38 @@ class EncodingMenu(Gtk.Box):
         return self.encodings[i] if i >= 0 else None
 
 
-# platform test
-def isWindows():
+def isWindows() -> bool:
+    '''Returns true if OS is Windows; otherwise false.'''
     return os.name == 'nt'
 
 
-def _logPrintOutput(msg):
+def _logPrintOutput(msg: str) -> None:
     if theResources.getOptionAsBool('log_print_output'):
         print(msg, file=sys.stderr)
         if theResources.getOptionAsBool('log_print_stack'):
             traceback.print_stack()
 
 
-# convenience function to display debug messages
-def logDebug(msg):
+def logDebug(msg: str) -> None:
+    '''Report debug message.'''
     _logPrintOutput(f'DEBUG: {msg}')
 
 
-# report error messages
-def logError(msg):
+def logError(msg: str) -> None:
+    '''Report error message.'''
     _logPrintOutput(f'ERROR: {msg}')
 
 
-# report error messages and show dialog
-def logErrorAndDialog(msg, parent=None):
+def logErrorAndDialog(msg: str, parent: Gtk.Widget = None) -> None:
+    '''Report error message and show dialog.'''
     logError(msg)
     dialog = MessageDialog(parent, Gtk.MessageType.ERROR, msg)
     dialog.run()
     dialog.destroy()
 
 
-# create nested subdirectories and return the complete path
-def make_subdirs(p, ss):
+def make_subdirs(p: str, ss: list[str]) -> str:
+    '''Create nested subdirectories and return the complete path.'''
     for s in ss:
         p = os.path.join(p, s)
         if not os.path.exists(p):
@@ -116,16 +118,16 @@ def make_subdirs(p, ss):
     return p
 
 
-# returns the Windows drive or share from a from an absolute path
-def _drive_from_path(path):
+def _drive_from_path(path: str) -> str:
+    '''Returns the Windows drive or share from a from an absolute path.'''
     d = path.split(os.sep)
     if len(d) > 3 and d[0] == '' and d[1] == '':
-        return os.path.join(d[:4])
+        return os.path.join(*d[:4])
     return d[0]
 
 
-# constructs a relative path from 'a' to 'b', both should be absolute paths
-def relpath(a, b):
+def relpath(a: str, b: str) -> str:
+    '''Constructs a relative path from 'a' to 'b', both should be absolute paths.'''
     if isWindows():
         if _drive_from_path(a) != _drive_from_path(b):
             return b
@@ -151,12 +153,12 @@ def safeRelativePath(abspath1, name, prefs, cygwin_pref):
     return s
 
 
-# escape arguments for use with bash
-def _bash_escape(s):
+def _bash_escape(s: str) -> str:
+    '''Escape arguments for use with bash.'''
     return "'" + s.replace("'", "'\\''") + "'"
 
 
-def _use_flatpak():
+def _use_flatpak() -> bool:
     return theResources.getOptionAsBool('use_flatpak')
 
 
@@ -201,9 +203,8 @@ def popenRead(dn, cmd, prefs, bash_pref, success_results=None):
         return s
 
 
-# returns the number of characters in the string excluding any line ending
-# characters
-def len_minus_line_ending(s):
+def len_minus_line_ending(s: str) -> int:
+    '''Returns the number of characters in the string excluding any line ending characters.'''
     if s is None:
         return 0
     n = len(s)
@@ -214,15 +215,15 @@ def len_minus_line_ending(s):
     return n
 
 
-# returns the string without the line ending characters
-def strip_eol(s):
+def strip_eol(s: str) -> str:
+    '''Returns the string without the line ending characters.'''
     if s:
         s = s[:len_minus_line_ending(s)]
     return s
 
 
-# returns the list of strings without line ending characters
-def _strip_eols(ss):
+def _strip_eols(ss: list[str]) -> list[str]:
+    '''Returns the list of strings without line ending characters.'''
     return [strip_eol(s) for s in ss]
 
 
@@ -232,12 +233,12 @@ def popenReadLines(dn, cmd, prefs, bash_pref, success_results=None):
         dn, cmd, prefs, bash_pref, success_results).decode('utf-8', errors='ignore')))
 
 
-def readconfiglines(fd):
+def readconfiglines(fd: TextIO) -> list[str]:
     return fd.read().replace('\r', '').split('\n')
 
 
-# escape special glob characters
-def globEscape(s):
+def globEscape(s: str) -> str:
+    '''Escape special glob characters.'''
     m = {c: f'[{c}]' for c in '[]?*'}
     return ''.join([m.get(c, c) for c in s])
 
@@ -272,25 +273,25 @@ def splitlines(text: str) -> list[str]:
 
 
 # also recognize old Mac OS line endings
-def readlines(fd):
+def readlines(fd: TextIO) -> list[str]:
     return _strip_eols(splitlines(fd.read()))
 
 
-# map an encoding name to its standard form
-def norm_encoding(e):
+def norm_encoding(e: Optional[str]) -> Optional[str]:
+    '''Map an encoding name to its standard form.'''
     if e is not None:
         return e.replace('-', '_').lower()
     return None
 
 
-def null_to_empty(s):
+def null_to_empty(s: Optional[str]) -> str:
     if s is None:
         s = ''
     return s
 
 
 # utility method to step advance an adjustment
-def step_adjustment(adj, delta):
+def step_adjustment(adj: Gtk.Adjustment, delta: int) -> None:
     v = adj.get_value() + delta
     # clamp to the allowed range
     v = max(v, int(adj.get_lower()))
@@ -298,36 +299,43 @@ def step_adjustment(adj, delta):
     adj.set_value(v)
 
 
-# masks used to indicate the presence of particular line endings
-DOS_FORMAT = 1
-MAC_FORMAT = 2
-UNIX_FORMAT = 4
+def _get_default_lang() -> Optional[str]:
+    lang = locale.getdefaultlocale()[0]
+    if isWindows():
+        # gettext looks for the language using environment variables which
+        # are normally not set on Windows so we try setting it for them
+        for lang_env in 'LC_ALL', 'LC_CTYPE', 'LANG', 'LANGUAGE':
+            if lang_env in os.environ:
+                lang = os.environ[lang_env]
+                # remove any additional languages, encodings, or modifications
+                for c in ':.@':
+                    lang = lang.split(c)[0]
+                break
+        else:
+            if lang is not None:
+                os.environ['LANG'] = lang
+    return lang
+
+
+class LineEnding(IntFlag):
+    '''Enumeration of line endings.
+
+    Values can be used as flags in bitwise operations.'''
+
+    DOS_FORMAT = 1
+    MAC_FORMAT = 2
+    UNIX_FORMAT = 4
+
 
 # avoid some dictionary lookups when string.whitespace is used in loops
 # this is sorted based upon frequency to speed up code for stripping whitespace
-whitespace = ' \t\n\r\x0b\x0c'
+whitespace: Final[str] = ' \t\n\r\x0b\x0c'
 
 # use the program's location as a starting place to search for supporting files
 # such as icon and help documentation
-if hasattr(sys, 'frozen'):
-    app_path = sys.executable
-else:
-    app_path = os.path.realpath(sys.argv[0])
-bin_dir = os.path.dirname(app_path)
+app_path: Final[str] = sys.executable if hasattr(sys, 'frozen') else os.path.realpath(sys.argv[0])
+bin_dir: Final[str] = os.path.dirname(app_path)
 
 # translation location: '../share/locale/<LANG>/LC_MESSAGES/diffuse.mo'
 # where '<LANG>' is the language key
-lang = locale.getdefaultlocale()[0]
-if isWindows():
-    # gettext looks for the language using environment variables which
-    # are normally not set on Windows so we try setting it for them
-    for lang_env in 'LC_ALL', 'LC_CTYPE', 'LANG', 'LANGUAGE':
-        if lang_env in os.environ:
-            lang = os.environ[lang_env]
-            # remove any additional languages, encodings, or modifications
-            for c in ':.@':
-                lang = lang.split(c)[0]
-            break
-    else:
-        if lang is not None:
-            os.environ['LANG'] = lang
+lang: Final[Optional[str]] = _get_default_lang()

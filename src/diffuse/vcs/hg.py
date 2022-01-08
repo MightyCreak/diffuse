@@ -19,6 +19,8 @@
 
 import os
 
+from typing import Optional
+
 from diffuse import utils
 from diffuse.vcs.folder_set import FolderSet
 from diffuse.vcs.vcs_interface import VcsInterface
@@ -26,9 +28,9 @@ from diffuse.vcs.vcs_interface import VcsInterface
 
 # Mercurial support
 class Hg(VcsInterface):
-    def __init__(self, root):
+    def __init__(self, root: str):
         VcsInterface.__init__(self, root)
-        self.working_rev = None
+        self.working_rev: Optional[str] = None
 
     def _getPreviousRevision(self, prefs, rev):
         if rev is None:

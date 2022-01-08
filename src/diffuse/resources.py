@@ -31,6 +31,7 @@ import shlex
 
 from distutils import util
 from gettext import gettext as _
+from typing import Final
 
 from diffuse import utils
 
@@ -529,7 +530,7 @@ class Resources:
 
 # colour resources
 class _Colour:
-    def __init__(self, r, g, b, a=1.0):
+    def __init__(self, r: float, g: float, b: float, a: float = 1.0):
         # the individual colour components as floats in the range [0, 1]
         self.red = r
         self.green = g
@@ -601,4 +602,4 @@ class _SyntaxParser:
         return state_name, blocks
 
 
-theResources = Resources()
+theResources: Final[Resources] = Resources()

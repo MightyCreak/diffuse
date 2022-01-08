@@ -25,21 +25,21 @@ from diffuse.vcs.svn import Svn
 
 class Svk(Svn):
     @staticmethod
-    def _getVcs():
+    def _getVcs() -> str:
         return 'svk'
 
     @staticmethod
-    def _getURLPrefix():
+    def _getURLPrefix() -> str:
         return 'Depot Path: '
 
     @staticmethod
-    def _parseStatusLine(s):
+    def _parseStatusLine(s: str) -> tuple[str, str]:
         if len(s) < 4 or s[0] not in 'ACDMR':
             return '', ''
         return s[0], s[4:]
 
     @staticmethod
-    def _getPreviousRevision(rev):
+    def _getPreviousRevision(rev: str) -> str:
         if rev is None:
             return 'HEAD'
         if rev.endswith('@'):

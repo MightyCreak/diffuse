@@ -22,6 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Renamed application name from "Diffuse Merge Tool" to "Diffuse"
 - Linters can be run sooner (before installation)
 - Better messages when an error occurs while parsing the config file
+- Start converting the code to static types
 
 ### Fixed
 - Removed the lasting lint errors (i.e. in main.py)

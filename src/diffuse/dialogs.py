@@ -32,7 +32,7 @@ from gi.repository import GObject, Gtk  # type: ignore # noqa: E402
 
 # the about dialog
 class AboutDialog(Gtk.AboutDialog):
-    def __init__(self):
+    def __init__(self) -> None:
         Gtk.AboutDialog.__init__(self)
         self.set_logo_icon_name('io.github.mightycreak.Diffuse')
         self.set_program_name(constants.APP_NAME)
@@ -104,13 +104,13 @@ class FileChooserDialog(Gtk.FileChooserDialog):
     def set_encoding(self, encoding):
         self.encoding.set_text(encoding)
 
-    def get_encoding(self):
+    def get_encoding(self) -> str:
         return self.encoding.get_text()
 
-    def get_revision(self):
+    def get_revision(self) -> str:
         return self.revision.get_text()
 
-    def get_filename(self):
+    def get_filename(self) -> str:
         # convert from UTF-8 string to unicode
         return Gtk.FileChooserDialog.get_filename(self)
 
