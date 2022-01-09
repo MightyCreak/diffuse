@@ -21,9 +21,9 @@ import difflib
 import os
 import unicodedata
 
-from enum import IntFlag
+from enum import Flag, IntFlag, auto
 from gettext import gettext as _
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Callable, Dict, List, Optional, Tuple
 
 from diffuse import utils
 from diffuse.resources import theResources
@@ -38,14 +38,12 @@ gi.require_version('PangoCairo', '1.0')
 from gi.repository import GObject, Gdk, Gtk, Pango, PangoCairo  # type: ignore # noqa: E402
 
 
-# mapping to column width of a character (tab will never be in this map)
-_char_width_cache: Dict[str, int] = {}
-
 # the file diff viewer is always in one of these modes defining the cursor,
 # and hotkey behavior
-LINE_MODE = 0
-CHAR_MODE = 1
-ALIGN_MODE = 2
+class EditMode(Flag):
+    LINE = auto()
+    CHAR = auto()
+    ALIGN = auto()
 
 
 # This is a replacement for Gtk.ScrolledWindow as it forced expose events to be
@@ -198,10 +196,14 @@ class FileDiffViewerBase(Gtk.Grid):
         if n < 2:
             raise ValueError('Invalid number of panes')
 
-        Gtk.Grid.__init__(self)
+        super().__init__()
+
+        # mapping to column width of a character (tab will never be in this map)
+        self._char_width_cache: Dict[str, int] = {}
+
         self.set_can_focus(True)
         self.prefs = prefs
-        self.string_width_cache = {}
+        self.string_width_cache: Dict[str, Optional[int]] = {}
         self.options = {}
 
         # diff blocks
@@ -217,7 +219,7 @@ class FileDiffViewerBase(Gtk.Grid):
         self.diffmap_cache = None
 
         # editing mode
-        self.mode = LINE_MODE
+        self.mode = EditMode.LINE
         self.current_pane = 1
         self.current_line = 0
         self.current_char = 0
@@ -228,7 +230,7 @@ class FileDiffViewerBase(Gtk.Grid):
         self.cursor_column = -1
 
         # keybindings
-        self._line_mode_actions = {
+        self._line_mode_actions: Dict[str, Callable] = {
             'enter_align_mode': self._line_mode_enter_align_mode,
             'enter_character_mode': self.setCharMode,
             'first_line': self._first_line,
@@ -261,7 +263,7 @@ class FileDiffViewerBase(Gtk.Grid):
             'merge_from_left_then_right': self.merge_from_left_then_right,
             'merge_from_right_then_left': self.merge_from_right_then_left
         }
-        self._align_mode_actions = {
+        self._align_mode_actions: Dict[str, Callable] = {
             'enter_line_mode': self._align_mode_enter_line_mode,
             'enter_character_mode': self.setCharMode,
             'first_line': self._first_line,
@@ -274,10 +276,10 @@ class FileDiffViewerBase(Gtk.Grid):
             'page_down': self._line_mode_page_down,
             'align': self._align_text
         }
-        self._character_mode_actions = {
+        self._character_mode_actions: Dict[str, Callable] = {
             'enter_line_mode': self.setLineMode
         }
-        self._button_actions = {
+        self._button_actions: Dict[str, Callable] = {
             'undo': self.undo,
             'redo': self.redo,
             'cut': self.cut,
@@ -315,7 +317,7 @@ class FileDiffViewerBase(Gtk.Grid):
         }
 
         # create panes
-        self.dareas = []
+        self.dareas: List[Gtk.DrawingArea] = []
         self.panes: List[FileDiffViewerBase.Pane] = []
         self.hadj = Gtk.Adjustment.new(0, 0, 0, 0, 0, 0)
         self.vadj = Gtk.Adjustment.new(0, 0, 0, 0, 0, 0)
@@ -414,7 +416,7 @@ class FileDiffViewerBase(Gtk.Grid):
         col = 0
         for c in s:
             try:
-                w = _char_width_cache[c]
+                w = self._char_width_cache[c]
             except KeyError:
                 v = ord(c)
                 if v < 32:
@@ -423,23 +425,23 @@ class FileDiffViewerBase(Gtk.Grid):
                         w = tab_width - col % tab_width
                     elif c == '\n':
                         w = 1
-                        _char_width_cache[c] = w
+                        self._char_width_cache[c] = w
                     else:
                         w = 2
-                        _char_width_cache[c] = w
+                        self._char_width_cache[c] = w
                 else:
                     if unicodedata.east_asian_width(c) in 'WF':
                         w = 2
                     else:
                         w = 1
-                    _char_width_cache[c] = w
+                    self._char_width_cache[c] = w
             col += w
         return col
 
     # returns the 'column width' for a single character created at column 'i'
     def characterWidth(self, i: int, c: str) -> int:
         try:
-            return _char_width_cache[c]
+            return self._char_width_cache[c]
         except KeyError:
             v = ord(c)
             if v < 32:
@@ -454,7 +456,7 @@ class FileDiffViewerBase(Gtk.Grid):
                 w = 2
             else:
                 w = 1
-            _char_width_cache[c] = w
+            self._char_width_cache[c] = w
             return w
 
     # translates a string into an array of the printable representation for
@@ -493,32 +495,32 @@ class FileDiffViewerBase(Gtk.Grid):
             col += self.characterWidth(col, c)
         return result
 
-    # changes the viewer's mode to LINE_MODE
+    # changes the viewer's mode to EditMode.LINE
     def setLineMode(self) -> None:
-        if self.mode != LINE_MODE:
-            if self.mode == CHAR_MODE:
+        if self.mode != EditMode.LINE:
+            if self.mode == EditMode.CHAR:
                 self._im_focus_out()
                 self.im_context.reset()
                 self._im_set_preedit(None)
                 self.current_char = 0
                 self.selection_char = 0
                 self.dareas[self.current_pane].queue_draw()
-            elif self.mode == ALIGN_MODE:
+            elif self.mode == EditMode.ALIGN:
                 self.dareas[self.align_pane].queue_draw()
                 self.dareas[self.current_pane].queue_draw()
                 self.align_pane = 0
                 self.align_line = 0
-            self.mode = LINE_MODE
+            self.mode = EditMode.LINE
             self.emit('cursor_changed')
             self.emit('mode_changed')
 
     # changes the viewer's mode to CHAR_MODE
     def setCharMode(self) -> None:
-        if self.mode != CHAR_MODE:
-            if self.mode == LINE_MODE:
+        if self.mode != EditMode.CHAR:
+            if self.mode == EditMode.LINE:
                 self.cursor_column = -1
                 self.setCurrentChar(self.current_line, 0)
-            elif self.mode == ALIGN_MODE:
+            elif self.mode == EditMode.ALIGN:
                 self.dareas[self.align_pane].queue_draw()
                 self.cursor_column = -1
                 self.align_pane = 0
@@ -526,7 +528,7 @@ class FileDiffViewerBase(Gtk.Grid):
                 self.setCurrentChar(self.current_line, 0)
             self._im_focus_in()
             self.im_context.reset()
-            self.mode = CHAR_MODE
+            self.mode = EditMode.CHAR
             self.emit('cursor_changed')
             self.emit('mode_changed')
 
@@ -584,10 +586,10 @@ class FileDiffViewerBase(Gtk.Grid):
     # 'undo' action
     def undo(self) -> None:
         self.undoblock, old_block = None, self.undoblock
-        if self.mode == CHAR_MODE:
+        if self.mode == EditMode.CHAR:
             # avoid implicit preedit commit when an undo changes the mode
             self.im_context.reset()
-        if self.mode in (LINE_MODE, CHAR_MODE):
+        if self.mode in (EditMode.LINE, EditMode.CHAR):
             if len(self.undos) > 0:
                 # move the block to the redo stack
                 block = self.undos.pop()
@@ -600,8 +602,8 @@ class FileDiffViewerBase(Gtk.Grid):
     # 'redo' action
     def redo(self) -> None:
         self.undoblock, old_block = None, self.undoblock
-        if self.mode in (LINE_MODE, CHAR_MODE):
-            if self.mode == CHAR_MODE:
+        if self.mode in (EditMode.LINE, EditMode.CHAR):
+            if self.mode == EditMode.CHAR:
                 # avoid implicit preedit commit when an redo changes the mode
                 self.im_context.reset()
             if len(self.redos) > 0:
@@ -657,10 +659,10 @@ class FileDiffViewerBase(Gtk.Grid):
                             text.append(line.modified_text)
                         for s in text:
                             if s is not None:
-                                w = string_width_cache.get(s, None)
-                                if w is None:
-                                    string_width_cache[s] = w = stringWidth(s)
-                                pane.line_lengths = max(pane.line_lengths, digit_width * w)
+                                swc = string_width_cache.get(s, None)
+                                if swc is None:
+                                    string_width_cache[s] = swc = stringWidth(s)
+                                pane.line_lengths = max(pane.line_lengths, digit_width * swc)
         # compute the maximum extents
         num_lines, line_lengths = 0, 0
         for pane in self.panes:
@@ -1282,7 +1284,7 @@ class FileDiffViewerBase(Gtk.Grid):
         pane = self.panes[f]
         nlines = len(pane.lines)
         line0, line1 = self.selection_line, self.current_line
-        if self.mode == LINE_MODE:
+        if self.mode == EditMode.LINE:
             col0, col1 = 0, 0
             if line1 < line0:
                 line0, line1 = line1, line0
@@ -1349,7 +1351,7 @@ class FileDiffViewerBase(Gtk.Grid):
         for i in range(delta):
             self.updateText(f, line0 + n_need + i, None)
         # update selection
-        if self.mode == LINE_MODE:
+        if self.mode == EditMode.LINE:
             self.setCurrentLine(f, line0 + max(n_need, 1) - 1, line0)
         else:
             self.setCurrentChar(cur_line, lastcol)
@@ -1523,7 +1525,7 @@ class FileDiffViewerBase(Gtk.Grid):
         self.selection_line = selection_line
         self.selection_char = selection_char
         self.cursor_column = cursor_column
-        if mode == CHAR_MODE:
+        if mode == EditMode.CHAR:
             self.setCurrentChar(self.current_line, self.current_char, True)
         else:
             self.setCurrentLine(self.current_pane, self.current_line, self.selection_line)
@@ -1555,7 +1557,7 @@ class FileDiffViewerBase(Gtk.Grid):
         elif upper > v + ps:
             vadj.set_value(upper - ps)
 
-    # change the current selection in LINE_MODE
+    # change the current selection in EditMode.LINE
     # use extend=True to extend the selection
     def setCurrentLine(self, f: int, i: int, selection: Optional[int] = None) -> None:
         # remember old cursor position so we can just redraw what is necessary
@@ -1584,7 +1586,7 @@ class FileDiffViewerBase(Gtk.Grid):
     # returns True if the line has preedit text
     def hasPreedit(self, f: int, i: int) -> bool:
         return (
-            self.mode == CHAR_MODE and
+            self.mode == EditMode.CHAR and
             self.current_pane == f and
             self.current_line == i and
             self.im_preedit is not None
@@ -1602,7 +1604,7 @@ class FileDiffViewerBase(Gtk.Grid):
 
     # inform input method about cursor motion
     def _cursor_position_changed(self, recompute):
-        if self.mode == CHAR_MODE:
+        if self.mode == EditMode.CHAR:
             # update input method
             h = self.font_height
             if recompute:
@@ -1698,7 +1700,7 @@ class FileDiffViewerBase(Gtk.Grid):
         f = self.current_pane
         start, end = self.selection_line, self.current_line
         # find extents of selection
-        if self.mode == LINE_MODE:
+        if self.mode == EditMode.LINE:
             if end < start:
                 start, end = end, start
             end += 1
@@ -1722,11 +1724,11 @@ class FileDiffViewerBase(Gtk.Grid):
 
     # expands the selection to include everything
     def select_all(self) -> None:
-        if self.mode in (LINE_MODE, CHAR_MODE):
+        if self.mode in (EditMode.LINE, EditMode.CHAR):
             f = self.current_pane
             self.selection_line = 0
             self.current_line = len(self.panes[f].lines)
-            if self.mode == CHAR_MODE:
+            if self.mode == EditMode.CHAR:
                 self.selection_char = 0
                 self.current_char = 0
             self.dareas[f].queue_draw()
@@ -1756,7 +1758,7 @@ class FileDiffViewerBase(Gtk.Grid):
         if y < 0:
             x, y = -1, 0
         i = min(y // self.font_height, len(self.panes[f].lines))
-        if self.mode == CHAR_MODE and f == self.current_pane:
+        if self.mode == EditMode.CHAR and f == self.current_pane:
             text = utils.strip_eol(self.getLineText(f, i))
             j = self._getPickedCharacter(text, x, True)
             if extend:
@@ -1765,9 +1767,9 @@ class FileDiffViewerBase(Gtk.Grid):
                 si, sj = None, None
             self.setCurrentChar(i, j, si, sj)
         else:
-            if self.mode == ALIGN_MODE:
+            if self.mode == EditMode.ALIGN:
                 extend = False
-            elif self.mode == CHAR_MODE:
+            elif self.mode == EditMode.CHAR:
                 self.setLineMode()
             if extend and f == self.current_pane:
                 selection = self.selection_line
@@ -1786,17 +1788,17 @@ class FileDiffViewerBase(Gtk.Grid):
             # left mouse button
             if event.type == Gdk.EventType._2BUTTON_PRESS:
                 # double click
-                if self.mode == ALIGN_MODE:
+                if self.mode == EditMode.ALIGN:
                     self.setLineMode()
-                if self.mode == LINE_MODE:
+                if self.mode == EditMode.LINE:
                     # change to CHAR_MODE
                     self.setCurrentLine(f, i)
                     # silently switch mode so the viewer does not scroll yet.
-                    self.mode = CHAR_MODE
+                    self.mode = EditMode.CHAR
                     self._im_focus_in()
                     self.button_press(f, x, y, False)
                     self.emit('mode_changed')
-                elif self.mode == CHAR_MODE and self.current_pane == f:
+                elif self.mode == EditMode.CHAR and self.current_pane == f:
                     # select word
                     text = utils.strip_eol(self.getLineText(f, i))
                     if text is not None:
@@ -1812,7 +1814,7 @@ class FileDiffViewerBase(Gtk.Grid):
                             self.setCurrentChar(i, j, i, k)
             elif event.type == Gdk.EventType._3BUTTON_PRESS:
                 # triple click, select a whole line
-                if self.mode == CHAR_MODE and self.current_pane == f:
+                if self.mode == EditMode.CHAR and self.current_pane == f:
                     i2 = min(i + 1, nlines)
                     self.setCurrentChar(i2, 0, i, 0)
             else:
@@ -1822,7 +1824,7 @@ class FileDiffViewerBase(Gtk.Grid):
                 self.button_press(f, x, y, extend)
         elif event.button == 2:
             # middle mouse button, paste primary selection
-            if self.mode == CHAR_MODE and f == self.current_pane:
+            if self.mode == EditMode.CHAR and f == self.current_pane:
                 self.button_press(f, x, y, False)
                 self.openUndoBlock()
                 Gtk.Clipboard.get(Gdk.SELECTION_PRIMARY).request_text(
@@ -1832,11 +1834,11 @@ class FileDiffViewerBase(Gtk.Grid):
         elif event.button == 3:
             # right mouse button, raise context sensitive menu
             can_align = (
-                self.mode == LINE_MODE and
+                self.mode == EditMode.LINE and
                 (f in (self.current_pane + 1, f == self.current_pane - 1)))
-            can_isolate = self.mode == LINE_MODE and f == self.current_pane
-            can_merge = self.mode == LINE_MODE and f != self.current_pane
-            can_select = self.mode in (LINE_MODE, CHAR_MODE) and f == self.current_pane
+            can_isolate = self.mode == EditMode.LINE and f == self.current_pane
+            can_merge = self.mode == EditMode.LINE and f != self.current_pane
+            can_select = self.mode in (EditMode.LINE, EditMode.CHAR) and f == self.current_pane
             can_swap = (f != self.current_pane)
 
             menu = createMenu([
@@ -2136,14 +2138,14 @@ class FileDiffViewerBase(Gtk.Grid):
                     preedit_bg_colour = (colour * alpha).over(preedit_bg_colour)
                     cr.set_source_rgba(colour.red, colour.green, colour.blue, alpha)
                     cr.paint()
-                if self.mode == ALIGN_MODE:
+                if self.mode == EditMode.ALIGN:
                     # draw align
                     if self.align_pane == f and self.align_line == i:
                         colour = theResources.getColour('alignment')
                         alpha = theResources.getFloat('alignment_opacity')
                         cr.set_source_rgba(colour.red, colour.green, colour.blue, alpha)
                         cr.paint()
-                elif self.mode == LINE_MODE:
+                elif self.mode == EditMode.LINE:
                     # draw line selection
                     if self.current_pane == f:
                         start, end = self.selection_line, self.current_line
@@ -2154,7 +2156,7 @@ class FileDiffViewerBase(Gtk.Grid):
                             alpha = theResources.getFloat('line_selection_opacity')
                             cr.set_source_rgba(colour.red, colour.green, colour.blue, alpha)
                             cr.paint()
-                elif self.mode == CHAR_MODE:
+                elif self.mode == EditMode.CHAR:
                     # draw char selection
                     if self.current_pane == f and text is not None:
                         start, end = self.selection_line, self.current_line
@@ -2286,7 +2288,7 @@ class FileDiffViewerBase(Gtk.Grid):
 
                 if self.current_pane == f and self.current_line == i:
                     # draw the cursor and preedit text
-                    if self.mode == CHAR_MODE:
+                    if self.mode == EditMode.CHAR:
                         x_pos = x_start + _pixels(self._get_cursor_x_offset())
                         if has_preedit:
                             # we have preedit text
@@ -2312,7 +2314,7 @@ class FileDiffViewerBase(Gtk.Grid):
                         cr.move_to(x_pos + 0.5, y_start)
                         cr.rel_line_to(0, h)
                         cr.stroke()
-                    elif self.mode in (LINE_MODE, ALIGN_MODE):
+                    elif self.mode in (EditMode.LINE, EditMode.ALIGN):
                         # draw the line editing cursor
                         colour = theResources.getColour('cursor')
                         cr.set_source_rgb(colour.red, colour.green, colour.blue)
@@ -2485,11 +2487,11 @@ class FileDiffViewerBase(Gtk.Grid):
 
     # 'enter_align_mode' keybinding action
     def _line_mode_enter_align_mode(self):
-        if self.mode == CHAR_MODE:
+        if self.mode == EditMode.CHAR:
             self._im_focus_out()
             self.im_context.reset()
             self._im_set_preedit(None)
-        self.mode = ALIGN_MODE
+        self.mode = EditMode.ALIGN
         self.selection_line = self.current_line
         self.align_pane = self.current_pane
         self.align_line = self.current_line
@@ -2597,7 +2599,7 @@ class FileDiffViewerBase(Gtk.Grid):
 
     # input method callback for committed text
     def im_commit_cb(self, im, s):
-        if self.mode == CHAR_MODE:
+        if self.mode == EditMode.CHAR:
             self.openUndoBlock()
             self.replaceText(s)
             self.closeUndoBlock()
@@ -2605,7 +2607,7 @@ class FileDiffViewerBase(Gtk.Grid):
     # update the cached preedit text
     def _im_set_preedit(self, p):
         self.im_preedit = p
-        if self.mode == CHAR_MODE:
+        if self.mode == EditMode.CHAR:
             f, i = self.current_pane, self.current_line
             self._queue_draw_lines(f, i)
             if f > 0:
@@ -2616,7 +2618,7 @@ class FileDiffViewerBase(Gtk.Grid):
 
     # queue a redraw for location of preedit text
     def im_preedit_changed_cb(self, im):
-        if self.mode == CHAR_MODE:
+        if self.mode == EditMode.CHAR:
             s, a, c = self.im_context.get_preedit_string()
             if len(s) > 0:
                 # we have preedit text, draw that instead
@@ -2628,7 +2630,7 @@ class FileDiffViewerBase(Gtk.Grid):
 
     # callback to respond to retrieve_surrounding signals from input methods
     def im_retrieve_surrounding_cb(self, im):
-        if self.mode == CHAR_MODE:
+        if self.mode == EditMode.CHAR:
             # notify input method of text surrounding the cursor
             s = utils.null_to_empty(self.getLineText(self.current_pane, self.current_line))
             im.set_surrounding(s, len(s), self.current_char)
@@ -2636,13 +2638,13 @@ class FileDiffViewerBase(Gtk.Grid):
     # callback for 'focus_in_event'
     def focus_in_cb(self, widget, event):
         self.has_focus = True
-        if self.mode == CHAR_MODE:
+        if self.mode == EditMode.CHAR:
             # notify the input method of the focus change
             self._im_focus_in()
 
     # callback for 'focus_out_event'
     def focus_out_cb(self, widget, event):
-        if self.mode == CHAR_MODE:
+        if self.mode == EditMode.CHAR:
             # notify the input method of the focus change
             self._im_focus_out()
         self.has_focus = False
@@ -2650,7 +2652,7 @@ class FileDiffViewerBase(Gtk.Grid):
     # callback for keyboard events
     # only keypresses that are not handled by menu item accelerators reach here
     def key_press_cb(self, widget, event):
-        if self.mode == CHAR_MODE:
+        if self.mode == EditMode.CHAR:
             # update input method
             if self.im_context.filter_keypress(event):
                 return True
@@ -2660,13 +2662,13 @@ class FileDiffViewerBase(Gtk.Grid):
         if event.state & Gdk.ModifierType.LOCK_MASK:
             mask ^= Gdk.ModifierType.SHIFT_MASK
         self.openUndoBlock()
-        if self.mode == LINE_MODE:
+        if self.mode == EditMode.LINE:
             # check if the keyval matches a line mode action
             action = theResources.getActionForKey('line_mode', event.keyval, mask)
             if action in self._line_mode_actions:
                 self._line_mode_actions[action]()
                 retval = True
-        elif self.mode == CHAR_MODE:
+        elif self.mode == EditMode.CHAR:
             f = self.current_pane
             if event.state & Gdk.ModifierType.SHIFT_MASK:
                 si, sj = self.selection_line, self.selection_char
@@ -2918,7 +2920,7 @@ class FileDiffViewerBase(Gtk.Grid):
             # handle all other printable characters
             elif len(event.string) > 0:
                 self.replaceText(event.string)
-        elif self.mode == ALIGN_MODE:
+        elif self.mode == EditMode.ALIGN:
             # check if the keyval matches an align mode action
             action = theResources.getActionForKey('align_mode', event.keyval, mask)
             if action in self._align_mode_actions:
@@ -2929,18 +2931,18 @@ class FileDiffViewerBase(Gtk.Grid):
 
     # 'copy' action
     def copy(self) -> None:
-        if self.mode in (LINE_MODE, CHAR_MODE):
+        if self.mode in (EditMode.LINE, EditMode.CHAR):
             self._set_clipboard_text(Gdk.SELECTION_CLIPBOARD, self.getSelectedText())
 
     # 'cut' action
     def cut(self) -> None:
-        if self.mode in (LINE_MODE, CHAR_MODE):
+        if self.mode in (EditMode.LINE, EditMode.CHAR):
             self.copy()
             self.replaceText('')
 
     # callback used when receiving clipboard text
     def receive_clipboard_text_cb(self, clipboard, text, data):
-        if self.mode in (LINE_MODE, CHAR_MODE):
+        if self.mode in (EditMode.LINE, EditMode.CHAR):
             # there is no guarantee this will be called before finishing
             # Gtk.Clipboard.get so we may need to create our own undo block
             needs_block = (self.undoblock is None)
@@ -2977,7 +2979,7 @@ class FileDiffViewerBase(Gtk.Grid):
 
     # 'dismiss_all_edits' action
     def dismiss_all_edits(self) -> None:
-        if self.mode in (LINE_MODE, CHAR_MODE):
+        if self.mode in (EditMode.LINE, EditMode.CHAR):
             self.bakeEdits(self.current_pane)
 
     # callback for find menu item
@@ -3268,7 +3270,7 @@ class FileDiffViewerBase(Gtk.Grid):
     # swap the contents of two panes
     def swap_panes(self, f_dst: int, f_src: int) -> None:
         if 0 <= f_dst < len(self.panes):
-            if self.mode == ALIGN_MODE:
+            if self.mode == EditMode.ALIGN:
                 self.setLineMode()
             self.recordEditMode()
             self.swapPanes(f_dst, f_src)
@@ -3293,7 +3295,7 @@ class FileDiffViewerBase(Gtk.Grid):
     # 'convert_to_upper_case' action
     def _convert_case(self, to_upper: bool) -> None:
         # find range of characters to operate upon
-        if self.mode == CHAR_MODE:
+        if self.mode == EditMode.CHAR:
             start, end = self.current_line, self.selection_line
             j0, j1 = self.current_char, self.selection_char
             if end < start or (start == end and j1 < j0):
@@ -3341,7 +3343,7 @@ class FileDiffViewerBase(Gtk.Grid):
 
     # sort lines
     def _sort_lines(self, descending: bool) -> None:
-        if self.mode != CHAR_MODE:
+        if self.mode != EditMode.CHAR:
             self.setLineMode()
         self.recordEditMode()
         f = self.current_pane
@@ -3362,7 +3364,7 @@ class FileDiffViewerBase(Gtk.Grid):
             # update line if it changed
             if ss[i] != s:
                 self.updateText(f, start + i, s)
-        if self.mode == CHAR_MODE:
+        if self.mode == EditMode.CHAR:
             # ensure the cursor position is valid
             self.setCurrentChar(self.current_line, 0, self.selection_line, 0)
         self.recordEditMode()
@@ -3377,7 +3379,7 @@ class FileDiffViewerBase(Gtk.Grid):
 
     # 'remove_trailing_white_space' action
     def remove_trailing_white_space(self) -> None:
-        if self.mode != CHAR_MODE:
+        if self.mode != EditMode.CHAR:
             self.setLineMode()
         self.recordEditMode()
         f = self.current_pane
@@ -3396,7 +3398,7 @@ class FileDiffViewerBase(Gtk.Grid):
                 # update line if it changed
                 if n < old_n:
                     self.updateText(f, i, text[:n] + text[old_n:])
-        if self.mode == CHAR_MODE:
+        if self.mode == EditMode.CHAR:
             # ensure the cursor position is valid
             self.setCurrentChar(self.current_line, 0, self.selection_line, 0)
         self.recordEditMode()
@@ -3404,7 +3406,7 @@ class FileDiffViewerBase(Gtk.Grid):
     # 'convert_tabs_to_spaces' action
     def convert_tabs_to_spaces(self) -> None:
         # find range of characters to operate upon
-        if self.mode == CHAR_MODE:
+        if self.mode == EditMode.CHAR:
             start, end = self.current_line, self.selection_line
             j0, j1 = self.current_char, self.selection_char
             if end < start or (start == end and j1 < j0):
@@ -3449,14 +3451,14 @@ class FileDiffViewerBase(Gtk.Grid):
                 # update line only if it changed
                 if text != s:
                     self.updateText(f, i, s)
-        if self.mode == CHAR_MODE:
+        if self.mode == EditMode.CHAR:
             # ensure the cursor position is valid
             self.setCurrentChar(end, j1, start, j0)
         self.recordEditMode()
 
     # 'convert_leading_spaces_to_tabs' action
     def convert_leading_spaces_to_tabs(self) -> None:
-        if self.mode != CHAR_MODE:
+        if self.mode != EditMode.CHAR:
             self.setLineMode()
         self.recordEditMode()
         f = self.current_pane
@@ -3479,14 +3481,14 @@ class FileDiffViewerBase(Gtk.Grid):
                     # update line only if it changed
                     if text != s:
                         self.updateText(f, i, s)
-        if self.mode == CHAR_MODE:
+        if self.mode == EditMode.CHAR:
             # ensure the cursor position is valid
             self.setCurrentChar(self.current_line, 0, self.selection_line, 0)
         self.recordEditMode()
 
     # adjust indenting of the selected lines by 'offset' soft tabs
     def _adjust_indenting(self, offset: int) -> None:
-        if self.mode != CHAR_MODE:
+        if self.mode != EditMode.CHAR:
             self.setLineMode()
         # find range of lines to operate upon
         f = self.current_pane
@@ -3512,7 +3514,7 @@ class FileDiffViewerBase(Gtk.Grid):
                         tab_width = self.prefs.getInt('display_tab_width')
                         s = '\t' * (ws // tab_width) + ' ' * (ws % tab_width)
                     self.updateText(f, i, s + text[j:])
-        if self.mode == CHAR_MODE:
+        if self.mode == EditMode.CHAR:
             # ensure the cursor position is valid
             self.setCurrentChar(self.current_line, 0, self.selection_line, 0)
         self.recordEditMode()

@@ -26,7 +26,7 @@ import stat
 import webbrowser
 
 from gettext import gettext as _
-from typing import Optional
+from typing import List, Optional
 from urllib.parse import urlparse
 
 from diffuse import constants
@@ -35,9 +35,10 @@ from diffuse.dialogs import AboutDialog, FileChooserDialog, NumericDialog, Searc
 from diffuse.preferences import Preferences
 from diffuse.resources import theResources
 from diffuse.utils import LineEnding
+from diffuse.vcs.vcs_interface import VcsInterface
 from diffuse.vcs.vcs_registry import VcsRegistry
-from diffuse.widgets import FileDiffViewerBase
-from diffuse.widgets import createMenu, LINE_MODE, CHAR_MODE, ALIGN_MODE
+from diffuse.widgets import FileDiffViewerBase, EditMode
+from diffuse.widgets import createMenu
 
 import gi  # type: ignore
 gi.require_version('GObject', '2.0')
@@ -57,7 +58,7 @@ theVCSs = VcsRegistry()
 # make this a Gtk.EventBox so signals can be connected for MMB and RMB button
 # presses.
 class NotebookTab(Gtk.EventBox):
-    def __init__(self, name, stock):
+    def __init__(self, name: str, stock: str) -> None:
         Gtk.EventBox.__init__(self)
         self.set_visible_window(False)
         hbox = Gtk.Box.new(Gtk.Orientation.HORIZONTAL, 0)
@@ -66,13 +67,16 @@ class NotebookTab(Gtk.EventBox):
             image.set_from_stock(stock, Gtk.IconSize.MENU)
             hbox.pack_start(image, False, False, 5)
             image.show()
-        self.label = label = Gtk.Label.new(name)
+
+        label = Gtk.Label.new(name)
         # left justify the widget
         label.set_xalign(0.0)
         label.set_yalign(0.5)
         hbox.pack_start(label, True, True, 0)
         label.show()
-        self.button = button = Gtk.Button.new()
+        self.label = label
+
+        button = Gtk.Button.new()
         button.set_relief(Gtk.ReliefStyle.NONE)
         image = Gtk.Image.new()
         image.set_from_stock(Gtk.STOCK_CLOSE, Gtk.IconSize.MENU)
@@ -81,13 +85,15 @@ class NotebookTab(Gtk.EventBox):
         button.set_tooltip_text(_('Close Tab'))
         hbox.pack_start(button, False, False, 0)
         button.show()
+        self.button = button
+
         self.add(hbox)
         hbox.show()
 
-    def get_text(self):
+    def get_text(self) -> str:
         return self.label.get_text()
 
-    def set_text(self, s):
+    def set_text(self, s: str) -> None:
         self.label.set_text(s)
 
 
@@ -99,7 +105,7 @@ class FileInfo:
         # name of codec used to translate the file contents to unicode text
         self.encoding = encoding
         # the VCS object
-        self.vcs = vcs
+        self.vcs: VcsInterface = vcs
         # revision used to retrieve file from the VCS
         self.revision = revision
         # alternate text to display instead of the actual file name
@@ -147,7 +153,7 @@ class Diffuse(Gtk.Window):
                 self.emit(s)
 
             # creates an appropriate title for the pane header
-            def updateTitle(self):
+            def updateTitle(self) -> None:
                 ss = []
                 info = self.info
                 if info.label is not None:
@@ -166,7 +172,7 @@ class Diffuse(Gtk.Window):
                 self.emit('title_changed')
 
             # set num edits
-            def setEdits(self, has_edits):
+            def setEdits(self, has_edits: bool) -> None:
                 if self.has_edits != has_edits:
                     self.has_edits = has_edits
                     self.updateTitle()
@@ -198,8 +204,8 @@ class Diffuse(Gtk.Window):
                 self.show_all()
 
             # set the cursor label
-            def updateCursor(self, viewer, f):
-                if viewer.mode == CHAR_MODE and viewer.current_pane == f:
+            def updateCursor(self, viewer: FileDiffViewerBase, f: int) -> None:
+                if viewer.mode == EditMode.CHAR and viewer.current_pane == f:
                     # # TODO: Find a fix for the column bug (resizing issue when editing a line)
                     # j = viewer.current_char
                     # if j > 0:
@@ -212,7 +218,7 @@ class Diffuse(Gtk.Window):
                 self.cursor.set_text(s)
 
             # set the format label
-            def setFormat(self, s):
+            def setFormat(self, s: LineEnding) -> None:
                 v = []
                 if s & LineEnding.DOS_FORMAT:
                     v.append('DOS')
@@ -223,19 +229,19 @@ class Diffuse(Gtk.Window):
                 self.format.set_text('/'.join(v))
 
             # set the format label
-            def setEncoding(self, s):
+            def setEncoding(self, s: str) -> None:
                 if s is None:
                     s = ''
                 self.encoding.set_text(s)
 
-        def __init__(self, n, prefs, title):
-            FileDiffViewerBase.__init__(self, n, prefs)
+        def __init__(self, n: int, prefs: Preferences, title: str) -> None:
+            super().__init__(n, prefs)
 
             self.title = title
-            self.status = ''
+            self.status: Optional[str] = ''
 
-            self.headers = []
-            self.footers = []
+            self.headers: List[Diffuse.FileDiffViewer.PaneHeader] = []
+            self.footers: List[Diffuse.FileDiffViewer.PaneFooter] = []
             for i in range(n):
                 # pane header
                 w = Diffuse.FileDiffViewer.PaneHeader()
@@ -272,7 +278,7 @@ class Diffuse(Gtk.Window):
 
         # convenience method to request confirmation before loading a file if
         # it will cause existing edits to be lost
-        def loadFromInfo(self, f, info):
+        def loadFromInfo(self, f: int, info: FileInfo) -> None:
             if self.headers[f].has_edits:
                 # warn users of any unsaved changes they might lose
                 dialog = Gtk.MessageDialog(
@@ -358,7 +364,7 @@ class Diffuse(Gtk.Window):
         # load a new file into pane 'f'
         # 'info' indicates the name of the file and how to retrieve it from the
         # version control system if applicable
-        def load(self, f, info):
+        def load(self, f: int, info: FileInfo) -> None:
             name = info.name
             encoding = info.encoding
             stat = None
@@ -371,7 +377,7 @@ class Diffuse(Gtk.Window):
                     if rev is None:
                         # load the contents of a plain file
                         with open(name, 'rb') as fd:
-                            s = fd.read()
+                            contents = fd.read()
                         # get the file's modification times so we can detect changes
                         stat = os.stat(name)
                     else:
@@ -379,12 +385,12 @@ class Diffuse(Gtk.Window):
                             raise IOError('Not under version control.')
                         fullname = os.path.abspath(name)
                         # retrieve the revision from the version control system
-                        s = info.vcs.getRevision(self.prefs, fullname, rev)
+                        contents = info.vcs.getRevision(self.prefs, fullname, rev)
                     # convert file contents to unicode
                     if encoding is None:
-                        s, encoding = self.prefs.convertToUnicode(s)
+                        s, encoding = self.prefs.convertToUnicode(contents)
                     else:
-                        s = str(s, encoding=encoding)
+                        s = str(contents, encoding=encoding)
                     ss = utils.splitlines(s)
                 except (IOError, OSError, UnicodeDecodeError, LookupError):
                     # FIXME: this can occur before the toplevel window is drawn
@@ -408,7 +414,7 @@ class Diffuse(Gtk.Window):
                     self.setSyntax(syntax)
 
         # load a new file into pane 'f'
-        def open_file(self, f, reload=False):
+        def open_file(self, f: int, reload: bool = False) -> None:
             h = self.headers[f]
             info = h.info
             if not reload:
@@ -487,7 +493,7 @@ class Diffuse(Gtk.Window):
                     pass
 
         # save contents of pane 'f' to file
-        def save_file(self, f, save_as=False):
+        def save_file(self, f: int, save_as: bool = False) -> bool:
             h = self.headers[f]
             info = h.info
             name, encoding, rev, label = info.name, info.encoding, info.revision, info.label
@@ -642,15 +648,15 @@ class Diffuse(Gtk.Window):
             self.updateStatus()
 
         # update the viewer's current status message
-        def updateStatus(self):
-            if self.mode == LINE_MODE:
+        def updateStatus(self) -> None:
+            if self.mode == EditMode.LINE:
                 s = _(
                     'Press the enter key or double click to edit. Press the space bar or use the '
                     'RMB menu to manually align.'
                 )
-            elif self.mode == CHAR_MODE:
+            elif self.mode == EditMode.CHAR:
                 s = _('Press the escape key to finish editing.')
-            elif self.mode == ALIGN_MODE:
+            elif self.mode == EditMode.ALIGN:
                 s = _(
                     'Select target line and press the space bar to align. Press the escape key to '
                     'cancel.'
@@ -661,7 +667,7 @@ class Diffuse(Gtk.Window):
             self.emit('status_changed', s)
 
         # gets the status bar text
-        def getStatus(self):
+        def getStatus(self) -> Optional[str]:
             return self.status
 
         # callback to display the cursor in a pane
@@ -674,7 +680,7 @@ class Diffuse(Gtk.Window):
             self.footers[f].setFormat(fmt)
 
     def __init__(self, rc_dir):
-        Gtk.Window.__init__(self, type=Gtk.WindowType.TOPLEVEL)
+        super().__init__(type=Gtk.WindowType.TOPLEVEL)
 
         self.prefs = Preferences(os.path.join(rc_dir, 'prefs'))
         # number of created viewers (used to label some tabs)
@@ -702,8 +708,8 @@ class Diffuse(Gtk.Window):
         self.connect('window-state-event', self.window_state_cb)
 
         # search history is application wide
-        self.search_pattern = None
-        self.search_history = []
+        self.search_pattern: Optional[str] = None
+        self.search_history: List[str] = []
 
         self.connect('delete-event', self.delete_cb)
         accel_group = Gtk.AccelGroup()
@@ -968,7 +974,7 @@ class Diffuse(Gtk.Window):
         )
 
     # load state information that should persist across sessions
-    def loadState(self, statepath):
+    def loadState(self, statepath: str) -> None:
         if os.path.isfile(statepath):
             try:
                 f = open(statepath, 'r')
@@ -998,7 +1004,7 @@ class Diffuse(Gtk.Window):
             self.maximize()
 
     # save state information that should persist across sessions
-    def saveState(self, statepath):
+    def saveState(self, statepath: str) -> None:
         try:
             ss = []
             for k, v in self.bool_state.items():
@@ -1025,7 +1031,7 @@ class Diffuse(Gtk.Window):
 
     # returns True if the list of viewers can be closed.  The user will be
     # given a chance to save any modified files before this method completes.
-    def confirmCloseViewers(self, viewers):
+    def confirmCloseViewers(self, viewers: List[FileDiffViewer]) -> bool:
         # make a list of modified files
         model = Gtk.ListStore.new([
             GObject.TYPE_BOOLEAN,
@@ -1144,12 +1150,12 @@ class Diffuse(Gtk.Window):
             menu.popup(None, None, None, event.button, event.time)
 
     # update window's title
-    def updateTitle(self, viewer):
+    def updateTitle(self, viewer: FileDiffViewer) -> None:
         title = self.notebook.get_tab_label(viewer).get_text()
         self.set_title(f'{title} - {constants.APP_NAME}')
 
     # update the message in the status bar
-    def setStatus(self, s):
+    def setStatus(self, s: Optional[str]) -> None:
         sb = self.statusbar
         context = sb.get_context_id('Message')
         sb.pop(context)
@@ -1358,7 +1364,7 @@ class Diffuse(Gtk.Window):
         return True
 
     # returns the currently focused viewer
-    def getCurrentViewer(self) -> Optional[Gtk.Widget]:
+    def getCurrentViewer(self) -> FileDiffViewer:
         return self.notebook.get_nth_page(self.notebook.get_current_page())
 
     # callback for the open file menu item
@@ -1504,7 +1510,7 @@ class Diffuse(Gtk.Window):
 
     # request search parameters if force=True and then perform a search in the
     # current viewer pane
-    def find(self, force, reverse):
+    def find(self, force: bool, reverse: bool) -> None:
         viewer = self.getCurrentViewer()
         if force or self.search_pattern is None:
             # construct search dialog
