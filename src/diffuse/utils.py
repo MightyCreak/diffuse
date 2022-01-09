@@ -234,7 +234,12 @@ def _strip_eols(ss: List[str]) -> List[str]:
 
 
 # use popen to read the output of a command
-def popenReadLines(cwd, cmd, prefs, bash_pref, success_results=None):
+def popenReadLines(
+        cwd: str,
+        cmd: List[str],
+        prefs: Preferences,
+        bash_pref: str,
+        success_results: List[int] = None) -> List[str]:
     return _strip_eols(splitlines(popenRead(
         cwd, cmd, prefs, bash_pref, success_results).decode('utf-8', errors='ignore')))
 
