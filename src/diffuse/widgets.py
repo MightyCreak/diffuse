@@ -21,8 +21,9 @@ import difflib
 import os
 import unicodedata
 
+from enum import IntFlag
 from gettext import gettext as _
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Tuple
 
 from diffuse import utils
 from diffuse.resources import theResources
@@ -38,7 +39,7 @@ from gi.repository import GObject, Gdk, Gtk, Pango, PangoCairo  # type: ignore #
 
 
 # mapping to column width of a character (tab will never be in this map)
-_char_width_cache: Dict[str, str] = {}
+_char_width_cache: Dict[str, int] = {}
 
 # the file diff viewer is always in one of these modes defining the cursor,
 # and hotkey behavior
@@ -151,7 +152,7 @@ class FileDiffViewerBase(Gtk.Grid):
     class Pane:
         def __init__(self) -> None:
             # list of lines displayed in this pane (including spacing lines)
-            self.lines: List[FileDiffViewerBase.Line] = []
+            self.lines: List[Optional[FileDiffViewerBase.Line]] = []
             # high water mark for line length in Pango units (used to determine
             # the required horizontal scroll range)
             self.line_lengths = 0
@@ -167,7 +168,7 @@ class FileDiffViewerBase(Gtk.Grid):
             # portion of the cache are cleared by setting entries to None
             self.diff_cache: List[List[Any]] = []
             # mask indicating the type of line endings present
-            self.format = 0
+            self.format: LineEnding = LineEnding.NO_FORMAT
             # number of lines with edits
             self.num_edits = 0
 
@@ -407,7 +408,7 @@ class FileDiffViewerBase(Gtk.Grid):
     # returns the 'column width' for a string -- used to help position
     # characters when tabs and other special characters are present
     # This is an inline loop over self.characterWidth() for performance reasons.
-    def stringWidth(self, s):
+    def stringWidth(self, s: str) -> int:
         if not self.prefs.getBool('display_show_whitespace'):
             s = utils.strip_eol(s)
         col = 0
@@ -436,7 +437,7 @@ class FileDiffViewerBase(Gtk.Grid):
         return col
 
     # returns the 'column width' for a single character created at column 'i'
-    def characterWidth(self, i, c):
+    def characterWidth(self, i: int, c: str) -> int:
         try:
             return _char_width_cache[c]
         except KeyError:
@@ -458,13 +459,13 @@ class FileDiffViewerBase(Gtk.Grid):
 
     # translates a string into an array of the printable representation for
     # each character
-    def expand(self, s):
+    def expand(self, s: str) -> List[str]:
         visible = self.prefs.getBool('display_show_whitespace')
         if not visible:
             s = utils.strip_eol(s)
         tab_width = self.prefs.getInt('display_tab_width')
         col = 0
-        result = []
+        result: List[str] = []
         for c in s:
             v = ord(c)
             if v <= 32:
@@ -493,7 +494,7 @@ class FileDiffViewerBase(Gtk.Grid):
         return result
 
     # changes the viewer's mode to LINE_MODE
-    def setLineMode(self):
+    def setLineMode(self) -> None:
         if self.mode != LINE_MODE:
             if self.mode == CHAR_MODE:
                 self._im_focus_out()
@@ -512,7 +513,7 @@ class FileDiffViewerBase(Gtk.Grid):
             self.emit('mode_changed')
 
     # changes the viewer's mode to CHAR_MODE
-    def setCharMode(self):
+    def setCharMode(self) -> None:
         if self.mode != CHAR_MODE:
             if self.mode == LINE_MODE:
                 self.cursor_column = -1
@@ -546,7 +547,7 @@ class FileDiffViewerBase(Gtk.Grid):
         return self.syntax
 
     # returns True if any pane contains edits
-    def hasEdits(self):
+    def hasEdits(self) -> bool:
         for pane in self.panes:
             if pane.num_edits > 0:
                 return True
@@ -561,7 +562,7 @@ class FileDiffViewerBase(Gtk.Grid):
     # openUndoBlock() should be called when the action from a user, like a
     # mouse button press, menu item, etc. may cause change to the diff viewer's
     # state
-    def openUndoBlock(self):
+    def openUndoBlock(self) -> None:
         self.undoblock = []
 
     # all changes to the diff viewer's state should create an Undo object and
@@ -574,14 +575,14 @@ class FileDiffViewerBase(Gtk.Grid):
     # all openUndoBlock() calls should also have a matching closeUndoBlock()
     # this method collects all Undos created since the openUndoBlock() call
     # and pushes them onto the undo stack as a single unit
-    def closeUndoBlock(self):
+    def closeUndoBlock(self) -> None:
         if len(self.undoblock) > 0:
             self.redos = []
             self.undos.append(self.undoblock)
         self.undoblock = None
 
     # 'undo' action
-    def undo(self):
+    def undo(self) -> None:
         self.undoblock, old_block = None, self.undoblock
         if self.mode == CHAR_MODE:
             # avoid implicit preedit commit when an undo changes the mode
@@ -597,7 +598,7 @@ class FileDiffViewerBase(Gtk.Grid):
         self.undoblock = old_block
 
     # 'redo' action
-    def redo(self):
+    def redo(self) -> None:
         self.undoblock, old_block = None, self.undoblock
         if self.mode in (LINE_MODE, CHAR_MODE):
             if self.mode == CHAR_MODE:
@@ -613,7 +614,7 @@ class FileDiffViewerBase(Gtk.Grid):
         self.undoblock = old_block
 
     # returns the width of the viewport's line number column in Pango units
-    def getLineNumberWidth(self):
+    def getLineNumberWidth(self) -> int:
         # find the maximum number of digits for a line number from all panes
         n = 0
         if self.prefs.getBool('display_show_line_numbers'):
@@ -624,7 +625,7 @@ class FileDiffViewerBase(Gtk.Grid):
         return n
 
     # returns the width of a string in Pango units
-    def getTextWidth(self, text):
+    def getTextWidth(self, text: str) -> int:
         if len(text) == 0:
             return 0
         layout = self.create_pango_layout(text)
@@ -635,7 +636,7 @@ class FileDiffViewerBase(Gtk.Grid):
     # set 'compute_width' to False if the high water mark for line length can
     # be used to determine the required width for the viewport, use True for
     # this value otherwise
-    def updateSize(self, compute_width, f=None):
+    def updateSize(self, compute_width: bool, f: Optional[int] = None) -> None:
         digit_width, stringWidth = self.digit_width, self.stringWidth
         string_width_cache = self.string_width_cache
         if compute_width:
@@ -685,14 +686,14 @@ class FileDiffViewerBase(Gtk.Grid):
         self.vadj.step_increment = self.font_height
 
     # returns a line from the specified pane and offset
-    def getLine(self, f, i):
+    def getLine(self, f: int, i: int) -> Optional[Line]:
         lines = self.panes[f].lines
         if i < len(lines):
             return lines[i]
         return None
 
     # returns the text for the specified line
-    def getLineText(self, f, i):
+    def getLineText(self, f: int, i: int) -> Optional[str]:
         line = self.getLine(f, i)
         if line is not None:
             return line.getText()
@@ -700,7 +701,7 @@ class FileDiffViewerBase(Gtk.Grid):
 
     # Undo for changes to the cached line ending style
     class SetFormatUndo:
-        def __init__(self, f, fmt, old_format):
+        def __init__(self, f: int, fmt: LineEnding, old_format: LineEnding) -> None:
             self.data = (f, fmt, old_format)
 
         def undo(self, viewer):
@@ -712,7 +713,7 @@ class FileDiffViewerBase(Gtk.Grid):
             viewer.setFormat(f, fmt)
 
     # sets the cached line ending style
-    def setFormat(self, f, fmt):
+    def setFormat(self, f: int, fmt: LineEnding) -> None:
         pane = self.panes[f]
         if self.undoblock is not None:
             # create an Undo object for the action
@@ -722,7 +723,7 @@ class FileDiffViewerBase(Gtk.Grid):
 
     # Undo for the creation of Line objects
     class InstanceLineUndo:
-        def __init__(self, f, i, reverse):
+        def __init__(self, f: int, i: int, reverse: bool) -> None:
             self.data = (f, i, reverse)
 
         def undo(self, viewer):
@@ -735,7 +736,7 @@ class FileDiffViewerBase(Gtk.Grid):
 
     # creates an instance of a Line object for the specified pane and offset
     # deletes an instance when 'reverse' is set to True
-    def instanceLine(self, f, i, reverse=False):
+    def instanceLine(self, f: int, i: int, reverse: bool = False) -> None:
         if self.undoblock is not None:
             # create an Undo object for the action
             self.addUndo(FileDiffViewerBase.InstanceLineUndo(f, i, reverse))
@@ -759,7 +760,7 @@ class FileDiffViewerBase(Gtk.Grid):
             f, i, _, _, is_modified, text = self.data
             viewer.updateLineText(f, i, is_modified, text)
 
-    def getMapFlags(self, f, i):
+    def getMapFlags(self, f: int, i: int) -> int:
         flags = 0
         compare_text = self.getCompareString(f, i)
         if f > 0 and self.getCompareString(f - 1, i) != compare_text:
@@ -822,7 +823,7 @@ class FileDiffViewerBase(Gtk.Grid):
 
     # Undo for inserting a spacing line in a single pane
     class InsertNullUndo:
-        def __init__(self, f, i, reverse):
+        def __init__(self, f: int, i: int, reverse: bool) -> None:
             self.data = (f, i, reverse)
 
         def undo(self, viewer):
@@ -836,7 +837,7 @@ class FileDiffViewerBase(Gtk.Grid):
     # insert a spacing line at line 'i' in pane 'f'
     # this caller must ensure the blocks and number of lines in each pane
     # are valid again
-    def insertNull(self, f, i, reverse):
+    def insertNull(self, f: int, i: int, reverse: bool) -> None:
         if self.undoblock is not None:
             # create an Undo object for the action
             self.addUndo(FileDiffViewerBase.InsertNullUndo(f, i, reverse))
@@ -885,7 +886,7 @@ class FileDiffViewerBase(Gtk.Grid):
 
     # Undo for alignment changes
     class AlignmentChangeUndo:
-        def __init__(self, finished):
+        def __init__(self, finished: bool) -> None:
             self.data = finished
 
         def undo(self, viewer):
@@ -897,7 +898,7 @@ class FileDiffViewerBase(Gtk.Grid):
             viewer.alignmentChange(finished)
 
     # update viewer in response to alignment changes
-    def alignmentChange(self, finished):
+    def alignmentChange(self, finished: bool) -> None:
         if self.undoblock is not None:
             # create an Undo object for the action
             self.addUndo(FileDiffViewerBase.AlignmentChangeUndo(finished))
@@ -947,7 +948,7 @@ class FileDiffViewerBase(Gtk.Grid):
         self.blocks = blocks
 
     # insert 'n' blank lines in all panes
-    def insertLines(self, i, n):
+    def insertLines(self, i: int, n: int) -> None:
         # insert lines
         self.updateAlignment(i, 0, [n * [None] for pane in self.panes])
         pre, post = _cut_blocks(i, self.blocks)
@@ -966,7 +967,7 @@ class FileDiffViewerBase(Gtk.Grid):
         self.diffmap.queue_draw()
 
     # remove a line
-    def removeSpacerLines(self, i, n, skip=-1):
+    def removeSpacerLines(self, i: int, n: int, skip: int = -1) -> int:
         npanes, removed = len(self.panes), []
         for j in range(i, i + n):
             for f in range(npanes):
@@ -1055,7 +1056,7 @@ class FileDiffViewerBase(Gtk.Grid):
         self.diffmap.queue_draw()
 
     # create a hash for a line to use for line matching
-    def _alignmentHash(self, line):
+    def _alignmentHash(self, line: Line) -> Optional[str]:
         text = line.getText()
         if text is None:
             return None
@@ -1076,15 +1077,14 @@ class FileDiffViewerBase(Gtk.Grid):
             if pref('align_ignore_whitespace_changes'):
                 # replace all blocks of white space with a single space
                 pc = True
-                r = []
-                append = r.append
+                r: List[str] = []
                 for c in text:
                     if c in utils.whitespace:
                         if pc:
-                            append(' ')
+                            r.append(' ')
                             pc = False
                     else:
-                        append(c)
+                        r.append(c)
                         pc = True
                 text = ''.join(r)
         if pref('align_ignore_case'):
@@ -1110,9 +1110,8 @@ class FileDiffViewerBase(Gtk.Grid):
         s1, s2 = mlines
         n1, n2 = 0, 0
         # hash lines according to the alignment preferences
-        a = self._alignmentHash
-        t1 = [a(s) for s in s1]
-        t2 = [a(s) for s in s2]
+        t1 = [self._alignmentHash(s) for s in s1]
+        t2 = [self._alignmentHash(s) for s in s2]
         # align s1 and s2 by inserting spacer lines
         # this will be used to determine which lines from the inner lists of
         # lines should be neighbours
@@ -1253,8 +1252,9 @@ class FileDiffViewerBase(Gtk.Grid):
 
     # refresh the lines to contain new objects with updated line numbers and
     # no local edits
-    def bakeEdits(self, f):
-        pane, lines, line_num = self.panes[f], [], 0
+    def bakeEdits(self, f: int) -> None:
+        lines: List[Optional[FileDiffViewerBase.Line]] = []
+        pane, line_num = self.panes[f], 0
         for i in range(len(pane.lines)):
             s = self.getLineText(f, i)
             if s is None:
@@ -1267,7 +1267,7 @@ class FileDiffViewerBase(Gtk.Grid):
         self.replaceLines(f, pane.lines, lines, pane.max_line_number, line_num)
 
     # update the contents for a line, creating the line if necessary
-    def updateText(self, f, i, text, is_modified=True):
+    def updateText(self, f: int, i: int, text: Optional[str], is_modified: bool = True) -> None:
         if self.panes[f].lines[i] is None:
             self.instanceLine(f, i)
         self.updateLineText(f, i, is_modified, text)
@@ -1533,7 +1533,7 @@ class FileDiffViewerBase(Gtk.Grid):
         self.dareas[old_f].queue_draw()
 
     # queue a range of lines for redrawing
-    def _queue_draw_lines(self, f, line0, line1=None):
+    def _queue_draw_lines(self, f: int, line0: int, line1: Optional[int] = None) -> None:
         if line1 is None:
             line1 = line0
         elif line0 > line1:
@@ -1543,7 +1543,7 @@ class FileDiffViewerBase(Gtk.Grid):
         darea.queue_draw_area(0, line0 * h - int(self.vadj.get_value()), w, (line1 - line0 + 1) * h)
 
     # scroll vertically to ensure the current line is visible
-    def _ensure_line_is_visible(self, i):
+    def _ensure_line_is_visible(self, i: int) -> None:
         h = self.font_height
         lower = i * h
         upper = lower + h
@@ -1557,7 +1557,7 @@ class FileDiffViewerBase(Gtk.Grid):
 
     # change the current selection in LINE_MODE
     # use extend=True to extend the selection
-    def setCurrentLine(self, f, i, selection=None):
+    def setCurrentLine(self, f: int, i: int, selection: Optional[int] = None) -> None:
         # remember old cursor position so we can just redraw what is necessary
         old_f = self.current_pane
         line0, line1 = self.current_line, self.selection_line
@@ -1569,10 +1569,7 @@ class FileDiffViewerBase(Gtk.Grid):
         # update cursor
         self.current_pane = f
         self.current_line = i
-        if selection is None:
-            self.selection_line = i
-        else:
-            self.selection_line = selection
+        self.selection_line = selection if selection is not None else i
 
         self.emit('cursor_changed')
 
@@ -1585,7 +1582,7 @@ class FileDiffViewerBase(Gtk.Grid):
         self._ensure_line_is_visible(i)
 
     # returns True if the line has preedit text
-    def hasPreedit(self, f, i):
+    def hasPreedit(self, f: int, i: int) -> bool:
         return (
             self.mode == CHAR_MODE and
             self.current_pane == f and
@@ -1626,15 +1623,17 @@ class FileDiffViewerBase(Gtk.Grid):
             self.im_context.set_cursor_location(rect)
 
     # get the position of the cursor in Pango units
-    def _get_cursor_x_offset(self):
+    def _get_cursor_x_offset(self) -> int:
         j = self.current_char
         if j > 0:
-            text = self.getLineText(self.current_pane, self.current_line)[:j]
-            return self.getTextWidth(''.join(self.expand(text)))
+            text = self.getLineText(self.current_pane, self.current_line)
+            if text is not None:
+                text = text[:j]
+                return self.getTextWidth(''.join(self.expand(text)))
         return 0
 
     # scroll to ensure the current cursor position is visible
-    def _ensure_cursor_is_visible(self):
+    def _ensure_cursor_is_visible(self) -> None:
         current_line = self.current_line
 
         # find the cursor's horizontal range
@@ -1722,7 +1721,7 @@ class FileDiffViewerBase(Gtk.Grid):
         return ''.join([s for s in ss if s is not None])
 
     # expands the selection to include everything
-    def select_all(self):
+    def select_all(self) -> None:
         if self.mode in (LINE_MODE, CHAR_MODE):
             f = self.current_pane
             self.selection_line = 0
@@ -1735,7 +1734,7 @@ class FileDiffViewerBase(Gtk.Grid):
     # returns the index of the last character in text that should be left of
     # 'x' _pixels from the edge of the darea widget
     # if partial=True, include characters only partially to the left of 'x'
-    def _getPickedCharacter(self, text, x, partial):
+    def _getPickedCharacter(self, text: Optional[str], x: int, partial: bool) -> int:
         if text is None:
             return 0
         n = len(text)
@@ -1945,7 +1944,7 @@ class FileDiffViewerBase(Gtk.Grid):
 
     # returns a hash of a string that can be used to quickly compare strings
     # according to the display preferences
-    def getCompareString(self, f, i):
+    def getCompareString(self, f: int, i: int) -> Optional[str]:
         line = self.getLine(f, i)
         if line is None:
             return None
@@ -2553,7 +2552,7 @@ class FileDiffViewerBase(Gtk.Grid):
         self.setCurrentLine(self.current_pane, self.current_line - delta, selection)
 
     # 'extend_page_up' keybinding action
-    def _line_mode_extend_page_up(self):
+    def _line_mode_extend_page_up(self) -> None:
         self._line_mode_page_up(self.selection_line)
 
     # 'page_down' keybinding action
@@ -2562,20 +2561,20 @@ class FileDiffViewerBase(Gtk.Grid):
         self.setCurrentLine(self.current_pane, self.current_line + delta, selection)
 
     # 'extend_page_down' keybinding action
-    def _line_mode_extend_page_down(self):
+    def _line_mode_extend_page_down(self) -> None:
         self._line_mode_page_down(self.selection_line)
 
     # 'delete_text' keybinding action
-    def _delete_text(self):
+    def _delete_text(self) -> None:
         self.replaceText('')
 
     # 'enter_line_mode' keybinding action
-    def _align_mode_enter_line_mode(self):
+    def _align_mode_enter_line_mode(self) -> None:
         self.selection_line = self.current_line
         self.setLineMode()
 
     # 'align' keybinding action
-    def _align_text(self):
+    def _align_text(self) -> None:
         f1 = self.align_pane
         line1 = self.align_line
         line2 = self.current_line
@@ -2587,12 +2586,12 @@ class FileDiffViewerBase(Gtk.Grid):
             self.align(self.current_pane, line2, line1)
 
     # give the input method focus
-    def _im_focus_in(self):
+    def _im_focus_in(self) -> None:
         if self.has_focus:
             self.im_context.focus_in()
 
     # remove input method focus
-    def _im_focus_out(self):
+    def _im_focus_out(self) -> None:
         if self.has_focus:
             self.im_context.focus_out()
 
@@ -2762,7 +2761,7 @@ class FileDiffViewerBase(Gtk.Grid):
                     if text is not None and j < len(text):
                         c = _get_character_class(text[j])
                         if (
-                            c != WHITESPACE_CLASS and
+                            c != CharacterClass.WHITESPACE and
                             (j < 1 or j - 1 >= len(text) or _get_character_class(text[j - 1]) != c)
                         ):
                             break
@@ -2929,12 +2928,12 @@ class FileDiffViewerBase(Gtk.Grid):
         return retval
 
     # 'copy' action
-    def copy(self):
+    def copy(self) -> None:
         if self.mode in (LINE_MODE, CHAR_MODE):
             self._set_clipboard_text(Gdk.SELECTION_CLIPBOARD, self.getSelectedText())
 
     # 'cut' action
-    def cut(self):
+    def cut(self) -> None:
         if self.mode in (LINE_MODE, CHAR_MODE):
             self.copy()
             self.replaceText('')
@@ -2952,13 +2951,13 @@ class FileDiffViewerBase(Gtk.Grid):
                 self.closeUndoBlock()
 
     # 'paste' action
-    def paste(self):
+    def paste(self) -> None:
         Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD).request_text(
             self.receive_clipboard_text_cb,
             None)
 
     # 'clear_edits' action
-    def clear_edits(self):
+    def clear_edits(self) -> None:
         self.setLineMode()
         self.recordEditMode()
         f = self.current_pane
@@ -2977,7 +2976,7 @@ class FileDiffViewerBase(Gtk.Grid):
         self.recordEditMode()
 
     # 'dismiss_all_edits' action
-    def dismiss_all_edits(self):
+    def dismiss_all_edits(self) -> None:
         if self.mode in (LINE_MODE, CHAR_MODE):
             self.bakeEdits(self.current_pane)
 
@@ -3038,7 +3037,7 @@ class FileDiffViewerBase(Gtk.Grid):
         return False
 
     # move cursor to a given line
-    def go_to_line(self, i):
+    def go_to_line(self, i: int) -> None:
         f, idx = self.current_pane, 0
         if i > 0:
             # search for a line matching that number
@@ -3057,7 +3056,7 @@ class FileDiffViewerBase(Gtk.Grid):
 
     # recompute viewport size and redraw as the display preferences may have
     # changed
-    def prefsUpdated(self):
+    def prefsUpdated(self) -> None:
         # clear cache as tab width may have changed
         self.string_width_cache = {}
         self.setFont(
@@ -3075,12 +3074,12 @@ class FileDiffViewerBase(Gtk.Grid):
         self.diffmap.queue_draw()
 
     # 'realign_all' action
-    def realign_all(self):
+    def realign_all(self) -> None:
         self.setLineMode()
         f = self.current_pane
         self.recordEditMode()
-        lines = []
-        blocks = []
+        lines: List[List[FileDiffViewerBase.Line]] = []
+        blocks: List[int] = []
         for pane in self.panes:
             # create a new list of lines with no spacers
             newlines = [[line for line in pane.lines if line is not None]]
@@ -3114,7 +3113,7 @@ class FileDiffViewerBase(Gtk.Grid):
         self.closeUndoBlock()
 
     # 'isolate' action
-    def isolate(self):
+    def isolate(self) -> None:
         self.setLineMode()
         self.recordEditMode()
         f = self.current_pane
@@ -3157,7 +3156,7 @@ class FileDiffViewerBase(Gtk.Grid):
 
     # returns True if line 'i' in pane 'f' has an edit or is different from its
     # neighbour
-    def hasEditsOrDifference(self, f, i):
+    def hasEditsOrDifference(self, f: int, i: int) -> bool:
         line = self.getLine(f, i)
         if line is not None and line.is_modified:
             return True
@@ -3167,7 +3166,7 @@ class FileDiffViewerBase(Gtk.Grid):
             (f + 1 < len(self.panes) and text != self.getCompareString(f + 1, i)))
 
     # returns True if there are any differences
-    def hasDifferences(self):
+    def hasDifferences(self) -> bool:
         n = len(self.panes)
         nlines = len(self.panes[0].lines)
         for i in range(nlines):
@@ -3178,13 +3177,13 @@ class FileDiffViewerBase(Gtk.Grid):
         return False
 
     # scroll the viewport so _pixels at position 'y' are centred
-    def centre_view_about_y(self, y):
+    def centre_view_about_y(self, y: int) -> None:
         vadj = self.vadj
         y = min(max(0, y - vadj.get_page_size() / 2), vadj.get_upper() - vadj.get_page_size())
         vadj.set_value(y)
 
     # move the cursor from line 'i' to the next difference in direction 'delta'
-    def go_to_difference(self, i, delta):
+    def go_to_difference(self, i: int, delta: int) -> None:
         f = self.current_pane
         nlines = len(self.panes[f].lines)
         # back up to beginning of difference
@@ -3210,31 +3209,31 @@ class FileDiffViewerBase(Gtk.Grid):
             self.setCurrentLine(f, start, i)
 
     # 'first_difference' action
-    def first_difference(self):
+    def first_difference(self) -> None:
         self.setLineMode()
         self.go_to_difference(0, 1)
 
     # 'previous_difference' action
-    def previous_difference(self):
+    def previous_difference(self) -> None:
         self.setLineMode()
         i = min(self.current_line, self.selection_line) - 1
         self.go_to_difference(i, -1)
 
     # 'next_difference' action
-    def next_difference(self):
+    def next_difference(self) -> None:
         self.setLineMode()
         i = max(self.current_line, self.selection_line) + 1
         self.go_to_difference(i, 1)
 
     # 'last_difference' action
-    def last_difference(self):
+    def last_difference(self) -> None:
         self.setLineMode()
         i = len(self.panes[self.current_pane].lines)
         self.go_to_difference(i, -1)
 
     # Undo for changes to the pane ordering
     class SwapPanesUndo:
-        def __init__(self, f_dst, f_src):
+        def __init__(self, f_dst: int, f_src: int) -> None:
             self.data = (f_dst, f_src)
 
         def undo(self, viewer):
@@ -3246,7 +3245,7 @@ class FileDiffViewerBase(Gtk.Grid):
             viewer.swapPanes(f_dst, f_src)
 
     # swap the contents of two panes
-    def swapPanes(self, f_dst, f_src):
+    def swapPanes(self, f_dst: int, f_src: int) -> None:
         if self.undoblock is not None:
             self.addUndo(FileDiffViewerBase.SwapPanesUndo(f_dst, f_src))
         self.current_pane = f_dst
@@ -3267,7 +3266,7 @@ class FileDiffViewerBase(Gtk.Grid):
         self.emit('swapped_panes', f_dst, f_src)
 
     # swap the contents of two panes
-    def swap_panes(self, f_dst, f_src):
+    def swap_panes(self, f_dst: int, f_src: int) -> None:
         if 0 <= f_dst < len(self.panes):
             if self.mode == ALIGN_MODE:
                 self.setLineMode()
@@ -3282,17 +3281,17 @@ class FileDiffViewerBase(Gtk.Grid):
         self.closeUndoBlock()
 
     # 'shift_pane_left' action
-    def shift_pane_left(self):
+    def shift_pane_left(self) -> None:
         f = self.current_pane
         self.swap_panes(f - 1, f)
 
     # 'shift_pane_right' action
-    def shift_pane_right(self):
+    def shift_pane_right(self) -> None:
         f = self.current_pane
         self.swap_panes(f + 1, f)
 
     # 'convert_to_upper_case' action
-    def _convert_case(self, to_upper):
+    def _convert_case(self, to_upper: bool) -> None:
         # find range of characters to operate upon
         if self.mode == CHAR_MODE:
             start, end = self.current_line, self.selection_line
@@ -3333,15 +3332,15 @@ class FileDiffViewerBase(Gtk.Grid):
                     self.updateText(f, i, s)
 
     # 'convert_to_upper_case' action
-    def convert_to_upper_case(self):
+    def convert_to_upper_case(self) -> None:
         self._convert_case(True)
 
     # 'convert_to_lower_case' action
-    def convert_to_lower_case(self):
+    def convert_to_lower_case(self) -> None:
         self._convert_case(False)
 
     # sort lines
-    def _sort_lines(self, descending):
+    def _sort_lines(self, descending: bool) -> None:
         if self.mode != CHAR_MODE:
             self.setLineMode()
         self.recordEditMode()
@@ -3353,7 +3352,7 @@ class FileDiffViewerBase(Gtk.Grid):
         # get set of lines
         ss = [self.getLineText(f, i) for i in range(start, end + 1)]
         # create sorted list, removing any nulls
-        temp = [s for s in ss if s is not None]
+        temp: List[Optional[str]] = [s for s in ss if s is not None]
         temp.sort()
         if descending:
             temp.reverse()
@@ -3369,15 +3368,15 @@ class FileDiffViewerBase(Gtk.Grid):
         self.recordEditMode()
 
     # 'sort_lines_in_ascending_order' action
-    def sort_lines_in_ascending_order(self):
+    def sort_lines_in_ascending_order(self) -> None:
         self._sort_lines(False)
 
     # 'sort_lines_in_descending_order' action
-    def sort_lines_in_descending_order(self):
+    def sort_lines_in_descending_order(self) -> None:
         self._sort_lines(True)
 
     # 'remove_trailing_white_space' action
-    def remove_trailing_white_space(self):
+    def remove_trailing_white_space(self) -> None:
         if self.mode != CHAR_MODE:
             self.setLineMode()
         self.recordEditMode()
@@ -3403,7 +3402,7 @@ class FileDiffViewerBase(Gtk.Grid):
         self.recordEditMode()
 
     # 'convert_tabs_to_spaces' action
-    def convert_tabs_to_spaces(self):
+    def convert_tabs_to_spaces(self) -> None:
         # find range of characters to operate upon
         if self.mode == CHAR_MODE:
             start, end = self.current_line, self.selection_line
@@ -3456,7 +3455,7 @@ class FileDiffViewerBase(Gtk.Grid):
         self.recordEditMode()
 
     # 'convert_leading_spaces_to_tabs' action
-    def convert_leading_spaces_to_tabs(self):
+    def convert_leading_spaces_to_tabs(self) -> None:
         if self.mode != CHAR_MODE:
             self.setLineMode()
         self.recordEditMode()
@@ -3486,7 +3485,7 @@ class FileDiffViewerBase(Gtk.Grid):
         self.recordEditMode()
 
     # adjust indenting of the selected lines by 'offset' soft tabs
-    def _adjust_indenting(self, offset):
+    def _adjust_indenting(self, offset: int) -> None:
         if self.mode != CHAR_MODE:
             self.setLineMode()
         # find range of lines to operate upon
@@ -3519,14 +3518,14 @@ class FileDiffViewerBase(Gtk.Grid):
         self.recordEditMode()
 
     # 'increase_indenting' action
-    def increase_indenting(self):
+    def increase_indenting(self) -> None:
         self._adjust_indenting(1)
 
     # 'decrease_indenting' action
-    def decrease_indenting(self):
+    def decrease_indenting(self) -> None:
         self._adjust_indenting(-1)
 
-    def convert_format(self, fmt):
+    def convert_format(self, fmt: LineEnding) -> None:
         self.setLineMode()
         self.recordEditMode()
         f = self.current_pane
@@ -3539,19 +3538,19 @@ class FileDiffViewerBase(Gtk.Grid):
         self.setFormat(f, fmt)
 
     # 'convert_to_dos' action
-    def convert_to_dos(self):
+    def convert_to_dos(self) -> None:
         self.convert_format(LineEnding.DOS_FORMAT)
 
     # 'convert_to_mac' action
-    def convert_to_mac(self):
+    def convert_to_mac(self) -> None:
         self.convert_format(LineEnding.MAC_FORMAT)
 
     # 'convert_to_unix' action
-    def convert_to_unix(self):
+    def convert_to_unix(self) -> None:
         self.convert_format(LineEnding.UNIX_FORMAT)
 
     # copies the selected range of lines from pane 'f_src' to 'f_dst'
-    def merge_lines(self, f_dst, f_src):
+    def merge_lines(self, f_dst: int, f_src: int) -> None:
         self.recordEditMode()
         self.setLineMode()
         pane = self.panes[f_dst]
@@ -3581,25 +3580,25 @@ class FileDiffViewerBase(Gtk.Grid):
         self.closeUndoBlock()
 
     # 'copy_selection_right' action
-    def copy_selection_right(self):
+    def copy_selection_right(self) -> None:
         f = self.current_pane + 1
         if 0 < f < len(self.panes):
             self.merge_lines(f, f - 1)
 
     # 'copy_selection_left' action
-    def copy_selection_left(self):
+    def copy_selection_left(self) -> None:
         f = self.current_pane - 1
         if f >= 0 and f + 1 < len(self.panes):
             self.merge_lines(f, f + 1)
 
     # 'copy_left_into_selection' action
-    def copy_left_into_selection(self):
+    def copy_left_into_selection(self) -> None:
         f = self.current_pane
         if 0 < f < len(self.panes):
             self.merge_lines(f, f - 1)
 
     # 'copy_right_into_selection' action
-    def copy_right_into_selection(self):
+    def copy_right_into_selection(self) -> None:
         f = self.current_pane
         if f >= 0 and f + 1 < len(self.panes):
             self.merge_lines(f, f + 1)
@@ -3740,18 +3739,19 @@ def createMenu(specs, radio=None, accel_group=None):
     return menu
 
 
-ALPHANUMERIC_CLASS = 0
-WHITESPACE_CLASS = 1
-OTHER_CLASS = 2
+class CharacterClass(IntFlag):
+    ALPHANUMERIC = 0
+    WHITESPACE = 1
+    OTHER = 2
 
 
 # maps similar types of characters to a group
-def _get_character_class(c):
+def _get_character_class(c: str) -> CharacterClass:
     if c.isalnum() or c == '_':
-        return ALPHANUMERIC_CLASS
+        return CharacterClass.ALPHANUMERIC
     if c.isspace():
-        return WHITESPACE_CLASS
-    return OTHER_CLASS
+        return CharacterClass.WHITESPACE
+    return CharacterClass.OTHER
 
 
 # patience diff with difflib-style fallback
@@ -3966,36 +3966,36 @@ def _lcs_approx(a, b):
 
 
 # True if the string ends with '\r\n'
-def _has_dos_line_ending(s):
+def _has_dos_line_ending(s: str) -> bool:
     return s.endswith('\r\n')
 
 
 # True if the string ends with '\r'
-def _has_mac_line_ending(s):
+def _has_mac_line_ending(s: str) -> bool:
     return s.endswith('\r')
 
 
 # True if the string ends with '\n' but not '\r\n'
-def _has_unix_line_ending(s):
+def _has_unix_line_ending(s: str) -> bool:
     return s.endswith('\n') and not s.endswith('\r\n')
 
 
 # returns the format mask for a list of strings
-def _get_format(ss):
-    flags = 0
-    for s in ss:
-        if s is not None:
-            if _has_dos_line_ending(s):
+def _get_format(lines: List[Optional[str]]) -> LineEnding:
+    flags: LineEnding = LineEnding.NO_FORMAT
+    for line in lines:
+        if line is not None:
+            if _has_dos_line_ending(line):
                 flags |= LineEnding.DOS_FORMAT
-            elif _has_mac_line_ending(s):
+            elif _has_mac_line_ending(line):
                 flags |= LineEnding.MAC_FORMAT
-            elif _has_unix_line_ending(s):
+            elif _has_unix_line_ending(line):
                 flags |= LineEnding.UNIX_FORMAT
     return flags
 
 
 # convenience method to change the line ending of a string
-def _convert_to_format(s, fmt):
+def _convert_to_format(s: Optional[str], fmt: LineEnding) -> Optional[str]:
     if s is not None and fmt != 0:
         old_format = _get_format([s])
         if old_format != 0 and (old_format & fmt) == 0:
@@ -4025,14 +4025,14 @@ def _convert_to_format(s, fmt):
 # in this array so 'blocks' will be an empty array when there are no lines.  A
 # 'cut' at location 'i' means a line 'i-1' and line 'i' belong to different
 # sections
-def _create_block(n):
+def _create_block(n: int) -> List[int]:
     if n > 0:
         return [n]
     return []
 
 
 # returns the two sets of blocks after cutting at 'i'
-def _cut_blocks(i, blocks):
+def _cut_blocks(i: int, blocks: List[int]) -> Tuple[List[int], List[int]]:
     pre, post, nlines = [], [], 0
     for b in blocks:
         if nlines >= i:
@@ -4048,7 +4048,7 @@ def _cut_blocks(i, blocks):
 
 
 # returns a set of blocks containing all of the cuts in the inputs
-def _merge_blocks(leftblocks, rightblocks):
+def _merge_blocks(leftblocks: List[int], rightblocks: List[int]) -> List[int]:
     leftblocks, rightblocks, b = leftblocks[:], rightblocks[:], []
     while len(leftblocks) > 0:
         nleft, nright = leftblocks[0], rightblocks[0]
@@ -4122,14 +4122,14 @@ def _remove_null_lines(blocks, lines_set):
 
 
 # returns true if the string only contains whitespace characters
-def _is_blank(s):
+def _is_blank(s: str) -> bool:
     for c in utils.whitespace:
         s = s.replace(c, '')
     return len(s) == 0
 
 
 # use Pango.SCALE instead of Pango.PIXELS to avoid overflow exception
-def _pixels(size):
+def _pixels(size: int) -> int:
     return int(size / Pango.SCALE + 0.5)
 
 

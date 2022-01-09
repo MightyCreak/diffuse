@@ -333,6 +333,7 @@ class LineEnding(IntFlag):
 
     Values can be used as flags in bitwise operations.'''
 
+    NO_FORMAT = 0
     DOS_FORMAT = 1
     MAC_FORMAT = 2
     UNIX_FORMAT = 4
