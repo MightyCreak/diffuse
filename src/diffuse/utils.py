@@ -55,7 +55,7 @@ class MessageDialog(Gtk.MessageDialog):
 
 # widget to help pick an encoding
 class EncodingMenu(Gtk.Box):
-    def __init__(self, prefs, autodetect=False):
+    def __init__(self, prefs: Preferences, autodetect: bool = False) -> None:
         Gtk.Box.__init__(self, orientation=Gtk.Orientation.HORIZONTAL)
         self.combobox = combobox = Gtk.ComboBoxText.new()
         self.encodings = prefs.getEncodings()[:]
@@ -67,12 +67,12 @@ class EncodingMenu(Gtk.Box):
         self.pack_start(combobox, False, False, 0)
         combobox.show()
 
-    def set_text(self, encoding):
+    def set_text(self, encoding: Optional[str]) -> None:
         encoding = norm_encoding(encoding)
         if encoding in self.encodings:
             self.combobox.set_active(self.encodings.index(encoding))
 
-    def get_text(self):
+    def get_text(self) -> Optional[str]:
         i = self.combobox.get_active()
         return self.encodings[i] if i >= 0 else None
 
