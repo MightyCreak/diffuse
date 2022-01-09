@@ -99,7 +99,7 @@ def _get_darcs_repo(path: str, prefs: Preferences) -> Optional[VcsInterface]:
 def _get_git_repo(path: str, prefs: Preferences) -> Optional[VcsInterface]:
     if 'GIT_DIR' in os.environ:
         try:
-            ss: List[str] = utils.popenReadLines(
+            lines: List[str] = utils.popenReadLines(
                 path,
                 [
                     prefs.getString('git_bin'),
@@ -108,12 +108,12 @@ def _get_git_repo(path: str, prefs: Preferences) -> Optional[VcsInterface]:
                 ],
                 prefs,
                 'git_bash')
-            if len(ss) > 0:
+            if len(lines) > 0:
                 # be careful to handle trailing slashes
                 dirs = path.split(os.sep)
                 if dirs[-1] != '':
                     dirs.append('')
-                ss = utils.strip_eol(ss[0]).split('/')
+                ss = utils.strip_eol(lines[0]).split('/')
                 if ss[-1] != '':
                     ss.append('')
                 n = len(ss)
