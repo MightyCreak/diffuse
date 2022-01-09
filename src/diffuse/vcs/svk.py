@@ -19,7 +19,7 @@
 
 import os
 
-from typing import Tuple
+from typing import Optional, Tuple
 
 from diffuse import utils
 from diffuse.vcs.svn import Svn
@@ -41,7 +41,7 @@ class Svk(Svn):
         return s[0], s[4:]
 
     @staticmethod
-    def _getPreviousRevision(rev: str) -> str:
+    def _getPreviousRevision(rev: Optional[str]) -> str:
         if rev is None:
             return 'HEAD'
         if rev.endswith('@'):

@@ -22,13 +22,14 @@ import os
 from gettext import gettext as _
 
 from diffuse import utils
+from diffuse.preferences import Preferences
 from diffuse.vcs.folder_set import FolderSet
 from diffuse.vcs.vcs_interface import VcsInterface
 
 
 # CVS support
 class Cvs(VcsInterface):
-    def getFileTemplate(self, prefs, name):
+    def getFileTemplate(self, prefs: Preferences, name: str) -> VcsInterface.PathRevisionList:
         return [(name, 'BASE'), (name, None)]
 
     def getCommitTemplate(self, prefs, rev, names):

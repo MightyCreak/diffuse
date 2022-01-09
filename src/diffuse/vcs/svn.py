@@ -24,6 +24,7 @@ from gettext import gettext as _
 from typing import Optional, Tuple
 
 from diffuse import utils
+from diffuse.preferences import Preferences
 from diffuse.vcs.folder_set import FolderSet
 from diffuse.vcs.vcs_interface import VcsInterface
 
@@ -54,7 +55,7 @@ class Svn(VcsInterface):
         return s[0], s[k:]
 
     @staticmethod
-    def _getPreviousRevision(rev: str) -> str:
+    def _getPreviousRevision(rev: Optional[str]) -> str:
         if rev is None:
             return 'BASE'
         m = int(rev)
@@ -71,7 +72,7 @@ class Svn(VcsInterface):
                     break
         return self.url
 
-    def getFileTemplate(self, prefs, name):
+    def getFileTemplate(self, prefs: Preferences, name: str) -> VcsInterface.PathRevisionList:
         # FIXME: verify this
         # merge conflict
         escaped_name = utils.globEscape(name)

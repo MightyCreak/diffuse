@@ -21,27 +21,28 @@ import os
 import shlex
 
 from diffuse import utils
+from diffuse.preferences import Preferences
 from diffuse.vcs.folder_set import FolderSet
 from diffuse.vcs.vcs_interface import VcsInterface
 
 
 # Monotone support
 class Mtn(VcsInterface):
-    def getFileTemplate(self, prefs, name):
+    def getFileTemplate(self, prefs: Preferences, name: str) -> VcsInterface.PathRevisionList:
         # FIXME: merge conflicts?
         return [(name, 'h:'), (name, None)]
 
     def getCommitTemplate(self, prefs, rev, names):
         # build command
         vcs_bin = prefs.getString('mtn_bin')
-        ss = utils.popenReadLines(
+        lines = utils.popenReadLines(
             self.root,
             [vcs_bin, 'automate', 'select', '-q', rev],
             prefs,
             'mtn_bash')
-        if len(ss) != 1:
+        if len(lines) != 1:
             raise IOError('Ambiguous revision specifier')
-        args = [vcs_bin, 'automate', 'get_revision', ss[0]]
+        args = [vcs_bin, 'automate', 'get_revision', lines[0]]
         # build list of interesting files
         fs = FolderSet(names)
         pwd, isabs = os.path.abspath(os.curdir), False
@@ -50,15 +51,15 @@ class Mtn(VcsInterface):
         # run command
         prev = None
         removed, added, modified, renamed = {}, {}, {}, {}
-        ss = utils.popenReadLines(self.root, args, prefs, 'mtn_bash')
+        lines = utils.popenReadLines(self.root, args, prefs, 'mtn_bash')
         i = 0
-        while i < len(ss):
+        while i < len(lines):
             # process results
-            s = shlex.split(ss[i])
+            line_args = shlex.split(lines[i])
             i += 1
-            if len(s) < 2:
+            if len(line_args) < 2:
                 continue
-            arg, arg1 = s[0], s[1]
+            arg, arg1 = line_args[0], line_args[1]
             if arg == 'old_revision' and len(arg1) > 2:
                 if prev is not None:
                     break
@@ -82,26 +83,27 @@ class Mtn(VcsInterface):
                 if fs.contains(k):
                     modified[arg1] = k
             elif arg == 'rename':
-                s = shlex.split(ss[i])
+                line_args = shlex.split(lines[i])
                 i += 1
-                if len(s) > 1 and s[0] == 'to':
+                if len(line_args) > 1 and line_args[0] == 'to':
                     # renamed file
                     k0 = os.path.join(self.root, prefs.convertToNativePath(arg1))
-                    k1 = os.path.join(self.root, prefs.convertToNativePath(s[1]))
+                    k1 = os.path.join(self.root, prefs.convertToNativePath(line_args[1]))
                     if fs.contains(k0) or fs.contains(k1):
-                        renamed[s[1]] = (arg1, k0, k1)
+                        renamed[line_args[1]] = (arg1, k0, k1)
         if removed or renamed:
             # remove directories
             removed_dirs = set()
-            for s in utils.popenReadLines(
+            lines = utils.popenReadLines(
                 self.root,
                 [vcs_bin, 'automate', 'get_manifest_of', prev],
                 prefs,
                 'mtn_bash'
-            ):
-                s = shlex.split(s)
-                if len(s) > 1 and s[0] == 'dir':
-                    removed_dirs.add(s[1])
+            )
+            for line in lines:
+                line_args = shlex.split(line)
+                if len(line_args) > 1 and line_args[0] == 'dir':
+                    removed_dirs.add(line_args[1])
             for k in removed_dirs:
                 for m in removed, modified:
                     if k in m:
