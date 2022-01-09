@@ -28,6 +28,7 @@ from gettext import gettext as _
 from typing import Final, List, Optional, TextIO
 
 from diffuse import constants
+from diffuse.preferences import Preferences
 from diffuse.resources import theResources
 
 import gi  # type: ignore
@@ -143,7 +144,7 @@ def relpath(a: str, b: str) -> str:
 
 # helper function prevent files from being confused with command line options
 # by prepending './' to the basename
-def safeRelativePath(abspath1, name, prefs, cygwin_pref):
+def safeRelativePath(abspath1: str, name: str, prefs: Preferences, cygwin_pref: str) -> str:
     s = os.path.join(os.curdir, relpath(abspath1, os.path.abspath(name)))
     if isWindows():
         if prefs.getBool(cygwin_pref):
