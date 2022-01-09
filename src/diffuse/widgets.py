@@ -22,7 +22,7 @@ import os
 import unicodedata
 
 from gettext import gettext as _
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Optional
 
 from diffuse import utils
 from diffuse.resources import theResources
@@ -173,7 +173,7 @@ class FileDiffViewerBase(Gtk.Grid):
 
     # class describing a single line of a pane
     class Line:
-        def __init__(self, line_number=None, text=None):
+        def __init__(self, line_number: Optional[int] = None, text: Optional[str] = None) -> None:
             # line number
             self.line_number = line_number
             # original text for the line
@@ -181,13 +181,13 @@ class FileDiffViewerBase(Gtk.Grid):
             # flag indicating modifications are present
             self.is_modified = False
             # actual modified text
-            self.modified_text = None
+            self.modified_text: Optional[str] = None
             # cache used to speed up comparison of strings
             # this should be cleared whenever the comparison preferences change
-            self.compare_string = None
+            self.compare_string: Optional[str] = None
 
         # returns the current text for this line
-        def getText(self):
+        def getText(self) -> Optional[str]:
             if self.is_modified:
                 return self.modified_text
             return self.text
