@@ -20,7 +20,7 @@
 import os
 
 from gettext import gettext as _
-from typing import Optional
+from typing import List, Optional
 
 from diffuse import utils
 from diffuse.preferences import Preferences
@@ -99,7 +99,7 @@ def _get_darcs_repo(path: str, prefs: Preferences) -> Optional[VcsInterface]:
 def _get_git_repo(path: str, prefs: Preferences) -> Optional[VcsInterface]:
     if 'GIT_DIR' in os.environ:
         try:
-            ss: list[str] = utils.popenReadLines(
+            ss: List[str] = utils.popenReadLines(
                 path,
                 [
                     prefs.getString('git_bin'),
@@ -185,7 +185,7 @@ def _get_svk_repo(path: str, prefs: Preferences) -> Optional[VcsInterface]:
         try:
             # find working copies by parsing the config file
             with open(svkconfig, 'r', encoding='utf-8') as f:
-                ss: list[str] = utils.readlines(f)
+                ss: List[str] = utils.readlines(f)
             projs, sep = [], os.sep
             # find the separator character
             for s in ss:

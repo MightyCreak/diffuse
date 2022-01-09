@@ -23,6 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Linters can be run sooner (before installation)
 - Better messages when an error occurs while parsing the config file
 - Start converting the code to static types
+- Add more information about the dependencies in the documentation
 
 ### Fixed
 - Removed the lasting lint errors (i.e. in main.py)

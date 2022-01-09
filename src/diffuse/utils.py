@@ -25,7 +25,7 @@ import traceback
 
 from enum import IntFlag
 from gettext import gettext as _
-from typing import Final, Optional, TextIO
+from typing import Final, List, Optional, TextIO
 
 from diffuse import constants
 from diffuse.resources import theResources
@@ -106,7 +106,7 @@ def logErrorAndDialog(msg: str, parent: Gtk.Widget = None) -> None:
     dialog.destroy()
 
 
-def make_subdirs(p: str, ss: list[str]) -> str:
+def make_subdirs(p: str, ss: List[str]) -> str:
     '''Create nested subdirectories and return the complete path.'''
     for s in ss:
         p = os.path.join(p, s)
@@ -221,7 +221,7 @@ def strip_eol(s: str) -> str:
     return s
 
 
-def _strip_eols(ss: list[str]) -> list[str]:
+def _strip_eols(ss: List[str]) -> List[str]:
     '''Returns the list of strings without line ending characters.'''
     return [strip_eol(s) for s in ss]
 
@@ -232,7 +232,7 @@ def popenReadLines(dn, cmd, prefs, bash_pref, success_results=None):
         dn, cmd, prefs, bash_pref, success_results).decode('utf-8', errors='ignore')))
 
 
-def readconfiglines(fd: TextIO) -> list[str]:
+def readconfiglines(fd: TextIO) -> List[str]:
     return fd.read().replace('\r', '').split('\n')
 
 
@@ -243,7 +243,7 @@ def globEscape(s: str) -> str:
 
 
 # split string into lines based upon DOS, Mac, and Unix line endings
-def splitlines(text: str) -> list[str]:
+def splitlines(text: str) -> List[str]:
     # split on new line characters
     temp, i, n = [], 0, len(text)
     while i < n:
@@ -272,7 +272,7 @@ def splitlines(text: str) -> list[str]:
 
 
 # also recognize old Mac OS line endings
-def readlines(fd: TextIO) -> list[str]:
+def readlines(fd: TextIO) -> List[str]:
     return _strip_eols(splitlines(fd.read()))
 
 
