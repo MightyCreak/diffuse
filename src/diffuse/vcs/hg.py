@@ -98,7 +98,7 @@ class Hg(VcsInterface):
     def getFolderTemplate(self, prefs, names):
         return self._getCommitTemplate(prefs, names, ['status', '-q'], None)
 
-    def getRevision(self, prefs, name, rev):
+    def getRevision(self, prefs: Preferences, name: str, rev: str) -> bytes:
         return utils.popenRead(
             self.root,
             [

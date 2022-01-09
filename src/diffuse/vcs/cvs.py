@@ -86,10 +86,10 @@ class Cvs(VcsInterface):
         # sort the results
         return [modified[k] for k in sorted(modified.keys())]
 
-    def getRevision(self, prefs, name, rev):
+    def getRevision(self, prefs: Preferences, name: str, rev: str) -> bytes:
         if rev == 'BASE' and not os.path.exists(name):
             # find revision for removed files
-            for s in utils.popenReadLines(
+            lines = utils.popenReadLines(
                 self.root,
                 [
                     prefs.getString('cvs_bin'),
@@ -98,9 +98,10 @@ class Cvs(VcsInterface):
                 ],
                 prefs,
                 'cvs_bash'
-            ):
-                if s.startswith('   Working revision:\t-'):
-                    rev = s.split('\t')[1][1:]
+            )
+            for line in lines:
+                if line.startswith('   Working revision:\t-'):
+                    rev = line.split('\t')[1][1:]
         return utils.popenRead(
             self.root,
             [

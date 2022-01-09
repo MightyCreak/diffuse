@@ -150,7 +150,7 @@ class Git(VcsInterface):
                     result.append(m[k])
         return result
 
-    def getRevision(self, prefs, name, rev):
+    def getRevision(self, prefs: Preferences, name: str, rev: str) -> bytes:
         relpath = utils.relpath(self.root, os.path.abspath(name)).replace(os.sep, '/')
         return utils.popenRead(
             self.root,

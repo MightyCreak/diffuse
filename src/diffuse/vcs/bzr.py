@@ -181,7 +181,7 @@ class Bzr(VcsInterface):
                     result.append(m[k])
         return result
 
-    def getRevision(self, prefs, name, rev):
+    def getRevision(self, prefs: Preferences, name: str, rev: str) -> bytes:
         return utils.popenRead(
             self.root,
             [

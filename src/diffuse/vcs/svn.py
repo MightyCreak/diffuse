@@ -272,7 +272,7 @@ class Svn(VcsInterface):
     def getFolderTemplate(self, prefs, names):
         return self._getCommitTemplate(prefs, None, names)
 
-    def getRevision(self, prefs, name, rev):
+    def getRevision(self, prefs: Preferences, name: str, rev: str) -> bytes:
         vcs_bin = prefs.getString('svn_bin')
         if rev in ['BASE', 'COMMITTED', 'PREV']:
             return utils.popenRead(

@@ -19,6 +19,8 @@
 
 import os
 
+from typing import List, Optional
+
 from diffuse import utils
 from diffuse.preferences import Preferences
 from diffuse.vcs.folder_set import FolderSet
@@ -136,8 +138,8 @@ class Darcs(VcsInterface):
     def getFolderTemplate(self, prefs, names):
         return self._getCommitTemplate(prefs, names, None)
 
-    def getRevision(self, prefs, name, rev):
-        args = [prefs.getString('darcs_bin'), 'show', 'contents']
+    def getRevision(self, prefs: Preferences, name: str, rev: str) -> bytes:
+        args: List[Optional[str]] = [prefs.getString('darcs_bin'), 'show', 'contents']
         try:
             args.extend(['-n', str(int(rev))])
         except ValueError:

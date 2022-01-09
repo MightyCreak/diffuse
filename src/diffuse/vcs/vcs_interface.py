@@ -42,5 +42,5 @@ class VcsInterface:
     def getFolderTemplate(self, prefs, names):
         """Indicates which file revisions to display for a set of folders."""
 
-    def getRevision(self, prefs, name, rev):
+    def getRevision(self, prefs: Preferences, name: str, rev: str) -> bytes:
         """Returns the contents of the specified file revision"""

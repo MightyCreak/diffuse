@@ -22,6 +22,7 @@ import os
 from typing import Optional, Tuple
 
 from diffuse import utils
+from diffuse.preferences import Preferences
 from diffuse.vcs.svn import Svn
 
 
@@ -48,7 +49,7 @@ class Svk(Svn):
             return str(int(rev[:-1]) - 1) + '@'
         return str(int(rev) - 1)
 
-    def getRevision(self, prefs, name, rev):
+    def getRevision(self, prefs: Preferences, name: str, rev: str) -> bytes:
         relpath = utils.relpath(self.root, os.path.abspath(name)).replace(os.sep, '/')
         return utils.popenRead(
             self.root,
