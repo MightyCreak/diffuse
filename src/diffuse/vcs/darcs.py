@@ -19,7 +19,7 @@
 
 import os
 
-from typing import List, Optional
+from typing import List
 
 from diffuse import utils
 from diffuse.preferences import Preferences
@@ -139,7 +139,7 @@ class Darcs(VcsInterface):
         return self._getCommitTemplate(prefs, names, None)
 
     def getRevision(self, prefs: Preferences, name: str, rev: str) -> bytes:
-        args: List[Optional[str]] = [prefs.getString('darcs_bin'), 'show', 'contents']
+        args: List[str] = [prefs.getString('darcs_bin'), 'show', 'contents']
         try:
             args.extend(['-n', str(int(rev))])
         except ValueError:
