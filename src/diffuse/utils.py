@@ -38,7 +38,7 @@ from gi.repository import Gtk  # type: ignore # noqa: E402
 
 # convenience class for displaying a message dialogue
 class MessageDialog(Gtk.MessageDialog):
-    def __init__(self, parent, message_type, s):
+    def __init__(self, parent: Gtk.Widget, message_type: Gtk.MessageType, s: str) -> None:
         if message_type == Gtk.MessageType.ERROR:
             buttons = Gtk.ButtonsType.OK
         else:
