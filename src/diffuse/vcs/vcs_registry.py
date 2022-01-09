@@ -186,7 +186,8 @@ def _get_svk_repo(path: str, prefs: Preferences) -> Optional[VcsInterface]:
             # find working copies by parsing the config file
             with open(svkconfig, 'r', encoding='utf-8') as f:
                 ss: List[str] = utils.readlines(f)
-            projs, sep = [], os.sep
+            projs: List[str] = []
+            sep = os.sep
             # find the separator character
             for s in ss:
                 if s.startswith('  sep: ') and len(s) > 7:

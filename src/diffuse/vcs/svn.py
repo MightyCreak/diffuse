@@ -33,7 +33,7 @@ from diffuse.vcs.vcs_interface import VcsInterface
 # SVK support subclasses from this
 class Svn(VcsInterface):
     def __init__(self, root: str):
-        VcsInterface.__init__(self, root)
+        super().__init__(root)
         self.url: Optional[str] = None
 
     @staticmethod
@@ -61,7 +61,7 @@ class Svn(VcsInterface):
         m = int(rev)
         return str(max(m > 1, 0))
 
-    def _getURL(self, prefs):
+    def _getURL(self, prefs: Preferences) -> Optional[str]:
         if self.url is None:
             vcs, prefix = self._getVcs(), self._getURLPrefix()
             n = len(prefix)

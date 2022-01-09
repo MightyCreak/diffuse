@@ -30,7 +30,7 @@ from diffuse.vcs.vcs_interface import VcsInterface
 # Mercurial support
 class Hg(VcsInterface):
     def __init__(self, root: str):
-        VcsInterface.__init__(self, root)
+        super().__init__(root)
         self.working_rev: Optional[str] = None
 
     def _getPreviousRevision(self, prefs, rev):
