@@ -24,6 +24,7 @@ import shlex
 import sys
 
 from gettext import gettext as _
+from typing import List
 
 from diffuse import constants
 from diffuse import utils
@@ -386,7 +387,7 @@ class Preferences:
     def getEncodings(self):
         return self.encodings
 
-    def _getDefaultEncodings(self) -> list[str]:
+    def _getDefaultEncodings(self) -> List[str]:
         return self.string_prefs['encoding_auto_detect_codecs'].split()
 
     def getDefaultEncoding(self) -> str:

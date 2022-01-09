@@ -19,6 +19,8 @@
 
 import os
 
+from typing import Tuple
+
 from diffuse import utils
 from diffuse.vcs.svn import Svn
 
@@ -33,7 +35,7 @@ class Svk(Svn):
         return 'Depot Path: '
 
     @staticmethod
-    def _parseStatusLine(s: str) -> tuple[str, str]:
+    def _parseStatusLine(s: str) -> Tuple[str, str]:
         if len(s) < 4 or s[0] not in 'ACDMR':
             return '', ''
         return s[0], s[4:]

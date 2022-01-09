@@ -21,7 +21,7 @@ import os
 import glob
 
 from gettext import gettext as _
-from typing import Optional
+from typing import Optional, Tuple
 
 from diffuse import utils
 from diffuse.vcs.folder_set import FolderSet
@@ -44,7 +44,7 @@ class Svn(VcsInterface):
         return 'URL: '
 
     @staticmethod
-    def _parseStatusLine(s: str) -> tuple[str, str]:
+    def _parseStatusLine(s: str) -> Tuple[str, str]:
         if len(s) < 8 or s[0] not in 'ACDMR':
             return '', ''
         # subversion 1.6 adds a new column
