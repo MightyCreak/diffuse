@@ -22,12 +22,13 @@ import os
 from gettext import gettext as _
 
 from diffuse import utils
+from diffuse.preferences import Preferences
 from diffuse.vcs.vcs_interface import VcsInterface
 
 
 # RCS support
 class Rcs(VcsInterface):
-    def getFileTemplate(self, prefs, name):
+    def getFileTemplate(self, prefs: Preferences, name: str) -> VcsInterface.PathRevisionList:
         args = [
             prefs.getString('rcs_bin_rlog'),
             '-L',
@@ -153,7 +154,7 @@ class Rcs(VcsInterface):
         # sort the results
         return [[(k, r[k]), (k, None)] for k in sorted(r.keys())]
 
-    def getRevision(self, prefs, name, rev):
+    def getRevision(self, prefs: Preferences, name: str, rev: str) -> bytes:
         return utils.popenRead(
             self.root,
             [

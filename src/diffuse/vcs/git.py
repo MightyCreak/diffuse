@@ -27,7 +27,7 @@ from diffuse.vcs.vcs_interface import VcsInterface
 
 # Git support
 class Git(VcsInterface):
-    def getFileTemplate(self, prefs, name):
+    def getFileTemplate(self, prefs: Preferences, name: str) -> VcsInterface.PathRevisionList:
         return [(name, 'HEAD'), (name, None)]
 
     def getCommitTemplate(self, prefs, rev, names):
@@ -150,7 +150,7 @@ class Git(VcsInterface):
                     result.append(m[k])
         return result
 
-    def getRevision(self, prefs, name, rev):
+    def getRevision(self, prefs: Preferences, name: str, rev: str) -> bytes:
         relpath = utils.relpath(self.root, os.path.abspath(name)).replace(os.sep, '/')
         return utils.popenRead(
             self.root,

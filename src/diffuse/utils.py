@@ -28,6 +28,7 @@ from gettext import gettext as _
 from typing import Final, List, Optional, TextIO
 
 from diffuse import constants
+from diffuse.preferences import Preferences
 from diffuse.resources import theResources
 
 import gi  # type: ignore
@@ -37,7 +38,7 @@ from gi.repository import Gtk  # type: ignore # noqa: E402
 
 # convenience class for displaying a message dialogue
 class MessageDialog(Gtk.MessageDialog):
-    def __init__(self, parent, message_type, s):
+    def __init__(self, parent: Gtk.Widget, message_type: Gtk.MessageType, s: str) -> None:
         if message_type == Gtk.MessageType.ERROR:
             buttons = Gtk.ButtonsType.OK
         else:
@@ -54,7 +55,7 @@ class MessageDialog(Gtk.MessageDialog):
 
 # widget to help pick an encoding
 class EncodingMenu(Gtk.Box):
-    def __init__(self, prefs, autodetect=False):
+    def __init__(self, prefs: Preferences, autodetect: bool = False) -> None:
         Gtk.Box.__init__(self, orientation=Gtk.Orientation.HORIZONTAL)
         self.combobox = combobox = Gtk.ComboBoxText.new()
         self.encodings = prefs.getEncodings()[:]
@@ -66,12 +67,12 @@ class EncodingMenu(Gtk.Box):
         self.pack_start(combobox, False, False, 0)
         combobox.show()
 
-    def set_text(self, encoding):
+    def set_text(self, encoding: Optional[str]) -> None:
         encoding = norm_encoding(encoding)
         if encoding in self.encodings:
             self.combobox.set_active(self.encodings.index(encoding))
 
-    def get_text(self):
+    def get_text(self) -> Optional[str]:
         i = self.combobox.get_active()
         return self.encodings[i] if i >= 0 else None
 
@@ -143,7 +144,7 @@ def relpath(a: str, b: str) -> str:
 
 # helper function prevent files from being confused with command line options
 # by prepending './' to the basename
-def safeRelativePath(abspath1, name, prefs, cygwin_pref):
+def safeRelativePath(abspath1: str, name: str, prefs: Preferences, cygwin_pref: str) -> str:
     s = os.path.join(os.curdir, relpath(abspath1, os.path.abspath(name)))
     if isWindows():
         if prefs.getBool(cygwin_pref):
@@ -163,43 +164,49 @@ def _use_flatpak() -> bool:
 
 
 # use popen to read the output of a command
-def popenRead(dn, cmd, prefs, bash_pref, success_results=None):
+def popenRead(
+        cwd: str,
+        cmd: List[str],
+        prefs: Preferences,
+        bash_pref: str,
+        success_results: List[int] = None) -> bytes:
     if success_results is None:
         success_results = [0]
+
+    opt_cwd: Optional[str] = cwd
     if isWindows() and prefs.getBool(bash_pref):
         # launch the command from a bash shell is requested
         cmd = [
             prefs.convertToNativePath('/bin/bash.exe'),
             '-l',
             '-c',
-            f"cd {_bash_escape(dn)}; {' '.join([ _bash_escape(arg) for arg in cmd ])}"
+            f"cd {_bash_escape(cwd)}; {' '.join([ _bash_escape(arg) for arg in cmd ])}"
         ]
-        dn = None
+        opt_cwd = None
+
     # use subprocess.Popen to retrieve the file contents
     if isWindows():
-        info = subprocess.STARTUPINFO()
-        info.dwFlags |= subprocess.STARTF_USESHOWWINDOW
-        info.wShowWindow = subprocess.SW_HIDE
+        info = subprocess.STARTUPINFO()  # type: ignore
+        info.dwFlags |= subprocess.STARTF_USESHOWWINDOW  # type: ignore
+        info.wShowWindow = subprocess.SW_HIDE  # type: ignore
     else:
         info = None
+
     if _use_flatpak():
         cmd = ['flatpak-spawn', '--host'] + cmd
     with subprocess.Popen(
             cmd,
-            stdin=subprocess.PIPE,
             stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            cwd=dn,
+            cwd=opt_cwd,
             startupinfo=info) as proc:
-        proc.stdin.close()
-        proc.stderr.close()
-        fd = proc.stdout
-        # read the command's output
-        s = fd.read()
-        fd.close()
+        output: bytes
+        if proc.stdout is not None:
+            # read the command's output
+            output = proc.stdout.read()
+            proc.stdout.close()
         if proc.wait() not in success_results:
             raise IOError('Command failed.')
-        return s
+        return output
 
 
 def len_minus_line_ending(s: str) -> int:
@@ -227,9 +234,14 @@ def _strip_eols(ss: List[str]) -> List[str]:
 
 
 # use popen to read the output of a command
-def popenReadLines(dn, cmd, prefs, bash_pref, success_results=None):
+def popenReadLines(
+        cwd: str,
+        cmd: List[str],
+        prefs: Preferences,
+        bash_pref: str,
+        success_results: List[int] = None) -> List[str]:
     return _strip_eols(splitlines(popenRead(
-        dn, cmd, prefs, bash_pref, success_results).decode('utf-8', errors='ignore')))
+        cwd, cmd, prefs, bash_pref, success_results).decode('utf-8', errors='ignore')))
 
 
 def readconfiglines(fd: TextIO) -> List[str]:
@@ -321,6 +333,7 @@ class LineEnding(IntFlag):
 
     Values can be used as flags in bitwise operations.'''
 
+    NO_FORMAT = 0
     DOS_FORMAT = 1
     MAC_FORMAT = 2
     UNIX_FORMAT = 4

@@ -19,6 +19,8 @@
 
 import os
 
+from typing import List
+
 
 class FolderSet:
     '''Utility class to help support Git and Monotone.
@@ -27,18 +29,18 @@ class FolderSet:
     "mtn automate inventory."
     '''
 
-    def __init__(self, names):
-        self.folders = f = []
+    def __init__(self, names: List[str]) -> None:
+        self.folders: List[str] = []
         for name in names:
             name = os.path.abspath(name)
             # ensure all names end with os.sep
             if not name.endswith(os.sep):
                 name += os.sep
-            f.append(name)
+            self.folders.append(name)
 
     # returns True if the given abspath is a file that should be included in
     # the interesting file subset
-    def contains(self, abspath):
+    def contains(self, abspath: str) -> bool:
         if not abspath.endswith(os.sep):
             abspath += os.sep
         for f in self.folders:

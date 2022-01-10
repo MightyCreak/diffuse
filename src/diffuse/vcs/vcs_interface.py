@@ -17,22 +17,35 @@
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-class VcsInterface:
+from abc import ABCMeta, abstractmethod
+from typing import List, Optional, Tuple
+
+from diffuse.preferences import Preferences
+
+
+class VcsInterface(metaclass=ABCMeta):
     """Interface for the VCSs."""
+
+    PathRevisionPair = Tuple[Optional[str], Optional[str]]
+    PathRevisionList = List[PathRevisionPair]
 
     def __init__(self, root: str):
         """The object will initialized with the repository's root folder."""
         self.root = root
 
-    def getFileTemplate(self, prefs, name):
+    @abstractmethod
+    def getFileTemplate(self, prefs: Preferences, name: str) -> PathRevisionList:
         """Indicates which revisions to display for a file when none were explicitly
            requested."""
 
+    @abstractmethod
     def getCommitTemplate(self, prefs, rev, names):
         """Indicates which file revisions to display for a commit."""
 
+    @abstractmethod
     def getFolderTemplate(self, prefs, names):
         """Indicates which file revisions to display for a set of folders."""
 
-    def getRevision(self, prefs, name, rev):
+    @abstractmethod
+    def getRevision(self, prefs: Preferences, name: str, rev: str) -> bytes:
         """Returns the contents of the specified file revision"""

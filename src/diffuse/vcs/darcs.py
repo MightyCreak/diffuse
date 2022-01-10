@@ -19,14 +19,17 @@
 
 import os
 
+from typing import List
+
 from diffuse import utils
+from diffuse.preferences import Preferences
 from diffuse.vcs.folder_set import FolderSet
 from diffuse.vcs.vcs_interface import VcsInterface
 
 
 # Darcs support
 class Darcs(VcsInterface):
-    def getFileTemplate(self, prefs, name):
+    def getFileTemplate(self, prefs: Preferences, name: str) -> VcsInterface.PathRevisionList:
         return [(name, ''), (name, None)]
 
     def _getCommitTemplate(self, prefs, names, rev):
@@ -135,8 +138,8 @@ class Darcs(VcsInterface):
     def getFolderTemplate(self, prefs, names):
         return self._getCommitTemplate(prefs, names, None)
 
-    def getRevision(self, prefs, name, rev):
-        args = [prefs.getString('darcs_bin'), 'show', 'contents']
+    def getRevision(self, prefs: Preferences, name: str, rev: str) -> bytes:
+        args: List[str] = [prefs.getString('darcs_bin'), 'show', 'contents']
         try:
             args.extend(['-n', str(int(rev))])
         except ValueError:

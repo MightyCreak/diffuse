@@ -22,6 +22,7 @@ import os
 from typing import Optional
 
 from diffuse import utils
+from diffuse.preferences import Preferences
 from diffuse.vcs.folder_set import FolderSet
 from diffuse.vcs.vcs_interface import VcsInterface
 
@@ -29,7 +30,7 @@ from diffuse.vcs.vcs_interface import VcsInterface
 # Mercurial support
 class Hg(VcsInterface):
     def __init__(self, root: str):
-        VcsInterface.__init__(self, root)
+        super().__init__(root)
         self.working_rev: Optional[str] = None
 
     def _getPreviousRevision(self, prefs, rev):
@@ -51,7 +52,7 @@ class Hg(VcsInterface):
             return self.working_rev
         return f'p1({rev})'
 
-    def getFileTemplate(self, prefs, name):
+    def getFileTemplate(self, prefs: Preferences, name: str) -> VcsInterface.PathRevisionList:
         return [(name, self._getPreviousRevision(prefs, None)), (name, None)]
 
     def _getCommitTemplate(self, prefs, names, cmd, rev):
@@ -97,7 +98,7 @@ class Hg(VcsInterface):
     def getFolderTemplate(self, prefs, names):
         return self._getCommitTemplate(prefs, names, ['status', '-q'], None)
 
-    def getRevision(self, prefs, name, rev):
+    def getRevision(self, prefs: Preferences, name: str, rev: str) -> bytes:
         return utils.popenRead(
             self.root,
             [

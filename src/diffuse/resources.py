@@ -31,7 +31,7 @@ import shlex
 
 from distutils import util
 from gettext import gettext as _
-from typing import Final
+from typing import Dict, Final, List, Optional, Pattern, Set, Tuple
 
 from diffuse import utils
 
@@ -45,134 +45,133 @@ class Resources:
         # default keybindings
         self.keybindings = {}
         self.keybindings_lookup = {}
-        set_binding = self.setKeyBinding
-        set_binding('menu', 'open_file', 'Ctrl+o')
-        set_binding('menu', 'open_file_in_new_tab', 'Ctrl+t')
-        set_binding('menu', 'open_modified_files', 'Shift+Ctrl+O')
-        set_binding('menu', 'open_commit', 'Shift+Ctrl+T')
-        set_binding('menu', 'reload_file', 'Shift+Ctrl+R')
-        set_binding('menu', 'save_file', 'Ctrl+s')
-        set_binding('menu', 'save_file_as', 'Shift+Ctrl+A')
-        set_binding('menu', 'save_all', 'Shift+Ctrl+S')
-        set_binding('menu', 'new_2_way_file_merge', 'Ctrl+2')
-        set_binding('menu', 'new_3_way_file_merge', 'Ctrl+3')
-        set_binding('menu', 'new_n_way_file_merge', 'Ctrl+4')
-        set_binding('menu', 'close_tab', 'Ctrl+w')
-        set_binding('menu', 'undo_close_tab', 'Shift+Ctrl+W')
-        set_binding('menu', 'quit', 'Ctrl+q')
-        set_binding('menu', 'undo', 'Ctrl+z')
-        set_binding('menu', 'redo', 'Shift+Ctrl+Z')
-        set_binding('menu', 'cut', 'Ctrl+x')
-        set_binding('menu', 'copy', 'Ctrl+c')
-        set_binding('menu', 'paste', 'Ctrl+v')
-        set_binding('menu', 'select_all', 'Ctrl+a')
-        set_binding('menu', 'clear_edits', 'Ctrl+r')
-        set_binding('menu', 'dismiss_all_edits', 'Ctrl+d')
-        set_binding('menu', 'find', 'Ctrl+f')
-        set_binding('menu', 'find_next', 'Ctrl+g')
-        set_binding('menu', 'find_previous', 'Shift+Ctrl+G')
-        set_binding('menu', 'go_to_line', 'Shift+Ctrl+L')
-        set_binding('menu', 'realign_all', 'Ctrl+l')
-        set_binding('menu', 'isolate', 'Ctrl+i')
-        set_binding('menu', 'first_difference', 'Shift+Ctrl+Up')
-        set_binding('menu', 'previous_difference', 'Ctrl+Up')
-        set_binding('menu', 'next_difference', 'Ctrl+Down')
-        set_binding('menu', 'last_difference', 'Shift+Ctrl+Down')
-        set_binding('menu', 'first_tab', 'Shift+Ctrl+Page_Up')
-        set_binding('menu', 'previous_tab', 'Ctrl+Page_Up')
-        set_binding('menu', 'next_tab', 'Ctrl+Page_Down')
-        set_binding('menu', 'last_tab', 'Shift+Ctrl+Page_Down')
-        set_binding('menu', 'shift_pane_right', 'Shift+Ctrl+parenright')
-        set_binding('menu', 'shift_pane_left', 'Shift+Ctrl+parenleft')
-        set_binding('menu', 'convert_to_upper_case', 'Ctrl+u')
-        set_binding('menu', 'convert_to_lower_case', 'Shift+Ctrl+U')
-        set_binding('menu', 'sort_lines_in_ascending_order', 'Ctrl+y')
-        set_binding('menu', 'sort_lines_in_descending_order', 'Shift+Ctrl+Y')
-        set_binding('menu', 'remove_trailing_white_space', 'Ctrl+k')
-        set_binding('menu', 'convert_tabs_to_spaces', 'Ctrl+b')
-        set_binding('menu', 'convert_leading_spaces_to_tabs', 'Shift+Ctrl+B')
-        set_binding('menu', 'increase_indenting', 'Shift+Ctrl+greater')
-        set_binding('menu', 'decrease_indenting', 'Shift+Ctrl+less')
-        set_binding('menu', 'convert_to_dos', 'Shift+Ctrl+E')
-        set_binding('menu', 'convert_to_mac', 'Shift+Ctrl+C')
-        set_binding('menu', 'convert_to_unix', 'Ctrl+e')
-        set_binding('menu', 'copy_selection_right', 'Shift+Ctrl+Right')
-        set_binding('menu', 'copy_selection_left', 'Shift+Ctrl+Left')
-        set_binding('menu', 'copy_left_into_selection', 'Ctrl+Right')
-        set_binding('menu', 'copy_right_into_selection', 'Ctrl+Left')
-        set_binding('menu', 'merge_from_left_then_right', 'Ctrl+m')
-        set_binding('menu', 'merge_from_right_then_left', 'Shift+Ctrl+M')
-        set_binding('menu', 'help_contents', 'F1')
-        set_binding('line_mode', 'enter_align_mode', 'space')
-        set_binding('line_mode', 'enter_character_mode', 'Return')
-        set_binding('line_mode', 'enter_character_mode', 'KP_Enter')
-        set_binding('line_mode', 'first_line', 'Home')
-        set_binding('line_mode', 'first_line', 'g')
-        set_binding('line_mode', 'extend_first_line', 'Shift+Home')
-        set_binding('line_mode', 'last_line', 'End')
-        set_binding('line_mode', 'last_line', 'Shift+G')
-        set_binding('line_mode', 'extend_last_line', 'Shift+End')
-        set_binding('line_mode', 'up', 'Up')
-        set_binding('line_mode', 'up', 'k')
-        set_binding('line_mode', 'extend_up', 'Shift+Up')
-        set_binding('line_mode', 'extend_up', 'Shift+K')
-        set_binding('line_mode', 'down', 'Down')
-        set_binding('line_mode', 'down', 'j')
-        set_binding('line_mode', 'extend_down', 'Shift+Down')
-        set_binding('line_mode', 'extend_down', 'Shift+J')
-        set_binding('line_mode', 'left', 'Left')
-        set_binding('line_mode', 'left', 'h')
-        set_binding('line_mode', 'extend_left', 'Shift+Left')
-        set_binding('line_mode', 'right', 'Right')
-        set_binding('line_mode', 'right', 'l')
-        set_binding('line_mode', 'extend_right', 'Shift+Right')
-        set_binding('line_mode', 'page_up', 'Page_Up')
-        set_binding('line_mode', 'page_up', 'Ctrl+u')
-        set_binding('line_mode', 'extend_page_up', 'Shift+Page_Up')
-        set_binding('line_mode', 'extend_page_up', 'Shift+Ctrl+U')
-        set_binding('line_mode', 'page_down', 'Page_Down')
-        set_binding('line_mode', 'page_down', 'Ctrl+d')
-        set_binding('line_mode', 'extend_page_down', 'Shift+Page_Down')
-        set_binding('line_mode', 'extend_page_down', 'Shift+Ctrl+D')
-        set_binding('line_mode', 'delete_text', 'BackSpace')
-        set_binding('line_mode', 'delete_text', 'Delete')
-        set_binding('line_mode', 'delete_text', 'x')
-        set_binding('line_mode', 'clear_edits', 'r')
-        set_binding('line_mode', 'isolate', 'i')
-        set_binding('line_mode', 'first_difference', 'Ctrl+Home')
-        set_binding('line_mode', 'first_difference', 'Shift+P')
-        set_binding('line_mode', 'previous_difference', 'p')
-        set_binding('line_mode', 'next_difference', 'n')
-        set_binding('line_mode', 'last_difference', 'Ctrl+End')
-        set_binding('line_mode', 'last_difference', 'Shift+N')
-        # set_binding('line_mode', 'copy_selection_right', 'Shift+L')
-        # set_binding('line_mode', 'copy_selection_left', 'Shift+H')
-        set_binding('line_mode', 'copy_left_into_selection', 'Shift+L')
-        set_binding('line_mode', 'copy_right_into_selection', 'Shift+H')
-        set_binding('line_mode', 'merge_from_left_then_right', 'm')
-        set_binding('line_mode', 'merge_from_right_then_left', 'Shift+M')
-        set_binding('align_mode', 'enter_line_mode', 'Escape')
-        set_binding('align_mode', 'align', 'space')
-        set_binding('align_mode', 'enter_character_mode', 'Return')
-        set_binding('align_mode', 'enter_character_mode', 'KP_Enter')
-        set_binding('align_mode', 'first_line', 'g')
-        set_binding('align_mode', 'last_line', 'Shift+G')
-        set_binding('align_mode', 'up', 'Up')
-        set_binding('align_mode', 'up', 'k')
-        set_binding('align_mode', 'down', 'Down')
-        set_binding('align_mode', 'down', 'j')
-        set_binding('align_mode', 'left', 'Left')
-        set_binding('align_mode', 'left', 'h')
-        set_binding('align_mode', 'right', 'Right')
-        set_binding('align_mode', 'right', 'l')
-        set_binding('align_mode', 'page_up', 'Page_Up')
-        set_binding('align_mode', 'page_up', 'Ctrl+u')
-        set_binding('align_mode', 'page_down', 'Page_Down')
-        set_binding('align_mode', 'page_down', 'Ctrl+d')
-        set_binding('character_mode', 'enter_line_mode', 'Escape')
+        self.setKeyBinding('menu', 'open_file', 'Ctrl+o')
+        self.setKeyBinding('menu', 'open_file_in_new_tab', 'Ctrl+t')
+        self.setKeyBinding('menu', 'open_modified_files', 'Shift+Ctrl+O')
+        self.setKeyBinding('menu', 'open_commit', 'Shift+Ctrl+T')
+        self.setKeyBinding('menu', 'reload_file', 'Shift+Ctrl+R')
+        self.setKeyBinding('menu', 'save_file', 'Ctrl+s')
+        self.setKeyBinding('menu', 'save_file_as', 'Shift+Ctrl+A')
+        self.setKeyBinding('menu', 'save_all', 'Shift+Ctrl+S')
+        self.setKeyBinding('menu', 'new_2_way_file_merge', 'Ctrl+2')
+        self.setKeyBinding('menu', 'new_3_way_file_merge', 'Ctrl+3')
+        self.setKeyBinding('menu', 'new_n_way_file_merge', 'Ctrl+4')
+        self.setKeyBinding('menu', 'close_tab', 'Ctrl+w')
+        self.setKeyBinding('menu', 'undo_close_tab', 'Shift+Ctrl+W')
+        self.setKeyBinding('menu', 'quit', 'Ctrl+q')
+        self.setKeyBinding('menu', 'undo', 'Ctrl+z')
+        self.setKeyBinding('menu', 'redo', 'Shift+Ctrl+Z')
+        self.setKeyBinding('menu', 'cut', 'Ctrl+x')
+        self.setKeyBinding('menu', 'copy', 'Ctrl+c')
+        self.setKeyBinding('menu', 'paste', 'Ctrl+v')
+        self.setKeyBinding('menu', 'select_all', 'Ctrl+a')
+        self.setKeyBinding('menu', 'clear_edits', 'Ctrl+r')
+        self.setKeyBinding('menu', 'dismiss_all_edits', 'Ctrl+d')
+        self.setKeyBinding('menu', 'find', 'Ctrl+f')
+        self.setKeyBinding('menu', 'find_next', 'Ctrl+g')
+        self.setKeyBinding('menu', 'find_previous', 'Shift+Ctrl+G')
+        self.setKeyBinding('menu', 'go_to_line', 'Shift+Ctrl+L')
+        self.setKeyBinding('menu', 'realign_all', 'Ctrl+l')
+        self.setKeyBinding('menu', 'isolate', 'Ctrl+i')
+        self.setKeyBinding('menu', 'first_difference', 'Shift+Ctrl+Up')
+        self.setKeyBinding('menu', 'previous_difference', 'Ctrl+Up')
+        self.setKeyBinding('menu', 'next_difference', 'Ctrl+Down')
+        self.setKeyBinding('menu', 'last_difference', 'Shift+Ctrl+Down')
+        self.setKeyBinding('menu', 'first_tab', 'Shift+Ctrl+Page_Up')
+        self.setKeyBinding('menu', 'previous_tab', 'Ctrl+Page_Up')
+        self.setKeyBinding('menu', 'next_tab', 'Ctrl+Page_Down')
+        self.setKeyBinding('menu', 'last_tab', 'Shift+Ctrl+Page_Down')
+        self.setKeyBinding('menu', 'shift_pane_right', 'Shift+Ctrl+parenright')
+        self.setKeyBinding('menu', 'shift_pane_left', 'Shift+Ctrl+parenleft')
+        self.setKeyBinding('menu', 'convert_to_upper_case', 'Ctrl+u')
+        self.setKeyBinding('menu', 'convert_to_lower_case', 'Shift+Ctrl+U')
+        self.setKeyBinding('menu', 'sort_lines_in_ascending_order', 'Ctrl+y')
+        self.setKeyBinding('menu', 'sort_lines_in_descending_order', 'Shift+Ctrl+Y')
+        self.setKeyBinding('menu', 'remove_trailing_white_space', 'Ctrl+k')
+        self.setKeyBinding('menu', 'convert_tabs_to_spaces', 'Ctrl+b')
+        self.setKeyBinding('menu', 'convert_leading_spaces_to_tabs', 'Shift+Ctrl+B')
+        self.setKeyBinding('menu', 'increase_indenting', 'Shift+Ctrl+greater')
+        self.setKeyBinding('menu', 'decrease_indenting', 'Shift+Ctrl+less')
+        self.setKeyBinding('menu', 'convert_to_dos', 'Shift+Ctrl+E')
+        self.setKeyBinding('menu', 'convert_to_mac', 'Shift+Ctrl+C')
+        self.setKeyBinding('menu', 'convert_to_unix', 'Ctrl+e')
+        self.setKeyBinding('menu', 'copy_selection_right', 'Shift+Ctrl+Right')
+        self.setKeyBinding('menu', 'copy_selection_left', 'Shift+Ctrl+Left')
+        self.setKeyBinding('menu', 'copy_left_into_selection', 'Ctrl+Right')
+        self.setKeyBinding('menu', 'copy_right_into_selection', 'Ctrl+Left')
+        self.setKeyBinding('menu', 'merge_from_left_then_right', 'Ctrl+m')
+        self.setKeyBinding('menu', 'merge_from_right_then_left', 'Shift+Ctrl+M')
+        self.setKeyBinding('menu', 'help_contents', 'F1')
+        self.setKeyBinding('line_mode', 'enter_align_mode', 'space')
+        self.setKeyBinding('line_mode', 'enter_character_mode', 'Return')
+        self.setKeyBinding('line_mode', 'enter_character_mode', 'KP_Enter')
+        self.setKeyBinding('line_mode', 'first_line', 'Home')
+        self.setKeyBinding('line_mode', 'first_line', 'g')
+        self.setKeyBinding('line_mode', 'extend_first_line', 'Shift+Home')
+        self.setKeyBinding('line_mode', 'last_line', 'End')
+        self.setKeyBinding('line_mode', 'last_line', 'Shift+G')
+        self.setKeyBinding('line_mode', 'extend_last_line', 'Shift+End')
+        self.setKeyBinding('line_mode', 'up', 'Up')
+        self.setKeyBinding('line_mode', 'up', 'k')
+        self.setKeyBinding('line_mode', 'extend_up', 'Shift+Up')
+        self.setKeyBinding('line_mode', 'extend_up', 'Shift+K')
+        self.setKeyBinding('line_mode', 'down', 'Down')
+        self.setKeyBinding('line_mode', 'down', 'j')
+        self.setKeyBinding('line_mode', 'extend_down', 'Shift+Down')
+        self.setKeyBinding('line_mode', 'extend_down', 'Shift+J')
+        self.setKeyBinding('line_mode', 'left', 'Left')
+        self.setKeyBinding('line_mode', 'left', 'h')
+        self.setKeyBinding('line_mode', 'extend_left', 'Shift+Left')
+        self.setKeyBinding('line_mode', 'right', 'Right')
+        self.setKeyBinding('line_mode', 'right', 'l')
+        self.setKeyBinding('line_mode', 'extend_right', 'Shift+Right')
+        self.setKeyBinding('line_mode', 'page_up', 'Page_Up')
+        self.setKeyBinding('line_mode', 'page_up', 'Ctrl+u')
+        self.setKeyBinding('line_mode', 'extend_page_up', 'Shift+Page_Up')
+        self.setKeyBinding('line_mode', 'extend_page_up', 'Shift+Ctrl+U')
+        self.setKeyBinding('line_mode', 'page_down', 'Page_Down')
+        self.setKeyBinding('line_mode', 'page_down', 'Ctrl+d')
+        self.setKeyBinding('line_mode', 'extend_page_down', 'Shift+Page_Down')
+        self.setKeyBinding('line_mode', 'extend_page_down', 'Shift+Ctrl+D')
+        self.setKeyBinding('line_mode', 'delete_text', 'BackSpace')
+        self.setKeyBinding('line_mode', 'delete_text', 'Delete')
+        self.setKeyBinding('line_mode', 'delete_text', 'x')
+        self.setKeyBinding('line_mode', 'clear_edits', 'r')
+        self.setKeyBinding('line_mode', 'isolate', 'i')
+        self.setKeyBinding('line_mode', 'first_difference', 'Ctrl+Home')
+        self.setKeyBinding('line_mode', 'first_difference', 'Shift+P')
+        self.setKeyBinding('line_mode', 'previous_difference', 'p')
+        self.setKeyBinding('line_mode', 'next_difference', 'n')
+        self.setKeyBinding('line_mode', 'last_difference', 'Ctrl+End')
+        self.setKeyBinding('line_mode', 'last_difference', 'Shift+N')
+        # self.setKeyBinding('line_mode', 'copy_selection_right', 'Shift+L')
+        # self.setKeyBinding('line_mode', 'copy_selection_left', 'Shift+H')
+        self.setKeyBinding('line_mode', 'copy_left_into_selection', 'Shift+L')
+        self.setKeyBinding('line_mode', 'copy_right_into_selection', 'Shift+H')
+        self.setKeyBinding('line_mode', 'merge_from_left_then_right', 'm')
+        self.setKeyBinding('line_mode', 'merge_from_right_then_left', 'Shift+M')
+        self.setKeyBinding('align_mode', 'enter_line_mode', 'Escape')
+        self.setKeyBinding('align_mode', 'align', 'space')
+        self.setKeyBinding('align_mode', 'enter_character_mode', 'Return')
+        self.setKeyBinding('align_mode', 'enter_character_mode', 'KP_Enter')
+        self.setKeyBinding('align_mode', 'first_line', 'g')
+        self.setKeyBinding('align_mode', 'last_line', 'Shift+G')
+        self.setKeyBinding('align_mode', 'up', 'Up')
+        self.setKeyBinding('align_mode', 'up', 'k')
+        self.setKeyBinding('align_mode', 'down', 'Down')
+        self.setKeyBinding('align_mode', 'down', 'j')
+        self.setKeyBinding('align_mode', 'left', 'Left')
+        self.setKeyBinding('align_mode', 'left', 'h')
+        self.setKeyBinding('align_mode', 'right', 'Right')
+        self.setKeyBinding('align_mode', 'right', 'l')
+        self.setKeyBinding('align_mode', 'page_up', 'Page_Up')
+        self.setKeyBinding('align_mode', 'page_up', 'Ctrl+u')
+        self.setKeyBinding('align_mode', 'page_down', 'Page_Down')
+        self.setKeyBinding('align_mode', 'page_down', 'Ctrl+d')
+        self.setKeyBinding('character_mode', 'enter_line_mode', 'Escape')
 
         # default colours
-        self.colours = {
+        self.colours: Dict[str, _Colour] = {
             'alignment': _Colour(1.0, 1.0, 0.0),
             'character_selection': _Colour(0.7, 0.7, 1.0),
             'cursor': _Colour(0.0, 0.0, 0.0),
@@ -192,7 +191,7 @@ class Resources:
         }
 
         # default floats
-        self.floats = {
+        self.floats: Dict[str, float] = {
             'alignment_opacity': 1.0,
             'character_difference_opacity': 0.4,
             'character_selection_opacity': 0.4,
@@ -202,29 +201,29 @@ class Resources:
         }
 
         # default options
-        self.options = {
+        self.options: Dict[str, str] = {
             'log_print_output': 'False',
             'log_print_stack': 'False',
             'use_flatpak': 'False'
         }
 
         # default strings
-        self.strings = {}
+        self.strings: Dict[str, str] = {}
 
         # syntax highlighting support
-        self.syntaxes = {}
-        self.syntax_file_patterns = {}
-        self.syntax_magic_patterns = {}
-        self.current_syntax = None
+        self.syntaxes: Dict[str, _SyntaxParser] = {}
+        self.syntax_file_patterns: Dict[str, Pattern] = {}
+        self.syntax_magic_patterns: Dict[str, Pattern] = {}
+        self.current_syntax: Optional[_SyntaxParser] = None
 
         # list of imported resources files (we only import each file once)
-        self.resource_files = set()
+        self.resource_files: Set[str] = set()
 
         # special string resources
         self.setDifferenceColours('difference_1 difference_2 difference_3')
 
     # keyboard action processing
-    def setKeyBinding(self, ctx, s, v):
+    def setKeyBinding(self, ctx: str, s: str, v: str) -> None:
         action_tuple = (ctx, s)
         modifiers = Gdk.ModifierType(0)
         key = None
@@ -282,7 +281,7 @@ class Resources:
             return []
 
     # colours used for indicating differences
-    def setDifferenceColours(self, s):
+    def setDifferenceColours(self, s: str) -> None:
         colours = s.split()
         if len(colours) > 0:
             self.difference_colours = colours
@@ -322,7 +321,7 @@ class Resources:
         return util.strtobool(self.getOption(option))
 
     # string resources
-    def getString(self, symbol):
+    def getString(self, symbol: str) -> str:
         try:
             return self.strings[symbol]
         except KeyError:
@@ -336,7 +335,7 @@ class Resources:
     def getSyntax(self, name):
         return self.syntaxes.get(name, None)
 
-    def guessSyntaxForFile(self, name, ss):
+    def guessSyntaxForFile(self, name: str, ss: List[str]) -> Optional[str]:
         name = os.path.basename(name)
         for key, pattern in self.syntax_file_patterns.items():
             if pattern.search(name):
@@ -350,7 +349,7 @@ class Resources:
         return None
 
     # parse resource files
-    def parse(self, file_name):
+    def parse(self, file_name: str) -> None:
         # only process files once
         if file_name in self.resource_files:
             return
@@ -514,12 +513,12 @@ class Resources:
                     file=file_name
                 )
                 utils.logError(f'{error_msg}: {e.msg}')
-            except ValueError as e:
+            except ValueError:
                 error_msg = _('Value error at line {line} of {file}').format(
                     line=i + 1,
                     file=file_name
                 )
-                utils.logError(f'{error_msg}: {e.msg}')
+                utils.logError(error_msg)
             except re.error:
                 error_msg = _('Regex error at line {line} of {file}.')
                 utils.logError(error_msg.format(line=i + 1, file=file_name))
@@ -558,7 +557,7 @@ class _Colour:
 class _SyntaxParser:
     # create a new state machine that begins in initial_state and classifies
     # all characters not matched by the patterns as default_token_type
-    def __init__(self, initial_state, default_token_type):
+    def __init__(self, initial_state: str, default_token_type: str) -> None:
         # initial state for the state machine when parsing a new file
         self.initial_state = initial_state
         # default classification of characters that are not explicitly matched
@@ -567,30 +566,33 @@ class _SyntaxParser:
         # mappings from a state to a list of (pattern, token_type, next_state)
         # tuples indicating the new state for the state machine when 'pattern'
         # is matched and how to classify the matched characters
-        self.transitions_lookup = {initial_state: []}
+        self.transitions_lookup: Dict[str, List[Tuple[Pattern, str, str]]] = {initial_state: []}
 
     # Adds a new edge to the finite state machine from prev_state to
     # next_state.  Characters will be identified as token_type when pattern is
     # matched.  Any newly referenced state will be added.  Patterns for edges
     # leaving a state will be tested in the order they were added to the finite
     # state machine.
-    def addPattern(self, prev_state, next_state, token_type, pattern):
-        lookup = self.transitions_lookup
+    def addPattern(
+            self,
+            prev_state: str,
+            next_state: str,
+            token_type: str,
+            pattern: Pattern) -> None:
         for state in prev_state, next_state:
-            if state not in lookup:
-                lookup[state] = []
-        lookup[prev_state].append([pattern, token_type, next_state])
+            if state not in self.transitions_lookup:
+                self.transitions_lookup[state] = []
+        self.transitions_lookup[prev_state].append((pattern, token_type, next_state))
 
     # given a string and an initial state, identify the final state and tokens
     def parse(self, state_name, s):
-        lookup = self.transitions_lookup
-        transitions, blocks, start = lookup[state_name], [], 0
+        transitions, blocks, start = self.transitions_lookup[state_name], [], 0
         while start < len(s):
             for pattern, token_type, next_state in transitions:
                 m = pattern.match(s, start)
                 if m is not None:
                     end, state_name = m.span()[1], next_state
-                    transitions = lookup[state_name]
+                    transitions = self.transitions_lookup[state_name]
                     break
             else:
                 end, token_type = start + 1, self.default_token_type
@@ -602,4 +604,4 @@ class _SyntaxParser:
         return state_name, blocks
 
 
-theResources: Final[Resources] = Resources()
+theResources: Final = Resources()

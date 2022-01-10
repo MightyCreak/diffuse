@@ -20,13 +20,14 @@
 import os
 
 from diffuse import utils
+from diffuse.preferences import Preferences
 from diffuse.vcs.folder_set import FolderSet
 from diffuse.vcs.vcs_interface import VcsInterface
 
 
 # Bazaar support
 class Bzr(VcsInterface):
-    def getFileTemplate(self, prefs, name):
+    def getFileTemplate(self, prefs: Preferences, name: str) -> VcsInterface.PathRevisionList:
         # merge conflict
         left = name + '.OTHER'
         right = name + '.THIS'
@@ -180,7 +181,7 @@ class Bzr(VcsInterface):
                     result.append(m[k])
         return result
 
-    def getRevision(self, prefs, name, rev):
+    def getRevision(self, prefs: Preferences, name: str, rev: str) -> bytes:
         return utils.popenRead(
             self.root,
             [

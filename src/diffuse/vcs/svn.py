@@ -24,6 +24,7 @@ from gettext import gettext as _
 from typing import Optional, Tuple
 
 from diffuse import utils
+from diffuse.preferences import Preferences
 from diffuse.vcs.folder_set import FolderSet
 from diffuse.vcs.vcs_interface import VcsInterface
 
@@ -32,7 +33,7 @@ from diffuse.vcs.vcs_interface import VcsInterface
 # SVK support subclasses from this
 class Svn(VcsInterface):
     def __init__(self, root: str):
-        VcsInterface.__init__(self, root)
+        super().__init__(root)
         self.url: Optional[str] = None
 
     @staticmethod
@@ -54,13 +55,13 @@ class Svn(VcsInterface):
         return s[0], s[k:]
 
     @staticmethod
-    def _getPreviousRevision(rev: str) -> str:
+    def _getPreviousRevision(rev: Optional[str]) -> str:
         if rev is None:
             return 'BASE'
         m = int(rev)
         return str(max(m > 1, 0))
 
-    def _getURL(self, prefs):
+    def _getURL(self, prefs: Preferences) -> Optional[str]:
         if self.url is None:
             vcs, prefix = self._getVcs(), self._getURLPrefix()
             n = len(prefix)
@@ -71,7 +72,7 @@ class Svn(VcsInterface):
                     break
         return self.url
 
-    def getFileTemplate(self, prefs, name):
+    def getFileTemplate(self, prefs: Preferences, name: str) -> VcsInterface.PathRevisionList:
         # FIXME: verify this
         # merge conflict
         escaped_name = utils.globEscape(name)
@@ -271,7 +272,7 @@ class Svn(VcsInterface):
     def getFolderTemplate(self, prefs, names):
         return self._getCommitTemplate(prefs, None, names)
 
-    def getRevision(self, prefs, name, rev):
+    def getRevision(self, prefs: Preferences, name: str, rev: str) -> bytes:
         vcs_bin = prefs.getString('svn_bin')
         if rev in ['BASE', 'COMMITTED', 'PREV']:
             return utils.popenRead(

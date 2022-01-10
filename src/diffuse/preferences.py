@@ -24,7 +24,7 @@ import shlex
 import sys
 
 from gettext import gettext as _
-from typing import List
+from typing import Any, Dict, Final, List, Optional, Tuple
 
 from diffuse import constants
 from diffuse import utils
@@ -36,16 +36,16 @@ from gi.repository import Gtk  # type: ignore # noqa: E402
 
 # class to store preferences and construct a dialogue for manipulating them
 class Preferences:
-    def __init__(self, path):
-        self.bool_prefs = {}
-        self.int_prefs = {}
-        self.string_prefs = {}
-        self.int_prefs_min = {}
-        self.int_prefs_max = {}
-        self.string_prefs_enums = {}
+    def __init__(self, path: str) -> None:
+        self.path = path
+        self.bool_prefs: Dict[str, bool] = {}
+        self.string_prefs: Dict[str, str] = {}
+        self.int_prefs: Dict[str, int] = {}
+        self.int_prefs_min: Dict[str, int] = {}
+        self.int_prefs_max: Dict[str, int] = {}
 
         # find available encodings
-        self.encodings = sorted(set(encodings.aliases.aliases.values()))
+        self.encodings: List[Optional[str]] = sorted(set(encodings.aliases.aliases.values()))
 
         if utils.isWindows():
             svk_bin = 'svk.bat'
@@ -54,7 +54,7 @@ class Preferences:
 
         auto_detect_codecs = ['utf_8', 'utf_16', 'latin_1']
         e = utils.norm_encoding(sys.getfilesystemencoding())
-        if e not in auto_detect_codecs:
+        if e is not None and e not in auto_detect_codecs:
             # insert after UTF-8 as the default encoding may prevent UTF-8 from
             # being tried
             auto_detect_codecs.insert(2, e)
@@ -124,7 +124,7 @@ class Preferences:
         ]
 
         # conditions used to determine if a preference should be greyed out
-        self.disable_when = {
+        self.disable_when: Final[Dict[str, Tuple[str, bool]]] = {
             'display_right_margin': ('display_show_right_margin', False),
             'display_ignore_whitespace_changes': ('display_ignore_whitespace', True),
             'display_ignore_blanklines': ('display_ignore_whitespace', True),
@@ -165,9 +165,9 @@ class Preferences:
                 _('Version control system search order')
             ]
         ]
-        vcs_folders_template = ['FolderSet']
+        vcs_folders_template: List[Any] = ['FolderSet']
         for key, name, cmd in vcs:
-            temp = ['List']
+            temp: List[Any] = ['List']
             if key == 'rcs':
                 # RCS uses multiple commands
                 temp.extend([['File', key + '_bin_co', 'co', _('"co" command')],
@@ -196,8 +196,8 @@ class Preferences:
         self.default_bool_prefs = self.bool_prefs.copy()
         self.default_int_prefs = self.int_prefs.copy()
         self.default_string_prefs = self.string_prefs.copy()
+
         # load the user's preferences
-        self.path = path
         if os.path.isfile(self.path):
             try:
                 with open(self.path, 'r', encoding='utf-8') as f:
@@ -255,16 +255,16 @@ class Preferences:
 
     # display the dialogue and update the preference values if the accept
     # button was pressed
-    def runDialog(self, parent):
+    def runDialog(self, parent: Gtk.Widget) -> None:
         dialog = Gtk.Dialog(_('Preferences'), parent=parent, destroy_with_parent=True)
         dialog.add_button(Gtk.STOCK_CANCEL, Gtk.ResponseType.REJECT)
         dialog.add_button(Gtk.STOCK_OK, Gtk.ResponseType.OK)
 
-        widgets = {}
+        widgets: Dict[str, Gtk.Widget] = {}
         w = self._buildPrefsDialog(parent, widgets, self.template)
         # disable any preferences than are not relevant
-        for k, v in self.disable_when.items():
-            p, t = v
+        for k, tuple_value in self.disable_when.items():
+            p, t = tuple_value
             if widgets[p].get_active() == t:
                 widgets[k].set_sensitive(False)
         dialog.vbox.add(w)
@@ -280,15 +280,15 @@ class Preferences:
                 self.string_prefs[k] = utils.null_to_empty(widgets[k].get_text())
             try:
                 ss = []
-                for k, v in self.bool_prefs.items():
-                    if v != self.default_bool_prefs[k]:
-                        ss.append(f'{k} {v}\n')
-                for k, v in self.int_prefs.items():
-                    if v != self.default_int_prefs[k]:
-                        ss.append(f'{k} {v}\n')
-                for k, v in self.string_prefs.items():
-                    if v != self.default_string_prefs[k]:
-                        v_escaped = v.replace('\\', '\\\\').replace('"', '\\"')
+                for k, bool_value in self.bool_prefs.items():
+                    if bool_value != self.default_bool_prefs[k]:
+                        ss.append(f'{k} {bool_value}\n')
+                for k, int_value in self.int_prefs.items():
+                    if int_value != self.default_int_prefs[k]:
+                        ss.append(f'{k} {int_value}\n')
+                for k, str_value in self.string_prefs.items():
+                    if str_value != self.default_string_prefs[k]:
+                        v_escaped = str_value.replace('\\', '\\\\').replace('"', '\\"')
                         ss.append(f'{k} "{v_escaped}"\n')
                 ss.sort()
                 with open(self.path, 'w', encoding='utf-8') as f:
@@ -384,7 +384,7 @@ class Preferences:
     def setString(self, name: str, value: str) -> None:
         self.string_prefs[name] = value
 
-    def getEncodings(self):
+    def getEncodings(self) -> List[Optional[str]]:
         return self.encodings
 
     def _getDefaultEncodings(self) -> List[str]:
@@ -439,7 +439,7 @@ class Preferences:
 
 # text entry widget with a button to help pick file names
 class _FileEntry(Gtk.Box):
-    def __init__(self, parent, title):
+    def __init__(self, parent: Gtk.Widget, title: str) -> None:
         Gtk.Box.__init__(self, orientation=Gtk.Orientation.HORIZONTAL)
         self.toplevel = parent
         self.title = title
@@ -456,7 +456,7 @@ class _FileEntry(Gtk.Box):
         button.show()
 
     # action performed when the pick file button is pressed
-    def chooseFile(self, widget):
+    def chooseFile(self, widget: Gtk.Widget) -> None:
         dialog = Gtk.FileChooserDialog(
             self.title,
             self.toplevel,

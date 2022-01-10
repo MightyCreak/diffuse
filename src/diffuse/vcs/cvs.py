@@ -22,13 +22,14 @@ import os
 from gettext import gettext as _
 
 from diffuse import utils
+from diffuse.preferences import Preferences
 from diffuse.vcs.folder_set import FolderSet
 from diffuse.vcs.vcs_interface import VcsInterface
 
 
 # CVS support
 class Cvs(VcsInterface):
-    def getFileTemplate(self, prefs, name):
+    def getFileTemplate(self, prefs: Preferences, name: str) -> VcsInterface.PathRevisionList:
         return [(name, 'BASE'), (name, None)]
 
     def getCommitTemplate(self, prefs, rev, names):
@@ -85,10 +86,10 @@ class Cvs(VcsInterface):
         # sort the results
         return [modified[k] for k in sorted(modified.keys())]
 
-    def getRevision(self, prefs, name, rev):
+    def getRevision(self, prefs: Preferences, name: str, rev: str) -> bytes:
         if rev == 'BASE' and not os.path.exists(name):
             # find revision for removed files
-            for s in utils.popenReadLines(
+            lines = utils.popenReadLines(
                 self.root,
                 [
                     prefs.getString('cvs_bin'),
@@ -97,9 +98,10 @@ class Cvs(VcsInterface):
                 ],
                 prefs,
                 'cvs_bash'
-            ):
-                if s.startswith('   Working revision:\t-'):
-                    rev = s.split('\t')[1][1:]
+            )
+            for line in lines:
+                if line.startswith('   Working revision:\t-'):
+                    rev = line.split('\t')[1][1:]
         return utils.popenRead(
             self.root,
             [
