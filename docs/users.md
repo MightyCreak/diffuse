@@ -2,6 +2,14 @@
 
 ## Installation
 
+### Using Homebrew
+
+Install via [brew](https://brew.sh/)
+
+```sh
+$ brew install diffuse
+```
+
 ### Using Flatpak
 
 ```sh
