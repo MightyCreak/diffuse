@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added a `--remove-obsolete` option for the update-translation.py script
 - Added links to VCSs in README.md
 - New keyword in config file: "option"
+- Added instructions to install and run from a custom directory
 
 ### Changed
 - Updated the translation files

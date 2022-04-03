@@ -75,14 +75,32 @@ flatpak remove io.github.mightycreak.Diffuse
 
 Diffuse build system is meson.
 
-To install diffuse locally:
+To compile and test Diffuse:
 
 ```sh
 meson setup build
 cd build
 meson compile
 meson test
+```
+
+To install Diffuse on your system (e.g. `/usr/local/`):
+
+```sh
 meson install # requires admin privileges
+
+# Run Diffuse
+diffuse
+```
+
+To install Diffuse on a custom directory (e.g. `~/bin/diffuse`):
+
+```sh
+meson install --destdir ~/bin/diffuse
+
+# Run Diffuse
+cd ~/bin/diffuse/usr/local/bin
+PYTHONPATH=$HOME/bin/diffuse/usr/local/share/diffuse ./diffuse
 ```
 
 To uninstall diffuse afterwards:
