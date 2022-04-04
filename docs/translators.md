@@ -14,11 +14,17 @@ To create or update the PO template (`po/diffuse.pot`), use this command at the
 repo root:
 
 ```sh
-xgettext -w 84 -o po/diffuse.pot -f po/POTFILES.in
+xgettext -w 84 -o po/diffuse.pot -f po/POTFILES
 ```
 
+Regenerating the POT file will add a bunch of new lines coming from
+`data/io.github.mightycreak.Diffuse.appdata.xml.in`. Not all the lines need to
+be translated in this file. In `diffuse.pot`, look for the comment
+`Translators: no need to translate after this comment`, and remove all the
+added lines for this file.
+
 _Note:_ why 84 characters, you ask? because the usage text has to be 80-char
-wide, plus the beginning and ending `"` and the final `\n` (literally two
+wide, plus the beginning and ending `"` and the final `\n` (which is two
 characters).
 
 ## Create a new translation
@@ -29,7 +35,7 @@ created, refer to previous section "Create PO template".
 1. Create a .po file for the translation (replace `<lang>` with your language):
 
    ```sh
-   msginit -l <lang> -o <lang>.po -i diffuse.pot
+   msginit -w 84 -l <lang> -o <lang>.po -i diffuse.pot
    ```
 
 2. Manually complete in the translations in the .po file using either an
