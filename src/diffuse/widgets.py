@@ -63,8 +63,8 @@ class ScrolledWindow(Gtk.Grid):
         self.partial_redraw = False
 
         self.hadj, self.vadj = hadj, vadj
-        vport = Gtk.Viewport.new()
-        darea = Gtk.DrawingArea.new()
+        vport = Gtk.Viewport()
+        darea = Gtk.DrawingArea()
         darea.add_events(Gdk.EventMask.SCROLL_MASK)
         self.darea = darea
         # replace darea's queue_draw_area with our own so we can tell when
@@ -78,11 +78,11 @@ class ScrolledWindow(Gtk.Grid):
         vport.set_hexpand(True)
         vport.show()
 
-        self.vbar = Gtk.Scrollbar.new(Gtk.Orientation.VERTICAL, vadj)
+        self.vbar = Gtk.Scrollbar(orientation=Gtk.Orientation.VERTICAL, adjustment=vadj)
         self.attach(self.vbar, 1, 0, 1, 1)
         self.vbar.show()
 
-        self.hbar = Gtk.Scrollbar.new(Gtk.Orientation.HORIZONTAL, hadj)
+        self.hbar = Gtk.Scrollbar(orientation=Gtk.Orientation.HORIZONTAL, adjustment=hadj)
         self.attach(self.hbar, 0, 1, 1, 1)
         self.hbar.show()
 
@@ -319,8 +319,20 @@ class FileDiffViewerBase(Gtk.Grid):
         # create panes
         self.dareas: List[Gtk.DrawingArea] = []
         self.panes: List[FileDiffViewerBase.Pane] = []
-        self.hadj = Gtk.Adjustment.new(0, 0, 0, 0, 0, 0)
-        self.vadj = Gtk.Adjustment.new(0, 0, 0, 0, 0, 0)
+        self.hadj = Gtk.Adjustment(
+            value=0,
+            lower=0,
+            upper=0,
+            step_increment=0,
+            page_increment=0,
+            page_size=0)
+        self.vadj = Gtk.Adjustment(
+            value=0,
+            lower=0,
+            upper=0,
+            step_increment=0,
+            page_increment=0,
+            page_size=0)
         for i in range(n):
             pane = FileDiffViewerBase.Pane()
             self.panes.append(pane)
@@ -343,7 +355,7 @@ class FileDiffViewerBase(Gtk.Grid):
         self.vadj.connect('value-changed', self.vadj_changed_cb)
 
         # add diff map
-        self.diffmap = diffmap = Gtk.DrawingArea.new()
+        self.diffmap = diffmap = Gtk.DrawingArea()
         diffmap.add_events(Gdk.EventMask.BUTTON_PRESS_MASK |
                            Gdk.EventMask.BUTTON1_MOTION_MASK |
                            Gdk.EventMask.SCROLL_MASK)
@@ -361,7 +373,7 @@ class FileDiffViewerBase(Gtk.Grid):
         self.connect('key-press-event', self.key_press_cb)
 
         # input method
-        self.im_context = im = Gtk.IMMulticontext.new()
+        self.im_context = im = Gtk.IMMulticontext()
         im.connect('commit', self.im_commit_cb)
         im.connect('preedit-changed', self.im_preedit_changed_cb)
         im.connect('retrieve-surrounding', self.im_retrieve_surrounding_cb)
@@ -3698,7 +3710,7 @@ class FileDiffViewerBase(Gtk.Grid):
 
 # convenience method for creating a menu according to a template
 def createMenu(specs, radio=None, accel_group=None):
-    menu = Gtk.Menu.new()
+    menu = Gtk.Menu()
     for spec in specs:
         if len(spec) > 0:
             if len(spec) > 7 and spec[7] is not None:
@@ -3716,7 +3728,7 @@ def createMenu(specs, radio=None, accel_group=None):
                 data = spec[2]
                 item.connect('activate', cb, data)
             if len(spec) > 3 and spec[3] is not None:
-                image = Gtk.Image.new()
+                image = Gtk.Image()
                 image.set_from_stock(spec[3], Gtk.IconSize.MENU)
                 item.set_image(image)
             if accel_group is not None and len(spec) > 4:
@@ -3735,7 +3747,7 @@ def createMenu(specs, radio=None, accel_group=None):
                 item.set_submenu(createMenu(spec[6], radio, accel_group))
             item.set_use_underline(True)
         else:
-            item = Gtk.SeparatorMenuItem.new()
+            item = Gtk.SeparatorMenuItem()
         item.show()
         menu.append(item)
     return menu

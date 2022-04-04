@@ -10,6 +10,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Documentation: added release process instructions
 - Translation: added French translation
 
+### Fixed
+- Cleanups: use constructors instead of `new()` whenever possible in GTK
+  classes
+
 ## 0.7.4 - 2022-04-03
 
 ### Added

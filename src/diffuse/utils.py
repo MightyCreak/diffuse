@@ -57,7 +57,7 @@ class MessageDialog(Gtk.MessageDialog):
 class EncodingMenu(Gtk.Box):
     def __init__(self, prefs: Preferences, autodetect: bool = False) -> None:
         Gtk.Box.__init__(self, orientation=Gtk.Orientation.HORIZONTAL)
-        self.combobox = combobox = Gtk.ComboBoxText.new()
+        self.combobox = combobox = Gtk.ComboBoxText()
         self.encodings = prefs.getEncodings()[:]
         for e in self.encodings:
             combobox.append_text(e)
