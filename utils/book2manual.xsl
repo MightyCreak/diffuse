@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE xsl:stylesheet [
  <!ENTITY app "Diffuse">
- <!ENTITY app-version "0.7.3">
+ <!ENTITY app-version "0.7.4">
  <!ENTITY app-cmd "diffuse">
- <!ENTITY date "2021-11-22">
+ <!ENTITY date "2022-04-03">
 ]>
 <!--
   template for translating Diffuse's help documentation to a manual page

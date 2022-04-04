@@ -28,6 +28,40 @@
   <update_contact>romain.failliot@foolstep.com</update_contact>
 
   <releases>
+    <release version="0.7.4" date="2022-04-03">
+      <description>
+        <p>
+          Mainly a maintenance release. It does increase the GNOME SDK's version.
+        </p>
+        <p>Added:</p>
+        <ul>
+          <li>Added a `--remove-obsolete` option for the update-translation.py script</li>
+          <li>Added links to VCSs in README.md</li>
+          <li>New keyword in config file: "option"</li>
+          <li>Added instructions to install and run from a custom directory</li>
+        </ul>
+        <p>Changed:</p>
+        <ul>
+          <li>Updated the translation files</li>
+          <li>Renamed POTFILES.in to POTFILES</li>
+          <li>Renamed io.github.mightycreak.Diffuse.metadata.xml.in to io.github.mightycreak.Diffuse.appdata.xml.in</li>
+          <li>Leaner README.md</li>
+          <li>Moved the documentation to docs/</li>
+          <li>In the CI, call the linters on the installed directory</li>
+          <li>Renamed application name from "Diffuse Merge Tool" to "Diffuse"</li>
+          <li>Linters can be run sooner (before installation)</li>
+          <li>Better messages when an error occurs while parsing the config file</li>
+          <li>Start converting the code to static types</li>
+          <li>Add more information about the dependencies in the documentation</li>
+          <li>Upgrade Flatpak GNOME's runtime to 42</li>
+        </ul>
+        <p>Fixed:</p>
+        <ul>
+          <li>>Removed the lasting lint errors (i.e. in main.py)</li>
+          <li>>Fix Flatpak runtime version in documentation</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.7.3" date="2021-11-22">
       <description>
         <p>

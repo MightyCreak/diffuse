@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## 0.7.4 - 2022-04-03
+
 ### Added
 - Added a `--remove-obsolete` option for the update-translation.py script
 - Added links to VCSs in README.md
