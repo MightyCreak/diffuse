@@ -306,11 +306,11 @@ class Preferences:
     def _buildPrefsDialog(self, parent, widgets, template):
         tpl_section = template[0]
         if tpl_section == 'FolderSet':
-            notebook = Gtk.Notebook.new()
+            notebook = Gtk.Notebook()
             notebook.set_border_width(10)
             i = 1
             while i < len(template):
-                label = Gtk.Label.new(template[i])
+                label = Gtk.Label(label=template[i])
                 i += 1
                 w = self._buildPrefsDialog(parent, widgets, template[i])
                 i += 1
@@ -319,7 +319,7 @@ class Preferences:
                 label.show()
             return notebook
 
-        table = Gtk.Grid.new()
+        table = Gtk.Grid()
         table.set_border_width(10)
         for i, tpl in enumerate(template[1:]):
             tpl_section = tpl[0]
@@ -335,21 +335,28 @@ class Preferences:
                 button.connect('toggled', self._toggled_cb, widgets, tpl[1])
                 button.show()
             else:
-                label = Gtk.Label.new(tpl[3] + ': ')
+                label = Gtk.Label(label=tpl[3] + ': ')
                 label.set_xalign(1.0)
                 label.set_yalign(0.5)
                 table.attach(label, 0, i, 1, 1)
                 label.show()
                 if tpl[0] in ['Font', 'Integer']:
-                    entry = Gtk.Box.new(Gtk.Orientation.HORIZONTAL, 0)
+                    entry = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=0)
                     if tpl[0] == 'Font':
                         button = Gtk.FontButton()
                         button.set_font(self.string_prefs[tpl[1]])
                     else:
-                        button = Gtk.SpinButton.new(
-                            Gtk.Adjustment.new(self.int_prefs[tpl[1]], tpl[4], tpl[5], 1, 0, 0),
-                            1.0,
-                            0)
+                        adj = Gtk.Adjustment(
+                            value=self.int_prefs[tpl[1]],
+                            lower=tpl[4],
+                            upper=tpl[5],
+                            step_increment=1,
+                            page_increment=0,
+                            page_size=0)
+                        button = Gtk.SpinButton(
+                            adjustment=adj,
+                            climb_rate=1.0,
+                            digits=0)
                     widgets[tpl[1]] = button
                     entry.pack_start(button, False, False, 0)
                     button.show()
@@ -360,7 +367,7 @@ class Preferences:
                     elif tpl[0] == 'File':
                         entry = _FileEntry(parent, tpl[3])
                     else:
-                        entry = Gtk.Entry.new()
+                        entry = Gtk.Entry()
                     widgets[tpl[1]] = entry
                     entry.set_text(self.string_prefs[tpl[1]])
                 table.attach(entry, 1, i, 1, 1)
@@ -443,11 +450,11 @@ class _FileEntry(Gtk.Box):
         Gtk.Box.__init__(self, orientation=Gtk.Orientation.HORIZONTAL)
         self.toplevel = parent
         self.title = title
-        self.entry = entry = Gtk.Entry.new()
+        self.entry = entry = Gtk.Entry()
         self.pack_start(entry, True, True, 0)
         entry.show()
-        button = Gtk.Button.new()
-        image = Gtk.Image.new()
+        button = Gtk.Button()
+        image = Gtk.Image()
         image.set_from_stock(Gtk.STOCK_OPEN, Gtk.IconSize.MENU)
         button.add(image)
         image.show()
