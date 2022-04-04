@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: diffuse-svn\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-27 21:56-0500\n"
-"PO-Revision-Date: 2020-06-29 14:49-0400\n"
+"POT-Creation-Date: 2022-04-04 12:14-0400\n"
+"PO-Revision-Date: 2022-04-04 12:17-0400\n"
 "Last-Translator: David Marín Carreño <davefx@gmail.com>\n"
 "Language-Team: Spanish <henrimenke4@aim.com>\n"
 "Language: es\n"
@@ -17,6 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #: data/io.github.mightycreak.Diffuse.desktop.in:3
 #: data/io.github.mightycreak.Diffuse.appdata.xml.in:4
@@ -39,7 +40,7 @@ msgstr ""
 msgid "Main window: diff between two files"
 msgstr ""
 
-#: src/diffuse/constants.py:24
+#: src/diffuse/constants.py:25
 msgid "Copyright"
 msgstr ""
 
@@ -53,41 +54,9 @@ msgstr ""
 "Henri Menke <henrimenke4@aim.com>\n"
 "David Marín Carreño <davefx@gmail.com>"
 
-#: src/diffuse/dialogs.py:49
-#, fuzzy
-msgid ""
-"This program is free software; you can redistribute it and/or modify\n"
-"it under the terms of the GNU General Public License as published by\n"
-"the Free Software Foundation; either version 2 of the License, or\n"
-"(at your option) any later version.\n"
-"\n"
-"This program is distributed in the hope that it will be useful,\n"
-"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
-"GNU General Public License for more details.\n"
-"\n"
-"You should have received a copy of the GNU General Public License along\n"
-"with this program; if not, write to the Free Software Foundation, Inc.,\n"
-"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA."
-msgstr ""
-"This program is free software; you can redistribute it and/or modify it under the "
-"terms of the GNU General Public License as published by the Free Software "
-"Foundation; either version 2 of the licence, or (at your option) any later "
-"version.\n"
-"\n"
-"This program is distributed in the hope that it will be useful, but WITHOUT ANY "
-"WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A "
-"PARTICULAR PURPOSE.  See the GNU General Public License for more details.\n"
-"\n"
-"You should have received a copy of the GNU General Public License along with this "
-"program.  You may also obtain a copy of the GNU General Public License from the "
-"Free Software Foundation by visiting their web site (http://www.fsf.org/) or by "
-"writing to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, "
-"Boston, MA  02110-1301  USA\n"
-
 #: src/diffuse/dialogs.py:83
 msgid "Encoding: "
-msgstr "Codificación:"
+msgstr "Codificación: "
 
 #: src/diffuse/dialogs.py:95
 msgid "Revision: "
@@ -109,60 +78,60 @@ msgstr "Coincidencia de capitalización"
 msgid "Search Backwards"
 msgstr "Buscar hacia atrás"
 
-#: src/diffuse/main.py:79
+#: src/diffuse/main.py:85
 msgid "Close Tab"
 msgstr "Cerrar pestaña"
 
-#: src/diffuse/main.py:124
+#: src/diffuse/main.py:132
 msgid "Open File..."
 msgstr "Abrir fichero..."
 
-#: src/diffuse/main.py:125
+#: src/diffuse/main.py:133
 msgid "Reload File"
 msgstr "Recargar fichero"
 
-#: src/diffuse/main.py:126
+#: src/diffuse/main.py:134
 msgid "Save File"
 msgstr "Guardar fichero"
 
-#: src/diffuse/main.py:127
+#: src/diffuse/main.py:135
 msgid "Save File As..."
 msgstr "Guardar fichero como..."
 
-#: src/diffuse/main.py:280
+#: src/diffuse/main.py:288
 msgid "Save changes before loading the new file?"
 msgstr "¿Guardar cambios antes de abrir nuevo fichero?"
 
-#: src/diffuse/main.py:391
+#: src/diffuse/main.py:399
 #, python-format
 msgid "Error reading revision %(rev)s of %(file)s."
 msgstr "Error leyendo revisión %(rev)s de %(file)s."
 
-#: src/diffuse/main.py:394 src/diffuse/main.py:1849
+#: src/diffuse/main.py:402 src/diffuse/main.py:1857
 #, python-format
 msgid "Error reading %s."
 msgstr "Error leyendo %s."
 
-#: src/diffuse/main.py:416
+#: src/diffuse/main.py:424
 msgid "Open File"
 msgstr "Abrir fichero"
 
-#: src/diffuse/main.py:473
+#: src/diffuse/main.py:481
 #, python-format
 msgid "The file %s changed on disk. Do you want to reload the file?"
 msgstr "El fichero %s ha cambiado en disco. ¿Quieres recargarlo?"
 
-#: src/diffuse/main.py:499
+#: src/diffuse/main.py:507
 #, python-format
 msgid "Save %(title)s Pane %(pane)d"
 msgstr "Guardar Panel %(title)s %(pane)d"
 
-#: src/diffuse/main.py:531
+#: src/diffuse/main.py:539
 #, python-format
 msgid "A file named %s already exists. Do you want to overwrite it?"
 msgstr "Ya existe un archivo llamado %s. ¿Quiere reemplazarlo?"
 
-#: src/diffuse/main.py:538
+#: src/diffuse/main.py:546
 #, python-format
 msgid ""
 "The file %s has been modified by another process since reading it. If you save, "
@@ -172,25 +141,25 @@ msgstr ""
 "guarda, todos los cambios realizados por procesos externos se perderán. ¿Deseas "
 "guardar de todos modos?"
 
-#: src/diffuse/main.py:580
+#: src/diffuse/main.py:588
 #, python-format
 msgid "Error encoding to %s."
 msgstr "Error codificando a %s."
 
-#: src/diffuse/main.py:584 src/diffuse/preferences.py:298
+#: src/diffuse/main.py:592 src/diffuse/preferences.py:299
 #, python-format
 msgid "Error writing %s."
 msgstr "Error guardando %s."
 
-#: src/diffuse/main.py:614
+#: src/diffuse/main.py:622
 msgid "Go To Line..."
 msgstr "Ir a línea..."
 
-#: src/diffuse/main.py:615
+#: src/diffuse/main.py:623
 msgid "Line Number: "
 msgstr "Número de línea: "
 
-#: src/diffuse/main.py:646
+#: src/diffuse/main.py:654
 msgid ""
 "Press the enter key or double click to edit. Press the space bar or use the RMB "
 "menu to manually align."
@@ -198,435 +167,435 @@ msgstr ""
 "Pulse Enter o haga doble clic para editar. Pulse el espaciador o use el menú RMB "
 "para alinear manualmente."
 
-#: src/diffuse/main.py:650
+#: src/diffuse/main.py:658
 msgid "Press the escape key to finish editing."
 msgstr "Pulse Escape para finalizar la edición."
 
-#: src/diffuse/main.py:653
+#: src/diffuse/main.py:661
 msgid ""
 "Select target line and press the space bar to align. Press the escape key to "
 "cancel."
 msgstr ""
 "Selecciona la línea y pulsa espacio para alinear. Pulsa Escape para cancelar."
 
-#: src/diffuse/main.py:776
+#: src/diffuse/main.py:784
 msgid "_File"
 msgstr "_Fichero"
 
-#: src/diffuse/main.py:777
+#: src/diffuse/main.py:785
 msgid "_Open File..."
-msgstr "_Abrir fichero"
+msgstr "_Abrir fichero..."
 
-#: src/diffuse/main.py:778
+#: src/diffuse/main.py:786
 msgid "Open File In New _Tab..."
 msgstr "Abrir fichero en nueva _pestaña..."
 
-#: src/diffuse/main.py:779
+#: src/diffuse/main.py:787
 msgid "Open _Modified Files..."
 msgstr "Abrir ficheros _modificados..."
 
-#: src/diffuse/main.py:780
+#: src/diffuse/main.py:788
 msgid "Open Commi_t..."
 msgstr "Abrir revi_sión..."
 
-#: src/diffuse/main.py:781
+#: src/diffuse/main.py:789
 msgid "_Reload File"
 msgstr "_Recargar fichero"
 
-#: src/diffuse/main.py:783
+#: src/diffuse/main.py:791
 msgid "_Save File"
 msgstr "_Guardar fichero"
 
-#: src/diffuse/main.py:784
+#: src/diffuse/main.py:792
 msgid "Save File _As..."
 msgstr "Guardar _fichero como..."
 
-#: src/diffuse/main.py:785
+#: src/diffuse/main.py:793
 msgid "Save A_ll"
 msgstr "Gu_ardar todo"
 
-#: src/diffuse/main.py:787
+#: src/diffuse/main.py:795
 msgid "New _2-Way File Merge"
 msgstr "Nueva mezcla de ficheros de _2 vías"
 
-#: src/diffuse/main.py:788
+#: src/diffuse/main.py:796
 msgid "New _3-Way File Merge"
 msgstr "Nueva mezcla de ficheros de _3 vías"
 
-#: src/diffuse/main.py:789
+#: src/diffuse/main.py:797
 msgid "New _N-Way File Merge..."
 msgstr "Nueva mezcla de ficheros de _N vías..."
 
-#: src/diffuse/main.py:791
+#: src/diffuse/main.py:799
 msgid "_Close Tab"
 msgstr "_Cerrar pestaña"
 
-#: src/diffuse/main.py:792
+#: src/diffuse/main.py:800
 msgid "_Undo Close Tab"
 msgstr "_Deshacer cerrar pestaña"
 
-#: src/diffuse/main.py:793
+#: src/diffuse/main.py:801
 msgid "_Quit"
 msgstr "_Salir"
 
-#: src/diffuse/main.py:796
+#: src/diffuse/main.py:804
 msgid "_Edit"
 msgstr "_Editar"
 
-#: src/diffuse/main.py:797
+#: src/diffuse/main.py:805
 msgid "_Undo"
 msgstr "_Deshacer"
 
-#: src/diffuse/main.py:798
+#: src/diffuse/main.py:806
 msgid "_Redo"
 msgstr "_Rehacer"
 
-#: src/diffuse/main.py:800
+#: src/diffuse/main.py:808
 msgid "Cu_t"
 msgstr "Cor_tar"
 
-#: src/diffuse/main.py:801
+#: src/diffuse/main.py:809
 msgid "_Copy"
 msgstr "_Copiar"
 
-#: src/diffuse/main.py:802
+#: src/diffuse/main.py:810
 msgid "_Paste"
 msgstr "_Pegar"
 
-#: src/diffuse/main.py:804
+#: src/diffuse/main.py:812
 msgid "Select _All"
 msgstr "Seleccion_ar todo"
 
-#: src/diffuse/main.py:805
+#: src/diffuse/main.py:813
 msgid "C_lear Edits"
 msgstr "_Deshacer todo"
 
-#: src/diffuse/main.py:806
+#: src/diffuse/main.py:814
 msgid "_Dismiss All Edits"
 msgstr "_Ignorar todas las ediciones"
 
-#: src/diffuse/main.py:808
+#: src/diffuse/main.py:816
 msgid "_Find..."
 msgstr "_Buscar..."
 
-#: src/diffuse/main.py:809
+#: src/diffuse/main.py:817
 msgid "Find _Next"
 msgstr "Buscar siguie_nte"
 
-#: src/diffuse/main.py:810
+#: src/diffuse/main.py:818
 msgid "Find Pre_vious"
 msgstr "Buscar an_terior"
 
-#: src/diffuse/main.py:811
+#: src/diffuse/main.py:819
 msgid "_Go To Line..."
 msgstr "_Ir a la línea..."
 
-#: src/diffuse/main.py:813
+#: src/diffuse/main.py:821
 msgid "Pr_eferences..."
 msgstr "Pr_eferencias..."
 
-#: src/diffuse/main.py:817
+#: src/diffuse/main.py:825
 msgid "None"
 msgstr "Ninguno"
 
-#: src/diffuse/main.py:835
+#: src/diffuse/main.py:843
 msgid "_View"
 msgstr "_Ver"
 
-#: src/diffuse/main.py:836
+#: src/diffuse/main.py:844
 msgid "_Syntax Highlighting"
 msgstr "Coloreado _sintáctico"
 
-#: src/diffuse/main.py:838
+#: src/diffuse/main.py:846
 msgid "Re_align All"
 msgstr "Re_alinear todo"
 
-#: src/diffuse/main.py:839
+#: src/diffuse/main.py:847
 msgid "_Isolate"
 msgstr "A_islar"
 
-#: src/diffuse/main.py:841
+#: src/diffuse/main.py:849
 msgid "_First Difference"
 msgstr "Primera di_ferencia"
 
-#: src/diffuse/main.py:842
+#: src/diffuse/main.py:850
 msgid "_Previous Difference"
 msgstr "Diferencia an_terior"
 
-#: src/diffuse/main.py:843
+#: src/diffuse/main.py:851
 msgid "_Next Difference"
 msgstr "Diferencia siguie_nte"
 
-#: src/diffuse/main.py:844
+#: src/diffuse/main.py:852
 msgid "_Last Difference"
 msgstr "Ú_ltima diferencia"
 
-#: src/diffuse/main.py:846
+#: src/diffuse/main.py:854
 msgid "Fir_st Tab"
 msgstr "Prime_ra pestaña"
 
-#: src/diffuse/main.py:847
+#: src/diffuse/main.py:855
 msgid "Pre_vious Tab"
 msgstr "Pestaña ante_rior"
 
-#: src/diffuse/main.py:848
+#: src/diffuse/main.py:856
 msgid "Next _Tab"
 msgstr "Siguiente _pestaña"
 
-#: src/diffuse/main.py:849
+#: src/diffuse/main.py:857
 msgid "Las_t Tab"
 msgstr "Ul_tima pestaña"
 
-#: src/diffuse/main.py:851
+#: src/diffuse/main.py:859
 msgid "Shift Pane _Right"
 msgstr "Cambiar panel _derecho"
 
-#: src/diffuse/main.py:852
+#: src/diffuse/main.py:860
 msgid "Shift Pane _Left"
 msgstr "Cambiar panel _izquierdo"
 
-#: src/diffuse/main.py:855
+#: src/diffuse/main.py:863
 msgid "F_ormat"
 msgstr "F_ormato"
 
-#: src/diffuse/main.py:856
+#: src/diffuse/main.py:864
 msgid "Convert To _Upper Case"
 msgstr "Transformar en letras mayúsculas"
 
-#: src/diffuse/main.py:857
+#: src/diffuse/main.py:865
 msgid "Convert To _Lower Case"
 msgstr "Transformar en letras minúsculas"
 
-#: src/diffuse/main.py:859
+#: src/diffuse/main.py:867
 msgid "Sort Lines In _Ascending Order"
 msgstr "Ordenar lineas en orden _ascendente"
 
-#: src/diffuse/main.py:860
+#: src/diffuse/main.py:868
 msgid "Sort Lines In D_escending Order"
 msgstr "Ordenar lineas en orden _descendente"
 
-#: src/diffuse/main.py:862
+#: src/diffuse/main.py:870
 msgid "Remove Trailing _White Space"
 msgstr "Quitar _espacios finales"
 
-#: src/diffuse/main.py:863
+#: src/diffuse/main.py:871
 msgid "Convert Tabs To _Spaces"
 msgstr "Transformar tabuladores en e_spacios"
 
-#: src/diffuse/main.py:864
+#: src/diffuse/main.py:872
 msgid "Convert Leading Spaces To _Tabs"
 msgstr "Transformar espacios iniciales en _tabuladores"
 
-#: src/diffuse/main.py:866
+#: src/diffuse/main.py:874
 msgid "_Increase Indenting"
 msgstr "Aumentar sangr_ía"
 
-#: src/diffuse/main.py:867
+#: src/diffuse/main.py:875
 msgid "De_crease Indenting"
 msgstr "Dis_minuir sangría"
 
-#: src/diffuse/main.py:869
+#: src/diffuse/main.py:877
 msgid "Convert To _DOS Format"
 msgstr "Transformar a formato _DOS"
 
-#: src/diffuse/main.py:870
+#: src/diffuse/main.py:878
 msgid "Convert To _Mac Format"
 msgstr "Transformar a formato _Mac"
 
-#: src/diffuse/main.py:871
+#: src/diffuse/main.py:879
 msgid "Convert To Uni_x Format"
 msgstr "Transformar a formato Uni_x"
 
-#: src/diffuse/main.py:874
+#: src/diffuse/main.py:882
 msgid "_Merge"
 msgstr "_Mezcla"
 
-#: src/diffuse/main.py:875
+#: src/diffuse/main.py:883
 msgid "Copy Selection _Right"
 msgstr "Copiar selección a la de_recha"
 
-#: src/diffuse/main.py:876
+#: src/diffuse/main.py:884
 msgid "Copy Selection _Left"
 msgstr "Copiar selección a la i_zquierda"
 
-#: src/diffuse/main.py:878
+#: src/diffuse/main.py:886
 msgid "Copy Left _Into Selection"
 msgstr "Copiar de _izquierda a la selección"
 
-#: src/diffuse/main.py:879
+#: src/diffuse/main.py:887
 msgid "Copy Right I_nto Selection"
 msgstr "Copiar de de_recha a la selección"
 
-#: src/diffuse/main.py:880
+#: src/diffuse/main.py:888
 msgid "_Merge From Left Then Right"
 msgstr "_Mezclar desde izquierda, después desde derecha"
 
-#: src/diffuse/main.py:881
+#: src/diffuse/main.py:889
 msgid "M_erge From Right Then Left"
 msgstr "M_ezclar desde derecha, después desde izquierda"
 
-#: src/diffuse/main.py:884
+#: src/diffuse/main.py:892
 msgid "_Help"
 msgstr "_Ayuda"
 
-#: src/diffuse/main.py:885
+#: src/diffuse/main.py:893
 msgid "_Help Contents..."
 msgstr "Índ_ice de ayuda..."
 
-#: src/diffuse/main.py:887
+#: src/diffuse/main.py:895
 #, python-format
 msgid "_About %s..."
 msgstr "_Acerca de %s..."
 
-#: src/diffuse/main.py:902
+#: src/diffuse/main.py:910
 msgid "New 2-Way File Merge"
 msgstr "Nueva mezcla de ficheros de 2 vías"
 
-#: src/diffuse/main.py:903
+#: src/diffuse/main.py:911
 msgid "New 3-Way File Merge"
 msgstr "Nueva mezcla de ficheros de 3 vías"
 
-#: src/diffuse/main.py:905
+#: src/diffuse/main.py:913
 msgid "Realign All"
 msgstr "Realinear todo"
 
-#: src/diffuse/main.py:906
+#: src/diffuse/main.py:914
 msgid "First Difference"
 msgstr "Primera diferencía"
 
-#: src/diffuse/main.py:907
+#: src/diffuse/main.py:915
 msgid "Previous Difference"
 msgstr "Diferencía anterior"
 
-#: src/diffuse/main.py:908
+#: src/diffuse/main.py:916
 msgid "Next Difference"
 msgstr "Siguiente diferencia"
 
-#: src/diffuse/main.py:909
+#: src/diffuse/main.py:917
 msgid "Last Difference"
 msgstr "Última diferencía"
 
-#: src/diffuse/main.py:911
+#: src/diffuse/main.py:919
 msgid "Copy Selection Right"
 msgstr "Copiar selección a la derecha"
 
-#: src/diffuse/main.py:912
+#: src/diffuse/main.py:920
 msgid "Copy Selection Left"
 msgstr "Copiar selección a la izquierda"
 
-#: src/diffuse/main.py:913
+#: src/diffuse/main.py:921
 msgid "Copy Left Into Selection"
 msgstr "Copiar de izquierda a la selección"
 
-#: src/diffuse/main.py:914
+#: src/diffuse/main.py:922
 msgid "Copy Right Into Selection"
 msgstr "Copiar de derecha a la selección"
 
-#: src/diffuse/main.py:915
+#: src/diffuse/main.py:923
 msgid "Merge From Left Then Right"
 msgstr "Mezclar desde izquierda, después desde derecha"
 
-#: src/diffuse/main.py:916
+#: src/diffuse/main.py:924
 msgid "Merge From Right Then Left"
 msgstr "Mezclar desde derecha, después desde izquierda"
 
-#: src/diffuse/main.py:918
+#: src/diffuse/main.py:926
 msgid "Undo"
 msgstr "Deshacer"
 
-#: src/diffuse/main.py:919
+#: src/diffuse/main.py:927
 msgid "Redo"
 msgstr "Rehacer"
 
-#: src/diffuse/main.py:920 src/diffuse/widgets.py:1847
+#: src/diffuse/main.py:928 src/diffuse/widgets.py:1849
 msgid "Cut"
 msgstr "Cortar"
 
-#: src/diffuse/main.py:921 src/diffuse/widgets.py:1848
+#: src/diffuse/main.py:929 src/diffuse/widgets.py:1850
 msgid "Copy"
 msgstr "Copiar"
 
-#: src/diffuse/main.py:922 src/diffuse/widgets.py:1849
+#: src/diffuse/main.py:930 src/diffuse/widgets.py:1851
 msgid "Paste"
 msgstr "Pegar"
 
-#: src/diffuse/main.py:923 src/diffuse/widgets.py:1852
+#: src/diffuse/main.py:931 src/diffuse/widgets.py:1854
 msgid "Clear Edits"
 msgstr "Deshacer todo"
 
-#: src/diffuse/main.py:1046
+#: src/diffuse/main.py:1054
 msgid "Some files have unsaved changes. Select the files to save before closing."
 msgstr "Unos ficheros tienen cambios. Elige los ficheros a guardar antes de cerrar."
 
-#: src/diffuse/main.py:1060
+#: src/diffuse/main.py:1068
 msgid "Tab"
 msgstr "Pestaña"
 
-#: src/diffuse/main.py:1065
+#: src/diffuse/main.py:1073
 msgid "Pane"
 msgstr "Panel"
 
-#: src/diffuse/main.py:1076
+#: src/diffuse/main.py:1084
 msgid "Close _Without Saving"
 msgstr "Cerrar _sin guardar"
 
-#: src/diffuse/main.py:1115
+#: src/diffuse/main.py:1123
 #, python-format
 msgid "Closing this tab will quit %s."
 msgstr "Cerrar esta pestaña terminará %s."
 
-#: src/diffuse/main.py:1198
+#: src/diffuse/main.py:1206
 #, python-format
 msgid "File Merge %d"
 msgstr "Mezcla de archivo %d"
 
-#: src/diffuse/main.py:1304
+#: src/diffuse/main.py:1312
 #, python-format
 msgid "Error retrieving commits for %s."
 msgstr "Error recibiendo commits de %s."
 
-#: src/diffuse/main.py:1336
+#: src/diffuse/main.py:1344
 #, python-format
 msgid "Error retrieving modifications for %s."
 msgstr "Error recibiendo modificaciones de %s."
 
-#: src/diffuse/main.py:1369
+#: src/diffuse/main.py:1377
 msgid "Open File In New Tab"
 msgstr "Abrir fichero en nueva pestaña"
 
-#: src/diffuse/main.py:1392
+#: src/diffuse/main.py:1400
 msgid "Choose Folder With Modified Files"
 msgstr "Seleccionar carpeta con archivos modificados"
 
-#: src/diffuse/main.py:1410
+#: src/diffuse/main.py:1418
 msgid "No modified files found."
 msgstr "No se encontraron ficheros modificados."
 
-#: src/diffuse/main.py:1416
+#: src/diffuse/main.py:1424
 msgid "Choose Folder With Commit"
 msgstr "Seleccionar carpeta con revisiónes"
 
-#: src/diffuse/main.py:1436
+#: src/diffuse/main.py:1444
 msgid "No committed files found."
 msgstr "No se encontraron ficheros confirmados."
 
-#: src/diffuse/main.py:1472
+#: src/diffuse/main.py:1480
 msgid "New N-Way File Merge..."
 msgstr "Nueva mezcla de ficheros de N vías..."
 
-#: src/diffuse/main.py:1473
+#: src/diffuse/main.py:1481
 msgid "Number of panes: "
 msgstr "Número de paneles: "
 
-#: src/diffuse/main.py:1547
+#: src/diffuse/main.py:1555
 msgid "Phrase not found.  Continue from the end of the file?"
 msgstr "Frase no encontrada. ¿Continuar desde final del fichero?"
 
-#: src/diffuse/main.py:1549
+#: src/diffuse/main.py:1557
 msgid "Phrase not found.  Continue from the start of the file?"
 msgstr "Frase no encontrada. ¿Continuar desde principio del fichero?"
 
-#: src/diffuse/main.py:1770
+#: src/diffuse/main.py:1778
 #, fuzzy
 msgid ""
 "Usage:\n"
@@ -704,174 +673,174 @@ msgstr ""
 "  ( -i | --ignore-case )         Ignorar cambios de capitalización\n"
 "  ( -w | --ignore-all-space )    Ignorar todos los cambios en espaciado"
 
-#: src/diffuse/main.py:1937
+#: src/diffuse/main.py:1945
 msgid "Error parsing line number."
 msgstr "Error analizando número de líneas."
 
-#: src/diffuse/main.py:1947
+#: src/diffuse/main.py:1955
 #, python-format
 msgid "Skipping unknown argument \"%s\"."
 msgstr "Omitiendo argumento desconocido \"%s\"."
 
-#: src/diffuse/main.py:1955
+#: src/diffuse/main.py:1963
 #, python-format
 msgid "Error processing argument \"%s\".  Directory not expected."
 msgstr "Error processando parámetro \"%s\".  No se esperaba un directorio."
 
-#: src/diffuse/preferences.py:79
+#: src/diffuse/preferences.py:80
 msgid "Display"
 msgstr "Visualización"
 
-#: src/diffuse/preferences.py:82
+#: src/diffuse/preferences.py:83
 msgid "Font"
 msgstr "Tipo"
 
-#: src/diffuse/preferences.py:83
+#: src/diffuse/preferences.py:84
 msgid "Tab width"
 msgstr "Tamaño de tabulador"
 
-#: src/diffuse/preferences.py:84
+#: src/diffuse/preferences.py:85
 msgid "Show right margin"
 msgstr "Mostrar margen derecho"
 
-#: src/diffuse/preferences.py:85
+#: src/diffuse/preferences.py:86
 msgid "Right margin"
 msgstr "Margen derecho"
 
-#: src/diffuse/preferences.py:86
+#: src/diffuse/preferences.py:87
 msgid "Show line numbers"
 msgstr "Mostrar números de línea"
 
-#: src/diffuse/preferences.py:87
+#: src/diffuse/preferences.py:88
 msgid "Show white space characters"
 msgstr "Mostrar espacios"
 
-#: src/diffuse/preferences.py:88
+#: src/diffuse/preferences.py:89
 msgid "Ignore case differences"
 msgstr "Ignorar diferencías de capitalización"
 
-#: src/diffuse/preferences.py:89
+#: src/diffuse/preferences.py:90
 msgid "Ignore white space differences"
 msgstr "Ignorar diferencías de espacios"
 
-#: src/diffuse/preferences.py:90 src/diffuse/preferences.py:99
+#: src/diffuse/preferences.py:91 src/diffuse/preferences.py:100
 msgid "Ignore changes to white space"
 msgstr "Ignorar cambios de espacios"
 
-#: src/diffuse/preferences.py:91
+#: src/diffuse/preferences.py:92
 msgid "Ignore blank line differences"
 msgstr "Ignorar diferencías de líneas vacías"
 
-#: src/diffuse/preferences.py:92
+#: src/diffuse/preferences.py:93
 msgid "Ignore end of line differences"
 msgstr "Ignorar diferencias en caracteres de fin de línea"
 
-#: src/diffuse/preferences.py:94
+#: src/diffuse/preferences.py:95
 msgid "Alignment"
 msgstr "Alineación"
 
-#: src/diffuse/preferences.py:97
+#: src/diffuse/preferences.py:98
 msgid "Ignore case"
 msgstr "Ignorar capitalización"
 
-#: src/diffuse/preferences.py:98
+#: src/diffuse/preferences.py:99
 msgid "Ignore white space"
 msgstr "Ignorar espacios"
 
-#: src/diffuse/preferences.py:100
+#: src/diffuse/preferences.py:101
 msgid "Ignore blank lines"
 msgstr "Ignorar líneas vacías"
 
-#: src/diffuse/preferences.py:101
+#: src/diffuse/preferences.py:102
 msgid "Ignore end of line characters"
 msgstr "Ignorar caracteres de fin de línea"
 
-#: src/diffuse/preferences.py:103
+#: src/diffuse/preferences.py:104
 msgid "Editor"
 msgstr "Editor"
 
-#: src/diffuse/preferences.py:106
+#: src/diffuse/preferences.py:107
 msgid "Auto indent"
 msgstr "Sangría automática"
 
-#: src/diffuse/preferences.py:107
+#: src/diffuse/preferences.py:108
 msgid "Expand tabs to spaces"
 msgstr "Ampliar tabuladores a espacios"
 
-#: src/diffuse/preferences.py:108
+#: src/diffuse/preferences.py:109
 msgid "Soft tab width"
 msgstr "Tabuladores blandos"
 
-#: src/diffuse/preferences.py:110
+#: src/diffuse/preferences.py:111
 msgid "Tabs"
 msgstr "Pestañas"
 
-#: src/diffuse/preferences.py:113
+#: src/diffuse/preferences.py:114
 msgid "Default panes"
 msgstr "Paneles predeterminados"
 
-#: src/diffuse/preferences.py:114
+#: src/diffuse/preferences.py:115
 msgid "Always show the tab bar"
 msgstr "Mostrar siempre barra de pestañas"
 
-#: src/diffuse/preferences.py:115
+#: src/diffuse/preferences.py:116
 #, python-format
 msgid "Warn me when closing a tab will quit %s"
 msgstr "Avísar sí cerrar la ultima pestaña cerrará la aplicación %s"
 
-#: src/diffuse/preferences.py:117
+#: src/diffuse/preferences.py:118
 msgid "Regional Settings"
 msgstr "Ajustes regionales"
 
-#: src/diffuse/preferences.py:120
+#: src/diffuse/preferences.py:121
 msgid "Default codec"
 msgstr "Codificación estándar"
 
-#: src/diffuse/preferences.py:121
+#: src/diffuse/preferences.py:122
 msgid "Order of codecs used to identify encoding"
 msgstr "Orden de codificaciones en identificación"
 
-#: src/diffuse/preferences.py:142
+#: src/diffuse/preferences.py:143
 msgid "Cygwin"
 msgstr "Cygwin"
 
-#: src/diffuse/preferences.py:144
+#: src/diffuse/preferences.py:145
 msgid "Root directory"
 msgstr "Directorio raíz"
 
-#: src/diffuse/preferences.py:145
+#: src/diffuse/preferences.py:146
 msgid "Cygdrive prefix"
 msgstr "Prefijo de Cygdrive"
 
-#: src/diffuse/preferences.py:164
+#: src/diffuse/preferences.py:165
 msgid "Version control system search order"
 msgstr ""
 
-#: src/diffuse/preferences.py:172
+#: src/diffuse/preferences.py:173
 msgid "\"co\" command"
 msgstr "Comando \"co\""
 
-#: src/diffuse/preferences.py:173
+#: src/diffuse/preferences.py:174
 msgid "\"rlog\" command"
 msgstr "Comando \"rlog\""
 
-#: src/diffuse/preferences.py:175
+#: src/diffuse/preferences.py:176
 msgid "Command"
 msgstr "Comando"
 
-#: src/diffuse/preferences.py:181
+#: src/diffuse/preferences.py:182
 msgid "Launch from a Bash login shell"
 msgstr "Lanzar desde línea de comandos Bash"
 
-#: src/diffuse/preferences.py:188
+#: src/diffuse/preferences.py:189
 msgid "Update paths for Cygwin"
 msgstr "Actualizar rutas de Cygwin"
 
-#: src/diffuse/preferences.py:193
+#: src/diffuse/preferences.py:194
 msgid "Version Control"
 msgstr "Control de versión"
 
-#: src/diffuse/preferences.py:258
+#: src/diffuse/preferences.py:259
 msgid "Preferences"
 msgstr "Preferencias"
 
@@ -903,7 +872,7 @@ msgstr ""
 
 #: src/diffuse/resources.py:409
 #, python-brace-format
-msgid "Options \"{option}\" is unknown"
+msgid "Option \"{option}\" is unknown"
 msgstr ""
 
 #: src/diffuse/resources.py:416
@@ -956,39 +925,71 @@ msgstr "Error procesando línea {line} de {file}."
 msgid "Unhandled error at line {line} of {file}."
 msgstr "Error procesando línea {line} de {file}."
 
-#: src/diffuse/utils.py:63
+#: src/diffuse/utils.py:66
 msgid "Auto Detect"
 msgstr "Reconocimiento automático"
 
-#: src/diffuse/vcs/cvs.py:53 src/diffuse/vcs/rcs.py:62 src/diffuse/vcs/svn.py:95
+#: src/diffuse/vcs/cvs.py:54 src/diffuse/vcs/rcs.py:63 src/diffuse/vcs/svn.py:97
 #, python-format
 msgid "Error parsing revision %s."
 msgstr "Error analizando revisión %s."
 
-#: src/diffuse/vcs/vcs_registry.py:233
+#: src/diffuse/vcs/vcs_registry.py:238
 #, python-format
 msgid "Error parsing %s."
 msgstr "Error analizando %s."
 
-#: src/diffuse/widgets.py:1843
+#: src/diffuse/widgets.py:1845
 msgid "Align with Selection"
-msgstr "Alinear con la selección."
+msgstr "Alinear con la selección"
 
-#: src/diffuse/widgets.py:1844
+#: src/diffuse/widgets.py:1846
 msgid "Isolate"
 msgstr "Aislar"
 
-#: src/diffuse/widgets.py:1845
+#: src/diffuse/widgets.py:1847
 msgid "Merge Selection"
 msgstr "Mezclar selección"
 
-#: src/diffuse/widgets.py:1851
+#: src/diffuse/widgets.py:1853
 msgid "Select All"
 msgstr "Seleccionar todo"
 
-#: src/diffuse/widgets.py:1854
+#: src/diffuse/widgets.py:1856
 msgid "Swap with Selected Pane"
 msgstr "Reemplazar con panel seleccionado"
+
+#, fuzzy
+#~ msgid ""
+#~ "This program is free software; you can redistribute it and/or modify\n"
+#~ "it under the terms of the GNU General Public License as published by\n"
+#~ "the Free Software Foundation; either version 2 of the License, or\n"
+#~ "(at your option) any later version.\n"
+#~ "\n"
+#~ "This program is distributed in the hope that it will be useful,\n"
+#~ "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+#~ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+#~ "GNU General Public License for more details.\n"
+#~ "\n"
+#~ "You should have received a copy of the GNU General Public License along\n"
+#~ "with this program; if not, write to the Free Software Foundation, Inc.,\n"
+#~ "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA."
+#~ msgstr ""
+#~ "This program is free software; you can redistribute it and/or modify it under "
+#~ "the terms of the GNU General Public License as published by the Free Software "
+#~ "Foundation; either version 2 of the licence, or (at your option) any later "
+#~ "version.\n"
+#~ "\n"
+#~ "This program is distributed in the hope that it will be useful, but WITHOUT "
+#~ "ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
+#~ "FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more "
+#~ "details.\n"
+#~ "\n"
+#~ "You should have received a copy of the GNU General Public License along with "
+#~ "this program.  You may also obtain a copy of the GNU General Public License "
+#~ "from the Free Software Foundation by visiting their web site (http://www.fsf."
+#~ "org/) or by writing to the Free Software Foundation, Inc., 51 Franklin St, "
+#~ "Fifth Floor, Boston, MA  02110-1301  USA\n"
 
 #~ msgid "Diffuse Merge Tool"
 #~ msgstr "Diffuse utillaje de textos"

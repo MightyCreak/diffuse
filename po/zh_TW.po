@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: diffuse 0.4.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-27 21:56-0500\n"
+"POT-Creation-Date: 2022-04-04 12:14-0400\n"
 "PO-Revision-Date: 2020-06-29 14:49-0400\n"
 "Last-Translator: Wei-Lun Chao <bluebat@member.fsf.org>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -40,7 +40,7 @@ msgstr ""
 msgid "Main window: diff between two files"
 msgstr ""
 
-#: src/diffuse/constants.py:24
+#: src/diffuse/constants.py:25
 msgid "Copyright"
 msgstr "著作權"
 
@@ -53,35 +53,6 @@ msgid "translator-credits"
 msgstr ""
 "紀明村 <tw.chi.ming@gmail.com>\n"
 "趙惟倫 <bluebat@member.fsf.org>"
-
-#: src/diffuse/dialogs.py:49
-#, fuzzy
-msgid ""
-"This program is free software; you can redistribute it and/or modify\n"
-"it under the terms of the GNU General Public License as published by\n"
-"the Free Software Foundation; either version 2 of the License, or\n"
-"(at your option) any later version.\n"
-"\n"
-"This program is distributed in the hope that it will be useful,\n"
-"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
-"GNU General Public License for more details.\n"
-"\n"
-"You should have received a copy of the GNU General Public License along\n"
-"with this program; if not, write to the Free Software Foundation, Inc.,\n"
-"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA."
-msgstr ""
-"這個程式是自由軟體；您可以遵循由自由軟體基金會所發布的 GNU 通用公共授權條款來再次"
-"散布它與/或修改它；無論您依據的是本授權的第二版、或 (您自行選擇的) 任何後續版"
-"本。\n"
-"\n"
-"發行本程式是希望它能夠有用，但是沒有任何擔保；亦無對於某一特定目的之適售性與適用性"
-"的暗示性擔保。 請參看 GNU 通用公共授權以獲得更多細節。\n"
-"\n"
-"您應該已經收到隨附於這個程式的 GNU 通用公共授權複本。 您也可以藉由造訪它們的網站 "
-"(http://www.fsf.org/)，從自由軟體基金會得到 GNU 通用公共授權的複本，或是寫信給 "
-"Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  "
-"02110-1301  USA\n"
 
 #: src/diffuse/dialogs.py:83
 msgid "Encoding: "
@@ -107,60 +78,60 @@ msgstr "符合大小寫"
 msgid "Search Backwards"
 msgstr "反向搜尋"
 
-#: src/diffuse/main.py:79
+#: src/diffuse/main.py:85
 msgid "Close Tab"
 msgstr "關閉分頁"
 
-#: src/diffuse/main.py:124
+#: src/diffuse/main.py:132
 msgid "Open File..."
 msgstr "開啟檔案…"
 
-#: src/diffuse/main.py:125
+#: src/diffuse/main.py:133
 msgid "Reload File"
 msgstr "重新載入"
 
-#: src/diffuse/main.py:126
+#: src/diffuse/main.py:134
 msgid "Save File"
 msgstr "儲存檔案"
 
-#: src/diffuse/main.py:127
+#: src/diffuse/main.py:135
 msgid "Save File As..."
 msgstr "另存為…"
 
-#: src/diffuse/main.py:280
+#: src/diffuse/main.py:288
 msgid "Save changes before loading the new file?"
 msgstr "載入新檔前儲存更改嗎？"
 
-#: src/diffuse/main.py:391
+#: src/diffuse/main.py:399
 #, python-format
 msgid "Error reading revision %(rev)s of %(file)s."
 msgstr "無法讀取檔案 %(file)s 中的修訂版本 %(rev)s。"
 
-#: src/diffuse/main.py:394 src/diffuse/main.py:1849
+#: src/diffuse/main.py:402 src/diffuse/main.py:1857
 #, python-format
 msgid "Error reading %s."
 msgstr "無法讀取 %s。"
 
-#: src/diffuse/main.py:416
+#: src/diffuse/main.py:424
 msgid "Open File"
 msgstr "開啟檔案"
 
-#: src/diffuse/main.py:473
+#: src/diffuse/main.py:481
 #, python-format
 msgid "The file %s changed on disk. Do you want to reload the file?"
 msgstr "檔案 %s 已被更改，是否重新載入？"
 
-#: src/diffuse/main.py:499
+#: src/diffuse/main.py:507
 #, python-format
 msgid "Save %(title)s Pane %(pane)d"
 msgstr "儲存 %(title)s 窗格 %(pane)d"
 
-#: src/diffuse/main.py:531
+#: src/diffuse/main.py:539
 #, python-format
 msgid "A file named %s already exists. Do you want to overwrite it?"
 msgstr "%s 的檔案已存在，您希望覆蓋它嗎？"
 
-#: src/diffuse/main.py:538
+#: src/diffuse/main.py:546
 #, python-format
 msgid ""
 "The file %s has been modified by another process since reading it. If you save, "
@@ -168,458 +139,458 @@ msgid ""
 msgstr ""
 "檔案 %s 打開後被其他程式變更過了，如果儲存，其他程式的變更修改將會不見，儲存嗎？"
 
-#: src/diffuse/main.py:580
+#: src/diffuse/main.py:588
 #, python-format
 msgid "Error encoding to %s."
 msgstr "無法編碼為 %s。"
 
-#: src/diffuse/main.py:584 src/diffuse/preferences.py:298
+#: src/diffuse/main.py:592 src/diffuse/preferences.py:299
 #, python-format
 msgid "Error writing %s."
 msgstr "無法寫入 %s"
 
-#: src/diffuse/main.py:614
+#: src/diffuse/main.py:622
 msgid "Go To Line..."
 msgstr "跳到列號…"
 
-#: src/diffuse/main.py:615
+#: src/diffuse/main.py:623
 msgid "Line Number: "
 msgstr "列數："
 
-#: src/diffuse/main.py:646
+#: src/diffuse/main.py:654
 msgid ""
 "Press the enter key or double click to edit. Press the space bar or use the RMB "
 "menu to manually align."
 msgstr "按確定鍵或雙擊滑鼠進行編輯。空格鍵或者右鍵選單手動對齊。"
 
-#: src/diffuse/main.py:650
+#: src/diffuse/main.py:658
 msgid "Press the escape key to finish editing."
 msgstr "按 ESC 鍵結束編輯"
 
-#: src/diffuse/main.py:653
+#: src/diffuse/main.py:661
 msgid ""
 "Select target line and press the space bar to align. Press the escape key to "
 "cancel."
 msgstr "選擇目標列然後按空格鍵進行對齊，按 ESC 取消。"
 
-#: src/diffuse/main.py:776
+#: src/diffuse/main.py:784
 msgid "_File"
 msgstr "檔案(_F)"
 
-#: src/diffuse/main.py:777
+#: src/diffuse/main.py:785
 msgid "_Open File..."
 msgstr "開啟檔案(_O)…"
 
-#: src/diffuse/main.py:778
+#: src/diffuse/main.py:786
 msgid "Open File In New _Tab..."
 msgstr "在新分頁裡開啟檔案(_T)…"
 
-#: src/diffuse/main.py:779
+#: src/diffuse/main.py:787
 msgid "Open _Modified Files..."
 msgstr "開啟修改過的檔案(_M)…"
 
-#: src/diffuse/main.py:780
+#: src/diffuse/main.py:788
 msgid "Open Commi_t..."
 msgstr "開啟認可(_T)…"
 
-#: src/diffuse/main.py:781
+#: src/diffuse/main.py:789
 msgid "_Reload File"
 msgstr "重新載入(_R)"
 
-#: src/diffuse/main.py:783
+#: src/diffuse/main.py:791
 msgid "_Save File"
 msgstr "儲存(_S)"
 
-#: src/diffuse/main.py:784
+#: src/diffuse/main.py:792
 msgid "Save File _As..."
 msgstr "另存為(_A)…"
 
-#: src/diffuse/main.py:785
+#: src/diffuse/main.py:793
 msgid "Save A_ll"
 msgstr "儲存所有(_L)"
 
-#: src/diffuse/main.py:787
+#: src/diffuse/main.py:795
 msgid "New _2-Way File Merge"
 msgstr "新的二重檔案合併(_2)"
 
-#: src/diffuse/main.py:788
+#: src/diffuse/main.py:796
 msgid "New _3-Way File Merge"
 msgstr "新的三重檔案合併(_3)"
 
-#: src/diffuse/main.py:789
+#: src/diffuse/main.py:797
 msgid "New _N-Way File Merge..."
 msgstr "新的多重檔案合併(_N)…"
 
-#: src/diffuse/main.py:791
+#: src/diffuse/main.py:799
 msgid "_Close Tab"
 msgstr "關閉分頁(_C)"
 
-#: src/diffuse/main.py:792
+#: src/diffuse/main.py:800
 msgid "_Undo Close Tab"
 msgstr "復原關閉的分頁"
 
-#: src/diffuse/main.py:793
+#: src/diffuse/main.py:801
 msgid "_Quit"
 msgstr "退出(_Q)"
 
-#: src/diffuse/main.py:796
+#: src/diffuse/main.py:804
 msgid "_Edit"
 msgstr "編輯(_E)"
 
-#: src/diffuse/main.py:797
+#: src/diffuse/main.py:805
 msgid "_Undo"
 msgstr "復原(_U)"
 
-#: src/diffuse/main.py:798
+#: src/diffuse/main.py:806
 msgid "_Redo"
 msgstr "重做(_R)"
 
-#: src/diffuse/main.py:800
+#: src/diffuse/main.py:808
 msgid "Cu_t"
 msgstr "剪下(_T)"
 
-#: src/diffuse/main.py:801
+#: src/diffuse/main.py:809
 msgid "_Copy"
 msgstr "複製(_C)"
 
-#: src/diffuse/main.py:802
+#: src/diffuse/main.py:810
 msgid "_Paste"
 msgstr "貼上(_P)"
 
-#: src/diffuse/main.py:804
+#: src/diffuse/main.py:812
 msgid "Select _All"
 msgstr "全選(_A)"
 
-#: src/diffuse/main.py:805
+#: src/diffuse/main.py:813
 msgid "C_lear Edits"
 msgstr "取消編輯(L)"
 
-#: src/diffuse/main.py:806
+#: src/diffuse/main.py:814
 msgid "_Dismiss All Edits"
 msgstr "放棄所有的變更(_D)"
 
-#: src/diffuse/main.py:808
+#: src/diffuse/main.py:816
 msgid "_Find..."
 msgstr "搜尋(_F)…"
 
-#: src/diffuse/main.py:809
+#: src/diffuse/main.py:817
 msgid "Find _Next"
 msgstr "找下一個(_N)"
 
-#: src/diffuse/main.py:810
+#: src/diffuse/main.py:818
 msgid "Find Pre_vious"
 msgstr "找上一個(_V)"
 
-#: src/diffuse/main.py:811
+#: src/diffuse/main.py:819
 msgid "_Go To Line..."
 msgstr "跳到列號(_G)…"
 
-#: src/diffuse/main.py:813
+#: src/diffuse/main.py:821
 msgid "Pr_eferences..."
 msgstr "選項(_E)…"
 
-#: src/diffuse/main.py:817
+#: src/diffuse/main.py:825
 msgid "None"
 msgstr "無"
 
-#: src/diffuse/main.py:835
+#: src/diffuse/main.py:843
 msgid "_View"
 msgstr "檢視(_V)"
 
-#: src/diffuse/main.py:836
+#: src/diffuse/main.py:844
 msgid "_Syntax Highlighting"
 msgstr "高亮度語法(_S)"
 
-#: src/diffuse/main.py:838
+#: src/diffuse/main.py:846
 msgid "Re_align All"
 msgstr "全部重新對齊(_A)"
 
-#: src/diffuse/main.py:839
+#: src/diffuse/main.py:847
 msgid "_Isolate"
 msgstr "分離(_I)"
 
-#: src/diffuse/main.py:841
+#: src/diffuse/main.py:849
 msgid "_First Difference"
 msgstr "第一個差異(_F)"
 
-#: src/diffuse/main.py:842
+#: src/diffuse/main.py:850
 msgid "_Previous Difference"
 msgstr "上一個差異(_P)"
 
-#: src/diffuse/main.py:843
+#: src/diffuse/main.py:851
 msgid "_Next Difference"
 msgstr "下一個差異(_N)"
 
-#: src/diffuse/main.py:844
+#: src/diffuse/main.py:852
 msgid "_Last Difference"
 msgstr "最後一個差異(_L)"
 
-#: src/diffuse/main.py:846
+#: src/diffuse/main.py:854
 msgid "Fir_st Tab"
 msgstr "第一個分頁(_S)"
 
-#: src/diffuse/main.py:847
+#: src/diffuse/main.py:855
 msgid "Pre_vious Tab"
 msgstr "上一個分頁(_V)"
 
-#: src/diffuse/main.py:848
+#: src/diffuse/main.py:856
 msgid "Next _Tab"
 msgstr "下一個分頁(_T)"
 
-#: src/diffuse/main.py:849
+#: src/diffuse/main.py:857
 msgid "Las_t Tab"
 msgstr "最後一個分頁(_T)"
 
-#: src/diffuse/main.py:851
+#: src/diffuse/main.py:859
 msgid "Shift Pane _Right"
 msgstr "右移窗格(_R)"
 
-#: src/diffuse/main.py:852
+#: src/diffuse/main.py:860
 msgid "Shift Pane _Left"
 msgstr "左移窗格(_L)"
 
-#: src/diffuse/main.py:855
+#: src/diffuse/main.py:863
 msgid "F_ormat"
 msgstr "格式(_O)"
 
-#: src/diffuse/main.py:856
+#: src/diffuse/main.py:864
 msgid "Convert To _Upper Case"
 msgstr "轉換成大寫"
 
-#: src/diffuse/main.py:857
+#: src/diffuse/main.py:865
 msgid "Convert To _Lower Case"
 msgstr "轉換成小寫"
 
-#: src/diffuse/main.py:859
+#: src/diffuse/main.py:867
 msgid "Sort Lines In _Ascending Order"
 msgstr "以遞增的順序排列"
 
-#: src/diffuse/main.py:860
+#: src/diffuse/main.py:868
 msgid "Sort Lines In D_escending Order"
 msgstr "以遞減的順序排列"
 
-#: src/diffuse/main.py:862
+#: src/diffuse/main.py:870
 msgid "Remove Trailing _White Space"
 msgstr "刪除多餘的空格(_W)"
 
-#: src/diffuse/main.py:863
+#: src/diffuse/main.py:871
 msgid "Convert Tabs To _Spaces"
 msgstr "轉換跳格字元為空格(_S)"
 
-#: src/diffuse/main.py:864
+#: src/diffuse/main.py:872
 msgid "Convert Leading Spaces To _Tabs"
 msgstr "轉換開頭的空格為跳格字元(_T)"
 
-#: src/diffuse/main.py:866
+#: src/diffuse/main.py:874
 msgid "_Increase Indenting"
 msgstr "減少縮排(_I)"
 
-#: src/diffuse/main.py:867
+#: src/diffuse/main.py:875
 msgid "De_crease Indenting"
 msgstr "減少縮排"
 
-#: src/diffuse/main.py:869
+#: src/diffuse/main.py:877
 msgid "Convert To _DOS Format"
 msgstr "轉換為 DOS 格式(_D)"
 
-#: src/diffuse/main.py:870
+#: src/diffuse/main.py:878
 msgid "Convert To _Mac Format"
 msgstr "轉換為 Mac 格式(_M)"
 
-#: src/diffuse/main.py:871
+#: src/diffuse/main.py:879
 msgid "Convert To Uni_x Format"
 msgstr "轉換為 Unix 格式(_X)"
 
-#: src/diffuse/main.py:874
+#: src/diffuse/main.py:882
 msgid "_Merge"
 msgstr "合併(_M)"
 
-#: src/diffuse/main.py:875
+#: src/diffuse/main.py:883
 msgid "Copy Selection _Right"
 msgstr "複製選擇區域到右邊(_R)"
 
-#: src/diffuse/main.py:876
+#: src/diffuse/main.py:884
 msgid "Copy Selection _Left"
 msgstr "複製選擇區域到左邊(_L)"
 
-#: src/diffuse/main.py:878
+#: src/diffuse/main.py:886
 msgid "Copy Left _Into Selection"
 msgstr "複製左邊內容到選擇區域(_L)"
 
-#: src/diffuse/main.py:879
+#: src/diffuse/main.py:887
 msgid "Copy Right I_nto Selection"
 msgstr "複製右邊內容到選擇區域(_L)"
 
-#: src/diffuse/main.py:880
+#: src/diffuse/main.py:888
 msgid "_Merge From Left Then Right"
 msgstr "先左再右合併(_M)"
 
-#: src/diffuse/main.py:881
+#: src/diffuse/main.py:889
 msgid "M_erge From Right Then Left"
 msgstr "從右向左合併(_E)"
 
-#: src/diffuse/main.py:884
+#: src/diffuse/main.py:892
 msgid "_Help"
 msgstr "求助(_H)"
 
-#: src/diffuse/main.py:885
+#: src/diffuse/main.py:893
 msgid "_Help Contents..."
 msgstr "說明內容(_H)…"
 
-#: src/diffuse/main.py:887
+#: src/diffuse/main.py:895
 #, python-format
 msgid "_About %s..."
 msgstr "關於 %s(_A)…"
 
-#: src/diffuse/main.py:902
+#: src/diffuse/main.py:910
 msgid "New 2-Way File Merge"
 msgstr "新的二重檔案合併"
 
-#: src/diffuse/main.py:903
+#: src/diffuse/main.py:911
 msgid "New 3-Way File Merge"
 msgstr "新的三重檔案合併"
 
-#: src/diffuse/main.py:905
+#: src/diffuse/main.py:913
 msgid "Realign All"
 msgstr "全部重新對齊"
 
-#: src/diffuse/main.py:906
+#: src/diffuse/main.py:914
 msgid "First Difference"
 msgstr "第一個差異"
 
-#: src/diffuse/main.py:907
+#: src/diffuse/main.py:915
 msgid "Previous Difference"
 msgstr "上一個差異"
 
-#: src/diffuse/main.py:908
+#: src/diffuse/main.py:916
 msgid "Next Difference"
 msgstr "下一個差異"
 
-#: src/diffuse/main.py:909
+#: src/diffuse/main.py:917
 msgid "Last Difference"
 msgstr "最後一個差異"
 
-#: src/diffuse/main.py:911
+#: src/diffuse/main.py:919
 msgid "Copy Selection Right"
 msgstr "複製選擇區域到右邊"
 
-#: src/diffuse/main.py:912
+#: src/diffuse/main.py:920
 msgid "Copy Selection Left"
 msgstr "複製選擇區域到左邊"
 
-#: src/diffuse/main.py:913
+#: src/diffuse/main.py:921
 msgid "Copy Left Into Selection"
 msgstr "複製左邊內容到選擇區域"
 
-#: src/diffuse/main.py:914
+#: src/diffuse/main.py:922
 msgid "Copy Right Into Selection"
 msgstr "複製右邊內容到選擇區域"
 
-#: src/diffuse/main.py:915
+#: src/diffuse/main.py:923
 msgid "Merge From Left Then Right"
 msgstr "先左後右合併"
 
-#: src/diffuse/main.py:916
+#: src/diffuse/main.py:924
 msgid "Merge From Right Then Left"
 msgstr "先右後左合併(_T)"
 
-#: src/diffuse/main.py:918
+#: src/diffuse/main.py:926
 msgid "Undo"
 msgstr "復原"
 
-#: src/diffuse/main.py:919
+#: src/diffuse/main.py:927
 msgid "Redo"
 msgstr "重做"
 
-#: src/diffuse/main.py:920 src/diffuse/widgets.py:1847
+#: src/diffuse/main.py:928 src/diffuse/widgets.py:1849
 msgid "Cut"
 msgstr "剪下"
 
-#: src/diffuse/main.py:921 src/diffuse/widgets.py:1848
+#: src/diffuse/main.py:929 src/diffuse/widgets.py:1850
 msgid "Copy"
 msgstr "複製"
 
-#: src/diffuse/main.py:922 src/diffuse/widgets.py:1849
+#: src/diffuse/main.py:930 src/diffuse/widgets.py:1851
 msgid "Paste"
 msgstr "貼上"
 
-#: src/diffuse/main.py:923 src/diffuse/widgets.py:1852
+#: src/diffuse/main.py:931 src/diffuse/widgets.py:1854
 msgid "Clear Edits"
 msgstr "取消編輯"
 
-#: src/diffuse/main.py:1046
+#: src/diffuse/main.py:1054
 msgid "Some files have unsaved changes. Select the files to save before closing."
 msgstr "一些檔案已變更但未儲存，請在關閉前儲存這些檔案。"
 
-#: src/diffuse/main.py:1060
+#: src/diffuse/main.py:1068
 msgid "Tab"
 msgstr "跳格字元"
 
-#: src/diffuse/main.py:1065
+#: src/diffuse/main.py:1073
 msgid "Pane"
 msgstr "窗格"
 
-#: src/diffuse/main.py:1076
+#: src/diffuse/main.py:1084
 msgid "Close _Without Saving"
 msgstr "不儲存而關閉"
 
-#: src/diffuse/main.py:1115
+#: src/diffuse/main.py:1123
 #, python-format
 msgid "Closing this tab will quit %s."
 msgstr "關閉此分頁將會退出 %s"
 
-#: src/diffuse/main.py:1198
+#: src/diffuse/main.py:1206
 #, python-format
 msgid "File Merge %d"
 msgstr "檔案合併 %d"
 
-#: src/diffuse/main.py:1304
+#: src/diffuse/main.py:1312
 #, python-format
 msgid "Error retrieving commits for %s."
 msgstr "無法恢復對 %s 的認可。"
 
-#: src/diffuse/main.py:1336
+#: src/diffuse/main.py:1344
 #, python-format
 msgid "Error retrieving modifications for %s."
 msgstr "無法恢復對 %s 的修改。"
 
-#: src/diffuse/main.py:1369
+#: src/diffuse/main.py:1377
 msgid "Open File In New Tab"
 msgstr "在新分頁裡開啟檔案"
 
-#: src/diffuse/main.py:1392
+#: src/diffuse/main.py:1400
 msgid "Choose Folder With Modified Files"
 msgstr "選擇更改過的檔案夾"
 
-#: src/diffuse/main.py:1410
+#: src/diffuse/main.py:1418
 msgid "No modified files found."
 msgstr "找不到已修改的檔案。"
 
-#: src/diffuse/main.py:1416
+#: src/diffuse/main.py:1424
 msgid "Choose Folder With Commit"
 msgstr "選擇認可過的檔案夾"
 
-#: src/diffuse/main.py:1436
+#: src/diffuse/main.py:1444
 msgid "No committed files found."
 msgstr "找不到已認可的檔案。"
 
-#: src/diffuse/main.py:1472
+#: src/diffuse/main.py:1480
 msgid "New N-Way File Merge..."
 msgstr "新的多重檔案合併…"
 
-#: src/diffuse/main.py:1473
+#: src/diffuse/main.py:1481
 msgid "Number of panes: "
 msgstr "窗格數: "
 
-#: src/diffuse/main.py:1547
+#: src/diffuse/main.py:1555
 msgid "Phrase not found.  Continue from the end of the file?"
 msgstr "語詞未找到，從檔案結尾繼續嗎？"
 
-#: src/diffuse/main.py:1549
+#: src/diffuse/main.py:1557
 msgid "Phrase not found.  Continue from the start of the file?"
 msgstr "語詞未找到，從檔案開頭繼續嗎？"
 
-#: src/diffuse/main.py:1770
+#: src/diffuse/main.py:1778
 #, fuzzy
 msgid ""
 "Usage:\n"
@@ -697,174 +668,174 @@ msgstr ""
 "  ( -i | --ignore-case )           忽略大小寫差異\n"
 "  ( -w | --ignore-all-space )      忽略空白差異"
 
-#: src/diffuse/main.py:1937
+#: src/diffuse/main.py:1945
 msgid "Error parsing line number."
 msgstr "解析列數時錯誤。"
 
-#: src/diffuse/main.py:1947
+#: src/diffuse/main.py:1955
 #, python-format
 msgid "Skipping unknown argument \"%s\"."
 msgstr "跳過未知引數「%s」。"
 
-#: src/diffuse/main.py:1955
+#: src/diffuse/main.py:1963
 #, python-format
 msgid "Error processing argument \"%s\".  Directory not expected."
 msgstr "無法處理「%s」。目錄不存在。"
 
-#: src/diffuse/preferences.py:79
+#: src/diffuse/preferences.py:80
 msgid "Display"
 msgstr "顯示"
 
-#: src/diffuse/preferences.py:82
+#: src/diffuse/preferences.py:83
 msgid "Font"
 msgstr "字型"
 
-#: src/diffuse/preferences.py:83
+#: src/diffuse/preferences.py:84
 msgid "Tab width"
 msgstr "跳格寬度"
 
-#: src/diffuse/preferences.py:84
+#: src/diffuse/preferences.py:85
 msgid "Show right margin"
 msgstr "顯示右邊距"
 
-#: src/diffuse/preferences.py:85
+#: src/diffuse/preferences.py:86
 msgid "Right margin"
 msgstr "右邊距"
 
-#: src/diffuse/preferences.py:86
+#: src/diffuse/preferences.py:87
 msgid "Show line numbers"
 msgstr "顯示列號"
 
-#: src/diffuse/preferences.py:87
+#: src/diffuse/preferences.py:88
 msgid "Show white space characters"
 msgstr "顯示空格"
 
-#: src/diffuse/preferences.py:88
+#: src/diffuse/preferences.py:89
 msgid "Ignore case differences"
 msgstr "忽略大小寫的差異"
 
-#: src/diffuse/preferences.py:89
+#: src/diffuse/preferences.py:90
 msgid "Ignore white space differences"
 msgstr "忽略空格的差異"
 
-#: src/diffuse/preferences.py:90 src/diffuse/preferences.py:99
+#: src/diffuse/preferences.py:91 src/diffuse/preferences.py:100
 msgid "Ignore changes to white space"
 msgstr "忽略對空格的改變"
 
-#: src/diffuse/preferences.py:91
+#: src/diffuse/preferences.py:92
 msgid "Ignore blank line differences"
 msgstr "忽略空列的差異"
 
-#: src/diffuse/preferences.py:92
+#: src/diffuse/preferences.py:93
 msgid "Ignore end of line differences"
 msgstr "忽略列尾的差異"
 
-#: src/diffuse/preferences.py:94
+#: src/diffuse/preferences.py:95
 msgid "Alignment"
 msgstr "對齊"
 
-#: src/diffuse/preferences.py:97
+#: src/diffuse/preferences.py:98
 msgid "Ignore case"
 msgstr "忽略大小寫"
 
-#: src/diffuse/preferences.py:98
+#: src/diffuse/preferences.py:99
 msgid "Ignore white space"
 msgstr "忽略空格"
 
-#: src/diffuse/preferences.py:100
+#: src/diffuse/preferences.py:101
 msgid "Ignore blank lines"
 msgstr "忽略空列"
 
-#: src/diffuse/preferences.py:101
+#: src/diffuse/preferences.py:102
 msgid "Ignore end of line characters"
 msgstr "忽略列尾字元"
 
-#: src/diffuse/preferences.py:103
+#: src/diffuse/preferences.py:104
 msgid "Editor"
 msgstr "編輯器"
 
-#: src/diffuse/preferences.py:106
+#: src/diffuse/preferences.py:107
 msgid "Auto indent"
 msgstr "自動縮排"
 
-#: src/diffuse/preferences.py:107
+#: src/diffuse/preferences.py:108
 msgid "Expand tabs to spaces"
 msgstr "展開跳格字元為空格"
 
-#: src/diffuse/preferences.py:108
+#: src/diffuse/preferences.py:109
 msgid "Soft tab width"
 msgstr "跳格寬度"
 
-#: src/diffuse/preferences.py:110
+#: src/diffuse/preferences.py:111
 msgid "Tabs"
 msgstr "分頁"
 
-#: src/diffuse/preferences.py:113
+#: src/diffuse/preferences.py:114
 msgid "Default panes"
 msgstr "預設窗格"
 
-#: src/diffuse/preferences.py:114
+#: src/diffuse/preferences.py:115
 msgid "Always show the tab bar"
 msgstr "總是顯示分頁欄"
 
-#: src/diffuse/preferences.py:115
+#: src/diffuse/preferences.py:116
 #, python-format
 msgid "Warn me when closing a tab will quit %s"
 msgstr "當關閉分頁會退出 %s 的時候提醒我"
 
-#: src/diffuse/preferences.py:117
+#: src/diffuse/preferences.py:118
 msgid "Regional Settings"
 msgstr "設定"
 
-#: src/diffuse/preferences.py:120
+#: src/diffuse/preferences.py:121
 msgid "Default codec"
 msgstr "預設解碼器"
 
-#: src/diffuse/preferences.py:121
+#: src/diffuse/preferences.py:122
 msgid "Order of codecs used to identify encoding"
 msgstr "用來識別編碼的解碼器順序"
 
-#: src/diffuse/preferences.py:142
+#: src/diffuse/preferences.py:143
 msgid "Cygwin"
 msgstr "Cygwin"
 
-#: src/diffuse/preferences.py:144
+#: src/diffuse/preferences.py:145
 msgid "Root directory"
 msgstr "根目錄"
 
-#: src/diffuse/preferences.py:145
+#: src/diffuse/preferences.py:146
 msgid "Cygdrive prefix"
 msgstr "Cygdrive 前綴"
 
-#: src/diffuse/preferences.py:164
+#: src/diffuse/preferences.py:165
 msgid "Version control system search order"
 msgstr ""
 
-#: src/diffuse/preferences.py:172
+#: src/diffuse/preferences.py:173
 msgid "\"co\" command"
 msgstr "「co」命令"
 
-#: src/diffuse/preferences.py:173
+#: src/diffuse/preferences.py:174
 msgid "\"rlog\" command"
 msgstr "「rlog」命令"
 
-#: src/diffuse/preferences.py:175
+#: src/diffuse/preferences.py:176
 msgid "Command"
 msgstr "命令"
 
-#: src/diffuse/preferences.py:181
+#: src/diffuse/preferences.py:182
 msgid "Launch from a Bash login shell"
 msgstr "從登入命令列介面啟動"
 
-#: src/diffuse/preferences.py:188
+#: src/diffuse/preferences.py:189
 msgid "Update paths for Cygwin"
 msgstr "為 Cygwin 更新路徑"
 
-#: src/diffuse/preferences.py:193
+#: src/diffuse/preferences.py:194
 msgid "Version Control"
 msgstr "版本控制"
 
-#: src/diffuse/preferences.py:258
+#: src/diffuse/preferences.py:259
 msgid "Preferences"
 msgstr "選項"
 
@@ -896,7 +867,7 @@ msgstr ""
 
 #: src/diffuse/resources.py:409
 #, python-brace-format
-msgid "Options \"{option}\" is unknown"
+msgid "Option \"{option}\" is unknown"
 msgstr ""
 
 #: src/diffuse/resources.py:416
@@ -949,39 +920,67 @@ msgstr "處理到檔案 {file} 的第 {line} 列時出錯。"
 msgid "Unhandled error at line {line} of {file}."
 msgstr "處理到檔案 {file} 的第 {line} 列時出錯。"
 
-#: src/diffuse/utils.py:63
+#: src/diffuse/utils.py:66
 msgid "Auto Detect"
 msgstr "自動偵測"
 
-#: src/diffuse/vcs/cvs.py:53 src/diffuse/vcs/rcs.py:62 src/diffuse/vcs/svn.py:95
+#: src/diffuse/vcs/cvs.py:54 src/diffuse/vcs/rcs.py:63 src/diffuse/vcs/svn.py:97
 #, python-format
 msgid "Error parsing revision %s."
 msgstr "無法解析修訂版本 %s。"
 
-#: src/diffuse/vcs/vcs_registry.py:233
+#: src/diffuse/vcs/vcs_registry.py:238
 #, python-format
 msgid "Error parsing %s."
 msgstr "無法解析 %s。"
 
-#: src/diffuse/widgets.py:1843
+#: src/diffuse/widgets.py:1845
 msgid "Align with Selection"
 msgstr "對齊選擇區域"
 
-#: src/diffuse/widgets.py:1844
+#: src/diffuse/widgets.py:1846
 msgid "Isolate"
 msgstr "分離"
 
-#: src/diffuse/widgets.py:1845
+#: src/diffuse/widgets.py:1847
 msgid "Merge Selection"
 msgstr "合併選擇區域"
 
-#: src/diffuse/widgets.py:1851
+#: src/diffuse/widgets.py:1853
 msgid "Select All"
 msgstr "全選"
 
-#: src/diffuse/widgets.py:1854
+#: src/diffuse/widgets.py:1856
 msgid "Swap with Selected Pane"
 msgstr "交換選中的窗格"
+
+#, fuzzy
+#~ msgid ""
+#~ "This program is free software; you can redistribute it and/or modify\n"
+#~ "it under the terms of the GNU General Public License as published by\n"
+#~ "the Free Software Foundation; either version 2 of the License, or\n"
+#~ "(at your option) any later version.\n"
+#~ "\n"
+#~ "This program is distributed in the hope that it will be useful,\n"
+#~ "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+#~ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+#~ "GNU General Public License for more details.\n"
+#~ "\n"
+#~ "You should have received a copy of the GNU General Public License along\n"
+#~ "with this program; if not, write to the Free Software Foundation, Inc.,\n"
+#~ "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA."
+#~ msgstr ""
+#~ "這個程式是自由軟體；您可以遵循由自由軟體基金會所發布的 GNU 通用公共授權條款來再"
+#~ "次散布它與/或修改它；無論您依據的是本授權的第二版、或 (您自行選擇的) 任何後續版"
+#~ "本。\n"
+#~ "\n"
+#~ "發行本程式是希望它能夠有用，但是沒有任何擔保；亦無對於某一特定目的之適售性與適"
+#~ "用性的暗示性擔保。 請參看 GNU 通用公共授權以獲得更多細節。\n"
+#~ "\n"
+#~ "您應該已經收到隨附於這個程式的 GNU 通用公共授權複本。 您也可以藉由造訪它們的網"
+#~ "站 (http://www.fsf.org/)，從自由軟體基金會得到 GNU 通用公共授權的複本，或是寫信"
+#~ "給 Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  "
+#~ "02110-1301  USA\n"
 
 #~ msgid "Diffuse Merge Tool"
 #~ msgstr "Diffuse 比較合併工具"
