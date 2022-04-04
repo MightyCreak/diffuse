@@ -61,14 +61,14 @@ class NotebookTab(Gtk.EventBox):
     def __init__(self, name: str, stock: str) -> None:
         Gtk.EventBox.__init__(self)
         self.set_visible_window(False)
-        hbox = Gtk.Box.new(Gtk.Orientation.HORIZONTAL, 0)
+        hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=0)
         if stock is not None:
-            image = Gtk.Image.new()
+            image = Gtk.Image()
             image.set_from_stock(stock, Gtk.IconSize.MENU)
             hbox.pack_start(image, False, False, 5)
             image.show()
 
-        label = Gtk.Label.new(name)
+        label = Gtk.Label(label=name)
         # left justify the widget
         label.set_xalign(0.0)
         label.set_yalign(0.5)
@@ -76,9 +76,9 @@ class NotebookTab(Gtk.EventBox):
         label.show()
         self.label = label
 
-        button = Gtk.Button.new()
+        button = Gtk.Button()
         button.set_relief(Gtk.ReliefStyle.NONE)
-        image = Gtk.Image.new()
+        image = Gtk.Image()
         image.set_from_stock(Gtk.STOCK_CLOSE, Gtk.IconSize.MENU)
         button.add(image)
         image.show()
@@ -134,7 +134,7 @@ class Diffuse(Gtk.Window):
                     [Gtk.STOCK_SAVE, self.button_cb, 'save', _('Save File')],
                     [Gtk.STOCK_SAVE_AS, self.button_cb, 'save_as', _('Save File As...')]])
 
-                self.label = label = Gtk.Label.new()
+                self.label = label = Gtk.Label()
                 label.set_selectable(True)
                 label.set_ellipsize(Pango.EllipsizeMode.START)
                 label.set_max_width_chars(1)
@@ -181,23 +181,23 @@ class Diffuse(Gtk.Window):
         class PaneFooter(Gtk.Box):
             def __init__(self) -> None:
                 Gtk.Box.__init__(self, orientation=Gtk.Orientation.HORIZONTAL, spacing=0)
-                self.cursor = label = Gtk.Label.new()
+                self.cursor = label = Gtk.Label()
                 self.cursor.set_size_request(-1, -1)
                 self.pack_start(label, False, False, 0)
 
-                separator = Gtk.Separator.new(Gtk.Orientation.VERTICAL)
+                separator = Gtk.Separator(orientation=Gtk.Orientation.VERTICAL)
                 self.pack_end(separator, False, False, 10)
 
-                self.encoding = label = Gtk.Label.new()
+                self.encoding = label = Gtk.Label()
                 self.pack_end(label, False, False, 0)
 
-                separator = Gtk.Separator.new(Gtk.Orientation.VERTICAL)
+                separator = Gtk.Separator(orientation=Gtk.Orientation.VERTICAL)
                 self.pack_end(separator, False, False, 10)
 
-                self.format = label = Gtk.Label.new()
+                self.format = label = Gtk.Label()
                 self.pack_end(label, False, False, 0)
 
-                separator = Gtk.Separator.new(Gtk.Orientation.VERTICAL)
+                separator = Gtk.Separator(orientation=Gtk.Orientation.VERTICAL)
                 self.pack_end(separator, False, False, 10)
 
                 self.set_size_request(0, self.get_size_request()[1])
@@ -905,7 +905,7 @@ class Diffuse(Gtk.Window):
         menu_bar.show()
 
         # create button bar
-        hbox = Gtk.Box.new(Gtk.Orientation.HORIZONTAL, 0)
+        hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=0)
         _append_buttons(hbox, Gtk.IconSize.LARGE_TOOLBAR, [
             [DIFFUSE_STOCK_NEW_2WAY_MERGE, self.new_2_way_file_merge_cb, None, _('New 2-Way File Merge')],  # noqa: E501
             [DIFFUSE_STOCK_NEW_3WAY_MERGE, self.new_3_way_file_merge_cb, None, _('New 3-Way File Merge')],  # noqa: E501
@@ -936,14 +936,14 @@ class Diffuse(Gtk.Window):
         hbox.show()
 
         self.closed_tabs = []
-        self.notebook = notebook = Gtk.Notebook.new()
+        self.notebook = notebook = Gtk.Notebook()
         notebook.set_scrollable(True)
         notebook.connect('switch-page', self.switch_page_cb)
         vbox.pack_start(notebook, True, True, 0)
         notebook.show()
 
         # Add a status bar to the bottom
-        self.statusbar = statusbar = Gtk.Statusbar.new()
+        self.statusbar = statusbar = Gtk.Statusbar()
         vbox.pack_start(statusbar, False, False, 0)
         statusbar.show()
 
@@ -1056,15 +1056,15 @@ class Diffuse(Gtk.Window):
         dialog.set_resizable(True)
         dialog.set_title(constants.APP_NAME)
         # add list of files with unsaved changes
-        sw = Gtk.ScrolledWindow.new()
+        sw = Gtk.ScrolledWindow()
         sw.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
         treeview = Gtk.TreeView.new_with_model(model)
-        r = Gtk.CellRendererToggle.new()
+        r = Gtk.CellRendererToggle()
         r.connect('toggled', self._confirmClose_toggle_cb, model)
         column = Gtk.TreeViewColumn(None, r)
         column.add_attribute(r, 'active', 0)
         treeview.append_column(column)
-        r = Gtk.CellRendererText.new()
+        r = Gtk.CellRendererText()
         column = Gtk.TreeViewColumn(_('Tab'), r, text=1)
         column.set_resizable(True)
         column.set_expand(True)
@@ -1137,7 +1137,7 @@ class Diffuse(Gtk.Window):
             self.remove_tab_cb(widget, data)
         elif event.button == 3:
             # create a popup to pick a tab for focus on RMB
-            menu = Gtk.Menu.new()
+            menu = Gtk.Menu()
             nb = self.notebook
             for i in range(nb.get_n_pages()):
                 viewer = nb.get_nth_page(i)
@@ -1685,7 +1685,7 @@ class Diffuse(Gtk.Window):
 
 # convenience method for creating a menu bar according to a template
 def _create_menu_bar(specs, radio, accel_group):
-    menu_bar = Gtk.MenuBar.new()
+    menu_bar = Gtk.MenuBar()
     for label, spec in specs:
         menu = Gtk.MenuItem.new_with_mnemonic(label)
         menu.set_submenu(createMenu(spec, radio, accel_group))
@@ -1700,10 +1700,10 @@ def _create_menu_bar(specs, radio, accel_group):
 def _append_buttons(box, size, specs):
     for spec in specs:
         if len(spec) > 0:
-            button = Gtk.Button.new()
+            button = Gtk.Button()
             button.set_relief(Gtk.ReliefStyle.NONE)
             button.set_can_focus(False)
-            image = Gtk.Image.new()
+            image = Gtk.Image()
             image.set_from_stock(spec[0], size)
             button.add(image)
             image.show()
@@ -1714,7 +1714,7 @@ def _append_buttons(box, size, specs):
             box.pack_start(button, False, False, 0)
             button.show()
         else:
-            separator = Gtk.Separator.new(Gtk.Orientation.VERTICAL)
+            separator = Gtk.Separator(orientation=Gtk.Orientation.VERTICAL)
             box.pack_start(separator, False, False, 5)
             separator.show()
 
