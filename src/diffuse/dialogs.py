@@ -78,9 +78,8 @@ class FileChooserDialog(Gtk.FileChooserDialog):
         self.add_button(Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL)
         self.add_button(accept, Gtk.ResponseType.OK)
         self.prefs = prefs
-        hbox = Gtk.Box.new(Gtk.Orientation.HORIZONTAL, 0)
-        hbox.set_border_width(5)
-        label = Gtk.Label.new(_('Encoding: '))
+        hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=0, border_width=5)
+        label = Gtk.Label(label=_('Encoding: '))
         hbox.pack_start(label, False, False, 0)
         label.show()
         self.encoding = entry = utils.EncodingMenu(
@@ -89,10 +88,10 @@ class FileChooserDialog(Gtk.FileChooserDialog):
         hbox.pack_start(entry, False, False, 5)
         entry.show()
         if rev:
-            self.revision = entry = Gtk.Entry.new()
+            self.revision = entry = Gtk.Entry()
             hbox.pack_end(entry, False, False, 0)
             entry.show()
-            label = Gtk.Label.new(_('Revision: '))
+            label = Gtk.Label(label=_('Revision: '))
             hbox.pack_end(label, False, False, 0)
             label.show()
 
@@ -122,15 +121,21 @@ class NumericDialog(Gtk.Dialog):
         self.add_button(Gtk.STOCK_CANCEL, Gtk.ResponseType.REJECT)
         self.add_button(Gtk.STOCK_OK, Gtk.ResponseType.ACCEPT)
 
-        vbox = Gtk.Box.new(Gtk.Orientation.VERTICAL, 0)
+        vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=0)
         vbox.set_border_width(10)
 
-        hbox = Gtk.Box.new(Gtk.Orientation.HORIZONTAL, 0)
-        label = Gtk.Label.new(text)
+        hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=0)
+        label = Gtk.Label(label=text)
         hbox.pack_start(label, False, False, 0)
         label.show()
-        adj = Gtk.Adjustment.new(val, lower, upper, step, page, 0)
-        self.button = button = Gtk.SpinButton.new(adj, 1.0, 0)
+        adj = Gtk.Adjustment(
+            value=val,
+            lower=lower,
+            upper=upper,
+            step_increment=step,
+            page_increment=page,
+            page_size=0)
+        self.button = button = Gtk.SpinButton(adjustment=adj, climb_rate=1.0, digits=0)
         button.connect('activate', self.button_cb)
         hbox.pack_start(button, True, True, 0)
         button.show()
@@ -152,11 +157,11 @@ class SearchDialog(Gtk.Dialog):
         self.add_button(Gtk.STOCK_CANCEL, Gtk.ResponseType.REJECT)
         self.add_button(Gtk.STOCK_OK, Gtk.ResponseType.ACCEPT)
 
-        vbox = Gtk.Box.new(Gtk.Orientation.VERTICAL, 0)
+        vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=0)
         vbox.set_border_width(10)
 
-        hbox = Gtk.Box.new(Gtk.Orientation.HORIZONTAL, 0)
-        label = Gtk.Label.new(_('Search For: '))
+        hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=0)
+        label = Gtk.Label(label=_('Search For: '))
         hbox.pack_start(label, False, False, 0)
         label.show()
         combo = Gtk.ComboBoxText.new_with_entry()
@@ -167,7 +172,7 @@ class SearchDialog(Gtk.Dialog):
             self.entry.set_text(pattern)
 
         if history is not None:
-            completion = Gtk.EntryCompletion.new()
+            completion = Gtk.EntryCompletion()
             liststore = Gtk.ListStore(GObject.TYPE_STRING)
             completion.set_model(liststore)
             completion.set_text_column(0)
