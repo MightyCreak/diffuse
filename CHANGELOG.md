@@ -19,7 +19,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   io.github.mightycreak.Diffuse.appdata.xml.in
 - Leaner README.md
 - Moved the documentation to docs/
-- In the CI, call the linters on the installed directory
 - Renamed application name from "Diffuse Merge Tool" to "Diffuse"
 - Linters can be run sooner (before installation)
 - Better messages when an error occurs while parsing the config file
