@@ -406,7 +406,7 @@ class Resources:
                         raise SyntaxError(_('Options must have two arguments'))
                     if args[1] not in self.options:
                         raise SyntaxError(
-                            _('Options "{option}" is unknown').format(option=args[1])
+                            _('Option "{option}" is unknown').format(option=args[1])
                         )
                     self.options[args[1]] = args[2]
                 # eg. set the help browser
