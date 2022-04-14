@@ -650,8 +650,8 @@ msgstr ""
 "O Diffuse é uma ferramenta gráfica para unificar e comparar arquivos de texto.\n"
 "É capaz de comparar um número arbitrário de arquivos lado-a-lado e dá a\n"
 "possibilidade de ajustar manualmente as linhas com edição directa.\n"
-"Também pode obter revisões de arquivos de vários VCSs para comparar e unificar.\n
-"\n"
+"Também pode obter revisões de arquivos de vários VCSs para comparar e unificar.\n"
+
 "Opções de ajuda:\n"
 "  ( -h | -? | --help )             mostra esta ajuda\n"
 "  ( -v | --version )               mostra informação da versão e direitos "
