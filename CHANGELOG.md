@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Translation: added French translation
 
 ### Fixed
+- Fixed #156: Preferences cannot be saved in latest release
 - Cleanups: use constructors instead of `new()` whenever possible in GTK
   classes
 
