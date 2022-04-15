@@ -208,13 +208,13 @@ class Preferences:
                         if len(a) > 0:
                             p = a[0]
                             if len(a) == 2 and p in self.bool_prefs:
-                                self.bool_prefs[p] = (a[1] == 'True')
+                                self.setBool(p, a[1] == 'True')
                             elif len(a) == 2 and p in self.int_prefs:
-                                self.int_prefs[p] = max(
+                                self.setInt(p, max(
                                     self.int_prefs_min[p],
-                                    min(int(a[1]), self.int_prefs_max[p]))
+                                    min(int(a[1]), self.int_prefs_max[p])))
                             elif len(a) == 2 and p in self.string_prefs:
-                                self.string_prefs[p] = a[1]
+                                self.setString(p, a[1])
                             else:
                                 raise ValueError()
                     except ValueError:
@@ -237,13 +237,13 @@ class Preferences:
                 self._initFromTemplate(template[i])
                 i += 1
         elif template[0] == 'Boolean':
-            self.bool_prefs[template[1]] = template[2]
+            self.setBool(template[1], template[2])
         elif template[0] == 'Integer':
-            self.int_prefs[template[1]] = template[2]
+            self.setInt(template[1], template[2])
             self.int_prefs_min[template[1]] = template[4]
             self.int_prefs_max[template[1]] = template[5]
         elif template[0] in ['String', 'File', 'Font', 'Encoding']:
-            self.string_prefs[template[1]] = template[2]
+            self.setString(template[1], template[2])
 
     # callback used when a preference is toggled
     def _toggled_cb(self, widget, widgets, name):
@@ -273,12 +273,12 @@ class Preferences:
         accept = (dialog.run() == Gtk.ResponseType.OK)
         if accept:
             for k in self.bool_prefs:
-                self.bool_prefs[k] = widgets[k].get_active()
+                self.setBool(k, widgets[k].get_active())
             for k in self.int_prefs:
-                self.int_prefs[k] = widgets[k].get_value_as_int()
+                self.setInt(k, widgets[k].get_value_as_int())
             for k in self.string_prefs:
                 text = self._getWidgetText(widgets[k])
-                self.string_prefs[k] = utils.null_to_empty(text)
+                self.setString(k, utils.null_to_empty(text))
             try:
                 ss = []
                 for k, bool_value in self.bool_prefs.items():
@@ -330,7 +330,7 @@ class Preferences:
                 w.show()
             elif tpl_section == 'Boolean':
                 button = Gtk.CheckButton.new_with_mnemonic(tpl[3])
-                button.set_active(self.bool_prefs[tpl[1]])
+                button.set_active(self.getBool(tpl[1]))
                 widgets[tpl[1]] = button
                 table.attach(button, 1, i, 1, 1)
                 button.connect('toggled', self._toggled_cb, widgets, tpl[1])
@@ -341,14 +341,14 @@ class Preferences:
                 label.set_yalign(0.5)
                 table.attach(label, 0, i, 1, 1)
                 label.show()
-                if tpl[0] in ['Font', 'Integer']:
+                if tpl_section in ['Font', 'Integer']:
                     entry = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=0)
-                    if tpl[0] == 'Font':
+                    if tpl_section == 'Font':
                         button = Gtk.FontButton()
-                        button.set_font(self.string_prefs[tpl[1]])
+                        button.set_font(self.getString(tpl[1]))
                     else:
                         adj = Gtk.Adjustment(
-                            value=self.int_prefs[tpl[1]],
+                            value=self.getInt(tpl[1]),
                             lower=tpl[4],
                             upper=tpl[5],
                             step_increment=1,
@@ -362,15 +362,15 @@ class Preferences:
                     entry.pack_start(button, False, False, 0)
                     button.show()
                 else:
-                    if tpl[0] == 'Encoding':
+                    if tpl_section == 'Encoding':
                         entry = utils.EncodingMenu(self)
                         entry.set_text(tpl[3])
-                    elif tpl[0] == 'File':
+                    elif tpl_section == 'File':
                         entry = _FileEntry(parent, tpl[3])
                     else:
                         entry = Gtk.Entry()
                     widgets[tpl[1]] = entry
-                    entry.set_text(self.string_prefs[tpl[1]])
+                    entry.set_text(self.getString(tpl[1]))
                 table.attach(entry, 1, i, 1, 1)
                 entry.show()
             table.show()
@@ -400,6 +400,9 @@ class Preferences:
     def getInt(self, name: str) -> int:
         return self.int_prefs[name]
 
+    def setInt(self, name: str, value: int) -> None:
+        self.int_prefs[name] = value
+
     def getString(self, name: str) -> str:
         return self.string_prefs[name]
 
@@ -410,10 +413,10 @@ class Preferences:
         return self.encodings
 
     def _getDefaultEncodings(self) -> List[str]:
-        return self.string_prefs['encoding_auto_detect_codecs'].split()
+        return self.getString('encoding_auto_detect_codecs').split()
 
     def getDefaultEncoding(self) -> str:
-        return self.string_prefs['encoding_default_codec']
+        return self.getString('encoding_default_codec')
 
     # attempt to convert a string to unicode from an unknown encoding
     def convertToUnicode(self, s):
