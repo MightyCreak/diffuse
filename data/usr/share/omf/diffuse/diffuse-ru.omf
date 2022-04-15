@@ -4,8 +4,8 @@
     <creator>Derrick Moser</creator>
     <maintainer>Derrick Moser</maintainer>
     <title>Руководство Пользователя Diffuse</title>
-    <date>2022-04-03</date>
-    <version identifier="0.7.4" date="2022-04-03"/>
+    <date>2022-04-15</date>
+    <version identifier="0.7.5" date="2022-04-15"/>
     <subject category="GNOME|Development|Applications"/>
     <description>Программа Diffuse является графическим инструментом для слияния и сравнения текстовых файлов.</description>
     <type>manual</type>

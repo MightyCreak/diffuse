@@ -28,6 +28,23 @@
   <update_contact>romain.failliot@foolstep.com</update_contact>
 
   <releases>
+    <release version="0.7.5" date="2022-04-15">
+      <description>
+        <p>
+          Crashfix and French translation.
+        </p>
+        <p>Added:</p>
+        <ul>
+          <li>Documentation: added release process instructions</li>
+          <li>Translation: added French translation</li>
+        </ul>
+        <p>Fixed:</p>
+        <ul>
+          <li>Fixed #156: Preferences cannot be saved in latest release</li>
+          <li>Cleanups: use constructors instead of `new()` whenever possible in GTK classes</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.7.4" date="2022-04-03">
       <description>
         <p>
