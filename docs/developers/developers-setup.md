@@ -112,18 +112,3 @@ sudo rm -v /usr/local/share/locale/*/LC_MESSAGES/diffuse.mo
 
 Meson allows to change the default installation directories, see
 [command-line documentation](https://mesonbuild.com/Commands.html#configure).
-
-## Setup on Windows
-
-_Note:_ The Windows port is not maintained and would need some love.
-Contributions are very welcome! 😉
-
-The `windows-installer` directory contains scripts for building an installable
-package for Windows that includes all dependencies.
-
-Diffuse can be packaged as a portable application by copying the installation
-directory to a pen drive and creating a front end that sets the
-`XDG_CONFIG_HOME` and `XDG_DATA_DIR` environment variables prior to launching
-Diffuse.  The `XDG_CONFIG_HOME` and `XDG_DATA_DIR` environment variables
-indicate where Diffuse should store persistent settings (eg. the path to a
-writable directory on the pen drive).

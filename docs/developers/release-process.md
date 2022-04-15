@@ -12,9 +12,6 @@ few manual steps.
    - data/usr/share/gnome/help/diffuse/*/diffuse.xml
    - data/usr/share/omf/diffuse/diffuse-*.omf
    - utils/book2manual.xsl
-   - windows-installer/build.py
-   - windows-installer/diffuse.iss
-   - windows-installer/diffuse.new.iss
 3. Update the date for the new release date in these files:
    - data/usr/share/gnome/help/diffuse/*/diffuse.xml
    - data/usr/share/omf/diffuse/diffuse-*.omf
