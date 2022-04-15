@@ -277,7 +277,8 @@ class Preferences:
             for k in self.int_prefs:
                 self.int_prefs[k] = widgets[k].get_value_as_int()
             for k in self.string_prefs:
-                self.string_prefs[k] = utils.null_to_empty(widgets[k].get_text())
+                text = self._getWidgetText(widgets[k])
+                self.string_prefs[k] = utils.null_to_empty(text)
             try:
                 ss = []
                 for k, bool_value in self.bool_prefs.items():
@@ -374,6 +375,20 @@ class Preferences:
                 entry.show()
             table.show()
         return table
+
+    def _getWidgetText(self, widget):
+        text = ""
+        if (
+            isinstance(widget, Gtk.Entry) or
+            isinstance(widget, utils.EncodingMenu) or
+            isinstance(widget, _FileEntry)
+        ):
+            text = widget.get_text()
+        elif isinstance(widget, Gtk.FontButton):
+            text = widget.get_font()
+        else:
+            raise TypeError(f"Don't know how to get text from type: {type(widget)}")
+        return text
 
     # get/set methods to manipulate the preference values
     def getBool(self, name: str) -> bool:
