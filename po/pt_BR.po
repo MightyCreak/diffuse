@@ -10,7 +10,7 @@ msgstr ""
 "POT-Creation-Date: 2022-04-04 12:14-0400\n"
 "PO-Revision-Date: 2022-04-04 12:19-0400\n"
 "Last-Translator: Pedro Albuquerque <pmra@gmx.com>\n"
-"Language-Team: Português <pmra@gmx.com>\n"
+"Language-Team: Português do Brasil <pmra@gmx.com>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,7 +25,7 @@ msgstr ""
 #: data/io.github.mightycreak.Diffuse.desktop.in:3
 #: data/io.github.mightycreak.Diffuse.appdata.xml.in:4
 msgid "Diffuse"
-msgstr ""
+msgstr "Diffuse"
 
 #: data/io.github.mightycreak.Diffuse.desktop.in:4
 #: data/io.github.mightycreak.Diffuse.appdata.xml.in:5
@@ -38,10 +38,13 @@ msgid ""
 "files for comparison from Bazaar, CVS, Darcs, Git, Mercurial, Monotone, RCS, "
 "Subversion, and SVK repositories."
 msgstr ""
+"O Diffuse é uma ferramenta gráfica para unificar e comparar arquivos de texto. "
+"Também pode obter revisões para comparar arquivos de repositórios Bazaar, "
+"CVS, Darcs, Git, Mercurial, Monotone, RCS. "
 
 #: data/io.github.mightycreak.Diffuse.appdata.xml.in:21
 msgid "Main window: diff between two files"
-msgstr ""
+msgstr "Janela principal: diff entre dois arquivos"
 
 #: src/diffuse/constants.py:25
 msgid "Copyright"
@@ -139,7 +142,7 @@ msgid ""
 "The file %s has been modified by another process since reading it. If you save, "
 "all the external changes could be lost. Save anyways?"
 msgstr ""
-"O arquivo %s foi modificado por outro processo desde o último carregamento. Se "
+"O arquivo %s foi modificado por outro processo desde seu último carregamento. Se "
 "salvar agora, perderá todas as alterações feitas fora deste programa. Salvar de "
 "qualquer forma?"
 
@@ -371,11 +374,11 @@ msgstr "Converter para minúscu_las"
 
 #: src/diffuse/main.py:867
 msgid "Sort Lines In _Ascending Order"
-msgstr "Ordenar linhas _ascendentemente"
+msgstr "Organizar linhas em ordem _ascendente"
 
 #: src/diffuse/main.py:868
 msgid "Sort Lines In D_escending Order"
-msgstr "Ordenar linhas d_escendentemente"
+msgstr "Organizar linhas em ordem d_escendente"
 
 #: src/diffuse/main.py:870
 msgid "Remove Trailing _White Space"
@@ -570,7 +573,7 @@ msgstr "Abrir arquivo em nova aba"
 
 #: src/diffuse/main.py:1400
 msgid "Choose Folder With Modified Files"
-msgstr "Escolher pasta com arquivos modificados"
+msgstr "Escolha pasta com arquivos modificados"
 
 #: src/diffuse/main.py:1418
 msgid "No modified files found."
@@ -578,11 +581,11 @@ msgstr "Nenhum arquivo modificado."
 
 #: src/diffuse/main.py:1424
 msgid "Choose Folder With Commit"
-msgstr "Escolher pasta com revisão"
+msgstr "Escolha pasta com revisão"
 
 #: src/diffuse/main.py:1444
 msgid "No committed files found."
-msgstr "Sem arquivos confirmados."
+msgstr "Nenhum arquivo revisado encontrado."
 
 #: src/diffuse/main.py:1480
 msgid "New N-Way File Merge..."
@@ -645,11 +648,10 @@ msgstr ""
 "    diffuse ( -h | -? | --help | -v | --version )\n"
 "\n"
 "O Diffuse é uma ferramenta gráfica para unificar e comparar arquivos de texto.\n"
-"É capaz de comparar um número arbitrário de arquivos lado-a-lado e dá aos\n"
-"usuários a possibilidade de ajustar manualmente as linhas com edição directa.\n"
-"Também pode obter revisões de arquivos de repositórios Bazaar, CVS, Darcs, Git,\n"
-"Mercurial, Monotone, RCS, Subversion e SVK para comparação e unificação.\n"
-"\n"
+"É capaz de comparar um número arbitrário de arquivos lado-a-lado e dá a\n"
+"possibilidade de ajustar manualmente as linhas com edição directa.\n"
+"Também pode obter revisões de arquivos de vários VCSs para comparar e unificar.\n"
+
 "Opções de ajuda:\n"
 "  ( -h | -? | --help )             mostra esta ajuda\n"
 "  ( -v | --version )               mostra informação da versão e direitos "
@@ -692,7 +694,7 @@ msgstr "Omitindo argumento desconhecido \"%s\"."
 #: src/diffuse/main.py:1963
 #, python-format
 msgid "Error processing argument \"%s\".  Directory not expected."
-msgstr "Erro ao processar o argumento \"%s\". Pasta inesperada."
+msgstr "Erro ao processar o argumento \"%s\". Pasta imprevista."
 
 #: src/diffuse/preferences.py:80
 msgid "Display"
@@ -805,7 +807,7 @@ msgstr "Codificação padrão"
 
 #: src/diffuse/preferences.py:122
 msgid "Order of codecs used to identify encoding"
-msgstr "Ordem de codificações para identificar a codificação"
+msgstr "Ordem de codecs usados para identificar a codificação"
 
 #: src/diffuse/preferences.py:143
 msgid "Cygwin"
@@ -813,7 +815,7 @@ msgstr "Cygwin"
 
 #: src/diffuse/preferences.py:145
 msgid "Root directory"
-msgstr "Pasta Root"
+msgstr "Pasta root"
 
 #: src/diffuse/preferences.py:146
 msgid "Cygdrive prefix"
@@ -821,7 +823,7 @@ msgstr "Prefixo Cygdrive"
 
 #: src/diffuse/preferences.py:165
 msgid "Version control system search order"
-msgstr ""
+msgstr "Ordem de busca do sistema de controle de versão"
 
 #: src/diffuse/preferences.py:173
 msgid "\"co\" command"
@@ -837,15 +839,15 @@ msgstr "Comando"
 
 #: src/diffuse/preferences.py:182
 msgid "Launch from a Bash login shell"
-msgstr "Iniciar numa consola de sessão Bash"
+msgstr "Iniciar em uma consola de sessão Bash"
 
 #: src/diffuse/preferences.py:189
 msgid "Update paths for Cygwin"
-msgstr "Actualizar caminhos para o Cygwin"
+msgstr "Atualizar caminhos para o Cygwin"
 
 #: src/diffuse/preferences.py:194
 msgid "Version Control"
-msgstr "Controlo de versões"
+msgstr "Controle de versões"
 
 #: src/diffuse/preferences.py:259
 msgid "Preferences"
@@ -855,82 +857,82 @@ msgstr "Preferências"
 #: src/diffuse/resources.py:245
 #, python-brace-format
 msgid "The key binding \"{key}\" is invalid"
-msgstr ""
+msgstr "A tecla de atalho \"{key}\" é desconhecida"
 
 #: src/diffuse/resources.py:372
 msgid "Imports must have one argument"
-msgstr ""
+msgstr "Importações devem ter um argumento"
 
 #: src/diffuse/resources.py:388
 msgid "Key bindings must have three arguments"
-msgstr ""
+msgstr "Teclas de atalho devem ter três argumentos"
 
 #: src/diffuse/resources.py:394
 msgid "Colors must have four arguments"
-msgstr ""
+msgstr "Cores devem ter quatro argumentos"
 
 #: src/diffuse/resources.py:400
 msgid "Floats must have two arguments"
-msgstr ""
+msgstr "Floats devem ter dois argumentos"
 
 #: src/diffuse/resources.py:406
 msgid "Options must have two arguments"
-msgstr ""
+msgstr "Opções devem ter dois argumentos"
 
 #: src/diffuse/resources.py:409
 #, python-brace-format
 msgid "Option \"{option}\" is unknown"
-msgstr ""
+msgstr "Opção \"{option}\" é desconhecida"
 
 #: src/diffuse/resources.py:416
 msgid "Strings must have two arguments"
-msgstr ""
+msgstr "Sequências de caracteres devem ter dois argumentos"
 
 #: src/diffuse/resources.py:427
 msgid "Syntaxes must have two or three arguments"
-msgstr ""
+msgstr "Sintaxes devem ter dois ou três argumentos"
 
 #: src/diffuse/resources.py:455
 msgid "Syntax patterns must have at least four arguments"
-msgstr ""
+msgstr "Modelos de sintaxe devem ter pelo menos quatro argumentos"
 
 #: src/diffuse/resources.py:461 src/diffuse/resources.py:505
 #, python-brace-format
 msgid "Value \"{value}\" is unknown"
-msgstr ""
+msgstr "Valor \"{value}\" é desconhecido"
 
 #: src/diffuse/resources.py:472
 msgid "Syntax files must have one or two arguments"
-msgstr ""
+msgstr "Arquivos de sintaxe devem ter um ou dois argumentos"
 
 #: src/diffuse/resources.py:490
 msgid "Syntax magics must have at least one argument"
-msgstr ""
+msgstr "Sintaxe deve ter pelo menos um argumento"
 
 #: src/diffuse/resources.py:509
 #, python-brace-format
 msgid "Keyword \"{keyword}\" is unknown"
-msgstr ""
+msgstr "Palavra-chave \"{keyword}\" é desconhecida"
 
 #: src/diffuse/resources.py:511
 #, fuzzy, python-brace-format
 msgid "Syntax error at line {line} of {file}"
-msgstr "Erro ao processar a linha {line} de {file}."
+msgstr "Erro da sintaxe na linha {line} de {file}."
 
 #: src/diffuse/resources.py:517
 #, fuzzy, python-brace-format
 msgid "Value error at line {line} of {file}"
-msgstr "Erro ao processar a linha {line} de {file}."
+msgstr "Erro do valor na linha {line} de {file}."
 
 #: src/diffuse/resources.py:523
 #, fuzzy, python-brace-format
 msgid "Regex error at line {line} of {file}."
-msgstr "Erro ao processar a linha {line} de {file}."
+msgstr "Erro do regex na linha {line} de {file}."
 
 #: src/diffuse/resources.py:526
 #, fuzzy, python-brace-format
 msgid "Unhandled error at line {line} of {file}."
-msgstr "Erro ao processar a linha {line} de {file}."
+msgstr "Erro incomum na linha {line} de {file}."
 
 #: src/diffuse/utils.py:66
 msgid "Auto Detect"
@@ -999,7 +1001,7 @@ msgstr "Trocar com o painel selecionado"
 #~ "Boston, MA  02110-1301  USA\n"
 
 #~ msgid "Diffuse Merge Tool"
-#~ msgstr "Diffuse Ferramenta de unificação"
+#~ msgstr "Diffuse ferramenta de unificação"
 
 #, python-format
 #~ msgid "Column %d"
