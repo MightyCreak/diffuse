@@ -7,9 +7,6 @@
 ##    - data/usr/share/gnome/help/diffuse/*/diffuse.xml
 ##    - data/usr/share/omf/diffuse/diffuse-*.omf
 ##    - utils/book2manual.xsl
-##    - windows-installer/build.py
-##    - windows-installer/diffuse.iss
-##    - windows-installer/diffuse.new.iss
 ## 2. Update CHANGELOG.md
 ##    - Add new line under `## Unreleased` following this syntax: `## x.y.z - YYYY-MM-DD`
 ## 3. Update AppData release notes in data/io.github.mightycreak.Diffuse.appdata.xml.in:
@@ -52,14 +49,6 @@ sed -i -E "s#<!ENTITY app-version \".+?\">#<!ENTITY app-version \"$NEW_VERSION\"
     utils/book2manual.xsl
 sed -i -E "s#<!ENTITY date \".+?\">#<!ENTITY date \"$DATE_FULL\">#" \
     utils/book2manual.xsl
-
-# Windows installer (unmaintaned)
-sed -i -E "s/VERSION = '.+?'/VERSION = '$NEW_VERSION'/" \
-    windows-installer/build.py
-sed -i -E "s/AppVerName=Diffuse .+?/AppVerName=Diffuse $NEW_VERSION/" \
-    windows-installer/diffuse.iss
-sed -i -E "s/#define MyAppVersion \".+?\"/#define MyAppVersion \"$NEW_VERSION\"/" \
-    windows-installer/diffuse.iss
 
 # AppData
 new_release="    <release version=\"$NEW_VERSION\" date=\"$DATE_FULL\">

@@ -75,17 +75,7 @@ Command-line:
 ./update-translations.py --check-only ja.po ko.po
 ```
 
-## Windows-specific files
-
-### Installer
-
-Localized text for the Microsoft Windows installer is stored in separate ISL
-files. Copy the [English version][english-win-docs] and replace the text to the
-right of each equal sign.
-
-[english-win-docs]: ../windows-installer/en.isl
-
-### DocBook
+## DocBook
 
 Diffuse's help documentation is written in the DocBook format and can be easily
 converted into other formats using XSLT stylesheets. If the local help
@@ -95,13 +85,11 @@ the on-line help documentation using a web browser.
 Start a new translation of the manual by copying the English version of the
 [DocBook manual][docbook-manual] and then edit the contents.
 
-The DocBook manual is converted to HTML for Windows and Unix man pages for
-POSIX platforms. The conversion tools insert some English text that gets
-localized using search and replace. Manually add new search and replace rules
-to these files:
+The DocBook manual is converted to Unix man pages for POSIX platforms. The
+conversion tools insert some English text that gets localized using search and
+replace. Manually add new search and replace rules to these files:
 
 ```text
-../windows-installer/translations.txt
 ../utils/translations.txt
 ```
 
