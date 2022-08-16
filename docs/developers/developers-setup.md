@@ -8,7 +8,7 @@ Diffuse depends on these projects:
 * PyPi
 * Cairo and GObject Introspection development headers
 * Meson
-* Flatpak and Flatpak builder
+* Flatpak and Flatpak builder (Linux only)
 
 ### Install the distribution dependencies
 
@@ -33,6 +33,20 @@ sudo dnf install python-pip cairo-devel cairo-gobject-devel meson flatpak flatpa
 ```
 
 _Note: Tested on Fedora 34_
+</details>
+
+<details>
+    <summary>Mac OS</summary>
+
+On Mac, all deps can be fetched using [Homebrew](https://docs.brew.sh/).
+
+```sh
+brew install meson python3 py3cairo pygobject3 gtk+3
+```
+
+_Note: Tested on macOS 12.5 (Monterey)_
+
+You don't need to use `pip` because the above `brew` command installs all dependencies.
 </details>
 
 ### Install the project dependencies
@@ -72,7 +86,7 @@ To uninstall Diffuse:
 flatpak remove io.github.mightycreak.Diffuse
 ```
 
-### Build, test and install using Meson
+## Build, test and install using Meson on Linux and Mac OS
 
 Diffuse build system is meson.
 
