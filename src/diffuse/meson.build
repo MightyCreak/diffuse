@@ -9,14 +9,41 @@ conf.set('VERSION', meson.project_version())
 conf.set('PKGDATADIR', pkgdatadir)
 conf.set('LOCALEDIR', join_paths(get_option('prefix'), get_option('localedir')))
 conf.set('SYSCONFIGDIR', join_paths(get_option('prefix'), get_option('sysconfdir')))
+conf.set('BINDIR', join_paths(get_option('prefix'), get_option('bindir')))
 
 configure_file(
   input: 'diffuse.in',
-  output: 'diffuse',
+  output: build_machine.system() == 'darwin' ? 'diffuse_impl' : 'diffuse',
   configuration: conf,
   install: true,
   install_dir: get_option('bindir')
 )
+
+if build_machine.system() == 'darwin'
+  install_subdir('mac-os-app/Diffuse.app', install_dir: '/Applications', strip_directory: false)
+
+  configure_file(
+    input: 'mac-os-app/diffuse-mac.in',
+    output: 'diffuse',
+    configuration: conf,
+    install: true,
+    install_dir: get_option('bindir')
+  )
+  configure_file(
+    input: 'mac-os-app/mac_launcher.sh.in',
+    output: 'mac_launcher.sh',
+    configuration: conf,
+    install: true,
+    install_dir: '/Applications/Diffuse.app/Contents/MacOS'
+  )
+  configure_file(
+    input: 'mac-os-app/Info.plist.in',
+    output: 'Info.plist',
+    configuration: conf,
+    install: true,
+    install_dir: '/Applications/Diffuse.app/Contents'
+  )
+endif
 
 diffuse_sources = [
   '__init__.py',

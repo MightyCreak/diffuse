@@ -1,0 +1,14 @@
+#!/bin/bash
+#
+# This is the command-line entry point on Mac.
+#
+# We want to use Mac's `open` command for mainly two reasons;
+# a) open lets us choose our own icon.
+# b) open puts the app on top of the other windows, including the terminal we ran this from.
+#
+# --new lets us open multiple windows.
+# --wait-apps lets Diffuse be a "git difftool", letting Diffuse run before git deletes its tmp files.
+#
+# We pass "pwd" because Mac's `open` command launches processes at '/'.
+# "printf %q" escapes spaces and other characters so the complete dir is passed as one.
+open /Applications/Diffuse.app --new --wait-apps --args $(printf %q "$(pwd)") $@

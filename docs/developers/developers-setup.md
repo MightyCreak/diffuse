@@ -128,6 +128,25 @@ sudo rm -v /usr/local/share/locale/*/LC_MESSAGES/diffuse.mo
 Meson allows to change the default installation directories, see
 [command-line documentation](https://mesonbuild.com/Commands.html#configure).
 
+## Setup on Mac OS
+
+Building on Mac OS is similar to building on Linux. To recap, these are
+the steps needed to build and install Diffuse manually:
+
+```brew install meson python3 py3cairo pygobject3 gtk+3
+  meson setup build
+  cd build
+  meson compile
+  meson test
+  meson install
+```
+
+After `meson install`, the `diffuse` command can be used to launch Diffuse
+as a native Mac app that is installed into `/Applications/Diffuse.app`.
+
+The `diffuse` command is compatible with git. To use Diffuse as git's
+`git difftool` run `git config --global diff.tool diffuse`
+
 ## Setup on Windows
 
 _Note:_ The Windows port is not maintained and would need some love.
