@@ -41,7 +41,7 @@ _Note: Tested on Fedora 34_
 On Mac, all deps can be fetched using [Homebrew](https://docs.brew.sh/).
 
 ```sh
-brew install meson python3 py3cairo pygobject3 gtk+3
+brew install meson python3 py3cairo pygobject3 gtk+3 librsvg
 ```
 
 _Note: Tested on macOS 12.5 (Monterey)_
@@ -133,7 +133,7 @@ Meson allows to change the default installation directories, see
 Building on Mac OS is similar to building on Linux. To recap, these are
 the steps needed to build and install Diffuse manually:
 
-```brew install meson python3 py3cairo pygobject3 gtk+3
+```brew install meson python3 py3cairo pygobject3 gtk+3 librsvg
   meson setup build
   cd build
   meson compile
