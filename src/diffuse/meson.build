@@ -20,8 +20,6 @@ configure_file(
 )
 
 if build_machine.system() == 'darwin'
-  install_subdir('mac-os-app/Diffuse.app', install_dir: '/Applications', strip_directory: false)
-
   configure_file(
     input: 'mac-os-app/diffuse-mac.in',
     output: 'diffuse',
