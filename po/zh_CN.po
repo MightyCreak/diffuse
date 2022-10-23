@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Diffuse svn 316\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-04 12:14-0400\n"
+"POT-Creation-Date: 2022-10-23 19:48-0400\n"
 "PO-Revision-Date: 2020-06-29 14:49-0400\n"
 "Last-Translator:  <jarryson@gmail.com>\n"
 "Language-Team: Chinese (simplified)\n"
@@ -50,27 +50,27 @@ msgstr "Diffuse是一个合并和比较文本文件的图形化程序。"
 msgid "translator-credits"
 msgstr "Liu Hao <jarryson@gmail.com>"
 
-#: src/diffuse/dialogs.py:83
+#: src/diffuse/dialogs.py:82
 msgid "Encoding: "
 msgstr "编码："
 
-#: src/diffuse/dialogs.py:95
+#: src/diffuse/dialogs.py:94
 msgid "Revision: "
 msgstr "修订："
 
-#: src/diffuse/dialogs.py:151
+#: src/diffuse/dialogs.py:156
 msgid "Find..."
 msgstr "查找..."
 
-#: src/diffuse/dialogs.py:159
+#: src/diffuse/dialogs.py:164
 msgid "Search For: "
 msgstr "搜索："
 
-#: src/diffuse/dialogs.py:184
+#: src/diffuse/dialogs.py:189
 msgid "Match Case"
 msgstr "符合大小写"
 
-#: src/diffuse/dialogs.py:189
+#: src/diffuse/dialogs.py:194
 msgid "Search Backwards"
 msgstr "反向搜索"
 
@@ -139,7 +139,7 @@ msgstr "文件%s打开后被其他进程更改过了，如果保存，其他程�
 msgid "Error encoding to %s."
 msgstr "无法编码为%s。"
 
-#: src/diffuse/main.py:592 src/diffuse/preferences.py:299
+#: src/diffuse/main.py:592 src/diffuse/preferences.py:300
 #, python-format
 msgid "Error writing %s."
 msgstr "无法写入%s"
@@ -497,19 +497,19 @@ msgstr "恢复"
 msgid "Redo"
 msgstr "重做"
 
-#: src/diffuse/main.py:928 src/diffuse/widgets.py:1849
+#: src/diffuse/main.py:928 src/diffuse/widgets.py:1861
 msgid "Cut"
 msgstr "剪切"
 
-#: src/diffuse/main.py:929 src/diffuse/widgets.py:1850
+#: src/diffuse/main.py:929 src/diffuse/widgets.py:1862
 msgid "Copy"
 msgstr "复制"
 
-#: src/diffuse/main.py:930 src/diffuse/widgets.py:1851
+#: src/diffuse/main.py:930 src/diffuse/widgets.py:1863
 msgid "Paste"
 msgstr "粘贴"
 
-#: src/diffuse/main.py:931 src/diffuse/widgets.py:1854
+#: src/diffuse/main.py:931 src/diffuse/widgets.py:1866
 msgid "Clear Edits"
 msgstr "取消编辑"
 
@@ -834,83 +834,83 @@ msgstr "版本控制"
 msgid "Preferences"
 msgstr "首选项"
 
-#: src/diffuse/resources.py:238 src/diffuse/resources.py:242
-#: src/diffuse/resources.py:245
+#: src/diffuse/resources.py:242 src/diffuse/resources.py:246
+#: src/diffuse/resources.py:249
 #, python-brace-format
 msgid "The key binding \"{key}\" is invalid"
 msgstr ""
 
-#: src/diffuse/resources.py:372
+#: src/diffuse/resources.py:376
 msgid "Imports must have one argument"
 msgstr ""
 
-#: src/diffuse/resources.py:388
+#: src/diffuse/resources.py:392
 msgid "Key bindings must have three arguments"
 msgstr ""
 
-#: src/diffuse/resources.py:394
+#: src/diffuse/resources.py:398
 msgid "Colors must have four arguments"
 msgstr ""
 
-#: src/diffuse/resources.py:400
+#: src/diffuse/resources.py:404
 msgid "Floats must have two arguments"
 msgstr ""
 
-#: src/diffuse/resources.py:406
+#: src/diffuse/resources.py:410
 msgid "Options must have two arguments"
 msgstr ""
 
-#: src/diffuse/resources.py:409
+#: src/diffuse/resources.py:413
 #, python-brace-format
 msgid "Option \"{option}\" is unknown"
 msgstr ""
 
-#: src/diffuse/resources.py:416
+#: src/diffuse/resources.py:420
 msgid "Strings must have two arguments"
 msgstr ""
 
-#: src/diffuse/resources.py:427
+#: src/diffuse/resources.py:431
 msgid "Syntaxes must have two or three arguments"
 msgstr ""
 
-#: src/diffuse/resources.py:455
+#: src/diffuse/resources.py:459
 msgid "Syntax patterns must have at least four arguments"
 msgstr ""
 
-#: src/diffuse/resources.py:461 src/diffuse/resources.py:505
+#: src/diffuse/resources.py:465 src/diffuse/resources.py:509
 #, python-brace-format
 msgid "Value \"{value}\" is unknown"
 msgstr ""
 
-#: src/diffuse/resources.py:472
+#: src/diffuse/resources.py:476
 msgid "Syntax files must have one or two arguments"
 msgstr ""
 
-#: src/diffuse/resources.py:490
+#: src/diffuse/resources.py:494
 msgid "Syntax magics must have at least one argument"
 msgstr ""
 
-#: src/diffuse/resources.py:509
+#: src/diffuse/resources.py:513
 #, python-brace-format
 msgid "Keyword \"{keyword}\" is unknown"
 msgstr ""
 
-#: src/diffuse/resources.py:511
+#: src/diffuse/resources.py:515
 #, fuzzy, python-brace-format
 msgid "Syntax error at line {line} of {file}"
 msgstr "处理到文件{file}的{line}行时出错。"
 
-#: src/diffuse/resources.py:517
+#: src/diffuse/resources.py:521
 #, fuzzy, python-brace-format
 msgid "Value error at line {line} of {file}"
 msgstr "处理到文件{file}的{line}行时出错。"
 
-#: src/diffuse/resources.py:523
+#: src/diffuse/resources.py:527
 #, fuzzy, python-brace-format
 msgid "Regex error at line {line} of {file}."
 msgstr "处理到文件{file}的{line}行时出错。"
 
-#: src/diffuse/resources.py:526
+#: src/diffuse/resources.py:530
 #, fuzzy, python-brace-format
 msgid "Unhandled error at line {line} of {file}."
 msgstr "处理到文件{file}的{line}行时出错。"
@@ -929,28 +929,25 @@ msgstr "无法解析修订版本%s。"
 msgid "Error parsing %s."
 msgstr "无法解析%s。"
 
-#: src/diffuse/widgets.py:1845
+#: src/diffuse/widgets.py:1857
 msgid "Align with Selection"
 msgstr "向选中的对齐"
 
-#: src/diffuse/widgets.py:1846
+#: src/diffuse/widgets.py:1858
 msgid "Isolate"
 msgstr "分离"
 
-#: src/diffuse/widgets.py:1847
+#: src/diffuse/widgets.py:1859
 msgid "Merge Selection"
 msgstr "合并选择之处"
 
-#: src/diffuse/widgets.py:1853
+#: src/diffuse/widgets.py:1865
 msgid "Select All"
 msgstr "选择所有"
 
-#: src/diffuse/widgets.py:1856
+#: src/diffuse/widgets.py:1868
 msgid "Swap with Selected Pane"
 msgstr "交换选中的窗格"
-
-#~ msgid "Diffuse Merge Tool"
-#~ msgstr "Diffuse 比较合并工具"
 
 #, python-format
 #~ msgid "Column %d"

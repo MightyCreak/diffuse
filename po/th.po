@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: diffuse 0.4.7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-04 12:14-0400\n"
+"POT-Creation-Date: 2022-10-23 19:48-0400\n"
 "PO-Revision-Date: 2020-06-29 14:49-0400\n"
 "Last-Translator: Akom Chotiphantawanon <knight2000@gmail.com>\n"
 "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
@@ -51,27 +51,27 @@ msgstr "Diffuse เป็นเครื่องมือแบบกราฟ�
 msgid "translator-credits"
 msgstr "Akom Chotiphantawanon <knight2000@gmail.com> "
 
-#: src/diffuse/dialogs.py:83
+#: src/diffuse/dialogs.py:82
 msgid "Encoding: "
 msgstr "รหัสอักขระ: "
 
-#: src/diffuse/dialogs.py:95
+#: src/diffuse/dialogs.py:94
 msgid "Revision: "
 msgstr "ฉบับแก้ไข: "
 
-#: src/diffuse/dialogs.py:151
+#: src/diffuse/dialogs.py:156
 msgid "Find..."
 msgstr "หา..."
 
-#: src/diffuse/dialogs.py:159
+#: src/diffuse/dialogs.py:164
 msgid "Search For: "
 msgstr "ค้นหา: "
 
-#: src/diffuse/dialogs.py:184
+#: src/diffuse/dialogs.py:189
 msgid "Match Case"
 msgstr "ตัวพิมพ์ใหญ่-เล็กตรงกัน"
 
-#: src/diffuse/dialogs.py:189
+#: src/diffuse/dialogs.py:194
 msgid "Search Backwards"
 msgstr "ค้นถอยหลัง"
 
@@ -142,7 +142,7 @@ msgstr ""
 msgid "Error encoding to %s."
 msgstr "เกิดข้อผิดพลาดขณะลงรหัส %s"
 
-#: src/diffuse/main.py:592 src/diffuse/preferences.py:299
+#: src/diffuse/main.py:592 src/diffuse/preferences.py:300
 #, python-format
 msgid "Error writing %s."
 msgstr "เกิดข้อผิดพลาดขณะเขียน %s"
@@ -500,19 +500,19 @@ msgstr "เรียกคืน"
 msgid "Redo"
 msgstr "ทำซ้ำ"
 
-#: src/diffuse/main.py:928 src/diffuse/widgets.py:1849
+#: src/diffuse/main.py:928 src/diffuse/widgets.py:1861
 msgid "Cut"
 msgstr "ตัด"
 
-#: src/diffuse/main.py:929 src/diffuse/widgets.py:1850
+#: src/diffuse/main.py:929 src/diffuse/widgets.py:1862
 msgid "Copy"
 msgstr "คัดลอก"
 
-#: src/diffuse/main.py:930 src/diffuse/widgets.py:1851
+#: src/diffuse/main.py:930 src/diffuse/widgets.py:1863
 msgid "Paste"
 msgstr "แปะ"
 
-#: src/diffuse/main.py:931 src/diffuse/widgets.py:1854
+#: src/diffuse/main.py:931 src/diffuse/widgets.py:1866
 msgid "Clear Edits"
 msgstr "ล้างการแก้ไข"
 
@@ -837,83 +837,83 @@ msgstr "การควบคุมรุ่น"
 msgid "Preferences"
 msgstr "ปรับแต่ง"
 
-#: src/diffuse/resources.py:238 src/diffuse/resources.py:242
-#: src/diffuse/resources.py:245
+#: src/diffuse/resources.py:242 src/diffuse/resources.py:246
+#: src/diffuse/resources.py:249
 #, python-brace-format
 msgid "The key binding \"{key}\" is invalid"
 msgstr ""
 
-#: src/diffuse/resources.py:372
+#: src/diffuse/resources.py:376
 msgid "Imports must have one argument"
 msgstr ""
 
-#: src/diffuse/resources.py:388
+#: src/diffuse/resources.py:392
 msgid "Key bindings must have three arguments"
 msgstr ""
 
-#: src/diffuse/resources.py:394
+#: src/diffuse/resources.py:398
 msgid "Colors must have four arguments"
 msgstr ""
 
-#: src/diffuse/resources.py:400
+#: src/diffuse/resources.py:404
 msgid "Floats must have two arguments"
 msgstr ""
 
-#: src/diffuse/resources.py:406
+#: src/diffuse/resources.py:410
 msgid "Options must have two arguments"
 msgstr ""
 
-#: src/diffuse/resources.py:409
+#: src/diffuse/resources.py:413
 #, python-brace-format
 msgid "Option \"{option}\" is unknown"
 msgstr ""
 
-#: src/diffuse/resources.py:416
+#: src/diffuse/resources.py:420
 msgid "Strings must have two arguments"
 msgstr ""
 
-#: src/diffuse/resources.py:427
+#: src/diffuse/resources.py:431
 msgid "Syntaxes must have two or three arguments"
 msgstr ""
 
-#: src/diffuse/resources.py:455
+#: src/diffuse/resources.py:459
 msgid "Syntax patterns must have at least four arguments"
 msgstr ""
 
-#: src/diffuse/resources.py:461 src/diffuse/resources.py:505
+#: src/diffuse/resources.py:465 src/diffuse/resources.py:509
 #, python-brace-format
 msgid "Value \"{value}\" is unknown"
 msgstr ""
 
-#: src/diffuse/resources.py:472
+#: src/diffuse/resources.py:476
 msgid "Syntax files must have one or two arguments"
 msgstr ""
 
-#: src/diffuse/resources.py:490
+#: src/diffuse/resources.py:494
 msgid "Syntax magics must have at least one argument"
 msgstr ""
 
-#: src/diffuse/resources.py:509
+#: src/diffuse/resources.py:513
 #, python-brace-format
 msgid "Keyword \"{keyword}\" is unknown"
 msgstr ""
 
-#: src/diffuse/resources.py:511
+#: src/diffuse/resources.py:515
 #, fuzzy, python-brace-format
 msgid "Syntax error at line {line} of {file}"
 msgstr "เกิดข้อผิดพลาดขณะประมวลผลบรรทัดที่ {line} ของ {file}"
 
-#: src/diffuse/resources.py:517
+#: src/diffuse/resources.py:521
 #, fuzzy, python-brace-format
 msgid "Value error at line {line} of {file}"
 msgstr "เกิดข้อผิดพลาดขณะประมวลผลบรรทัดที่ {line} ของ {file}"
 
-#: src/diffuse/resources.py:523
+#: src/diffuse/resources.py:527
 #, fuzzy, python-brace-format
 msgid "Regex error at line {line} of {file}."
 msgstr "เกิดข้อผิดพลาดขณะประมวลผลบรรทัดที่ {line} ของ {file}"
 
-#: src/diffuse/resources.py:526
+#: src/diffuse/resources.py:530
 #, fuzzy, python-brace-format
 msgid "Unhandled error at line {line} of {file}."
 msgstr "เกิดข้อผิดพลาดขณะประมวลผลบรรทัดที่ {line} ของ {file}"
@@ -932,58 +932,25 @@ msgstr "เกิดข้อผิดพลาดขณะแจงฉบับ
 msgid "Error parsing %s."
 msgstr "เกิดข้อผิดพลาดขณะแจง %s"
 
-#: src/diffuse/widgets.py:1845
+#: src/diffuse/widgets.py:1857
 msgid "Align with Selection"
 msgstr "เรียงตรงกับบรรทัดที่เลือก"
 
-#: src/diffuse/widgets.py:1846
+#: src/diffuse/widgets.py:1858
 msgid "Isolate"
 msgstr "แยก"
 
-#: src/diffuse/widgets.py:1847
+#: src/diffuse/widgets.py:1859
 msgid "Merge Selection"
 msgstr "ผสานบรรทัดที่เลือก"
 
-#: src/diffuse/widgets.py:1853
+#: src/diffuse/widgets.py:1865
 msgid "Select All"
 msgstr "เลือกทั้งหมด"
 
-#: src/diffuse/widgets.py:1856
+#: src/diffuse/widgets.py:1868
 msgid "Swap with Selected Pane"
 msgstr "สลับกับช่องที่เลือก"
-
-#, fuzzy
-#~ msgid ""
-#~ "This program is free software; you can redistribute it and/or modify\n"
-#~ "it under the terms of the GNU General Public License as published by\n"
-#~ "the Free Software Foundation; either version 2 of the License, or\n"
-#~ "(at your option) any later version.\n"
-#~ "\n"
-#~ "This program is distributed in the hope that it will be useful,\n"
-#~ "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-#~ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
-#~ "GNU General Public License for more details.\n"
-#~ "\n"
-#~ "You should have received a copy of the GNU General Public License along\n"
-#~ "with this program; if not, write to the Free Software Foundation, Inc.,\n"
-#~ "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA."
-#~ msgstr ""
-#~ "โปรแกรมนี้เป็นซอฟต์แวร์เสรี คุณสามารถแจกจ่ายต่อ และ/หรือ แก้ไขโปรแกรมได้ ภายใต้เงื่อนไขของ "
-#~ "GNU General Public License ที่เผยแพร่โดยมูลนิธิซอฟต์แวร์เสรี ไม่ว่าจะเป็นสัญญาอนุญาตรุ่นที่ 2 "
-#~ "หรือรุ่นถัดมา (ตามแต่คุณจะเลือก)\n"
-#~ "\n"
-#~ "โปรแกรมนี้ เผยแพร่ด้วยความหวังว่าโปรแกรมจะมีประโยชน์ แต่ *ไม่มีการรับประกันใดๆ* "
-#~ "ไม่มีแม้การรับประกัน *อรรถประโยชน์เชิงพาณิชย์* หรือ "
-#~ "*ความเหมาะสมสำหรับวัตถุประสงค์เฉพาะกิจใดๆ* กรุณาอ่าน GNU General Public License "
-#~ "เพื่อดูรายละเอียดเพิ่มเติม\n"
-#~ "\n"
-#~ "คุณควรจะได้รับสำเนาของ GNU General Public License มาพร้อมกับโปรแกรมนี้  "
-#~ "และคุณยังอาจรับสำเนาของ GNU General Public License จาก Free Software Foundation "
-#~ "โดยเข้าเยี่ยมชมเว็บไซต์ของมูลนิธิ (http://www.fsf.org/) หรือโดยการเขียนไปที่ Free Software "
-#~ "Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA\n"
-
-#~ msgid "Diffuse Merge Tool"
-#~ msgstr "Diffuse - เครื่องมือผสานแฟ้ม"
 
 #, python-format
 #~ msgid "Column %d"

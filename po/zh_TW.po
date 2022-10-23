@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: diffuse 0.4.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-04 12:14-0400\n"
+"POT-Creation-Date: 2022-10-23 19:48-0400\n"
 "PO-Revision-Date: 2020-06-29 14:49-0400\n"
 "Last-Translator: Wei-Lun Chao <bluebat@member.fsf.org>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -54,27 +54,27 @@ msgstr ""
 "紀明村 <tw.chi.ming@gmail.com>\n"
 "趙惟倫 <bluebat@member.fsf.org>"
 
-#: src/diffuse/dialogs.py:83
+#: src/diffuse/dialogs.py:82
 msgid "Encoding: "
 msgstr "編碼："
 
-#: src/diffuse/dialogs.py:95
+#: src/diffuse/dialogs.py:94
 msgid "Revision: "
 msgstr "修訂："
 
-#: src/diffuse/dialogs.py:151
+#: src/diffuse/dialogs.py:156
 msgid "Find..."
 msgstr "搜尋…"
 
-#: src/diffuse/dialogs.py:159
+#: src/diffuse/dialogs.py:164
 msgid "Search For: "
 msgstr "搜尋："
 
-#: src/diffuse/dialogs.py:184
+#: src/diffuse/dialogs.py:189
 msgid "Match Case"
 msgstr "符合大小寫"
 
-#: src/diffuse/dialogs.py:189
+#: src/diffuse/dialogs.py:194
 msgid "Search Backwards"
 msgstr "反向搜尋"
 
@@ -144,7 +144,7 @@ msgstr ""
 msgid "Error encoding to %s."
 msgstr "無法編碼為 %s。"
 
-#: src/diffuse/main.py:592 src/diffuse/preferences.py:299
+#: src/diffuse/main.py:592 src/diffuse/preferences.py:300
 #, python-format
 msgid "Error writing %s."
 msgstr "無法寫入 %s"
@@ -502,19 +502,19 @@ msgstr "復原"
 msgid "Redo"
 msgstr "重做"
 
-#: src/diffuse/main.py:928 src/diffuse/widgets.py:1849
+#: src/diffuse/main.py:928 src/diffuse/widgets.py:1861
 msgid "Cut"
 msgstr "剪下"
 
-#: src/diffuse/main.py:929 src/diffuse/widgets.py:1850
+#: src/diffuse/main.py:929 src/diffuse/widgets.py:1862
 msgid "Copy"
 msgstr "複製"
 
-#: src/diffuse/main.py:930 src/diffuse/widgets.py:1851
+#: src/diffuse/main.py:930 src/diffuse/widgets.py:1863
 msgid "Paste"
 msgstr "貼上"
 
-#: src/diffuse/main.py:931 src/diffuse/widgets.py:1854
+#: src/diffuse/main.py:931 src/diffuse/widgets.py:1866
 msgid "Clear Edits"
 msgstr "取消編輯"
 
@@ -839,83 +839,83 @@ msgstr "版本控制"
 msgid "Preferences"
 msgstr "選項"
 
-#: src/diffuse/resources.py:238 src/diffuse/resources.py:242
-#: src/diffuse/resources.py:245
+#: src/diffuse/resources.py:242 src/diffuse/resources.py:246
+#: src/diffuse/resources.py:249
 #, python-brace-format
 msgid "The key binding \"{key}\" is invalid"
 msgstr ""
 
-#: src/diffuse/resources.py:372
+#: src/diffuse/resources.py:376
 msgid "Imports must have one argument"
 msgstr ""
 
-#: src/diffuse/resources.py:388
+#: src/diffuse/resources.py:392
 msgid "Key bindings must have three arguments"
 msgstr ""
 
-#: src/diffuse/resources.py:394
+#: src/diffuse/resources.py:398
 msgid "Colors must have four arguments"
 msgstr ""
 
-#: src/diffuse/resources.py:400
+#: src/diffuse/resources.py:404
 msgid "Floats must have two arguments"
 msgstr ""
 
-#: src/diffuse/resources.py:406
+#: src/diffuse/resources.py:410
 msgid "Options must have two arguments"
 msgstr ""
 
-#: src/diffuse/resources.py:409
+#: src/diffuse/resources.py:413
 #, python-brace-format
 msgid "Option \"{option}\" is unknown"
 msgstr ""
 
-#: src/diffuse/resources.py:416
+#: src/diffuse/resources.py:420
 msgid "Strings must have two arguments"
 msgstr ""
 
-#: src/diffuse/resources.py:427
+#: src/diffuse/resources.py:431
 msgid "Syntaxes must have two or three arguments"
 msgstr ""
 
-#: src/diffuse/resources.py:455
+#: src/diffuse/resources.py:459
 msgid "Syntax patterns must have at least four arguments"
 msgstr ""
 
-#: src/diffuse/resources.py:461 src/diffuse/resources.py:505
+#: src/diffuse/resources.py:465 src/diffuse/resources.py:509
 #, python-brace-format
 msgid "Value \"{value}\" is unknown"
 msgstr ""
 
-#: src/diffuse/resources.py:472
+#: src/diffuse/resources.py:476
 msgid "Syntax files must have one or two arguments"
 msgstr ""
 
-#: src/diffuse/resources.py:490
+#: src/diffuse/resources.py:494
 msgid "Syntax magics must have at least one argument"
 msgstr ""
 
-#: src/diffuse/resources.py:509
+#: src/diffuse/resources.py:513
 #, python-brace-format
 msgid "Keyword \"{keyword}\" is unknown"
 msgstr ""
 
-#: src/diffuse/resources.py:511
+#: src/diffuse/resources.py:515
 #, fuzzy, python-brace-format
 msgid "Syntax error at line {line} of {file}"
 msgstr "處理到檔案 {file} 的第 {line} 列時出錯。"
 
-#: src/diffuse/resources.py:517
+#: src/diffuse/resources.py:521
 #, fuzzy, python-brace-format
 msgid "Value error at line {line} of {file}"
 msgstr "處理到檔案 {file} 的第 {line} 列時出錯。"
 
-#: src/diffuse/resources.py:523
+#: src/diffuse/resources.py:527
 #, fuzzy, python-brace-format
 msgid "Regex error at line {line} of {file}."
 msgstr "處理到檔案 {file} 的第 {line} 列時出錯。"
 
-#: src/diffuse/resources.py:526
+#: src/diffuse/resources.py:530
 #, fuzzy, python-brace-format
 msgid "Unhandled error at line {line} of {file}."
 msgstr "處理到檔案 {file} 的第 {line} 列時出錯。"
@@ -934,56 +934,25 @@ msgstr "無法解析修訂版本 %s。"
 msgid "Error parsing %s."
 msgstr "無法解析 %s。"
 
-#: src/diffuse/widgets.py:1845
+#: src/diffuse/widgets.py:1857
 msgid "Align with Selection"
 msgstr "對齊選擇區域"
 
-#: src/diffuse/widgets.py:1846
+#: src/diffuse/widgets.py:1858
 msgid "Isolate"
 msgstr "分離"
 
-#: src/diffuse/widgets.py:1847
+#: src/diffuse/widgets.py:1859
 msgid "Merge Selection"
 msgstr "合併選擇區域"
 
-#: src/diffuse/widgets.py:1853
+#: src/diffuse/widgets.py:1865
 msgid "Select All"
 msgstr "全選"
 
-#: src/diffuse/widgets.py:1856
+#: src/diffuse/widgets.py:1868
 msgid "Swap with Selected Pane"
 msgstr "交換選中的窗格"
-
-#, fuzzy
-#~ msgid ""
-#~ "This program is free software; you can redistribute it and/or modify\n"
-#~ "it under the terms of the GNU General Public License as published by\n"
-#~ "the Free Software Foundation; either version 2 of the License, or\n"
-#~ "(at your option) any later version.\n"
-#~ "\n"
-#~ "This program is distributed in the hope that it will be useful,\n"
-#~ "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-#~ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
-#~ "GNU General Public License for more details.\n"
-#~ "\n"
-#~ "You should have received a copy of the GNU General Public License along\n"
-#~ "with this program; if not, write to the Free Software Foundation, Inc.,\n"
-#~ "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA."
-#~ msgstr ""
-#~ "這個程式是自由軟體；您可以遵循由自由軟體基金會所發布的 GNU 通用公共授權條款來再"
-#~ "次散布它與/或修改它；無論您依據的是本授權的第二版、或 (您自行選擇的) 任何後續版"
-#~ "本。\n"
-#~ "\n"
-#~ "發行本程式是希望它能夠有用，但是沒有任何擔保；亦無對於某一特定目的之適售性與適"
-#~ "用性的暗示性擔保。 請參看 GNU 通用公共授權以獲得更多細節。\n"
-#~ "\n"
-#~ "您應該已經收到隨附於這個程式的 GNU 通用公共授權複本。 您也可以藉由造訪它們的網"
-#~ "站 (http://www.fsf.org/)，從自由軟體基金會得到 GNU 通用公共授權的複本，或是寫信"
-#~ "給 Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  "
-#~ "02110-1301  USA\n"
-
-#~ msgid "Diffuse Merge Tool"
-#~ msgstr "Diffuse 比較合併工具"
 
 #, python-format
 #~ msgid "Column %d"

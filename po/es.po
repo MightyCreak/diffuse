@@ -4,12 +4,12 @@
 # Henri Menke <henrimenke4@aim.com>, 2010.
 # David Marín Carreño <davefx@gmail.com>, 2020.
 # Óscar Fernández Díaz <oscfdezdz@tuta.io>, 2022.
-
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: diffuse-svn\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-04 12:14-0400\n"
+"POT-Creation-Date: 2022-10-23 19:48-0400\n"
 "PO-Revision-Date: 2022-06-13 23:21+0200\n"
 "Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
 "Language-Team: \n"
@@ -59,27 +59,27 @@ msgstr ""
 "David Marín Carreño <davefx@gmail.com>\n"
 "Óscar Fernández Díaz <oscfdezdz@tuta.io>"
 
-#: src/diffuse/dialogs.py:83
+#: src/diffuse/dialogs.py:82
 msgid "Encoding: "
 msgstr "Codificación: "
 
-#: src/diffuse/dialogs.py:95
+#: src/diffuse/dialogs.py:94
 msgid "Revision: "
 msgstr "Revision: "
 
-#: src/diffuse/dialogs.py:151
+#: src/diffuse/dialogs.py:156
 msgid "Find..."
 msgstr "Buscar..."
 
-#: src/diffuse/dialogs.py:159
+#: src/diffuse/dialogs.py:164
 msgid "Search For: "
 msgstr "Buscar: "
 
-#: src/diffuse/dialogs.py:184
+#: src/diffuse/dialogs.py:189
 msgid "Match Case"
 msgstr "Coincidencia de capitalización"
 
-#: src/diffuse/dialogs.py:189
+#: src/diffuse/dialogs.py:194
 msgid "Search Backwards"
 msgstr "Buscar hacia atrás"
 
@@ -151,7 +151,7 @@ msgstr ""
 msgid "Error encoding to %s."
 msgstr "Error codificando a %s."
 
-#: src/diffuse/main.py:592 src/diffuse/preferences.py:299
+#: src/diffuse/main.py:592 src/diffuse/preferences.py:300
 #, python-format
 msgid "Error writing %s."
 msgstr "Error guardando %s."
@@ -512,19 +512,19 @@ msgstr "Deshacer"
 msgid "Redo"
 msgstr "Rehacer"
 
-#: src/diffuse/main.py:928 src/diffuse/widgets.py:1849
+#: src/diffuse/main.py:928 src/diffuse/widgets.py:1861
 msgid "Cut"
 msgstr "Cortar"
 
-#: src/diffuse/main.py:929 src/diffuse/widgets.py:1850
+#: src/diffuse/main.py:929 src/diffuse/widgets.py:1862
 msgid "Copy"
 msgstr "Copiar"
 
-#: src/diffuse/main.py:930 src/diffuse/widgets.py:1851
+#: src/diffuse/main.py:930 src/diffuse/widgets.py:1863
 msgid "Paste"
 msgstr "Pegar"
 
-#: src/diffuse/main.py:931 src/diffuse/widgets.py:1854
+#: src/diffuse/main.py:931 src/diffuse/widgets.py:1866
 msgid "Clear Edits"
 msgstr "Deshacer todo"
 
@@ -855,83 +855,83 @@ msgstr "Control de versión"
 msgid "Preferences"
 msgstr "Preferencias"
 
-#: src/diffuse/resources.py:238 src/diffuse/resources.py:242
-#: src/diffuse/resources.py:245
+#: src/diffuse/resources.py:242 src/diffuse/resources.py:246
+#: src/diffuse/resources.py:249
 #, python-brace-format
 msgid "The key binding \"{key}\" is invalid"
 msgstr "El enlace de la clave \"{key}\" no es válido"
 
-#: src/diffuse/resources.py:372
+#: src/diffuse/resources.py:376
 msgid "Imports must have one argument"
 msgstr "Las importaciones deben tener un argumento"
 
-#: src/diffuse/resources.py:388
+#: src/diffuse/resources.py:392
 msgid "Key bindings must have three arguments"
 msgstr "Los atajos del teclado deben tener tres argumentos"
 
-#: src/diffuse/resources.py:394
+#: src/diffuse/resources.py:398
 msgid "Colors must have four arguments"
 msgstr "Los colores deben tener cuatro argumentos"
 
-#: src/diffuse/resources.py:400
+#: src/diffuse/resources.py:404
 msgid "Floats must have two arguments"
 msgstr "Los flotantes deben tener dos argumentos"
 
-#: src/diffuse/resources.py:406
+#: src/diffuse/resources.py:410
 msgid "Options must have two arguments"
 msgstr "Las opciones deben tener dos argumentos"
 
-#: src/diffuse/resources.py:409
+#: src/diffuse/resources.py:413
 #, python-brace-format
 msgid "Option \"{option}\" is unknown"
 msgstr "La opción \"{option}\" es desconocida"
 
-#: src/diffuse/resources.py:416
+#: src/diffuse/resources.py:420
 msgid "Strings must have two arguments"
 msgstr "Las cadenas deben tener dos argumentos"
 
-#: src/diffuse/resources.py:427
+#: src/diffuse/resources.py:431
 msgid "Syntaxes must have two or three arguments"
 msgstr "Las sintaxis deben tener dos o tres argumentos"
 
-#: src/diffuse/resources.py:455
+#: src/diffuse/resources.py:459
 msgid "Syntax patterns must have at least four arguments"
 msgstr "Los patrones sintácticos deben tener al menos cuatro argumentos"
 
-#: src/diffuse/resources.py:461 src/diffuse/resources.py:505
+#: src/diffuse/resources.py:465 src/diffuse/resources.py:509
 #, python-brace-format
 msgid "Value \"{value}\" is unknown"
 msgstr "El valor \"{value}\" es desconocido"
 
-#: src/diffuse/resources.py:472
+#: src/diffuse/resources.py:476
 msgid "Syntax files must have one or two arguments"
 msgstr "Los archivos de sintaxis deben tener uno o dos argumentos"
 
-#: src/diffuse/resources.py:490
+#: src/diffuse/resources.py:494
 msgid "Syntax magics must have at least one argument"
 msgstr "Las magias sintácticas deben tener al menos un argumento"
 
-#: src/diffuse/resources.py:509
+#: src/diffuse/resources.py:513
 #, python-brace-format
 msgid "Keyword \"{keyword}\" is unknown"
 msgstr "La palabra clave \"{keyword}\" es desconocida"
 
-#: src/diffuse/resources.py:511
+#: src/diffuse/resources.py:515
 #, python-brace-format
 msgid "Syntax error at line {line} of {file}"
 msgstr "Error de sintaxis en la línea {line} de {file}"
 
-#: src/diffuse/resources.py:517
+#: src/diffuse/resources.py:521
 #, python-brace-format
 msgid "Value error at line {line} of {file}"
 msgstr "Error de valor en la línea {line} de {file}"
 
-#: src/diffuse/resources.py:523
+#: src/diffuse/resources.py:527
 #, python-brace-format
 msgid "Regex error at line {line} of {file}."
 msgstr "Error regex en la línea {line} de {file}."
 
-#: src/diffuse/resources.py:526
+#: src/diffuse/resources.py:530
 #, python-brace-format
 msgid "Unhandled error at line {line} of {file}."
 msgstr "Error no controlado en la línea {line} de {file}."
@@ -950,22 +950,22 @@ msgstr "Error analizando revisión %s."
 msgid "Error parsing %s."
 msgstr "Error analizando %s."
 
-#: src/diffuse/widgets.py:1845
+#: src/diffuse/widgets.py:1857
 msgid "Align with Selection"
 msgstr "Alinear con la selección"
 
-#: src/diffuse/widgets.py:1846
+#: src/diffuse/widgets.py:1858
 msgid "Isolate"
 msgstr "Aislar"
 
-#: src/diffuse/widgets.py:1847
+#: src/diffuse/widgets.py:1859
 msgid "Merge Selection"
 msgstr "Mezclar selección"
 
-#: src/diffuse/widgets.py:1853
+#: src/diffuse/widgets.py:1865
 msgid "Select All"
 msgstr "Seleccionar todo"
 
-#: src/diffuse/widgets.py:1856
+#: src/diffuse/widgets.py:1868
 msgid "Swap with Selected Pane"
 msgstr "Reemplazar con panel seleccionado"
