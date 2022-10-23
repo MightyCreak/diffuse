@@ -26,7 +26,8 @@ few manual steps.
    - Create a new `<release>` tag under `<releases>`, fill the `version` and
      `date` attributes
    - Create a new `<description>` tag under the new `<release>` tag
-   - Add one paragraph to sum the release in one sentence (e.g. highlights, ...)
+   - Add a paragraph (`<p>`) to sum the release in one sentence (e.g.
+     highlights, ...)
    - Paste the changes from the changelog and adapt it to HTML
 6. Create new branch and PR
 
