@@ -70,6 +70,7 @@ Use `update-translations.py` to validate one or more PO files.
 Here is an example with `ja.po` and `ko.po`:
 
 Command-line:
+
 ```sh
 ./update-translations.py --check-only ja.po ko.po
 ```
@@ -99,8 +100,10 @@ POSIX platforms. The conversion tools insert some English text that gets
 localized using search and replace. Manually add new search and replace rules
 to these files:
 
-    ../windows-installer/translations.txt
-    ../utils/translations.txt
+```text
+../windows-installer/translations.txt
+../utils/translations.txt
+```
 
 The format of each line is: \<language id\>:\<English text\>:\<localised text\>
 

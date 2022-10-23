@@ -22,3 +22,12 @@ The Diffuse package statuses for every distributions can been seen on
 
 Huge thanks to [@bongochong](https://github.com/bongochong) for maintaining the
 Diffuse package on Fedora.
+
+## Integrate with Git
+
+Diffuse is compatible with `git difftool` command-line. To use Diffuse as Git
+diff tool, run:
+
+```sh
+git config --global diff.tool diffuse
+```

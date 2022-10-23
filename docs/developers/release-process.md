@@ -19,16 +19,16 @@ few manual steps.
    - data/usr/share/gnome/help/diffuse/*/diffuse.xml
    - data/usr/share/omf/diffuse/diffuse-*.omf
    - utils/book2manual.xsl
-3. Update CHANGELOG.md
+4. Update CHANGELOG.md
    - Add new line under `## Unreleased` following this syntax: `## x.y.z - YYYY-MM-DD`
    - Copy the content of the changes for this release
-4. Update AppData release notes in data/io.github.mightycreak.Diffuse.appdata.xml.in:
+5. Update AppData release notes in data/io.github.mightycreak.Diffuse.appdata.xml.in:
    - Create a new `<release>` tag under `<releases>`, fill the `version` and
      `date` attributes
    - Create a new `<description>` tag under the new `<release>` tag
    - Add one paragraph to sum the release in one sentence (e.g. highlights, ...)
    - Paste the changes from the changelog and adapt it to HTML
-5. Create new branch and PR
+6. Create new branch and PR
 
 ## Create new release on GitHub
 
