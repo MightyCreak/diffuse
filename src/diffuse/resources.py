@@ -26,6 +26,7 @@
 
 import glob
 import os
+import platform
 import re
 import shlex
 
@@ -43,36 +44,37 @@ from gi.repository import Gdk  # type: ignore # noqa: E402
 class Resources:
     def __init__(self):
         # default keybindings
+        defaultModKey = 'Cmd+' if platform.system() == 'Darwin' else 'Ctrl+'
         self.keybindings = {}
         self.keybindings_lookup = {}
-        self.setKeyBinding('menu', 'open_file', 'Ctrl+o')
-        self.setKeyBinding('menu', 'open_file_in_new_tab', 'Ctrl+t')
+        self.setKeyBinding('menu', 'open_file', defaultModKey + 'o')
+        self.setKeyBinding('menu', 'open_file_in_new_tab', defaultModKey + 't')
         self.setKeyBinding('menu', 'open_modified_files', 'Shift+Ctrl+O')
         self.setKeyBinding('menu', 'open_commit', 'Shift+Ctrl+T')
         self.setKeyBinding('menu', 'reload_file', 'Shift+Ctrl+R')
-        self.setKeyBinding('menu', 'save_file', 'Ctrl+s')
-        self.setKeyBinding('menu', 'save_file_as', 'Shift+Ctrl+A')
-        self.setKeyBinding('menu', 'save_all', 'Shift+Ctrl+S')
+        self.setKeyBinding('menu', 'save_file', defaultModKey + 's')
+        self.setKeyBinding('menu', 'save_file_as', defaultModKey + 'Shift+A')
+        self.setKeyBinding('menu', 'save_all', defaultModKey + 'Shift+S')
         self.setKeyBinding('menu', 'new_2_way_file_merge', 'Ctrl+2')
         self.setKeyBinding('menu', 'new_3_way_file_merge', 'Ctrl+3')
         self.setKeyBinding('menu', 'new_n_way_file_merge', 'Ctrl+4')
-        self.setKeyBinding('menu', 'close_tab', 'Ctrl+w')
-        self.setKeyBinding('menu', 'undo_close_tab', 'Shift+Ctrl+W')
-        self.setKeyBinding('menu', 'quit', 'Ctrl+q')
-        self.setKeyBinding('menu', 'undo', 'Ctrl+z')
-        self.setKeyBinding('menu', 'redo', 'Shift+Ctrl+Z')
-        self.setKeyBinding('menu', 'cut', 'Ctrl+x')
-        self.setKeyBinding('menu', 'copy', 'Ctrl+c')
-        self.setKeyBinding('menu', 'paste', 'Ctrl+v')
-        self.setKeyBinding('menu', 'select_all', 'Ctrl+a')
-        self.setKeyBinding('menu', 'clear_edits', 'Ctrl+r')
-        self.setKeyBinding('menu', 'dismiss_all_edits', 'Ctrl+d')
-        self.setKeyBinding('menu', 'find', 'Ctrl+f')
-        self.setKeyBinding('menu', 'find_next', 'Ctrl+g')
-        self.setKeyBinding('menu', 'find_previous', 'Shift+Ctrl+G')
-        self.setKeyBinding('menu', 'go_to_line', 'Shift+Ctrl+L')
-        self.setKeyBinding('menu', 'realign_all', 'Ctrl+l')
-        self.setKeyBinding('menu', 'isolate', 'Ctrl+i')
+        self.setKeyBinding('menu', 'close_tab', defaultModKey + 'w')
+        self.setKeyBinding('menu', 'undo_close_tab', defaultModKey + 'Shift+W')
+        self.setKeyBinding('menu', 'quit', defaultModKey + 'q')
+        self.setKeyBinding('menu', 'undo', defaultModKey + 'z')
+        self.setKeyBinding('menu', 'redo', defaultModKey + 'Shift+Z')
+        self.setKeyBinding('menu', 'cut', defaultModKey + 'x')
+        self.setKeyBinding('menu', 'copy', defaultModKey + 'c')
+        self.setKeyBinding('menu', 'paste', defaultModKey + 'v')
+        self.setKeyBinding('menu', 'select_all', defaultModKey + 'a')
+        self.setKeyBinding('menu', 'clear_edits', defaultModKey + 'r')
+        self.setKeyBinding('menu', 'dismiss_all_edits', defaultModKey + 'd')
+        self.setKeyBinding('menu', 'find', defaultModKey + 'f')
+        self.setKeyBinding('menu', 'find_next', defaultModKey + 'g')
+        self.setKeyBinding('menu', 'find_previous', defaultModKey + 'Shift+G')
+        self.setKeyBinding('menu', 'go_to_line', defaultModKey + 'Shift+l')
+        self.setKeyBinding('menu', 'realign_all', defaultModKey + 'l')
+        self.setKeyBinding('menu', 'isolate', defaultModKey + 'i')
         self.setKeyBinding('menu', 'first_difference', 'Shift+Ctrl+Up')
         self.setKeyBinding('menu', 'previous_difference', 'Ctrl+Up')
         self.setKeyBinding('menu', 'next_difference', 'Ctrl+Down')
@@ -83,24 +85,24 @@ class Resources:
         self.setKeyBinding('menu', 'last_tab', 'Shift+Ctrl+Page_Down')
         self.setKeyBinding('menu', 'shift_pane_right', 'Shift+Ctrl+parenright')
         self.setKeyBinding('menu', 'shift_pane_left', 'Shift+Ctrl+parenleft')
-        self.setKeyBinding('menu', 'convert_to_upper_case', 'Ctrl+u')
-        self.setKeyBinding('menu', 'convert_to_lower_case', 'Shift+Ctrl+U')
-        self.setKeyBinding('menu', 'sort_lines_in_ascending_order', 'Ctrl+y')
-        self.setKeyBinding('menu', 'sort_lines_in_descending_order', 'Shift+Ctrl+Y')
-        self.setKeyBinding('menu', 'remove_trailing_white_space', 'Ctrl+k')
-        self.setKeyBinding('menu', 'convert_tabs_to_spaces', 'Ctrl+b')
+        self.setKeyBinding('menu', 'convert_to_upper_case', defaultModKey + 'u')
+        self.setKeyBinding('menu', 'convert_to_lower_case', defaultModKey + 'Shift+U')
+        self.setKeyBinding('menu', 'sort_lines_in_ascending_order', defaultModKey + 'y')
+        self.setKeyBinding('menu', 'sort_lines_in_descending_order', defaultModKey + 'Shift+Y')
+        self.setKeyBinding('menu', 'remove_trailing_white_space', defaultModKey + 'k')
+        self.setKeyBinding('menu', 'convert_tabs_to_spaces', defaultModKey + 'b')
         self.setKeyBinding('menu', 'convert_leading_spaces_to_tabs', 'Shift+Ctrl+B')
-        self.setKeyBinding('menu', 'increase_indenting', 'Shift+Ctrl+greater')
-        self.setKeyBinding('menu', 'decrease_indenting', 'Shift+Ctrl+less')
-        self.setKeyBinding('menu', 'convert_to_dos', 'Shift+Ctrl+E')
-        self.setKeyBinding('menu', 'convert_to_mac', 'Shift+Ctrl+C')
-        self.setKeyBinding('menu', 'convert_to_unix', 'Ctrl+e')
-        self.setKeyBinding('menu', 'copy_selection_right', 'Shift+Ctrl+Right')
-        self.setKeyBinding('menu', 'copy_selection_left', 'Shift+Ctrl+Left')
-        self.setKeyBinding('menu', 'copy_left_into_selection', 'Ctrl+Right')
-        self.setKeyBinding('menu', 'copy_right_into_selection', 'Ctrl+Left')
-        self.setKeyBinding('menu', 'merge_from_left_then_right', 'Ctrl+m')
-        self.setKeyBinding('menu', 'merge_from_right_then_left', 'Shift+Ctrl+M')
+        self.setKeyBinding('menu', 'increase_indenting', defaultModKey + 'Shift+greater')
+        self.setKeyBinding('menu', 'decrease_indenting', defaultModKey + 'Shift+less')
+        self.setKeyBinding('menu', 'convert_to_dos', defaultModKey + 'Shift+E')
+        self.setKeyBinding('menu', 'convert_to_mac', defaultModKey + 'Shift+C')
+        self.setKeyBinding('menu', 'convert_to_unix', defaultModKey + 'e')
+        self.setKeyBinding('menu', 'copy_selection_right', defaultModKey + 'Shift+Right')
+        self.setKeyBinding('menu', 'copy_selection_left', defaultModKey + 'Shift+Left')
+        self.setKeyBinding('menu', 'copy_left_into_selection', defaultModKey + 'Right')
+        self.setKeyBinding('menu', 'copy_right_into_selection', defaultModKey + 'Left')
+        self.setKeyBinding('menu', 'merge_from_left_then_right', defaultModKey + 'm')
+        self.setKeyBinding('menu', 'merge_from_right_then_left', defaultModKey + 'Shift+M')
         self.setKeyBinding('menu', 'help_contents', 'F1')
         self.setKeyBinding('line_mode', 'enter_align_mode', 'space')
         self.setKeyBinding('line_mode', 'enter_character_mode', 'Return')
@@ -126,13 +128,13 @@ class Resources:
         self.setKeyBinding('line_mode', 'right', 'l')
         self.setKeyBinding('line_mode', 'extend_right', 'Shift+Right')
         self.setKeyBinding('line_mode', 'page_up', 'Page_Up')
-        self.setKeyBinding('line_mode', 'page_up', 'Ctrl+u')
+        self.setKeyBinding('line_mode', 'page_up', defaultModKey + 'u')
         self.setKeyBinding('line_mode', 'extend_page_up', 'Shift+Page_Up')
-        self.setKeyBinding('line_mode', 'extend_page_up', 'Shift+Ctrl+U')
+        self.setKeyBinding('line_mode', 'extend_page_up', defaultModKey + 'Shift+U')
         self.setKeyBinding('line_mode', 'page_down', 'Page_Down')
-        self.setKeyBinding('line_mode', 'page_down', 'Ctrl+d')
+        self.setKeyBinding('line_mode', 'page_down', defaultModKey + 'd')
         self.setKeyBinding('line_mode', 'extend_page_down', 'Shift+Page_Down')
-        self.setKeyBinding('line_mode', 'extend_page_down', 'Shift+Ctrl+D')
+        self.setKeyBinding('line_mode', 'extend_page_down', defaultModKey + 'Shift+D')
         self.setKeyBinding('line_mode', 'delete_text', 'BackSpace')
         self.setKeyBinding('line_mode', 'delete_text', 'Delete')
         self.setKeyBinding('line_mode', 'delete_text', 'x')
@@ -165,9 +167,9 @@ class Resources:
         self.setKeyBinding('align_mode', 'right', 'Right')
         self.setKeyBinding('align_mode', 'right', 'l')
         self.setKeyBinding('align_mode', 'page_up', 'Page_Up')
-        self.setKeyBinding('align_mode', 'page_up', 'Ctrl+u')
+        self.setKeyBinding('align_mode', 'page_up', defaultModKey + 'u')
         self.setKeyBinding('align_mode', 'page_down', 'Page_Down')
-        self.setKeyBinding('align_mode', 'page_down', 'Ctrl+d')
+        self.setKeyBinding('align_mode', 'page_down', defaultModKey + 'd')
         self.setKeyBinding('character_mode', 'enter_line_mode', 'Escape')
 
         # default colours
@@ -232,6 +234,8 @@ class Resources:
                 modifiers |= Gdk.ModifierType.SHIFT_MASK
             elif token == 'Ctrl':
                 modifiers |= Gdk.ModifierType.CONTROL_MASK
+            elif token == 'Cmd':
+                modifiers |= Gdk.ModifierType.META_MASK
             elif token == 'Alt':
                 modifiers |= Gdk.ModifierType.MOD1_MASK
             elif len(token) == 0 or token[0] == '_':

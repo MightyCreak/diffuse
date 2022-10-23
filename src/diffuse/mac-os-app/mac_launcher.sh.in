@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Mac's `open` command resets working dir. This extra script only
+# does `cd` back to the dir from which `diffuse` was launched to
+# allow Python to pick up any relative paths given by `git difftool`.
+cd $1
+@BINDIR@/diffuse_impl ${@:2}

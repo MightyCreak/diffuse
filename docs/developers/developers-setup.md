@@ -8,13 +8,14 @@ Diffuse depends on these projects:
 * PyPi
 * Cairo and GObject Introspection development headers
 * Meson
-* Flatpak and Flatpak builder
+* Flatpak and Flatpak builder (Linux only)
 
-### Install the distribution dependencies
+## Install the dependencies
 
-It's a bit difficult to get the command lines for all the distributions and
-their releases, but it should be enough to find the packages on other
-distributions.
+### Install the system dependencies
+
+It's a bit difficult to get the command lines for all the systems, but these
+examples should be enough to find the packages on most systems.
 
 <details>
     <summary>Debian/Ubuntu</summary>
@@ -32,7 +33,19 @@ _Note: Tested on Debian 11 (Buster) and Ubuntu 20.04 (Focal)_
 sudo dnf install python-pip cairo-devel cairo-gobject-devel meson flatpak flatpak-builder
 ```
 
-_Note: Tested on Fedora 34_
+_Note: Tested on Fedora 36_
+</details>
+
+<details>
+    <summary>Mac OS</summary>
+
+On Mac, all dependencies can be installed using [Homebrew](https://docs.brew.sh/):
+
+```sh
+brew install meson python3 py3cairo pygobject3 gtk+3 librsvg
+```
+
+_Note: Tested on macOS 12.5 (Monterey)_
 </details>
 
 ### Install the project dependencies
@@ -49,16 +62,20 @@ For developer tools, run this one instead (it includes requirements.txt):
 pip install -r requirements.dev.txt
 ```
 
-## Setup on Linux
+## Setup
 
-### Build, test and install using Flatpak
+### Setup on Linux using Flatpak
 
-To install Diffuse locally:
+#### Build, test and install
+
+To build, test and install Diffuse locally:
 
 ```sh
 flatpak install runtime/org.gnome.Sdk/$(uname -p)/42
 flatpak-builder --user --install build-flatpak io.github.mightycreak.Diffuse.yml
 ```
+
+#### Run
 
 To run Diffuse through Flatpak:
 
@@ -66,17 +83,21 @@ To run Diffuse through Flatpak:
 flatpak run io.github.mightycreak.Diffuse
 ```
 
+#### Uninstall
+
 To uninstall Diffuse:
 
 ```sh
 flatpak remove io.github.mightycreak.Diffuse
 ```
 
-### Build, test and install using Meson
+### Setup on Linux using Meson
 
-Diffuse build system is meson.
+#### Build and test
 
-To compile and test Diffuse:
+Diffuse is using Meson as its build system.
+
+To build and test Diffuse:
 
 ```sh
 meson setup build
@@ -85,36 +106,81 @@ meson compile
 meson test
 ```
 
+#### Install on system and run
+
 To install Diffuse on your system (e.g. `/usr/local/`):
 
 ```sh
 meson install # requires admin privileges
+```
 
-# Run Diffuse
+To run Diffuse:
+
+```sh
 diffuse
 ```
 
-To install Diffuse on a custom directory (e.g. `~/bin/diffuse`):
+#### Install in a custom directory and run
+
+Meson allows to change the default installation directories, see
+[command-line documentation](https://mesonbuild.com/Commands.html#configure).
+
+To install Diffuse in a custom directory (e.g. `~/bin/diffuse`):
 
 ```sh
 meson install --destdir ~/bin/diffuse
-
-# Run Diffuse
-cd ~/bin/diffuse/usr/local/bin
-PYTHONPATH=$HOME/bin/diffuse/usr/local/share/diffuse ./diffuse
 ```
 
-To uninstall diffuse afterwards:
+To run Diffuse:
+
+```sh
+export PYTHONPATH=$HOME/bin/diffuse/usr/local/share/diffuse
+cd ~/bin/diffuse/usr/local/bin
+./diffuse
+```
+
+#### Uninstall
+
+To uninstall Diffuse afterwards:
 
 ```sh
 sudo ninja uninstall -C build
 sudo rm -v /usr/local/share/locale/*/LC_MESSAGES/diffuse.mo
 ```
 
-Meson allows to change the default installation directories, see
-[command-line documentation](https://mesonbuild.com/Commands.html#configure).
+### Setup on Mac OS
 
-## Setup on Windows
+#### Build and test
+
+Diffuse is using Meson as its build system.
+
+To build and test Diffuse:
+
+```sh
+meson setup build
+cd build
+meson compile
+meson test
+```
+
+#### Install on system and run
+
+To install Diffuse on your system (e.g. `/usr/local/`):
+
+```sh
+meson install # requires admin privileges
+```
+
+To run Diffuse:
+
+```sh
+diffuse
+```
+
+_Note: The `diffuse` command can be used to launch Diffuse as a native Mac app_
+_that is installed into `/Applications/Diffuse.app`._
+
+### Setup on Windows (deprecated)
 
 _Note:_ The Windows port is not maintained and would need some love.
 Contributions are very welcome! 😉

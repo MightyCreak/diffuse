@@ -10,4 +10,6 @@ subdir('data')
 subdir('src')
 subdir('po')
 
-meson.add_install_script('build-aux/meson/postinstall.py')
+if build_machine.system() == 'linux'
+  meson.add_install_script('build-aux/meson/postinstall.py')
+endif

@@ -1,34 +1,36 @@
 pkgdatadir = join_paths(get_option('prefix'), get_option('datadir'), meson.project_name())
 
-desktop_file = i18n.merge_file(
-  input: 'io.github.mightycreak.Diffuse.desktop.in',
-  output: 'io.github.mightycreak.Diffuse.desktop',
-  type: 'desktop',
-  po_dir: '../po',
-  install: true,
-  install_dir: join_paths(get_option('datadir'), 'applications')
-)
-
-desktop_utils = find_program('desktop-file-validate', required: false)
-if desktop_utils.found()
-  test('Validate desktop file', desktop_utils,
-    args: [desktop_file]
+if build_machine.system() == 'linux'
+  desktop_file = i18n.merge_file(
+    input: 'io.github.mightycreak.Diffuse.desktop.in',
+    output: 'io.github.mightycreak.Diffuse.desktop',
+    type: 'desktop',
+    po_dir: '../po',
+    install: true,
+    install_dir: join_paths(get_option('datadir'), 'applications')
   )
-endif
 
-appstream_file = i18n.merge_file(
-  input: 'io.github.mightycreak.Diffuse.appdata.xml.in',
-  output: 'io.github.mightycreak.Diffuse.appdata.xml',
-  po_dir: '../po',
-  install: true,
-  install_dir: join_paths(get_option('datadir'), 'appdata')
-)
+  desktop_utils = find_program('desktop-file-validate', required: false)
+  if desktop_utils.found()
+    test('Validate desktop file', desktop_utils,
+      args: [desktop_file]
+    )
+  endif
 
-appstream_util = find_program('appstream-util', required: false)
-if appstream_util.found()
-  test('Validate appstream file', appstream_util,
-    args: ['validate', appstream_file]
+  appstream_file = i18n.merge_file(
+    input: 'io.github.mightycreak.Diffuse.appdata.xml.in',
+    output: 'io.github.mightycreak.Diffuse.appdata.xml',
+    po_dir: '../po',
+    install: true,
+    install_dir: join_paths(get_option('datadir'), 'appdata')
   )
+
+  appstream_util = find_program('appstream-util', required: false)
+  if appstream_util.found()
+    test('Validate appstream file', appstream_util,
+      args: ['validate', appstream_file]
+    )
+  endif
 endif
 
 # Diffuse config file
