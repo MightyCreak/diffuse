@@ -318,7 +318,7 @@ class Resources:
 
     def getOptionAsBool(self, option: str) -> bool:
         '''Get the option value, casted as a boolean.'''
-        return util.strtobool(self.getOption(option))
+        return bool(util.strtobool(self.getOption(option)))
 
     # string resources
     def getString(self, symbol: str) -> str:
