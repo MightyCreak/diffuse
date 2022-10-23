@@ -25,10 +25,14 @@ jobs:
         pip install -r requirements.dev.txt
 
     - name: Flake8
-      run: flake8 src/ po/
+      run: |
+        flake8 --version
+        flake8 src/ po/
 
     - name: MyPy
-      run: mypy src/ po/
+      run: |
+        mypy --version
+        mypy src/ po/
 
   meson-build-test:
     runs-on: ubuntu-latest

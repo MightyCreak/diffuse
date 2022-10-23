@@ -3,6 +3,7 @@
 ## Requirements
 
 Diffuse depends on these projects:
+
 * Python 3.8+
 * PyPi
 * Cairo and GObject Introspection development headers
@@ -28,7 +29,7 @@ _Note: Tested on Debian 11 (Buster) and Ubuntu 20.04 (Focal)_
     <summary>Fedora</summary>
 
 ```sh
-sudo dnf install python-pip python3-cairo-devel python3-gobject-devel meson flatpak flatpak-builder
+sudo dnf install python-pip cairo-devel cairo-gobject-devel meson flatpak flatpak-builder
 ```
 
 _Note: Tested on Fedora 34_
