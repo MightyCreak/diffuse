@@ -18,6 +18,8 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - uses: actions/setup-python@v4
+      with:
+          python-version: '3.8'
 
     - name: Install dependencies
       run: |
@@ -39,6 +41,8 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - uses: actions/setup-python@v4
+      with:
+          python-version: '3.8'
 
     - name: Install dependencies
       run: |
@@ -63,6 +67,8 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - uses: actions/setup-python@v4
+      with:
+          python-version: '3.8'
     - name: Flatpak builder
       uses: flatpak/flatpak-github-actions/flatpak-builder@v4
       with:
