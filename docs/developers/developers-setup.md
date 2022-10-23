@@ -33,21 +33,19 @@ _Note: Tested on Debian 11 (Buster) and Ubuntu 20.04 (Focal)_
 sudo dnf install python-pip cairo-devel cairo-gobject-devel meson flatpak flatpak-builder
 ```
 
-_Note: Tested on Fedora 34_
+_Note: Tested on Fedora 36_
 </details>
 
 <details>
     <summary>Mac OS</summary>
 
-On Mac, all deps can be fetched using [Homebrew](https://docs.brew.sh/).
+On Mac, all dependencies can be installed using [Homebrew](https://docs.brew.sh/):
 
 ```sh
 brew install meson python3 py3cairo pygobject3 gtk+3 librsvg
 ```
 
 _Note: Tested on macOS 12.5 (Monterey)_
-
-You don't need to use `pip` because the above `brew` command installs all dependencies.
 </details>
 
 ### Install the project dependencies
