@@ -10,11 +10,12 @@ Diffuse depends on these projects:
 * Meson
 * Flatpak and Flatpak builder (Linux only)
 
-### Install the distribution dependencies
+## Install the dependencies
 
-It's a bit difficult to get the command lines for all the distributions and
-their releases, but it should be enough to find the packages on other
-distributions.
+### Install the system dependencies
+
+It's a bit difficult to get the command lines for all the systems, but these
+examples should be enough to find the packages on most systems.
 
 <details>
     <summary>Debian/Ubuntu</summary>
