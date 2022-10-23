@@ -1,33 +1,34 @@
 # Spanish translations for diffuse package.
-# This is an alpha release.
 # Copyright (C) 2010 Derrick Moser
 # This file is distributed under the same license as the diffuse package.
 # Henri Menke <henrimenke4@aim.com>, 2010.
-#
+# David Marín Carreño <davefx@gmail.com>, 2020.
+# Óscar Fernández Díaz <oscfdezdz@tuta.io>, 2022.
+
 msgid ""
 msgstr ""
 "Project-Id-Version: diffuse-svn\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-04-04 12:14-0400\n"
-"PO-Revision-Date: 2022-04-04 12:17-0400\n"
-"Last-Translator: David Marín Carreño <davefx@gmail.com>\n"
-"Language-Team: Spanish <henrimenke4@aim.com>\n"
+"PO-Revision-Date: 2022-06-13 23:21+0200\n"
+"Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
+"Language-Team: \n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.1\n"
 
 #: data/io.github.mightycreak.Diffuse.desktop.in:3
 #: data/io.github.mightycreak.Diffuse.appdata.xml.in:4
 msgid "Diffuse"
-msgstr ""
+msgstr "Diffuse"
 
 #: data/io.github.mightycreak.Diffuse.desktop.in:4
 #: data/io.github.mightycreak.Diffuse.appdata.xml.in:5
 msgid "Graphical tool for merging and comparing text files"
-msgstr "Un utillaje para juntar y comparar archivos de texto"
+msgstr "Herramienta gráfica para fusionar y comparar archivos de texto"
 
 #: data/io.github.mightycreak.Diffuse.appdata.xml.in:7
 msgid ""
@@ -35,14 +36,17 @@ msgid ""
 "files for comparison from Bazaar, CVS, Darcs, Git, Mercurial, Monotone, RCS, "
 "Subversion, and SVK repositories."
 msgstr ""
+"Diffuse es una herramienta gráfica para comparar y fusionar archivos de texto. "
+"Puede recuperar archivos para su comparación desde repositorios Bazaar, CVS, "
+"Darcs, Git, Mercurial, Monotone, RCS, Subversion y SVK."
 
 #: data/io.github.mightycreak.Diffuse.appdata.xml.in:21
 msgid "Main window: diff between two files"
-msgstr ""
+msgstr "Ventana principal: diferencia entre dos archivos"
 
 #: src/diffuse/constants.py:25
 msgid "Copyright"
-msgstr ""
+msgstr "Copyright"
 
 #: src/diffuse/dialogs.py:40
 msgid "Diffuse is a graphical tool for merging and comparing text files."
@@ -52,7 +56,8 @@ msgstr "Diffuse es una herramienta para mezclar y comparar archivos de texto."
 msgid "translator-credits"
 msgstr ""
 "Henri Menke <henrimenke4@aim.com>\n"
-"David Marín Carreño <davefx@gmail.com>"
+"David Marín Carreño <davefx@gmail.com>\n"
+"Óscar Fernández Díaz <oscfdezdz@tuta.io>"
 
 #: src/diffuse/dialogs.py:83
 msgid "Encoding: "
@@ -84,23 +89,23 @@ msgstr "Cerrar pestaña"
 
 #: src/diffuse/main.py:132
 msgid "Open File..."
-msgstr "Abrir fichero..."
+msgstr "Abrir archivo..."
 
 #: src/diffuse/main.py:133
 msgid "Reload File"
-msgstr "Recargar fichero"
+msgstr "Recargar archivo"
 
 #: src/diffuse/main.py:134
 msgid "Save File"
-msgstr "Guardar fichero"
+msgstr "Guardar archivo"
 
 #: src/diffuse/main.py:135
 msgid "Save File As..."
-msgstr "Guardar fichero como..."
+msgstr "Guardar archivo como..."
 
 #: src/diffuse/main.py:288
 msgid "Save changes before loading the new file?"
-msgstr "¿Guardar cambios antes de abrir nuevo fichero?"
+msgstr "¿Guardar cambios antes de abrir el archivo nuevo?"
 
 #: src/diffuse/main.py:399
 #, python-format
@@ -114,12 +119,12 @@ msgstr "Error leyendo %s."
 
 #: src/diffuse/main.py:424
 msgid "Open File"
-msgstr "Abrir fichero"
+msgstr "Abrir archivo"
 
 #: src/diffuse/main.py:481
 #, python-format
 msgid "The file %s changed on disk. Do you want to reload the file?"
-msgstr "El fichero %s ha cambiado en disco. ¿Quieres recargarlo?"
+msgstr "El archivo %s ha cambiado en disco. ¿Quiere recargarlo?"
 
 #: src/diffuse/main.py:507
 #, python-format
@@ -137,8 +142,8 @@ msgid ""
 "The file %s has been modified by another process since reading it. If you save, "
 "all the external changes could be lost. Save anyways?"
 msgstr ""
-"El fichero %s ha sido modificado por otro proceso desde que se cargó. Sí se "
-"guarda, todos los cambios realizados por procesos externos se perderán. ¿Deseas "
+"El archivo %s ha sido modificado por otro proceso desde que se cargó. Sí se "
+"guarda, todos los cambios realizados por procesos externos se perderán. ¿Desea "
 "guardar de todos modos?"
 
 #: src/diffuse/main.py:588
@@ -180,19 +185,19 @@ msgstr ""
 
 #: src/diffuse/main.py:784
 msgid "_File"
-msgstr "_Fichero"
+msgstr "_Archivo"
 
 #: src/diffuse/main.py:785
 msgid "_Open File..."
-msgstr "_Abrir fichero..."
+msgstr "_Abrir archivo..."
 
 #: src/diffuse/main.py:786
 msgid "Open File In New _Tab..."
-msgstr "Abrir fichero en nueva _pestaña..."
+msgstr "Abrir archivo en nueva _pestaña..."
 
 #: src/diffuse/main.py:787
 msgid "Open _Modified Files..."
-msgstr "Abrir ficheros _modificados..."
+msgstr "Abrir archivos _modificados..."
 
 #: src/diffuse/main.py:788
 msgid "Open Commi_t..."
@@ -200,15 +205,15 @@ msgstr "Abrir revi_sión..."
 
 #: src/diffuse/main.py:789
 msgid "_Reload File"
-msgstr "_Recargar fichero"
+msgstr "_Recargar archivo"
 
 #: src/diffuse/main.py:791
 msgid "_Save File"
-msgstr "_Guardar fichero"
+msgstr "_Guardar archivo"
 
 #: src/diffuse/main.py:792
 msgid "Save File _As..."
-msgstr "Guardar _fichero como..."
+msgstr "Guardar _archivo como..."
 
 #: src/diffuse/main.py:793
 msgid "Save A_ll"
@@ -216,15 +221,15 @@ msgstr "Gu_ardar todo"
 
 #: src/diffuse/main.py:795
 msgid "New _2-Way File Merge"
-msgstr "Nueva mezcla de ficheros de _2 vías"
+msgstr "Nueva mezcla de archivos de _2 vías"
 
 #: src/diffuse/main.py:796
 msgid "New _3-Way File Merge"
-msgstr "Nueva mezcla de ficheros de _3 vías"
+msgstr "Nueva mezcla de archivos de _3 vías"
 
 #: src/diffuse/main.py:797
 msgid "New _N-Way File Merge..."
-msgstr "Nueva mezcla de ficheros de _N vías..."
+msgstr "Nueva mezcla de archivos de _N vías..."
 
 #: src/diffuse/main.py:799
 msgid "_Close Tab"
@@ -449,11 +454,11 @@ msgstr "_Acerca de %s..."
 
 #: src/diffuse/main.py:910
 msgid "New 2-Way File Merge"
-msgstr "Nueva mezcla de ficheros de 2 vías"
+msgstr "Nueva mezcla de archivos de 2 vías"
 
 #: src/diffuse/main.py:911
 msgid "New 3-Way File Merge"
-msgstr "Nueva mezcla de ficheros de 3 vías"
+msgstr "Nueva mezcla de archivos de 3 vías"
 
 #: src/diffuse/main.py:913
 msgid "Realign All"
@@ -525,7 +530,8 @@ msgstr "Deshacer todo"
 
 #: src/diffuse/main.py:1054
 msgid "Some files have unsaved changes. Select the files to save before closing."
-msgstr "Unos ficheros tienen cambios. Elige los ficheros a guardar antes de cerrar."
+msgstr ""
+"Algunos archivos tienen cambios. Elija los archivos a guardar antes de cerrar."
 
 #: src/diffuse/main.py:1068
 msgid "Tab"
@@ -561,7 +567,7 @@ msgstr "Error recibiendo modificaciones de %s."
 
 #: src/diffuse/main.py:1377
 msgid "Open File In New Tab"
-msgstr "Abrir fichero en nueva pestaña"
+msgstr "Abrir archivo en una pestaña nueva"
 
 #: src/diffuse/main.py:1400
 msgid "Choose Folder With Modified Files"
@@ -569,7 +575,7 @@ msgstr "Seleccionar carpeta con archivos modificados"
 
 #: src/diffuse/main.py:1418
 msgid "No modified files found."
-msgstr "No se encontraron ficheros modificados."
+msgstr "No se encontraron archivos modificados."
 
 #: src/diffuse/main.py:1424
 msgid "Choose Folder With Commit"
@@ -577,11 +583,11 @@ msgstr "Seleccionar carpeta con revisiónes"
 
 #: src/diffuse/main.py:1444
 msgid "No committed files found."
-msgstr "No se encontraron ficheros confirmados."
+msgstr "No se encontraron archivos confirmados."
 
 #: src/diffuse/main.py:1480
 msgid "New N-Way File Merge..."
-msgstr "Nueva mezcla de ficheros de N vías..."
+msgstr "Nueva mezcla de archivos de N vías..."
 
 #: src/diffuse/main.py:1481
 msgid "Number of panes: "
@@ -589,14 +595,13 @@ msgstr "Número de paneles: "
 
 #: src/diffuse/main.py:1555
 msgid "Phrase not found.  Continue from the end of the file?"
-msgstr "Frase no encontrada. ¿Continuar desde final del fichero?"
+msgstr "Frase no encontrada. ¿Continuar desde final del archivo?"
 
 #: src/diffuse/main.py:1557
 msgid "Phrase not found.  Continue from the start of the file?"
-msgstr "Frase no encontrada. ¿Continuar desde principio del fichero?"
+msgstr "Frase no encontrada. ¿Continuar desde principio del archivo?"
 
 #: src/diffuse/main.py:1778
-#, fuzzy
 msgid ""
 "Usage:\n"
 "    diffuse [OPTION...] [FILE...]\n"
@@ -636,35 +641,41 @@ msgid ""
 "  ( -w | --ignore-all-space )      Ignore white space differences"
 msgstr ""
 "Uso:\n"
-"    diffuse [ [OPTION...] [FILE...] ]...\n"
+"    diffuse [ OPTION...] [FILE...]\n"
 "    diffuse ( -h | -? | --help | -v | --version )\n"
 "\n"
-"Diffuse es una herramienta gráfica para la mezcla y comparación de ficheros de\n"
-"texto. Diffuse puede comparar un número arbitrario de ficheros lado a lado y\n"
-"da a los usuarior la capacidad de realizar un ajuste de lineas manual y de\n"
-"editar los ficheros directamente. Diffuse puede también recuperar versiones\n"
-"de ficheros a partir de repositorios de Bazaar, CVS, Darcs, Git, Mercurial,\n"
-"Monotone, RCS, Subversion y SVK para su comparación y mezcla.\n"
+"Diffuse es una herramienta gráfica para fusionar y comparar archivos de texto. "
+"Diffuse es\n"
+"capaz de comparar un número arbitrario de archivos uno al lado del otro y ofrece "
+"la posibilidad\n"
+"de ajustar manualmente la coincidencia de líneas y editar directamente los "
+"archivos. Diffuse\n"
+"también puede recuperar revisiones de archivos de varios VCS para su comparación "
+"y fusión.\n"
 "\n"
 "Opciones de ayuda:\n"
 "  ( -h | -? | --help )           Muestra esta información de uso\n"
 "  ( -v | --version )             Muestra información de versionado y copyright\n"
 "\n"
 "Opciones de configuración:\n"
-"  --no-rcfile                    No leer ficheros de recursos\n"
-"  --rcfile <file>                Especificar fichero de recursos explícitamente\n"
+"  --no-rcfile                    No leer archivos de recursos\n"
+"  --rcfile <file>                Especificar ficherarchivoo de recursos "
+"explícitamente\n"
 "\n"
 "Opciones generales:\n"
 "  ( -c | --commit ) <rev>        Revisiones de fich. <rev-1> y <rev>\n"
 "  ( -D | --close-if-same )       Cerrar pestañas sin diferencias\n"
 "  ( -e | --encoding ) <codec>    Usa codificación <codec> al leer y escribir\n"
+"  ( -L | --label ) <label>         Mostrar <label> en lugar del nombre del "
+"archivo\n"
 "  ( -m | --modified )            Crea nueva pestaña para cada fich. modificado\n"
-"  ( -r | --revision ) <rev>      Revisión de fichero <rev>\n"
-"  ( -s | --separate )            Crea nueva pestaña para cada fichero\n"
+"  ( -r | --revision ) <rev>      Revisión de archivo <rev>\n"
+"  ( -s | --separate )            Crea nueva pestaña para cada archivo\n"
 "  ( -t | --tab )                 Inicia pestaña nueva\n"
-"  ( -V | --vcs ) <vcs-list>        Version control system search order\n"
-"  --line <line>                    Start with line <line> selected\n"
-"  --null-file                    Crea panel vacío de comparación de ficheros\n"
+"  ( -V | --vcs ) <vcs-list>        Orden de búsqueda del sistema de control de "
+"versiones\n"
+"  --line <line>                    Comienza con la línea <line> seleccionada\n"
+"  --null-file                    Crea panel vacío de comparación de archivos\n"
 "\n"
 "Opciones de visualización:\n"
 "  ( -b | --ignore-space-change ) Ignorar cambios en espaciado\n"
@@ -814,7 +825,7 @@ msgstr "Prefijo de Cygdrive"
 
 #: src/diffuse/preferences.py:165
 msgid "Version control system search order"
-msgstr ""
+msgstr "Orden de búsqueda del sistema de control de versiones"
 
 #: src/diffuse/preferences.py:173
 msgid "\"co\" command"
@@ -848,82 +859,82 @@ msgstr "Preferencias"
 #: src/diffuse/resources.py:245
 #, python-brace-format
 msgid "The key binding \"{key}\" is invalid"
-msgstr ""
+msgstr "El enlace de la clave \"{key}\" no es válido"
 
 #: src/diffuse/resources.py:372
 msgid "Imports must have one argument"
-msgstr ""
+msgstr "Las importaciones deben tener un argumento"
 
 #: src/diffuse/resources.py:388
 msgid "Key bindings must have three arguments"
-msgstr ""
+msgstr "Los atajos del teclado deben tener tres argumentos"
 
 #: src/diffuse/resources.py:394
 msgid "Colors must have four arguments"
-msgstr ""
+msgstr "Los colores deben tener cuatro argumentos"
 
 #: src/diffuse/resources.py:400
 msgid "Floats must have two arguments"
-msgstr ""
+msgstr "Los flotantes deben tener dos argumentos"
 
 #: src/diffuse/resources.py:406
 msgid "Options must have two arguments"
-msgstr ""
+msgstr "Las opciones deben tener dos argumentos"
 
 #: src/diffuse/resources.py:409
 #, python-brace-format
 msgid "Option \"{option}\" is unknown"
-msgstr ""
+msgstr "La opción \"{option}\" es desconocida"
 
 #: src/diffuse/resources.py:416
 msgid "Strings must have two arguments"
-msgstr ""
+msgstr "Las cadenas deben tener dos argumentos"
 
 #: src/diffuse/resources.py:427
 msgid "Syntaxes must have two or three arguments"
-msgstr ""
+msgstr "Las sintaxis deben tener dos o tres argumentos"
 
 #: src/diffuse/resources.py:455
 msgid "Syntax patterns must have at least four arguments"
-msgstr ""
+msgstr "Los patrones sintácticos deben tener al menos cuatro argumentos"
 
 #: src/diffuse/resources.py:461 src/diffuse/resources.py:505
 #, python-brace-format
 msgid "Value \"{value}\" is unknown"
-msgstr ""
+msgstr "El valor \"{value}\" es desconocido"
 
 #: src/diffuse/resources.py:472
 msgid "Syntax files must have one or two arguments"
-msgstr ""
+msgstr "Los archivos de sintaxis deben tener uno o dos argumentos"
 
 #: src/diffuse/resources.py:490
 msgid "Syntax magics must have at least one argument"
-msgstr ""
+msgstr "Las magias sintácticas deben tener al menos un argumento"
 
 #: src/diffuse/resources.py:509
 #, python-brace-format
 msgid "Keyword \"{keyword}\" is unknown"
-msgstr ""
+msgstr "La palabra clave \"{keyword}\" es desconocida"
 
 #: src/diffuse/resources.py:511
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Syntax error at line {line} of {file}"
-msgstr "Error procesando línea {line} de {file}."
+msgstr "Error de sintaxis en la línea {line} de {file}"
 
 #: src/diffuse/resources.py:517
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Value error at line {line} of {file}"
-msgstr "Error procesando línea {line} de {file}."
+msgstr "Error de valor en la línea {line} de {file}"
 
 #: src/diffuse/resources.py:523
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Regex error at line {line} of {file}."
-msgstr "Error procesando línea {line} de {file}."
+msgstr "Error regex en la línea {line} de {file}."
 
 #: src/diffuse/resources.py:526
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Unhandled error at line {line} of {file}."
-msgstr "Error procesando línea {line} de {file}."
+msgstr "Error no controlado en la línea {line} de {file}."
 
 #: src/diffuse/utils.py:66
 msgid "Auto Detect"
@@ -958,42 +969,3 @@ msgstr "Seleccionar todo"
 #: src/diffuse/widgets.py:1856
 msgid "Swap with Selected Pane"
 msgstr "Reemplazar con panel seleccionado"
-
-#, fuzzy
-#~ msgid ""
-#~ "This program is free software; you can redistribute it and/or modify\n"
-#~ "it under the terms of the GNU General Public License as published by\n"
-#~ "the Free Software Foundation; either version 2 of the License, or\n"
-#~ "(at your option) any later version.\n"
-#~ "\n"
-#~ "This program is distributed in the hope that it will be useful,\n"
-#~ "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-#~ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
-#~ "GNU General Public License for more details.\n"
-#~ "\n"
-#~ "You should have received a copy of the GNU General Public License along\n"
-#~ "with this program; if not, write to the Free Software Foundation, Inc.,\n"
-#~ "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA."
-#~ msgstr ""
-#~ "This program is free software; you can redistribute it and/or modify it under "
-#~ "the terms of the GNU General Public License as published by the Free Software "
-#~ "Foundation; either version 2 of the licence, or (at your option) any later "
-#~ "version.\n"
-#~ "\n"
-#~ "This program is distributed in the hope that it will be useful, but WITHOUT "
-#~ "ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
-#~ "FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more "
-#~ "details.\n"
-#~ "\n"
-#~ "You should have received a copy of the GNU General Public License along with "
-#~ "this program.  You may also obtain a copy of the GNU General Public License "
-#~ "from the Free Software Foundation by visiting their web site (http://www.fsf."
-#~ "org/) or by writing to the Free Software Foundation, Inc., 51 Franklin St, "
-#~ "Fifth Floor, Boston, MA  02110-1301  USA\n"
-
-#~ msgid "Diffuse Merge Tool"
-#~ msgstr "Diffuse utillaje de textos"
-
-#, python-format
-#~ msgid "Column %d"
-#~ msgstr "Columna %d"
