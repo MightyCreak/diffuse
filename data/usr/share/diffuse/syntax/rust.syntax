@@ -1,0 +1,119 @@
+# Rust syntax file for Diffuse
+# Copyright (C) 2022 Alexander Lopatin (@alopatindev), Romain Failliot <romain@foolstep.com>
+
+# DISCLAIMER: this is a raw support for Rust language, help wanted.
+
+syntax Rust normal text
+syntax_files Rust '\.rs$'
+
+# Colours
+colour rust_comment 0.2 0.4 0.64
+colour rust_fixme 1.0 0.5 0.0
+colour rust_import 0.77 0.63 0.0
+colour rust_keyword 0.77 0.63 0.0
+colour rust_type 0.3 0.6 0.02
+colour rust_literal 1.0 0.2 0.8
+colour rust_char 0.8 0.0 0.0
+colour rust_string 0.8 0.0 0.0
+colour rust_escapedchar 0.46 0.31 0.48
+colour rust_string_multilinechar 0.46 0.31 0.48
+colour rust_punctuation 0.5 0.5 0.5
+colour rust_macro 0.01 0.6 0.9
+
+# Whitespace (TODO)
+# Doc: https://doc.rust-lang.org/reference/whitespace.html
+syntax_pattern normal normal text '[ \t\r\n]+'
+
+# Macro (TODO)
+#syntax_pattern normal macro rust_macro '[a-z_]+[a-z0-9_]*!' ignorecase
+
+# Line comment
+# Doc: https://doc.rust-lang.org/reference/comments.html
+syntax_pattern normal line_comment rust_comment '//'
+syntax_pattern line_comment normal rust_comment '(\r\n|\r|\n)$'
+syntax_pattern line_comment line_comment rust_comment '\\(\r\n|\r|\n)$'
+syntax_pattern line_comment line_comment rust_fixme '\b(TODO|FIXME|XXX|NOTE)\b'
+syntax_pattern line_comment line_comment rust_comment '.[^\\TFX\r\n]*'
+
+# Block comment
+syntax_pattern normal block_comment rust_comment '/\*'
+syntax_pattern block_comment normal rust_comment '\*/'
+syntax_pattern block_comment block_comment rust_fixme '\b(TODO|FIXME|XXX|NOTE)\b'
+syntax_pattern block_comment block_comment rust_comment '.[^\*TFX]*'
+
+# Keywords (TODO)
+# Doc: https://doc.rust-lang.org/reference/keywords.html#weak-keywords
+#syntax_pattern normal normal rust_string '\b\'[a-z_]+[a-z0-9_]*\b' ignorecase
+#syntax_pattern normal normal rust_string '\b\'[a-z_]+\b' ignorecase
+syntax_pattern normal normal rust_string "\b'[a-z_]+\b" ignorecase
+
+# Char
+syntax_pattern normal normal rust_char "'.'"
+syntax_pattern normal char rust_char "'(?=\\\\)"
+syntax_pattern char normal rust_char "'"
+syntax_pattern char char rust_escapedchar "\\\\([0-7]{1,3}|x[0-9a-f]{1,2}|u\{[0-9a-f]{1,6}\}|.)"
+
+# String
+# Doc: https://doc.rust-lang.org/reference/tokens.html#string-literals
+syntax_pattern normal string rust_string '"'
+syntax_pattern string normal rust_string '"'
+syntax_pattern string string rust_escapedchar '(\\([0-7]{1,3}|x[0-9a-f]{1,2}|u\{[0-9a-f]{1,6}\}|.))+' ignorecase
+syntax_pattern string string rust_string_multilinechar '\\$'
+syntax_pattern string string rust_string '[^\\"]+'
+
+# Raw quote-string, level 0
+# Doc: https://doc.rust-lang.org/reference/tokens.html#raw-string-literals
+syntax_pattern normal raw_string_0 rust_string 'r"'
+syntax_pattern raw_string_0 normal rust_string '"'
+syntax_pattern raw_string_0 raw_string_0 rust_string '[^"$]+'
+
+# Raw sharp-string, level 1
+syntax_pattern normal raw_string_1 rust_string 'r#"'
+syntax_pattern raw_string_1 normal rust_string '"#'
+syntax_pattern raw_string_1 raw_string_1 rust_string '.*?((?="#)|\r?\n)'
+
+# Raw sharp-string, level 2
+syntax_pattern normal raw_string_2 rust_string 'r##"'
+syntax_pattern raw_string_2 normal rust_string '"##'
+syntax_pattern raw_string_2 raw_string_2 rust_string '.*?((?="##)|\r?\n)'
+
+# Raw sharp-string, level 3
+syntax_pattern normal raw_string_3 rust_string 'r###"'
+syntax_pattern raw_string_3 normal rust_string '"###'
+syntax_pattern raw_string_3 raw_string_3 rust_string '.*?((?="###)|\r?\n)'
+
+# Raw sharp-string, level 4
+syntax_pattern normal raw_string_4 rust_string 'r####"'
+syntax_pattern raw_string_4 normal rust_string '"####'
+syntax_pattern raw_string_4 raw_string_4 rust_string '.*?((?="####)|\r?\n)'
+
+# Raw sharp-string, level 5
+# Limit is 256 '#', but 5 seems reasonable for now
+syntax_pattern normal raw_string_5 rust_string 'r#####"'
+syntax_pattern raw_string_5 normal rust_string '"#####'
+syntax_pattern raw_string_5 raw_string_5 rust_string '.*?((?="#####)|\r?\n)'
+
+# Suffixes (TODO)
+# Doc: https://doc.rust-lang.org/reference/tokens.html#suffixes
+syntax_pattern normal normal rust_literal '\b[0-9_]+(isize|usize|char|bool|u8|u16|u32|u64|u128|f32|f64|i8|i16|i32|i64|i128|)\b'
+syntax_pattern normal normal rust_literal '\b0b[01_]+(isize|usize|char|bool|u8|u16|u32|u64|u128|f32|f64|i8|i16|i32|i64|i128|)\b'
+syntax_pattern normal normal rust_literal '\b0o[0-7_]+(isize|usize|char|bool|u8|u16|u32|u64|u128|f32|f64|i8|i16|i32|i64|i128|)\b'
+syntax_pattern normal normal rust_literal '\b0x[0-9a-f_]+(isize|usize|char|bool|u8|u16|u32|u64|u128|f32|f64|i8|i16|i32|i64|i128|)\b'
+syntax_pattern normal normal rust_literal '\b[0-9_]+E\+[0-9_]+(f32|f64)\b'
+syntax_pattern normal normal rust_literal '\b(true|false)\b'
+
+# import keywords
+syntax_pattern normal normal rust_import '\b(use|mod)\b'
+
+# typing keywords
+syntax_pattern normal normal rust_type '\b(isize|usize|char|bool|u8|u16|u32|u64|u128|f32|f64|i8|i16|i32|i64|i128|str|Self)\b'
+
+# keywords
+syntax_pattern normal normal rust_keyword '\b(as|break|const|continue|crate|else|enum|extern|false|fn|for|if|impl|in|let|loop|match|move|mut|pub|ref|return|self|Self|static|struct|super|trait|true|type|unsafe|where|while|async|await|dyn|abstract|become|box|do|final|macro|override|priv|typeof|unsized|virtual|yield|try|union)\b'
+
+# punctuation
+syntax_pattern normal normal rust_punctuation '[!~%\|\&\^\(\)\<\>\*\-\+=\{\}\[\]:;,\?$]+'
+syntax_pattern normal normal rust_punctuation '[/\.]'
+
+# parsing optimization
+syntax_pattern normal normal text '[a-z_][a-z_0-9]*' ignorecase
