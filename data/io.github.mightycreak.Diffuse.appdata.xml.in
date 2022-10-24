@@ -28,10 +28,23 @@
   <update_contact>romain@foolstep.com</update_contact>
 
   <releases>
+    <release version="0.7.7" date="2022-10-23">
+      <description>
+        <p>
+          Update translations.
+        </p>
+        <p>Changed:</p>
+        <ul>
+          <li>Translation: updated Spanish translation</li>
+          <li>Translation: updated POT file</li>
+          <li>Translation: fixed issue with commented string that still needs translation</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.7.6" date="2022-10-23">
       <description>
         <p>
-          Add port to Mac OS..
+          Add port to Mac OS.
         </p>
         <p>Added:</p>
         <ul>

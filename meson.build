@@ -1,5 +1,5 @@
 project('diffuse',
-    version: '0.7.6',
+    version: '0.7.7',
     meson_version: '>= 0.50',
     license: 'GPL-2.0-or-later',
     default_options: [ 'warning_level=2' ])
