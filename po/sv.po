@@ -1,27 +1,27 @@
 # Swedish translation for Diffuse.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Åke Engelbrektson <eson@svenskasprakfiler.se>, 2017, 2021.
+# Åke Engelbrektson <eson@svenskasprakfiler.se>, 2017, 2021, 2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-23 20:00-0400\n"
-"PO-Revision-Date: 2021-01-17 22:14+0100\n"
+"PO-Revision-Date: 2022-10-24 10:30+0200\n"
 "Last-Translator: Åke Engelbrektson <eson@svenskasprakfiler.se>\n"
 "Language-Team: Svenska Språkfiler <contactform@svenskasprakfiler.se>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.3\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.1.1\n"
 
 #: data/io.github.mightycreak.Diffuse.desktop.in:3
 #: data/io.github.mightycreak.Diffuse.appdata.xml.in:4
 msgid "Diffuse"
-msgstr ""
+msgstr "Diffuse"
 
 #: data/io.github.mightycreak.Diffuse.desktop.in:4
 #: data/io.github.mightycreak.Diffuse.appdata.xml.in:5
@@ -34,10 +34,13 @@ msgid ""
 "files for comparison from Bazaar, CVS, Darcs, Git, Mercurial, Monotone, RCS, "
 "Subversion, and SVK repositories."
 msgstr ""
+"Diffuse är ett grafiskt verktyg för att jämföra och slå samman textfiler. Den kan "
+"hämta filer för jämförelse från Bazaar, CVS, Darcs, Git, Mercurial, Monotone, "
+"RCS, Subversion och SVK repositories."
 
 #: data/io.github.mightycreak.Diffuse.appdata.xml.in:21
 msgid "Main window: diff between two files"
-msgstr ""
+msgstr "Huvudfönster: diff mellan två filer"
 
 #: src/diffuse/constants.py:25
 msgid "Copyright"
@@ -49,7 +52,7 @@ msgstr "Diffuse är ett grafiskt verktyg för att jämföra och sammanfoga textf
 
 #: src/diffuse/dialogs.py:45
 msgid "translator-credits"
-msgstr "Åke Engelbrektson"
+msgstr "Åke Engelbrektson <eson@svenskasprakfiler.se>"
 
 #: src/diffuse/dialogs.py:82
 msgid "Encoding: "
@@ -597,7 +600,6 @@ msgid "Phrase not found.  Continue from the start of the file?"
 msgstr "Frasen kan inte hittas. Vill du fortsätta från början på filen?"
 
 #: src/diffuse/main.py:1781
-#, fuzzy
 msgid ""
 "Usage:\n"
 "    diffuse [OPTION...] [FILE...]\n"
@@ -643,32 +645,31 @@ msgstr ""
 "Diffuse är ett grafiskt verktyg för sammanfogning och jämförelse av textfiler. \n"
 "Diffuse kan jämföra ett godtyckligt antal filer sida vid sida och ger användaren\n"
 "en möjlighet att manuellt justera radmatchning och att direktredigera filer.\n"
-"Diffuse kan också hämta revideringar av filer från Bazaar, CVS, Darcs, Git,\n"
-"Mercurial, Monotone, RCS, Subversion, och SVK för jämförelse och sammanfogning.\n"
+"Diffuse kan också hämta revideringar av filer från flera VCS:er för jämförelse "
+"och sammanfogning.\n"
 "\n"
 "Hjälpalternativ:\n"
-"  ( -h | -? | --help )             Visa användningsinformation\n"
+"  ( -h | -? | --help )             Visa denna användningsinformation\n"
 "  ( -v | --version )               Visa version och upphovsrättsinformation\n"
 "\n"
 "Konfigurationsalternativ:\n"
 "  --no-rcfile                      Läs inga resursfiler\n"
 "  --rcfile <file>                  Specificera explicit resursfil\n"
 "\n"
-"General Options:\n"
+"Allmäna alternativ:\n"
 "  ( -c | --commit ) <rev>          Filrevisioner <rev-1> och <rev>\n"
 "  ( -D | --close-if-same )         Stäng alla flikar som saknar olikheter\n"
-"  ( -e | --encoding ) <codec>      Använd <teckentabell> för att läsa och skriva "
-"filer\n"
-"  ( -L | --label ) <label>         Visa <etikett> istället för filnamn\n"
+"  ( -e | --encoding ) <codec>      Använd <codec> för att läsa och skriva filer\n"
+"  ( -L | --label ) <label>         Visa <label> istället för filnamn\n"
 "  ( -m | --modified )              Skapa ny flik för varje ändrad fil\n"
 "  ( -r | --revision ) <rev>        Filrevision <rev>\n"
 "  ( -s | --separate )              Skapa ny flik för varje fil\n"
 "  ( -t | --tab )                   Starta en ny flik\n"
 "  ( -V | --vcs ) <vcs-list>        Version control system search order\n"
-"  --line <line>                    Starta med rad <radnummer> markerad\n"
+"  --line <line>                    Starta med rad <line> markerad\n"
 "  --null-file                      Skapa en tom filjämförelsepanel\n"
 "\n"
-"Display Options:\n"
+"Skärmalternativ:\n"
 "  ( -b | --ignore-space-change )   Ignorera ändringar i blanksteg\n"
 "  ( -B | --ignore-blank-lines )    Ignorera ändringar i  tomma rader\n"
 "  ( -E | --ignore-end-of-line )    Ignorera olikheter i radslut\n"
@@ -850,82 +851,82 @@ msgstr "Inställningar"
 #: src/diffuse/resources.py:249
 #, python-brace-format
 msgid "The key binding \"{key}\" is invalid"
-msgstr ""
+msgstr "Nyckelbindningen \"{key}\" är ogiltig"
 
 #: src/diffuse/resources.py:376
 msgid "Imports must have one argument"
-msgstr ""
+msgstr "Importer måste ha ett argument"
 
 #: src/diffuse/resources.py:392
 msgid "Key bindings must have three arguments"
-msgstr ""
+msgstr "Nyckelbindningar måste ha tre argument"
 
 #: src/diffuse/resources.py:398
 msgid "Colors must have four arguments"
-msgstr ""
+msgstr "Färger måste ha fyra argument"
 
 #: src/diffuse/resources.py:404
 msgid "Floats must have two arguments"
-msgstr ""
+msgstr "Floats måste ha två argument"
 
 #: src/diffuse/resources.py:410
 msgid "Options must have two arguments"
-msgstr ""
+msgstr "Alternativ måste ha två argument"
 
 #: src/diffuse/resources.py:413
 #, python-brace-format
 msgid "Option \"{option}\" is unknown"
-msgstr ""
+msgstr "Alternativet \"{option}\" är okänt"
 
 #: src/diffuse/resources.py:420
 msgid "Strings must have two arguments"
-msgstr ""
+msgstr "Strängar måste ha två argument"
 
 #: src/diffuse/resources.py:431
 msgid "Syntaxes must have two or three arguments"
-msgstr ""
+msgstr "Syntaxer måste ha två eller tre argument"
 
 #: src/diffuse/resources.py:459
 msgid "Syntax patterns must have at least four arguments"
-msgstr ""
+msgstr "Syntaxmönster måste ha minst fyra argument"
 
 #: src/diffuse/resources.py:465 src/diffuse/resources.py:509
 #, python-brace-format
 msgid "Value \"{value}\" is unknown"
-msgstr ""
+msgstr "Värdet \"{value}\" är okänt"
 
 #: src/diffuse/resources.py:476
 msgid "Syntax files must have one or two arguments"
-msgstr ""
+msgstr "Syntaxfiler måste ha ett eller två argument"
 
 #: src/diffuse/resources.py:494
 msgid "Syntax magics must have at least one argument"
-msgstr ""
+msgstr "Syntaxmagier måste ha minst ett argument"
 
 #: src/diffuse/resources.py:513
 #, python-brace-format
 msgid "Keyword \"{keyword}\" is unknown"
-msgstr ""
+msgstr "Nyckelordet \"{keyword}\" är okänt"
 
 #: src/diffuse/resources.py:515
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Syntax error at line {line} of {file}"
-msgstr "Fel vid bearbetning av rad {line} i {file}."
+msgstr "Syntaxfel på rad {line} i {file}."
 
 #: src/diffuse/resources.py:521
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Value error at line {line} of {file}"
-msgstr "Fel vid bearbetning av rad {line} i {file}."
+msgstr "Värdefel på rad {line} i {file}."
 
 #: src/diffuse/resources.py:527
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Regex error at line {line} of {file}."
-msgstr "Fel vid bearbetning av rad {line} i {file}."
+msgstr "Regex-fel på rad {line} i {file}."
 
 #: src/diffuse/resources.py:530
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Unhandled error at line {line} of {file}."
-msgstr "Fel vid bearbetning av rad {line} i {file}."
+msgstr "Ohanterat fel på rad {line} i {file}."
 
 #: src/diffuse/utils.py:66
 msgid "Auto Detect"
