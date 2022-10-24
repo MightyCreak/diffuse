@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Added
+
+- Language: initial support for Rust language (thanks to @alopatindev)
+
 ### Changed
 
 - Translation: updated Swedish translation (thanks to @eson57)
