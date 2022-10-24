@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE xsl:stylesheet [
  <!ENTITY app "Diffuse">
- <!ENTITY app-version "0.7.6">
+ <!ENTITY app-version "0.7.7">
  <!ENTITY app-cmd "diffuse">
  <!ENTITY date "2022-10-23">
 ]>
