@@ -15,6 +15,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Translation: updated Swedish translation (thanks to @eson57)
 
+- Documentation: prefer `pip3` over `pip` to ensure it works everywhere (thanks to @krlmlr)
+ 
 ## 0.7.7 - 2022-10-23
 
 ### Changed
