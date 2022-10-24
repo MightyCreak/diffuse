@@ -212,6 +212,9 @@ class Diffuse(Gtk.Window):
                     #     text = viewer.getLineText(viewer.current_pane, viewer.current_line)[:j]
                     #     j = viewer.stringWidth(text)
                     # s = _('Column %d') % (j, )
+                    #
+                    # In the meantime, keep this line of code in order to keep the translations
+                    s = _('Column %d') % (0, )
                     s = ''
                 else:
                     s = ''

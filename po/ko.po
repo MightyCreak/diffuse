@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: diffuse-svn r316\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-23 19:48-0400\n"
+"POT-Creation-Date: 2022-10-23 20:00-0400\n"
 "PO-Revision-Date: 2022-04-04 12:18-0400\n"
 "Last-Translator: Kang Bundo <bundo@bundo.biz>\n"
 "Language-Team: Korean\n"
@@ -95,40 +95,45 @@ msgstr "파일로 저장"
 msgid "Save File As..."
 msgstr "파일로 저장..."
 
-#: src/diffuse/main.py:288
+#: src/diffuse/main.py:217
+#, python-format
+msgid "Column %d"
+msgstr "%d열"
+
+#: src/diffuse/main.py:291
 msgid "Save changes before loading the new file?"
 msgstr "새 파일을 불러오기 전에 변경된 데이터를 저장할까요?"
 
-#: src/diffuse/main.py:399
+#: src/diffuse/main.py:402
 #, python-format
 msgid "Error reading revision %(rev)s of %(file)s."
 msgstr "%(file)s %(rev)s는 수정된점을 가져올 때 오류가 발생했습니다."
 
-#: src/diffuse/main.py:402 src/diffuse/main.py:1857
+#: src/diffuse/main.py:405 src/diffuse/main.py:1860
 #, python-format
 msgid "Error reading %s."
 msgstr "%s를 읽어올 때 오류가 발생했습니다."
 
-#: src/diffuse/main.py:424
+#: src/diffuse/main.py:427
 msgid "Open File"
 msgstr "열기"
 
-#: src/diffuse/main.py:481
+#: src/diffuse/main.py:484
 #, python-format
 msgid "The file %s changed on disk. Do you want to reload the file?"
 msgstr "%s 파일이 변경된 것 같습니다. 해당 파일을 다시 불러 오시겠습니까?"
 
-#: src/diffuse/main.py:507
+#: src/diffuse/main.py:510
 #, python-format
 msgid "Save %(title)s Pane %(pane)d"
 msgstr "%(title)s %(pane)d번째 프레임을 저장"
 
-#: src/diffuse/main.py:539
+#: src/diffuse/main.py:542
 #, python-format
 msgid "A file named %s already exists. Do you want to overwrite it?"
 msgstr "%s라는 파일이 이미 있습니다. 그것을 덮어 쓰시겠습니까?"
 
-#: src/diffuse/main.py:546
+#: src/diffuse/main.py:549
 #, python-format
 msgid ""
 "The file %s has been modified by another process since reading it. If you save, "
@@ -137,25 +142,25 @@ msgstr ""
 "%s 파일은 수정되었습니다. 저장하게되면 이러한 변경 내용이 손실될 수 있습니다. 저장"
 "하시겠습니까?"
 
-#: src/diffuse/main.py:588
+#: src/diffuse/main.py:591
 #, python-format
 msgid "Error encoding to %s."
 msgstr "%s 바꾸는 데 오류가 발생했습니다."
 
-#: src/diffuse/main.py:592 src/diffuse/preferences.py:300
+#: src/diffuse/main.py:595 src/diffuse/preferences.py:300
 #, python-format
 msgid "Error writing %s."
 msgstr "%s에 쓸 때 오류가 발생했습니다."
 
-#: src/diffuse/main.py:622
+#: src/diffuse/main.py:625
 msgid "Go To Line..."
 msgstr "줄로 이동..."
 
-#: src/diffuse/main.py:623
+#: src/diffuse/main.py:626
 msgid "Line Number: "
 msgstr "줄번호: "
 
-#: src/diffuse/main.py:654
+#: src/diffuse/main.py:657
 msgid ""
 "Press the enter key or double click to edit. Press the space bar or use the RMB "
 "menu to manually align."
@@ -163,11 +168,11 @@ msgstr ""
 "편집하려면 엔터키를 누르거나 두 번 클릭합니다. 수동으로 정렬하기 위해 스페이스 바"
 "를 누르거나, RMB를 사용합니다."
 
-#: src/diffuse/main.py:658
+#: src/diffuse/main.py:661
 msgid "Press the escape key to finish editing."
 msgstr "ESC 키를 눌러 편집을 끝냅니다."
 
-#: src/diffuse/main.py:661
+#: src/diffuse/main.py:664
 msgid ""
 "Select target line and press the space bar to align. Press the escape key to "
 "cancel."
@@ -175,425 +180,425 @@ msgstr ""
 "목표 행을 선택하고 스페이스 바를 누르면 정렬합니다. 취소하려면 ESC 키를 누르십시"
 "오."
 
-#: src/diffuse/main.py:784
+#: src/diffuse/main.py:787
 msgid "_File"
 msgstr "파일(_F)"
 
-#: src/diffuse/main.py:785
+#: src/diffuse/main.py:788
 msgid "_Open File..."
 msgstr "파일 열기...(_O)"
 
-#: src/diffuse/main.py:786
+#: src/diffuse/main.py:789
 msgid "Open File In New _Tab..."
 msgstr "새 탭에서 열기...(_T)"
 
-#: src/diffuse/main.py:787
+#: src/diffuse/main.py:790
 msgid "Open _Modified Files..."
 msgstr "변경 파일 열기...(_M)"
 
-#: src/diffuse/main.py:788
+#: src/diffuse/main.py:791
 msgid "Open Commi_t..."
 msgstr "커밋 열기..."
 
-#: src/diffuse/main.py:789
+#: src/diffuse/main.py:792
 msgid "_Reload File"
 msgstr "파일 다시 읽기(_R)"
 
-#: src/diffuse/main.py:791
+#: src/diffuse/main.py:794
 msgid "_Save File"
 msgstr "파일 저장(_S)"
 
-#: src/diffuse/main.py:792
+#: src/diffuse/main.py:795
 msgid "Save File _As..."
 msgstr "파일로 저장...(_A)"
 
-#: src/diffuse/main.py:793
+#: src/diffuse/main.py:796
 msgid "Save A_ll"
 msgstr "전체 저장(_L)"
 
-#: src/diffuse/main.py:795
+#: src/diffuse/main.py:798
 msgid "New _2-Way File Merge"
 msgstr "새로운 2개의 파일 비교(_2)"
 
-#: src/diffuse/main.py:796
+#: src/diffuse/main.py:799
 msgid "New _3-Way File Merge"
 msgstr "새로운 3개의 파일 비교(_3)"
 
-#: src/diffuse/main.py:797
+#: src/diffuse/main.py:800
 msgid "New _N-Way File Merge..."
 msgstr "새로운 여러개의 파일 비교...(_N)"
 
-#: src/diffuse/main.py:799
+#: src/diffuse/main.py:802
 msgid "_Close Tab"
 msgstr "탭 닫기(_C)"
 
-#: src/diffuse/main.py:800
+#: src/diffuse/main.py:803
 msgid "_Undo Close Tab"
 msgstr "탭 닫기 취소(_U)"
 
-#: src/diffuse/main.py:801
+#: src/diffuse/main.py:804
 msgid "_Quit"
 msgstr "종료(_Q)"
 
-#: src/diffuse/main.py:804
+#: src/diffuse/main.py:807
 msgid "_Edit"
 msgstr "편집(_E)"
 
-#: src/diffuse/main.py:805
+#: src/diffuse/main.py:808
 msgid "_Undo"
 msgstr "실행 취소(_U)"
 
-#: src/diffuse/main.py:806
+#: src/diffuse/main.py:809
 msgid "_Redo"
 msgstr "다시(_R)"
 
-#: src/diffuse/main.py:808
+#: src/diffuse/main.py:811
 msgid "Cu_t"
 msgstr "잘라내기(_T)"
 
-#: src/diffuse/main.py:809
+#: src/diffuse/main.py:812
 msgid "_Copy"
 msgstr "복사(_C)"
 
-#: src/diffuse/main.py:810
+#: src/diffuse/main.py:813
 msgid "_Paste"
 msgstr "붙여넣기(_P)"
 
-#: src/diffuse/main.py:812
+#: src/diffuse/main.py:815
 msgid "Select _All"
 msgstr "모두 선택(_A)"
 
-#: src/diffuse/main.py:813
+#: src/diffuse/main.py:816
 msgid "C_lear Edits"
 msgstr "편집 삭제(_L)"
 
-#: src/diffuse/main.py:814
+#: src/diffuse/main.py:817
 msgid "_Dismiss All Edits"
 msgstr "모든 편집을 취소(_D)"
 
-#: src/diffuse/main.py:816
+#: src/diffuse/main.py:819
 msgid "_Find..."
 msgstr "찾기...(_F)"
 
-#: src/diffuse/main.py:817
+#: src/diffuse/main.py:820
 msgid "Find _Next"
 msgstr "다음 찾기(_N)"
 
-#: src/diffuse/main.py:818
+#: src/diffuse/main.py:821
 msgid "Find Pre_vious"
 msgstr "이전 찾기(_V)"
 
-#: src/diffuse/main.py:819
+#: src/diffuse/main.py:822
 msgid "_Go To Line..."
 msgstr "줄로 이동...(_G)"
 
-#: src/diffuse/main.py:821
+#: src/diffuse/main.py:824
 msgid "Pr_eferences..."
 msgstr "기본 설정...(_E)"
 
-#: src/diffuse/main.py:825
+#: src/diffuse/main.py:828
 msgid "None"
 msgstr "없음"
 
-#: src/diffuse/main.py:843
+#: src/diffuse/main.py:846
 msgid "_View"
 msgstr "보기(_V)"
 
-#: src/diffuse/main.py:844
+#: src/diffuse/main.py:847
 msgid "_Syntax Highlighting"
 msgstr "구문 강조(_S)"
 
-#: src/diffuse/main.py:846
+#: src/diffuse/main.py:849
 msgid "Re_align All"
 msgstr "전체 다시 정렬(_A)"
 
-#: src/diffuse/main.py:847
+#: src/diffuse/main.py:850
 msgid "_Isolate"
 msgstr "분리(_I)"
 
-#: src/diffuse/main.py:849
+#: src/diffuse/main.py:852
 msgid "_First Difference"
 msgstr "첫번째 차이(_F)"
 
-#: src/diffuse/main.py:850
+#: src/diffuse/main.py:853
 msgid "_Previous Difference"
 msgstr "이전 차이(_P)"
 
-#: src/diffuse/main.py:851
+#: src/diffuse/main.py:854
 msgid "_Next Difference"
 msgstr "다음 차이(_N)"
 
-#: src/diffuse/main.py:852
+#: src/diffuse/main.py:855
 msgid "_Last Difference"
 msgstr "마지막 차이(_L)"
 
-#: src/diffuse/main.py:854
+#: src/diffuse/main.py:857
 msgid "Fir_st Tab"
 msgstr "첫번째 탭(_S)"
 
-#: src/diffuse/main.py:855
+#: src/diffuse/main.py:858
 msgid "Pre_vious Tab"
 msgstr "이전 탭으로(_V)"
 
-#: src/diffuse/main.py:856
+#: src/diffuse/main.py:859
 msgid "Next _Tab"
 msgstr "다음 탭으로(_T)"
 
-#: src/diffuse/main.py:857
+#: src/diffuse/main.py:860
 msgid "Las_t Tab"
 msgstr "마지막 탭(_T)"
 
-#: src/diffuse/main.py:859
+#: src/diffuse/main.py:862
 msgid "Shift Pane _Right"
 msgstr "페널을 오른쪽으로 이동(_R)"
 
-#: src/diffuse/main.py:860
+#: src/diffuse/main.py:863
 msgid "Shift Pane _Left"
 msgstr "페널을 왼쪽으로 이동(_L)"
 
-#: src/diffuse/main.py:863
+#: src/diffuse/main.py:866
 msgid "F_ormat"
 msgstr "형식(_O)"
 
-#: src/diffuse/main.py:864
+#: src/diffuse/main.py:867
 msgid "Convert To _Upper Case"
 msgstr "대문자로 변환(_U)"
 
-#: src/diffuse/main.py:865
+#: src/diffuse/main.py:868
 msgid "Convert To _Lower Case"
 msgstr "소문자로 변환(_L)"
 
-#: src/diffuse/main.py:867
+#: src/diffuse/main.py:870
 msgid "Sort Lines In _Ascending Order"
 msgstr "행을 오름차순으로 정렬(_A)"
 
-#: src/diffuse/main.py:868
+#: src/diffuse/main.py:871
 msgid "Sort Lines In D_escending Order"
 msgstr "행을 내림차순으로 정렬(_E)"
 
-#: src/diffuse/main.py:870
+#: src/diffuse/main.py:873
 msgid "Remove Trailing _White Space"
 msgstr "후행 공백을 제거(_W)"
 
-#: src/diffuse/main.py:871
+#: src/diffuse/main.py:874
 msgid "Convert Tabs To _Spaces"
 msgstr "탭을 공백으로 변환(_S)"
 
-#: src/diffuse/main.py:872
+#: src/diffuse/main.py:875
 msgid "Convert Leading Spaces To _Tabs"
 msgstr "선행 공백을 탭으로 변환(_T)"
 
-#: src/diffuse/main.py:874
+#: src/diffuse/main.py:877
 msgid "_Increase Indenting"
 msgstr "들여쓰기(_I)"
 
-#: src/diffuse/main.py:875
+#: src/diffuse/main.py:878
 msgid "De_crease Indenting"
 msgstr "내어 쓰기(_C)"
 
-#: src/diffuse/main.py:877
+#: src/diffuse/main.py:880
 msgid "Convert To _DOS Format"
 msgstr "DOS 형식으로 변환(_D)"
 
-#: src/diffuse/main.py:878
+#: src/diffuse/main.py:881
 msgid "Convert To _Mac Format"
 msgstr "Mac 형식으로 변환(_M)"
 
-#: src/diffuse/main.py:879
+#: src/diffuse/main.py:882
 msgid "Convert To Uni_x Format"
 msgstr "Unix 형식으로 변환(_X)"
 
-#: src/diffuse/main.py:882
+#: src/diffuse/main.py:885
 msgid "_Merge"
 msgstr "병합(_M)"
 
-#: src/diffuse/main.py:883
+#: src/diffuse/main.py:886
 msgid "Copy Selection _Right"
 msgstr "선택을 오른쪽으로 복사(_R)"
 
-#: src/diffuse/main.py:884
+#: src/diffuse/main.py:887
 msgid "Copy Selection _Left"
 msgstr "선택을 왼쪽으로 복사(_L)"
 
-#: src/diffuse/main.py:886
+#: src/diffuse/main.py:889
 msgid "Copy Left _Into Selection"
 msgstr "왼쪽에서 선택한 프레임에 복사(_I)"
 
-#: src/diffuse/main.py:887
+#: src/diffuse/main.py:890
 msgid "Copy Right I_nto Selection"
 msgstr "오른쪽에서 선택한 프레임에 복사(_N)"
 
-#: src/diffuse/main.py:888
+#: src/diffuse/main.py:891
 msgid "_Merge From Left Then Right"
 msgstr "왼쪽에서 합병 후 오른쪽에서 병합(_M)"
 
-#: src/diffuse/main.py:889
+#: src/diffuse/main.py:892
 msgid "M_erge From Right Then Left"
 msgstr "오른쪽에서 병합 후 왼쪽에서 합병(_E)"
 
-#: src/diffuse/main.py:892
+#: src/diffuse/main.py:895
 msgid "_Help"
 msgstr "도움말(_H)"
 
-#: src/diffuse/main.py:893
+#: src/diffuse/main.py:896
 msgid "_Help Contents..."
 msgstr "도움말 목차...(_H)"
 
-#: src/diffuse/main.py:895
+#: src/diffuse/main.py:898
 #, python-format
 msgid "_About %s..."
 msgstr "%s 정보...(_A)"
 
-#: src/diffuse/main.py:910
+#: src/diffuse/main.py:913
 msgid "New 2-Way File Merge"
 msgstr "새로운 2개의 파일 비교"
 
-#: src/diffuse/main.py:911
+#: src/diffuse/main.py:914
 msgid "New 3-Way File Merge"
 msgstr "새로운 3개의 파일 비교"
 
-#: src/diffuse/main.py:913
+#: src/diffuse/main.py:916
 msgid "Realign All"
 msgstr "전체 다시 정렬"
 
-#: src/diffuse/main.py:914
+#: src/diffuse/main.py:917
 msgid "First Difference"
 msgstr "첫번째 차이"
 
-#: src/diffuse/main.py:915
+#: src/diffuse/main.py:918
 msgid "Previous Difference"
 msgstr "이전 차이"
 
-#: src/diffuse/main.py:916
+#: src/diffuse/main.py:919
 msgid "Next Difference"
 msgstr "다음 차이"
 
-#: src/diffuse/main.py:917
+#: src/diffuse/main.py:920
 msgid "Last Difference"
 msgstr "마지막 차이"
 
-#: src/diffuse/main.py:919
+#: src/diffuse/main.py:922
 msgid "Copy Selection Right"
 msgstr "선택을 오른쪽으로 복사"
 
-#: src/diffuse/main.py:920
+#: src/diffuse/main.py:923
 msgid "Copy Selection Left"
 msgstr "선택을 왼쪽으로 복사"
 
-#: src/diffuse/main.py:921
+#: src/diffuse/main.py:924
 msgid "Copy Left Into Selection"
 msgstr "왼쪽에서 선택한 프레임에 복사"
 
-#: src/diffuse/main.py:922
+#: src/diffuse/main.py:925
 msgid "Copy Right Into Selection"
 msgstr "오른쪽에서 선택한 프레임에 복사"
 
-#: src/diffuse/main.py:923
+#: src/diffuse/main.py:926
 msgid "Merge From Left Then Right"
 msgstr "왼쪽에서 합병 후 오른쪽에서 병합"
 
-#: src/diffuse/main.py:924
+#: src/diffuse/main.py:927
 msgid "Merge From Right Then Left"
 msgstr "오른쪽에서 병합 후 왼쪽에서 합병"
 
-#: src/diffuse/main.py:926
+#: src/diffuse/main.py:929
 msgid "Undo"
 msgstr "실행 취소"
 
-#: src/diffuse/main.py:927
+#: src/diffuse/main.py:930
 msgid "Redo"
 msgstr "작업 재 실행"
 
-#: src/diffuse/main.py:928 src/diffuse/widgets.py:1861
+#: src/diffuse/main.py:931 src/diffuse/widgets.py:1861
 msgid "Cut"
 msgstr "잘라내기"
 
-#: src/diffuse/main.py:929 src/diffuse/widgets.py:1862
+#: src/diffuse/main.py:932 src/diffuse/widgets.py:1862
 msgid "Copy"
 msgstr "복사"
 
-#: src/diffuse/main.py:930 src/diffuse/widgets.py:1863
+#: src/diffuse/main.py:933 src/diffuse/widgets.py:1863
 msgid "Paste"
 msgstr "붙여넣기"
 
-#: src/diffuse/main.py:931 src/diffuse/widgets.py:1866
+#: src/diffuse/main.py:934 src/diffuse/widgets.py:1866
 msgid "Clear Edits"
 msgstr "편집 삭제"
 
-#: src/diffuse/main.py:1054
+#: src/diffuse/main.py:1057
 msgid "Some files have unsaved changes. Select the files to save before closing."
 msgstr ""
 "변경 내용이 저장되지 않은 파일이 있습니다. 종료하기 전에 저장할 파일을 선택합니다."
 
-#: src/diffuse/main.py:1068
+#: src/diffuse/main.py:1071
 msgid "Tab"
 msgstr "탭"
 
-#: src/diffuse/main.py:1073
+#: src/diffuse/main.py:1076
 msgid "Pane"
 msgstr "패널"
 
-#: src/diffuse/main.py:1084
+#: src/diffuse/main.py:1087
 msgid "Close _Without Saving"
 msgstr "저장하지 않고 닫기(_W)"
 
-#: src/diffuse/main.py:1123
+#: src/diffuse/main.py:1126
 #, python-format
 msgid "Closing this tab will quit %s."
 msgstr "이 탭을 닫으면, %s 종료합니다."
 
-#: src/diffuse/main.py:1206
+#: src/diffuse/main.py:1209
 #, python-format
 msgid "File Merge %d"
 msgstr "파일 병합 %d"
 
-#: src/diffuse/main.py:1312
+#: src/diffuse/main.py:1315
 #, python-format
 msgid "Error retrieving commits for %s."
 msgstr "%s의 커밋을 가져오는 동안 오류가 발생했습니다."
 
-#: src/diffuse/main.py:1344
+#: src/diffuse/main.py:1347
 #, python-format
 msgid "Error retrieving modifications for %s."
 msgstr "%s의 변경을 가져오는 중 오류가 발생했습니다."
 
-#: src/diffuse/main.py:1377
+#: src/diffuse/main.py:1380
 msgid "Open File In New Tab"
 msgstr "새 탭에서 열기"
 
-#: src/diffuse/main.py:1400
+#: src/diffuse/main.py:1403
 msgid "Choose Folder With Modified Files"
 msgstr "변경 된 파일이 있는 폴더를 선택"
 
-#: src/diffuse/main.py:1418
+#: src/diffuse/main.py:1421
 msgid "No modified files found."
 msgstr "변경 된 파일을 찾을 수 없습니다."
 
-#: src/diffuse/main.py:1424
+#: src/diffuse/main.py:1427
 msgid "Choose Folder With Commit"
 msgstr "커밋이있는 폴더를 선택"
 
-#: src/diffuse/main.py:1444
+#: src/diffuse/main.py:1447
 msgid "No committed files found."
 msgstr "커밋된 파일을 찾을 수 없습니다."
 
-#: src/diffuse/main.py:1480
+#: src/diffuse/main.py:1483
 msgid "New N-Way File Merge..."
 msgstr "새로운 여러개의 파일 비교..."
 
-#: src/diffuse/main.py:1481
+#: src/diffuse/main.py:1484
 msgid "Number of panes: "
 msgstr "패널수: "
 
-#: src/diffuse/main.py:1555
+#: src/diffuse/main.py:1558
 msgid "Phrase not found.  Continue from the end of the file?"
 msgstr "문자열을 찾을 수 없습니다. 파일의 끝에서 계속하시겠습니까?"
 
-#: src/diffuse/main.py:1557
+#: src/diffuse/main.py:1560
 msgid "Phrase not found.  Continue from the start of the file?"
 msgstr "문자열을 찾을 수 없습니다. 파일의 시작에서 다시하시겠습니까?"
 
-#: src/diffuse/main.py:1778
+#: src/diffuse/main.py:1781
 #, fuzzy
 msgid ""
 "Usage:\n"
@@ -671,16 +676,16 @@ msgstr ""
 "  ( -i | --ignore-case )           대소문자 차이를 무시\n"
 "  ( -w | --ignore-all-space )      공백을 무시"
 
-#: src/diffuse/main.py:1945
+#: src/diffuse/main.py:1948
 msgid "Error parsing line number."
 msgstr "줄 번호를 구문 분석하는 동안 오류가 발생했습니다."
 
-#: src/diffuse/main.py:1955
+#: src/diffuse/main.py:1958
 #, python-format
 msgid "Skipping unknown argument \"%s\"."
 msgstr "알수 없는 인수「%s」 유지 합니다."
 
-#: src/diffuse/main.py:1963
+#: src/diffuse/main.py:1966
 #, python-format
 msgid "Error processing argument \"%s\".  Directory not expected."
 msgstr "%s 인수를 처리하는 동안 오류가 발생했습니다. 디렉토리를 예측할 수 없습니다."
@@ -956,7 +961,3 @@ msgstr "모두 선택"
 #: src/diffuse/widgets.py:1868
 msgid "Swap with Selected Pane"
 msgstr "선택된 프레임 대신"
-
-#, python-format
-#~ msgid "Column %d"
-#~ msgstr "%d열"
