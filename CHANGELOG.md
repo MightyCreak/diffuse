@@ -9,13 +9,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Translation: updated Swedish translation
+- Translation: updated Swedish translation (thanks to @eson57)
 
 ## 0.7.7 - 2022-10-23
 
 ### Changed
 
-- Translation: updated Spanish translation
+- Translation: updated Spanish translation (thanks to @oscfdezdz)
 - Translation: updated POT file
 - Translation: fixed issue with commented string that still needs translation
 
