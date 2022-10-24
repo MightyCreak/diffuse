@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Changed
+
+- Translation: updated Spanish translation
+- Translation: updated POT file
+- Translation: fixed issue with commented string that still needs translation
+
 ## 0.7.6 - 2022-10-23
 
 ### Added
