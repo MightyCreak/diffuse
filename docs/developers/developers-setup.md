@@ -53,13 +53,13 @@ _Note: Tested on macOS 12.5 (Monterey)_
 To install the requirements just to execute the binary, run:
 
 ```sh
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 ```
 
 For developer tools, run this one instead (it includes requirements.txt):
 
 ```sh
-pip install -r requirements.dev.txt
+pip3 install -r requirements.dev.txt
 ```
 
 ## Setup
