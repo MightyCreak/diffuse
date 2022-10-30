@@ -148,7 +148,7 @@ sudo ninja uninstall -C build
 sudo rm -v /usr/local/share/locale/*/LC_MESSAGES/diffuse.mo
 ```
 
-### Setup on Mac OS
+### Setup on macOS using Meson
 
 #### Build and test
 
@@ -165,7 +165,7 @@ meson test
 
 #### Install on system and run
 
-To install Diffuse on your system (e.g. `/usr/local/`):
+To install Diffuse on your system (e.g., `/Applications` and `/opt/homebrew` or `/usr/local/`):
 
 ```sh
 meson install # might require admin privileges
@@ -177,8 +177,7 @@ To run Diffuse:
 diffuse
 ```
 
-_Note: The `diffuse` command can be used to launch Diffuse as a native Mac app_
-_that is installed into `/Applications/Diffuse.app`._
+_Note: The `diffuse` command can be used to launch Diffuse as a native Mac app that is installed into `/Applications/Diffuse.app`. To pass command-line arguments, run `diffuse_impl`. _
 
 ### Setup on Windows (deprecated)
 
