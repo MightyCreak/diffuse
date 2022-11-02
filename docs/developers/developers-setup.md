@@ -179,7 +179,7 @@ To run Diffuse:
 diffuse
 ```
 
-_Note: The `diffuse` command can be used to launch Diffuse as a native Mac app that is installed into `/Applications/Diffuse.app`. To pass command-line arguments, run `diffuse_impl`. _
+_Note: The `diffuse` command can be used to launch Diffuse as a native Mac app that is installed into `/Applications/Diffuse.app`._
 
 ### Setup on Windows (deprecated)
 
