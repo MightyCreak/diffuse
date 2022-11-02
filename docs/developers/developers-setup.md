@@ -37,7 +37,7 @@ _Note: Tested on Fedora 36_
 </details>
 
 <details>
-    <summary>Mac OS</summary>
+    <summary>macOS</summary>
 
 On Mac, all dependencies can be installed using [Homebrew](https://docs.brew.sh/):
 
@@ -108,7 +108,7 @@ meson test
 
 #### Install on system and run
 
-To install Diffuse on your system (e.g. `/usr/local/`):
+To install Diffuse on your system (e.g. `/usr/local`):
 
 ```sh
 meson install # requires admin privileges
@@ -148,11 +148,11 @@ sudo ninja uninstall -C build
 sudo rm -v /usr/local/share/locale/*/LC_MESSAGES/diffuse.mo
 ```
 
-### Setup on macOS using Meson
+### Setup on macOS
 
 #### Build and test
 
-Diffuse is using Meson as its build system.
+Diffuse is using Meson as its build system, this is the only supported system on macOS.
 
 To build and test Diffuse:
 
@@ -165,10 +165,12 @@ meson test
 
 #### Install on system and run
 
-To install Diffuse on your system (e.g., `/Applications` and `/opt/homebrew` or `/usr/local/`):
+To install Diffuse on your system (e.g., `/Applications` and `/opt/homebrew` or `/usr/local`):
 
 ```sh
-meson install # might require admin privileges
+# requires the user to have admin privileges, or sudo
+meson install
+# sudo meson install
 ```
 
 To run Diffuse:
