@@ -47,8 +47,8 @@ gi.require_version('Gdk', '3.0')
 gi.require_version('GdkPixbuf', '2.0')
 gi.require_version('Pango', '1.0')
 gi.require_version('PangoCairo', '1.0')
-from gi.repository import GObject, Gtk, Gdk, GdkPixbuf, Pango  # type: ignore # noqa: E402
-
+from gi.repository import (Gdk, GdkPixbuf, Gio,  # type: ignore # noqa: E402
+                           GLib, GObject, Gtk, Pango)
 
 theVCSs = VcsRegistry()
 
@@ -121,7 +121,7 @@ class FileInfo:
 # the main application class containing a set of file viewers
 # this class displays tab for switching between viewers and dispatches menu
 # commands to the current viewer
-class Diffuse(Gtk.Window):
+class Diffuse(Gtk.ApplicationWindow):
     # specialization of FileDiffViewerBase for Diffuse
     class FileDiffViewer(FileDiffViewerBase):
         # pane header
@@ -665,8 +665,8 @@ class Diffuse(Gtk.Window):
         def format_changed_cb(self, widget, f, fmt):
             self.footers[f].setFormat(fmt)
 
-    def __init__(self, rc_dir):
-        super().__init__(type=Gtk.WindowType.TOPLEVEL)
+    def __init__(self, rc_dir, *args, **kwargs):
+        super().__init__(type=Gtk.WindowType.TOPLEVEL, *args, **kwargs)
 
         self.prefs = Preferences(os.path.join(rc_dir, 'prefs'))
         # number of created viewers (used to label some tabs)
@@ -698,7 +698,6 @@ class Diffuse(Gtk.Window):
         self.search_history: List[str] = []
 
         self.connect('delete-event', self.delete_cb)
-        accel_group = Gtk.AccelGroup()
 
         # create a Box for our contents
         vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
@@ -768,127 +767,146 @@ class Diffuse(Gtk.Window):
 
         menuspecs = []
         menuspecs.append([_('_File'), [
+            [
             [_('_Open File...'), self.open_file_cb, None, Gtk.STOCK_OPEN, 'open_file'],
             [_('Open File In New _Tab...'), self.open_file_in_new_tab_cb, None, None, 'open_file_in_new_tab'],  # noqa: E501
             [_('Open _Modified Files...'), self.open_modified_files_cb, None, None, 'open_modified_files'],  # noqa: E501
             [_('Open Commi_t...'), self.open_commit_cb, None, None, 'open_commit'],
             [_('_Reload File'), self.reload_file_cb, None, Gtk.STOCK_REFRESH, 'reload_file'],
-            [],
+            ], [
             [_('_Save File'), self.save_file_cb, None, Gtk.STOCK_SAVE, 'save_file'],
             [_('Save File _As...'), self.save_file_as_cb, None, Gtk.STOCK_SAVE_AS, 'save_file_as'],
             [_('Save A_ll'), self.save_all_cb, None, None, 'save_all'],
-            [],
+            ], [
             [_('New _2-Way File Merge'), self.new_2_way_file_merge_cb, None, DIFFUSE_STOCK_NEW_2WAY_MERGE, 'new_2_way_file_merge'],  # noqa: E501
             [_('New _3-Way File Merge'), self.new_3_way_file_merge_cb, None, DIFFUSE_STOCK_NEW_3WAY_MERGE, 'new_3_way_file_merge'],  # noqa: E501
             [_('New _N-Way File Merge...'), self.new_n_way_file_merge_cb, None, None, 'new_n_way_file_merge'],  # noqa: E501
-            [],
+            ], [
             [_('_Close Tab'), self.close_tab_cb, None, Gtk.STOCK_CLOSE, 'close_tab'],
             [_('_Undo Close Tab'), self.undo_close_tab_cb, None, None, 'undo_close_tab'],
             [_('_Quit'), self.quit_cb, None, Gtk.STOCK_QUIT, 'quit']
+            ]
         ]])
 
         menuspecs.append([_('_Edit'), [
+            [
             [_('_Undo'), self.button_cb, 'undo', Gtk.STOCK_UNDO, 'undo'],
             [_('_Redo'), self.button_cb, 'redo', Gtk.STOCK_REDO, 'redo'],
-            [],
+            ], [
             [_('Cu_t'), self.button_cb, 'cut', Gtk.STOCK_CUT, 'cut'],
             [_('_Copy'), self.button_cb, 'copy', Gtk.STOCK_COPY, 'copy'],
             [_('_Paste'), self.button_cb, 'paste', Gtk.STOCK_PASTE, 'paste'],
-            [],
+            ], [
             [_('Select _All'), self.button_cb, 'select_all', None, 'select_all'],
             [_('C_lear Edits'), self.button_cb, 'clear_edits', Gtk.STOCK_CLEAR, 'clear_edits'],
             [_('_Dismiss All Edits'), self.button_cb, 'dismiss_all_edits', None, 'dismiss_all_edits'],  # noqa: E501
-            [],
+            ], [
             [_('_Find...'), self.find_cb, None, Gtk.STOCK_FIND, 'find'],
             [_('Find _Next'), self.find_next_cb, None, None, 'find_next'],
             [_('Find Pre_vious'), self.find_previous_cb, None, None, 'find_previous'],
             [_('_Go To Line...'), self.go_to_line_cb, None, Gtk.STOCK_JUMP_TO, 'go_to_line'],
-            [],
+            ], [
             [_('Pr_eferences...'), self.preferences_cb, None, Gtk.STOCK_PREFERENCES, 'preferences']
+            ]
         ]])
 
-        submenudef = [
-            [_('None'), self.syntax_cb, None, None, 'no_syntax_highlighting', True, None, ('syntax', None)]  # noqa: E501
-        ]
+        submenudef = []
         names = theResources.getSyntaxNames()
+        variant = GLib.Variant.new_string("")
+        self.syntax_action = Gio.SimpleAction.new_stateful(
+            "syntax_highlighting", variant.get_type(), variant
+        )
+        self.syntax_action.connect("change-state", self.syntax_cb)
+        self.add_action(self.syntax_action)
         if len(names) > 0:
-            submenudef.append([])
             names.sort(key=str.lower)
             for name in names:
-                submenudef.append([
-                    name,
-                    self.syntax_cb,
-                    name,
-                    None,
-                    'syntax_highlighting_' + name,
-                    True,
-                    None,
-                    ('syntax', name)
-                ])
+                submenudef.append(
+                    [
+                        name,
+                        None,
+                        name,
+                        None,
+                        "syntax_highlighting",
+                    ]
+                )
 
         menuspecs.append([_('_View'), [
-            [_('_Syntax Highlighting'), None, None, None, None, True, submenudef],
-            [],
+            [
+            [_('_Syntax Highlighting'), None, None, None, None, [
+                [
+                [_('None'), None, '', None, 'syntax_highlighting']  # noqa: E501
+                ],
+                submenudef
+            ]
+            ]
+            ], [
             [_('Re_align All'), self.button_cb, 'realign_all', Gtk.STOCK_EXECUTE, 'realign_all'],
             [_('_Isolate'), self.button_cb, 'isolate', None, 'isolate'],
-            [],
+            ], [
             [_('_First Difference'), self.button_cb, 'first_difference', Gtk.STOCK_GOTO_TOP, 'first_difference'],  # noqa: E501
             [_('_Previous Difference'), self.button_cb, 'previous_difference', Gtk.STOCK_GO_UP, 'previous_difference'],  # noqa: E501
             [_('_Next Difference'), self.button_cb, 'next_difference', Gtk.STOCK_GO_DOWN, 'next_difference'],  # noqa: E501
             [_('_Last Difference'), self.button_cb, 'last_difference', Gtk.STOCK_GOTO_BOTTOM, 'last_difference'],  # noqa: E501
-            [],
+            ], [
             [_('Fir_st Tab'), self.first_tab_cb, None, None, 'first_tab'],
             [_('Pre_vious Tab'), self.previous_tab_cb, None, None, 'previous_tab'],
             [_('Next _Tab'), self.next_tab_cb, None, None, 'next_tab'],
             [_('Las_t Tab'), self.last_tab_cb, None, None, 'last_tab'],
-            [],
+            ], [
             [_('Shift Pane _Right'), self.button_cb, 'shift_pane_right', None, 'shift_pane_right'],
             [_('Shift Pane _Left'), self.button_cb, 'shift_pane_left', None, 'shift_pane_left']
+            ]
         ]])
 
         menuspecs.append([_('F_ormat'), [
+            [
             [_('Convert To _Upper Case'), self.button_cb, 'convert_to_upper_case', None, 'convert_to_upper_case'],  # noqa: E501
             [_('Convert To _Lower Case'), self.button_cb, 'convert_to_lower_case', None, 'convert_to_lower_case'],  # noqa: E501
-            [],
+            ], [
             [_('Sort Lines In _Ascending Order'), self.button_cb, 'sort_lines_in_ascending_order', Gtk.STOCK_SORT_ASCENDING, 'sort_lines_in_ascending_order'],  # noqa: E501
             [_('Sort Lines In D_escending Order'), self.button_cb, 'sort_lines_in_descending_order', Gtk.STOCK_SORT_DESCENDING, 'sort_lines_in_descending_order'],  # noqa: E501
-            [],
+            ], [
             [_('Remove Trailing _White Space'), self.button_cb, 'remove_trailing_white_space', None, 'remove_trailing_white_space'],  # noqa: E501
             [_('Convert Tabs To _Spaces'), self.button_cb, 'convert_tabs_to_spaces', None, 'convert_tabs_to_spaces'],  # noqa: E501
             [_('Convert Leading Spaces To _Tabs'), self.button_cb, 'convert_leading_spaces_to_tabs', None, 'convert_leading_spaces_to_tabs'],  # noqa: E501
-            [],
+            ], [
             [_('_Increase Indenting'), self.button_cb, 'increase_indenting', Gtk.STOCK_INDENT, 'increase_indenting'],  # noqa: E501
             [_('De_crease Indenting'), self.button_cb, 'decrease_indenting', Gtk.STOCK_UNINDENT, 'decrease_indenting'],  # noqa: E501
-            [],
+            ], [
             [_('Convert To _DOS Format'), self.button_cb, 'convert_to_dos', None, 'convert_to_dos'],  # noqa: E501
             [_('Convert To _Mac Format'), self.button_cb, 'convert_to_mac', None, 'convert_to_mac'],  # noqa: E501
             [_('Convert To Uni_x Format'), self.button_cb, 'convert_to_unix', None, 'convert_to_unix']  # noqa: E501
+            ]
         ]])
 
         menuspecs.append([_('_Merge'), [
+            [
             [_('Copy Selection _Right'), self.button_cb, 'copy_selection_right', Gtk.STOCK_GOTO_LAST, 'copy_selection_right'],  # noqa: E501
             [_('Copy Selection _Left'), self.button_cb, 'copy_selection_left', Gtk.STOCK_GOTO_FIRST, 'copy_selection_left'],  # noqa: E501
-            [],
+            ], [
             [_('Copy Left _Into Selection'), self.button_cb, 'copy_left_into_selection', Gtk.STOCK_GO_FORWARD, 'copy_left_into_selection'],  # noqa: E501
             [_('Copy Right I_nto Selection'), self.button_cb, 'copy_right_into_selection', Gtk.STOCK_GO_BACK, 'copy_right_into_selection'],  # noqa: E501
             [_('_Merge From Left Then Right'), self.button_cb, 'merge_from_left_then_right', DIFFUSE_STOCK_LEFT_RIGHT, 'merge_from_left_then_right'],  # noqa: E501
             [_('M_erge From Right Then Left'), self.button_cb, 'merge_from_right_then_left', DIFFUSE_STOCK_RIGHT_LEFT, 'merge_from_right_then_left']  # noqa: E501
+            ]
         ]])
 
         menuspecs.append([_('_Help'), [
+            [
             [_('_Help Contents...'), self.help_contents_cb, None, Gtk.STOCK_HELP, 'help_contents'],
-            [],
+            ], [
             [_('_About %s...') % (constants.APP_NAME, ), self.about_cb, None, Gtk.STOCK_ABOUT, 'about']  # noqa: E501
+            ]
         ]])
 
         # used to disable menu events when switching tabs
         self.menu_update_depth = 0
-        # build list of radio menu items so we can update them to match the
-        # currently viewed pane
-        self.radio_menus = radio_menus = {}
-        menu_bar = _create_menu_bar(menuspecs, radio_menus, accel_group)
-        vbox.pack_start(menu_bar, False, False, 0)
-        menu_bar.show()
+
+        menubar = Gio.Menu()
+        for label, sections in menuspecs:
+            menubar.append_submenu(label, self.create_submenu(sections))
+        self.get_application().set_menubar(menubar)
 
         # create button bar
         hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=0)
@@ -933,10 +951,38 @@ class Diffuse(Gtk.Window):
         vbox.pack_start(statusbar, False, False, 0)
         statusbar.show()
 
-        self.add_accel_group(accel_group)
         self.add(vbox)
         vbox.show()
-        self.connect('focus-in-event', self.focus_in_cb)
+        self.connect("focus-in-event", self.focus_in_cb)
+
+    def create_submenu(self, sections):
+        sub = Gio.Menu.new()
+        for section in sections:
+            s = Gio.Menu.new()
+            for label, cb, data, icon, accel, *submenu in section:
+                if submenu:
+                    (submenu,) = submenu
+                    s.append_submenu(label, self.create_submenu(submenu))
+                else:
+                    if data is not None:
+                        data = GLib.Variant.new_string(data)
+                    if cb is not None:
+                        action = Gio.SimpleAction.new(accel, data and data.get_type())
+                        action.connect("activate", cb)
+                        self.add_action(action)
+                    item = Gio.MenuItem.new(label)
+                    item.set_action_and_target_value("win." + accel, data)
+                    if icon:
+                        item.set_icon(Gio.Icon.new_for_string(icon))
+                    a = theResources.getKeyBindings("menu", accel)
+                    if len(a) > 0:
+                        key, modifier = a[0]
+                        self.get_application().set_accels_for_action(
+                            "win." + accel, [Gtk.accelerator_name(key, modifier)]
+                        )
+                    s.append_item(item)
+            sub.append_section(None, s)
+        return sub
 
     # notifies all viewers on focus changes so they may check for external
     # changes to files
@@ -1194,13 +1240,7 @@ class Diffuse(Gtk.Window):
     # update the label in the status bar
     def setSyntax(self, s):
         # update menu
-        t = self.radio_menus.get('syntax', None)
-        if t is not None:
-            t = t[1]
-            if s in t:
-                self.menu_update_depth += 1
-                t[s].set_active(True)
-                self.menu_update_depth -= 1
+        self.syntax_action.set_state(GLib.Variant.new_string(s or ""))
 
     # callback used when switching notebook pages
     def switch_page_cb(self, widget, ptr, page_num):
@@ -1387,7 +1427,7 @@ class Diffuse(Gtk.Window):
     # respond to close window request from the window manager
     def delete_cb(self, widget, event):
         if self.confirmQuit():
-            Gtk.main_quit()
+            self.get_application().quit()
             return False
         return True
 
@@ -1534,7 +1574,7 @@ class Diffuse(Gtk.Window):
     # callback for the quit menu item
     def quit_cb(self, widget, data):
         if self.confirmQuit():
-            Gtk.main_quit()
+            self.get_application().quit()
 
     # request search parameters if force=True and then perform a search in the
     # current viewer pane
@@ -1711,18 +1751,6 @@ class Diffuse(Gtk.Window):
         dialog.destroy()
 
 
-# convenience method for creating a menu bar according to a template
-def _create_menu_bar(specs, radio, accel_group):
-    menu_bar = Gtk.MenuBar()
-    for label, spec in specs:
-        menu = Gtk.MenuItem.new_with_mnemonic(label)
-        menu.set_submenu(createMenu(spec, radio, accel_group))
-        menu.set_use_underline(True)
-        menu.show()
-        menu_bar.append(menu)
-    return menu_bar
-
-
 # convenience method for packing buttons into a container according to a
 # template
 def _append_buttons(box, size, specs):
@@ -1789,206 +1817,289 @@ GObject.signal_new('save', Diffuse.FileDiffViewer.PaneHeader, GObject.SignalFlag
 GObject.signal_new('save-as', Diffuse.FileDiffViewer.PaneHeader, GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, ())  # noqa: E501
 
 
-def main(version, sysconfigdir):
-    # app = Application()
-    # return app.run(sys.argv)
+class Application(Gtk.Application):
+    def __init__(self, sysconfigdir, *args, **kwargs):
+        super().__init__(
+            *args,
+            application_id="org.example.diffuse",
+            flags=Gio.ApplicationFlags.HANDLES_COMMAND_LINE
+            | Gio.ApplicationFlags.NON_UNIQUE,
+            **kwargs,
+        )
+        self.sysconfigdir = sysconfigdir
+        self.add_main_option(
+            "no-rcfile",
+            ord("n"),
+            GLib.OptionFlags.NONE,
+            GLib.OptionArg.NONE,
+            "Do not read any resource files",
+            None,
+        )
+        self.add_main_option(
+            "rcfile",
+            ord("r"),
+            GLib.OptionFlags.NONE,
+            GLib.OptionArg.STRING,
+            "Specify explicit resource file",
+            "file",
+        )
+        self.add_main_option(
+            "commit",
+            ord("c"),
+            GLib.OptionFlags.NONE,
+            GLib.OptionArg.STRING,
+            "File revisions <rev-1> and <rev>",
+            "rev",
+        )
+        self.add_main_option(
+            "close-if-same",
+            ord("D"),
+            GLib.OptionFlags.NONE,
+            GLib.OptionArg.NONE,
+            "Close all tabs with no differences",
+        )
+        self.add_main_option(
+            "encoding",
+            ord("e"),
+            GLib.OptionFlags.NONE,
+            GLib.OptionArg.STRING,
+            "Use <codec> to read and write files",
+            "codec",
+        )
+        self.add_main_option(
+            "label",
+            ord("L"),
+            GLib.OptionFlags.NONE,
+            GLib.OptionArg.STRING,
+            "Display <label> instead of the file name",
+            "label",
+        )
+        self.add_main_option(
+            "modified",
+            ord("m"),
+            GLib.OptionFlags.NONE,
+            GLib.OptionArg.NONE,
+            "Create a new tab for each modified file",
+        )
+        self.add_main_option(
+            "revision",
+            ord("r"),
+            GLib.OptionFlags.NONE,
+            GLib.OptionArg.STRING,
+            "File revision <rev>",
+            "rev",
+        )
+        self.add_main_option(
+            "separate",
+            ord("s"),
+            GLib.OptionFlags.NONE,
+            GLib.OptionArg.NONE,
+            "Create a new tab for each file",
+        )
+        self.add_main_option(
+            "tab",
+            ord("t"),
+            GLib.OptionFlags.NONE,
+            GLib.OptionArg.NONE,
+            "Start a new tab",
+        )
+        self.add_main_option(
+            "vcs",
+            ord("v"),
+            GLib.OptionFlags.NONE,
+            GLib.OptionArg.STRING,
+            "Version control system search order",
+            "vcs-list",
+        )
+        self.add_main_option(
+            "line",
+            ord("l"),
+            GLib.OptionFlags.NONE,
+            GLib.OptionArg.STRING,
+            "Start with line <line> selected",
+            "line",
+        )
+        self.add_main_option(
+            "null-file",
+            ord("n"),
+            GLib.OptionFlags.NONE,
+            GLib.OptionArg.NONE,
+            "Create a blank file comparison pane",
+        )
+        self.add_main_option(
+            "ignore-space-change",
+            ord("b"),
+            GLib.OptionFlags.NONE,
+            GLib.OptionArg.NONE,
+            "Ignore changes to white space",
+        )
+        self.add_main_option(
+            "ignore-blank-lines",
+            ord("B"),
+            GLib.OptionFlags.NONE,
+            GLib.OptionArg.NONE,
+            "Ignore changes in blank lines",
+        )
+        self.add_main_option(
+            "ignore-end-of-line",
+            ord("E"),
+            GLib.OptionFlags.NONE,
+            GLib.OptionArg.NONE,
+            "Ignore end of line differences",
+        )
+        self.add_main_option(
+            "ignore-case",
+            ord("i"),
+            GLib.OptionFlags.NONE,
+            GLib.OptionArg.NONE,
+            "Ignore case differences",
+        )
+        self.add_main_option(
+            "ignore-all-space",
+            ord("w"),
+            GLib.OptionFlags.NONE,
+            GLib.OptionArg.NONE,
+            "Ignore white space differences",
+        )
+        self.set_option_context_summary(
+            "Diffuse is a graphical tool for merging and comparing text files. Diffuse is able to compare an arbitrary number of files side-by-side and gives users the ability to manually adjust line matching and directly edit files. Diffuse can also retrieve revisions of files from several VCSs for comparison and merging."
+        )
 
-    args = sys.argv
-    argc = len(args)
+    def do_activate(self):
+        self.window.present()
 
-    constants.VERSION = version
-
-    if argc == 2 and args[1] in ['-v', '--version']:
-        print('%s %s\n%s' % (constants.APP_NAME, constants.VERSION, constants.COPYRIGHT))
-        return 0
-
-    if argc == 2 and args[1] in ['-h', '-?', '--help']:
-        print(_('''Usage:
-    diffuse [OPTION...] [FILE...]
-    diffuse ( -h | -? | --help | -v | --version )
-
-Diffuse is a graphical tool for merging and comparing text files. Diffuse is
-able to compare an arbitrary number of files side-by-side and gives users the
-ability to manually adjust line matching and directly edit files. Diffuse can
-also retrieve revisions of files from several VCSs for comparison and merging.
-
-Help Options:
-  ( -h | -? | --help )             Display this usage information
-  ( -v | --version )               Display version and copyright information
-
-Configuration Options:
-  --no-rcfile                      Do not read any resource files
-  --rcfile <file>                  Specify explicit resource file
-
-General Options:
-  ( -c | --commit ) <rev>          File revisions <rev-1> and <rev>
-  ( -D | --close-if-same )         Close all tabs with no differences
-  ( -e | --encoding ) <codec>      Use <codec> to read and write files
-  ( -L | --label ) <label>         Display <label> instead of the file name
-  ( -m | --modified )              Create a new tab for each modified file
-  ( -r | --revision ) <rev>        File revision <rev>
-  ( -s | --separate )              Create a new tab for each file
-  ( -t | --tab )                   Start a new tab
-  ( -V | --vcs ) <vcs-list>        Version control system search order
-  --line <line>                    Start with line <line> selected
-  --null-file                      Create a blank file comparison pane
-
-Display Options:
-  ( -b | --ignore-space-change )   Ignore changes to white space
-  ( -B | --ignore-blank-lines )    Ignore changes in blank lines
-  ( -E | --ignore-end-of-line )    Ignore end of line differences
-  ( -i | --ignore-case )           Ignore case differences
-  ( -w | --ignore-all-space )      Ignore white space differences'''))
-        return 0
-
-    # find the config directory and create it if it didn't exist
-    rc_dir = os.environ.get('XDG_CONFIG_HOME', None)
-    subdirs = ['diffuse']
-    if rc_dir is None:
-        rc_dir = os.path.expanduser('~')
-        subdirs.insert(0, '.config')
-    rc_dir = utils.make_subdirs(rc_dir, subdirs)
-
-    # find the local data directory and create it if it didn't exist
-    data_dir = os.environ.get('XDG_DATA_HOME', None)
-    subdirs = ['diffuse']
-    if data_dir is None:
-        data_dir = os.path.expanduser('~')
-        subdirs[:0] = ['.local', 'share']
-    data_dir = utils.make_subdirs(data_dir, subdirs)
-
-    # load resource files
-    i = 1
-    rc_files = []
-    if i < argc and args[i] == '--no-rcfile':
-        i += 1
-    elif i + 1 < argc and args[i] == '--rcfile':
-        i += 1
-        rc_files.append(args[i])
-        i += 1
-    else:
-        # parse system wide then personal initialization files
-        if utils.isWindows():
-            rc_file = os.path.join(utils.bin_dir, 'diffuserc')
-        else:
-            rc_file = os.path.join(utils.bin_dir, f'{sysconfigdir}/diffuserc')
-        for rc_file in rc_file, os.path.join(rc_dir, 'diffuserc'):
-            if os.path.isfile(rc_file):
-                rc_files.append(rc_file)
-    for rc_file in rc_files:
-        # convert to absolute path so the location of any processing errors are
-        # reported with normalized file names
-        rc_file = os.path.abspath(rc_file)
-        try:
-            theResources.parse(rc_file)
-        except IOError:
-            utils.logError(_('Error reading %s.') % (rc_file, ))
-
-    diff = Diffuse(rc_dir)
-
-    # load state
-    statepath = os.path.join(data_dir, 'state')
-    diff.loadState(statepath)
-
-    # process remaining command line arguments
-    encoding = None
-    revs = []
-    close_on_same = False
-    specs = []
-    had_specs = False
-    labels = []
-    funcs = {
-        'modified': diff.createModifiedFileTabs,
-        'commit': diff.createCommitFileTabs,
-        'separate': diff.createSeparateTabs,
-        'single': diff.createSingleTab
-    }
-    mode = 'single'
-    options = {}
-    while i < argc:
-        arg = args[i]
-        if len(arg) > 0 and arg[0] == '-':
-            if i + 1 < argc and arg in ['-c', '--commit']:
-                # specified revision
-                funcs[mode](specs, labels, options)
-                i += 1
-                specs, labels, options = [], [], {'commit': args[i]}
-                mode = 'commit'
-            elif arg in ['-D', '--close-if-same']:
-                close_on_same = True
-            elif i + 1 < argc and arg in ['-e', '--encoding']:
-                i += 1
-                encoding = args[i]
-                encoding = encodings.aliases.aliases.get(encoding, encoding)
-            elif arg in ['-m', '--modified']:
-                funcs[mode](specs, labels, options)
-                specs, labels, options = [], [], {}
-                mode = 'modified'
-            elif i + 1 < argc and arg in ['-r', '--revision']:
-                # specified revision
-                i += 1
-                revs.append((args[i], encoding))
-            elif arg in ['-s', '--separate']:
-                funcs[mode](specs, labels, options)
-                specs, labels, options = [], [], {}
-                # open items in separate tabs
-                mode = 'separate'
-            elif arg in ['-t', '--tab']:
-                funcs[mode](specs, labels, options)
-                specs, labels, options = [], [], {}
-                # start a new tab
-                mode = 'single'
-            elif i + 1 < argc and arg in ['-V', '--vcs']:
-                i += 1
-                diff.prefs.setString('vcs_search_order', args[i])
-                diff.preferences_updated()
-            elif arg in ['-b', '--ignore-space-change']:
-                diff.prefs.setBool('display_ignore_whitespace_changes', True)
-                diff.prefs.setBool('align_ignore_whitespace_changes', True)
-                diff.preferences_updated()
-            elif arg in ['-B', '--ignore-blank-lines']:
-                diff.prefs.setBool('display_ignore_blanklines', True)
-                diff.prefs.setBool('align_ignore_blanklines', True)
-                diff.preferences_updated()
-            elif arg in ['-E', '--ignore-end-of-line']:
-                diff.prefs.setBool('display_ignore_endofline', True)
-                diff.prefs.setBool('align_ignore_endofline', True)
-                diff.preferences_updated()
-            elif arg in ['-i', '--ignore-case']:
-                diff.prefs.setBool('display_ignore_case', True)
-                diff.prefs.setBool('align_ignore_case', True)
-                diff.preferences_updated()
-            elif arg in ['-w', '--ignore-all-space']:
-                diff.prefs.setBool('display_ignore_whitespace', True)
-                diff.prefs.setBool('align_ignore_whitespace', True)
-                diff.preferences_updated()
-            elif i + 1 < argc and arg == '-L':
-                i += 1
-                labels.append(args[i])
-            elif i + 1 < argc and arg == '--line':
-                i += 1
-                try:
-                    options['line'] = int(args[i])
-                except ValueError:
-                    utils.logError(_('Error parsing line number.'))
-            elif arg == '--null-file':
-                # add a blank file pane
-                if mode == 'single' or mode == 'separate':
-                    if len(revs) == 0:
-                        revs.append((None, encoding))
-                    specs.append((None, revs))
-                    revs = []
-                had_specs = True
+    def do_command_line(self, command_line):
+        options = command_line.get_options_dict()
+        # convert GVariantDict -> GVariant -> dict
+        options = options.end().unpack()
+        # find the config directory and create it if it didn't exist
+        rc_dir = os.environ.get("XDG_CONFIG_HOME", None)
+        subdirs = ["diffuse"]
+        if rc_dir is None:
+            rc_dir = os.path.expanduser("~")
+            subdirs.insert(0, ".config")
+        rc_dir = utils.make_subdirs(rc_dir, subdirs)
+        # find the local data directory and create it if it didn't exist
+        data_dir = os.environ.get("XDG_DATA_HOME", None)
+        subdirs = ["diffuse"]
+        if data_dir is None:
+            data_dir = os.path.expanduser("~")
+            subdirs[:0] = [".local", "share"]
+        data_dir = utils.make_subdirs(data_dir, subdirs)
+        # load resource files
+        rc_files = []
+        if "no-rcfile" not in options:
+            # parse system wide then personal initialization files
+            if utils.isWindows():
+                rc_file = os.path.join(utils.bin_dir, "diffuserc")
             else:
-                utils.logError(_('Skipping unknown argument "%s".') % (args[i], ))
-        else:
-            filename = diff.prefs.convertToNativePath(args[i])
-            if (mode == 'single' or mode == 'separate') and os.path.isdir(filename):
+                rc_file = os.path.join(utils.bin_dir, self.sysconfigdir, "diffuserc")
+            for rc_file in rc_file, os.path.join(rc_dir, "diffuserc"):
+                if os.path.isfile(rc_file):
+                    rc_files.append(rc_file)
+        if "rcfile" in options:
+            rc_files.append(options["rcfile"])
+        for rc_file in rc_files:
+            # convert to absolute path so the location of any processing errors are
+            # reported with normalized file names
+            rc_file = os.path.abspath(rc_file)
+            try:
+                theResources.parse(rc_file)
+            except IOError:
+                utils.logError(_("Error reading %s.") % (rc_file,))
+        self.window = diff = Diffuse(rc_dir, application=self)
+        # load state
+        self.statepath = os.path.join(data_dir, "state")
+        self.window.loadState(self.statepath)
+        # process remaining command line arguments
+        encoding = None
+        revs = []
+        close_on_same = False
+        specs = []
+        had_specs = False
+        labels = []
+        funcs = {
+            "modified": diff.createModifiedFileTabs,
+            "commit": diff.createCommitFileTabs,
+            "separate": diff.createSeparateTabs,
+            "single": diff.createSingleTab,
+        }
+        mode = "single"
+        opts = {}
+        if "commit" in options:
+            # specified revision
+            funcs[mode](specs, labels, options)
+            specs, labels, opts = [], [], {"commit": options["commit"]}
+            mode = "commit"
+        if "close-if-same" in options:
+            close_on_same = True
+        if "encoding" in options:
+            encoding = options["encoding"]
+            encoding = encodings.aliases.aliases.get(encoding, encoding)
+        if "modified" in options:
+            funcs[mode](specs, labels, opts)
+            specs, labels, opts = [], [], {}
+            mode = "modified"
+        if "revision" in options:
+            # specified revision
+            revs.append((options["revision"], encoding))
+        if "separate" in options:
+            funcs[mode](specs, labels, opts)
+            specs, labels, opts = [], [], {}
+            # open items in separate tabs
+            mode = "separate"
+        if "tab" in options:
+            funcs[mode](specs, labels, opts)
+            specs, labels, opts = [], [], {}
+            # start a new tab
+            mode = "single"
+        if "vcs" in options:
+            diff.prefs.setString("vcs_search_order", options["vcs"])
+            diff.preferences_updated()
+        if "ignore-space-change" in options:
+            diff.prefs.setBool("display_ignore_whitespace_changes", True)
+            diff.prefs.setBool("align_ignore_whitespace_changes", True)
+            diff.preferences_updated()
+        if "ignore-blank-lines" in options:
+            diff.prefs.setBool("display_ignore_blanklines", True)
+            diff.prefs.setBool("align_ignore_blanklines", True)
+            diff.preferences_updated()
+        if "ignore-end-of-line" in options:
+            diff.prefs.setBool("display_ignore_endofline", True)
+            diff.prefs.setBool("align_ignore_endofline", True)
+            diff.preferences_updated()
+        if "ignore-case" in options:
+            diff.prefs.setBool("display_ignore_case", True)
+            diff.prefs.setBool("align_ignore_case", True)
+            diff.preferences_updated()
+        if "ignore-all-space" in options:
+            diff.prefs.setBool("display_ignore_whitespace", True)
+            diff.prefs.setBool("align_ignore_whitespace", True)
+            diff.preferences_updated()
+        if "label" in options:
+            labels.append(options["label"])
+        if "line" in options:
+            try:
+                opts["line"] = int(options["line"])
+            except ValueError:
+                utils.logError(_("Error parsing line number."))
+        if "null-file" in options:
+            # add a blank file pane
+            if mode == "single" or mode == "separate":
+                if len(revs) == 0:
+                    revs.append((None, encoding))
+                specs.append((None, revs))
+                revs = []
+            had_specs = True
+        for arg in command_line.get_arguments()[1:]:
+            filename = diff.prefs.convertToNativePath(arg)
+            if (mode == "single" or mode == "separate") and os.path.isdir(filename):
                 if len(specs) > 0:
                     filename = os.path.join(filename, os.path.basename(specs[-1][0]))
                 else:
-                    utils.logError(_(
-                        'Error processing argument "%s".  Directory not expected.') % (args[i], )
+                    utils.logError(
+                        _('Error processing argument "%s".  Directory not expected.')
+                        % (arg,)
                     )
                     filename = None
             if filename is not None:
@@ -1997,26 +2108,36 @@ Display Options:
                 specs.append((filename, revs))
                 revs = []
             had_specs = True
-        i += 1
-    if mode in ['modified', 'commit'] and len(specs) == 0:
-        specs.append((os.curdir, [(None, encoding)]))
-        had_specs = True
-    funcs[mode](specs, labels, options)
+        if mode in ["modified", "commit"] and len(specs) == 0:
+            specs.append((os.curdir, [(None, encoding)]))
+            had_specs = True
+        funcs[mode](specs, labels, opts)
+        # create a file diff viewer if the command line arguments haven't
+        # implicitly created any
+        if not had_specs:
+            diff.newLoadedFileDiffViewer([])
+        elif close_on_same:
+            diff.closeOnSame()
+        nb = diff.notebook
+        n = nb.get_n_pages()
+        if n > 0:
+            nb.set_show_tabs(diff.prefs.getBool("tabs_always_show") or n > 1)
+            nb.get_nth_page(0).grab_focus()
+        self.activate()
+        return 0
 
-    # create a file diff viewer if the command line arguments haven't
-    # implicitly created any
-    if not had_specs:
-        diff.newLoadedFileDiffViewer([])
-    elif close_on_same:
-        diff.closeOnSame()
-    nb = diff.notebook
-    n = nb.get_n_pages()
-    if n > 0:
-        nb.set_show_tabs(diff.prefs.getBool('tabs_always_show') or n > 1)
-        nb.get_nth_page(0).grab_focus()
-        diff.show()
-        Gtk.main()
-        # save state
-        diff.saveState(statepath)
 
-    return 0
+def main(version, sysconfigdir):
+    constants.VERSION = version
+
+    args = sys.argv
+    argc = len(args)
+
+    if argc == 2 and args[1] in ["-v", "--version"]:
+        print(
+            "%s %s\n%s" % (constants.APP_NAME, constants.VERSION, constants.COPYRIGHT)
+        )
+        return 0
+
+    app = Application(sysconfigdir)
+    return app.run(sys.argv)
