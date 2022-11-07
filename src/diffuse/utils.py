@@ -169,7 +169,7 @@ def popenRead(
         cmd: List[str],
         prefs: Preferences,
         bash_pref: str,
-        success_results: List[int] = None) -> bytes:
+        success_results: Optional[List[int]] = None) -> bytes:
     if success_results is None:
         success_results = [0]
 
@@ -239,7 +239,7 @@ def popenReadLines(
         cmd: List[str],
         prefs: Preferences,
         bash_pref: str,
-        success_results: List[int] = None) -> List[str]:
+        success_results: Optional[List[int]] = None) -> List[str]:
     return _strip_eols(splitlines(popenRead(
         cwd, cmd, prefs, bash_pref, success_results).decode('utf-8', errors='ignore')))
 
