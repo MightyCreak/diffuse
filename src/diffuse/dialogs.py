@@ -20,6 +20,7 @@
 import os
 
 from gettext import gettext as _
+from typing import Optional
 
 from diffuse import constants
 from diffuse import utils
@@ -74,7 +75,7 @@ class FileChooserDialog(Gtk.FileChooserDialog):
         FileChooserDialog.last_chosen_folder = widget.get_current_folder()
 
     def __init__(self, title, parent, prefs, action, accept, rev=False):
-        Gtk.FileChooserDialog.__init__(self, title=title, parent=parent, action=action)
+        Gtk.FileChooserDialog.__init__(self, title=title, transient_for=parent, action=action)
         self.add_button(Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL)
         self.add_button(accept, Gtk.ResponseType.OK)
         self.prefs = prefs
@@ -82,15 +83,15 @@ class FileChooserDialog(Gtk.FileChooserDialog):
         label = Gtk.Label(label=_('Encoding: '))
         hbox.pack_start(label, False, False, 0)
         label.show()
-        self.encoding = entry = utils.EncodingMenu(
-            prefs,
-            action in [Gtk.FileChooserAction.OPEN, Gtk.FileChooserAction.SELECT_FOLDER])
-        hbox.pack_start(entry, False, False, 5)
-        entry.show()
+        self._encoding = utils.EncodingMenu(
+            prefs=prefs,
+            autodetect=action in [Gtk.FileChooserAction.OPEN, Gtk.FileChooserAction.SELECT_FOLDER])
+        hbox.pack_start(self._encoding, False, False, 5)
+        self._encoding.show()
         if rev:
-            self.revision = entry = Gtk.Entry()
-            hbox.pack_end(entry, False, False, 0)
-            entry.show()
+            self._revision = Gtk.Entry()
+            hbox.pack_end(self._revision, False, False, 0)
+            self._revision.show()
             label = Gtk.Label(label=_('Revision: '))
             hbox.pack_end(label, False, False, 0)
             label.show()
@@ -100,14 +101,14 @@ class FileChooserDialog(Gtk.FileChooserDialog):
         self.set_current_folder(self.last_chosen_folder)
         self.connect('current-folder-changed', self._current_folder_changed_cb)
 
-    def set_encoding(self, encoding):
-        self.encoding.set_text(encoding)
+    def set_encoding(self, encoding: Optional[str]) -> None:
+        self._encoding.set_text(encoding)
 
-    def get_encoding(self) -> str:
-        return self.encoding.get_text()
+    def get_encoding(self) -> Optional[str]:
+        return self._encoding.get_text()
 
     def get_revision(self) -> str:
-        return self.revision.get_text()
+        return self._revision.get_text()
 
     def get_filename(self) -> str:
         # convert from UTF-8 string to unicode
@@ -117,7 +118,7 @@ class FileChooserDialog(Gtk.FileChooserDialog):
 # dialogue used to search for text
 class NumericDialog(Gtk.Dialog):
     def __init__(self, parent, title, text, val, lower, upper, step=1, page=0):
-        Gtk.Dialog.__init__(self, title=title, parent=parent, destroy_with_parent=True)
+        Gtk.Dialog.__init__(self, title=title, transient_for=parent, destroy_with_parent=True)
         self.add_button(Gtk.STOCK_CANCEL, Gtk.ResponseType.REJECT)
         self.add_button(Gtk.STOCK_OK, Gtk.ResponseType.ACCEPT)
 
@@ -128,6 +129,7 @@ class NumericDialog(Gtk.Dialog):
         label = Gtk.Label(label=text)
         hbox.pack_start(label, False, False, 0)
         label.show()
+
         adj = Gtk.Adjustment(
             value=val,
             lower=lower,
@@ -135,10 +137,10 @@ class NumericDialog(Gtk.Dialog):
             step_increment=step,
             page_increment=page,
             page_size=0)
-        self.button = button = Gtk.SpinButton(adjustment=adj, climb_rate=1.0, digits=0)
-        button.connect('activate', self.button_cb)
-        hbox.pack_start(button, True, True, 0)
-        button.show()
+        self._button = Gtk.SpinButton(adjustment=adj, climb_rate=1.0, digits=0)
+        self._button.connect('activate', self._button_cb)
+        hbox.pack_start(self._button, True, True, 0)
+        self._button.show()
 
         vbox.pack_start(hbox, True, True, 0)
         hbox.show()
@@ -146,14 +148,21 @@ class NumericDialog(Gtk.Dialog):
         self.vbox.pack_start(vbox, False, False, 0)
         vbox.show()
 
-    def button_cb(self, widget):
+    def _button_cb(self, widget: Gtk.SpinButton) -> None:
         self.response(Gtk.ResponseType.ACCEPT)
+
+    def get_value(self) -> int:
+        return self._button.get_value_as_int()
 
 
 # dialogue used to search for text
 class SearchDialog(Gtk.Dialog):
     def __init__(self, parent, pattern=None, history=None):
-        Gtk.Dialog.__init__(self, title=_('Find...'), parent=parent, destroy_with_parent=True)
+        Gtk.Dialog.__init__(
+            self,
+            title=_('Find...'),
+            transient_for=parent,
+            destroy_with_parent=True)
         self.add_button(Gtk.STOCK_CANCEL, Gtk.ResponseType.REJECT)
         self.add_button(Gtk.STOCK_OK, Gtk.ResponseType.ACCEPT)
 
@@ -165,11 +174,11 @@ class SearchDialog(Gtk.Dialog):
         hbox.pack_start(label, False, False, 0)
         label.show()
         combo = Gtk.ComboBoxText.new_with_entry()
-        self.entry = combo.get_child()
-        self.entry.connect('activate', self.entry_cb)
+        self._entry = combo.get_child()
+        self._entry.connect('activate', self._entry_cb)
 
         if pattern is not None:
-            self.entry.set_text(pattern)
+            self._entry.set_text(pattern)
 
         if history is not None:
             completion = Gtk.EntryCompletion()
@@ -179,7 +188,7 @@ class SearchDialog(Gtk.Dialog):
             for h in history:
                 liststore.append([h])
                 combo.append_text(h)
-            self.entry.set_completion(completion)
+            self._entry.set_completion(completion)
 
         hbox.pack_start(combo, True, True, 0)
         combo.show()
@@ -200,5 +209,8 @@ class SearchDialog(Gtk.Dialog):
         vbox.show()
 
     # callback used when the Enter key is pressed
-    def entry_cb(self, widget):
+    def _entry_cb(self, widget: Gtk.Entry) -> None:
         self.response(Gtk.ResponseType.ACCEPT)
+
+    def get_search_text(self) -> str:
+        return self._entry.get_text()

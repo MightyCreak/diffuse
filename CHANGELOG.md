@@ -9,17 +9,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Language: initial support for Rust language (thanks to @alopatindev)
+- Language: initial support for Rust language (@alopatindev)
 
 ### Changed
 
-- Translation: updated Swedish translation (thanks to @eson57)
+- Translation: updated Swedish translation (@eson57)
+- Dialog: prompt only once if several files needs to be reloaded (@yuriiz)
+
+### Fixed
+
+- fix: "Go to line..." dialog didn't show up (@MightyCreak)
+- Tech debt: use `transient_for` instead of the deprecated `parent` when creating
+  a `Gtk.Widget` (@MightyCreak)
 
 ## 0.7.7 - 2022-10-23
 
 ### Changed
 
-- Translation: updated Spanish translation (thanks to @oscfdezdz)
+- Translation: updated Spanish translation (@oscfdezdz)
 - Translation: updated POT file
 - Translation: fixed issue with commented string that still needs translation
 
@@ -27,7 +34,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Port to Mac OS (thanks to @hugoholgersson)
+- Port to Mac OS (@hugoholgersson)
 
 ### Changed
 
