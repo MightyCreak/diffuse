@@ -177,6 +177,19 @@ class Diffuse(Gtk.Window):
                     self.has_edits = has_edits
                     self.updateTitle()
 
+            # Has the file on disk changed since last time it was loaded?
+            def has_file_changed_on_disk(self) -> bool:
+                if self.info.last_stat is not None:
+                    try:
+                        new_stat = os.stat(self.info.name)
+                        if self.info.last_stat[stat.ST_MTIME] < new_stat[stat.ST_MTIME]:
+                            # update our notion of the most recent modification
+                            self.info.last_stat = new_stat
+                            return True
+                    except OSError:
+                        return False
+                return False
+
         # pane footer
         class PaneFooter(Gtk.Box):
             def __init__(self) -> None:
@@ -465,36 +478,6 @@ class Diffuse(Gtk.Window):
         def reload_file_cb(self, widget, data):
             self.open_file(self.current_pane, True)
 
-        # check changes to files on disk when receiving keyboard focus
-        def focus_in(self, widget, event):
-            for f, h in enumerate(self.headers):
-                info = h.info
-                try:
-                    if info.last_stat is not None:
-                        info = h.info
-                        new_stat = os.stat(info.name)
-                        if info.last_stat[stat.ST_MTIME] < new_stat[stat.ST_MTIME]:
-                            # update our notion of the most recent modification
-                            info.last_stat = new_stat
-                            if info.label is not None:
-                                s = info.label
-                            else:
-                                s = info.name
-                            msg = _(
-                                'The file %s changed on disk. Do you want to reload the file?'
-                            ) % (s, )
-                            dialog = utils.MessageDialog(
-                                self.get_toplevel(),
-                                Gtk.MessageType.QUESTION,
-                                msg
-                            )
-                            ok = (dialog.run() == Gtk.ResponseType.OK)
-                            dialog.destroy()
-                            if ok:
-                                self.open_file(f, True)
-                except OSError:
-                    pass
-
         # save contents of pane 'f' to file
         def save_file(self, f: int, save_as: bool = False) -> bool:
             h = self.headers[f]
@@ -626,10 +609,10 @@ class Diffuse(Gtk.Window):
                 _('Line Number: '),
                 val=1,
                 lower=1,
-                step=self.panes[self.current_pane].max_line_number + 1
+                upper=self.panes[self.current_pane].max_line_number + 1
             )
             okay = (dialog.run() == Gtk.ResponseType.ACCEPT)
-            i = dialog.button.get_value_as_int()
+            i = dialog.get_value()
             dialog.destroy()
             if okay:
                 self.go_to_line(i)
@@ -958,8 +941,50 @@ class Diffuse(Gtk.Window):
     # notifies all viewers on focus changes so they may check for external
     # changes to files
     def focus_in_cb(self, widget, event):
+        changed = []
         for i in range(self.notebook.get_n_pages()):
-            self.notebook.get_nth_page(i).focus_in(widget, event)
+            page = self.notebook.get_nth_page(i)
+            for f, h in enumerate(page.headers):
+                if h.has_file_changed_on_disk():
+                    changed.append((page, f))
+
+        if changed:
+            filenames = []
+            for (page, f) in changed:
+                h = page.headers[f]
+                filename = h.info.label if h.info.label is not None else h.info.name
+                filenames.append(filename)
+
+            primary_text = _("Changes detected")
+            secondary_text = ""
+            if len(filenames) == 1:
+                secondary_text = _(
+                    "The file \"%s\" changed on disk.\n\n"
+                    "Do you want to reload the file?"
+                ) % (filenames[0],)
+            else:
+                secondary_text = _(
+                    "The following files changed on disk:\n%s\n\n"
+                    "Do you want to reload these files?"
+                ) % ("\n".join("- " + filename for filename in filenames),)
+
+            dialog = Gtk.MessageDialog(
+                transient_for=self.get_toplevel(),
+                message_type=Gtk.MessageType.QUESTION,
+                buttons=Gtk.ButtonsType.YES_NO,
+                text=primary_text)
+            dialog.format_secondary_text(secondary_text)
+            dialog.set_default_response(Gtk.ResponseType.YES)
+
+            button = dialog.get_widget_for_response(Gtk.ResponseType.YES)
+            button.get_style_context().add_class(Gtk.STYLE_CLASS_SUGGESTED_ACTION)
+
+            response = dialog.run()
+            dialog.destroy()
+
+            if response == Gtk.ResponseType.YES:
+                for page, f in changed:
+                    page.open_file(f, True)
 
     # record the window's position and size
     def configure_cb(self, widget, event):
@@ -1050,7 +1075,7 @@ class Diffuse(Gtk.Window):
             return True
 
         # ask the user which files should be saved
-        dialog = Gtk.MessageDialog(parent=self.get_toplevel(),
+        dialog = Gtk.MessageDialog(transient_for=self.get_toplevel(),
                                    destroy_with_parent=True,
                                    message_type=Gtk.MessageType.WARNING,
                                    buttons=Gtk.ButtonsType.NONE,
@@ -1487,7 +1512,7 @@ class Diffuse(Gtk.Window):
             upper=16
         )
         okay = (dialog.run() == Gtk.ResponseType.ACCEPT)
-        npanes = dialog.button.get_value_as_int()
+        npanes = dialog.get_value()
         dialog.destroy()
         if okay:
             viewer = self.newFileDiffViewer(npanes)
@@ -1528,7 +1553,7 @@ class Diffuse(Gtk.Window):
             dialog.backwards_button.set_active(self.bool_state['search_backwards'])
             keep = (dialog.run() == Gtk.ResponseType.ACCEPT)
             # persist the search options
-            pattern = dialog.entry.get_text()
+            pattern = dialog.get_search_text()
             match_case = dialog.match_case_button.get_active()
             backwards = dialog.backwards_button.get_active()
             dialog.destroy()

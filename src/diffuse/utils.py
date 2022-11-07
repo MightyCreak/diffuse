@@ -38,18 +38,18 @@ from gi.repository import Gtk  # type: ignore # noqa: E402
 
 # convenience class for displaying a message dialogue
 class MessageDialog(Gtk.MessageDialog):
-    def __init__(self, parent: Gtk.Widget, message_type: Gtk.MessageType, s: str) -> None:
+    def __init__(self, parent: Gtk.Widget, message_type: Gtk.MessageType, text: str) -> None:
         if message_type == Gtk.MessageType.ERROR:
             buttons = Gtk.ButtonsType.OK
         else:
             buttons = Gtk.ButtonsType.OK_CANCEL
         Gtk.MessageDialog.__init__(
             self,
-            parent=parent,
+            transient_for=parent,
             destroy_with_parent=True,
             message_type=message_type,
             buttons=buttons,
-            text=s)
+            text=text)
         self.set_title(constants.APP_NAME)
 
 
@@ -57,15 +57,15 @@ class MessageDialog(Gtk.MessageDialog):
 class EncodingMenu(Gtk.Box):
     def __init__(self, prefs: Preferences, autodetect: bool = False) -> None:
         Gtk.Box.__init__(self, orientation=Gtk.Orientation.HORIZONTAL)
-        self.combobox = combobox = Gtk.ComboBoxText()
+        self.combobox = Gtk.ComboBoxText()
         self.encodings = prefs.getEncodings()[:]
         for e in self.encodings:
-            combobox.append_text(e)
+            self.combobox.append_text(e)
         if autodetect:
+            self.combobox.prepend_text(_('Auto Detect'))
             self.encodings.insert(0, None)
-            combobox.prepend_text(_('Auto Detect'))
-        self.pack_start(combobox, False, False, 0)
-        combobox.show()
+        self.pack_start(self.combobox, False, False, 0)
+        self.combobox.show()
 
     def set_text(self, encoding: Optional[str]) -> None:
         encoding = norm_encoding(encoding)
@@ -169,7 +169,7 @@ def popenRead(
         cmd: List[str],
         prefs: Preferences,
         bash_pref: str,
-        success_results: List[int] = None) -> bytes:
+        success_results: Optional[List[int]] = None) -> bytes:
     if success_results is None:
         success_results = [0]
 
@@ -239,7 +239,7 @@ def popenReadLines(
         cmd: List[str],
         prefs: Preferences,
         bash_pref: str,
-        success_results: List[int] = None) -> List[str]:
+        success_results: Optional[List[int]] = None) -> List[str]:
     return _strip_eols(splitlines(popenRead(
         cwd, cmd, prefs, bash_pref, success_results).decode('utf-8', errors='ignore')))
 
