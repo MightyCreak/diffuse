@@ -1821,7 +1821,7 @@ class Application(Gtk.Application):
         self.sysconfigdir = sysconfigdir
         self.add_main_option(
             "no-rcfile",
-            ord("n"),
+            0,
             GLib.OptionFlags.NONE,
             GLib.OptionArg.NONE,
             _("Do not read any resource files"),
@@ -1829,7 +1829,7 @@ class Application(Gtk.Application):
         )
         self.add_main_option(
             "rcfile",
-            ord("r"),
+            0,
             GLib.OptionFlags.NONE,
             GLib.OptionArg.STRING,
             _("Specify explicit resource file"),
@@ -1897,7 +1897,7 @@ class Application(Gtk.Application):
         )
         self.add_main_option(
             "vcs",
-            ord("v"),
+            ord("V"),
             GLib.OptionFlags.NONE,
             GLib.OptionArg.STRING,
             _("Version control system search order"),
@@ -1905,7 +1905,7 @@ class Application(Gtk.Application):
         )
         self.add_main_option(
             "line",
-            ord("l"),
+            0,
             GLib.OptionFlags.NONE,
             GLib.OptionArg.STRING,
             _("Start with line <line> selected"),
@@ -1913,7 +1913,7 @@ class Application(Gtk.Application):
         )
         self.add_main_option(
             "null-file",
-            ord("n"),
+            0,
             GLib.OptionFlags.NONE,
             GLib.OptionArg.NONE,
             _("Create a blank file comparison pane"),
