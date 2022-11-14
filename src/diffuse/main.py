@@ -809,7 +809,7 @@ class Diffuse(Gtk.ApplicationWindow):
             ]
         ]])
 
-        submenudef = []
+        syntax_menu = [[[_('None'), None, '', 'syntax_highlighting']]]
         names = theResources.getSyntaxNames()
         variant = GLib.Variant.new_string("")
         self.syntax_action = Gio.SimpleAction.new_stateful(
@@ -818,9 +818,10 @@ class Diffuse(Gtk.ApplicationWindow):
         self.syntax_action.connect("change-state", self.syntax_cb)
         self.add_action(self.syntax_action)
         if len(names) > 0:
+            syntax_section = []
             names.sort(key=str.lower)
             for name in names:
-                submenudef.append(
+                syntax_section.append(
                     [
                         name,
                         None,
@@ -828,16 +829,11 @@ class Diffuse(Gtk.ApplicationWindow):
                         "syntax_highlighting",
                     ]
                 )
+            syntax_menu.append(syntax_section)
 
         menuspecs.append([_('_View'), [
             [
-            [_('_Syntax Highlighting'), None, None, None, [
-                [
-                    [_('None'), None, '', 'syntax_highlighting']
-                ],
-                submenudef
-            ]
-            ]
+            [_('_Syntax Highlighting'), None, None, None, syntax_menu]
             ], [
             [_('Re_align All'), self.button_cb, 'realign_all', 'realign_all'],
             [_('_Isolate'), self.button_cb, 'isolate', 'isolate'],
