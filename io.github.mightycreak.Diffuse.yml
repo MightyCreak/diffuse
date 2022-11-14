@@ -5,6 +5,7 @@ sdk: org.gnome.Sdk
 command: diffuse
 finish-args:
   - --filesystem=home
+  - --filesystem=xdg-run/gvfsd
   - --share=ipc
   - --socket=wayland
   - --socket=fallback-x11
