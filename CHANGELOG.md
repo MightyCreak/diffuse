@@ -15,15 +15,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Translation: updated Swedish translation (@eson57)
 - Dialog: prompt only once if several files needs to be reloaded (@yuriiz)
+- Use GTK3's Gtk.Application/Gtk.ApplicationWindow (@yuriiz)
 
 ### Fixed
 
 - fix: "Go to line..." dialog didn't show up (@MightyCreak)
 - Tech debt: use `transient_for` instead of the deprecated `parent` when creating
   a `Gtk.Widget` (@MightyCreak)
+- Documentation: prefer `pip3` over `pip` to ensure it works everywhere (@krlmlr)
 
-- Documentation: prefer `pip3` over `pip` to ensure it works everywhere (thanks to @krlmlr)
- 
 ## 0.7.7 - 2022-10-23
 
 ### Changed
