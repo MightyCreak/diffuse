@@ -1824,7 +1824,7 @@ class Application(Gtk.Application):
             ord("n"),
             GLib.OptionFlags.NONE,
             GLib.OptionArg.NONE,
-            "Do not read any resource files",
+            _("Do not read any resource files"),
             None,
         )
         self.add_main_option(
@@ -1832,7 +1832,7 @@ class Application(Gtk.Application):
             ord("r"),
             GLib.OptionFlags.NONE,
             GLib.OptionArg.STRING,
-            "Specify explicit resource file",
+            _("Specify explicit resource file"),
             "file",
         )
         self.add_main_option(
@@ -1840,7 +1840,7 @@ class Application(Gtk.Application):
             ord("c"),
             GLib.OptionFlags.NONE,
             GLib.OptionArg.STRING,
-            "File revisions <rev-1> and <rev>",
+            _("File revisions <rev-1> and <rev>"),
             "rev",
         )
         self.add_main_option(
@@ -1848,14 +1848,14 @@ class Application(Gtk.Application):
             ord("D"),
             GLib.OptionFlags.NONE,
             GLib.OptionArg.NONE,
-            "Close all tabs with no differences",
+            _("Close all tabs with no differences"),
         )
         self.add_main_option(
             "encoding",
             ord("e"),
             GLib.OptionFlags.NONE,
             GLib.OptionArg.STRING,
-            "Use <codec> to read and write files",
+            _("Use <codec> to read and write files"),
             "codec",
         )
         self.add_main_option(
@@ -1863,7 +1863,7 @@ class Application(Gtk.Application):
             ord("L"),
             GLib.OptionFlags.NONE,
             GLib.OptionArg.STRING,
-            "Display <label> instead of the file name",
+            _("Display <label> instead of the file name"),
             "label",
         )
         self.add_main_option(
@@ -1871,14 +1871,14 @@ class Application(Gtk.Application):
             ord("m"),
             GLib.OptionFlags.NONE,
             GLib.OptionArg.NONE,
-            "Create a new tab for each modified file",
+            _("Create a new tab for each modified file"),
         )
         self.add_main_option(
             "revision",
             ord("r"),
             GLib.OptionFlags.NONE,
             GLib.OptionArg.STRING,
-            "File revision <rev>",
+            _("File revision <rev>"),
             "rev",
         )
         self.add_main_option(
@@ -1886,21 +1886,21 @@ class Application(Gtk.Application):
             ord("s"),
             GLib.OptionFlags.NONE,
             GLib.OptionArg.NONE,
-            "Create a new tab for each file",
+            _("Create a new tab for each file"),
         )
         self.add_main_option(
             "tab",
             ord("t"),
             GLib.OptionFlags.NONE,
             GLib.OptionArg.NONE,
-            "Start a new tab",
+            _("Start a new tab"),
         )
         self.add_main_option(
             "vcs",
             ord("v"),
             GLib.OptionFlags.NONE,
             GLib.OptionArg.STRING,
-            "Version control system search order",
+            _("Version control system search order"),
             "vcs-list",
         )
         self.add_main_option(
@@ -1908,7 +1908,7 @@ class Application(Gtk.Application):
             ord("l"),
             GLib.OptionFlags.NONE,
             GLib.OptionArg.STRING,
-            "Start with line <line> selected",
+            _("Start with line <line> selected"),
             "line",
         )
         self.add_main_option(
@@ -1916,49 +1916,49 @@ class Application(Gtk.Application):
             ord("n"),
             GLib.OptionFlags.NONE,
             GLib.OptionArg.NONE,
-            "Create a blank file comparison pane",
+            _("Create a blank file comparison pane"),
         )
         self.add_main_option(
             "ignore-space-change",
             ord("b"),
             GLib.OptionFlags.NONE,
             GLib.OptionArg.NONE,
-            "Ignore changes to white space",
+            _("Ignore changes to white space"),
         )
         self.add_main_option(
             "ignore-blank-lines",
             ord("B"),
             GLib.OptionFlags.NONE,
             GLib.OptionArg.NONE,
-            "Ignore changes in blank lines",
+            _("Ignore changes in blank lines"),
         )
         self.add_main_option(
             "ignore-end-of-line",
             ord("E"),
             GLib.OptionFlags.NONE,
             GLib.OptionArg.NONE,
-            "Ignore end of line differences",
+            _("Ignore end of line differences"),
         )
         self.add_main_option(
             "ignore-case",
             ord("i"),
             GLib.OptionFlags.NONE,
             GLib.OptionArg.NONE,
-            "Ignore case differences",
+            _("Ignore case differences"),
         )
         self.add_main_option(
             "ignore-all-space",
             ord("w"),
             GLib.OptionFlags.NONE,
             GLib.OptionArg.NONE,
-            "Ignore white space differences",
+            _("Ignore white space differences"),
         )
-        self.set_option_context_summary(
+        self.set_option_context_summary(_(
             """Diffuse is a graphical tool for merging and comparing text files. Diffuse is
 able to compare an arbitrary number of files side-by-side and gives users the
 ability to manually adjust line matching and directly edit files. Diffuse can
 also retrieve revisions of files from several VCSs for comparison and merging."""
-        )
+        ))
 
     def do_activate(self):
         self.window.present()
