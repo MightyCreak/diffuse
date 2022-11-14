@@ -1813,7 +1813,7 @@ class Application(Gtk.Application):
     def __init__(self, sysconfigdir, *args, **kwargs):
         super().__init__(
             *args,
-            application_id="org.example.diffuse",
+            application_id="io.github.mightycreak.Diffuse",
             flags=Gio.ApplicationFlags.HANDLES_COMMAND_LINE
             | Gio.ApplicationFlags.NON_UNIQUE,
             **kwargs,
