@@ -18,12 +18,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- fix: "Go to line..." dialog didn't show up (@MightyCreak)
+- "Go to line..." dialog didn't show up (@MightyCreak)
 - Tech debt: use `transient_for` instead of the deprecated `parent` when creating
   a `Gtk.Widget` (@MightyCreak)
+- Documentation: prefer `pip3` over `pip` to ensure it works everywhere (@krlmlr)
+- Flatpak: add missing `--filesystem=xdg-run/gvfsd` privilege (@MightyCreak)
 
-- Documentation: prefer `pip3` over `pip` to ensure it works everywhere (thanks to @krlmlr)
- 
 ## 0.7.7 - 2022-10-23
 
 ### Changed
