@@ -38,7 +38,6 @@ from diffuse.utils import LineEnding
 from diffuse.vcs.vcs_interface import VcsInterface
 from diffuse.vcs.vcs_registry import VcsRegistry
 from diffuse.widgets import FileDiffViewerBase, EditMode
-from diffuse.widgets import createMenu
 
 import gi  # type: ignore
 gi.require_version('GObject', '2.0')
