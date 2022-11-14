@@ -1853,7 +1853,7 @@ class FileDiffViewerBase(Gtk.Grid):
             can_select = self.mode in (EditMode.LINE, EditMode.CHAR) and f == self.current_pane
             can_swap = (f != self.current_pane)
 
-            menu = createMenu([
+            menu = _create_menu([
                 [_('Align with Selection'), self.align_with_selection_cb, [f, i], Gtk.STOCK_EXECUTE, None, can_align],  # noqa: E501
                 [_('Isolate'), self.button_cb, 'isolate', None, None, can_isolate],
                 [_('Merge Selection'), self.merge_lines_cb, f, None, None, can_merge],
@@ -3709,7 +3709,7 @@ class FileDiffViewerBase(Gtk.Grid):
 
 
 # convenience method for creating a menu according to a template
-def createMenu(specs, radio=None, accel_group=None):
+def _create_menu(specs, radio=None, accel_group=None):
     menu = Gtk.Menu()
     for spec in specs:
         if len(spec) > 0:
@@ -3744,7 +3744,7 @@ def createMenu(specs, radio=None, accel_group=None):
             if len(spec) > 5:
                 item.set_sensitive(spec[5])
             if len(spec) > 6 and spec[6] is not None:
-                item.set_submenu(createMenu(spec[6], radio, accel_group))
+                item.set_submenu(_create_menu(spec[6], radio, accel_group))
             item.set_use_underline(True)
         else:
             item = Gtk.SeparatorMenuItem()
