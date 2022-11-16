@@ -960,6 +960,7 @@ class Diffuse(Gtk.ApplicationWindow):
                 else:
                     if data is not None:
                         data = GLib.Variant.new_string(data)
+                    accel = accel.replace("_", "-")
                     if cb is not None:
                         action = Gio.SimpleAction.new(accel, data and data.get_type())
                         action.connect("activate", cb)
@@ -970,7 +971,8 @@ class Diffuse(Gtk.ApplicationWindow):
                     if len(a) > 0:
                         key, modifier = a[0]
                         self.get_application().set_accels_for_action(
-                            "win." + accel, [Gtk.accelerator_name(key, modifier)]
+                            Gio.Action.print_detailed_name("win." + accel, data),
+                            [Gtk.accelerator_name(key, modifier)],
                         )
                     s.append_item(item)
             sub.append_section(None, s)
@@ -1676,7 +1678,7 @@ class Diffuse(Gtk.ApplicationWindow):
 
     # callback for most menu items and buttons
     def button_cb(self, widget, data):
-        self.getCurrentViewer().button_cb(widget, data)
+        self.getCurrentViewer().button_cb(widget, data.get_string())
 
     # display help documentation
     def help_contents_cb(self, widget, data):
