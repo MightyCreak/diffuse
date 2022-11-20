@@ -899,7 +899,7 @@ class Diffuse(Gtk.ApplicationWindow):
 
         menubar = Gio.Menu()
         for label, sections in menuspecs:
-            menubar.append_submenu(label, self.create_submenu(sections))
+            menubar.append_submenu(label, self._create_menu(sections))
         self.get_application().set_menubar(menubar)
 
         # create button bar
@@ -949,14 +949,14 @@ class Diffuse(Gtk.ApplicationWindow):
         vbox.show()
         self.connect('focus-in-event', self.focus_in_cb)
 
-    def create_submenu(self, sections):
-        sub = Gio.Menu.new()
+    def _create_menu(self, sections):
+        menu = Gio.Menu.new()
         for section in sections:
-            s = Gio.Menu.new()
+            section_menu = Gio.Menu.new()
             for label, cb, data, accel, *submenu in section:
                 if submenu:
                     (submenu,) = submenu
-                    s.append_submenu(label, self.create_submenu(submenu))
+                    section_menu.append_submenu(label, self._create_menu(submenu))
                 else:
                     if data is not None:
                         data = GLib.Variant.new_string(data)
@@ -974,9 +974,9 @@ class Diffuse(Gtk.ApplicationWindow):
                             Gio.Action.print_detailed_name('win.' + accel, data),
                             [Gtk.accelerator_name(key, modifier)],
                         )
-                    s.append_item(item)
-            sub.append_section(None, s)
-        return sub
+                    section_menu.append_item(item)
+            menu.append_section(None, section_menu)
+        return menu
 
     # notifies all viewers on focus changes so they may check for external
     # changes to files
