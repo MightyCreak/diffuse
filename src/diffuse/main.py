@@ -1821,6 +1821,15 @@ class Application(Gtk.Application):
         )
 
         self.sysconfigdir = sysconfigdir
+
+        self.add_main_option(
+            'version',
+            ord('v'),
+            GLib.OptionFlags.NONE,
+            GLib.OptionArg.NONE,
+            _('Display version and copyright information'),
+            None,
+        )
         self.add_main_option(
             'no-rcfile',
             0,
@@ -1969,6 +1978,11 @@ also retrieve revisions of files from several VCSs for comparison and merging.''
         options = command_line.get_options_dict()
         # convert GVariantDict -> GVariant -> dict
         options = options.end().unpack()
+
+        if 'version' in options:
+            print('%s %s\n%s' % (constants.APP_NAME, constants.VERSION, constants.COPYRIGHT))
+            return 0
+
         # find the config directory and create it if it didn't exist
         rc_dir = os.environ.get('XDG_CONFIG_HOME', None)
         subdirs = ['diffuse']
@@ -2124,15 +2138,6 @@ also retrieve revisions of files from several VCSs for comparison and merging.''
 
 def main(version, sysconfigdir):
     constants.VERSION = version
-
-    args = sys.argv
-    argc = len(args)
-
-    if argc == 2 and args[1] in ["-v", "--version"]:
-        print(
-            "%s %s\n%s" % (constants.APP_NAME, constants.VERSION, constants.COPYRIGHT)
-        )
-        return 0
 
     app = Application(sysconfigdir)
     return app.run(sys.argv)
