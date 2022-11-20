@@ -953,25 +953,25 @@ class Diffuse(Gtk.ApplicationWindow):
         menu = Gio.Menu.new()
         for section in sections:
             section_menu = Gio.Menu.new()
-            for label, cb, data, accel, *submenu in section:
+            for label, cb, cb_data, accel, *submenu in section:
                 if submenu:
                     (submenu,) = submenu
                     section_menu.append_submenu(label, self._create_menu(submenu))
                 else:
-                    if data is not None:
-                        data = GLib.Variant.new_string(data)
+                    if cb_data is not None:
+                        cb_data = GLib.Variant.new_string(cb_data)
                     accel = accel.replace('_', '-')
                     if cb is not None:
-                        action = Gio.SimpleAction.new(accel, data and data.get_type())
+                        action = Gio.SimpleAction.new(accel, cb_data and cb_data.get_type())
                         action.connect('activate', cb)
                         self.add_action(action)
                     item = Gio.MenuItem.new(label)
-                    item.set_action_and_target_value('win.' + accel, data)
-                    a = theResources.getKeyBindings('menu', accel)
-                    if len(a) > 0:
-                        key, modifier = a[0]
+                    item.set_action_and_target_value('win.' + accel, cb_data)
+                    key_binding = theResources.getKeyBindings('menu', accel)
+                    if len(key_binding) > 0:
+                        key, modifier = key_binding[0]
                         self.get_application().set_accels_for_action(
-                            Gio.Action.print_detailed_name('win.' + accel, data),
+                            Gio.Action.print_detailed_name('win.' + accel, cb_data),
                             [Gtk.accelerator_name(key, modifier)],
                         )
                     section_menu.append_item(item)
