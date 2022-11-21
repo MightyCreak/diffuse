@@ -120,7 +120,7 @@ class FileInfo:
 # the main application class containing a set of file viewers
 # this class displays tab for switching between viewers and dispatches menu
 # commands to the current viewer
-class Diffuse(Gtk.ApplicationWindow):
+class DiffuseWindow(Gtk.ApplicationWindow):
     # specialization of FileDiffViewerBase for Diffuse
     class FileDiffViewer(FileDiffViewerBase):
         # pane header
@@ -255,11 +255,11 @@ class Diffuse(Gtk.ApplicationWindow):
             self.title = title
             self.status: Optional[str] = ''
 
-            self.headers: List[Diffuse.FileDiffViewer.PaneHeader] = []
-            self.footers: List[Diffuse.FileDiffViewer.PaneFooter] = []
+            self.headers: List[DiffuseWindow.FileDiffViewer.PaneHeader] = []
+            self.footers: List[DiffuseWindow.FileDiffViewer.PaneFooter] = []
             for i in range(n):
                 # pane header
-                w = Diffuse.FileDiffViewer.PaneHeader()
+                w = DiffuseWindow.FileDiffViewer.PaneHeader()
                 self.headers.append(w)
                 self.attach(w, i, 0, 1, 1)
                 w.connect('title-changed', self.title_changed_cb)
@@ -270,7 +270,7 @@ class Diffuse(Gtk.ApplicationWindow):
                 w.show()
 
                 # pane footer
-                w = Diffuse.FileDiffViewer.PaneFooter()
+                w = DiffuseWindow.FileDiffViewer.PaneFooter()
                 self.footers.append(w)
                 self.attach(w, i, 2, 1, 1)
                 w.show()
@@ -1267,7 +1267,7 @@ class Diffuse(Gtk.ApplicationWindow):
         self.viewer_count += 1
         tabname = _('File Merge %d') % (self.viewer_count, )
         tab = NotebookTab(tabname, Gtk.STOCK_FILE)
-        viewer = Diffuse.FileDiffViewer(n, self.prefs, tabname)
+        viewer = DiffuseWindow.FileDiffViewer(n, self.prefs, tabname)
         tab.button.connect('clicked', self.remove_tab_cb, viewer)
         tab.connect('button-press-event', self.notebooktab_button_press_cb, viewer)
         self.notebook.append_page(viewer, tab)
@@ -1802,13 +1802,13 @@ def _assign_file_labels(items, labels):
     return new_items
 
 
-GObject.signal_new('title-changed', Diffuse.FileDiffViewer, GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, (str, ))  # noqa: E501
-GObject.signal_new('status-changed', Diffuse.FileDiffViewer, GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, (str, ))  # noqa: E501
-GObject.signal_new('title-changed', Diffuse.FileDiffViewer.PaneHeader, GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, ())  # noqa: E501
-GObject.signal_new('open', Diffuse.FileDiffViewer.PaneHeader, GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, ())  # noqa: E501
-GObject.signal_new('reload', Diffuse.FileDiffViewer.PaneHeader, GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, ())  # noqa: E501
-GObject.signal_new('save', Diffuse.FileDiffViewer.PaneHeader, GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, ())  # noqa: E501
-GObject.signal_new('save-as', Diffuse.FileDiffViewer.PaneHeader, GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, ())  # noqa: E501
+GObject.signal_new('title-changed', DiffuseWindow.FileDiffViewer, GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, (str, ))  # noqa: E501
+GObject.signal_new('status-changed', DiffuseWindow.FileDiffViewer, GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, (str, ))  # noqa: E501
+GObject.signal_new('title-changed', DiffuseWindow.FileDiffViewer.PaneHeader, GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, ())  # noqa: E501
+GObject.signal_new('open', DiffuseWindow.FileDiffViewer.PaneHeader, GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, ())  # noqa: E501
+GObject.signal_new('reload', DiffuseWindow.FileDiffViewer.PaneHeader, GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, ())  # noqa: E501
+GObject.signal_new('save', DiffuseWindow.FileDiffViewer.PaneHeader, GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, ())  # noqa: E501
+GObject.signal_new('save-as', DiffuseWindow.FileDiffViewer.PaneHeader, GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, ())  # noqa: E501
 
 
 class DiffuseApplication(Gtk.Application):
@@ -1820,6 +1820,7 @@ class DiffuseApplication(Gtk.Application):
             **kwargs,
         )
 
+        self.window = None
         self.sysconfigdir = sysconfigdir
 
         self.add_main_option(
@@ -1990,6 +1991,7 @@ also retrieve revisions of files from several VCSs for comparison and merging.''
             rc_dir = os.path.expanduser('~')
             subdirs.insert(0, '.config')
         rc_dir = utils.make_subdirs(rc_dir, subdirs)
+
         # find the local data directory and create it if it didn't exist
         data_dir = os.environ.get('XDG_DATA_HOME', None)
         subdirs = ['diffuse']
@@ -1997,6 +1999,7 @@ also retrieve revisions of files from several VCSs for comparison and merging.''
             data_dir = os.path.expanduser('~')
             subdirs[:0] = ['.local', 'share']
         data_dir = utils.make_subdirs(data_dir, subdirs)
+
         # load resource files
         rc_files = []
         if 'no-rcfile' not in options:
@@ -2018,10 +2021,14 @@ also retrieve revisions of files from several VCSs for comparison and merging.''
                 theResources.parse(rc_file)
             except IOError:
                 utils.logError(_('Error reading %s.') % (rc_file,))
-        self.window = diff = Diffuse(rc_dir, application=self)
+
+        diff_window = DiffuseWindow(rc_dir, application=self)
+        self.window = diff_window
+
         # load state
         self.statepath = os.path.join(data_dir, 'state')
-        self.window.loadState(self.statepath)
+        diff_window.loadState(self.statepath)
+
         # process remaining command line arguments
         encoding = None
         revs = []
@@ -2030,10 +2037,10 @@ also retrieve revisions of files from several VCSs for comparison and merging.''
         had_specs = False
         labels = []
         funcs = {
-            'modified': diff.createModifiedFileTabs,
-            'commit': diff.createCommitFileTabs,
-            'separate': diff.createSeparateTabs,
-            'single': diff.createSingleTab,
+            'modified': diff_window.createModifiedFileTabs,
+            'commit': diff_window.createCommitFileTabs,
+            'separate': diff_window.createSeparateTabs,
+            'single': diff_window.createSingleTab,
         }
         mode = 'single'
         opts = {}
@@ -2065,28 +2072,28 @@ also retrieve revisions of files from several VCSs for comparison and merging.''
             # start a new tab
             mode = 'single'
         if 'vcs' in options:
-            diff.prefs.setString('vcs_search_order', options['vcs'])
-            diff.preferences_updated()
+            diff_window.prefs.setString('vcs_search_order', options['vcs'])
+            diff_window.preferences_updated()
         if 'ignore-space-change' in options:
-            diff.prefs.setBool('display_ignore_whitespace_changes', True)
-            diff.prefs.setBool('align_ignore_whitespace_changes', True)
-            diff.preferences_updated()
+            diff_window.prefs.setBool('display_ignore_whitespace_changes', True)
+            diff_window.prefs.setBool('align_ignore_whitespace_changes', True)
+            diff_window.preferences_updated()
         if 'ignore-blank-lines' in options:
-            diff.prefs.setBool('display_ignore_blanklines', True)
-            diff.prefs.setBool('align_ignore_blanklines', True)
-            diff.preferences_updated()
+            diff_window.prefs.setBool('display_ignore_blanklines', True)
+            diff_window.prefs.setBool('align_ignore_blanklines', True)
+            diff_window.preferences_updated()
         if 'ignore-end-of-line' in options:
-            diff.prefs.setBool('display_ignore_endofline', True)
-            diff.prefs.setBool('align_ignore_endofline', True)
-            diff.preferences_updated()
+            diff_window.prefs.setBool('display_ignore_endofline', True)
+            diff_window.prefs.setBool('align_ignore_endofline', True)
+            diff_window.preferences_updated()
         if 'ignore-case' in options:
-            diff.prefs.setBool('display_ignore_case', True)
-            diff.prefs.setBool('align_ignore_case', True)
-            diff.preferences_updated()
+            diff_window.prefs.setBool('display_ignore_case', True)
+            diff_window.prefs.setBool('align_ignore_case', True)
+            diff_window.preferences_updated()
         if 'ignore-all-space' in options:
-            diff.prefs.setBool('display_ignore_whitespace', True)
-            diff.prefs.setBool('align_ignore_whitespace', True)
-            diff.preferences_updated()
+            diff_window.prefs.setBool('display_ignore_whitespace', True)
+            diff_window.prefs.setBool('align_ignore_whitespace', True)
+            diff_window.preferences_updated()
         if 'label' in options:
             labels.append(options['label'])
         if 'line' in options:
@@ -2103,7 +2110,7 @@ also retrieve revisions of files from several VCSs for comparison and merging.''
                 revs = []
             had_specs = True
         for arg in command_line.get_arguments()[1:]:
-            filename = diff.prefs.convertToNativePath(arg)
+            filename = diff_window.prefs.convertToNativePath(arg)
             if (mode == 'single' or mode == 'separate') and os.path.isdir(filename):
                 if len(specs) > 0:
                     filename = os.path.join(filename, os.path.basename(specs[-1][0]))
@@ -2121,17 +2128,19 @@ also retrieve revisions of files from several VCSs for comparison and merging.''
             specs.append((os.curdir, [(None, encoding)]))
             had_specs = True
         funcs[mode](specs, labels, opts)
+
         # create a file diff viewer if the command line arguments haven't
         # implicitly created any
         if not had_specs:
-            diff.newLoadedFileDiffViewer([])
+            diff_window.newLoadedFileDiffViewer([])
         elif close_on_same:
-            diff.closeOnSame()
-        nb = diff.notebook
+            diff_window.closeOnSame()
+        nb = diff_window.notebook
         n = nb.get_n_pages()
         if n > 0:
-            nb.set_show_tabs(diff.prefs.getBool('tabs_always_show') or n > 1)
+            nb.set_show_tabs(diff_window.prefs.getBool('tabs_always_show') or n > 1)
             nb.get_nth_page(0).grab_focus()
+
         self.activate()
         return 0
 
