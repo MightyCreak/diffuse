@@ -52,6 +52,7 @@ diffuse_sources = [
   'resources.py',
   'utils.py',
   'widgets.py',
+  'window.py',
 ]
 
 install_data(diffuse_sources, install_dir: moduledir)
