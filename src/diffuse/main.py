@@ -664,8 +664,8 @@ class DiffuseWindow(Gtk.ApplicationWindow):
         def format_changed_cb(self, widget, f, fmt):
             self.footers[f].setFormat(fmt)
 
-    def __init__(self, rc_dir, *args, **kwargs):
-        super().__init__(type=Gtk.WindowType.TOPLEVEL, *args, **kwargs)
+    def __init__(self, rc_dir, **kwargs):
+        super().__init__(type=Gtk.WindowType.TOPLEVEL, **kwargs)
 
         self.prefs = Preferences(os.path.join(rc_dir, 'prefs'))
         # number of created viewers (used to label some tabs)
@@ -1812,13 +1812,12 @@ GObject.signal_new('save-as', DiffuseWindow.FileDiffViewer.PaneHeader, GObject.S
 
 
 class DiffuseApplication(Gtk.Application):
-    def __init__(self, sysconfigdir, *args, **kwargs):
+    """The main application class."""
+
+    def __init__(self, sysconfigdir):
         super().__init__(
-            *args,
             application_id='io.github.mightycreak.Diffuse',
-            flags=Gio.ApplicationFlags.HANDLES_COMMAND_LINE | Gio.ApplicationFlags.NON_UNIQUE,
-            **kwargs,
-        )
+            flags=Gio.ApplicationFlags.HANDLES_COMMAND_LINE | Gio.ApplicationFlags.NON_UNIQUE)
 
         self.window = None
         self.sysconfigdir = sysconfigdir
@@ -1972,10 +1971,12 @@ ability to manually adjust line matching and directly edit files. Diffuse can
 also retrieve revisions of files from several VCSs for comparison and merging.'''
         ))
 
-    def do_activate(self):
+    def do_activate(self) -> None:
+        """Called when the application is activated."""
         self.window.present()
 
     def do_command_line(self, command_line):
+        """Called to treat the command line options."""
         options = command_line.get_options_dict()
         # convert GVariantDict -> GVariant -> dict
         options = options.end().unpack()
@@ -2145,7 +2146,8 @@ also retrieve revisions of files from several VCSs for comparison and merging.''
         return 0
 
 
-def main(version, sysconfigdir):
+def main(version: str, sysconfigdir: str) -> int:
+    """The application's entry point."""
     constants.VERSION = version
 
     app = DiffuseApplication(sysconfigdir)
