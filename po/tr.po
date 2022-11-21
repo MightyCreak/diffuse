@@ -1,0 +1,985 @@
+# Turkish translation for io.github.mightycreak.Diffuse.
+# Copyright (C) 2022 io.github.mightycreak.Diffuse's COPYRIGHT HOLDER
+# This file is distributed under the same license as the io.github.mightycreak.Diffuse package.
+#
+# Sabri Ünal <libreajans@gmail.com>, 2022.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: io.github.mightycreak.Diffuse\n"
+"Report-Msgid-Bugs-To: https://github.com/MightyCreak/diffuse/issues\n"
+"POT-Creation-Date: 2022-10-23 20:00-0400\n"
+"PO-Revision-Date: 2022-11-19 03:14+0300\n"
+"Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
+"Language-Team: Türkçe <gnome-turk@gnome.org>\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.1.1\n"
+
+#: data/io.github.mightycreak.Diffuse.desktop.in:3
+#: data/io.github.mightycreak.Diffuse.appdata.xml.in:4
+msgid "Diffuse"
+msgstr "Diffuse"
+
+#: data/io.github.mightycreak.Diffuse.desktop.in:4
+#: data/io.github.mightycreak.Diffuse.appdata.xml.in:5
+msgid "Graphical tool for merging and comparing text files"
+msgstr "Metin dosyalarını birleştirmek ve karşılaştırmak için grafiksel araç"
+
+#: data/io.github.mightycreak.Diffuse.appdata.xml.in:7
+msgid ""
+"Diffuse is a graphical tool for comparing and merging text files. It can "
+"retrieve files for comparison from Bazaar, CVS, Darcs, Git, Mercurial, "
+"Monotone, RCS, Subversion, and SVK repositories."
+msgstr ""
+"Diffuse, metin dosyalarını karşılaştırmak ve birleştirmek için grafiksel bir "
+"araçtır. Bazaar, CVS, Darcs, Git, Mercurial, Monotone, RCS, Subversion ve "
+"SVK depolarından karşılaştırma için dosyaları alabilir."
+
+#: data/io.github.mightycreak.Diffuse.appdata.xml.in:21
+msgid "Main window: diff between two files"
+msgstr "Ana pencere: iki dosya arasında fark"
+
+#: src/diffuse/constants.py:25
+msgid "Copyright"
+msgstr "Telif Hakkı"
+
+#: src/diffuse/dialogs.py:40
+msgid "Diffuse is a graphical tool for merging and comparing text files."
+msgstr ""
+"Diffuse, metin dosyalarını birleştirmek ve karşılaştırmak için grafiksel bir "
+"araçtır."
+
+#: src/diffuse/dialogs.py:45
+msgid "translator-credits"
+msgstr "Sabri Ünal <libreajans@gmail.com>"
+
+#: src/diffuse/dialogs.py:82
+msgid "Encoding: "
+msgstr "Kodlama: "
+
+#: src/diffuse/dialogs.py:94
+msgid "Revision: "
+msgstr "Düzeltme: "
+
+#: src/diffuse/dialogs.py:156
+msgid "Find..."
+msgstr "Bul…"
+
+#: src/diffuse/dialogs.py:164
+msgid "Search For: "
+msgstr "Şunu Ara: "
+
+#: src/diffuse/dialogs.py:189
+msgid "Match Case"
+msgstr "Büyük/küçük Harf Eşleştir"
+
+#: src/diffuse/dialogs.py:194
+msgid "Search Backwards"
+msgstr "Geriye Doğru Ara"
+
+#: src/diffuse/main.py:85
+msgid "Close Tab"
+msgstr "Sekmeyi Kapat"
+
+#: src/diffuse/main.py:132
+msgid "Open File..."
+msgstr "Dosya Aç…"
+
+#: src/diffuse/main.py:133
+msgid "Reload File"
+msgstr "Dosyayı Yeniden Yükle"
+
+#: src/diffuse/main.py:134
+msgid "Save File"
+msgstr "Dosyayı Kaydet"
+
+#: src/diffuse/main.py:135
+msgid "Save File As..."
+msgstr "Dosyayı Farklı Kaydet…"
+
+#: src/diffuse/main.py:217
+#, python-format
+msgid "Column %d"
+msgstr "%d. sütun"
+
+#: src/diffuse/main.py:291
+msgid "Save changes before loading the new file?"
+msgstr "Yeni dosya yüklenmeden önce değişiklikler kaydedilsin mi?"
+
+#: src/diffuse/main.py:402
+#, python-format
+msgid "Error reading revision %(rev)s of %(file)s."
+msgstr "%(file)s dosyasının %(rev)s düzeltmesi okunurken hata."
+
+#: src/diffuse/main.py:405 src/diffuse/main.py:1860
+#, python-format
+msgid "Error reading %s."
+msgstr "%s okunurken hata."
+
+#: src/diffuse/main.py:427
+msgid "Open File"
+msgstr "Dosya Aç"
+
+#: src/diffuse/main.py:484
+#, python-format
+msgid "The file %s changed on disk. Do you want to reload the file?"
+msgstr "%s dosyası diskte değişti. Dosyayı yeniden yüklemek ister misiniz?"
+
+#: src/diffuse/main.py:510
+#, python-format
+msgid "Save %(title)s Pane %(pane)d"
+msgstr "%(title)s Bölmesi %(pane)d Kaydet"
+
+#: src/diffuse/main.py:542
+#, python-format
+msgid "A file named %s already exists. Do you want to overwrite it?"
+msgstr "%s dosyası zaten mevcut. Üzerine yazmak istiyor musunuz?"
+
+#: src/diffuse/main.py:549
+#, python-format
+msgid ""
+"The file %s has been modified by another process since reading it. If you "
+"save, all the external changes could be lost. Save anyways?"
+msgstr ""
+"%s dosyası, okunduğundan beri başka bir süreç tarafından değiştirildi. "
+"Kaydederseniz, tüm harici değişiklikler kaybolacak. Yine de kaydedilsin mi?"
+
+#: src/diffuse/main.py:591
+#, python-format
+msgid "Error encoding to %s."
+msgstr "%s kodlama hatası."
+
+#: src/diffuse/main.py:595 src/diffuse/preferences.py:300
+#, python-format
+msgid "Error writing %s."
+msgstr "%s yazma hatası."
+
+#: src/diffuse/main.py:625
+msgid "Go To Line..."
+msgstr "Satıra Git…"
+
+#: src/diffuse/main.py:626
+msgid "Line Number: "
+msgstr "Satır Numarası: "
+
+#: src/diffuse/main.py:657
+msgid ""
+"Press the enter key or double click to edit. Press the space bar or use the "
+"RMB menu to manually align."
+msgstr ""
+"Düzenlemek için enter tuşuna basın veya çift tıklayın. Elle hizalamak için "
+"boşluk tuşana basın veya RMB menüsünü kullanın."
+
+#: src/diffuse/main.py:661
+msgid "Press the escape key to finish editing."
+msgstr "Düzenlemeyi bitirmek için Escape tuşuna basın."
+
+#: src/diffuse/main.py:664
+msgid ""
+"Select target line and press the space bar to align. Press the escape key to "
+"cancel."
+msgstr ""
+"Hedef satırı seçin ve hizalamak için boşluk çubuğuna basın. İptal etmek için "
+"Escape tuşuna basın."
+
+#: src/diffuse/main.py:787
+msgid "_File"
+msgstr "_Dosya"
+
+#: src/diffuse/main.py:788
+msgid "_Open File..."
+msgstr "Dosya _Aç..."
+
+#: src/diffuse/main.py:789
+msgid "Open File In New _Tab..."
+msgstr "Dosyayı Yeni _Sekmede Aç..."
+
+#: src/diffuse/main.py:790
+msgid "Open _Modified Files..."
+msgstr "_Değiştirilen Dosyaları Aç..."
+
+#: src/diffuse/main.py:791
+msgid "Open Commi_t..."
+msgstr "Gön_deri Aç..."
+
+#: src/diffuse/main.py:792
+msgid "_Reload File"
+msgstr "Dosyayı _Yeniden Yükle"
+
+#: src/diffuse/main.py:794
+msgid "_Save File"
+msgstr "Dosyayı _Kaydet"
+
+#: src/diffuse/main.py:795
+msgid "Save File _As..."
+msgstr "Dosyayı _Farklı Kaydet…"
+
+#: src/diffuse/main.py:796
+msgid "Save A_ll"
+msgstr "T_ümünü Kaydet"
+
+#: src/diffuse/main.py:798
+msgid "New _2-Way File Merge"
+msgstr "Yeni _2 Yönlü Dosya Birleştirme"
+
+#: src/diffuse/main.py:799
+msgid "New _3-Way File Merge"
+msgstr "Yeni _3 Yönlü Dosya Birleştirme"
+
+#: src/diffuse/main.py:800
+msgid "New _N-Way File Merge..."
+msgstr "Yeni _N Yönlü Dosya Birleştirme"
+
+#: src/diffuse/main.py:802
+msgid "_Close Tab"
+msgstr "_Sekmeyi Kapat"
+
+#: src/diffuse/main.py:803
+msgid "_Undo Close Tab"
+msgstr "Sekmeyı Kapatmayı _Geri Al"
+
+#: src/diffuse/main.py:804
+msgid "_Quit"
+msgstr "Çı_k"
+
+#: src/diffuse/main.py:807
+msgid "_Edit"
+msgstr "_Düzenle"
+
+#: src/diffuse/main.py:808
+msgid "_Undo"
+msgstr "_Geri Al"
+
+#: src/diffuse/main.py:809
+msgid "_Redo"
+msgstr "_Yinele"
+
+#: src/diffuse/main.py:811
+msgid "Cu_t"
+msgstr "Ke_s"
+
+#: src/diffuse/main.py:812
+msgid "_Copy"
+msgstr "Ko_pyala"
+
+#: src/diffuse/main.py:813
+msgid "_Paste"
+msgstr "_Yapıştır"
+
+#: src/diffuse/main.py:815
+msgid "Select _All"
+msgstr "_Tümünü Seç"
+
+#: src/diffuse/main.py:816
+msgid "C_lear Edits"
+msgstr "Düzenlemeleri _Temizle"
+
+#: src/diffuse/main.py:817
+msgid "_Dismiss All Edits"
+msgstr "Tüm Düzenlemelerden _Vazgeç"
+
+#: src/diffuse/main.py:819
+msgid "_Find..."
+msgstr "Bul..."
+
+#: src/diffuse/main.py:820
+msgid "Find _Next"
+msgstr "_Sonrakini Bul"
+
+#: src/diffuse/main.py:821
+msgid "Find Pre_vious"
+msgstr "Öncekini B_ul"
+
+#: src/diffuse/main.py:822
+msgid "_Go To Line..."
+msgstr "Satıra _Git…"
+
+#: src/diffuse/main.py:824
+msgid "Pr_eferences..."
+msgstr "_Tercihler…"
+
+#: src/diffuse/main.py:828
+msgid "None"
+msgstr "Hiçbiri"
+
+#: src/diffuse/main.py:846
+msgid "_View"
+msgstr "_Görünüm"
+
+#: src/diffuse/main.py:847
+msgid "_Syntax Highlighting"
+msgstr "_Söz Dizimi Vurgulaması"
+
+#: src/diffuse/main.py:849
+msgid "Re_align All"
+msgstr "_Tümünü Yeniden Hizala"
+
+#: src/diffuse/main.py:850
+msgid "_Isolate"
+msgstr "_Yalıt"
+
+#: src/diffuse/main.py:852
+msgid "_First Difference"
+msgstr "İlk _Fark"
+
+#: src/diffuse/main.py:853
+msgid "_Previous Difference"
+msgstr "_Önceki Fark"
+
+#: src/diffuse/main.py:854
+msgid "_Next Difference"
+msgstr "_Sonraki Fark"
+
+#: src/diffuse/main.py:855
+msgid "_Last Difference"
+msgstr "_Son Fark"
+
+#: src/diffuse/main.py:857
+msgid "Fir_st Tab"
+msgstr "_İlk Sekme"
+
+#: src/diffuse/main.py:858
+msgid "Pre_vious Tab"
+msgstr "_Önceki Sekme"
+
+#: src/diffuse/main.py:859
+msgid "Next _Tab"
+msgstr "Sonraki _Sekme"
+
+#: src/diffuse/main.py:860
+msgid "Las_t Tab"
+msgstr "So_n Sekme"
+
+#: src/diffuse/main.py:862
+msgid "Shift Pane _Right"
+msgstr "_Sağ Bölmeye Geç"
+
+#: src/diffuse/main.py:863
+msgid "Shift Pane _Left"
+msgstr "_Sol Bölmeye Geç"
+
+#: src/diffuse/main.py:866
+msgid "F_ormat"
+msgstr "_Biçemlendir"
+
+#: src/diffuse/main.py:867
+msgid "Convert To _Upper Case"
+msgstr "_Büyük Harfe Dönüştür"
+
+#: src/diffuse/main.py:868
+msgid "Convert To _Lower Case"
+msgstr "_Küçük Harfe Dönüştür"
+
+#: src/diffuse/main.py:870
+msgid "Sort Lines In _Ascending Order"
+msgstr "Satırları _Artan Düzenle Sırala"
+
+#: src/diffuse/main.py:871
+msgid "Sort Lines In D_escending Order"
+msgstr "Satırları A_zalan Düzenle Sırala"
+
+#: src/diffuse/main.py:873
+msgid "Remove Trailing _White Space"
+msgstr "Sondaki _Boşlukları Kaldır"
+
+#: src/diffuse/main.py:874
+msgid "Convert Tabs To _Spaces"
+msgstr "Sekmeleri _Boşluklara Dönüştür"
+
+#: src/diffuse/main.py:875
+msgid "Convert Leading Spaces To _Tabs"
+msgstr "Baştaki Boşlukları _Sekmelere Dönüştür"
+
+#: src/diffuse/main.py:877
+msgid "_Increase Indenting"
+msgstr "Girintiyi _Arttır"
+
+#: src/diffuse/main.py:878
+msgid "De_crease Indenting"
+msgstr "Girintiyi A_zalt"
+
+#: src/diffuse/main.py:880
+msgid "Convert To _DOS Format"
+msgstr "_DOS Biçimine Dönüştür"
+
+#: src/diffuse/main.py:881
+msgid "Convert To _Mac Format"
+msgstr "_MAC Biçimine Dönüştür"
+
+#: src/diffuse/main.py:882
+msgid "Convert To Uni_x Format"
+msgstr "Uni_x Biçimine Dönüştür"
+
+#: src/diffuse/main.py:885
+msgid "_Merge"
+msgstr "_Birleştir"
+
+#: src/diffuse/main.py:886
+msgid "Copy Selection _Right"
+msgstr "Seçimi _Sağa Kopyala"
+
+#: src/diffuse/main.py:887
+msgid "Copy Selection _Left"
+msgstr "Seçimi _Sola Kopyala"
+
+#: src/diffuse/main.py:889
+msgid "Copy Left _Into Selection"
+msgstr "Solu _Seçime Kopyala"
+
+#: src/diffuse/main.py:890
+msgid "Copy Right I_nto Selection"
+msgstr "Sağı _Seçime Kopyala"
+
+#: src/diffuse/main.py:891
+msgid "_Merge From Left Then Right"
+msgstr "_Soldan Sonra Sağdan Birleştir"
+
+#: src/diffuse/main.py:892
+msgid "M_erge From Right Then Left"
+msgstr "_Sağdan Sonra Soldan Birleştir"
+
+#: src/diffuse/main.py:895
+msgid "_Help"
+msgstr "_Yardım"
+
+#: src/diffuse/main.py:896
+msgid "_Help Contents..."
+msgstr "Yardım İçerikleri..."
+
+#: src/diffuse/main.py:898
+#, python-format
+msgid "_About %s..."
+msgstr "%s Hakkında..."
+
+#: src/diffuse/main.py:913
+msgid "New 2-Way File Merge"
+msgstr "Yeni 2 Yönlü Dosya Birleştirme"
+
+#: src/diffuse/main.py:914
+msgid "New 3-Way File Merge"
+msgstr "Yeni 3 Yönlü Dosya Birleştirme"
+
+#: src/diffuse/main.py:916
+msgid "Realign All"
+msgstr "Tümünü Yeniden Hizala"
+
+#: src/diffuse/main.py:917
+msgid "First Difference"
+msgstr "İlk Fark"
+
+#: src/diffuse/main.py:918
+msgid "Previous Difference"
+msgstr "Önceki Fark"
+
+#: src/diffuse/main.py:919
+msgid "Next Difference"
+msgstr "Sonraki Fark"
+
+#: src/diffuse/main.py:920
+msgid "Last Difference"
+msgstr "Son Fark"
+
+#: src/diffuse/main.py:922
+msgid "Copy Selection Right"
+msgstr "Seçimi Sağa Kopyala"
+
+#: src/diffuse/main.py:923
+msgid "Copy Selection Left"
+msgstr "Seçimi Sola Kopyala"
+
+#: src/diffuse/main.py:924
+msgid "Copy Left Into Selection"
+msgstr "Solu Seçime Kopyala"
+
+#: src/diffuse/main.py:925
+msgid "Copy Right Into Selection"
+msgstr "Sağı Seçime Kopyala"
+
+#: src/diffuse/main.py:926
+msgid "Merge From Left Then Right"
+msgstr "Soldan Sonra Sağdan Birleştir"
+
+#: src/diffuse/main.py:927
+msgid "Merge From Right Then Left"
+msgstr "Sağdan Sonra Soldan Birleştir"
+
+#: src/diffuse/main.py:929
+msgid "Undo"
+msgstr "Geri Al"
+
+#: src/diffuse/main.py:930
+msgid "Redo"
+msgstr "Yinele"
+
+#: src/diffuse/main.py:931 src/diffuse/widgets.py:1861
+msgid "Cut"
+msgstr "Kes"
+
+#: src/diffuse/main.py:932 src/diffuse/widgets.py:1862
+msgid "Copy"
+msgstr "Kopyala"
+
+#: src/diffuse/main.py:933 src/diffuse/widgets.py:1863
+msgid "Paste"
+msgstr "Yapıştır"
+
+#: src/diffuse/main.py:934 src/diffuse/widgets.py:1866
+msgid "Clear Edits"
+msgstr "Düzenlemeleri Temizle"
+
+#: src/diffuse/main.py:1057
+msgid ""
+"Some files have unsaved changes. Select the files to save before closing."
+msgstr ""
+"Bazı dosyalarda kaydedilmemiş değişiklikler var. Kapatmadan önce "
+"kaydedilecek dosyaları seçin."
+
+#: src/diffuse/main.py:1071
+msgid "Tab"
+msgstr "Sekme"
+
+#: src/diffuse/main.py:1076
+msgid "Pane"
+msgstr "Bölme"
+
+#: src/diffuse/main.py:1087
+msgid "Close _Without Saving"
+msgstr "Ka_ydetmeden Kapat"
+
+#: src/diffuse/main.py:1126
+#, python-format
+msgid "Closing this tab will quit %s."
+msgstr "Bu sekmeyi kapatılmak %s uygulamasından da çıkış yapar."
+
+#: src/diffuse/main.py:1209
+#, python-format
+msgid "File Merge %d"
+msgstr "Dosya Birleştirme %d"
+
+#: src/diffuse/main.py:1315
+#, python-format
+msgid "Error retrieving commits for %s."
+msgstr "%s gönderileri alınırken hata."
+
+#: src/diffuse/main.py:1347
+#, python-format
+msgid "Error retrieving modifications for %s."
+msgstr "%s değişiklikleri alınırken hata."
+
+#: src/diffuse/main.py:1380
+msgid "Open File In New Tab"
+msgstr "Dosyayı Yeni Sekmede Aç"
+
+#: src/diffuse/main.py:1403
+msgid "Choose Folder With Modified Files"
+msgstr "Değiştirilmiş Dosyaların Bulunduğu Klasörü Seç"
+
+#: src/diffuse/main.py:1421
+msgid "No modified files found."
+msgstr "Değiştirilmiş dosya bulunamadı."
+
+#: src/diffuse/main.py:1427
+msgid "Choose Folder With Commit"
+msgstr "Gönderiyle Klasör Seç"
+
+#: src/diffuse/main.py:1447
+msgid "No committed files found."
+msgstr "Gönderilmiş dosya bulunamadı."
+
+#: src/diffuse/main.py:1483
+msgid "New N-Way File Merge..."
+msgstr "Yeni N Yönlü Dosya Birleştirme"
+
+#: src/diffuse/main.py:1484
+msgid "Number of panes: "
+msgstr "Bölme sayısı: "
+
+#: src/diffuse/main.py:1558
+msgid "Phrase not found.  Continue from the end of the file?"
+msgstr "İfade bulunamadı. Dosyanın sonundan devam edilsin mi?"
+
+#: src/diffuse/main.py:1560
+msgid "Phrase not found.  Continue from the start of the file?"
+msgstr "İfade bulunamadı. Dosyanın başından devam edilsin mi?"
+
+#: src/diffuse/main.py:1781
+msgid ""
+"Usage:\n"
+"    diffuse [OPTION...] [FILE...]\n"
+"    diffuse ( -h | -? | --help | -v | --version )\n"
+"\n"
+"Diffuse is a graphical tool for merging and comparing text files. Diffuse "
+"is\n"
+"able to compare an arbitrary number of files side-by-side and gives users "
+"the\n"
+"ability to manually adjust line matching and directly edit files. Diffuse "
+"can\n"
+"also retrieve revisions of files from several VCSs for comparison and "
+"merging.\n"
+"\n"
+"Help Options:\n"
+"  ( -h | -? | --help )             Display this usage information\n"
+"  ( -v | --version )               Display version and copyright "
+"information\n"
+"\n"
+"Configuration Options:\n"
+"  --no-rcfile                      Do not read any resource files\n"
+"  --rcfile <file>                  Specify explicit resource file\n"
+"\n"
+"General Options:\n"
+"  ( -c | --commit ) <rev>          File revisions <rev-1> and <rev>\n"
+"  ( -D | --close-if-same )         Close all tabs with no differences\n"
+"  ( -e | --encoding ) <codec>      Use <codec> to read and write files\n"
+"  ( -L | --label ) <label>         Display <label> instead of the file name\n"
+"  ( -m | --modified )              Create a new tab for each modified file\n"
+"  ( -r | --revision ) <rev>        File revision <rev>\n"
+"  ( -s | --separate )              Create a new tab for each file\n"
+"  ( -t | --tab )                   Start a new tab\n"
+"  ( -V | --vcs ) <vcs-list>        Version control system search order\n"
+"  --line <line>                    Start with line <line> selected\n"
+"  --null-file                      Create a blank file comparison pane\n"
+"\n"
+"Display Options:\n"
+"  ( -b | --ignore-space-change )   Ignore changes to white space\n"
+"  ( -B | --ignore-blank-lines )    Ignore changes in blank lines\n"
+"  ( -E | --ignore-end-of-line )    Ignore end of line differences\n"
+"  ( -i | --ignore-case )           Ignore case differences\n"
+"  ( -w | --ignore-all-space )      Ignore white space differences"
+msgstr ""
+"Kullanım:\n"
+"    diffuse [SEÇENEK...] [DOSYA...]\n"
+"    diffuse ( -h | -? | --help | -v | --version )\n"
+"\n"
+"Diffuse, metin dosyalarını birleştirmek ve karşılaştırmak için grafiksel bir "
+"araçtır.\n"
+"Diffuse, tercih edilen sayıda dosyayı yan yana karşılaştırabilir ve "
+"kullanıcılara\n"
+"satır eşleştirmeyi elle ayarlama ve dosyaları doğrudan düzenleme yeteneği "
+"kazandırır.\n"
+"Diffuse, karşılaştırma ve birleştirme için çeşitli Sürüm Denetim Sistemi "
+"dosyaların\n"
+"düzeltmelerini de alabilir.\n"
+"\n"
+"Yardım Seçenekleri:\n"
+"  ( -h | -? | --help )             Bu kullanım bilgilerini göster\n"
+"  ( -v | --version )               Sürümü ve telif hakkı bilgilerini göster\n"
+"\n"
+"Yapılandırma Seçenekleri:\n"
+"  --no-rcfile                      Herhangi bir kaynak dosyasını okuma\n"
+"  --rcfile <file>                  Açık kaynak dosyasını belirtin\n"
+"\n"
+"Genel Seçenekler:\n"
+"  ( -c | --commit ) <rev>          Dosya düzeltmesi <rev-1> ve <rev>\n"
+"  ( -D | --close-if-same )         Fark yoksa sekmeleri kapat\n"
+"  ( -e | --encoding ) <codec>      Dosyaları okumak için <codec> kod çözücü "
+"kullan\n"
+"  ( -L | --label ) <label>         Dosya adı yerine <label> etiketini "
+"göster\n"
+"  ( -m | --modified )              Değiştirilen her dosya için yeni sekme "
+"oluştur\n"
+"  ( -r | --revision ) <rev>        Dosya düzeltmesi <rev>\n"
+"  ( -s | --separate )              Her dosya için yeni sekme oluştur\n"
+"  ( -t | --tab )                   Yeni sekme başlat\n"
+"  ( -V | --vcs ) <vcs-list>        Sürüm denetimi sistemi arama sırası\n"
+"  --line <line>                    <line> satırı seçiliyken başla\n"
+"  --null-file                      Boş bir dosya karşılaştırma bölmesi "
+"oluştur\n"
+"\n"
+"Görünüm Seçenekleri:\n"
+"  ( -b | --ignore-space-change )   Boşluk değişikliklerini yoksay\n"
+"  ( -B | --ignore-blank-lines )    Boş satırlardaki değişiklikleri yoksay\n"
+"  ( -E | --ignore-end-of-line )    Satır sonu farklarını yoksay\n"
+"  ( -i | --ignore-case )           Büyük/Küçük harf farklarını yoksay\n"
+"  ( -w | --ignore-all-space )      Boşluk farklarını yoksay"
+
+#: src/diffuse/main.py:1948
+msgid "Error parsing line number."
+msgstr "Satır numarası ayrıştırılırma hatası."
+
+#: src/diffuse/main.py:1958
+#, python-format
+msgid "Skipping unknown argument \"%s\"."
+msgstr "Bilinmeyen \"%s\" argümanı atlanıyor."
+
+#: src/diffuse/main.py:1966
+#, python-format
+msgid "Error processing argument \"%s\".  Directory not expected."
+msgstr "\"%s\" argümanı işlenirken hata. Dizin beklenmiyor."
+
+#: src/diffuse/preferences.py:80
+msgid "Display"
+msgstr "Görünüm"
+
+#: src/diffuse/preferences.py:83
+msgid "Font"
+msgstr "Yazı Tipi"
+
+#: src/diffuse/preferences.py:84
+msgid "Tab width"
+msgstr "Sekme genişliği"
+
+#: src/diffuse/preferences.py:85
+msgid "Show right margin"
+msgstr "Sağ kenar boşluğunu göster"
+
+#: src/diffuse/preferences.py:86
+msgid "Right margin"
+msgstr "Sağ kenar boşluğu"
+
+#: src/diffuse/preferences.py:87
+msgid "Show line numbers"
+msgstr "Satır numaralarını göster"
+
+#: src/diffuse/preferences.py:88
+msgid "Show white space characters"
+msgstr "Boşluk karakterlerini yoksay"
+
+#: src/diffuse/preferences.py:89
+msgid "Ignore case differences"
+msgstr "Büyük/Küçük harf farklarını yoksay"
+
+#: src/diffuse/preferences.py:90
+msgid "Ignore white space differences"
+msgstr "Boşluk farklarını yoksay"
+
+#: src/diffuse/preferences.py:91 src/diffuse/preferences.py:100
+msgid "Ignore changes to white space"
+msgstr "Boşluk değişikliklerini yoksay"
+
+#: src/diffuse/preferences.py:92
+msgid "Ignore blank line differences"
+msgstr "Boş satır farklarını yoksay"
+
+#: src/diffuse/preferences.py:93
+msgid "Ignore end of line differences"
+msgstr "Satır sonu farklarını yoksay"
+
+#: src/diffuse/preferences.py:95
+msgid "Alignment"
+msgstr "Hizalama"
+
+#: src/diffuse/preferences.py:98
+msgid "Ignore case"
+msgstr "Büyük/Küçük harfi yoksay"
+
+#: src/diffuse/preferences.py:99
+msgid "Ignore white space"
+msgstr "Boşlukları yoksay"
+
+#: src/diffuse/preferences.py:101
+msgid "Ignore blank lines"
+msgstr "Boş satırları yoksay"
+
+#: src/diffuse/preferences.py:102
+msgid "Ignore end of line characters"
+msgstr "Satır sonu karakterlerini yoksay"
+
+#: src/diffuse/preferences.py:104
+msgid "Editor"
+msgstr "Düzenleyici"
+
+#: src/diffuse/preferences.py:107
+msgid "Auto indent"
+msgstr "Kendiliğinden girinti"
+
+#: src/diffuse/preferences.py:108
+msgid "Expand tabs to spaces"
+msgstr "Sekmeleri boşluklara genişlet"
+
+#: src/diffuse/preferences.py:109
+msgid "Soft tab width"
+msgstr "Yumuşak sekme genişliği"
+
+#: src/diffuse/preferences.py:111
+msgid "Tabs"
+msgstr "Sekmeler"
+
+#: src/diffuse/preferences.py:114
+msgid "Default panes"
+msgstr "Öntanımlı bölmeler"
+
+#: src/diffuse/preferences.py:115
+msgid "Always show the tab bar"
+msgstr "Sekme çubuğunu her zaman göster"
+
+#: src/diffuse/preferences.py:116
+#, python-format
+msgid "Warn me when closing a tab will quit %s"
+msgstr ""
+"%s uygulamasından çıkmaya neden olacak bir sekmeyi kapatırken beni uyar"
+
+#: src/diffuse/preferences.py:118
+msgid "Regional Settings"
+msgstr "Bölgesel Ayarlar"
+
+#: src/diffuse/preferences.py:121
+msgid "Default codec"
+msgstr "Öntanımlı çöcücü"
+
+#: src/diffuse/preferences.py:122
+msgid "Order of codecs used to identify encoding"
+msgstr "Kodlamayı tanımlamak için kullanılan çözücülerin sırası"
+
+#: src/diffuse/preferences.py:143
+msgid "Cygwin"
+msgstr "Cygwin"
+
+#: src/diffuse/preferences.py:145
+msgid "Root directory"
+msgstr "Kök dizini"
+
+#: src/diffuse/preferences.py:146
+msgid "Cygdrive prefix"
+msgstr "Cygdrive öneki"
+
+#: src/diffuse/preferences.py:165
+msgid "Version control system search order"
+msgstr "Sürüm denetim sistemi arama sırası"
+
+#: src/diffuse/preferences.py:173
+msgid "\"co\" command"
+msgstr "\"co\" komutu"
+
+#: src/diffuse/preferences.py:174
+msgid "\"rlog\" command"
+msgstr "\"rlog\" komutu"
+
+#: src/diffuse/preferences.py:176
+msgid "Command"
+msgstr "Komut"
+
+#: src/diffuse/preferences.py:182
+msgid "Launch from a Bash login shell"
+msgstr "Bash giriş kabuğundan başlat"
+
+#: src/diffuse/preferences.py:189
+msgid "Update paths for Cygwin"
+msgstr "Cygwin yollarını güncelle"
+
+#: src/diffuse/preferences.py:194
+msgid "Version Control"
+msgstr "Sürüm Denetimi"
+
+#: src/diffuse/preferences.py:259
+msgid "Preferences"
+msgstr "Tercihler"
+
+#: src/diffuse/resources.py:242 src/diffuse/resources.py:246
+#: src/diffuse/resources.py:249
+#, python-brace-format
+msgid "The key binding \"{key}\" is invalid"
+msgstr "Anahtar bağı \"{key}\" geçersiz"
+
+#: src/diffuse/resources.py:376
+msgid "Imports must have one argument"
+msgstr "İçe aktarmaların bir argümanı olmalıdır"
+
+#: src/diffuse/resources.py:392
+msgid "Key bindings must have three arguments"
+msgstr "Anahtar bağlamaların üç argümanı olmalıdır"
+
+#: src/diffuse/resources.py:398
+msgid "Colors must have four arguments"
+msgstr "Renklerin dört argümanı olmalıdır"
+
+#: src/diffuse/resources.py:404
+msgid "Floats must have two arguments"
+msgstr "Floatların iki argümanı olmalıdır"
+
+#: src/diffuse/resources.py:410
+msgid "Options must have two arguments"
+msgstr "Seçeneklerin iki argümanı olmalıdır"
+
+#: src/diffuse/resources.py:413
+#, python-brace-format
+msgid "Option \"{option}\" is unknown"
+msgstr "\"{option}\" seçeneği bilinmiyor"
+
+#: src/diffuse/resources.py:420
+msgid "Strings must have two arguments"
+msgstr "Dizgelerin iki argümanı olmalıdır"
+
+#: src/diffuse/resources.py:431
+msgid "Syntaxes must have two or three arguments"
+msgstr "Söz dizimlerinin iki ya da üç argümanı olmalıdır"
+
+#: src/diffuse/resources.py:459
+msgid "Syntax patterns must have at least four arguments"
+msgstr "Sözdizimi kalıplarının en az dört argümanı olmalıdır"
+
+#: src/diffuse/resources.py:465 src/diffuse/resources.py:509
+#, python-brace-format
+msgid "Value \"{value}\" is unknown"
+msgstr "\"{value}\" değeri bilinmiyor"
+
+#: src/diffuse/resources.py:476
+msgid "Syntax files must have one or two arguments"
+msgstr "Söz dizimi dosyalarının bir ya da iki argümanı olmalıdır"
+
+#: src/diffuse/resources.py:494
+msgid "Syntax magics must have at least one argument"
+msgstr "Söz dizimi büyülerinin en az bir argümanı olmalıdır"
+
+#: src/diffuse/resources.py:513
+#, python-brace-format
+msgid "Keyword \"{keyword}\" is unknown"
+msgstr "\"{keyword}\" anahtar sözcüğü bilinmiyor"
+
+#: src/diffuse/resources.py:515
+#, python-brace-format
+msgid "Syntax error at line {line} of {file}"
+msgstr "{file} dosyasının {line}. satırında söz dizimi hatası"
+
+#: src/diffuse/resources.py:521
+#, python-brace-format
+msgid "Value error at line {line} of {file}"
+msgstr "{file} dosyasının {line}. satırında değer hatası"
+
+#: src/diffuse/resources.py:527
+#, python-brace-format
+msgid "Regex error at line {line} of {file}."
+msgstr "{file} dosyasının {line}. satırında düzenli ifade hatası."
+
+#: src/diffuse/resources.py:530
+#, python-brace-format
+msgid "Unhandled error at line {line} of {file}."
+msgstr "{file} dosyasının {line}. satırında işlenmeyen hata."
+
+#: src/diffuse/utils.py:66
+msgid "Auto Detect"
+msgstr "Kendiliğinden Algıla"
+
+#: src/diffuse/vcs/cvs.py:54 src/diffuse/vcs/rcs.py:63
+#: src/diffuse/vcs/svn.py:97
+#, python-format
+msgid "Error parsing revision %s."
+msgstr "%s düzeltmesi ayrıştırılırken hata."
+
+#: src/diffuse/vcs/vcs_registry.py:238
+#, python-format
+msgid "Error parsing %s."
+msgstr "%s ayrıştırma hatası."
+
+#: src/diffuse/widgets.py:1857
+msgid "Align with Selection"
+msgstr "Seçimle Hizala"
+
+#: src/diffuse/widgets.py:1858
+msgid "Isolate"
+msgstr "Yalıt"
+
+#: src/diffuse/widgets.py:1859
+msgid "Merge Selection"
+msgstr "Seçimi Birleştir"
+
+#: src/diffuse/widgets.py:1865
+msgid "Select All"
+msgstr "Tümünü Seç"
+
+#: src/diffuse/widgets.py:1868
+msgid "Swap with Selected Pane"
+msgstr "Seçilen Bölmeyle Değiştir"
