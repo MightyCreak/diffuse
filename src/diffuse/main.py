@@ -1819,7 +1819,7 @@ class Application(Gtk.Application):
             flags=Gio.ApplicationFlags.HANDLES_COMMAND_LINE | Gio.ApplicationFlags.NON_UNIQUE,
             **kwargs,
         )
-        GLib.set_application_name("Diffuse")
+        GLib.set_application_name(constants.APP_NAME)
 
         self.sysconfigdir = sysconfigdir
 
