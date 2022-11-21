@@ -52,10 +52,9 @@ theVCSs = VcsRegistry()
 class NotebookTab(Gtk.EventBox):
     """Notebook tab widget.
 
-    Widget class to create notebook tabs with labels and a close button. Use
-    `notebooktab.button.connect()` to be notified when the button is pressed.
-    Make this a Gtk.EventBox so signals can be connected for MMB and RMB button
-    presses.
+    A notebook tab with labels and a close button. Use `notebooktab.button.connect()`
+    to be notified when the button is pressed. Make this a Gtk.EventBox so
+    signals can be connected for MMB and RMB button presses.
     """
 
     def __init__(self, name: str, stock: str) -> None:
@@ -249,430 +248,431 @@ class PaneFooter(Gtk.Box):
         self.encoding.set_text(s)
 
 
+class FileDiffViewer(FileDiffViewerBase):
+    """Specialization of FileDiffViewerBase for Diffuse."""
+
+    def __init__(self, n: int, prefs: Preferences, title: str) -> None:
+        super().__init__(n, prefs)
+
+        self.title = title
+        self.status: Optional[str] = ''
+
+        self.headers: List[PaneHeader] = []
+        self.footers: List[PaneFooter] = []
+        for i in range(n):
+            # pane header
+            w = PaneHeader()
+            self.headers.append(w)
+            self.attach(w, i, 0, 1, 1)
+            w.connect('title-changed', self.title_changed_cb)
+            w.connect('open', self.open_file_button_cb, i)
+            w.connect('reload', self.reload_file_button_cb, i)
+            w.connect('save', self.save_file_button_cb, i)
+            w.connect('save-as', self.save_file_as_button_cb, i)
+            w.show()
+
+            # pane footer
+            w = PaneFooter()
+            self.footers.append(w)
+            self.attach(w, i, 2, 1, 1)
+            w.show()
+
+        self.connect('swapped-panes', self.swapped_panes_cb)
+        self.connect('num-edits-changed', self.num_edits_changed_cb)
+        self.connect('mode-changed', self.mode_changed_cb)
+        self.connect('cursor-changed', self.cursor_changed_cb)
+        self.connect('format-changed', self.format_changed_cb)
+
+        for i, darea in enumerate(self.dareas):
+            darea.drag_dest_set(
+                Gtk.DestDefaults.ALL,
+                [Gtk.TargetEntry.new('text/uri-list', 0, 0)],
+                Gdk.DragAction.COPY
+            )
+            darea.connect('drag-data-received', self.drag_data_received_cb, i)
+        # initialise status
+        self.updateStatus()
+
+    # convenience method to request confirmation before loading a file if
+    # it will cause existing edits to be lost
+    def loadFromInfo(self, f: int, info: FileInfo) -> None:
+        if self.headers[f].has_edits:
+            # warn users of any unsaved changes they might lose
+            dialog = Gtk.MessageDialog(
+                self.get_toplevel(),
+                Gtk.DialogFlags.DESTROY_WITH_PARENT,
+                Gtk.MessageType.WARNING,
+                Gtk.ButtonsType.NONE, _('Save changes before loading the new file?')
+            )
+            dialog.set_title(constants.APP_NAME)
+            dialog.add_button(Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL)
+            dialog.add_button(Gtk.STOCK_NO, Gtk.ResponseType.REJECT)
+            dialog.add_button(Gtk.STOCK_YES, Gtk.ResponseType.OK)
+            dialog.set_default_response(Gtk.ResponseType.CANCEL)
+            response = dialog.run()
+            dialog.destroy()
+            if response == Gtk.ResponseType.OK:
+                # save the current pane contents
+                if not self.save_file(f):
+                    # cancel if the save failed
+                    return
+            elif response != Gtk.ResponseType.REJECT:
+                # cancel if the user did not choose 'yes' or 'no'
+                return
+        self.openUndoBlock()
+        self.recordEditMode()
+        self.load(f, info)
+        self.recordEditMode()
+        self.closeUndoBlock()
+
+    # callback used when receiving drag-n-drop data
+    def drag_data_received_cb(self, widget, context, x, y, selection, targettype, eventtime, f):
+        # get uri list
+        uris = selection.get_uris()
+        # load the first valid file
+        for uri in uris:
+            path = urlparse(uri).path
+            if os.path.isfile(path):
+                self.loadFromInfo(f, FileInfo(path))
+                break
+
+    # change the file info for pane 'f' to 'info'
+    def setFileInfo(self, f, info):
+        h, footer = self.headers[f], self.footers[f]
+        h.info = info
+        h.updateTitle()
+        footer.setFormat(self.panes[f].format)
+        footer.setEncoding(info.encoding)
+        footer.updateCursor(self, f)
+
+    # callback used when a pane header's title changes
+    def title_changed_cb(self, widget):
+        # choose a short but descriptive title for the viewer
+        has_edits = False
+        names = []
+        unique_names = set()
+        for header in self.headers:
+            has_edits |= header.has_edits
+            s = header.info.label
+            if s is None:
+                # no label provided, show the file name instead
+                s = header.info.name
+                if s is not None:
+                    s = os.path.basename(s)
+            if s is not None:
+                names.append(s)
+                unique_names.add(s)
+
+        if len(unique_names) > 0:
+            if len(unique_names) == 1:
+                self.title = names[0]
+            else:
+                self.title = ' : '.join(names)
+        s = self.title
+        if has_edits:
+            s += ' *'
+        self.emit('title_changed', s)
+
+    def setEncoding(self, f, encoding):
+        h = self.headers[f]
+        h.info.encoding = encoding
+        self.footers[f].setEncoding(encoding)
+
+    # load a new file into pane 'f'
+    # 'info' indicates the name of the file and how to retrieve it from the
+    # version control system if applicable
+    def load(self, f: int, info: FileInfo) -> None:
+        name = info.name
+        encoding = info.encoding
+        stat = None
+        if name is None:
+            # reset to an empty pane
+            ss = []
+        else:
+            rev = info.revision
+            try:
+                if rev is None:
+                    # load the contents of a plain file
+                    with open(name, 'rb') as fd:
+                        contents = fd.read()
+                    # get the file's modification times so we can detect changes
+                    stat = os.stat(name)
+                else:
+                    if info.vcs is None:
+                        raise IOError('Not under version control.')
+                    fullname = os.path.abspath(name)
+                    # retrieve the revision from the version control system
+                    contents = info.vcs.getRevision(self.prefs, fullname, rev)
+                # convert file contents to unicode
+                if encoding is None:
+                    s, encoding = self.prefs.convertToUnicode(contents)
+                else:
+                    s = str(contents, encoding=encoding)
+                ss = utils.splitlines(s)
+            except (IOError, OSError, UnicodeDecodeError, LookupError):
+                # FIXME: this can occur before the toplevel window is drawn
+                if rev is not None:
+                    msg = _(
+                        'Error reading revision %(rev)s of %(file)s.'
+                    ) % {'rev': rev, 'file': name}
+                else:
+                    msg = _('Error reading %s.') % (name, )
+                utils.logErrorAndDialog(msg, self.get_toplevel())
+                return
+        # update the panes contents, last modified time, and title
+        self.replaceContents(f, ss)
+        info.encoding = encoding
+        info.last_stat = info.stat = stat
+        self.setFileInfo(f, info)
+        # use the file name to choose appropriate syntax highlighting rules
+        if name is not None:
+            syntax = theResources.guessSyntaxForFile(name, ss)
+            if syntax is not None:
+                self.setSyntax(syntax)
+
+    # load a new file into pane 'f'
+    def open_file(self, f: int, reload: bool = False) -> None:
+        h = self.headers[f]
+        info = h.info
+        if not reload:
+            # we need to ask for a file name if we are not reloading the
+            # existing file
+            dialog = FileChooserDialog(
+                _('Open File'),
+                self.get_toplevel(),
+                self.prefs,
+                Gtk.FileChooserAction.OPEN,
+                Gtk.STOCK_OPEN,
+                True
+            )
+            if info.name is not None:
+                dialog.set_filename(os.path.realpath(info.name))
+            dialog.set_encoding(info.encoding)
+            dialog.set_default_response(Gtk.ResponseType.OK)
+            end = (dialog.run() != Gtk.ResponseType.OK)
+            name = dialog.get_filename()
+            rev = None
+            vcs = None
+            revision = dialog.get_revision().strip()
+            if revision != '':
+                rev = revision
+                vcs = theVCSs.findByFilename(name, self.prefs)
+            info = FileInfo(name, dialog.get_encoding(), vcs, rev)
+            dialog.destroy()
+            if end:
+                return
+        self.loadFromInfo(f, info)
+
+    # callback for open file button
+    def open_file_button_cb(self, widget, f):
+        self.open_file(f)
+
+    # callback for open file menu item
+    def open_file_cb(self, widget, data):
+        self.open_file(self.current_pane)
+
+    # callback for reload file button
+    def reload_file_button_cb(self, widget, f):
+        self.open_file(f, True)
+
+    # callback for reload file menu item
+    def reload_file_cb(self, widget, data):
+        self.open_file(self.current_pane, True)
+
+    # save contents of pane 'f' to file
+    def save_file(self, f: int, save_as: bool = False) -> bool:
+        h = self.headers[f]
+        info = h.info
+        name, encoding, rev, label = info.name, info.encoding, info.revision, info.label
+        if name is None or rev is not None:
+            # we need to prompt for a file name the current contents were
+            # not loaded from a regular file
+            save_as = True
+        if save_as:
+            # prompt for a file name
+            dialog = FileChooserDialog(
+                _('Save %(title)s Pane %(pane)d') % {'title': self.title, 'pane': f + 1},
+                self.get_toplevel(),
+                self.prefs,
+                Gtk.FileChooserAction.SAVE,
+                Gtk.STOCK_SAVE
+            )
+            if name is not None:
+                dialog.set_filename(os.path.abspath(name))
+            if encoding is None:
+                encoding = self.prefs.getDefaultEncoding()
+            dialog.set_encoding(encoding)
+            name, label = None, None
+            dialog.set_default_response(Gtk.ResponseType.OK)
+            if dialog.run() == Gtk.ResponseType.OK:
+                name = dialog.get_filename()
+                encoding = dialog.get_encoding()
+                if encoding is None:
+                    if info.encoding is not None:
+                        # this case can occur if the user provided the
+                        # encoding and it is not an encoding we know about
+                        encoding = info.encoding
+                    else:
+                        encoding = self.prefs.getDefaultEncoding()
+            dialog.destroy()
+        if name is None:
+            return False
+        try:
+            msg = None
+            # warn if we are about to overwrite an existing file
+            if save_as:
+                if os.path.exists(name):
+                    msg = _(
+                        'A file named %s already exists. Do you want to overwrite it?'
+                    ) % (name, )
+            # warn if we are about to overwrite a file that has changed
+            # since we last read it
+            elif info.stat is not None:
+                if info.stat[stat.ST_MTIME] < os.stat(name)[stat.ST_MTIME]:
+                    msg = _(
+                        'The file %s has been modified by another process since reading it. '
+                        'If you save, all the external changes could be lost. Save anyways?'
+                    ) % (name, )
+            if msg is not None:
+                dialog = utils.MessageDialog(self.get_toplevel(), Gtk.MessageType.QUESTION, msg)
+                end = (dialog.run() != Gtk.ResponseType.OK)
+                dialog.destroy()
+                if end:
+                    return False
+        except OSError:
+            pass
+        try:
+            # convert the text to the output encoding
+            # refresh the lines to contain new objects with updated line
+            # numbers and no local edits
+            ss = []
+            for line in self.panes[f].lines:
+                if line is not None:
+                    s = line.getText()
+                    if s is not None:
+                        ss.append(s)
+            encoded = codecs.encode(''.join(ss), encoding)
+
+            # write file
+            with open(name, 'wb') as fd:
+                fd.write(encoded)
+
+            # make the edits look permanent
+            self.openUndoBlock()
+            self.bakeEdits(f)
+            self.closeUndoBlock()
+            # update the pane file info
+            info.name, info.encoding, info.revision, info.label = name, encoding, None, label
+            info.last_stat = info.stat = os.stat(name)
+            self.setFileInfo(f, info)
+            # update the syntax highlighting in case we changed the file extension
+            syntax = theResources.guessSyntaxForFile(name, ss)
+            if syntax is not None:
+                self.setSyntax(syntax)
+            return True
+        except (UnicodeEncodeError, LookupError):
+            utils.logErrorAndDialog(
+                _('Error encoding to %s.') % (encoding, ),
+                self.get_toplevel()
+            )
+        except IOError:
+            utils.logErrorAndDialog(_('Error writing %s.') % (name, ), self.get_toplevel())
+        return False
+
+    # callback for save file menu item
+    def save_file_cb(self, widget, data):
+        self.save_file(self.current_pane)
+
+    # callback for save file as menu item
+    def save_file_as_cb(self, widget, data):
+        self.save_file(self.current_pane, True)
+
+    # callback for save all menu item
+    def save_all_cb(self, widget, data):
+        for f, h in enumerate(self.headers):
+            if h.has_edits:
+                self.save_file(f)
+
+    # callback for save file button
+    def save_file_button_cb(self, widget, f):
+        self.save_file(f)
+
+    # callback for save file as button
+    def save_file_as_button_cb(self, widget, f):
+        self.save_file(f, True)
+
+    # callback for go to line menu item
+    def go_to_line_cb(self, widget, data):
+        parent = self.get_toplevel()
+        dialog = NumericDialog(
+            parent,
+            _('Go To Line...'),
+            _('Line Number: '),
+            val=1,
+            lower=1,
+            upper=self.panes[self.current_pane].max_line_number + 1
+        )
+        okay = (dialog.run() == Gtk.ResponseType.ACCEPT)
+        i = dialog.get_value()
+        dialog.destroy()
+        if okay:
+            self.go_to_line(i)
+
+    # callback to receive notification when the name of a file changes
+    def swapped_panes_cb(self, widget, f_dst, f_src):
+        f0, f1 = self.headers[f_dst], self.headers[f_src]
+        f0.has_edits, f1.has_edits = f1.has_edits, f0.has_edits
+        info0, info1 = f1.info, f0.info
+        self.setFileInfo(f_dst, info0)
+        self.setFileInfo(f_src, info1)
+
+    # callback to receive notification when the name of a file changes
+    def num_edits_changed_cb(self, widget, f):
+        self.headers[f].setEdits(self.panes[f].num_edits > 0)
+
+    # callback to record changes to the viewer's mode
+    def mode_changed_cb(self, widget):
+        self.updateStatus()
+
+    # update the viewer's current status message
+    def updateStatus(self) -> None:
+        if self.mode == EditMode.LINE:
+            s = _(
+                'Press the enter key or double click to edit. Press the space bar or use the '
+                'RMB menu to manually align.'
+            )
+        elif self.mode == EditMode.CHAR:
+            s = _('Press the escape key to finish editing.')
+        elif self.mode == EditMode.ALIGN:
+            s = _(
+                'Select target line and press the space bar to align. Press the escape key to '
+                'cancel.'
+            )
+        else:
+            s = None
+        self.status = s
+        self.emit('status_changed', s)
+
+    # gets the status bar text
+    def getStatus(self) -> Optional[str]:
+        return self.status
+
+    # callback to display the cursor in a pane
+    def cursor_changed_cb(self, widget):
+        for f, footer in enumerate(self.footers):
+            footer.updateCursor(self, f)
+
+    # callback to display the format of a pane
+    def format_changed_cb(self, widget, f, fmt):
+        self.footers[f].setFormat(fmt)
+
+
 class DiffuseWindow(Gtk.ApplicationWindow):
     """The application window class.
 
     Contains a set of file viewers. This class displays tab for switching
     between viewers and dispatches menu commands to the current viewer.
     """
-
-    class FileDiffViewer(FileDiffViewerBase):
-        """Specialization of FileDiffViewerBase for Diffuse."""
-
-        def __init__(self, n: int, prefs: Preferences, title: str) -> None:
-            super().__init__(n, prefs)
-
-            self.title = title
-            self.status: Optional[str] = ''
-
-            self.headers: List[PaneHeader] = []
-            self.footers: List[PaneFooter] = []
-            for i in range(n):
-                # pane header
-                w = PaneHeader()
-                self.headers.append(w)
-                self.attach(w, i, 0, 1, 1)
-                w.connect('title-changed', self.title_changed_cb)
-                w.connect('open', self.open_file_button_cb, i)
-                w.connect('reload', self.reload_file_button_cb, i)
-                w.connect('save', self.save_file_button_cb, i)
-                w.connect('save-as', self.save_file_as_button_cb, i)
-                w.show()
-
-                # pane footer
-                w = PaneFooter()
-                self.footers.append(w)
-                self.attach(w, i, 2, 1, 1)
-                w.show()
-
-            self.connect('swapped-panes', self.swapped_panes_cb)
-            self.connect('num-edits-changed', self.num_edits_changed_cb)
-            self.connect('mode-changed', self.mode_changed_cb)
-            self.connect('cursor-changed', self.cursor_changed_cb)
-            self.connect('format-changed', self.format_changed_cb)
-
-            for i, darea in enumerate(self.dareas):
-                darea.drag_dest_set(
-                    Gtk.DestDefaults.ALL,
-                    [Gtk.TargetEntry.new('text/uri-list', 0, 0)],
-                    Gdk.DragAction.COPY
-                )
-                darea.connect('drag-data-received', self.drag_data_received_cb, i)
-            # initialise status
-            self.updateStatus()
-
-        # convenience method to request confirmation before loading a file if
-        # it will cause existing edits to be lost
-        def loadFromInfo(self, f: int, info: FileInfo) -> None:
-            if self.headers[f].has_edits:
-                # warn users of any unsaved changes they might lose
-                dialog = Gtk.MessageDialog(
-                    self.get_toplevel(),
-                    Gtk.DialogFlags.DESTROY_WITH_PARENT,
-                    Gtk.MessageType.WARNING,
-                    Gtk.ButtonsType.NONE, _('Save changes before loading the new file?')
-                )
-                dialog.set_title(constants.APP_NAME)
-                dialog.add_button(Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL)
-                dialog.add_button(Gtk.STOCK_NO, Gtk.ResponseType.REJECT)
-                dialog.add_button(Gtk.STOCK_YES, Gtk.ResponseType.OK)
-                dialog.set_default_response(Gtk.ResponseType.CANCEL)
-                response = dialog.run()
-                dialog.destroy()
-                if response == Gtk.ResponseType.OK:
-                    # save the current pane contents
-                    if not self.save_file(f):
-                        # cancel if the save failed
-                        return
-                elif response != Gtk.ResponseType.REJECT:
-                    # cancel if the user did not choose 'yes' or 'no'
-                    return
-            self.openUndoBlock()
-            self.recordEditMode()
-            self.load(f, info)
-            self.recordEditMode()
-            self.closeUndoBlock()
-
-        # callback used when receiving drag-n-drop data
-        def drag_data_received_cb(self, widget, context, x, y, selection, targettype, eventtime, f):
-            # get uri list
-            uris = selection.get_uris()
-            # load the first valid file
-            for uri in uris:
-                path = urlparse(uri).path
-                if os.path.isfile(path):
-                    self.loadFromInfo(f, FileInfo(path))
-                    break
-
-        # change the file info for pane 'f' to 'info'
-        def setFileInfo(self, f, info):
-            h, footer = self.headers[f], self.footers[f]
-            h.info = info
-            h.updateTitle()
-            footer.setFormat(self.panes[f].format)
-            footer.setEncoding(info.encoding)
-            footer.updateCursor(self, f)
-
-        # callback used when a pane header's title changes
-        def title_changed_cb(self, widget):
-            # choose a short but descriptive title for the viewer
-            has_edits = False
-            names = []
-            unique_names = set()
-            for header in self.headers:
-                has_edits |= header.has_edits
-                s = header.info.label
-                if s is None:
-                    # no label provided, show the file name instead
-                    s = header.info.name
-                    if s is not None:
-                        s = os.path.basename(s)
-                if s is not None:
-                    names.append(s)
-                    unique_names.add(s)
-
-            if len(unique_names) > 0:
-                if len(unique_names) == 1:
-                    self.title = names[0]
-                else:
-                    self.title = ' : '.join(names)
-            s = self.title
-            if has_edits:
-                s += ' *'
-            self.emit('title_changed', s)
-
-        def setEncoding(self, f, encoding):
-            h = self.headers[f]
-            h.info.encoding = encoding
-            self.footers[f].setEncoding(encoding)
-
-        # load a new file into pane 'f'
-        # 'info' indicates the name of the file and how to retrieve it from the
-        # version control system if applicable
-        def load(self, f: int, info: FileInfo) -> None:
-            name = info.name
-            encoding = info.encoding
-            stat = None
-            if name is None:
-                # reset to an empty pane
-                ss = []
-            else:
-                rev = info.revision
-                try:
-                    if rev is None:
-                        # load the contents of a plain file
-                        with open(name, 'rb') as fd:
-                            contents = fd.read()
-                        # get the file's modification times so we can detect changes
-                        stat = os.stat(name)
-                    else:
-                        if info.vcs is None:
-                            raise IOError('Not under version control.')
-                        fullname = os.path.abspath(name)
-                        # retrieve the revision from the version control system
-                        contents = info.vcs.getRevision(self.prefs, fullname, rev)
-                    # convert file contents to unicode
-                    if encoding is None:
-                        s, encoding = self.prefs.convertToUnicode(contents)
-                    else:
-                        s = str(contents, encoding=encoding)
-                    ss = utils.splitlines(s)
-                except (IOError, OSError, UnicodeDecodeError, LookupError):
-                    # FIXME: this can occur before the toplevel window is drawn
-                    if rev is not None:
-                        msg = _(
-                            'Error reading revision %(rev)s of %(file)s.'
-                        ) % {'rev': rev, 'file': name}
-                    else:
-                        msg = _('Error reading %s.') % (name, )
-                    utils.logErrorAndDialog(msg, self.get_toplevel())
-                    return
-            # update the panes contents, last modified time, and title
-            self.replaceContents(f, ss)
-            info.encoding = encoding
-            info.last_stat = info.stat = stat
-            self.setFileInfo(f, info)
-            # use the file name to choose appropriate syntax highlighting rules
-            if name is not None:
-                syntax = theResources.guessSyntaxForFile(name, ss)
-                if syntax is not None:
-                    self.setSyntax(syntax)
-
-        # load a new file into pane 'f'
-        def open_file(self, f: int, reload: bool = False) -> None:
-            h = self.headers[f]
-            info = h.info
-            if not reload:
-                # we need to ask for a file name if we are not reloading the
-                # existing file
-                dialog = FileChooserDialog(
-                    _('Open File'),
-                    self.get_toplevel(),
-                    self.prefs,
-                    Gtk.FileChooserAction.OPEN,
-                    Gtk.STOCK_OPEN,
-                    True
-                )
-                if info.name is not None:
-                    dialog.set_filename(os.path.realpath(info.name))
-                dialog.set_encoding(info.encoding)
-                dialog.set_default_response(Gtk.ResponseType.OK)
-                end = (dialog.run() != Gtk.ResponseType.OK)
-                name = dialog.get_filename()
-                rev = None
-                vcs = None
-                revision = dialog.get_revision().strip()
-                if revision != '':
-                    rev = revision
-                    vcs = theVCSs.findByFilename(name, self.prefs)
-                info = FileInfo(name, dialog.get_encoding(), vcs, rev)
-                dialog.destroy()
-                if end:
-                    return
-            self.loadFromInfo(f, info)
-
-        # callback for open file button
-        def open_file_button_cb(self, widget, f):
-            self.open_file(f)
-
-        # callback for open file menu item
-        def open_file_cb(self, widget, data):
-            self.open_file(self.current_pane)
-
-        # callback for reload file button
-        def reload_file_button_cb(self, widget, f):
-            self.open_file(f, True)
-
-        # callback for reload file menu item
-        def reload_file_cb(self, widget, data):
-            self.open_file(self.current_pane, True)
-
-        # save contents of pane 'f' to file
-        def save_file(self, f: int, save_as: bool = False) -> bool:
-            h = self.headers[f]
-            info = h.info
-            name, encoding, rev, label = info.name, info.encoding, info.revision, info.label
-            if name is None or rev is not None:
-                # we need to prompt for a file name the current contents were
-                # not loaded from a regular file
-                save_as = True
-            if save_as:
-                # prompt for a file name
-                dialog = FileChooserDialog(
-                    _('Save %(title)s Pane %(pane)d') % {'title': self.title, 'pane': f + 1},
-                    self.get_toplevel(),
-                    self.prefs,
-                    Gtk.FileChooserAction.SAVE,
-                    Gtk.STOCK_SAVE
-                )
-                if name is not None:
-                    dialog.set_filename(os.path.abspath(name))
-                if encoding is None:
-                    encoding = self.prefs.getDefaultEncoding()
-                dialog.set_encoding(encoding)
-                name, label = None, None
-                dialog.set_default_response(Gtk.ResponseType.OK)
-                if dialog.run() == Gtk.ResponseType.OK:
-                    name = dialog.get_filename()
-                    encoding = dialog.get_encoding()
-                    if encoding is None:
-                        if info.encoding is not None:
-                            # this case can occur if the user provided the
-                            # encoding and it is not an encoding we know about
-                            encoding = info.encoding
-                        else:
-                            encoding = self.prefs.getDefaultEncoding()
-                dialog.destroy()
-            if name is None:
-                return False
-            try:
-                msg = None
-                # warn if we are about to overwrite an existing file
-                if save_as:
-                    if os.path.exists(name):
-                        msg = _(
-                            'A file named %s already exists. Do you want to overwrite it?'
-                        ) % (name, )
-                # warn if we are about to overwrite a file that has changed
-                # since we last read it
-                elif info.stat is not None:
-                    if info.stat[stat.ST_MTIME] < os.stat(name)[stat.ST_MTIME]:
-                        msg = _(
-                            'The file %s has been modified by another process since reading it. '
-                            'If you save, all the external changes could be lost. Save anyways?'
-                        ) % (name, )
-                if msg is not None:
-                    dialog = utils.MessageDialog(self.get_toplevel(), Gtk.MessageType.QUESTION, msg)
-                    end = (dialog.run() != Gtk.ResponseType.OK)
-                    dialog.destroy()
-                    if end:
-                        return False
-            except OSError:
-                pass
-            try:
-                # convert the text to the output encoding
-                # refresh the lines to contain new objects with updated line
-                # numbers and no local edits
-                ss = []
-                for line in self.panes[f].lines:
-                    if line is not None:
-                        s = line.getText()
-                        if s is not None:
-                            ss.append(s)
-                encoded = codecs.encode(''.join(ss), encoding)
-
-                # write file
-                with open(name, 'wb') as fd:
-                    fd.write(encoded)
-
-                # make the edits look permanent
-                self.openUndoBlock()
-                self.bakeEdits(f)
-                self.closeUndoBlock()
-                # update the pane file info
-                info.name, info.encoding, info.revision, info.label = name, encoding, None, label
-                info.last_stat = info.stat = os.stat(name)
-                self.setFileInfo(f, info)
-                # update the syntax highlighting in case we changed the file extension
-                syntax = theResources.guessSyntaxForFile(name, ss)
-                if syntax is not None:
-                    self.setSyntax(syntax)
-                return True
-            except (UnicodeEncodeError, LookupError):
-                utils.logErrorAndDialog(
-                    _('Error encoding to %s.') % (encoding, ),
-                    self.get_toplevel()
-                )
-            except IOError:
-                utils.logErrorAndDialog(_('Error writing %s.') % (name, ), self.get_toplevel())
-            return False
-
-        # callback for save file menu item
-        def save_file_cb(self, widget, data):
-            self.save_file(self.current_pane)
-
-        # callback for save file as menu item
-        def save_file_as_cb(self, widget, data):
-            self.save_file(self.current_pane, True)
-
-        # callback for save all menu item
-        def save_all_cb(self, widget, data):
-            for f, h in enumerate(self.headers):
-                if h.has_edits:
-                    self.save_file(f)
-
-        # callback for save file button
-        def save_file_button_cb(self, widget, f):
-            self.save_file(f)
-
-        # callback for save file as button
-        def save_file_as_button_cb(self, widget, f):
-            self.save_file(f, True)
-
-        # callback for go to line menu item
-        def go_to_line_cb(self, widget, data):
-            parent = self.get_toplevel()
-            dialog = NumericDialog(
-                parent,
-                _('Go To Line...'),
-                _('Line Number: '),
-                val=1,
-                lower=1,
-                upper=self.panes[self.current_pane].max_line_number + 1
-            )
-            okay = (dialog.run() == Gtk.ResponseType.ACCEPT)
-            i = dialog.get_value()
-            dialog.destroy()
-            if okay:
-                self.go_to_line(i)
-
-        # callback to receive notification when the name of a file changes
-        def swapped_panes_cb(self, widget, f_dst, f_src):
-            f0, f1 = self.headers[f_dst], self.headers[f_src]
-            f0.has_edits, f1.has_edits = f1.has_edits, f0.has_edits
-            info0, info1 = f1.info, f0.info
-            self.setFileInfo(f_dst, info0)
-            self.setFileInfo(f_src, info1)
-
-        # callback to receive notification when the name of a file changes
-        def num_edits_changed_cb(self, widget, f):
-            self.headers[f].setEdits(self.panes[f].num_edits > 0)
-
-        # callback to record changes to the viewer's mode
-        def mode_changed_cb(self, widget):
-            self.updateStatus()
-
-        # update the viewer's current status message
-        def updateStatus(self) -> None:
-            if self.mode == EditMode.LINE:
-                s = _(
-                    'Press the enter key or double click to edit. Press the space bar or use the '
-                    'RMB menu to manually align.'
-                )
-            elif self.mode == EditMode.CHAR:
-                s = _('Press the escape key to finish editing.')
-            elif self.mode == EditMode.ALIGN:
-                s = _(
-                    'Select target line and press the space bar to align. Press the escape key to '
-                    'cancel.'
-                )
-            else:
-                s = None
-            self.status = s
-            self.emit('status_changed', s)
-
-        # gets the status bar text
-        def getStatus(self) -> Optional[str]:
-            return self.status
-
-        # callback to display the cursor in a pane
-        def cursor_changed_cb(self, widget):
-            for f, footer in enumerate(self.footers):
-                footer.updateCursor(self, f)
-
-        # callback to display the format of a pane
-        def format_changed_cb(self, widget, f, fmt):
-            self.footers[f].setFormat(fmt)
 
     def __init__(self, rc_dir, **kwargs):
         super().__init__(type=Gtk.WindowType.TOPLEVEL, **kwargs)
@@ -1277,7 +1277,7 @@ class DiffuseWindow(Gtk.ApplicationWindow):
         self.viewer_count += 1
         tabname = _('File Merge %d') % (self.viewer_count, )
         tab = NotebookTab(tabname, Gtk.STOCK_FILE)
-        viewer = DiffuseWindow.FileDiffViewer(n, self.prefs, tabname)
+        viewer = FileDiffViewer(n, self.prefs, tabname)
         tab.button.connect('clicked', self.remove_tab_cb, viewer)
         tab.connect('button-press-event', self.notebooktab_button_press_cb, viewer)
         self.notebook.append_page(viewer, tab)
@@ -1341,20 +1341,34 @@ class DiffuseWindow(Gtk.ApplicationWindow):
             viewer.load(i, spec)
         return viewer
 
-    # create a new viewer for 'items'
     def createSingleTab(self, items, labels, options):
+        """Create a new viewer for 'items'."""
         if len(items) > 0:
-            self.newLoadedFileDiffViewer(_assign_file_labels(items, labels)).setOptions(options)
+            labelled_items = self._assign_file_labels(items, labels)
+            self.newLoadedFileDiffViewer(labelled_items).setOptions(options)
 
-    # create a new viewer for each item in 'items'
     def createSeparateTabs(self, items, labels, options):
+        """Create a new viewer for each item in 'items'."""
         # all tabs inherit the first tab's revision and encoding specifications
         items = [(name, items[0][1]) for name, data in items]
-        for item in _assign_file_labels(items, labels):
+        for item in self._assign_file_labels(items, labels):
             self.newLoadedFileDiffViewer([item]).setOptions(options)
 
-    # create a new viewer for each modified file found in 'items'
+    @staticmethod
+    def _assign_file_labels(items, labels):
+        """Assign user specified labels to the corresponding files."""
+        new_items = []
+        ss = labels[::-1]
+        for name, data in items:
+            if ss:
+                s = ss.pop()
+            else:
+                s = None
+            new_items.append((name, data, s))
+        return new_items
+
     def createCommitFileTabs(self, items, labels, options):
+        """Create a new viewer for each modified file found in 'items'."""
         new_items = []
         for item in items:
             name, data = item
@@ -1385,8 +1399,8 @@ class DiffuseWindow(Gtk.ApplicationWindow):
                         self.get_toplevel()
                     )
 
-    # create a new viewer for each modified file found in 'items'
     def createModifiedFileTabs(self, items, labels, options):
+        """Create a new viewer for each modified file found in 'items'."""
         new_items = []
         for item in items:
             name, data = item
@@ -1704,7 +1718,7 @@ class DiffuseWindow(Gtk.ApplicationWindow):
                 help_file = os.path.join(utils.bin_dir, '_'.join(parts) + '.html')
                 if os.path.isfile(help_file):
                     # we found a help file
-                    help_url = _path2url(help_file)
+                    help_url = self._path_to_url(help_file)
                     break
                 del parts[-1]
         else:
@@ -1732,7 +1746,7 @@ class DiffuseWindow(Gtk.ApplicationWindow):
                         d = 'C'
                     help_file = os.path.join(os.path.join(s, d), 'diffuse.xml')
                     if os.path.isfile(help_file):
-                        args = [browser, _path2url(help_file, 'ghelp')]
+                        args = [browser, self._path_to_url(help_file, 'ghelp')]
                         # spawnvp is not available on some systems, use spawnv instead
                         os.spawnv(os.P_NOWAIT, args[0], args)
                         return
@@ -1748,6 +1762,26 @@ class DiffuseWindow(Gtk.ApplicationWindow):
         # use a web browser to display the help documentation
         webbrowser.open(help_url)
 
+    @staticmethod
+    def _path_to_url(path: str, proto: str = 'file') -> str:
+        """Constructs a full URL for the named file."""
+        r = [proto, ':///']
+        s = os.path.abspath(path)
+        i = 0
+        while i < len(s) and s[i] == os.sep:
+            i += 1
+        for c in s[i:]:
+            if c == os.sep:
+                c = '/'
+            elif c == ':' and utils.isWindows():
+                c = '|'
+            else:
+                v = ord(c)
+                if v <= 0x20 or v >= 0x7b or c in '$&+,/:;=?@"<>#%\\^[]`':
+                    c = '%%%02X' % (v, )
+            r.append(c)
+        return ''.join(r)
+
     # callback for the about menu item
     def about_cb(self, widget, data):
         dialog = AboutDialog()
@@ -1755,9 +1789,8 @@ class DiffuseWindow(Gtk.ApplicationWindow):
         dialog.destroy()
 
 
-# convenience method for packing buttons into a container according to a
-# template
 def _append_buttons(box, size, specs):
+    """Convenience method for packing buttons into a container."""
     for spec in specs:
         if len(spec) > 0:
             button = Gtk.Button()
@@ -1779,42 +1812,9 @@ def _append_buttons(box, size, specs):
             separator.show()
 
 
-# constructs a full URL for the named file
-def _path2url(path: str, proto: str = 'file') -> str:
-    r = [proto, ':///']
-    s = os.path.abspath(path)
-    i = 0
-    while i < len(s) and s[i] == os.sep:
-        i += 1
-    for c in s[i:]:
-        if c == os.sep:
-            c = '/'
-        elif c == ':' and utils.isWindows():
-            c = '|'
-        else:
-            v = ord(c)
-            if v <= 0x20 or v >= 0x7b or c in '$&+,/:;=?@"<>#%\\^[]`':
-                c = '%%%02X' % (v, )
-        r.append(c)
-    return ''.join(r)
-
-
-# assign user specified labels to the corresponding files
-def _assign_file_labels(items, labels):
-    new_items = []
-    ss = labels[::-1]
-    for name, data in items:
-        if ss:
-            s = ss.pop()
-        else:
-            s = None
-        new_items.append((name, data, s))
-    return new_items
-
-
-GObject.signal_new('title-changed', DiffuseWindow.FileDiffViewer, GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, (str, ))  # noqa: E501
-GObject.signal_new('status-changed', DiffuseWindow.FileDiffViewer, GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, (str, ))  # noqa: E501
-GObject.signal_new('title-changed', PaneHeader, GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, ())  # noqa: E501
+GObject.signal_new('title-changed', FileDiffViewer, GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, (str, ))  # noqa: E501
+GObject.signal_new('status-changed', FileDiffViewer, GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, (str, ))  # noqa: E501
+GObject.signal_new('title-changed', PaneHeader, GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, ())
 GObject.signal_new('open', PaneHeader, GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, ())
 GObject.signal_new('reload', PaneHeader, GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, ())
 GObject.signal_new('save', PaneHeader, GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, ())
