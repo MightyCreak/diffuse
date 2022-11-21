@@ -1853,22 +1853,43 @@ class FileDiffViewerBase(Gtk.Grid):
             can_select = self.mode in (EditMode.LINE, EditMode.CHAR) and f == self.current_pane
             can_swap = (f != self.current_pane)
 
-            menu = createMenu([
-                [_('Align with Selection'), self.align_with_selection_cb, [f, i], Gtk.STOCK_EXECUTE, None, can_align],  # noqa: E501
-                [_('Isolate'), self.button_cb, 'isolate', None, None, can_isolate],
-                [_('Merge Selection'), self.merge_lines_cb, f, None, None, can_merge],
+            menu = self._create_menu([
+                [_('Align with Selection'), self.align_with_selection_cb, [f, i], Gtk.STOCK_EXECUTE, can_align],  # noqa: E501
+                [_('Isolate'), self.button_cb, 'isolate', None, can_isolate],
+                [_('Merge Selection'), self.merge_lines_cb, f, None, can_merge],
                 [],
-                [_('Cut'), self.button_cb, 'cut', Gtk.STOCK_CUT, None, can_select],
-                [_('Copy'), self.button_cb, 'copy', Gtk.STOCK_COPY, None, can_select],
-                [_('Paste'), self.button_cb, 'paste', Gtk.STOCK_PASTE, None, can_select],
+                [_('Cut'), self.button_cb, 'cut', Gtk.STOCK_CUT, can_select],
+                [_('Copy'), self.button_cb, 'copy', Gtk.STOCK_COPY, can_select],
+                [_('Paste'), self.button_cb, 'paste', Gtk.STOCK_PASTE, can_select],
                 [],
-                [_('Select All'), self.button_cb, 'select_all', None, None, can_select],
-                [_('Clear Edits'), self.button_cb, 'clear_edits', Gtk.STOCK_CLEAR, None, can_isolate],  # noqa: E501
+                [_('Select All'), self.button_cb, 'select_all', None, can_select],
+                [_('Clear Edits'), self.button_cb, 'clear_edits', Gtk.STOCK_CLEAR, can_isolate],  # noqa: E501
                 [],
-                [_('Swap with Selected Pane'), self.swap_panes_cb, f, None, None, can_swap]
+                [_('Swap with Selected Pane'), self.swap_panes_cb, f, None, can_swap]
             ])
             menu.attach_to_widget(self)
             menu.popup(None, None, None, None, event.button, event.time)
+
+    @staticmethod
+    def _create_menu(specs):
+        menu = Gtk.Menu()
+        for spec in specs:
+            if len(spec) > 0:
+                (label, cb, cb_data, image_stock_name, sensitive) = spec
+                item = Gtk.ImageMenuItem.new_with_mnemonic(label)
+                item.set_use_underline(True)
+                item.set_sensitive(sensitive)
+                if image_stock_name is not None:
+                    image = Gtk.Image()
+                    image.set_from_stock(image_stock_name, Gtk.IconSize.MENU)
+                    item.set_image(image)
+                if cb is not None:
+                    item.connect('activate', cb, cb_data)
+            else:
+                item = Gtk.SeparatorMenuItem()
+            item.show()
+            menu.append(item)
+        return menu
 
     # callback used to notify us about click and drag motion
     def darea_motion_notify_cb(self, widget, event, f):
@@ -3706,51 +3727,6 @@ class FileDiffViewerBase(Gtk.Grid):
     # 'merge_from_right_then_left' keybinding action
     def merge_from_right_then_left(self):
         self._mergeBoth(True)
-
-
-# convenience method for creating a menu according to a template
-def createMenu(specs, radio=None, accel_group=None):
-    menu = Gtk.Menu()
-    for spec in specs:
-        if len(spec) > 0:
-            if len(spec) > 7 and spec[7] is not None:
-                g, k = spec[7]
-                if g not in radio:
-                    item = Gtk.RadioMenuItem.new_with_mnemonic_from_widget(None, spec[0])
-                    radio[g] = (item, {})
-                else:
-                    item = Gtk.RadioMenuItem.new_with_mnemonic_from_widget(radio[g][0], spec[0])
-                radio[g][1][k] = item
-            else:
-                item = Gtk.ImageMenuItem.new_with_mnemonic(spec[0])
-            cb = spec[1]
-            if cb is not None:
-                data = spec[2]
-                item.connect('activate', cb, data)
-            if len(spec) > 3 and spec[3] is not None:
-                image = Gtk.Image()
-                image.set_from_stock(spec[3], Gtk.IconSize.MENU)
-                item.set_image(image)
-            if accel_group is not None and len(spec) > 4:
-                a = theResources.getKeyBindings('menu', spec[4])
-                if len(a) > 0:
-                    key, modifier = a[0]
-                    item.add_accelerator(
-                        'activate',
-                        accel_group,
-                        key,
-                        modifier,
-                        Gtk.AccelFlags.VISIBLE)
-            if len(spec) > 5:
-                item.set_sensitive(spec[5])
-            if len(spec) > 6 and spec[6] is not None:
-                item.set_submenu(createMenu(spec[6], radio, accel_group))
-            item.set_use_underline(True)
-        else:
-            item = Gtk.SeparatorMenuItem()
-        item.show()
-        menu.append(item)
-    return menu
 
 
 class CharacterClass(IntFlag):

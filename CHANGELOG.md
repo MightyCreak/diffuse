@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Translation: updated Swedish translation (@eson57)
 - Dialog: prompt only once if several files needs to be reloaded (@yuriiz)
+- Use GTK3's Gtk.Application/Gtk.ApplicationWindow (@yuriiz)
 
 ### Fixed
 
