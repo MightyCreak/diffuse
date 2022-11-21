@@ -119,6 +119,136 @@ class FileInfo:
         self.last_stat = None
 
 
+class PaneHeader(Gtk.Box):
+    """The pane header widget."""
+
+    def __init__(self) -> None:
+        Gtk.Box.__init__(self, orientation=Gtk.Orientation.HORIZONTAL, spacing=0)
+        _append_buttons(self, Gtk.IconSize.MENU, [
+            [Gtk.STOCK_OPEN, self.button_cb, 'open', _('Open File...')],
+            [Gtk.STOCK_REFRESH, self.button_cb, 'reload', _('Reload File')],
+            [Gtk.STOCK_SAVE, self.button_cb, 'save', _('Save File')],
+            [Gtk.STOCK_SAVE_AS, self.button_cb, 'save_as', _('Save File As...')]])
+
+        self.label = label = Gtk.Label()
+        label.set_selectable(True)
+        label.set_ellipsize(Pango.EllipsizeMode.START)
+        label.set_max_width_chars(1)
+
+        self.pack_start(label, True, True, 0)
+
+        # file's name and information about how to retrieve it from a
+        # VCS
+        self.info = FileInfo()
+        self.has_edits = False
+        self.updateTitle()
+        self.show_all()
+
+    # callback for buttons
+    def button_cb(self, widget, s):
+        self.emit(s)
+
+    # creates an appropriate title for the pane header
+    def updateTitle(self) -> None:
+        ss = []
+        info = self.info
+        if info.label is not None:
+            # show the provided label instead of the file name
+            ss.append(info.label)
+        else:
+            if info.name is not None:
+                ss.append(info.name)
+            if info.revision is not None:
+                ss.append('(' + info.revision + ')')
+        if self.has_edits:
+            ss.append('*')
+        s = ' '.join(ss)
+        self.label.set_text(s)
+        self.label.set_tooltip_text(s)
+        self.emit('title_changed')
+
+    # set num edits
+    def setEdits(self, has_edits: bool) -> None:
+        if self.has_edits != has_edits:
+            self.has_edits = has_edits
+            self.updateTitle()
+
+    # Has the file on disk changed since last time it was loaded?
+    def has_file_changed_on_disk(self) -> bool:
+        if self.info.last_stat is not None:
+            try:
+                new_stat = os.stat(self.info.name)
+                if self.info.last_stat[stat.ST_MTIME] < new_stat[stat.ST_MTIME]:
+                    # update our notion of the most recent modification
+                    self.info.last_stat = new_stat
+                    return True
+            except OSError:
+                return False
+        return False
+
+
+class PaneFooter(Gtk.Box):
+    """The pane footer."""
+
+    def __init__(self) -> None:
+        Gtk.Box.__init__(self, orientation=Gtk.Orientation.HORIZONTAL, spacing=0)
+        self.cursor = label = Gtk.Label()
+        self.cursor.set_size_request(-1, -1)
+        self.pack_start(label, False, False, 0)
+
+        separator = Gtk.Separator(orientation=Gtk.Orientation.VERTICAL)
+        self.pack_end(separator, False, False, 10)
+
+        self.encoding = label = Gtk.Label()
+        self.pack_end(label, False, False, 0)
+
+        separator = Gtk.Separator(orientation=Gtk.Orientation.VERTICAL)
+        self.pack_end(separator, False, False, 10)
+
+        self.format = label = Gtk.Label()
+        self.pack_end(label, False, False, 0)
+
+        separator = Gtk.Separator(orientation=Gtk.Orientation.VERTICAL)
+        self.pack_end(separator, False, False, 10)
+
+        self.set_size_request(0, self.get_size_request()[1])
+        self.show_all()
+
+    # set the cursor label
+    def updateCursor(self, viewer: FileDiffViewerBase, f: int) -> None:
+        if viewer.mode == EditMode.CHAR and viewer.current_pane == f:
+            # # TODO: Find a fix for the column bug (resizing issue when editing a line)
+            # j = viewer.current_char
+            # if j > 0:
+            #     text = viewer.getLineText(viewer.current_pane, viewer.current_line)[:j]
+            #     j = viewer.stringWidth(text)
+            # s = _('Column %d') % (j, )
+            #
+            # In the meantime, keep this line of code in order to keep the translations
+            s = _('Column %d') % (0, )
+            s = ''
+        else:
+            s = ''
+        self.cursor.set_text(s)
+
+    # set the format label
+    def setFormat(self, s: LineEnding) -> None:
+        v = []
+        if s & LineEnding.DOS_FORMAT:
+            v.append('DOS')
+        if s & LineEnding.MAC_FORMAT:
+            v.append('Mac')
+        if s & LineEnding.UNIX_FORMAT:
+            v.append('Unix')
+        self.format.set_text('/'.join(v))
+
+    # set the format label
+    def setEncoding(self, s: str) -> None:
+        if s is None:
+            s = ''
+        self.encoding.set_text(s)
+
+
 class DiffuseWindow(Gtk.ApplicationWindow):
     """The application window class.
 
@@ -129,145 +259,17 @@ class DiffuseWindow(Gtk.ApplicationWindow):
     class FileDiffViewer(FileDiffViewerBase):
         """Specialization of FileDiffViewerBase for Diffuse."""
 
-        class PaneHeader(Gtk.Box):
-            """The pane header."""
-
-            def __init__(self) -> None:
-                Gtk.Box.__init__(self, orientation=Gtk.Orientation.HORIZONTAL, spacing=0)
-                _append_buttons(self, Gtk.IconSize.MENU, [
-                    [Gtk.STOCK_OPEN, self.button_cb, 'open', _('Open File...')],
-                    [Gtk.STOCK_REFRESH, self.button_cb, 'reload', _('Reload File')],
-                    [Gtk.STOCK_SAVE, self.button_cb, 'save', _('Save File')],
-                    [Gtk.STOCK_SAVE_AS, self.button_cb, 'save_as', _('Save File As...')]])
-
-                self.label = label = Gtk.Label()
-                label.set_selectable(True)
-                label.set_ellipsize(Pango.EllipsizeMode.START)
-                label.set_max_width_chars(1)
-
-                self.pack_start(label, True, True, 0)
-
-                # file's name and information about how to retrieve it from a
-                # VCS
-                self.info = FileInfo()
-                self.has_edits = False
-                self.updateTitle()
-                self.show_all()
-
-            # callback for buttons
-            def button_cb(self, widget, s):
-                self.emit(s)
-
-            # creates an appropriate title for the pane header
-            def updateTitle(self) -> None:
-                ss = []
-                info = self.info
-                if info.label is not None:
-                    # show the provided label instead of the file name
-                    ss.append(info.label)
-                else:
-                    if info.name is not None:
-                        ss.append(info.name)
-                    if info.revision is not None:
-                        ss.append('(' + info.revision + ')')
-                if self.has_edits:
-                    ss.append('*')
-                s = ' '.join(ss)
-                self.label.set_text(s)
-                self.label.set_tooltip_text(s)
-                self.emit('title_changed')
-
-            # set num edits
-            def setEdits(self, has_edits: bool) -> None:
-                if self.has_edits != has_edits:
-                    self.has_edits = has_edits
-                    self.updateTitle()
-
-            # Has the file on disk changed since last time it was loaded?
-            def has_file_changed_on_disk(self) -> bool:
-                if self.info.last_stat is not None:
-                    try:
-                        new_stat = os.stat(self.info.name)
-                        if self.info.last_stat[stat.ST_MTIME] < new_stat[stat.ST_MTIME]:
-                            # update our notion of the most recent modification
-                            self.info.last_stat = new_stat
-                            return True
-                    except OSError:
-                        return False
-                return False
-
-        class PaneFooter(Gtk.Box):
-            """The pane footer."""
-
-            def __init__(self) -> None:
-                Gtk.Box.__init__(self, orientation=Gtk.Orientation.HORIZONTAL, spacing=0)
-                self.cursor = label = Gtk.Label()
-                self.cursor.set_size_request(-1, -1)
-                self.pack_start(label, False, False, 0)
-
-                separator = Gtk.Separator(orientation=Gtk.Orientation.VERTICAL)
-                self.pack_end(separator, False, False, 10)
-
-                self.encoding = label = Gtk.Label()
-                self.pack_end(label, False, False, 0)
-
-                separator = Gtk.Separator(orientation=Gtk.Orientation.VERTICAL)
-                self.pack_end(separator, False, False, 10)
-
-                self.format = label = Gtk.Label()
-                self.pack_end(label, False, False, 0)
-
-                separator = Gtk.Separator(orientation=Gtk.Orientation.VERTICAL)
-                self.pack_end(separator, False, False, 10)
-
-                self.set_size_request(0, self.get_size_request()[1])
-                self.show_all()
-
-            # set the cursor label
-            def updateCursor(self, viewer: FileDiffViewerBase, f: int) -> None:
-                if viewer.mode == EditMode.CHAR and viewer.current_pane == f:
-                    # # TODO: Find a fix for the column bug (resizing issue when editing a line)
-                    # j = viewer.current_char
-                    # if j > 0:
-                    #     text = viewer.getLineText(viewer.current_pane, viewer.current_line)[:j]
-                    #     j = viewer.stringWidth(text)
-                    # s = _('Column %d') % (j, )
-                    #
-                    # In the meantime, keep this line of code in order to keep the translations
-                    s = _('Column %d') % (0, )
-                    s = ''
-                else:
-                    s = ''
-                self.cursor.set_text(s)
-
-            # set the format label
-            def setFormat(self, s: LineEnding) -> None:
-                v = []
-                if s & LineEnding.DOS_FORMAT:
-                    v.append('DOS')
-                if s & LineEnding.MAC_FORMAT:
-                    v.append('Mac')
-                if s & LineEnding.UNIX_FORMAT:
-                    v.append('Unix')
-                self.format.set_text('/'.join(v))
-
-            # set the format label
-            def setEncoding(self, s: str) -> None:
-                if s is None:
-                    s = ''
-                self.encoding.set_text(s)
-
         def __init__(self, n: int, prefs: Preferences, title: str) -> None:
             super().__init__(n, prefs)
 
             self.title = title
             self.status: Optional[str] = ''
 
-            self.headers: List[DiffuseWindow.FileDiffViewer.PaneHeader] = []
-            self.footers: List[DiffuseWindow.FileDiffViewer.PaneFooter] = []
+            self.headers: List[PaneHeader] = []
+            self.footers: List[PaneFooter] = []
             for i in range(n):
                 # pane header
-                w = DiffuseWindow.FileDiffViewer.PaneHeader()
+                w = PaneHeader()
                 self.headers.append(w)
                 self.attach(w, i, 0, 1, 1)
                 w.connect('title-changed', self.title_changed_cb)
@@ -278,7 +280,7 @@ class DiffuseWindow(Gtk.ApplicationWindow):
                 w.show()
 
                 # pane footer
-                w = DiffuseWindow.FileDiffViewer.PaneFooter()
+                w = PaneFooter()
                 self.footers.append(w)
                 self.attach(w, i, 2, 1, 1)
                 w.show()
@@ -1812,8 +1814,8 @@ def _assign_file_labels(items, labels):
 
 GObject.signal_new('title-changed', DiffuseWindow.FileDiffViewer, GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, (str, ))  # noqa: E501
 GObject.signal_new('status-changed', DiffuseWindow.FileDiffViewer, GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, (str, ))  # noqa: E501
-GObject.signal_new('title-changed', DiffuseWindow.FileDiffViewer.PaneHeader, GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, ())  # noqa: E501
-GObject.signal_new('open', DiffuseWindow.FileDiffViewer.PaneHeader, GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, ())  # noqa: E501
-GObject.signal_new('reload', DiffuseWindow.FileDiffViewer.PaneHeader, GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, ())  # noqa: E501
-GObject.signal_new('save', DiffuseWindow.FileDiffViewer.PaneHeader, GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, ())  # noqa: E501
-GObject.signal_new('save-as', DiffuseWindow.FileDiffViewer.PaneHeader, GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, ())  # noqa: E501
+GObject.signal_new('title-changed', PaneHeader, GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, ())  # noqa: E501
+GObject.signal_new('open', PaneHeader, GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, ())
+GObject.signal_new('reload', PaneHeader, GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, ())
+GObject.signal_new('save', PaneHeader, GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, ())
+GObject.signal_new('save-as', PaneHeader, GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, ())
