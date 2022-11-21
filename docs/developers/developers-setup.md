@@ -111,7 +111,7 @@ meson test
 To install Diffuse on your system (e.g. `/usr/local/`):
 
 ```sh
-meson install # requires admin privileges
+meson install  # requires admin privileges
 ```
 
 To run Diffuse:
