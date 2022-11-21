@@ -1811,7 +1811,7 @@ GObject.signal_new('save', Diffuse.FileDiffViewer.PaneHeader, GObject.SignalFlag
 GObject.signal_new('save-as', Diffuse.FileDiffViewer.PaneHeader, GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, ())  # noqa: E501
 
 
-class Application(Gtk.Application):
+class DiffuseApplication(Gtk.Application):
     def __init__(self, sysconfigdir, *args, **kwargs):
         super().__init__(
             *args,
@@ -2139,5 +2139,5 @@ also retrieve revisions of files from several VCSs for comparison and merging.''
 def main(version, sysconfigdir):
     constants.VERSION = version
 
-    app = Application(sysconfigdir)
+    app = DiffuseApplication(sysconfigdir)
     return app.run(sys.argv)
