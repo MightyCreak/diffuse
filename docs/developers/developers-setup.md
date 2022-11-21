@@ -108,7 +108,7 @@ meson test
 
 #### Install on system and run
 
-To install Diffuse on your system (e.g. `/usr/local`):
+To install Diffuse on your system (e.g. `/usr/local/`):
 
 ```sh
 meson install # requires admin privileges
@@ -152,7 +152,8 @@ sudo rm -v /usr/local/share/locale/*/LC_MESSAGES/diffuse.mo
 
 #### Build and test
 
-Diffuse is using Meson as its build system, this is the only supported system on macOS.
+Diffuse is using Meson as its build system, this is the only supported system
+on macOS.
 
 To build and test Diffuse:
 
@@ -165,12 +166,11 @@ meson test
 
 #### Install on system and run
 
-To install Diffuse on your system (e.g., `/Applications` and `/opt/homebrew` or `/usr/local`):
+To install Diffuse on your system (e.g. `/Applications/` and `/opt/homebrew/`
+or `/usr/local/`):
 
 ```sh
-# requires the user to have admin privileges, or sudo
-meson install
-# sudo meson install
+meson install  # requires admin privileges
 ```
 
 To run Diffuse:
@@ -179,7 +179,8 @@ To run Diffuse:
 diffuse
 ```
 
-_Note: The `diffuse` command can be used to launch Diffuse as a native Mac app that is installed into `/Applications/Diffuse.app`._
+_Note: The `diffuse` command can be used to launch Diffuse as a native Mac app_
+_that is installed into `/Applications/Diffuse.app`._
 
 ### Setup on Windows (deprecated)
 
