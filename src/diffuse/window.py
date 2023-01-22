@@ -1708,7 +1708,7 @@ class DiffuseWindow(Gtk.ApplicationWindow):
         self.getCurrentViewer().button_cb(widget, data.get_string())
 
     # callback for buttons
-    def button_cb(self, widget: Gtk.Widget, data: str):
+    def button_cb(self, widget: Gtk.Widget, data: str) -> None:
         self.getCurrentViewer().button_cb(widget, data)
 
     # display help documentation
