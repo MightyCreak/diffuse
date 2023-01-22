@@ -123,18 +123,20 @@ class PaneHeader(Gtk.Box):
 
     def __init__(self) -> None:
         Gtk.Box.__init__(self, orientation=Gtk.Orientation.HORIZONTAL, spacing=0)
-        _append_buttons(self, Gtk.IconSize.MENU, [
+        button_specs = [
             [Gtk.STOCK_OPEN, self.button_cb, 'open', _('Open File...')],
             [Gtk.STOCK_REFRESH, self.button_cb, 'reload', _('Reload File')],
             [Gtk.STOCK_SAVE, self.button_cb, 'save', _('Save File')],
-            [Gtk.STOCK_SAVE_AS, self.button_cb, 'save_as', _('Save File As...')]])
+            [Gtk.STOCK_SAVE_AS, self.button_cb, 'save_as', _('Save File As...')]
+        ]
+        _append_buttons(self, Gtk.IconSize.MENU, button_specs)
 
-        self.label = label = Gtk.Label()
-        label.set_selectable(True)
-        label.set_ellipsize(Pango.EllipsizeMode.START)
-        label.set_max_width_chars(1)
+        self.label = Gtk.Label()
+        self.label.set_selectable(True)
+        self.label.set_ellipsize(Pango.EllipsizeMode.START)
+        self.label.set_max_width_chars(1)
 
-        self.pack_start(label, True, True, 0)
+        self.pack_start(self.label, True, True, 0)
 
         # file's name and information about how to retrieve it from a
         # VCS
@@ -774,8 +776,8 @@ class DiffuseWindow(Gtk.ApplicationWindow):
         # make the icons available for use
         factory.add_default()
 
-        menuspecs = []
-        menuspecs.append([_('_File'), [
+        menu_specs = []
+        menu_specs.append([_('_File'), [
             [
                 [_('_Open File...'), self.open_file_cb, None, 'open_file'],
                 [_('Open File In New _Tab...'), self.open_file_in_new_tab_cb, None, 'open_file_in_new_tab'],  # noqa: E501
@@ -797,7 +799,7 @@ class DiffuseWindow(Gtk.ApplicationWindow):
             ]
         ]])
 
-        menuspecs.append([_('_Edit'), [
+        menu_specs.append([_('_Edit'), [
             [
                 [_('_Undo'), self.menuitem_cb, 'undo', 'undo'],
                 [_('_Redo'), self.menuitem_cb, 'redo', 'redo'],
@@ -841,7 +843,7 @@ class DiffuseWindow(Gtk.ApplicationWindow):
                 )
             syntax_menu.append(syntax_section)
 
-        menuspecs.append([_('_View'), [
+        menu_specs.append([_('_View'), [
             [
                 [_('_Syntax Highlighting'), None, None, None, syntax_menu]
             ], [
@@ -863,7 +865,7 @@ class DiffuseWindow(Gtk.ApplicationWindow):
             ]
         ]])
 
-        menuspecs.append([_('F_ormat'), [
+        menu_specs.append([_('F_ormat'), [
             [
                 [_('Convert To _Upper Case'), self.menuitem_cb, 'convert_to_upper_case', 'convert_to_upper_case'],  # noqa: E501
                 [_('Convert To _Lower Case'), self.menuitem_cb, 'convert_to_lower_case', 'convert_to_lower_case'],  # noqa: E501
@@ -884,7 +886,7 @@ class DiffuseWindow(Gtk.ApplicationWindow):
             ]
         ]])
 
-        menuspecs.append([_('_Merge'), [
+        menu_specs.append([_('_Merge'), [
             [
                 [_('Copy Selection _Right'), self.menuitem_cb, 'copy_selection_right', 'copy_selection_right'],  # noqa: E501
                 [_('Copy Selection _Left'), self.menuitem_cb, 'copy_selection_left', 'copy_selection_left'],  # noqa: E501
@@ -896,7 +898,7 @@ class DiffuseWindow(Gtk.ApplicationWindow):
             ]
         ]])
 
-        menuspecs.append([_('_Help'), [
+        menu_specs.append([_('_Help'), [
             [
                 [_('_Help Contents...'), self.help_contents_cb, None, 'help_contents'],
             ], [
@@ -908,13 +910,13 @@ class DiffuseWindow(Gtk.ApplicationWindow):
         self.menu_update_depth = 0
 
         menubar = Gio.Menu()
-        for label, sections in menuspecs:
+        for label, sections in menu_specs:
             menubar.append_submenu(label, self._create_menu(sections))
         self.get_application().set_menubar(menubar)
 
-        # create button bar
+        # create toolbar
         hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=0)
-        _append_buttons(hbox, Gtk.IconSize.LARGE_TOOLBAR, [
+        button_specs = [
             [DIFFUSE_STOCK_NEW_2WAY_MERGE, self.new_2_way_file_merge_cb, None, _('New 2-Way File Merge')],  # noqa: E501
             [DIFFUSE_STOCK_NEW_3WAY_MERGE, self.new_3_way_file_merge_cb, None, _('New 3-Way File Merge')],  # noqa: E501
             [],
@@ -937,7 +939,8 @@ class DiffuseWindow(Gtk.ApplicationWindow):
             [Gtk.STOCK_COPY, self.button_cb, 'copy', _('Copy')],
             [Gtk.STOCK_PASTE, self.button_cb, 'paste', _('Paste')],
             [Gtk.STOCK_CLEAR, self.button_cb, 'clear_edits', _('Clear Edits')]
-        ])
+        ]
+        _append_buttons(hbox, Gtk.IconSize.LARGE_TOOLBAR, button_specs)
         # avoid the button bar from dictating the minimum window size
         hbox.set_size_request(0, hbox.get_size_request()[1])
         vbox.pack_start(hbox, False, False, 0)
@@ -1797,17 +1800,16 @@ def _append_buttons(box, size, specs):
     """Convenience method for packing buttons into a container."""
     for spec in specs:
         if len(spec) > 0:
+            (stock_id, cb, cb_data, label) = spec
             button = Gtk.Button()
             button.set_relief(Gtk.ReliefStyle.NONE)
             button.set_can_focus(False)
             image = Gtk.Image()
-            image.set_from_stock(spec[0], size)
+            image.set_from_stock(stock_id, size)
             button.add(image)
             image.show()
-            if len(spec) > 2:
-                button.connect('clicked', spec[1], spec[2])
-                if len(spec) > 3:
-                    button.set_tooltip_text(spec[3])
+            button.connect('clicked', cb, cb_data)
+            button.set_tooltip_text(label)
             box.pack_start(button, False, False, 0)
             button.show()
         else:

@@ -401,7 +401,7 @@ class FileDiffViewerBase(Gtk.Grid):
             self.first_difference()
 
     # callback for most menu items and buttons
-    def button_cb(self, widget, data):
+    def button_cb(self, widget: Gtk.Widget, data: str) -> None:
         self.openUndoBlock()
         self._button_actions[data]()
         self.closeUndoBlock()
