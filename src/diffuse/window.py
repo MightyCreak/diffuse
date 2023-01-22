@@ -810,7 +810,7 @@ class DiffuseWindow(Gtk.ApplicationWindow):
             ], [
                 [_('Select _All'), self.menuitem_cb, 'select_all', 'select_all'],
                 [_('C_lear Edits'), self.menuitem_cb, 'clear_edits', 'clear_edits'],
-                [_('_Dismiss All Edits'), self.menuitem_cb, 'dismiss_all_edits', 'dismiss_all_edits'],
+                [_('_Dismiss All Edits'), self.menuitem_cb, 'dismiss_all_edits', 'dismiss_all_edits'],  # noqa: E501
             ], [
                 [_('_Find...'), self.find_cb, None, 'find'],
                 [_('Find _Next'), self.find_next_cb, None, 'find_next'],
@@ -882,7 +882,7 @@ class DiffuseWindow(Gtk.ApplicationWindow):
             ], [
                 [_('Convert To _DOS Format'), self.menuitem_cb, 'convert_to_dos', 'convert_to_dos'],
                 [_('Convert To _Mac Format'), self.menuitem_cb, 'convert_to_mac', 'convert_to_mac'],
-                [_('Convert To Uni_x Format'), self.menuitem_cb, 'convert_to_unix', 'convert_to_unix']
+                [_('Convert To Uni_x Format'), self.menuitem_cb, 'convert_to_unix', 'convert_to_unix']  # noqa: E501
             ]
         ]])
 
