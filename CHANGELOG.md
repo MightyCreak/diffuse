@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Language: initial support for Rust language (@alopatindev)
 - Translation: added Turkish translation (@libreajans)
+- Translation: added Georgian translation (@NorwayFun)
 
 ### Changed
 
