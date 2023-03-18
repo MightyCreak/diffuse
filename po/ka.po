@@ -1,0 +1,979 @@
+# Georgian translation for diffuse.
+# Copyright (C) 2023 diffuse's authors.
+# This file is distributed under the same license as the diffuse package.
+# Temuri Doghonadze <temuri.doghonadze@gmail.com>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: diffuse\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-11-14 16:24-0500\n"
+"PO-Revision-Date: 2023-02-25 18:36+0100\n"
+"Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
+"Language-Team: Georgian <(nothing)>\n"
+"Language: ka\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#: data/io.github.mightycreak.Diffuse.desktop.in:3
+#: data/io.github.mightycreak.Diffuse.appdata.xml.in:4
+msgid "Diffuse"
+msgstr "Diffuse"
+
+#: data/io.github.mightycreak.Diffuse.desktop.in:4
+#: data/io.github.mightycreak.Diffuse.appdata.xml.in:5
+msgid "Graphical tool for merging and comparing text files"
+msgstr "გრაფიკული პროგრამა ტექსტური ფაილების შედარებისა და შერწყმისთვის"
+
+#: data/io.github.mightycreak.Diffuse.appdata.xml.in:7
+msgid ""
+"Diffuse is a graphical tool for comparing and merging text files. It can "
+"retrieve files for comparison from Bazaar, CVS, Darcs, Git, Mercurial, "
+"Monotone, RCS, Subversion, and SVK repositories."
+msgstr ""
+"Diffuse გრაფიკული პროგრამაა ტექსტური ფაილების შესადარებლად და შერწყმისთვის. "
+"მას შეუძლია შესადარებელი ფაილები Bazaar, CVS, Darcs, Git, Mercurial, "
+"Monotones, RCS, Subversion და SVK რეპოზიტორიებიდან გამოითხოვოს."
+
+#: data/io.github.mightycreak.Diffuse.appdata.xml.in:21
+msgid "Main window: diff between two files"
+msgstr "მთავარი ფანჯარა: სხვაობა ორ ფაილს შორის"
+
+#: src/diffuse/constants.py:25
+msgid "Copyright"
+msgstr "საავტორო უფლებები"
+
+#: src/diffuse/dialogs.py:41
+msgid "Diffuse is a graphical tool for merging and comparing text files."
+msgstr "გრაფიკული პროგრამა ტექსტური ფაილების შედარებისა და შერწყმისთვის."
+
+#: src/diffuse/dialogs.py:46
+msgid "translator-credits"
+msgstr "temuri Doghonadze"
+
+#: src/diffuse/dialogs.py:83
+msgid "Encoding: "
+msgstr "კოდირება: "
+
+#: src/diffuse/dialogs.py:95
+msgid "Revision: "
+msgstr "რევიზია: "
+
+#: src/diffuse/dialogs.py:163
+msgid "Find..."
+msgstr "მოძებნა…"
+
+#: src/diffuse/dialogs.py:173
+msgid "Search For: "
+msgstr "ძებნა: "
+
+#: src/diffuse/dialogs.py:198
+msgid "Match Case"
+msgstr "რეგისტრის დამთხვევა"
+
+#: src/diffuse/dialogs.py:203
+msgid "Search Backwards"
+msgstr "უკან ძებნა"
+
+#: src/diffuse/main.py:84
+msgid "Close Tab"
+msgstr "ჩანართის დახურვა"
+
+#: src/diffuse/main.py:131
+msgid "Open File..."
+msgstr "ფაილის გახსნა..."
+
+#: src/diffuse/main.py:132
+msgid "Reload File"
+msgstr "ფაილის თავიდან ჩატვირთვა"
+
+#: src/diffuse/main.py:133
+msgid "Save File"
+msgstr "ფაილის შენახვა"
+
+#: src/diffuse/main.py:134
+msgid "Save File As..."
+msgstr "ფაილის შენახვა როგორც..."
+
+#: src/diffuse/main.py:229
+#, python-format
+msgid "Column %d"
+msgstr "სვეტი %d"
+
+#: src/diffuse/main.py:303
+msgid "Save changes before loading the new file?"
+msgstr "შევინახო ცვლილებები ახალი ფაილის ჩატვირთვამდე?"
+
+#: src/diffuse/main.py:414
+#, python-format
+msgid "Error reading revision %(rev)s of %(file)s."
+msgstr "ფაილის %(file)s %(rev)s რევიზიის წაკითხვის შეცდომა."
+
+#: src/diffuse/main.py:417 src/diffuse/main.py:2004
+#, python-format
+msgid "Error reading %s."
+msgstr "შეცდომა '%s'-ის კითხვისას."
+
+#: src/diffuse/main.py:439
+msgid "Open File"
+msgstr "ფაილის გახსნა"
+
+#: src/diffuse/main.py:492
+#, python-format
+msgid "Save %(title)s Pane %(pane)d"
+msgstr "შენახვა %(title)s პანელი %(pane)d"
+
+#: src/diffuse/main.py:524
+#, python-format
+msgid "A file named %s already exists. Do you want to overwrite it?"
+msgstr "ფაილი სახელით %s უკვე არსებობს. გნებავთ, გადააწეროთ?"
+
+#: src/diffuse/main.py:531
+#, python-format
+msgid ""
+"The file %s has been modified by another process since reading it. If you "
+"save, all the external changes could be lost. Save anyways?"
+msgstr ""
+"ფაილი %s წაკითხვის შემდეგ სხვა პროცესის მიერ შეიცვალა. თუ შეინახავთ, ყველა "
+"გარე ცვლილება დაიკარგება. შევინახო მაინც?"
+
+#: src/diffuse/main.py:573
+#, python-format
+msgid "Error encoding to %s."
+msgstr "%s-ში დაშიფვრის შეცდომა."
+
+#: src/diffuse/main.py:577 src/diffuse/preferences.py:300
+#, python-format
+msgid "Error writing %s."
+msgstr "შეცდომა '%s'-ის ჩაწერისას."
+
+#: src/diffuse/main.py:607
+msgid "Go To Line..."
+msgstr "ხაზზე გადასვლა..."
+
+#: src/diffuse/main.py:608
+msgid "Line Number: "
+msgstr "ხაზის ნომერი: "
+
+#: src/diffuse/main.py:639
+msgid ""
+"Press the enter key or double click to edit. Press the space bar or use the "
+"RMB menu to manually align."
+msgstr ""
+"ჩასასწორებლად დააწექით ღილაკს Enter ან ორჯერ დააწკაპუნეთ. ხელით "
+"გასასწორებლად დააწექით გამოტოვების ღილაკს ან RMB მენიუ გამოიყენეთ."
+
+#: src/diffuse/main.py:643
+msgid "Press the escape key to finish editing."
+msgstr "ჩასწორების დასასრულებლად Escape ღილაკს დააწექით."
+
+#: src/diffuse/main.py:646
+msgid ""
+"Select target line and press the space bar to align. Press the escape key to "
+"cancel."
+msgstr ""
+"აირჩიეთ სამიზნე ხაზის და გასასწორებლად გამოტოვებას დააწექით. გასაუქმებლად "
+"დააწექით ღილაკს Escape."
+
+#: src/diffuse/main.py:768
+msgid "_File"
+msgstr "_ფაილი"
+
+#: src/diffuse/main.py:770
+msgid "_Open File..."
+msgstr "_ფაილის გახსნა..."
+
+#: src/diffuse/main.py:771
+msgid "Open File In New _Tab..."
+msgstr "ფაილის ახალ _ჩანართში გახსნა..."
+
+#: src/diffuse/main.py:772
+msgid "Open _Modified Files..."
+msgstr "_შეცვლილი ფაილების გახსნა..."
+
+#: src/diffuse/main.py:773
+msgid "Open Commi_t..."
+msgstr "_კომიტის გასსნა..."
+
+#: src/diffuse/main.py:774
+msgid "_Reload File"
+msgstr "ფაილის თავიდან _ჩატვირთვა"
+
+#: src/diffuse/main.py:776
+msgid "_Save File"
+msgstr "_ფაილის შენახვა"
+
+#: src/diffuse/main.py:777
+msgid "Save File _As..."
+msgstr "ფაილის შენახვა, _როგორც..."
+
+#: src/diffuse/main.py:778
+msgid "Save A_ll"
+msgstr "_ყველას შენახვა"
+
+#: src/diffuse/main.py:780
+msgid "New _2-Way File Merge"
+msgstr "ახალი _2-მხრივი ფაილების შერწყმა"
+
+#: src/diffuse/main.py:781
+msgid "New _3-Way File Merge"
+msgstr "ახალი _3-მხრივი ფაილების შერწყმა"
+
+#: src/diffuse/main.py:782
+msgid "New _N-Way File Merge..."
+msgstr "ახალი _N-მხრივი ფაილების შერწყმა..."
+
+#: src/diffuse/main.py:784
+msgid "_Close Tab"
+msgstr "დაფის დ_ახურვა"
+
+#: src/diffuse/main.py:785
+msgid "_Undo Close Tab"
+msgstr "_ჩანართის დახურვის გაუქმება"
+
+#: src/diffuse/main.py:786
+msgid "_Quit"
+msgstr "_დამთავრება"
+
+#: src/diffuse/main.py:790
+msgid "_Edit"
+msgstr "_ჩასწორება"
+
+#: src/diffuse/main.py:792
+msgid "_Undo"
+msgstr "გა_უქმება"
+
+#: src/diffuse/main.py:793
+msgid "_Redo"
+msgstr "_გამეორება"
+
+#: src/diffuse/main.py:795
+msgid "Cu_t"
+msgstr "ამო_ჭრა"
+
+#: src/diffuse/main.py:796
+msgid "_Copy"
+msgstr "_კოპირება"
+
+#: src/diffuse/main.py:797
+msgid "_Paste"
+msgstr "_ჩასმა"
+
+#: src/diffuse/main.py:799
+msgid "Select _All"
+msgstr "_ყველას მონიშვნა"
+
+#: src/diffuse/main.py:800
+msgid "C_lear Edits"
+msgstr "ჩასწორებების _გასუფთავება"
+
+#: src/diffuse/main.py:801
+msgid "_Dismiss All Edits"
+msgstr "_ყველა ჩასწორების გაუქმება"
+
+#: src/diffuse/main.py:803
+msgid "_Find..."
+msgstr "_ძიება..."
+
+#: src/diffuse/main.py:804
+msgid "Find _Next"
+msgstr "შემდეგის _პოვნა"
+
+#: src/diffuse/main.py:805
+msgid "Find Pre_vious"
+msgstr "წ_ინას მოძებნა"
+
+#: src/diffuse/main.py:806
+msgid "_Go To Line..."
+msgstr "_ხაზზე გადასვლა..."
+
+#: src/diffuse/main.py:808
+msgid "Pr_eferences..."
+msgstr "_მორგება…"
+
+#: src/diffuse/main.py:812
+msgid "None"
+msgstr "არაფერი"
+
+#: src/diffuse/main.py:834
+msgid "_View"
+msgstr "_ხედი"
+
+#: src/diffuse/main.py:836
+msgid "_Syntax Highlighting"
+msgstr "სინტაქსის _გამოკვეთა"
+
+#: src/diffuse/main.py:838
+msgid "Re_align All"
+msgstr "ყველას თავიდან _სწორება"
+
+#: src/diffuse/main.py:839
+msgid "_Isolate"
+msgstr "_იზოლირება"
+
+#: src/diffuse/main.py:841
+msgid "_First Difference"
+msgstr "პირველი _სხვაობა"
+
+#: src/diffuse/main.py:842
+msgid "_Previous Difference"
+msgstr "_წინა სხვაობა"
+
+#: src/diffuse/main.py:843
+msgid "_Next Difference"
+msgstr "_შემდეგ სხვაობა"
+
+#: src/diffuse/main.py:844
+msgid "_Last Difference"
+msgstr "_ბოლო სხვაობა"
+
+#: src/diffuse/main.py:846
+msgid "Fir_st Tab"
+msgstr "_პირველი ჩანართი"
+
+#: src/diffuse/main.py:847
+msgid "Pre_vious Tab"
+msgstr "_წინა ჩანართი"
+
+#: src/diffuse/main.py:848
+msgid "Next _Tab"
+msgstr "_შემდეგი ჩანართი"
+
+#: src/diffuse/main.py:849
+msgid "Las_t Tab"
+msgstr "_ბოლო ჩანართი"
+
+#: src/diffuse/main.py:851
+msgid "Shift Pane _Right"
+msgstr "პანელის _მარჯვნივ წანაცვლება"
+
+#: src/diffuse/main.py:852
+msgid "Shift Pane _Left"
+msgstr "პანელის მ_არცხნივ წანაცვლება"
+
+#: src/diffuse/main.py:856
+msgid "F_ormat"
+msgstr "_ფორმატი"
+
+#: src/diffuse/main.py:858
+msgid "Convert To _Upper Case"
+msgstr "_მაღალ რეგისტრში გადაყვანა"
+
+#: src/diffuse/main.py:859
+msgid "Convert To _Lower Case"
+msgstr "_დაბალ რეგისტრში გადაყვანა"
+
+#: src/diffuse/main.py:861
+msgid "Sort Lines In _Ascending Order"
+msgstr "ხაზების დალაგება _აღმავალი წყობით"
+
+#: src/diffuse/main.py:862
+msgid "Sort Lines In D_escending Order"
+msgstr "ხაზების დალაგება _დაღმავალი წყობით"
+
+#: src/diffuse/main.py:864
+msgid "Remove Trailing _White Space"
+msgstr "ბოლოში მოყოლილი გამოტოვების _მოცილება"
+
+#: src/diffuse/main.py:865
+msgid "Convert Tabs To _Spaces"
+msgstr "გამოტოვებების _ტაბულაციებად გარდაქმნა"
+
+#: src/diffuse/main.py:866
+msgid "Convert Leading Spaces To _Tabs"
+msgstr "პრეფიქსული გამოტოვებების _ტაბულაციებად გარდაქმნა"
+
+#: src/diffuse/main.py:868
+msgid "_Increase Indenting"
+msgstr "_შეწევის გაზრდა"
+
+#: src/diffuse/main.py:869
+msgid "De_crease Indenting"
+msgstr "შეწევის _შემცირება"
+
+#: src/diffuse/main.py:871
+msgid "Convert To _DOS Format"
+msgstr "DOS ფორმატში _გადაყვანა"
+
+#: src/diffuse/main.py:872
+msgid "Convert To _Mac Format"
+msgstr "MAC ფორმატში გ_ადაყვანა"
+
+#: src/diffuse/main.py:873
+msgid "Convert To Uni_x Format"
+msgstr "Unix ფორმატში გა_დაყვანა"
+
+#: src/diffuse/main.py:877
+msgid "_Merge"
+msgstr "_შერწყმა"
+
+#: src/diffuse/main.py:879
+msgid "Copy Selection _Right"
+msgstr "მონიშნულის _მარჯვნივ კოპირება"
+
+#: src/diffuse/main.py:880
+msgid "Copy Selection _Left"
+msgstr "მონიშნულის მა_რცხნივ კოპირება"
+
+#: src/diffuse/main.py:882
+msgid "Copy Left _Into Selection"
+msgstr "_მარცხნივ კოპირება მონიშნულში"
+
+#: src/diffuse/main.py:883
+msgid "Copy Right I_nto Selection"
+msgstr "მ_არჯვნივ კოპირება მონიშნულში"
+
+#: src/diffuse/main.py:884
+msgid "_Merge From Left Then Right"
+msgstr "_ჯერ მარცხნიდან შერწყმა, შემდეგ მარჯვნიდან"
+
+#: src/diffuse/main.py:885
+msgid "M_erge From Right Then Left"
+msgstr "ჯ_ერ მარჯვნიდან შერწყმა, შემდეგ მარცხნიდან"
+
+#: src/diffuse/main.py:889
+msgid "_Help"
+msgstr "_დახმარება"
+
+#: src/diffuse/main.py:891
+msgid "_Help Contents..."
+msgstr "_დახმარების შემცველობა..."
+
+#: src/diffuse/main.py:893
+#, python-format
+msgid "_About %s..."
+msgstr "%s-ის _შესახებ..."
+
+#: src/diffuse/main.py:908
+msgid "New 2-Way File Merge"
+msgstr "ახალი _2-მხრივი ფაილების შერწყმა"
+
+#: src/diffuse/main.py:909
+msgid "New 3-Way File Merge"
+msgstr "ახალი _3-მხრივი ფაილების შერწყმა"
+
+#: src/diffuse/main.py:911
+msgid "Realign All"
+msgstr "თავიდან სწორება"
+
+#: src/diffuse/main.py:912
+msgid "First Difference"
+msgstr "პირველი სხვაობა"
+
+#: src/diffuse/main.py:913
+msgid "Previous Difference"
+msgstr "წინა სხვაობა"
+
+#: src/diffuse/main.py:914
+msgid "Next Difference"
+msgstr "შემდეგ სხვაობა"
+
+#: src/diffuse/main.py:915
+msgid "Last Difference"
+msgstr "ბოლო სხვაობა"
+
+#: src/diffuse/main.py:917
+msgid "Copy Selection Right"
+msgstr "მონიშნულის მარჯვნივ კოპირება"
+
+#: src/diffuse/main.py:918
+msgid "Copy Selection Left"
+msgstr "მონიშნულის მარცხნივ კოპირება"
+
+#: src/diffuse/main.py:919
+msgid "Copy Left Into Selection"
+msgstr "მარცხნივ კოპირება მონიშნულში"
+
+#: src/diffuse/main.py:920
+msgid "Copy Right Into Selection"
+msgstr "მარჯვნივ კოპირება მონიშნულში"
+
+#: src/diffuse/main.py:921
+msgid "Merge From Left Then Right"
+msgstr "ჯერ მარცხნიდან შერწყმა, შემდეგ მარჯვნიდან"
+
+#: src/diffuse/main.py:922
+msgid "Merge From Right Then Left"
+msgstr "ჯერ მარჯვნიდან შერწყმა, შემდეგ მარცხნიდან"
+
+#: src/diffuse/main.py:924
+msgid "Undo"
+msgstr "დაბრუნება"
+
+#: src/diffuse/main.py:925
+msgid "Redo"
+msgstr "თავიდან"
+
+#: src/diffuse/main.py:926 src/diffuse/widgets.py:1861
+msgid "Cut"
+msgstr "ამოჭრა"
+
+#: src/diffuse/main.py:927 src/diffuse/widgets.py:1862
+msgid "Copy"
+msgstr "კოპირება"
+
+#: src/diffuse/main.py:928 src/diffuse/widgets.py:1863
+msgid "Paste"
+msgstr "ჩასმა"
+
+#: src/diffuse/main.py:929 src/diffuse/widgets.py:1866
+msgid "Clear Edits"
+msgstr "ჩასწორებების გასუფთავება"
+
+#: src/diffuse/main.py:996
+msgid "Changes detected"
+msgstr "აღმოცენილია ცვლილებები"
+
+#: src/diffuse/main.py:1000
+#, python-format
+msgid ""
+"The file \"%s\" changed on disk.\n"
+"\n"
+"Do you want to reload the file?"
+msgstr ""
+"ფაილი \"%s\" დისკზე შეიცვალა.\n"
+"\n"
+"გნებავთ, ფაილი თავიდან ჩატვირთოთ?"
+
+#: src/diffuse/main.py:1005
+#, python-format
+msgid ""
+"The following files changed on disk:\n"
+"%s\n"
+"\n"
+"Do you want to reload these files?"
+msgstr ""
+"აღმოჩენილია შემდეგი ფაილების ცვლილება დასკზე:\n"
+"%s\n"
+"\n"
+"გნებავთ, ეს ფაილები თავიდან ჩავტვირთო?"
+
+#: src/diffuse/main.py:1120
+msgid ""
+"Some files have unsaved changes. Select the files to save before closing."
+msgstr ""
+"ზოგიერთ ფაილს შეუნახავი ცვლილებები გააჩნია. აირჩიეთ ფაილები და შეინახეთ, "
+"სანამ დახურავთ."
+
+#: src/diffuse/main.py:1134
+msgid "Tab"
+msgstr "ჩანართი"
+
+#: src/diffuse/main.py:1139
+msgid "Pane"
+msgstr "პანელი"
+
+#: src/diffuse/main.py:1150
+msgid "Close _Without Saving"
+msgstr "დახურვა _შენახვის გარეშე"
+
+#: src/diffuse/main.py:1189
+#, python-format
+msgid "Closing this tab will quit %s."
+msgstr "ამ ჩანართის დახურვა %s-ს დახურავს."
+
+#: src/diffuse/main.py:1266
+#, python-format
+msgid "File Merge %d"
+msgstr "ფაილების შერწყმა %d"
+
+#: src/diffuse/main.py:1372
+#, python-format
+msgid "Error retrieving commits for %s."
+msgstr "%s-ის კომიტების მიღების შეცდომა."
+
+#: src/diffuse/main.py:1404
+#, python-format
+msgid "Error retrieving modifications for %s."
+msgstr "შეცდომა %s-ის ცვლილებების მიღებისას."
+
+#: src/diffuse/main.py:1437
+msgid "Open File In New Tab"
+msgstr "ფაილის ახალ ჩანართში გახსნა"
+
+#: src/diffuse/main.py:1460
+msgid "Choose Folder With Modified Files"
+msgstr "აირჩიეთ შეცვლილი ფაილების შემცველი საქაღალდე"
+
+#: src/diffuse/main.py:1478
+msgid "No modified files found."
+msgstr "Secvlili failebi ver vipove."
+
+#: src/diffuse/main.py:1484
+msgid "Choose Folder With Commit"
+msgstr "აირჩიეთ კომიტის შემცელი საქაღალდე"
+
+#: src/diffuse/main.py:1504
+msgid "No committed files found."
+msgstr "დაკომიტებული ფაილები ვერ ვიპოვე."
+
+#: src/diffuse/main.py:1540
+msgid "New N-Way File Merge..."
+msgstr "ახალი N-მხრივი ფაილების შერწყმა..."
+
+#: src/diffuse/main.py:1541
+msgid "Number of panes: "
+msgstr "პანელების რაოდენობა: "
+
+#: src/diffuse/main.py:1615
+msgid "Phrase not found.  Continue from the end of the file?"
+msgstr "ფრაზა ვერ ვიპოვე.  გავაგრძელო ფაილის ბოლოდან?"
+
+#: src/diffuse/main.py:1617
+msgid "Phrase not found.  Continue from the start of the file?"
+msgstr "ფრაზა ვერ ვიპოვე.  გავაგრძელო ფაილის დასაწყისიდან?"
+
+#: src/diffuse/main.py:1827
+msgid "Do not read any resource files"
+msgstr "რესურსის ფაილები წაკითხული არ იქნება"
+
+#: src/diffuse/main.py:1835
+msgid "Specify explicit resource file"
+msgstr "რესურსის ფაილის მითითება"
+
+#: src/diffuse/main.py:1843
+msgid "File revisions <rev-1> and <rev>"
+msgstr "ფაილის რევიზიები <rev-1> და <rev>"
+
+#: src/diffuse/main.py:1851
+msgid "Close all tabs with no differences"
+msgstr "სხვაობების არმქონე ჩანართების დახურვა"
+
+#: src/diffuse/main.py:1858
+msgid "Use <codec> to read and write files"
+msgstr "ფაილების წასაკითხად და ჩასაწერად <codec>-ის გამოყენება"
+
+#: src/diffuse/main.py:1866
+msgid "Display <label> instead of the file name"
+msgstr "ფაილის სახელის მაგიერ <label>-ის ჩვენება"
+
+#: src/diffuse/main.py:1874
+msgid "Create a new tab for each modified file"
+msgstr "თითოეული შეცვლილი ფაილისთვის ცალკე ჩანართის შექმნა"
+
+#: src/diffuse/main.py:1881
+msgid "File revision <rev>"
+msgstr "ფაილის რევიზია <rev>"
+
+#: src/diffuse/main.py:1889
+msgid "Create a new tab for each file"
+msgstr "თითოეული ფაილისთვის ცალკე ჩანართის შექმნა"
+
+#: src/diffuse/main.py:1896
+msgid "Start a new tab"
+msgstr "ახალი ცანართის გაშვება"
+
+#: src/diffuse/main.py:1903 src/diffuse/preferences.py:165
+msgid "Version control system search order"
+msgstr "ვერსიის კონტროლის სისტემის ძებნის მიმდევრობა"
+
+#: src/diffuse/main.py:1911
+msgid "Start with line <line> selected"
+msgstr "<line>-ე ხაზით გაშვება"
+
+#: src/diffuse/main.py:1919
+msgid "Create a blank file comparison pane"
+msgstr "შედარების პანელის მქონე ცარიელი ფაილის შექმნა"
+
+#: src/diffuse/main.py:1926 src/diffuse/preferences.py:91
+#: src/diffuse/preferences.py:100
+msgid "Ignore changes to white space"
+msgstr "გამოტოვებების ცვლილებების იგნორი"
+
+#: src/diffuse/main.py:1933
+msgid "Ignore changes in blank lines"
+msgstr "ცარიელი ხაზების ცვლილების გამოტოვება"
+
+#: src/diffuse/main.py:1940 src/diffuse/preferences.py:93
+msgid "Ignore end of line differences"
+msgstr "ხაზის დაბოლოების სიმბოლოების სხვაობის იგნორი"
+
+#: src/diffuse/main.py:1947 src/diffuse/preferences.py:89
+msgid "Ignore case differences"
+msgstr "რეგისტრის სხვაობის იგნორი"
+
+#: src/diffuse/main.py:1954 src/diffuse/preferences.py:90
+msgid "Ignore white space differences"
+msgstr "გამოტოვებების სხვაობის იგნორი"
+
+#: src/diffuse/main.py:1957
+msgid ""
+"Diffuse is a graphical tool for merging and comparing text files. Diffuse "
+"is\n"
+"able to compare an arbitrary number of files side-by-side and gives users "
+"the\n"
+"ability to manually adjust line matching and directly edit files. Diffuse "
+"can\n"
+"also retrieve revisions of files from several VCSs for comparison and "
+"merging."
+msgstr ""
+"Diffuse ტექსტური ფაილების შედარებისა და შერწყმის გრაფიკული აპლიკაციაა.\n"
+"მას აქვს საშუალება შეადაროს საკმაოდ დიდი რაოდენობის ფაილები გვერდიგვერდ და "
+"მომხმარებელს\n"
+"მისცეს საშუალება, ხაზები პირდაპირ შეადაროს და ჩაასწოროს ისინი.\n"
+"Diffuse-ს ასევე შეუძლია ფაილების რევიზიები რამდენიმე VCS-დან გამოითხოვოს."
+
+#: src/diffuse/main.py:2080
+msgid "Error parsing line number."
+msgstr "ხაზის ნომრის დამუშავების შეცდომა."
+
+#: src/diffuse/main.py:2096
+#, python-format
+msgid "Error processing argument \"%s\".  Directory not expected."
+msgstr "არგუმენტის \"%s\" დამუშავების შეცდომა.  საქაღალდე გატანილი არაა."
+
+#: src/diffuse/preferences.py:80
+msgid "Display"
+msgstr "დროის ჩვენება"
+
+#: src/diffuse/preferences.py:83
+msgid "Font"
+msgstr "ფონტი"
+
+#: src/diffuse/preferences.py:84
+msgid "Tab width"
+msgstr "ტაბულაციის სიგანე"
+
+#: src/diffuse/preferences.py:85
+msgid "Show right margin"
+msgstr "მარჯვენა ზღვრის ჩვენება"
+
+#: src/diffuse/preferences.py:86
+msgid "Right margin"
+msgstr "მარჯვენა კიდე"
+
+#: src/diffuse/preferences.py:87
+msgid "Show line numbers"
+msgstr "ხაზის ნომრების ჩვენება"
+
+#: src/diffuse/preferences.py:88
+msgid "Show white space characters"
+msgstr "გამოტოვების სიმბოლოს ჩვენება"
+
+#: src/diffuse/preferences.py:92
+msgid "Ignore blank line differences"
+msgstr "ცარიელი ხაზის სხვაობის იგნორი"
+
+#: src/diffuse/preferences.py:95
+msgid "Alignment"
+msgstr "სწორება"
+
+#: src/diffuse/preferences.py:98
+msgid "Ignore case"
+msgstr "რეგისტრის იგნორი"
+
+#: src/diffuse/preferences.py:99
+msgid "Ignore white space"
+msgstr "გამოტოვების იგნორი"
+
+#: src/diffuse/preferences.py:101
+msgid "Ignore blank lines"
+msgstr "ცარიელი ხაზების იგნორი"
+
+#: src/diffuse/preferences.py:102
+msgid "Ignore end of line characters"
+msgstr "ხაზის დაბოლოების სიმბოლოების იგნორი"
+
+#: src/diffuse/preferences.py:104
+msgid "Editor"
+msgstr "რედაქტორი"
+
+#: src/diffuse/preferences.py:107
+msgid "Auto indent"
+msgstr "ავტომატური სწორება"
+
+#: src/diffuse/preferences.py:108
+msgid "Expand tabs to spaces"
+msgstr "ტაბულაციის გამოტოვებებით შეცვლა"
+
+#: src/diffuse/preferences.py:109
+msgid "Soft tab width"
+msgstr "რბილი ტაბულაციის სიგანე"
+
+#: src/diffuse/preferences.py:111
+msgid "Tabs"
+msgstr "დაფები"
+
+#: src/diffuse/preferences.py:114
+msgid "Default panes"
+msgstr "ნაგულისხმები პანელები"
+
+#: src/diffuse/preferences.py:115
+msgid "Always show the tab bar"
+msgstr "ჩანართების ზოლის ყოველთვის ჩვენება"
+
+#: src/diffuse/preferences.py:116
+#, python-format
+msgid "Warn me when closing a tab will quit %s"
+msgstr "გამაფრთხილე, როცა ჩანართის დახურვა %s-საც დახურავს"
+
+#: src/diffuse/preferences.py:118
+msgid "Regional Settings"
+msgstr "რეგიონის მორგება"
+
+#: src/diffuse/preferences.py:121
+msgid "Default codec"
+msgstr "ნაგულისხმები კოდეკი"
+
+#: src/diffuse/preferences.py:122
+msgid "Order of codecs used to identify encoding"
+msgstr "კოდეკების მიმდევრობა, რომელიც კოდირების იდენტიფიკაციისთვის გამოიყენება"
+
+#: src/diffuse/preferences.py:143
+msgid "Cygwin"
+msgstr "Cygwin"
+
+#: src/diffuse/preferences.py:145
+msgid "Root directory"
+msgstr "Root საქაღალდე"
+
+#: src/diffuse/preferences.py:146
+msgid "Cygdrive prefix"
+msgstr "Cygdrive-ის პრეფიქსი"
+
+#: src/diffuse/preferences.py:173
+msgid "\"co\" command"
+msgstr "\"co\" ბრძანება"
+
+#: src/diffuse/preferences.py:174
+msgid "\"rlog\" command"
+msgstr "\"rlog\" ბრძანება"
+
+#: src/diffuse/preferences.py:176
+msgid "Command"
+msgstr "ბრძანება"
+
+#: src/diffuse/preferences.py:182
+msgid "Launch from a Bash login shell"
+msgstr "Bash-ის შესვლის გარემოდან გაშვება"
+
+#: src/diffuse/preferences.py:189
+msgid "Update paths for Cygwin"
+msgstr "ბილიკების განახლება Cygwin-სთვის"
+
+#: src/diffuse/preferences.py:194
+msgid "Version Control"
+msgstr "ვერსიის კონტროლი"
+
+#: src/diffuse/preferences.py:259
+msgid "Preferences"
+msgstr "გამართვა"
+
+#: src/diffuse/resources.py:242 src/diffuse/resources.py:246
+#: src/diffuse/resources.py:249
+#, python-brace-format
+msgid "The key binding \"{key}\" is invalid"
+msgstr "ღილაკების მიბმა \"{key}\" არასწორია"
+
+#: src/diffuse/resources.py:376
+msgid "Imports must have one argument"
+msgstr "შემოტანებს ერთი არგუმენტი უნდა ჰქონდეს"
+
+#: src/diffuse/resources.py:392
+msgid "Key bindings must have three arguments"
+msgstr "ღილაკის მიბმებს სამი არგუმენტი უნდა ჰქონდეთ"
+
+#: src/diffuse/resources.py:398
+msgid "Colors must have four arguments"
+msgstr "ფერებს ოთხი არგუმენტი უნდა ჰქონდეთ"
+
+#: src/diffuse/resources.py:404
+msgid "Floats must have two arguments"
+msgstr "მცურავს ორი არგუმენტი უნდა ჰქონდეს"
+
+#: src/diffuse/resources.py:410
+msgid "Options must have two arguments"
+msgstr "პარამეტრებს ორი არგუმენტი უნდა ჰქონდეთ"
+
+#: src/diffuse/resources.py:413
+#, python-brace-format
+msgid "Option \"{option}\" is unknown"
+msgstr "პარამეტრი \"{option}\" უცნობია"
+
+#: src/diffuse/resources.py:420
+msgid "Strings must have two arguments"
+msgstr "სტრიქონებს ორი არგუმენტი უნდა ჰქონდეთ"
+
+#: src/diffuse/resources.py:431
+msgid "Syntaxes must have two or three arguments"
+msgstr "სინტაქსებს ორი ან სამი არგუმენტი უნდა ჰქონდეთ"
+
+#: src/diffuse/resources.py:459
+msgid "Syntax patterns must have at least four arguments"
+msgstr "სინტაქსის ნიმუშებს ოთხი არგუმენტი მაინც სჭირდებათ"
+
+#: src/diffuse/resources.py:465 src/diffuse/resources.py:509
+#, python-brace-format
+msgid "Value \"{value}\" is unknown"
+msgstr "მნიშვნელობა \"{value}\" უცნობია"
+
+#: src/diffuse/resources.py:476
+msgid "Syntax files must have one or two arguments"
+msgstr "სინტაქსის ფაილებს ერთი ან ორი არგუმენტი სჭირდებათ"
+
+#: src/diffuse/resources.py:494
+msgid "Syntax magics must have at least one argument"
+msgstr "სინტაქსის მაგიას ერთი არგუმენტი მაინც უნდა ჰქონდეს"
+
+#: src/diffuse/resources.py:513
+#, python-brace-format
+msgid "Keyword \"{keyword}\" is unknown"
+msgstr "საკვანძო სიტყვა \"{keyword}\" უცნობია"
+
+#: src/diffuse/resources.py:515
+#, python-brace-format
+msgid "Syntax error at line {line} of {file}"
+msgstr "სინტაქსის შეცდომა ხაზზე {line} ფაილისთვის {file}"
+
+#: src/diffuse/resources.py:521
+#, python-brace-format
+msgid "Value error at line {line} of {file}"
+msgstr "მნიშვნელობის შეცდომა ხაზზე {line} ფაილისთვის {file}"
+
+#: src/diffuse/resources.py:527
+#, python-brace-format
+msgid "Regex error at line {line} of {file}."
+msgstr "რეგგამოს-ის შეცდომა ხაზზე {line} ფაილისთვის {file}."
+
+#: src/diffuse/resources.py:530
+#, python-brace-format
+msgid "Unhandled error at line {line} of {file}."
+msgstr "დაუმუშავებელი შეცდომა ხაზზე {line} ფაილისთვის {file}."
+
+#: src/diffuse/utils.py:65
+msgid "Auto Detect"
+msgstr "ავტომატური გამოცნობა"
+
+#: src/diffuse/vcs/cvs.py:54 src/diffuse/vcs/rcs.py:63
+#: src/diffuse/vcs/svn.py:97
+#, python-format
+msgid "Error parsing revision %s."
+msgstr "%s რევიზიის დამუშავების შეცდომა."
+
+#: src/diffuse/vcs/vcs_registry.py:238
+#, python-format
+msgid "Error parsing %s."
+msgstr "%s-ის დამუშავების შეცდომა."
+
+#: src/diffuse/widgets.py:1857
+msgid "Align with Selection"
+msgstr "მონიშნულთან სწორება"
+
+#: src/diffuse/widgets.py:1858
+msgid "Isolate"
+msgstr "იზოლირება"
+
+#: src/diffuse/widgets.py:1859
+msgid "Merge Selection"
+msgstr "მონიშნულის შერწყმა"
+
+#: src/diffuse/widgets.py:1865
+msgid "Select All"
+msgstr "ყველას მონიშვნა"
+
+#: src/diffuse/widgets.py:1868
+msgid "Swap with Selected Pane"
+msgstr "მონიშნულ პანელთან გაცვლა"
