@@ -37,6 +37,43 @@
   <update_contact>romain@foolstep.com</update_contact>
 
   <releases>
+    <release version="0.8.0" date="2023-04-03">
+      <description>
+        <p>
+          Update to GNOME 44, improved GTK 3 support, initial support for Rust, added Turkish and
+          Georgian translations, and a couple of fixes.
+        </p>
+        <p>Added:</p>
+        <ul>
+          <li>Language: initial support for Rust language (@alopatindev)</li>
+          <li>Translation: added Turkish translation (@libreajans)</li>
+          <li>Translation: added Georgian translation (@NorwayFun)</li>
+        </ul>
+        <p>Changed:</p>
+        <ul>
+          <li>Update from GNOME 42 to GNOME 44 (@MightyCreak)</li>
+          <li>Translation: updated Swedish translation (@eson57)</li>
+          <li>Dialog: prompt only once if several files needs to be reloaded (@yuriiz)</li>
+          <li>Use GTK3's Gtk.Application/Gtk.ApplicationWindow (@yuriiz)</li>
+          <li>Split `DiffuseApplication` and `DiffuseWindow` classes in their own files (@MightyCreak)</li>
+          <li>Use new Meson (from 0.50 to 0.55) and fixed deprecation warnings (@MightyCreak)</li>
+          <li>
+            Mac: fix the shortcut for first/previous/next/last differences, now uses ⌘ instead of
+            Ctrl (@krlmlr)
+          </li>
+        </ul>
+        <p>Fixed:</p>
+        <ul>
+          <li>"Go to line..." dialog didn't show up (@MightyCreak)</li>
+          <li>
+            Tech debt: use `transient_for` instead of the deprecated `parent` when creating a
+            `Gtk.Widget` (@MightyCreak)
+          </li>
+          <li>Documentation: prefer `pip3` over `pip` to ensure it works everywhere (@krlmlr)</li>
+          <li>Flatpak: add missing `--filesystem=xdg-run/gvfsd` privilege (@MightyCreak)</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.7.7" date="2022-10-23">
       <description>
         <p>
