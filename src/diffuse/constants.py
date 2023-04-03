@@ -22,7 +22,7 @@ from typing import Final
 
 APP_NAME: Final[str] = 'Diffuse'
 COPYRIGHT: Final[str] = '''{copyright} © 2006-2019 Derrick Moser
-{copyright} © 2015-2021 Romain Failliot'''.format(copyright=_("Copyright"))
+{copyright} © 2015-2023 Romain Failliot'''.format(copyright=_("Copyright"))
 WEBSITE: Final[str] = 'https://mightycreak.github.io/diffuse/'
 
 # Constants are set in main()

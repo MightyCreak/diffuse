@@ -1,6 +1,5 @@
 <h1 align="center">
   <img src="data/icons/hicolor/scalable/apps/io.github.mightycreak.Diffuse.svg" alt="Diffuse" width="192" height="192"/><br/>
-  Diffuse
 </h1>
 
 <p align="center" style="margin-top: 2em">
@@ -61,6 +60,9 @@ is licensed under the [FSF-AP](https://www.gnu.org/prep/maintain/html_node/Licen
 license.
 
 Copyright (C) 2006-2019 Derrick Moser <derrick_moser@yahoo.com>  
-Copyright (C) 2015-2021 Romain Failliot <romain.failliot@foolstep.com>
+Copyright (C) 2015-2023 Romain Failliot <romain.failliot@foolstep.com>
 
 Icon made by [@jimmac](https://github.com/jimmac).
+
+This repository is a fork of the original project on SourceForge, which doesn't
+seem to be maintained anymore: <https://sourceforge.net/projects/diffuse/>.
