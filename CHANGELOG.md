@@ -21,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Split `DiffuseApplication` and `DiffuseWindow` classes in their own files (@MightyCreak)
 - Use new Meson (from 0.50 to 0.55) and fixed deprecation warnings (@MightyCreak)
 - Update from GNOME 42 to GNOME 44 (@MightyCreak)
+- Use GitHub Pages to generate the new website (@MightyCreak)
 - Mac: fix the shortcut for first/previous/next/last differences, now uses ⌘
   instead of Ctrl (@krlmlr)
 
