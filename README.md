@@ -1,6 +1,5 @@
 <h1 align="center">
   <img src="data/icons/hicolor/scalable/apps/io.github.mightycreak.Diffuse.svg" alt="Diffuse" width="192" height="192"/><br/>
-  Diffuse
 </h1>
 
 <p align="center" style="margin-top: 2em">
