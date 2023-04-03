@@ -19,6 +19,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Dialog: prompt only once if several files needs to be reloaded (@yuriiz)
 - Use GTK3's Gtk.Application/Gtk.ApplicationWindow (@yuriiz)
 - Split `DiffuseApplication` and `DiffuseWindow` classes in their own files (@MightyCreak)
+- Use new Meson (from 0.50 to 0.55) and fixed deprecation warnings (@MightyCreak)
+- Update from GNOME 42 to GNOME 44 (@MightyCreak)
+- Mac: fix the shortcut for first/previous/next/last differences, now uses ⌘
+  instead of Ctrl (@krlmlr)
 
 ### Fixed
 

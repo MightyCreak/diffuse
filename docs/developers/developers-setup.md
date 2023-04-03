@@ -71,7 +71,7 @@ pip3 install -r requirements.dev.txt
 To build, test and install Diffuse locally:
 
 ```sh
-flatpak install runtime/org.gnome.Sdk/$(uname -p)/42
+flatpak install runtime/org.gnome.Sdk/$(uname -p)/44
 flatpak-builder --user --install build-flatpak io.github.mightycreak.Diffuse.yml
 ```
 
@@ -80,7 +80,7 @@ flatpak-builder --user --install build-flatpak io.github.mightycreak.Diffuse.yml
 To run Diffuse through Flatpak:
 
 ```sh
-flatpak run io.github.mightycreak.Diffuse
+flatpak run --user io.github.mightycreak.Diffuse
 ```
 
 #### Uninstall
@@ -88,7 +88,7 @@ flatpak run io.github.mightycreak.Diffuse
 To uninstall Diffuse:
 
 ```sh
-flatpak remove io.github.mightycreak.Diffuse
+flatpak remove --user io.github.mightycreak.Diffuse
 ```
 
 ### Setup on Linux using Meson
@@ -101,9 +101,8 @@ To build and test Diffuse:
 
 ```sh
 meson setup build
-cd build
-meson compile
-meson test
+meson compile -C build
+meson test -C build
 ```
 
 #### Install on system and run
@@ -111,7 +110,7 @@ meson test
 To install Diffuse on your system (e.g. `/usr/local/`):
 
 ```sh
-meson install  # requires admin privileges
+meson install -C build  # requires admin privileges
 ```
 
 To run Diffuse:
@@ -128,7 +127,7 @@ Meson allows to change the default installation directories, see
 To install Diffuse in a custom directory (e.g. `~/bin/diffuse`):
 
 ```sh
-meson install --destdir ~/bin/diffuse
+meson install -C build --destdir ~/bin/diffuse
 ```
 
 To run Diffuse:
@@ -159,9 +158,8 @@ To build and test Diffuse:
 
 ```sh
 meson setup build
-cd build
-meson compile
-meson test
+meson compile -C build
+meson test -C build
 ```
 
 #### Install on system and run
@@ -170,7 +168,7 @@ To install Diffuse on your system (e.g. `/Applications/` and `/opt/homebrew/`
 or `/usr/local/`):
 
 ```sh
-meson install  # requires admin privileges
+meson install -C build  # requires admin privileges
 ```
 
 To run Diffuse:
