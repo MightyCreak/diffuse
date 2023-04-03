@@ -63,3 +63,6 @@ Copyright (C) 2006-2019 Derrick Moser <derrick_moser@yahoo.com>
 Copyright (C) 2015-2023 Romain Failliot <romain.failliot@foolstep.com>
 
 Icon made by [@jimmac](https://github.com/jimmac).
+
+This repository is a fork of the original project on SourceForge, which doesn't
+seem to be maintained anymore: <https://sourceforge.net/projects/diffuse/>.
