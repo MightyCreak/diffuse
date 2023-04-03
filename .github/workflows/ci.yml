@@ -25,6 +25,7 @@ jobs:
       run: |
         sudo apt-get -y install libgirepository1.0-dev
         pip install -r requirements.dev.txt
+        pip list
 
     - name: Flake8
       run: |
