@@ -60,6 +60,6 @@ is licensed under the [FSF-AP](https://www.gnu.org/prep/maintain/html_node/Licen
 license.
 
 Copyright (C) 2006-2019 Derrick Moser <derrick_moser@yahoo.com>  
-Copyright (C) 2015-2021 Romain Failliot <romain.failliot@foolstep.com>
+Copyright (C) 2015-2023 Romain Failliot <romain.failliot@foolstep.com>
 
 Icon made by [@jimmac](https://github.com/jimmac).
