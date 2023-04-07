@@ -17,6 +17,7 @@
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
+import inspect
 import os
 import sys
 import locale
@@ -82,11 +83,15 @@ def isWindows() -> bool:
     return os.name == 'nt'
 
 
-def _logPrintOutput(msg: str) -> None:
+def _logPrintOutput(msg: str, file: Optional[TextIO] = None) -> None:
     if theResources.getOptionAsBool('log_print_output'):
-        print(msg, file=sys.stderr)
+        print(msg, file=file)
         if theResources.getOptionAsBool('log_print_stack'):
-            traceback.print_stack()
+            # Show the stack trace, but remove the past 2 calls as it is just log functions noise
+            frames = inspect.stack()
+            frameIdx = min(2, len(frames) - 1)
+            print('Traceback (most recent call last):', file=file)
+            traceback.print_stack(frames[frameIdx].frame, file=file)
 
 
 def logDebug(msg: str) -> None:
@@ -96,7 +101,7 @@ def logDebug(msg: str) -> None:
 
 def logError(msg: str) -> None:
     '''Report error message.'''
-    _logPrintOutput(f'ERROR: {msg}')
+    _logPrintOutput(f'ERROR: {msg}', sys.stderr)
 
 
 def logErrorAndDialog(msg: str, parent: Gtk.Widget = None) -> None:
