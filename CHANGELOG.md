@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Some signals weren't properly renamed from the previous GTK3 migration (@MightyCreak)
+- The syntax menu wasn't working anymore (@MightyCreak)
 
 ## 0.8.1 - 2023-04-07
 

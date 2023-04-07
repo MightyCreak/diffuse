@@ -906,9 +906,6 @@ class DiffuseWindow(Gtk.ApplicationWindow):
             ]
         ]])
 
-        # used to disable menu events when switching tabs
-        self.menu_update_depth = 0
-
         menubar = Gio.Menu()
         for label, sections in menu_specs:
             menubar.append_submenu(label, self._create_menu(sections))
@@ -1257,9 +1254,9 @@ class DiffuseWindow(Gtk.ApplicationWindow):
         sb.push(context, s)
 
     # update the label in the status bar
-    def setSyntax(self, s):
+    def setSyntax(self, s: str) -> None:
         # update menu
-        self.syntax_action.set_state(GLib.Variant.new_string(s or ''))
+        self.syntax_action.set_state(GLib.Variant.new_string(s))
 
     # callback used when switching notebook pages
     def switch_page_cb(self, widget, ptr, page_num):
@@ -1691,11 +1688,8 @@ class DiffuseWindow(Gtk.ApplicationWindow):
             self.preferences_updated()
 
     # callback for all of the syntax highlighting menu items
-    def syntax_cb(self, widget, data):
-        # ignore events while we update the menu when switching tabs
-        # also ignore notification of the newly disabled item
-        if self.menu_update_depth == 0 and widget.get_active():
-            self.getCurrentViewer().setSyntax(data)
+    def syntax_cb(self, widget: Gtk.Widget, data: GLib.Variant) -> None:
+        self.getCurrentViewer().setSyntax(data.get_string())
 
     # callback for the first tab menu item
     def first_tab_cb(self, widget, data):

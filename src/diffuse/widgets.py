@@ -215,7 +215,7 @@ class FileDiffViewerBase(Gtk.Grid):
         self.undoblock = None
 
         # cached data
-        self.syntax = None
+        self.syntax = ''
         self.diffmap_cache = None
 
         # editing mode
@@ -545,13 +545,13 @@ class FileDiffViewerBase(Gtk.Grid):
             self.emit('mode-changed')
 
     # sets the syntax highlighting rules
-    def setSyntax(self, s):
-        if self.syntax is not s:
-            self.syntax = s
+    def setSyntax(self, new_syntax: str) -> None:
+        if self.syntax is not new_syntax:
+            self.syntax = new_syntax
             # invalidate the syntax caches
             for pane in self.panes:
                 pane.syntax_cache = []
-            self.emit('syntax-changed', s)
+            self.emit('syntax-changed', new_syntax)
             # force all panes to redraw
             for darea in self.dareas:
                 darea.queue_draw()
