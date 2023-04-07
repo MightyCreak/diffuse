@@ -644,7 +644,7 @@
 
         <variablelist>
           <varlistentry>
-            <term><userinput>open_file</userinput></term>
+            <term><userinput>open-file</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>File</guimenu><guimenuitem>Open File...</guimenuitem></menuchoice> menu item</para>
               <para>Default: <literal>Ctrl+o</literal></para>
@@ -652,7 +652,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>open_file_in_new_tab</userinput></term>
+            <term><userinput>open-file-in-new-tab</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>File</guimenu><guimenuitem>Open File In New Tab...</guimenuitem></menuchoice> menu item</para>
               <para>Default: <literal>Ctrl+t</literal></para>
@@ -660,7 +660,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>open_modified_files</userinput></term>
+            <term><userinput>open-modified-files</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>File</guimenu><guimenuitem>Open Modified Files...</guimenuitem></menuchoice> menu item</para>
               <para>Default: <literal>Shift+Ctrl+O</literal></para>
@@ -668,7 +668,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>open_commit</userinput></term>
+            <term><userinput>open-commit</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>File</guimenu><guimenuitem>Open Commit...</guimenuitem></menuchoice> menu item</para>
               <para>Default: <literal>Shift+Ctrl+T</literal></para>
@@ -676,7 +676,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>reload_file</userinput></term>
+            <term><userinput>reload-file</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>File</guimenu><guimenuitem>Reload File</guimenuitem></menuchoice> menu item</para>
               <para>Default: <literal>Shift+Ctrl+R</literal></para>
@@ -684,7 +684,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>save_file</userinput></term>
+            <term><userinput>save-file</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>File</guimenu><guimenuitem>Save File</guimenuitem></menuchoice> menu item</para>
               <para>Default: <literal>Ctrl+s</literal></para>
@@ -692,7 +692,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>save_file_as</userinput></term>
+            <term><userinput>save-file-as</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>File</guimenu><guimenuitem>Save File As...</guimenuitem></menuchoice> menu item</para>
               <para>Default: <literal>Shift+Ctrl+A</literal></para>
@@ -700,7 +700,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>save_all</userinput></term>
+            <term><userinput>save-all</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>File</guimenu><guimenuitem>Save All</guimenuitem></menuchoice> menu item</para>
               <para>Default: <literal>Shift+Ctrl+S</literal></para>
@@ -708,7 +708,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>new_2_way_file_merge</userinput></term>
+            <term><userinput>new-2-way-file-merge</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>File</guimenu><guimenuitem>New 2-Way File Merge</guimenuitem></menuchoice> menu item</para>
               <para>Default: <literal>Ctrl+2</literal></para>
@@ -716,7 +716,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>new_3_way_file_merge</userinput></term>
+            <term><userinput>new-3-way-file-merge</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>File</guimenu><guimenuitem>New 3-Way File Merge</guimenuitem></menuchoice> menu item</para>
               <para>Default: <literal>Ctrl+3</literal></para>
@@ -724,7 +724,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>new_n_way_file_merge</userinput></term>
+            <term><userinput>new-n-way-file-merge</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>File</guimenu><guimenuitem>New N-Way File Merge</guimenuitem></menuchoice> menu item</para>
               <para>Default: <literal>Ctrl+4</literal></para>
@@ -732,7 +732,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>close_tab</userinput></term>
+            <term><userinput>close-tab</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>File</guimenu><guimenuitem>Close Tab</guimenuitem></menuchoice> menu item</para>
               <para>Default: <literal>Ctrl+w</literal></para>
@@ -740,7 +740,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>undo_close_tab</userinput></term>
+            <term><userinput>undo-close-tab</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>File</guimenu><guimenuitem>Undo Close Tab</guimenuitem></menuchoice> menu item</para>
               <para>Default: <literal>Shift+Ctrl+w</literal></para>
@@ -796,7 +796,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>select_all</userinput></term>
+            <term><userinput>select-all</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Edit</guimenu><guimenuitem>Select All</guimenuitem></menuchoice> menu item</para>
               <para>Default: <literal>Ctrl+a</literal></para>
@@ -804,7 +804,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>clear_edits</userinput></term>
+            <term><userinput>clear-edits</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Edit</guimenu><guimenuitem>Clear Edits</guimenuitem></menuchoice> menu item</para>
               <para>Default: <literal>Ctrl+r</literal></para>
@@ -812,7 +812,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>dismiss_all_edits</userinput></term>
+            <term><userinput>dismiss-all-edits</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Edit</guimenu><guimenuitem>Dismiss All Edits</guimenuitem></menuchoice> menu item</para>
               <para>Default: <literal>Ctrl+d</literal></para>
@@ -828,7 +828,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>find_next</userinput></term>
+            <term><userinput>find-next</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Edit</guimenu><guimenuitem>Find Next</guimenuitem></menuchoice> menu item</para>
               <para>Default: <literal>Ctrl+g</literal></para>
@@ -836,7 +836,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>find_previous</userinput></term>
+            <term><userinput>find-previous</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Edit</guimenu><guimenuitem>Find Previous</guimenuitem></menuchoice> menu item</para>
               <para>Default: <literal>Shift+Ctrl+G</literal></para>
@@ -844,7 +844,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>go_to_line</userinput></term>
+            <term><userinput>go-to-line</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Edit</guimenu><guimenuitem>Go To Line...</guimenuitem></menuchoice> menu item</para>
               <para>Default: <literal>Shift+Ctrl+L</literal></para>
@@ -860,7 +860,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>no_syntax_highlighting</userinput></term>
+            <term><userinput>no-syntax-highlighting</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>View</guimenu><guisubmenu>Syntax Highlighting</guisubmenu><guimenuitem>None</guimenuitem></menuchoice> menu item</para>
               <para>Default: None</para>
@@ -868,7 +868,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>syntax_highlighting_<replaceable>syntax</replaceable></userinput></term>
+            <term><userinput>syntax-highlighting-<replaceable>syntax</replaceable></userinput></term>
             <listitem>
               <para><menuchoice><guimenu>View</guimenu><guisubmenu>Syntax Highlighting</guisubmenu><guimenuitem><replaceable>syntax</replaceable></guimenuitem></menuchoice> menu item</para>
               <para>Default: None</para>
@@ -876,7 +876,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>realign_all</userinput></term>
+            <term><userinput>realign-all</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>View</guimenu><guimenuitem>Realign All</guimenuitem></menuchoice> menu item</para>
               <para>Default: <literal>Ctrl+l</literal></para>
@@ -892,7 +892,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>first_difference</userinput></term>
+            <term><userinput>first-difference</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>View</guimenu><guimenuitem>First Difference</guimenuitem></menuchoice> menu item</para>
               <para>Default: <literal>Shift+Ctrl+Up</literal></para>
@@ -900,7 +900,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>previous_difference</userinput></term>
+            <term><userinput>previous-difference</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>View</guimenu><guimenuitem>Previous Difference</guimenuitem></menuchoice> menu item</para>
               <para>Default: <literal>Ctrl+Up</literal></para>
@@ -908,7 +908,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>next_difference</userinput></term>
+            <term><userinput>next-difference</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>View</guimenu><guimenuitem>Next Difference</guimenuitem></menuchoice> menu item</para>
               <para>Default: <literal>Ctrl+Down</literal></para>
@@ -916,7 +916,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>last_difference</userinput></term>
+            <term><userinput>last-difference</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>View</guimenu><guimenuitem>Last Difference</guimenuitem></menuchoice> menu item</para>
               <para>Default: <literal>Shift+Ctrl+Down</literal></para>
@@ -924,7 +924,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>first_tab</userinput></term>
+            <term><userinput>first-tab</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>View</guimenu><guimenuitem>First Tab</guimenuitem></menuchoice> menu item</para>
               <para>Default: <literal>Shift+Ctrl+Page_Up</literal></para>
@@ -932,7 +932,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>previous_tab</userinput></term>
+            <term><userinput>previous-tab</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>View</guimenu><guimenuitem>Previous Tab</guimenuitem></menuchoice> menu item</para>
               <para>Default: <literal>Ctrl+Page_Up</literal></para>
@@ -940,7 +940,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>next_tab</userinput></term>
+            <term><userinput>next-tab</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>View</guimenu><guimenuitem>Next Tab</guimenuitem></menuchoice> menu item</para>
               <para>Default: <literal>Ctrl+Page_Down</literal></para>
@@ -948,7 +948,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>last_tab</userinput></term>
+            <term><userinput>last-tab</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>View</guimenu><guimenuitem>Last Tab</guimenuitem></menuchoice> menu item</para>
               <para>Default: <literal>Shift+Ctrl+Page_Down</literal></para>
@@ -956,7 +956,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>shift_pane_right</userinput></term>
+            <term><userinput>shift-pane-right</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>View</guimenu><guimenuitem>Shift Pane Right</guimenuitem></menuchoice> menu item</para>
               <para>Default: <literal>Shift+Ctrl+parenleft</literal></para>
@@ -964,7 +964,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>shift_pane_left</userinput></term>
+            <term><userinput>shift-pane-left</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>View</guimenu><guimenuitem>Shift Pane Left</guimenuitem></menuchoice> menu item</para>
               <para>Default: <literal>Shift+Ctrl+parenright</literal></para>
@@ -972,7 +972,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>convert_to_upper_case</userinput></term>
+            <term><userinput>convert-to-upper-case</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Format</guimenu><guimenuitem>Convert To Upper Case</guimenuitem></menuchoice> menu item</para>
               <para>Default: <literal>Ctrl+u</literal></para>
@@ -980,7 +980,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>convert_to_lower_case</userinput></term>
+            <term><userinput>convert-to-lower-case</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Format</guimenu><guimenuitem>Convert To Lower Case</guimenuitem></menuchoice> menu item</para>
               <para>Default: <literal>Shift+Ctrl+U</literal></para>
@@ -988,7 +988,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>sort_lines_in_ascending_order</userinput></term>
+            <term><userinput>sort-lines-in-ascending-order</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Format</guimenu><guimenuitem>Sort Lines In Ascending Order</guimenuitem></menuchoice> menu item</para>
               <para>Default: <literal>Ctrl+y</literal></para>
@@ -996,7 +996,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>sort_lines_in_descending_order</userinput></term>
+            <term><userinput>sort-lines-in-descending-order</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Format</guimenu><guimenuitem>Sort Lines In Descending Order</guimenuitem></menuchoice> menu item</para>
               <para>Default: <literal>Shift+Ctrl+Y</literal></para>
@@ -1004,7 +1004,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>remove_trailing_white_space</userinput></term>
+            <term><userinput>remove-trailing-white-space</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Format</guimenu><guimenuitem>Remove Trailing White Space</guimenuitem></menuchoice> menu item</para>
               <para>Default: <literal>Ctrl+k</literal></para>
@@ -1012,7 +1012,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>convert_tabs_to_spaces</userinput></term>
+            <term><userinput>convert-tabs-to-spaces</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Format</guimenu><guimenuitem>Convert Tabs To Spaces</guimenuitem></menuchoice> menu item</para>
               <para>Default: <literal>Ctrl+b</literal></para>
@@ -1020,7 +1020,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>convert_leading_spaces_to_tabs</userinput></term>
+            <term><userinput>convert-leading-spaces-to-tabs</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Format</guimenu><guimenuitem>Convert Leading Spaces To Tabs</guimenuitem></menuchoice> menu item</para>
               <para>Default: <literal>Shift+Ctrl+B</literal></para>
@@ -1028,7 +1028,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>increase_indenting</userinput></term>
+            <term><userinput>increase-indenting</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Format</guimenu><guimenuitem>Increase Indenting</guimenuitem></menuchoice> menu item</para>
               <para>Default: <literal>Shift+Ctrl+greater</literal></para>
@@ -1036,7 +1036,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>decrease_indenting</userinput></term>
+            <term><userinput>decrease-indenting</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Format</guimenu><guimenuitem>Decrease Indenting</guimenuitem></menuchoice> menu item</para>
               <para>Default: <literal>Shift+Ctrl+less</literal></para>
@@ -1044,7 +1044,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>convert_to_dos</userinput></term>
+            <term><userinput>convert-to-dos</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Format</guimenu><guimenuitem>Convert To DOS Format</guimenuitem></menuchoice> menu item</para>
               <para>Default: <literal>Shift+Ctrl+E</literal></para>
@@ -1052,7 +1052,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>convert_to_mac</userinput></term>
+            <term><userinput>convert-to-mac</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Format</guimenu><guimenuitem>Convert To Mac Format</guimenuitem></menuchoice> menu item</para>
               <para>Default: <literal>Shift+Ctrl+C</literal></para>
@@ -1060,7 +1060,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>convert_to_unix</userinput></term>
+            <term><userinput>convert-to-unix</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Format</guimenu><guimenuitem>Convert To Unix Format</guimenuitem></menuchoice> menu item</para>
               <para>Default: <literal>Ctrl+e</literal></para>
@@ -1068,7 +1068,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>copy_selection_right</userinput></term>
+            <term><userinput>copy-selection-right</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Merge</guimenu><guimenuitem>Copy Selection Right</guimenuitem></menuchoice> menu item</para>
               <para>Default: <literal>Shift+Ctrl+Right</literal></para>
@@ -1076,7 +1076,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>copy_selection_left</userinput></term>
+            <term><userinput>copy-selection-left</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Merge</guimenu><guimenuitem>Copy Selection Left</guimenuitem></menuchoice> menu item</para>
               <para>Default: <literal>Shift+Ctrl+Left</literal></para>
@@ -1084,7 +1084,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>copy_left_into_selection</userinput></term>
+            <term><userinput>copy-left-into-selection</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Merge</guimenu><guimenuitem>Copy Left Into Selection</guimenuitem></menuchoice> menu item</para>
               <para>Default: <literal>Ctrl+Right</literal></para>
@@ -1092,7 +1092,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>copy_right_into_selection</userinput></term>
+            <term><userinput>copy-right-into-selection</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Merge</guimenu><guimenuitem>Copy Right Into Selection</guimenuitem></menuchoice> menu item</para>
               <para>Default: <literal>Ctrl+Left</literal></para>
@@ -1100,7 +1100,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>merge_from_left_then_right</userinput></term>
+            <term><userinput>merge-from-left-then-right</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Merge</guimenu><guimenuitem>Merge From Left Then Right</guimenuitem></menuchoice> menu item</para>
               <para>Default: <literal>Ctrl+m</literal></para>
@@ -1108,7 +1108,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>merge_from_right_then_left</userinput></term>
+            <term><userinput>merge-from-right-then-left</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Merge</guimenu><guimenuitem>Merge From Right Then Left</guimenuitem></menuchoice> menu item</para>
               <para>Default: <literal>Shift+Ctrl+M</literal></para>
@@ -1116,7 +1116,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>help_contents</userinput></term>
+            <term><userinput>help-contents</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Help</guimenu><guimenuitem>Help Contents</guimenuitem></menuchoice> menu item</para>
               <para>Default: <literal>F1</literal></para>
@@ -1137,7 +1137,7 @@
         <title>Line Editing Mode Key Bindings</title>
 
         <para>
-          Use <userinput>line_mode</userinput> for the
+          Use <userinput>line-mode</userinput> for the
           <replaceable>context</replaceable> to define key bindings for line
           editing mode.  The following values are valid for
           <replaceable>action</replaceable>:
@@ -1145,7 +1145,7 @@
 
         <variablelist>
           <varlistentry>
-            <term><userinput>enter_align_mode</userinput></term>
+            <term><userinput>enter-align-mode</userinput></term>
             <listitem>
               <para>enter alignment editing mode</para>
               <para>Default: <literal>space</literal></para>
@@ -1153,7 +1153,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>enter_character_mode</userinput></term>
+            <term><userinput>enter-character-mode</userinput></term>
             <listitem>
               <para>enter character editing mode</para>
               <para>Defaults: <literal>Return</literal>, <literal>KP_Enter</literal></para>
@@ -1161,7 +1161,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>first_line</userinput></term>
+            <term><userinput>first-line</userinput></term>
             <listitem>
               <para>move cursor to the first line</para>
               <para>Defaults: <literal>Home</literal>, <literal>g</literal></para>
@@ -1169,7 +1169,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>extend_first_line</userinput></term>
+            <term><userinput>extend-first-line</userinput></term>
             <listitem>
               <para>move cursor to the first line, extending the selection</para>
               <para>Default: <literal>Shift+Home</literal></para>
@@ -1177,7 +1177,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>last_line</userinput></term>
+            <term><userinput>last-line</userinput></term>
             <listitem>
               <para>move cursor to the last line</para>
               <para>Defaults: <literal>End</literal>, <literal>Shift+G</literal></para>
@@ -1185,7 +1185,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>extend_last_line</userinput></term>
+            <term><userinput>extend-last-line</userinput></term>
             <listitem>
               <para>move cursor to the last line, extending the selection</para>
               <para>Default: <literal>Shift+End</literal></para>
@@ -1201,7 +1201,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>extend_up</userinput></term>
+            <term><userinput>extend-up</userinput></term>
             <listitem>
               <para>move cursor up one line, extending the selection</para>
               <para>Defaults: <literal>Shift+Up</literal>, <literal>Shift+K</literal></para>
@@ -1217,7 +1217,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>extend_down</userinput></term>
+            <term><userinput>extend-down</userinput></term>
             <listitem>
               <para>move cursor down one line, extending the selection</para>
               <para>Defaults: <literal>Shift+Down</literal>, <literal>Shift+J</literal></para>
@@ -1233,7 +1233,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>extend_left</userinput></term>
+            <term><userinput>extend-left</userinput></term>
             <listitem>
               <para>move cursor left one file, extending the selection</para>
               <para>Default: <literal>Shift+Left</literal></para>
@@ -1249,7 +1249,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>extend_right</userinput></term>
+            <term><userinput>extend-right</userinput></term>
             <listitem>
               <para>move cursor right one file, extending the selection</para>
               <para>Default: <literal>Shift+Right</literal></para>
@@ -1257,7 +1257,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>page_up</userinput></term>
+            <term><userinput>page-up</userinput></term>
             <listitem>
               <para>move cursor up one page</para>
               <para>Defaults: <literal>Page_Up</literal>, <literal>Ctrl+u</literal></para>
@@ -1265,7 +1265,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>extend_page_up</userinput></term>
+            <term><userinput>extend-page-up</userinput></term>
             <listitem>
               <para>move cursor up one page, extending the selection</para>
               <para>Defaults: <literal>Shift+Page_Up</literal>, <literal>Shift+Ctrl+u</literal></para>
@@ -1273,7 +1273,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>page_down</userinput></term>
+            <term><userinput>page-down</userinput></term>
             <listitem>
               <para>move cursor down one page</para>
               <para>Defaults: <literal>Page_Down</literal>, <literal>Ctrl+d</literal></para>
@@ -1281,7 +1281,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>extend_page_down</userinput></term>
+            <term><userinput>extend-page-down</userinput></term>
             <listitem>
               <para>move cursor down one page, extending the selection</para>
               <para>Defaults: <literal>Shift+Page_Down</literal>, <literal>Shift+Ctrl+d</literal></para>
@@ -1289,7 +1289,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>delete_text</userinput></term>
+            <term><userinput>delete-text</userinput></term>
             <listitem>
               <para>delete the selected text</para>
               <para>Defaults: <literal>BackSpace</literal>, <literal>Delete</literal>, <literal>x</literal></para>
@@ -1297,7 +1297,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>first_difference</userinput></term>
+            <term><userinput>first-difference</userinput></term>
             <listitem>
               <para>select the first difference</para>
               <para>Defaults: <literal>Ctrl+Home</literal>, <literal>Shift+P</literal></para>
@@ -1305,7 +1305,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>previous_difference</userinput></term>
+            <term><userinput>previous-difference</userinput></term>
             <listitem>
               <para>select the previous difference</para>
               <para>Default: <literal>p</literal></para>
@@ -1313,7 +1313,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>next_difference</userinput></term>
+            <term><userinput>next-difference</userinput></term>
             <listitem>
               <para>select the next difference</para>
               <para>Default: <literal>n</literal></para>
@@ -1321,7 +1321,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>last_difference</userinput></term>
+            <term><userinput>last-difference</userinput></term>
             <listitem>
               <para>select the last difference</para>
               <para>Defaults: <literal>Ctrl+End</literal>, <literal>Shift+N</literal></para>
@@ -1329,7 +1329,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>clear_edits</userinput></term>
+            <term><userinput>clear-edits</userinput></term>
             <listitem>
               <para>clear all edits from the selected lines</para>
               <para>Default: <literal>r</literal></para>
@@ -1337,7 +1337,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>copy_selection_left</userinput></term>
+            <term><userinput>copy-selection-left</userinput></term>
             <listitem>
               <para>copy lines from the selection into the file on the left</para>
               <para>Default: None</para>
@@ -1345,7 +1345,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>copy_selection_right</userinput></term>
+            <term><userinput>copy-selection-right</userinput></term>
             <listitem>
               <para>copy lines from the selection into the file on the right</para>
               <para>Default: None</para>
@@ -1353,7 +1353,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>copy_left_into_selection</userinput></term>
+            <term><userinput>copy-left-into-selection</userinput></term>
             <listitem>
               <para>copy lines from the file on the left into the selection</para>
               <para>Default: <literal>Shift+L</literal></para>
@@ -1361,7 +1361,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>copy_right_into_selection</userinput></term>
+            <term><userinput>copy-right-into-selection</userinput></term>
             <listitem>
               <para>copy lines from the file on the right into the selection</para>
               <para>Default: <literal>Shift+H</literal></para>
@@ -1369,7 +1369,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>merge_from_left_then_right</userinput></term>
+            <term><userinput>merge-from-left-then-right</userinput></term>
             <listitem>
               <para>merge lines from file on the left then file on the right</para>
               <para>Default: <literal>m</literal></para>
@@ -1377,7 +1377,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>merge_from_right_then_left</userinput></term>
+            <term><userinput>merge-from-right-then-left</userinput></term>
             <listitem>
               <para>merge lines from file on the right then file on the left</para>
               <para>Default: <literal>Shift+M</literal></para>
@@ -1398,7 +1398,7 @@
         <title>Alignment Editing Mode Key Bindings</title>
 
         <para>
-          Use <userinput>align_mode</userinput> for the
+          Use <userinput>align-mode</userinput> for the
           <replaceable>context</replaceable> to define key bindings for
           alignment editing mode.  The following values are valid for
           <replaceable>action</replaceable>:
@@ -1406,7 +1406,7 @@
 
         <variablelist>
           <varlistentry>
-            <term><userinput>enter_line_mode</userinput></term>
+            <term><userinput>enter-line-mode</userinput></term>
             <listitem>
               <para>enter line editing mode</para>
               <para>Default: <literal>Escape</literal></para>
@@ -1414,7 +1414,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>enter_character_mode</userinput></term>
+            <term><userinput>enter-character-mode</userinput></term>
             <listitem>
               <para>enter character editing mode</para>
               <para>Defaults: <literal>Return</literal>, <literal>KP_Enter</literal></para>
@@ -1422,7 +1422,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>first_line</userinput></term>
+            <term><userinput>first-line</userinput></term>
             <listitem>
               <para>move cursor to the first line</para>
               <para>Default: <literal>g</literal></para>
@@ -1430,7 +1430,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>last_line</userinput></term>
+            <term><userinput>last-line</userinput></term>
             <listitem>
               <para>move cursor to the last line</para>
               <para>Default: <literal>Shift+G</literal></para>
@@ -1470,7 +1470,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>page_up</userinput></term>
+            <term><userinput>page-up</userinput></term>
             <listitem>
               <para>move cursor up one page</para>
               <para>Defaults: <literal>Page_Up</literal>, <literal>Ctrl+u</literal></para>
@@ -1478,7 +1478,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>page_down</userinput></term>
+            <term><userinput>page-down</userinput></term>
             <listitem>
               <para>move cursor down one page</para>
               <para>Defaults: <literal>Page_Down</literal>, <literal>Ctrl+d</literal></para>
@@ -1499,7 +1499,7 @@
         <title>Character Editing Mode Key Bindings</title>
 
         <para>
-          Use <userinput>character_mode</userinput> for the
+          Use <userinput>character-mode</userinput> for the
           <replaceable>context</replaceable> to define key bindings for
           character editing mode.  The following values are valid for
           <replaceable>action</replaceable>:
@@ -1507,7 +1507,7 @@
 
         <variablelist>
           <varlistentry>
-            <term><userinput>enter_line_mode</userinput></term>
+            <term><userinput>enter-line-mode</userinput></term>
             <listitem>
               <para>enter line editing mode</para>
               <para>Default: <literal>Escape</literal></para>

@@ -146,7 +146,7 @@ class PaneHeader(Gtk.Box):
         self.show_all()
 
     # callback for buttons
-    def button_cb(self, widget, s):
+    def button_cb(self, widget: Gtk.Widget, s: str) -> None:
         self.emit(s)
 
     # creates an appropriate title for the pane header
@@ -779,22 +779,22 @@ class DiffuseWindow(Gtk.ApplicationWindow):
         menu_specs = []
         menu_specs.append([_('_File'), [
             [
-                [_('_Open File...'), self.open_file_cb, None, 'open_file'],
-                [_('Open File In New _Tab...'), self.open_file_in_new_tab_cb, None, 'open_file_in_new_tab'],  # noqa: E501
-                [_('Open _Modified Files...'), self.open_modified_files_cb, None, 'open_modified_files'],  # noqa: E501
-                [_('Open Commi_t...'), self.open_commit_cb, None, 'open_commit'],
-                [_('_Reload File'), self.reload_file_cb, None, 'reload_file'],
+                [_('_Open File...'), self.open_file_cb, None, 'open-file'],
+                [_('Open File In New _Tab...'), self.open_file_in_new_tab_cb, None, 'open-file-in-new-tab'],  # noqa: E501
+                [_('Open _Modified Files...'), self.open_modified_files_cb, None, 'open-modified-files'],  # noqa: E501
+                [_('Open Commi_t...'), self.open_commit_cb, None, 'open-commit'],
+                [_('_Reload File'), self.reload_file_cb, None, 'reload-file'],
             ], [
-                [_('_Save File'), self.save_file_cb, None, 'save_file'],
-                [_('Save File _As...'), self.save_file_as_cb, None, 'save_file_as'],
-                [_('Save A_ll'), self.save_all_cb, None, 'save_all'],
+                [_('_Save File'), self.save_file_cb, None, 'save-file'],
+                [_('Save File _As...'), self.save_file_as_cb, None, 'save-file-as'],
+                [_('Save A_ll'), self.save_all_cb, None, 'save-all'],
             ], [
-                [_('New _2-Way File Merge'), self.new_2_way_file_merge_cb, None, 'new_2_way_file_merge'],  # noqa: E501
-                [_('New _3-Way File Merge'), self.new_3_way_file_merge_cb, None, 'new_3_way_file_merge'],  # noqa: E501
-                [_('New _N-Way File Merge...'), self.new_n_way_file_merge_cb, None, 'new_n_way_file_merge'],  # noqa: E501
+                [_('New _2-Way File Merge'), self.new_2_way_file_merge_cb, None, 'new-2-way-file-merge'],  # noqa: E501
+                [_('New _3-Way File Merge'), self.new_3_way_file_merge_cb, None, 'new-3-way-file-merge'],  # noqa: E501
+                [_('New _N-Way File Merge...'), self.new_n_way_file_merge_cb, None, 'new-n-way-file-merge'],  # noqa: E501
             ], [
-                [_('_Close Tab'), self.close_tab_cb, None, 'close_tab'],
-                [_('_Undo Close Tab'), self.undo_close_tab_cb, None, 'undo_close_tab'],
+                [_('_Close Tab'), self.close_tab_cb, None, 'close-tab'],
+                [_('_Undo Close Tab'), self.undo_close_tab_cb, None, 'undo-close-tab'],
                 [_('_Quit'), self.quit_cb, None, 'quit']
             ]
         ]])
@@ -808,24 +808,24 @@ class DiffuseWindow(Gtk.ApplicationWindow):
                 [_('_Copy'), self.menuitem_cb, 'copy', 'copy'],
                 [_('_Paste'), self.menuitem_cb, 'paste', 'paste'],
             ], [
-                [_('Select _All'), self.menuitem_cb, 'select_all', 'select_all'],
-                [_('C_lear Edits'), self.menuitem_cb, 'clear_edits', 'clear_edits'],
-                [_('_Dismiss All Edits'), self.menuitem_cb, 'dismiss_all_edits', 'dismiss_all_edits'],  # noqa: E501
+                [_('Select _All'), self.menuitem_cb, 'select-all', 'select-all'],
+                [_('C_lear Edits'), self.menuitem_cb, 'clear-edits', 'clear-edits'],
+                [_('_Dismiss All Edits'), self.menuitem_cb, 'dismiss-all-edits', 'dismiss-all-edits'],  # noqa: E501
             ], [
                 [_('_Find...'), self.find_cb, None, 'find'],
-                [_('Find _Next'), self.find_next_cb, None, 'find_next'],
-                [_('Find Pre_vious'), self.find_previous_cb, None, 'find_previous'],
-                [_('_Go To Line...'), self.go_to_line_cb, None, 'go_to_line'],
+                [_('Find _Next'), self.find_next_cb, None, 'find-next'],
+                [_('Find Pre_vious'), self.find_previous_cb, None, 'find-previous'],
+                [_('_Go To Line...'), self.go_to_line_cb, None, 'go-to-line'],
             ], [
                 [_('Pr_eferences...'), self.preferences_cb, None, 'preferences']
             ]
         ]])
 
-        syntax_menu = [[[_('None'), None, '', 'syntax_highlighting']]]
+        syntax_menu = [[[_('None'), None, '', 'syntax-highlighting']]]
         names = theResources.getSyntaxNames()
         variant = GLib.Variant.new_string('')
         self.syntax_action = Gio.SimpleAction.new_stateful(
-            'syntax_highlighting', variant.get_type(), variant
+            'syntax-highlighting', variant.get_type(), variant
         )
         self.syntax_action.connect('change-state', self.syntax_cb)
         self.add_action(self.syntax_action)
@@ -838,7 +838,7 @@ class DiffuseWindow(Gtk.ApplicationWindow):
                         name,
                         None,
                         name,
-                        'syntax_highlighting',
+                        'syntax-highlighting',
                     ]
                 )
             syntax_menu.append(syntax_section)
@@ -847,60 +847,60 @@ class DiffuseWindow(Gtk.ApplicationWindow):
             [
                 [_('_Syntax Highlighting'), None, None, None, syntax_menu]
             ], [
-                [_('Re_align All'), self.menuitem_cb, 'realign_all', 'realign_all'],
+                [_('Re_align All'), self.menuitem_cb, 'realign-all', 'realign-all'],
                 [_('_Isolate'), self.menuitem_cb, 'isolate', 'isolate'],
             ], [
-                [_('_First Difference'), self.menuitem_cb, 'first_difference', 'first_difference'],
-                [_('_Previous Difference'), self.menuitem_cb, 'previous_difference', 'previous_difference'],  # noqa: E501
-                [_('_Next Difference'), self.menuitem_cb, 'next_difference', 'next_difference'],
-                [_('_Last Difference'), self.menuitem_cb, 'last_difference', 'last_difference'],
+                [_('_First Difference'), self.menuitem_cb, 'first-difference', 'first-difference'],
+                [_('_Previous Difference'), self.menuitem_cb, 'previous-difference', 'previous-difference'],  # noqa: E501
+                [_('_Next Difference'), self.menuitem_cb, 'next-difference', 'next-difference'],
+                [_('_Last Difference'), self.menuitem_cb, 'last-difference', 'last-difference'],
             ], [
-                [_('Fir_st Tab'), self.first_tab_cb, None, 'first_tab'],
-                [_('Pre_vious Tab'), self.previous_tab_cb, None, 'previous_tab'],
-                [_('Next _Tab'), self.next_tab_cb, None, 'next_tab'],
-                [_('Las_t Tab'), self.last_tab_cb, None, 'last_tab'],
+                [_('Fir_st Tab'), self.first_tab_cb, None, 'first-tab'],
+                [_('Pre_vious Tab'), self.previous_tab_cb, None, 'previous-tab'],
+                [_('Next _Tab'), self.next_tab_cb, None, 'next-tab'],
+                [_('Las_t Tab'), self.last_tab_cb, None, 'last-tab'],
             ], [
-                [_('Shift Pane _Right'), self.menuitem_cb, 'shift_pane_right', 'shift_pane_right'],
-                [_('Shift Pane _Left'), self.menuitem_cb, 'shift_pane_left', 'shift_pane_left']
+                [_('Shift Pane _Right'), self.menuitem_cb, 'shift-pane-right', 'shift-pane-right'],
+                [_('Shift Pane _Left'), self.menuitem_cb, 'shift-pane-left', 'shift-pane-left']
             ]
         ]])
 
         menu_specs.append([_('F_ormat'), [
             [
-                [_('Convert To _Upper Case'), self.menuitem_cb, 'convert_to_upper_case', 'convert_to_upper_case'],  # noqa: E501
-                [_('Convert To _Lower Case'), self.menuitem_cb, 'convert_to_lower_case', 'convert_to_lower_case'],  # noqa: E501
+                [_('Convert To _Upper Case'), self.menuitem_cb, 'convert-to-upper-case', 'convert-to-upper-case'],  # noqa: E501
+                [_('Convert To _Lower Case'), self.menuitem_cb, 'convert-to-lower-case', 'convert-to-lower-case'],  # noqa: E501
             ], [
-                [_('Sort Lines In _Ascending Order'), self.menuitem_cb, 'sort_lines_in_ascending_order', 'sort_lines_in_ascending_order'],  # noqa: E501
-                [_('Sort Lines In D_escending Order'), self.menuitem_cb, 'sort_lines_in_descending_order', 'sort_lines_in_descending_order'],  # noqa: E501
+                [_('Sort Lines In _Ascending Order'), self.menuitem_cb, 'sort-lines-in-ascending-order', 'sort-lines-in-ascending-order'],  # noqa: E501
+                [_('Sort Lines In D_escending Order'), self.menuitem_cb, 'sort-lines-in-descending-order', 'sort-lines-in-descending-order'],  # noqa: E501
             ], [
-                [_('Remove Trailing _White Space'), self.menuitem_cb, 'remove_trailing_white_space', 'remove_trailing_white_space'],  # noqa: E501
-                [_('Convert Tabs To _Spaces'), self.menuitem_cb, 'convert_tabs_to_spaces', 'convert_tabs_to_spaces'],  # noqa: E501
-                [_('Convert Leading Spaces To _Tabs'), self.menuitem_cb, 'convert_leading_spaces_to_tabs', 'convert_leading_spaces_to_tabs'],  # noqa: E501
+                [_('Remove Trailing _White Space'), self.menuitem_cb, 'remove-trailing-white-space', 'remove-trailing-white-space'],  # noqa: E501
+                [_('Convert Tabs To _Spaces'), self.menuitem_cb, 'convert-tabs-to-spaces', 'convert-tabs-to-spaces'],  # noqa: E501
+                [_('Convert Leading Spaces To _Tabs'), self.menuitem_cb, 'convert-leading-spaces-to-tabs', 'convert-leading-spaces-to-tabs'],  # noqa: E501
             ], [
-                [_('_Increase Indenting'), self.menuitem_cb, 'increase_indenting', 'increase_indenting'],  # noqa: E501
-                [_('De_crease Indenting'), self.menuitem_cb, 'decrease_indenting', 'decrease_indenting'],  # noqa: E501
+                [_('_Increase Indenting'), self.menuitem_cb, 'increase-indenting', 'increase-indenting'],  # noqa: E501
+                [_('De_crease Indenting'), self.menuitem_cb, 'decrease-indenting', 'decrease-indenting'],  # noqa: E501
             ], [
-                [_('Convert To _DOS Format'), self.menuitem_cb, 'convert_to_dos', 'convert_to_dos'],
-                [_('Convert To _Mac Format'), self.menuitem_cb, 'convert_to_mac', 'convert_to_mac'],
-                [_('Convert To Uni_x Format'), self.menuitem_cb, 'convert_to_unix', 'convert_to_unix']  # noqa: E501
+                [_('Convert To _DOS Format'), self.menuitem_cb, 'convert-to-dos', 'convert-to-dos'],
+                [_('Convert To _Mac Format'), self.menuitem_cb, 'convert-to-mac', 'convert-to-mac'],
+                [_('Convert To Uni_x Format'), self.menuitem_cb, 'convert-to-unix', 'convert-to-unix']  # noqa: E501
             ]
         ]])
 
         menu_specs.append([_('_Merge'), [
             [
-                [_('Copy Selection _Right'), self.menuitem_cb, 'copy_selection_right', 'copy_selection_right'],  # noqa: E501
-                [_('Copy Selection _Left'), self.menuitem_cb, 'copy_selection_left', 'copy_selection_left'],  # noqa: E501
+                [_('Copy Selection _Right'), self.menuitem_cb, 'copy-selection-right', 'copy-selection-right'],  # noqa: E501
+                [_('Copy Selection _Left'), self.menuitem_cb, 'copy-selection-left', 'copy-selection-left'],  # noqa: E501
             ], [
-                [_('Copy Left _Into Selection'), self.menuitem_cb, 'copy_left_into_selection', 'copy_left_into_selection'],  # noqa: E501
-                [_('Copy Right I_nto Selection'), self.menuitem_cb, 'copy_right_into_selection', 'copy_right_into_selection'],  # noqa: E501
-                [_('_Merge From Left Then Right'), self.menuitem_cb, 'merge_from_left_then_right', 'merge_from_left_then_right'],  # noqa: E501
-                [_('M_erge From Right Then Left'), self.menuitem_cb, 'merge_from_right_then_left', 'merge_from_right_then_left']  # noqa: E501
+                [_('Copy Left _Into Selection'), self.menuitem_cb, 'copy-left-into-selection', 'copy-left-into-selection'],  # noqa: E501
+                [_('Copy Right I_nto Selection'), self.menuitem_cb, 'copy-right-into-selection', 'copy-right-into-selection'],  # noqa: E501
+                [_('_Merge From Left Then Right'), self.menuitem_cb, 'merge-from-left-then-right', 'merge-from-left-then-right'],  # noqa: E501
+                [_('M_erge From Right Then Left'), self.menuitem_cb, 'merge-from-right-then-left', 'merge-from-right-then-left']  # noqa: E501
             ]
         ]])
 
         menu_specs.append([_('_Help'), [
             [
-                [_('_Help Contents...'), self.help_contents_cb, None, 'help_contents'],
+                [_('_Help Contents...'), self.help_contents_cb, None, 'help-contents'],
             ], [
                 [_('_About %s...') % (constants.APP_NAME, ), self.about_cb, None, 'about']
             ]
@@ -920,25 +920,25 @@ class DiffuseWindow(Gtk.ApplicationWindow):
             [DIFFUSE_STOCK_NEW_2WAY_MERGE, self.new_2_way_file_merge_cb, None, _('New 2-Way File Merge')],  # noqa: E501
             [DIFFUSE_STOCK_NEW_3WAY_MERGE, self.new_3_way_file_merge_cb, None, _('New 3-Way File Merge')],  # noqa: E501
             [],
-            [Gtk.STOCK_EXECUTE, self.button_cb, 'realign_all', _('Realign All')],
-            [Gtk.STOCK_GOTO_TOP, self.button_cb, 'first_difference', _('First Difference')],
-            [Gtk.STOCK_GO_UP, self.button_cb, 'previous_difference', _('Previous Difference')],
-            [Gtk.STOCK_GO_DOWN, self.button_cb, 'next_difference', _('Next Difference')],
-            [Gtk.STOCK_GOTO_BOTTOM, self.button_cb, 'last_difference', _('Last Difference')],
+            [Gtk.STOCK_EXECUTE, self.button_cb, 'realign-all', _('Realign All')],
+            [Gtk.STOCK_GOTO_TOP, self.button_cb, 'first-difference', _('First Difference')],
+            [Gtk.STOCK_GO_UP, self.button_cb, 'previous-difference', _('Previous Difference')],
+            [Gtk.STOCK_GO_DOWN, self.button_cb, 'next-difference', _('Next Difference')],
+            [Gtk.STOCK_GOTO_BOTTOM, self.button_cb, 'last-difference', _('Last Difference')],
             [],
-            [Gtk.STOCK_GOTO_LAST, self.button_cb, 'copy_selection_right', _('Copy Selection Right')],  # noqa: E501
-            [Gtk.STOCK_GOTO_FIRST, self.button_cb, 'copy_selection_left', _('Copy Selection Left')],
-            [Gtk.STOCK_GO_FORWARD, self.button_cb, 'copy_left_into_selection', _('Copy Left Into Selection')],  # noqa: E501
-            [Gtk.STOCK_GO_BACK, self.button_cb, 'copy_right_into_selection', _('Copy Right Into Selection')],  # noqa: E501
-            [DIFFUSE_STOCK_LEFT_RIGHT, self.button_cb, 'merge_from_left_then_right', _('Merge From Left Then Right')],  # noqa: E501
-            [DIFFUSE_STOCK_RIGHT_LEFT, self.button_cb, 'merge_from_right_then_left', _('Merge From Right Then Left')],  # noqa: E501
+            [Gtk.STOCK_GOTO_LAST, self.button_cb, 'copy-selection-right', _('Copy Selection Right')],  # noqa: E501
+            [Gtk.STOCK_GOTO_FIRST, self.button_cb, 'copy-selection-left', _('Copy Selection Left')],
+            [Gtk.STOCK_GO_FORWARD, self.button_cb, 'copy-left-into-selection', _('Copy Left Into Selection')],  # noqa: E501
+            [Gtk.STOCK_GO_BACK, self.button_cb, 'copy-right-into-selection', _('Copy Right Into Selection')],  # noqa: E501
+            [DIFFUSE_STOCK_LEFT_RIGHT, self.button_cb, 'merge-from-left-then-right', _('Merge From Left Then Right')],  # noqa: E501
+            [DIFFUSE_STOCK_RIGHT_LEFT, self.button_cb, 'merge-from-right-then-left', _('Merge From Right Then Left')],  # noqa: E501
             [],
             [Gtk.STOCK_UNDO, self.button_cb, 'undo', _('Undo')],
             [Gtk.STOCK_REDO, self.button_cb, 'redo', _('Redo')],
             [Gtk.STOCK_CUT, self.button_cb, 'cut', _('Cut')],
             [Gtk.STOCK_COPY, self.button_cb, 'copy', _('Copy')],
             [Gtk.STOCK_PASTE, self.button_cb, 'paste', _('Paste')],
-            [Gtk.STOCK_CLEAR, self.button_cb, 'clear_edits', _('Clear Edits')]
+            [Gtk.STOCK_CLEAR, self.button_cb, 'clear-edits', _('Clear Edits')]
         ]
         _append_buttons(hbox, Gtk.IconSize.LARGE_TOOLBAR, button_specs)
         # avoid the button bar from dictating the minimum window size
@@ -966,28 +966,40 @@ class DiffuseWindow(Gtk.ApplicationWindow):
         menu = Gio.Menu.new()
         for section in sections:
             section_menu = Gio.Menu.new()
-            for label, cb, cb_data, accel, *submenu in section:
+            for label, cb, cb_data, action_name, *submenu in section:
                 if submenu:
                     (submenu,) = submenu
                     section_menu.append_submenu(label, self._create_menu(submenu))
                 else:
+                    # Convert cb_data to GLib.Variant
                     if cb_data is not None:
                         cb_data = GLib.Variant.new_string(cb_data)
-                    gtk_compliant_accel = accel.replace('_', '-')
+
+                    # Create action (if callback is not null, which shouldn't happen)
                     if cb is not None:
                         cb_data_type = cb_data and cb_data.get_type()
-                        action = Gio.SimpleAction.new(gtk_compliant_accel, cb_data_type)
+                        action = Gio.SimpleAction.new(action_name, cb_data_type)
                         action.connect('activate', cb)
                         self.add_action(action)
+
+                    # Create menu item
                     item = Gio.MenuItem.new(label)
-                    item.set_action_and_target_value('win.' + gtk_compliant_accel, cb_data)
-                    key_binding = theResources.getKeyBindings('menu', accel)
+
+                    # Attach action
+                    win_action_name = 'win.' + action_name
+                    item.set_action_and_target_value(win_action_name, cb_data)
+
+                    # Bind accelerator (in any)
+                    key_binding = theResources.getKeyBindings('menu', action_name)
                     if len(key_binding) > 0:
-                        action_name = 'win.' + gtk_compliant_accel
-                        detailed_action_name = Gio.Action.print_detailed_name(action_name, cb_data)
+                        detailed_action_name = Gio.Action.print_detailed_name(win_action_name, cb_data)  # noqa: 501
                         accels = [Gtk.accelerator_name(*key_binding[0])]
                         self.get_application().set_accels_for_action(detailed_action_name, accels)
+
+                    # Append item to menu
                     section_menu.append_item(item)
+
+            # Append section to menu
             menu.append_section(None, section_menu)
         return menu
 

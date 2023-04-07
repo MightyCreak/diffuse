@@ -231,53 +231,53 @@ class FileDiffViewerBase(Gtk.Grid):
 
         # keybindings
         self._line_mode_actions: Dict[str, Callable] = {
-            'enter_align_mode': self._line_mode_enter_align_mode,
-            'enter_character_mode': self.setCharMode,
-            'first_line': self._first_line,
-            'extend_first_line': self._extend_first_line,
-            'last_line': self._last_line,
-            'extend_last_line': self._extend_last_line,
+            'enter-align-mode': self._line_mode_enter_align_mode,
+            'enter-character-mode': self.setCharMode,
+            'first-line': self._first_line,
+            'extend-first-line': self._extend_first_line,
+            'last-line': self._last_line,
+            'extend-last-line': self._extend_last_line,
             'up': self._line_mode_up,
-            'extend_up': self._line_mode_extend_up,
+            'extend-up': self._line_mode_extend_up,
             'down': self._line_mode_down,
-            'extend_down': self._line_mode_extend_down,
+            'extend-down': self._line_mode_extend_down,
             'left': self._line_mode_left,
-            'extend_left': self._line_mode_extend_left,
+            'extend-left': self._line_mode_extend_left,
             'right': self._line_mode_right,
-            'extend_right': self._line_mode_extend_right,
-            'page_up': self._line_mode_page_up,
-            'extend_page_up': self._line_mode_extend_page_up,
-            'page_down': self._line_mode_page_down,
-            'extend_page_down': self._line_mode_extend_page_down,
-            'delete_text': self._delete_text,
-            'clear_edits': self.clear_edits,
+            'extend-right': self._line_mode_extend_right,
+            'page-up': self._line_mode_page_up,
+            'extend-page-up': self._line_mode_extend_page_up,
+            'page-down': self._line_mode_page_down,
+            'extend-page-down': self._line_mode_extend_page_down,
+            'delete-text': self._delete_text,
+            'clear-edits': self.clear_edits,
             'isolate': self.isolate,
-            'first_difference': self.first_difference,
-            'previous_difference': self.previous_difference,
-            'next_difference': self.next_difference,
-            'last_difference': self.last_difference,
-            'copy_selection_right': self.copy_selection_right,
-            'copy_selection_left': self.copy_selection_left,
-            'copy_left_into_selection': self.copy_left_into_selection,
-            'copy_right_into_selection': self.copy_right_into_selection,
-            'merge_from_left_then_right': self.merge_from_left_then_right,
-            'merge_from_right_then_left': self.merge_from_right_then_left
+            'first-difference': self.first_difference,
+            'previous-difference': self.previous_difference,
+            'next-difference': self.next_difference,
+            'last-difference': self.last_difference,
+            'copy-selection-right': self.copy_selection_right,
+            'copy-selection-left': self.copy_selection_left,
+            'copy-left-into-selection': self.copy_left_into_selection,
+            'copy-right-into-selection': self.copy_right_into_selection,
+            'merge-from-left-then-right': self.merge_from_left_then_right,
+            'merge-from-right-then-left': self.merge_from_right_then_left
         }
         self._align_mode_actions: Dict[str, Callable] = {
-            'enter_line_mode': self._align_mode_enter_line_mode,
-            'enter_character_mode': self.setCharMode,
-            'first_line': self._first_line,
-            'last_line': self._last_line,
+            'enter-line-mode': self._align_mode_enter_line_mode,
+            'enter-character-mode': self.setCharMode,
+            'first-line': self._first_line,
+            'last-line': self._last_line,
             'up': self._line_mode_up,
             'down': self._line_mode_down,
             'left': self._line_mode_left,
             'right': self._line_mode_right,
-            'page_up': self._line_mode_page_up,
-            'page_down': self._line_mode_page_down,
+            'page-up': self._line_mode_page_up,
+            'page-down': self._line_mode_page_down,
             'align': self._align_text
         }
         self._character_mode_actions: Dict[str, Callable] = {
-            'enter_line_mode': self.setLineMode
+            'enter-line-mode': self.setLineMode
         }
         self._button_actions: Dict[str, Callable] = {
             'undo': self.undo,
@@ -285,35 +285,35 @@ class FileDiffViewerBase(Gtk.Grid):
             'cut': self.cut,
             'copy': self.copy,
             'paste': self.paste,
-            'select_all': self.select_all,
-            'clear_edits': self.clear_edits,
-            'dismiss_all_edits': self.dismiss_all_edits,
-            'realign_all': self.realign_all,
+            'select-all': self.select_all,
+            'clear-edits': self.clear_edits,
+            'dismiss-all-edits': self.dismiss_all_edits,
+            'realign-all': self.realign_all,
             'isolate': self.isolate,
-            'first_difference': self.first_difference,
-            'previous_difference': self.previous_difference,
-            'next_difference': self.next_difference,
-            'last_difference': self.last_difference,
-            'shift_pane_right': self.shift_pane_right,
-            'shift_pane_left': self.shift_pane_left,
-            'convert_to_upper_case': self.convert_to_upper_case,
-            'convert_to_lower_case': self.convert_to_lower_case,
-            'sort_lines_in_ascending_order': self.sort_lines_in_ascending_order,
-            'sort_lines_in_descending_order': self.sort_lines_in_descending_order,
-            'remove_trailing_white_space': self.remove_trailing_white_space,
-            'convert_tabs_to_spaces': self.convert_tabs_to_spaces,
-            'convert_leading_spaces_to_tabs': self.convert_leading_spaces_to_tabs,
-            'increase_indenting': self.increase_indenting,
-            'decrease_indenting': self.decrease_indenting,
-            'convert_to_dos': self.convert_to_dos,
-            'convert_to_mac': self.convert_to_mac,
-            'convert_to_unix': self.convert_to_unix,
-            'copy_selection_right': self.copy_selection_right,
-            'copy_selection_left': self.copy_selection_left,
-            'copy_left_into_selection': self.copy_left_into_selection,
-            'copy_right_into_selection': self.copy_right_into_selection,
-            'merge_from_left_then_right': self.merge_from_left_then_right,
-            'merge_from_right_then_left': self.merge_from_right_then_left
+            'first-difference': self.first_difference,
+            'previous-difference': self.previous_difference,
+            'next-difference': self.next_difference,
+            'last-difference': self.last_difference,
+            'shift-pane-right': self.shift_pane_right,
+            'shift-pane-left': self.shift_pane_left,
+            'convert-to-upper-case': self.convert_to_upper_case,
+            'convert-to-lower-case': self.convert_to_lower_case,
+            'sort-lines-in-ascending-order': self.sort_lines_in_ascending_order,
+            'sort-lines-in-descending-order': self.sort_lines_in_descending_order,
+            'remove-trailing-white-space': self.remove_trailing_white_space,
+            'convert-tabs-to-spaces': self.convert_tabs_to_spaces,
+            'convert-leading-spaces-to-tabs': self.convert_leading_spaces_to_tabs,
+            'increase-indenting': self.increase_indenting,
+            'decrease-indenting': self.decrease_indenting,
+            'convert-to-dos': self.convert_to_dos,
+            'convert-to-mac': self.convert_to_mac,
+            'convert-to-unix': self.convert_to_unix,
+            'copy-selection-right': self.copy_selection_right,
+            'copy-selection-left': self.copy_selection_left,
+            'copy-left-into-selection': self.copy_left_into_selection,
+            'copy-right-into-selection': self.copy_right_into_selection,
+            'merge-from-left-then-right': self.merge_from_left_then_right,
+            'merge-from-right-then-left': self.merge_from_right_then_left
         }
 
         # create panes
@@ -1862,8 +1862,8 @@ class FileDiffViewerBase(Gtk.Grid):
                 [_('Copy'), self.button_cb, 'copy', Gtk.STOCK_COPY, can_select],
                 [_('Paste'), self.button_cb, 'paste', Gtk.STOCK_PASTE, can_select],
                 [],
-                [_('Select All'), self.button_cb, 'select_all', None, can_select],
-                [_('Clear Edits'), self.button_cb, 'clear_edits', Gtk.STOCK_CLEAR, can_isolate],  # noqa: E501
+                [_('Select All'), self.button_cb, 'select-all', None, can_select],
+                [_('Clear Edits'), self.button_cb, 'clear-edits', Gtk.STOCK_CLEAR, can_isolate],  # noqa: E501
                 [],
                 [_('Swap with Selected Pane'), self.swap_panes_cb, f, None, can_swap]
             ])
@@ -2518,7 +2518,7 @@ class FileDiffViewerBase(Gtk.Grid):
     def getMaxCharPosition(self, i):
         return utils.len_minus_line_ending(self.getLineText(self.current_pane, i))
 
-    # 'enter_align_mode' keybinding action
+    # 'enter-align-mode' keybinding action
     def _line_mode_enter_align_mode(self):
         if self.mode == EditMode.CHAR:
             self._im_focus_out()
@@ -2531,20 +2531,20 @@ class FileDiffViewerBase(Gtk.Grid):
         self.emit('mode_changed')
         self.dareas[self.align_pane].queue_draw()
 
-    # 'first_line' keybinding action
+    # 'first-line' keybinding action
     def _first_line(self):
         self.setCurrentLine(self.current_pane, 0)
 
-    # 'extend_first_line' keybinding action
+    # 'extend-first-line' keybinding action
     def _extend_first_line(self):
         self.setCurrentLine(self.current_pane, 0, self.selection_line)
 
-    # 'last_line' keybinding action
+    # 'last-line' keybinding action
     def _last_line(self):
         f = self.current_pane
         self.setCurrentLine(f, len(self.panes[f].lines))
 
-    # 'extend_last_line' keybinding action
+    # 'extend-last-line' keybinding action
     def _extend_last_line(self):
         f = self.current_pane
         self.setCurrentLine(f, len(self.panes[f].lines), self.selection_line)
@@ -2553,7 +2553,7 @@ class FileDiffViewerBase(Gtk.Grid):
     def _line_mode_up(self, selection=None):
         self.setCurrentLine(self.current_pane, self.current_line - 1, selection)
 
-    # 'extend_up' keybinding action
+    # 'extend-up' keybinding action
     def _line_mode_extend_up(self):
         self._line_mode_up(self.selection_line)
 
@@ -2561,7 +2561,7 @@ class FileDiffViewerBase(Gtk.Grid):
     def _line_mode_down(self, selection=None):
         self.setCurrentLine(self.current_pane, self.current_line + 1, selection)
 
-    # 'extend_down' keybinding action
+    # 'extend-down' keybinding action
     def _line_mode_extend_down(self):
         self._line_mode_down(self.selection_line)
 
@@ -2569,7 +2569,7 @@ class FileDiffViewerBase(Gtk.Grid):
     def _line_mode_left(self, selection=None):
         self.setCurrentLine(self.current_pane - 1, self.current_line, selection)
 
-    # 'extend_left' keybinding action
+    # 'extend-left' keybinding action
     def _line_mode_extend_left(self):
         self._line_mode_left(self.selection_line)
 
@@ -2577,33 +2577,33 @@ class FileDiffViewerBase(Gtk.Grid):
     def _line_mode_right(self, selection=None):
         self.setCurrentLine(self.current_pane + 1, self.current_line, selection)
 
-    # 'extend_right' keybinding action
+    # 'extend-right' keybinding action
     def _line_mode_extend_right(self):
         self._line_mode_right(self.selection_line)
 
-    # 'page_up' keybinding action
+    # 'page-up' keybinding action
     def _line_mode_page_up(self, selection=None):
         delta = int(self.vadj.get_page_size() // self.font_height)
         self.setCurrentLine(self.current_pane, self.current_line - delta, selection)
 
-    # 'extend_page_up' keybinding action
+    # 'extend-page-up' keybinding action
     def _line_mode_extend_page_up(self) -> None:
         self._line_mode_page_up(self.selection_line)
 
-    # 'page_down' keybinding action
+    # 'page-down' keybinding action
     def _line_mode_page_down(self, selection=None):
         delta = int(self.vadj.get_page_size() // self.font_height)
         self.setCurrentLine(self.current_pane, self.current_line + delta, selection)
 
-    # 'extend_page_down' keybinding action
+    # 'extend-page-down' keybinding action
     def _line_mode_extend_page_down(self) -> None:
         self._line_mode_page_down(self.selection_line)
 
-    # 'delete_text' keybinding action
+    # 'delete-text' keybinding action
     def _delete_text(self) -> None:
         self.replaceText('')
 
-    # 'enter_line_mode' keybinding action
+    # 'enter-line-mode' keybinding action
     def _align_mode_enter_line_mode(self) -> None:
         self.selection_line = self.current_line
         self.setLineMode()
@@ -2991,7 +2991,7 @@ class FileDiffViewerBase(Gtk.Grid):
             self.receive_clipboard_text_cb,
             None)
 
-    # 'clear_edits' action
+    # 'clear-edits' action
     def clear_edits(self) -> None:
         self.setLineMode()
         self.recordEditMode()
@@ -3010,7 +3010,7 @@ class FileDiffViewerBase(Gtk.Grid):
                     self.instanceLine(f, i, True)
         self.recordEditMode()
 
-    # 'dismiss_all_edits' action
+    # 'dismiss-all-edits' action
     def dismiss_all_edits(self) -> None:
         if self.mode in (EditMode.LINE, EditMode.CHAR):
             self.bakeEdits(self.current_pane)
@@ -3108,7 +3108,7 @@ class FileDiffViewerBase(Gtk.Grid):
         self.diffmap_cache = None
         self.diffmap.queue_draw()
 
-    # 'realign_all' action
+    # 'realign-all' action
     def realign_all(self) -> None:
         self.setLineMode()
         f = self.current_pane
@@ -3243,24 +3243,24 @@ class FileDiffViewerBase(Gtk.Grid):
             self.centre_view_about_y((start + i) * self.font_height / 2)
             self.setCurrentLine(f, start, i)
 
-    # 'first_difference' action
+    # 'first-difference' action
     def first_difference(self) -> None:
         self.setLineMode()
         self.go_to_difference(0, 1)
 
-    # 'previous_difference' action
+    # 'previous-difference' action
     def previous_difference(self) -> None:
         self.setLineMode()
         i = min(self.current_line, self.selection_line) - 1
         self.go_to_difference(i, -1)
 
-    # 'next_difference' action
+    # 'next-difference' action
     def next_difference(self) -> None:
         self.setLineMode()
         i = max(self.current_line, self.selection_line) + 1
         self.go_to_difference(i, 1)
 
-    # 'last_difference' action
+    # 'last-difference' action
     def last_difference(self) -> None:
         self.setLineMode()
         i = len(self.panes[self.current_pane].lines)
@@ -3315,17 +3315,17 @@ class FileDiffViewerBase(Gtk.Grid):
         self.swap_panes(data, self.current_pane)
         self.closeUndoBlock()
 
-    # 'shift_pane_left' action
+    # 'shift-pane-left' action
     def shift_pane_left(self) -> None:
         f = self.current_pane
         self.swap_panes(f - 1, f)
 
-    # 'shift_pane_right' action
+    # 'shift-pane-right' action
     def shift_pane_right(self) -> None:
         f = self.current_pane
         self.swap_panes(f + 1, f)
 
-    # 'convert_to_upper_case' action
+    # 'convert-to-upper-case' action
     def _convert_case(self, to_upper: bool) -> None:
         # find range of characters to operate upon
         if self.mode == EditMode.CHAR:
@@ -3366,11 +3366,11 @@ class FileDiffViewerBase(Gtk.Grid):
                 if s != text:
                     self.updateText(f, i, s)
 
-    # 'convert_to_upper_case' action
+    # 'convert-to-upper-case' action
     def convert_to_upper_case(self) -> None:
         self._convert_case(True)
 
-    # 'convert_to_lower_case' action
+    # 'convert-to-lower-case' action
     def convert_to_lower_case(self) -> None:
         self._convert_case(False)
 
@@ -3402,15 +3402,15 @@ class FileDiffViewerBase(Gtk.Grid):
             self.setCurrentChar(self.current_line, 0, self.selection_line, 0)
         self.recordEditMode()
 
-    # 'sort_lines_in_ascending_order' action
+    # 'sort-lines-in-ascending-order' action
     def sort_lines_in_ascending_order(self) -> None:
         self._sort_lines(False)
 
-    # 'sort_lines_in_descending_order' action
+    # 'sort-lines-in-descending-order' action
     def sort_lines_in_descending_order(self) -> None:
         self._sort_lines(True)
 
-    # 'remove_trailing_white_space' action
+    # 'remove-trailing-white-space' action
     def remove_trailing_white_space(self) -> None:
         if self.mode != EditMode.CHAR:
             self.setLineMode()
@@ -3436,7 +3436,7 @@ class FileDiffViewerBase(Gtk.Grid):
             self.setCurrentChar(self.current_line, 0, self.selection_line, 0)
         self.recordEditMode()
 
-    # 'convert_tabs_to_spaces' action
+    # 'convert-tabs-to-spaces' action
     def convert_tabs_to_spaces(self) -> None:
         # find range of characters to operate upon
         if self.mode == EditMode.CHAR:
@@ -3489,7 +3489,7 @@ class FileDiffViewerBase(Gtk.Grid):
             self.setCurrentChar(end, j1, start, j0)
         self.recordEditMode()
 
-    # 'convert_leading_spaces_to_tabs' action
+    # 'convert-leading-spaces-to-tabs' action
     def convert_leading_spaces_to_tabs(self) -> None:
         if self.mode != EditMode.CHAR:
             self.setLineMode()
@@ -3552,11 +3552,11 @@ class FileDiffViewerBase(Gtk.Grid):
             self.setCurrentChar(self.current_line, 0, self.selection_line, 0)
         self.recordEditMode()
 
-    # 'increase_indenting' action
+    # 'increase-indenting' action
     def increase_indenting(self) -> None:
         self._adjust_indenting(1)
 
-    # 'decrease_indenting' action
+    # 'decrease-indenting' action
     def decrease_indenting(self) -> None:
         self._adjust_indenting(-1)
 
@@ -3572,15 +3572,15 @@ class FileDiffViewerBase(Gtk.Grid):
                 self.updateText(f, i, s)
         self.setFormat(f, fmt)
 
-    # 'convert_to_dos' action
+    # 'convert-to-dos' action
     def convert_to_dos(self) -> None:
         self.convert_format(LineEnding.DOS_FORMAT)
 
-    # 'convert_to_mac' action
+    # 'convert-to-mac' action
     def convert_to_mac(self) -> None:
         self.convert_format(LineEnding.MAC_FORMAT)
 
-    # 'convert_to_unix' action
+    # 'convert-to-unix' action
     def convert_to_unix(self) -> None:
         self.convert_format(LineEnding.UNIX_FORMAT)
 
@@ -3614,25 +3614,25 @@ class FileDiffViewerBase(Gtk.Grid):
         self.merge_lines(data, self.current_pane)
         self.closeUndoBlock()
 
-    # 'copy_selection_right' action
+    # 'copy-selection-right' action
     def copy_selection_right(self) -> None:
         f = self.current_pane + 1
         if 0 < f < len(self.panes):
             self.merge_lines(f, f - 1)
 
-    # 'copy_selection_left' action
+    # 'copy-selection-left' action
     def copy_selection_left(self) -> None:
         f = self.current_pane - 1
         if f >= 0 and f + 1 < len(self.panes):
             self.merge_lines(f, f + 1)
 
-    # 'copy_left_into_selection' action
+    # 'copy-left-into-selection' action
     def copy_left_into_selection(self) -> None:
         f = self.current_pane
         if 0 < f < len(self.panes):
             self.merge_lines(f, f - 1)
 
-    # 'copy_right_into_selection' action
+    # 'copy-right-into-selection' action
     def copy_right_into_selection(self) -> None:
         f = self.current_pane
         if f >= 0 and f + 1 < len(self.panes):
@@ -3720,11 +3720,11 @@ class FileDiffViewerBase(Gtk.Grid):
             self.setCurrentLine(f, end, start)
         self.recordEditMode()
 
-    # 'merge_from_left_then_right' keybinding action
+    # 'merge-from-left-then-right' keybinding action
     def merge_from_left_then_right(self):
         self._mergeBoth(False)
 
-    # 'merge_from_right_then_left' keybinding action
+    # 'merge-from-right-then-left' keybinding action
     def merge_from_right_then_left(self):
         self._mergeBoth(True)
 

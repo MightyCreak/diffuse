@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Add link to the Matrix room in the README (@MightyCreak)
 
+### Changed
+
+- Replace `_` by `-` in the action names to be compatible with GTK action names (@MightyCreak)
+
 ## 0.8.1 - 2023-04-07
 
 ### Changed
