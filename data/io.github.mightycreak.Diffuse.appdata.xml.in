@@ -23,11 +23,11 @@
 
   <screenshots>
     <screenshot type="default">
-      <image type="source">https://github.com/MightyCreak/diffuse/raw/main/docs/images/screenshot_v0.7.7_main_window.png</image>
+      <image type="source">https://raw.githubusercontent.com/MightyCreak/diffuse/main/docs/images/screenshot_v0.7.7_main_window.png</image>
       <caption>Main window</caption>
     </screenshot>
     <screenshot>
-      <image type="source">https://github.com/MightyCreak/diffuse/raw/main/docs/images/screenshot_v0.7.7_about_window.png</image>
+      <image type="source">https://raw.githubusercontent.com/MightyCreak/diffuse/main/docs/images/screenshot_v0.7.7_about_window.png</image>
       <caption>About window</caption>
     </screenshot>
   </screenshots>
@@ -37,6 +37,26 @@
   <update_contact>romain@foolstep.com</update_contact>
 
   <releases>
+    <release version="0.8.1" date="2023-04-07">
+      <description>
+        <p>
+          Fix for the shortcuts that weren't working anymore due to migration to Gtk.Application.
+        </p>
+        <p>Changed:</p>
+        <ul>
+          <li>Remove log function calls from the stack trace when calling `logDebug` or `logError` (@MightyCreak)</li>
+          <li>
+            Log functions used to log only on stderr, now `logDebug` logs on stdout and `logError`
+            logs on stderr (@MightyCreak)
+          </li>
+          <li>Change Git default branch from `master` to `main` (@MightyCreak)</li>
+        </ul>
+        <p>Fixed:</p>
+        <ul>
+          <li>Shortcuts were not working since the move to Gtk.Application (issue #188) (@MightyCreak)</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.8.0" date="2023-04-03">
       <description>
         <p>
