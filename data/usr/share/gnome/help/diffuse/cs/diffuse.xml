@@ -394,7 +394,7 @@
 
         <variablelist>
           <varlistentry>
-            <term><userinput>open_file</userinput></term>
+            <term><userinput>open-file</userinput></term>
             <listitem>
               <para>Položka nabídky <menuchoice><guimenu>Soubor</guimenu><guimenuitem>Otevřít soubor...</guimenuitem></menuchoice></para>
               <para>Výchozí: <literal>Ctrl+o</literal></para>
@@ -402,7 +402,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>open_file_in_new_tab</userinput></term>
+            <term><userinput>open-file-in-new-tab</userinput></term>
             <listitem>
               <para>Položka nabídky <menuchoice><guimenu>Soubor</guimenu><guimenuitem>Otevřít v novém panelu...</guimenuitem></menuchoice></para>
               <para>Výchozí: <literal>Ctrl+t</literal></para>
@@ -410,7 +410,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>open_modified_files</userinput></term>
+            <term><userinput>open-modified-files</userinput></term>
             <listitem>
               <para>Položka nabídky <menuchoice><guimenu>Soubor</guimenu><guimenuitem>Otevřít změněné soubory...</guimenuitem></menuchoice></para>
               <para>Výchozí: <literal>Shift+Ctrl+O</literal></para>
@@ -418,7 +418,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>open_commit</userinput></term>
+            <term><userinput>open-commit</userinput></term>
             <listitem>
               <para>Položka nabídky <menuchoice><guimenu>Soubor</guimenu><guimenuitem>Otevřít revizi...</guimenuitem></menuchoice> menu item</para>
               <para>Výchozí: <literal>Shift+Ctrl+T</literal></para>
@@ -426,7 +426,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>reload_file</userinput></term>
+            <term><userinput>reload-file</userinput></term>
             <listitem>
               <para>Položka nabídky <menuchoice><guimenu>Soubor</guimenu><guimenuitem>Znovu načíst soubor</guimenuitem></menuchoice></para>
               <para>Výchozí: <literal>Shift+Ctrl+R</literal></para>
@@ -434,7 +434,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>save_file</userinput></term>
+            <term><userinput>save-file</userinput></term>
             <listitem>
               <para>Položka nabídky <menuchoice><guimenu>Soubor</guimenu><guimenuitem>Uložit soubor</guimenuitem></menuchoice></para>
               <para>Výchozí: <literal>Ctrl+s</literal></para>
@@ -442,7 +442,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>save_file_as</userinput></term>
+            <term><userinput>save-file-as</userinput></term>
             <listitem>
               <para>Položka nabídky <menuchoice><guimenu>Soubor</guimenu><guimenuitem>Uložit soubor jako...</guimenuitem></menuchoice></para>
               <para>Výchozí: <literal>Shift+Ctrl+A</literal></para>
@@ -450,7 +450,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>save_all</userinput></term>
+            <term><userinput>save-all</userinput></term>
             <listitem>
               <para>Položka nabídky <menuchoice><guimenu>Soubor</guimenu><guimenuitem>Uložit vše</guimenuitem></menuchoice></para>
               <para>Výchozí: <literal>Shift+Ctrl+S</literal></para>
@@ -458,7 +458,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>new_2_way_file_merge</userinput></term>
+            <term><userinput>new-2-way-file-merge</userinput></term>
             <listitem>
               <para>Položka nabídky <menuchoice><guimenu>Soubor</guimenu><guimenuitem>Nové 2směrné slučování</guimenuitem></menuchoice></para>
               <para>Výchozí: <literal>Ctrl+2</literal></para>
@@ -466,7 +466,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>new_3_way_file_merge</userinput></term>
+            <term><userinput>new-3-way-file-merge</userinput></term>
             <listitem>
               <para>Položka nabídky <menuchoice><guimenu>Soubor</guimenu><guimenuitem>Nové 3směrné slučování</guimenuitem></menuchoice></para>
               <para>Výchozí: <literal>Ctrl+3</literal></para>
@@ -474,7 +474,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>new_n_way_file_merge</userinput></term>
+            <term><userinput>new-n-way-file-merge</userinput></term>
             <listitem>
               <para>Položka nabídky <menuchoice><guimenu>Soubor</guimenu><guimenuitem>Nové Nsměrné slučování</guimenuitem></menuchoice></para>
               <para>Výchozí: <literal>Ctrl+4</literal></para>
@@ -482,7 +482,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>close_tab</userinput></term>
+            <term><userinput>close-tab</userinput></term>
             <listitem>
               <para>Položka nabídky <menuchoice><guimenu>Soubor</guimenu><guimenuitem>Zavřít panel</guimenuitem></menuchoice></para>
               <para>Výchozí: <literal>Ctrl+w</literal></para>
@@ -490,7 +490,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>undo_close_tab</userinput></term>
+            <term><userinput>undo-close-tab</userinput></term>
             <listitem>
               <para>Položka nabídky <menuchoice><guimenu>Soubor</guimenu><guimenuitem>Obnovit zavřený panel</guimenuitem></menuchoice></para>
               <para>Výchozí: <literal>Shift+Ctrl+w</literal></para>
@@ -546,7 +546,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>select_all</userinput></term>
+            <term><userinput>select-all</userinput></term>
             <listitem>
               <para>Položka nabídky <menuchoice><guimenu>Úpravy</guimenu><guimenuitem>Označit vše</guimenuitem></menuchoice></para>
               <para>Výchozí: <literal>Ctrl+a</literal></para>
@@ -554,7 +554,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>clear_edits</userinput></term>
+            <term><userinput>clear-edits</userinput></term>
             <listitem>
               <para>Položka nabídky <menuchoice><guimenu>Úpravy</guimenu><guimenuitem>Smazat úpravy</guimenuitem></menuchoice></para>
               <para>Výchozí: <literal>Ctrl+r</literal></para>
@@ -562,7 +562,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>dismiss_all_edits</userinput></term>
+            <term><userinput>dismiss-all-edits</userinput></term>
             <listitem>
               <para>Položka nabídky <menuchoice><guimenu>Úpravy</guimenu><guimenuitem>Zrušit všechny úpravy</guimenuitem></menuchoice></para>
               <para>Výchozí: <literal>Ctrl+d</literal></para>
@@ -578,7 +578,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>find_next</userinput></term>
+            <term><userinput>find-next</userinput></term>
             <listitem>
               <para>Položka nabídky <menuchoice><guimenu>Úpravy</guimenu><guimenuitem>Najít další</guimenuitem></menuchoice></para>
               <para>Výchozí: <literal>Ctrl+g</literal></para>
@@ -586,7 +586,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>find_previous</userinput></term>
+            <term><userinput>find-previous</userinput></term>
             <listitem>
               <para>Položka nabídky <menuchoice><guimenu>Úpravy</guimenu><guimenuitem>Najít předchozí</guimenuitem></menuchoice></para>
               <para>Výchozí: <literal>Shift+Ctrl+G</literal></para>
@@ -594,7 +594,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>go_to_line</userinput></term>
+            <term><userinput>go-to-line</userinput></term>
             <listitem>
               <para>Položka nabídky <menuchoice><guimenu>Úpravy</guimenu><guimenuitem>Přejít na řádek...</guimenuitem></menuchoice></para>
               <para>Výchozí: <literal>Shift+Ctrl+L</literal></para>
@@ -610,7 +610,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>no_syntax_highlighting</userinput></term>
+            <term><userinput>no-syntax-highlighting</userinput></term>
             <listitem>
               <para>Položka nabídky <menuchoice><guimenu>Zobrazit</guimenu><guisubmenu>Zvýraznění syntaxe</guisubmenu><guimenuitem>Nic</guimenuitem></menuchoice></para>
               <para>Výchozí: None</para>
@@ -618,7 +618,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>syntax_highlighting_<replaceable>syntaxe</replaceable></userinput></term>
+            <term><userinput>syntax-highlighting-<replaceable>syntaxe</replaceable></userinput></term>
             <listitem>
               <para>Položka nabídky <menuchoice><guimenu>Zobrazit</guimenu><guisubmenu>Zvýraznění syntaxe</guisubmenu><guimenuitem><replaceable>syntaxe</replaceable></guimenuitem></menuchoice></para>
               <para>Výchozí: None</para>
@@ -626,7 +626,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>realign_all</userinput></term>
+            <term><userinput>realign-all</userinput></term>
             <listitem>
               <para>Položka nabídky <menuchoice><guimenu>Zobrazit</guimenu><guimenuitem>Znovu zarovnat</guimenuitem></menuchoice></para>
               <para>Výchozí: <literal>Ctrl+l</literal></para>
@@ -642,7 +642,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>first_difference</userinput></term>
+            <term><userinput>first-difference</userinput></term>
             <listitem>
               <para>Položka nabídky <menuchoice><guimenu>Zobrazit</guimenu><guimenuitem>První rozdíl</guimenuitem></menuchoice></para>
               <para>Výchozí: <literal>Shift+Ctrl+Up</literal></para>
@@ -650,7 +650,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>previous_difference</userinput></term>
+            <term><userinput>previous-difference</userinput></term>
             <listitem>
               <para>Položka nabídky <menuchoice><guimenu>Zobrazit</guimenu><guimenuitem>Předchozí rozdíl</guimenuitem></menuchoice></para>
               <para>Výchozí: <literal>Ctrl+Up</literal></para>
@@ -658,7 +658,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>next_difference</userinput></term>
+            <term><userinput>next-difference</userinput></term>
             <listitem>
               <para>Položka nabídky <menuchoice><guimenu>Zobrazit</guimenu><guimenuitem>Další rozdíl</guimenuitem></menuchoice></para>
               <para>Výchozí: <literal>Ctrl+Down</literal></para>
@@ -666,7 +666,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>last_difference</userinput></term>
+            <term><userinput>last-difference</userinput></term>
             <listitem>
               <para>Položka nabídky <menuchoice><guimenu>Zobrazit</guimenu><guimenuitem>Poslední rozdíl</guimenuitem></menuchoice></para>
               <para>Výchozí: <literal>Shift+Ctrl+Down</literal></para>
@@ -674,7 +674,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>first_tab</userinput></term>
+            <term><userinput>first-tab</userinput></term>
             <listitem>
               <para>Položka nabídky <menuchoice><guimenu>Zobrazit</guimenu><guimenuitem>První panel</guimenuitem></menuchoice></para>
               <para>Výchozí: <literal>Shift+Ctrl+Page_Up</literal></para>
@@ -682,7 +682,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>previous_tab</userinput></term>
+            <term><userinput>previous-tab</userinput></term>
             <listitem>
               <para>Položka nabídky <menuchoice><guimenu>Zobrazit</guimenu><guimenuitem>Předchozí panel</guimenuitem></menuchoice></para>
               <para>Výchozí: <literal>Ctrl+Page_Up</literal></para>
@@ -690,7 +690,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>next_tab</userinput></term>
+            <term><userinput>next-tab</userinput></term>
             <listitem>
               <para>Položka nabídky <menuchoice><guimenu>Zobrazit</guimenu><guimenuitem>Další panel</guimenuitem></menuchoice></para>
               <para>Výchozí: <literal>Ctrl+Page_Down</literal></para>
@@ -698,7 +698,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>last_tab</userinput></term>
+            <term><userinput>last-tab</userinput></term>
             <listitem>
               <para>Položka nabídky <menuchoice><guimenu>Zobrazit</guimenu><guimenuitem>Poslední panel</guimenuitem></menuchoice></para>
               <para>Výchozí: <literal>Shift+Ctrl+Page_Down</literal></para>
@@ -706,7 +706,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>shift_pane_right</userinput></term>
+            <term><userinput>shift-pane-right</userinput></term>
             <listitem>
               <para>Položka nabídky <menuchoice><guimenu>Zobrazit</guimenu><guimenuitem>Přesunout podokno doprava</guimenuitem></menuchoice></para>
               <para>Výchozí: <literal>Shift+Ctrl+parenleft</literal></para>
@@ -714,7 +714,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>shift_pane_left</userinput></term>
+            <term><userinput>shift-pane-left</userinput></term>
             <listitem>
               <para>Položka nabídky <menuchoice><guimenu>Zobrazit</guimenu><guimenuitem>Přesunout podokno doleva</guimenuitem></menuchoice></para>
               <para>Výchozí: <literal>Shift+Ctrl+parenright</literal></para>
@@ -722,7 +722,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>convert_to_upper_case</userinput></term>
+            <term><userinput>convert-to-upper-case</userinput></term>
             <listitem>
               <para>Položka nabídky <menuchoice><guimenu>Formát</guimenu><guimenuitem>Převést na velká písmena</guimenuitem></menuchoice></para>
               <para>Výchozí: <literal>Ctrl+u</literal></para>
@@ -730,7 +730,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>convert_to_lower_case</userinput></term>
+            <term><userinput>convert-to-lower-case</userinput></term>
             <listitem>
               <para>Položka nabídky <menuchoice><guimenu>Formát</guimenu><guimenuitem>Převést na malá písmena</guimenuitem></menuchoice></para>
               <para>Výchozí: <literal>Shift+Ctrl+U</literal></para>
@@ -738,7 +738,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>sort_lines_in_ascending_order</userinput></term>
+            <term><userinput>sort-lines-in-ascending-order</userinput></term>
             <listitem>
               <para>Položka nabídky <menuchoice><guimenu>Formát</guimenu><guimenuitem>Seřadit řádky vzestupně</guimenuitem></menuchoice></para>
               <para>Výchozí: <literal>Ctrl+y</literal></para>
@@ -746,7 +746,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>sort_lines_in_descending_order</userinput></term>
+            <term><userinput>sort-lines-in-descending-order</userinput></term>
             <listitem>
               <para>Položka nabídky <menuchoice><guimenu>Formát</guimenu><guimenuitem>Seřadit řádky sestupně</guimenuitem></menuchoice></para>
               <para>Výchozí: <literal>Shift+Ctrl+Y</literal></para>
@@ -754,7 +754,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>remove_trailing_white_space</userinput></term>
+            <term><userinput>remove-trailing-white-space</userinput></term>
             <listitem>
               <para>Položka nabídky <menuchoice><guimenu>Formát</guimenu><guimenuitem>Odstranit mezery na koncích řádků</guimenuitem></menuchoice></para>
               <para>Výchozí: <literal>Ctrl+k</literal></para>
@@ -762,7 +762,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>convert_tabs_to_spaces</userinput></term>
+            <term><userinput>convert-tabs-to-spaces</userinput></term>
             <listitem>
               <para>Položka nabídky <menuchoice><guimenu>Formát</guimenu><guimenuitem>Nahradit tabulátory mezerami</guimenuitem></menuchoice></para>
               <para>Výchozí: <literal>Ctrl+b</literal></para>
@@ -770,7 +770,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>convert_leading_spaces_to_tabs</userinput></term>
+            <term><userinput>convert-leading-spaces-to-tabs</userinput></term>
             <listitem>
               <para>Položka nabídky <menuchoice><guimenu>Formát</guimenu><guimenuitem>Nahradit úvodní mezery tabulátory</guimenuitem></menuchoice></para>
               <para>Výchozí: <literal>Shift+Ctrl+B</literal></para>
@@ -778,7 +778,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>increase_indenting</userinput></term>
+            <term><userinput>increase-indenting</userinput></term>
             <listitem>
               <para>Položka nabídky <menuchoice><guimenu>Formát</guimenu><guimenuitem>Zvětšit odsazení</guimenuitem></menuchoice></para>
               <para>Výchozí: <literal>Shift+Ctrl+&gt;</literal></para>
@@ -786,7 +786,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>decrease_indenting</userinput></term>
+            <term><userinput>decrease-indenting</userinput></term>
             <listitem>
               <para>Položka nabídky <menuchoice><guimenu>Formát</guimenu><guimenuitem>Zmenšit odsazení</guimenuitem></menuchoice></para>
               <para>Výchozí: <literal>Shift+Ctrl+&lt;</literal></para>
@@ -794,7 +794,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>convert_to_dos</userinput></term>
+            <term><userinput>convert-to-dos</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Formát</guimenu><guimenuitem>Převést na DOS formát</guimenuitem></menuchoice></para>
               <para>Výchozí: <literal>Shift+Ctrl+E</literal></para>
@@ -802,7 +802,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>convert_to_mac</userinput></term>
+            <term><userinput>convert-to-mac</userinput></term>
             <listitem>
               <para>Položka nabídky <menuchoice><guimenu>Formát</guimenu><guimenuitem>Převést na Mac formát</guimenuitem></menuchoice></para>
               <para>Výchozí: <literal>Shift+Ctrl+C</literal></para>
@@ -810,7 +810,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>convert_to_unix</userinput></term>
+            <term><userinput>convert-to-unix</userinput></term>
             <listitem>
               <para>Položka nabídky <menuchoice><guimenu>Formát</guimenu><guimenuitem>Převést na Unix formát</guimenuitem></menuchoice></para>
               <para>Výchozí: <literal>Ctrl+e</literal></para>
@@ -818,7 +818,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>copy_selection_right</userinput></term>
+            <term><userinput>copy-selection-right</userinput></term>
             <listitem>
               <para>Položka nabídky <menuchoice><guimenu>Sloučit</guimenu><guimenuitem>Kopírovat výběr doprava</guimenuitem></menuchoice></para>
               <para>Výchozí: <literal>Shift+Ctrl+Right</literal></para>
@@ -826,7 +826,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>copy_selection_left</userinput></term>
+            <term><userinput>copy-selection-left</userinput></term>
             <listitem>
               <para>Položka nabídky <menuchoice><guimenu>Sloučit</guimenu><guimenuitem>Kopírovat výběr doleva</guimenuitem></menuchoice></para>
               <para>Výchozí: <literal>Shift+Ctrl+Left</literal></para>
@@ -834,7 +834,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>copy_left_into_selection</userinput></term>
+            <term><userinput>copy-left-into-selection</userinput></term>
             <listitem>
               <para>Položka nabídky <menuchoice><guimenu>Sloučit</guimenu><guimenuitem>Kopírovat zleva do výběru</guimenuitem></menuchoice></para>
               <para>Výchozí: <literal>Ctrl+Right</literal></para>
@@ -842,7 +842,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>copy_right_into_selection</userinput></term>
+            <term><userinput>copy-right-into-selection</userinput></term>
             <listitem>
               <para>Položka nabídky <menuchoice><guimenu>Sloučit</guimenu><guimenuitem>Kopírovat zprava do výběru</guimenuitem></menuchoice></para>
               <para>Výchozí: <literal>Ctrl+Left</literal></para>
@@ -850,7 +850,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>merge_from_left_then_right</userinput></term>
+            <term><userinput>merge-from-left-then-right</userinput></term>
             <listitem>
               <para>Položka nabídky <menuchoice><guimenu>Sloučit</guimenu><guimenuitem>Sloučit zleva a poté zprava</guimenuitem></menuchoice> menu item</para>
               <para>Výchozí: <literal>Ctrl+m</literal></para>
@@ -858,7 +858,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>merge_from_right_then_left</userinput></term>
+            <term><userinput>merge-from-right-then-left</userinput></term>
             <listitem>
               <para>Položka nabídky <menuchoice><guimenu>Sloučit</guimenu><guimenuitem>Sloučit zprava a poté zleva</guimenuitem></menuchoice></para>
               <para>Výchozí: <literal>Shift+Ctrl+M</literal></para>
@@ -866,7 +866,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>help_contents</userinput></term>
+            <term><userinput>help-contents</userinput></term>
             <listitem>
               <para>Položka nabídky <menuchoice><guimenu>Nápověda</guimenu><guimenuitem>Zobrazit nápovědu</guimenuitem></menuchoice></para>
               <para>Výchozí: <literal>F1</literal></para>
@@ -886,11 +886,11 @@
       <sect2 id="resources-keybindings-line_mode">
         <title>Přiřazení klávesových zkratek pro řádkový režim úprav</title>
 
-        <para>Pro přiřazení klávesových zkratek pro řádkový režim úprav použijte pro parametr <replaceable>kontext</replaceable> hodnotu <userinput>line_mode</userinput>. Platné hodnoty parametru <replaceable>akce</replaceable> jsou:</para>
+        <para>Pro přiřazení klávesových zkratek pro řádkový režim úprav použijte pro parametr <replaceable>kontext</replaceable> hodnotu <userinput>line-mode</userinput>. Platné hodnoty parametru <replaceable>akce</replaceable> jsou:</para>
 
         <variablelist>
           <varlistentry>
-            <term><userinput>enter_align_mode</userinput></term>
+            <term><userinput>enter-align-mode</userinput></term>
             <listitem>
               <para>aktivovat režim úprav zarovnání</para>
               <para>Výchozí: <literal>space</literal></para>
@@ -898,7 +898,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>enter_character_mode</userinput></term>
+            <term><userinput>enter-character-mode</userinput></term>
             <listitem>
               <para>aktivovat znakový režim úprav</para>
               <para>Výchozí: <literal>Return</literal>, <literal>KP_Enter</literal></para>
@@ -906,7 +906,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>first_line</userinput></term>
+            <term><userinput>first-line</userinput></term>
             <listitem>
               <para>přesunout kurzor na první řádek</para>
               <para>Výchozí: <literal>Home</literal>, <literal>g</literal></para>
@@ -914,7 +914,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>extend_first_line</userinput></term>
+            <term><userinput>extend-first-line</userinput></term>
             <listitem>
               <para>přesunout kurzor na první řádek a rozšířit výběr</para>
               <para>Výchozí: <literal>Shift+Home</literal></para>
@@ -922,7 +922,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>last_line</userinput></term>
+            <term><userinput>last-line</userinput></term>
             <listitem>
               <para>přesunout kurzor na poslední řádek</para>
               <para>Výchozí: <literal>End</literal>, <literal>Shift+G</literal></para>
@@ -930,7 +930,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>extend_last_line</userinput></term>
+            <term><userinput>extend-last-line</userinput></term>
             <listitem>
               <para>přesunout kurzor na poslední řádek a rozšířit výběr</para>
               <para>Výchozí: <literal>Shift+End</literal></para>
@@ -946,7 +946,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>extend_up</userinput></term>
+            <term><userinput>extend-up</userinput></term>
             <listitem>
               <para>posunout kurzor o jeden řádek nahoru a rozšířit výběr</para>
               <para>Výchozí: <literal>Shift+Up</literal>, <literal>Shift+K</literal></para>
@@ -962,7 +962,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>extend_down</userinput></term>
+            <term><userinput>extend-down</userinput></term>
             <listitem>
               <para>posunout kurzor o jeden řádek dolů a rozšířit výběr</para>
               <para>Výchozí: <literal>Shift+Down</literal>, <literal>Shift+J</literal></para>
@@ -978,7 +978,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>extend_left</userinput></term>
+            <term><userinput>extend-left</userinput></term>
             <listitem>
               <para>přesunout kurzor o soubor doleva a rozšířit výběr</para>
               <para>Výchozí: <literal>Shift+Left</literal></para>
@@ -994,7 +994,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>extend_right</userinput></term>
+            <term><userinput>extend-right</userinput></term>
             <listitem>
               <para>přesunout kurzor o soubor doprava a rozšířit výběr</para>
               <para>Výchozí: <literal>Shift+Right</literal></para>
@@ -1002,7 +1002,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>page_up</userinput></term>
+            <term><userinput>page-up</userinput></term>
             <listitem>
               <para>přesunout kurzor o stránku nahoru</para>
               <para>Výchozí: <literal>Page_Up</literal>, <literal>Ctrl+u</literal></para>
@@ -1010,7 +1010,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>extend_page_up</userinput></term>
+            <term><userinput>extend-page-up</userinput></term>
             <listitem>
               <para>přesunout kurzor o stránku nahoru a rozšířit výběr</para>
               <para>Výchozí: <literal>Shift+Page_Up</literal>, <literal>Shift+Ctrl+u</literal></para>
@@ -1018,7 +1018,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>page_down</userinput></term>
+            <term><userinput>page-down</userinput></term>
             <listitem>
               <para>přesunout kurzor o stránku dolů</para>
               <para>Výchozí: <literal>Page_Down</literal>, <literal>Ctrl+d</literal></para>
@@ -1026,7 +1026,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>extend_page_down</userinput></term>
+            <term><userinput>extend-page-down</userinput></term>
             <listitem>
               <para>přesunout kurzor o stránku dolů a rozšířit výběr</para>
               <para>Výchozí: <literal>Shift+Page_Down</literal>, <literal>Shift+Ctrl+d</literal></para>
@@ -1034,7 +1034,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>delete_text</userinput></term>
+            <term><userinput>delete-text</userinput></term>
             <listitem>
               <para>smazat vybraný text</para>
               <para>Výchozí: <literal>BackSpace</literal>, <literal>Delete</literal>, <literal>x</literal></para>
@@ -1042,7 +1042,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>first_difference</userinput></term>
+            <term><userinput>first-difference</userinput></term>
             <listitem>
               <para>vybrat první rozdíl</para>
               <para>Výchozí: <literal>Ctrl+Home</literal>, <literal>Shift+P</literal></para>
@@ -1050,7 +1050,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>previous_difference</userinput></term>
+            <term><userinput>previous-difference</userinput></term>
             <listitem>
               <para>vybrat předchozí rozdíl</para>
               <para>Výchozí: <literal>p</literal></para>
@@ -1058,7 +1058,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>next_difference</userinput></term>
+            <term><userinput>next-difference</userinput></term>
             <listitem>
               <para>vybrat další rozdíl</para>
               <para>Výchozí: <literal>n</literal></para>
@@ -1066,7 +1066,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>last_difference</userinput></term>
+            <term><userinput>last-difference</userinput></term>
             <listitem>
               <para>vybrat poslední rozdíl</para>
               <para>Výchozí: <literal>Ctrl+End</literal>, <literal>Shift+N</literal></para>
@@ -1074,7 +1074,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>clear_edits</userinput></term>
+            <term><userinput>clear-edits</userinput></term>
             <listitem>
               <para>smazat všechny úpravy ve vybraných řádcích</para>
               <para>Výchozí: <literal>r</literal></para>
@@ -1082,7 +1082,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>copy_selection_left</userinput></term>
+            <term><userinput>copy-selection-left</userinput></term>
             <listitem>
               <para>zkopírovat vybrané řádky do souboru nalevo</para>
               <para>Výchozí: None</para>
@@ -1090,7 +1090,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>copy_selection_right</userinput></term>
+            <term><userinput>copy-selection-right</userinput></term>
             <listitem>
               <para>zkopírovat vybrané řádky do souboru napravo</para>
               <para>Výchozí: None</para>
@@ -1098,7 +1098,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>copy_left_into_selection</userinput></term>
+            <term><userinput>copy-left-into-selection</userinput></term>
             <listitem>
               <para>zkopírovat do výběru řádky ze souboru nalevo</para>
               <para>Výchozí: <literal>Shift+L</literal></para>
@@ -1106,7 +1106,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>copy_right_into_selection</userinput></term>
+            <term><userinput>copy-right-into-selection</userinput></term>
             <listitem>
               <para>zkopírovat do výběru řádky ze souboru napravo</para>
               <para>Výchozí: <literal>Shift+H</literal></para>
@@ -1114,7 +1114,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>merge_from_left_then_right</userinput></term>
+            <term><userinput>merge-from-left-then-right</userinput></term>
             <listitem>
               <para>sloučit řádky ze souboru nalevo a poté ze souboru napravo</para>
               <para>Výchozí: <literal>m</literal></para>
@@ -1122,7 +1122,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>merge_from_right_then_left</userinput></term>
+            <term><userinput>merge-from-right-then-left</userinput></term>
             <listitem>
               <para>sloučit řádky ze souboru napravo a poté ze souboru nalevo</para>
               <para>Výchozí: <literal>Shift+M</literal></para>
@@ -1142,11 +1142,11 @@
       <sect2 id="resources-keybindings-align_mode">
         <title>Přiřazení klávesových zkratek pro režim úprav zarovnání</title>
 
-        <para>Pro přiřazení klávesových zkratek pro režim úprav zarovnání použijte pro parametr <replaceable>kontext</replaceable> hodnotu <userinput>align_mode</userinput>. Platné hodnoty parametru <replaceable>akce</replaceable> jsou:</para>
+        <para>Pro přiřazení klávesových zkratek pro režim úprav zarovnání použijte pro parametr <replaceable>kontext</replaceable> hodnotu <userinput>align-mode</userinput>. Platné hodnoty parametru <replaceable>akce</replaceable> jsou:</para>
 
         <variablelist>
           <varlistentry>
-            <term><userinput>enter_line_mode</userinput></term>
+            <term><userinput>enter-line-mode</userinput></term>
             <listitem>
               <para>aktivovat řádkový režim úprav</para>
               <para>Výchozí: <literal>Escape</literal></para>
@@ -1154,7 +1154,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>enter_character_mode</userinput></term>
+            <term><userinput>enter-character-mode</userinput></term>
             <listitem>
               <para>aktivovat znakový režim úprav</para>
               <para>Výchozí: <literal>Return</literal>, <literal>KP_Enter</literal></para>
@@ -1162,7 +1162,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>first_line</userinput></term>
+            <term><userinput>first-line</userinput></term>
             <listitem>
               <para>přesunout kurzor na první řádek</para>
               <para>Výchozí: <literal>g</literal></para>
@@ -1170,7 +1170,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>last_line</userinput></term>
+            <term><userinput>last-line</userinput></term>
             <listitem>
               <para>přesunout kurzor na poslední řádek</para>
               <para>Výchozí: <literal>Shift+G</literal></para>
@@ -1210,7 +1210,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>page_up</userinput></term>
+            <term><userinput>page-up</userinput></term>
             <listitem>
               <para>přesunout kurzor o stránku nahoru</para>
               <para>Výchozí: <literal>Page_Up</literal>, <literal>Ctrl+u</literal></para>
@@ -1218,7 +1218,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>page_down</userinput></term>
+            <term><userinput>page-down</userinput></term>
             <listitem>
               <para>přesunout kurzor o stránku dolů</para>
               <para>Výchozí: <literal>Page_Down</literal>, <literal>Ctrl+d</literal></para>
@@ -1238,11 +1238,11 @@
       <sect2 id="resources-keybindings-character_mode">
         <title>Přiřazení klávesových zkratek pro znakový režim úprav</title>
 
-        <para>Pro přiřazení klávesových zkratek pro znakový režim úprav použijte pro parametr <replaceable>kontext</replaceable> hodnotu <userinput>character_mode</userinput>. Platné hodnoty parametru <replaceable>akce</replaceable> jsou:</para>
+        <para>Pro přiřazení klávesových zkratek pro znakový režim úprav použijte pro parametr <replaceable>kontext</replaceable> hodnotu <userinput>character-mode</userinput>. Platné hodnoty parametru <replaceable>akce</replaceable> jsou:</para>
 
         <variablelist>
           <varlistentry>
-            <term><userinput>enter_line_mode</userinput></term>
+            <term><userinput>enter-line-mode</userinput></term>
             <listitem>
               <para>aktivovat řádkový režim úprav</para>
               <para>Výchozí: <literal>Escape</literal></para>

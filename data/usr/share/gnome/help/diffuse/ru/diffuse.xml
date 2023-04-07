@@ -658,7 +658,7 @@
 
         <variablelist>
           <varlistentry>
-            <term><userinput>open_file</userinput></term>
+            <term><userinput>open-file</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Файл</guimenu> пункт меню <guimenuitem>Открыть Файл...</guimenuitem></menuchoice></para>
               <para>По умолчанию: <literal>Ctrl+o</literal></para>
@@ -666,7 +666,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>open_file_in_new_tab</userinput></term>
+            <term><userinput>open-file-in-new-tab</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Файл</guimenu><guimenuitem>Открыть Файл в Новой Вкладке...</guimenuitem></menuchoice></para>
               <para>По умолчанию: <literal>Ctrl+t</literal></para>
@@ -674,7 +674,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>open_modified_files</userinput></term>
+            <term><userinput>open-modified-files</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Файл</guimenu><guimenuitem>Открыть Измененные Файлы...</guimenuitem></menuchoice></para>
               <para>По умолчанию: <literal>Shift+Ctrl+O</literal></para>
@@ -682,7 +682,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>open_commit</userinput></term>
+            <term><userinput>open-commit</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Файл</guimenu><guimenuitem>Открыть Зафиксированные...</guimenuitem></menuchoice></para>
               <para>По умолчанию: <literal>Shift+Ctrl+T</literal></para>
@@ -690,7 +690,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>reload_file</userinput></term>
+            <term><userinput>reload-file</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Файл</guimenu><guimenuitem>Перезагрузить Файл</guimenuitem></menuchoice></para>
               <para>По умолчанию: <literal>Shift+Ctrl+R</literal></para>
@@ -698,7 +698,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>save_file</userinput></term>
+            <term><userinput>save-file</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Файл</guimenu><guimenuitem>Сохранить Файл</guimenuitem></menuchoice></para>
               <para>По умолчанию: <literal>Ctrl+s</literal></para>
@@ -706,7 +706,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>save_file_as</userinput></term>
+            <term><userinput>save-file-as</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Файл</guimenu><guimenuitem>Сохранить Файл Как...</guimenuitem></menuchoice></para>
               <para>По умолчанию: <literal>Shift+Ctrl+A</literal></para>
@@ -714,7 +714,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>save_all</userinput></term>
+            <term><userinput>save-all</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Файл</guimenu><guimenuitem>Сохранить Все</guimenuitem></menuchoice></para>
               <para>По умолчанию: <literal>Shift+Ctrl+S</literal></para>
@@ -722,7 +722,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>new_2_way_file_merge</userinput></term>
+            <term><userinput>new-2-way-file-merge</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Файл</guimenu><guimenuitem>Новое 2-Оконное Слияние Файлов</guimenuitem></menuchoice></para>
               <para>По умолчанию: <literal>Ctrl+2</literal></para>
@@ -730,7 +730,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>new_3_way_file_merge</userinput></term>
+            <term><userinput>new-3-way-file-merge</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Файл</guimenu><guimenuitem>Новое 3-Оконное Слияние Файлов</guimenuitem></menuchoice></para>
               <para>По умолчанию: <literal>Ctrl+3</literal></para>
@@ -738,7 +738,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>close_tab</userinput></term>
+            <term><userinput>close-tab</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Файл</guimenu><guimenuitem>Закрыть Вкладку</guimenuitem></menuchoice></para>
               <para>По умолчанию: <literal>Ctrl+w</literal></para>
@@ -746,7 +746,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>undo_close_tab</userinput></term>
+            <term><userinput>undo-close-tab</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Файл</guimenu><guimenuitem>Отменить Закрытие Вкладки</guimenuitem></menuchoice></para>
               <para>По умолчанию: <literal>Shift+Ctrl+w</literal></para>
@@ -802,7 +802,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>select_all</userinput></term>
+            <term><userinput>select-all</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Правка</guimenu><guimenuitem>Выбрать Все</guimenuitem></menuchoice></para>
               <para>По умолчанию: <literal>Ctrl+a</literal></para>
@@ -810,7 +810,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>clear_edits</userinput></term>
+            <term><userinput>clear-edits</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Правка</guimenu><guimenuitem>Очистить Правки</guimenuitem></menuchoice></para>
               <para>По умолчанию: <literal>Ctrl+r</literal></para>
@@ -818,7 +818,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>dismiss_all_edits</userinput></term>
+            <term><userinput>dismiss-all-edits</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Правка</guimenu><guimenuitem>Сбросить Все Правки</guimenuitem></menuchoice></para>
               <para>По умолчанию: <literal>Ctrl+d</literal></para>
@@ -834,7 +834,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>find_next</userinput></term>
+            <term><userinput>find-next</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Правка</guimenu><guimenuitem>Найти Следующее</guimenuitem></menuchoice></para>
               <para>По умолчанию: <literal>Ctrl+g</literal></para>
@@ -842,7 +842,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>find_previous</userinput></term>
+            <term><userinput>find-previous</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Правка</guimenu><guimenuitem>Найти Предыдущее</guimenuitem></menuchoice></para>
               <para>По умолчанию: <literal>Shift+Ctrl+G</literal></para>
@@ -850,7 +850,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>go_to_line</userinput></term>
+            <term><userinput>go-to-line</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Правка</guimenu><guimenuitem>Перейти на Строку...</guimenuitem></menuchoice></para>
               <para>По умолчанию: <literal>Shift+Ctrl+L</literal></para>
@@ -866,7 +866,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>no_syntax_highlighting</userinput></term>
+            <term><userinput>no-syntax-highlighting</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Вид</guimenu><guisubmenu>Подсветка Синтаксиса</guisubmenu><guimenuitem>Нет</guimenuitem></menuchoice></para>
               <para>По умолчанию: Нет</para>
@@ -874,7 +874,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>syntax_highlighting_<replaceable>syntax</replaceable></userinput></term>
+            <term><userinput>syntax-highlighting-<replaceable>syntax</replaceable></userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Вид</guimenu><guisubmenu>Подсветка Синтаксиса</guisubmenu><guimenuitem><replaceable>syntax</replaceable></guimenuitem></menuchoice></para>
               <para>По умолчанию: Нет</para>
@@ -882,7 +882,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>realign_all</userinput></term>
+            <term><userinput>realign-all</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Вид</guimenu><guimenuitem>Перестроить Все</guimenuitem></menuchoice></para>
               <para>По умолчанию: <literal>Ctrl+l</literal></para>
@@ -898,7 +898,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>first_difference</userinput></term>
+            <term><userinput>first-difference</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Вид</guimenu><guimenuitem>Первое Различие</guimenuitem></menuchoice></para>
               <para>По умолчанию: <literal>Shift+Ctrl+Up</literal></para>
@@ -906,7 +906,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>previous_difference</userinput></term>
+            <term><userinput>previous-difference</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Вид</guimenu><guimenuitem>Предыдущее Различие</guimenuitem></menuchoice></para>
               <para>По умолчанию: <literal>Ctrl+Up</literal></para>
@@ -914,7 +914,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>next_difference</userinput></term>
+            <term><userinput>next-difference</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Вид</guimenu><guimenuitem>Следующее Различие</guimenuitem></menuchoice></para>
               <para>По умолчанию: <literal>Ctrl+Down</literal></para>
@@ -922,7 +922,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>last_difference</userinput></term>
+            <term><userinput>last-difference</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Вид</guimenu><guimenuitem>Последнее Различие</guimenuitem></menuchoice></para>
               <para>По умолчанию: <literal>Shift+Ctrl+Down</literal></para>
@@ -930,7 +930,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>first_tab</userinput></term>
+            <term><userinput>first-tab</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Вид</guimenu><guimenuitem>Первая Вкладка</guimenuitem></menuchoice></para>
               <para>По умолчанию: <literal>Shift+Ctrl+Page_Up</literal></para>
@@ -938,7 +938,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>previous_tab</userinput></term>
+            <term><userinput>previous-tab</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Вид</guimenu><guimenuitem>Предыдущая Вкладка</guimenuitem></menuchoice></para>
               <para>По умолчанию: <literal>Ctrl+Page_Up</literal></para>
@@ -946,7 +946,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>next_tab</userinput></term>
+            <term><userinput>next-tab</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Вид</guimenu><guimenuitem>Следующая Вкладка</guimenuitem></menuchoice></para>
               <para>По умолчанию: <literal>Ctrl+Page_Down</literal></para>
@@ -954,7 +954,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>last_tab</userinput></term>
+            <term><userinput>last-tab</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Вид</guimenu><guimenuitem>Последняя Вкладка</guimenuitem></menuchoice></para>
               <para>По умолчанию: <literal>Shift+Ctrl+Page_Down</literal></para>
@@ -962,7 +962,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>shift_pane_right</userinput></term>
+            <term><userinput>shift-pane-right</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Вид</guimenu><guimenuitem>Переместить Субокно Вправо</guimenuitem></menuchoice></para>
               <para>По умолчанию: <literal>Shift+Ctrl+parenleft</literal></para>
@@ -970,7 +970,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>shift_pane_left</userinput></term>
+            <term><userinput>shift-pane-left</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Вид</guimenu><guimenuitem>сместить выбранное субокно влево</guimenuitem></menuchoice></para>
               <para>По умолчанию: <literal>Shift+Ctrl+parenright</literal></para>
@@ -978,7 +978,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>convert_to_upper_case</userinput></term>
+            <term><userinput>convert-to-upper-case</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Формат</guimenu><guimenuitem>Преобразовать в Верхний Регистр</guimenuitem></menuchoice></para>
               <para>По умолчанию: <literal>Ctrl+u</literal></para>
@@ -986,7 +986,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>convert_to_lower_case</userinput></term>
+            <term><userinput>convert-to-lower-case</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Формат</guimenu><guimenuitem>Преобразовать в Нижний Регистр</guimenuitem></menuchoice></para>
               <para>По умолчанию: <literal>Shift+Ctrl+U</literal></para>
@@ -994,7 +994,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>sort_lines_in_ascending_order</userinput></term>
+            <term><userinput>sort-lines-in-ascending-order</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Формат</guimenu><guimenuitem>Сортировать Строки в Порядке Возрастания</guimenuitem></menuchoice></para>
               <para>По умолчанию: <literal>Ctrl+y</literal></para>
@@ -1002,7 +1002,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>sort_lines_in_descending_order</userinput></term>
+            <term><userinput>sort-lines-in-descending-order</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Формат</guimenu><guimenuitem>Сортировать Строки в Порядке Убывания</guimenuitem></menuchoice></para>
               <para>По умолчанию: <literal>Shift+Ctrl+Y</literal></para>
@@ -1010,7 +1010,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>remove_trailing_white_space</userinput></term>
+            <term><userinput>remove-trailing-white-space</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Формат</guimenu><guimenuitem>Удалить Замыкающие Пробелы</guimenuitem></menuchoice></para>
               <para>По умолчанию: <literal>Ctrl+k</literal></para>
@@ -1018,7 +1018,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>convert_tabs_to_spaces</userinput></term>
+            <term><userinput>convert-tabs-to-spaces</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Формат</guimenu><guimenuitem>Преобразовать Табуляторы в Пробелы</guimenuitem></menuchoice></para>
               <para>По умолчанию: <literal>Ctrl+b</literal></para>
@@ -1026,7 +1026,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>convert_leading_spaces_to_tabs</userinput></term>
+            <term><userinput>convert-leading-spaces-to-tabs</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Формат</guimenu><guimenuitem>Преобразовать Вводные Пробелы в Табуляторы</guimenuitem></menuchoice></para>
               <para>По умолчанию: <literal>Shift+Ctrl+B</literal></para>
@@ -1034,7 +1034,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>increase_indenting</userinput></term>
+            <term><userinput>increase-indenting</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Формат</guimenu><guimenuitem>Увеличить Отступ</guimenuitem></menuchoice></para>
               <para>По умолчанию: <literal>Shift+Ctrl+greater</literal></para>
@@ -1042,7 +1042,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>decrease_indenting</userinput></term>
+            <term><userinput>decrease-indenting</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Формат</guimenu><guimenuitem>Уменьшить Отступ</guimenuitem></menuchoice></para>
               <para>По умолчанию: <literal>Shift+Ctrl+less</literal></para>
@@ -1050,7 +1050,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>convert_to_dos</userinput></term>
+            <term><userinput>convert-to-dos</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Формат</guimenu><guimenuitem>Преобразовать в DOS Формат</guimenuitem></menuchoice></para>
               <para>По умолчанию: <literal>Shift+Ctrl+E</literal></para>
@@ -1058,7 +1058,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>convert_to_mac</userinput></term>
+            <term><userinput>convert-to-mac</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Формат</guimenu><guimenuitem>Преобразовать в Maс Формат</guimenuitem></menuchoice></para>
               <para>По умолчанию: <literal>Shift+Ctrl+C</literal></para>
@@ -1066,7 +1066,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>convert_to_unix</userinput></term>
+            <term><userinput>convert-to-unix</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Формат</guimenu><guimenuitem>Преобразовать в Uniх Формат</guimenuitem></menuchoice></para>
               <para>По умолчанию: <literal>Ctrl+e</literal></para>
@@ -1074,7 +1074,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>copy_selection_right</userinput></term>
+            <term><userinput>copy-selection-right</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Слияние</guimenu><guimenuitem>Копировать Выборку Вправо</guimenuitem></menuchoice></para>
               <para>По умолчанию: <literal>Shift+Ctrl+Right</literal></para>
@@ -1082,7 +1082,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>copy_selection_left</userinput></term>
+            <term><userinput>copy-selection-left</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Слияние</guimenu><guimenuitem>Копировать Выборку Влево</guimenuitem></menuchoice></para>
               <para>По умолчанию: <literal>Shift+Ctrl+Left</literal></para>
@@ -1090,7 +1090,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>copy_left_into_selection</userinput></term>
+            <term><userinput>copy-left-into-selection</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Слияние</guimenu><guimenuitem>Копировать Слева в Выборку</guimenuitem></menuchoice></para>
               <para>По умолчанию: <literal>Ctrl+Right</literal></para>
@@ -1098,7 +1098,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>copy_right_into_selection</userinput></term>
+            <term><userinput>copy-right-into-selection</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Слияние</guimenu><guimenuitem>Копировать Справа в Выборку</guimenuitem></menuchoice></para>
               <para>По умолчанию: <literal>Ctrl+Left</literal></para>
@@ -1106,7 +1106,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>merge_from_left_then_right</userinput></term>
+            <term><userinput>merge-from-left-then-right</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Слияние</guimenu><guimenuitem>Слияние Слева Затем Справа</guimenuitem></menuchoice></para>
               <para>По умолчанию: <literal>Ctrl+m</literal></para>
@@ -1114,7 +1114,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>merge_from_right_then_left</userinput></term>
+            <term><userinput>merge-from-right-then-left</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Слияние</guimenu><guimenuitem>Слияние Справа Затем Слева</guimenuitem></menuchoice></para>
               <para>По умолчанию: <literal>Shift+Ctrl+M</literal></para>
@@ -1122,7 +1122,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>help_contents</userinput></term>
+            <term><userinput>help-contents</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Справка</guimenu><guimenuitem>Содержание Справки...</guimenuitem></menuchoice></para>
               <para>По умолчанию: <literal>F1</literal></para>
@@ -1143,7 +1143,7 @@
         <title>Привязки Клавиш Режима Редактирования Строк</title>
 
         <para>
-          Используйте <userinput>line_mode</userinput> для
+          Используйте <userinput>line-mode</userinput> для
           <replaceable>context</replaceable>, чтобы определить привязки клавиш
           для режима редактирования строк. Следующие значения допустимы для
           <replaceable>action</replaceable>:
@@ -1151,7 +1151,7 @@
 
         <variablelist>
           <varlistentry>
-            <term><userinput>enter_align_mode</userinput></term>
+            <term><userinput>enter-align-mode</userinput></term>
             <listitem>
               <para>ввести режим редактирования выравнивания</para>
               <para>По умолчанию: <literal>space</literal></para>
@@ -1159,7 +1159,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>enter_character_mode</userinput></term>
+            <term><userinput>enter-character-mode</userinput></term>
             <listitem>
               <para>ввести режим редактирования символов</para>
               <para>По умолчаниям: <literal>Return</literal>, <literal>KP_Enter</literal></para>
@@ -1167,7 +1167,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>first_line</userinput></term>
+            <term><userinput>first-line</userinput></term>
             <listitem>
               <para>переместить курсор на первую строку</para>
               <para>По умолчаниям: <literal>Home</literal>, <literal>g</literal></para>
@@ -1175,7 +1175,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>extend_first_line</userinput></term>
+            <term><userinput>extend-first-line</userinput></term>
             <listitem>
               <para>переместить курсор на первую строку, расширение выборки</para>
               <para>По умолчанию: <literal>Shift+Home</literal></para>
@@ -1183,7 +1183,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>last_line</userinput></term>
+            <term><userinput>last-line</userinput></term>
             <listitem>
               <para>переместить курсор на последнюю строку</para>
               <para>По умолчаниям: <literal>End</literal>, <literal>Shift+G</literal></para>
@@ -1191,7 +1191,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>extend_last_line</userinput></term>
+            <term><userinput>extend-last-line</userinput></term>
             <listitem>
               <para>переместить курсор на последнюю строку, расширение выборки</para>
               <para>По умолчанию: <literal>Shift+End</literal></para>
@@ -1207,7 +1207,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>extend_up</userinput></term>
+            <term><userinput>extend-up</userinput></term>
             <listitem>
               <para>переместить курсор на одну строку вверх, расширение выборки</para>
               <para>По умолчаниям: <literal>Shift+Up</literal>, <literal>Shift+K</literal></para>
@@ -1223,7 +1223,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>extend_down</userinput></term>
+            <term><userinput>extend-down</userinput></term>
             <listitem>
               <para>переместить курсор на одну строку вниз, расширение выборки</para>
               <para>По умолчаниям: <literal>Shift+Down</literal>, <literal>Shift+J</literal></para>
@@ -1239,7 +1239,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>extend_left</userinput></term>
+            <term><userinput>extend-left</userinput></term>
             <listitem>
               <para>переместить курсор влево на один файл, расширение выборки</para>
               <para>По умолчанию: <literal>Shift+Left</literal></para>
@@ -1255,7 +1255,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>extend_right</userinput></term>
+            <term><userinput>extend-right</userinput></term>
             <listitem>
               <para>переместить курсор вправо на один файл, расширение выборки</para>
               <para>По умолчанию: <literal>Shift+Right</literal></para>
@@ -1263,7 +1263,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>page_up</userinput></term>
+            <term><userinput>page-up</userinput></term>
             <listitem>
               <para>переместить курсор на одну страницу вверх</para>
               <para>По умолчаниям: <literal>Page_Up</literal>, <literal>Ctrl+u</literal></para>
@@ -1271,7 +1271,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>extend_page_up</userinput></term>
+            <term><userinput>extend-page-up</userinput></term>
             <listitem>
               <para>переместить курсор на одну страницу вверх, расширение выборки</para>
               <para>По умолчаниям: <literal>Shift+Page_Up</literal>, <literal>Shift+Ctrl+u</literal></para>
@@ -1279,7 +1279,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>page_down</userinput></term>
+            <term><userinput>page-down</userinput></term>
             <listitem>
               <para>переместить курсор на одну страницу вниз</para>
               <para>По умолчаниям: <literal>Page_Down</literal>, <literal>Ctrl+d</literal></para>
@@ -1287,7 +1287,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>extend_page_down</userinput></term>
+            <term><userinput>extend-page-down</userinput></term>
             <listitem>
               <para>переместить курсор на одну страницу вниз, расширение выборки</para>
               <para>По умолчаниям: <literal>Shift+Page_Down</literal>, <literal>Shift+Ctrl+d</literal></para>
@@ -1295,7 +1295,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>delete_text</userinput></term>
+            <term><userinput>delete-text</userinput></term>
             <listitem>
               <para>удалить выбранный текст</para>
               <para>По умолчаниям: <literal>BackSpace</literal>, <literal>Delete</literal>, <literal>x</literal></para>
@@ -1303,7 +1303,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>first_difference</userinput></term>
+            <term><userinput>first-difference</userinput></term>
             <listitem>
               <para>выбрать первое различие</para>
               <para>По умолчаниям: <literal>Ctrl+Home</literal>, <literal>Shift+P</literal></para>
@@ -1311,7 +1311,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>previous_difference</userinput></term>
+            <term><userinput>previous-difference</userinput></term>
             <listitem>
               <para>выбрать предыдущее различие</para>
               <para>По умолчанию: <literal>p</literal></para>
@@ -1319,7 +1319,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>next_difference</userinput></term>
+            <term><userinput>next-difference</userinput></term>
             <listitem>
               <para>выбрать следующее различие</para>
               <para>По умолчанию: <literal>n</literal></para>
@@ -1327,7 +1327,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>last_difference</userinput></term>
+            <term><userinput>last-difference</userinput></term>
             <listitem>
               <para>выбрать последнее различие</para>
               <para>По умолчаниям: <literal>Ctrl+End</literal>, <literal>Shift+N</literal></para>
@@ -1335,7 +1335,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>clear_edits</userinput></term>
+            <term><userinput>clear-edits</userinput></term>
             <listitem>
               <para>очистить все редактирования в выбранных строках</para>
               <para>По умолчанию: <literal>r</literal></para>
@@ -1343,7 +1343,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>copy_selection_right</userinput></term>
+            <term><userinput>copy-selection-right</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Слияние</guimenu><guimenuitem>Копировать Выборку Вправо</guimenuitem></menuchoice></para>
               <para>По умолчанию: Нет</para>
@@ -1351,7 +1351,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>copy_selection_left</userinput></term>
+            <term><userinput>copy-selection-left</userinput></term>
             <listitem>
               <para><menuchoice><guimenu>Слияние</guimenu><guimenuitem>Копировать Выборку Влево</guimenuitem></menuchoice></para>
               <para>По умолчанию: Нет</para>
@@ -1359,7 +1359,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>copy_left_into_selection</userinput></term>
+            <term><userinput>copy-left-into-selection</userinput></term>
             <listitem>
               <para>копировать строки из файла слева в выборку</para>
               <para>По умолчанию: <literal>Shift+L</literal></para>
@@ -1367,7 +1367,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>copy_right_into_selection</userinput></term>
+            <term><userinput>copy-right-into-selection</userinput></term>
             <listitem>
               <para>копировать строки из файла справа в выборку</para>
               <para>По умолчанию: <literal>Shift+H</literal></para>
@@ -1375,7 +1375,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>merge_from_left_then_right</userinput></term>
+            <term><userinput>merge-from-left-then-right</userinput></term>
             <listitem>
               <para>объединить строки из файла слева, затем из файла справа</para>
               <para>По умолчанию: <literal>m</literal></para>
@@ -1383,7 +1383,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>merge_from_right_then_left</userinput></term>
+            <term><userinput>merge-from-right-then-left</userinput></term>
             <listitem>
               <para>объединить строки из файла справа, затем из файла слева</para>
               <para>По умолчанию: <literal>Shift+M</literal></para>
@@ -1404,7 +1404,7 @@
         <title>Привязки Клавиш Режима Редактирования Выравнивания</title>
 
         <para>
-          Используйте <userinput>align_mode</userinput> для
+          Используйте <userinput>align-mode</userinput> для
           <replaceable>context</replaceable>, чтобы определить привязки клавиш
           для режима редактирования выравнивания. Следующие значения допустимы
           для <replaceable>action</replaceable>:
@@ -1412,7 +1412,7 @@
 
         <variablelist>
           <varlistentry>
-            <term><userinput>enter_line_mode</userinput></term>
+            <term><userinput>enter-line-mode</userinput></term>
             <listitem>
               <para>ввести режим редактирования строк</para>
               <para>По умолчанию: <literal>Escape</literal></para>
@@ -1420,7 +1420,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>enter_character_mode</userinput></term>
+            <term><userinput>enter-character-mode</userinput></term>
             <listitem>
               <para>ввести режим редактирования символов</para>
               <para>По умолчаниям: <literal>Return</literal>, <literal>KP_Enter</literal></para>
@@ -1428,7 +1428,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>first_line</userinput></term>
+            <term><userinput>first-line</userinput></term>
             <listitem>
               <para>переместить курсор на первую строку</para>
               <para>По умолчанию: <literal>g</literal></para>
@@ -1436,7 +1436,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>last_line</userinput></term>
+            <term><userinput>last-line</userinput></term>
             <listitem>
               <para>переместить курсор на последнюю строку</para>
               <para>По умолчанию: <literal>Shift+G</literal></para>
@@ -1476,7 +1476,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>page_up</userinput></term>
+            <term><userinput>page-up</userinput></term>
             <listitem>
               <para>переместить курсор на одну страницу вверх</para>
               <para>По умолчаниям: <literal>Page_Up</literal>, <literal>Ctrl+u</literal></para>
@@ -1484,7 +1484,7 @@
           </varlistentry>
 
           <varlistentry>
-            <term><userinput>page_down</userinput></term>
+            <term><userinput>page-down</userinput></term>
             <listitem>
               <para>переместить курсор на одну страницу вниз</para>
               <para>По умолчаниям: <literal>Page_Down</literal>, <literal>Ctrl+d</literal></para>
@@ -1505,7 +1505,7 @@
         <title>Привязки Клавиш Режима Редактирования Символов</title>
 
         <para>
-          Используйте <userinput>character_mode</userinput> для
+          Используйте <userinput>character-mode</userinput> для
           <replaceable>context</replaceable>, чтобы определить привязки клавиш
           для режима редактирования символов. Следующие значения допустимы для
           <replaceable>action</replaceable>:
@@ -1513,7 +1513,7 @@
 
         <variablelist>
           <varlistentry>
-            <term><userinput>enter_line_mode</userinput></term>
+            <term><userinput>enter-line-mode</userinput></term>
             <listitem>
               <para>ввести режим редактирования строк</para>
               <para>По умолчанию: <literal>Escape</literal></para>

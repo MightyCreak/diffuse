@@ -47,117 +47,117 @@ class Resources:
         defaultModKey = 'Cmd+' if platform.system() == 'Darwin' else 'Ctrl+'
         self.keybindings = {}
         self.keybindings_lookup = {}
-        self.setKeyBinding('menu', 'open_file', defaultModKey + 'o')
-        self.setKeyBinding('menu', 'open_file_in_new_tab', defaultModKey + 't')
-        self.setKeyBinding('menu', 'open_modified_files', 'Shift+Ctrl+O')
-        self.setKeyBinding('menu', 'open_commit', 'Shift+Ctrl+T')
-        self.setKeyBinding('menu', 'reload_file', 'Shift+Ctrl+R')
-        self.setKeyBinding('menu', 'save_file', defaultModKey + 's')
-        self.setKeyBinding('menu', 'save_file_as', defaultModKey + 'Shift+A')
-        self.setKeyBinding('menu', 'save_all', defaultModKey + 'Shift+S')
-        self.setKeyBinding('menu', 'new_2_way_file_merge', 'Ctrl+2')
-        self.setKeyBinding('menu', 'new_3_way_file_merge', 'Ctrl+3')
-        self.setKeyBinding('menu', 'new_n_way_file_merge', 'Ctrl+4')
-        self.setKeyBinding('menu', 'close_tab', defaultModKey + 'w')
-        self.setKeyBinding('menu', 'undo_close_tab', defaultModKey + 'Shift+W')
+        self.setKeyBinding('menu', 'open-file', defaultModKey + 'o')
+        self.setKeyBinding('menu', 'open-file-in-new-tab', defaultModKey + 't')
+        self.setKeyBinding('menu', 'open-modified-files', 'Shift+Ctrl+O')
+        self.setKeyBinding('menu', 'open-commit', 'Shift+Ctrl+T')
+        self.setKeyBinding('menu', 'reload-file', 'Shift+Ctrl+R')
+        self.setKeyBinding('menu', 'save-file', defaultModKey + 's')
+        self.setKeyBinding('menu', 'save-file-as', defaultModKey + 'Shift+A')
+        self.setKeyBinding('menu', 'save-all', defaultModKey + 'Shift+S')
+        self.setKeyBinding('menu', 'new-2-way-file-merge', 'Ctrl+2')
+        self.setKeyBinding('menu', 'new-3-way-file-merge', 'Ctrl+3')
+        self.setKeyBinding('menu', 'new-n-way-file-merge', 'Ctrl+4')
+        self.setKeyBinding('menu', 'close-tab', defaultModKey + 'w')
+        self.setKeyBinding('menu', 'undo-close-tab', defaultModKey + 'Shift+W')
         self.setKeyBinding('menu', 'quit', defaultModKey + 'q')
         self.setKeyBinding('menu', 'undo', defaultModKey + 'z')
         self.setKeyBinding('menu', 'redo', defaultModKey + 'Shift+Z')
         self.setKeyBinding('menu', 'cut', defaultModKey + 'x')
         self.setKeyBinding('menu', 'copy', defaultModKey + 'c')
         self.setKeyBinding('menu', 'paste', defaultModKey + 'v')
-        self.setKeyBinding('menu', 'select_all', defaultModKey + 'a')
-        self.setKeyBinding('menu', 'clear_edits', defaultModKey + 'r')
-        self.setKeyBinding('menu', 'dismiss_all_edits', defaultModKey + 'd')
+        self.setKeyBinding('menu', 'select-all', defaultModKey + 'a')
+        self.setKeyBinding('menu', 'clear-edits', defaultModKey + 'r')
+        self.setKeyBinding('menu', 'dismiss-all-edits', defaultModKey + 'd')
         self.setKeyBinding('menu', 'find', defaultModKey + 'f')
-        self.setKeyBinding('menu', 'find_next', defaultModKey + 'g')
-        self.setKeyBinding('menu', 'find_previous', defaultModKey + 'Shift+G')
-        self.setKeyBinding('menu', 'go_to_line', defaultModKey + 'Shift+l')
-        self.setKeyBinding('menu', 'realign_all', defaultModKey + 'l')
+        self.setKeyBinding('menu', 'find-next', defaultModKey + 'g')
+        self.setKeyBinding('menu', 'find-previous', defaultModKey + 'Shift+G')
+        self.setKeyBinding('menu', 'go-to-line', defaultModKey + 'Shift+l')
+        self.setKeyBinding('menu', 'realign-all', defaultModKey + 'l')
         self.setKeyBinding('menu', 'isolate', defaultModKey + 'i')
-        self.setKeyBinding('menu', 'first_difference', defaultModKey + 'Shift+Up')
-        self.setKeyBinding('menu', 'previous_difference', defaultModKey + 'Up')
-        self.setKeyBinding('menu', 'next_difference', defaultModKey + 'Down')
-        self.setKeyBinding('menu', 'last_difference', defaultModKey + 'Shift+Down')
-        self.setKeyBinding('menu', 'first_tab', 'Shift+Ctrl+Page_Up')
-        self.setKeyBinding('menu', 'previous_tab', 'Ctrl+Page_Up')
-        self.setKeyBinding('menu', 'next_tab', 'Ctrl+Page_Down')
-        self.setKeyBinding('menu', 'last_tab', 'Shift+Ctrl+Page_Down')
-        self.setKeyBinding('menu', 'shift_pane_right', 'Shift+Ctrl+parenright')
-        self.setKeyBinding('menu', 'shift_pane_left', 'Shift+Ctrl+parenleft')
-        self.setKeyBinding('menu', 'convert_to_upper_case', defaultModKey + 'u')
-        self.setKeyBinding('menu', 'convert_to_lower_case', defaultModKey + 'Shift+U')
-        self.setKeyBinding('menu', 'sort_lines_in_ascending_order', defaultModKey + 'y')
-        self.setKeyBinding('menu', 'sort_lines_in_descending_order', defaultModKey + 'Shift+Y')
-        self.setKeyBinding('menu', 'remove_trailing_white_space', defaultModKey + 'k')
-        self.setKeyBinding('menu', 'convert_tabs_to_spaces', defaultModKey + 'b')
-        self.setKeyBinding('menu', 'convert_leading_spaces_to_tabs', 'Shift+Ctrl+B')
-        self.setKeyBinding('menu', 'increase_indenting', defaultModKey + 'Shift+greater')
-        self.setKeyBinding('menu', 'decrease_indenting', defaultModKey + 'Shift+less')
-        self.setKeyBinding('menu', 'convert_to_dos', defaultModKey + 'Shift+E')
-        self.setKeyBinding('menu', 'convert_to_mac', defaultModKey + 'Shift+C')
-        self.setKeyBinding('menu', 'convert_to_unix', defaultModKey + 'e')
-        self.setKeyBinding('menu', 'copy_selection_right', defaultModKey + 'Shift+Right')
-        self.setKeyBinding('menu', 'copy_selection_left', defaultModKey + 'Shift+Left')
-        self.setKeyBinding('menu', 'copy_left_into_selection', defaultModKey + 'Right')
-        self.setKeyBinding('menu', 'copy_right_into_selection', defaultModKey + 'Left')
-        self.setKeyBinding('menu', 'merge_from_left_then_right', defaultModKey + 'm')
-        self.setKeyBinding('menu', 'merge_from_right_then_left', defaultModKey + 'Shift+M')
-        self.setKeyBinding('menu', 'help_contents', 'F1')
-        self.setKeyBinding('line_mode', 'enter_align_mode', 'space')
-        self.setKeyBinding('line_mode', 'enter_character_mode', 'Return')
-        self.setKeyBinding('line_mode', 'enter_character_mode', 'KP_Enter')
-        self.setKeyBinding('line_mode', 'first_line', 'Home')
-        self.setKeyBinding('line_mode', 'first_line', 'g')
-        self.setKeyBinding('line_mode', 'extend_first_line', 'Shift+Home')
-        self.setKeyBinding('line_mode', 'last_line', 'End')
-        self.setKeyBinding('line_mode', 'last_line', 'Shift+G')
-        self.setKeyBinding('line_mode', 'extend_last_line', 'Shift+End')
+        self.setKeyBinding('menu', 'first-difference', defaultModKey + 'Shift+Up')
+        self.setKeyBinding('menu', 'previous-difference', defaultModKey + 'Up')
+        self.setKeyBinding('menu', 'next-difference', defaultModKey + 'Down')
+        self.setKeyBinding('menu', 'last-difference', defaultModKey + 'Shift+Down')
+        self.setKeyBinding('menu', 'first-tab', 'Shift+Ctrl+Page_Up')
+        self.setKeyBinding('menu', 'previous-tab', 'Ctrl+Page_Up')
+        self.setKeyBinding('menu', 'next-tab', 'Ctrl+Page_Down')
+        self.setKeyBinding('menu', 'last-tab', 'Shift+Ctrl+Page_Down')
+        self.setKeyBinding('menu', 'shift-pane-right', 'Shift+Ctrl+parenright')
+        self.setKeyBinding('menu', 'shift-pane-left', 'Shift+Ctrl+parenleft')
+        self.setKeyBinding('menu', 'convert-to-upper-case', defaultModKey + 'u')
+        self.setKeyBinding('menu', 'convert-to-lower-case', defaultModKey + 'Shift+U')
+        self.setKeyBinding('menu', 'sort-lines-in-ascending-order', defaultModKey + 'y')
+        self.setKeyBinding('menu', 'sort-lines-in-descending-order', defaultModKey + 'Shift+Y')
+        self.setKeyBinding('menu', 'remove-trailing-white-space', defaultModKey + 'k')
+        self.setKeyBinding('menu', 'convert-tabs-to-spaces', defaultModKey + 'b')
+        self.setKeyBinding('menu', 'convert-leading-spaces-to-tabs', 'Shift+Ctrl+B')
+        self.setKeyBinding('menu', 'increase-indenting', defaultModKey + 'Shift+greater')
+        self.setKeyBinding('menu', 'decrease-indenting', defaultModKey + 'Shift+less')
+        self.setKeyBinding('menu', 'convert-to-dos', defaultModKey + 'Shift+E')
+        self.setKeyBinding('menu', 'convert-to-mac', defaultModKey + 'Shift+C')
+        self.setKeyBinding('menu', 'convert-to-unix', defaultModKey + 'e')
+        self.setKeyBinding('menu', 'copy-selection-right', defaultModKey + 'Shift+Right')
+        self.setKeyBinding('menu', 'copy-selection-left', defaultModKey + 'Shift+Left')
+        self.setKeyBinding('menu', 'copy-left-into-selection', defaultModKey + 'Right')
+        self.setKeyBinding('menu', 'copy-right-into-selection', defaultModKey + 'Left')
+        self.setKeyBinding('menu', 'merge-from-left-then-right', defaultModKey + 'm')
+        self.setKeyBinding('menu', 'merge-from-right-then-left', defaultModKey + 'Shift+M')
+        self.setKeyBinding('menu', 'help-contents', 'F1')
+        self.setKeyBinding('line_mode', 'enter-align-mode', 'space')
+        self.setKeyBinding('line_mode', 'enter-character-mode', 'Return')
+        self.setKeyBinding('line_mode', 'enter-character-mode', 'KP_Enter')
+        self.setKeyBinding('line_mode', 'first-line', 'Home')
+        self.setKeyBinding('line_mode', 'first-line', 'g')
+        self.setKeyBinding('line_mode', 'extend-first-line', 'Shift+Home')
+        self.setKeyBinding('line_mode', 'last-line', 'End')
+        self.setKeyBinding('line_mode', 'last-line', 'Shift+G')
+        self.setKeyBinding('line_mode', 'extend-last-line', 'Shift+End')
         self.setKeyBinding('line_mode', 'up', 'Up')
         self.setKeyBinding('line_mode', 'up', 'k')
-        self.setKeyBinding('line_mode', 'extend_up', 'Shift+Up')
-        self.setKeyBinding('line_mode', 'extend_up', 'Shift+K')
+        self.setKeyBinding('line_mode', 'extend-up', 'Shift+Up')
+        self.setKeyBinding('line_mode', 'extend-up', 'Shift+K')
         self.setKeyBinding('line_mode', 'down', 'Down')
         self.setKeyBinding('line_mode', 'down', 'j')
-        self.setKeyBinding('line_mode', 'extend_down', 'Shift+Down')
-        self.setKeyBinding('line_mode', 'extend_down', 'Shift+J')
+        self.setKeyBinding('line_mode', 'extend-down', 'Shift+Down')
+        self.setKeyBinding('line_mode', 'extend-down', 'Shift+J')
         self.setKeyBinding('line_mode', 'left', 'Left')
         self.setKeyBinding('line_mode', 'left', 'h')
-        self.setKeyBinding('line_mode', 'extend_left', 'Shift+Left')
+        self.setKeyBinding('line_mode', 'extend-left', 'Shift+Left')
         self.setKeyBinding('line_mode', 'right', 'Right')
         self.setKeyBinding('line_mode', 'right', 'l')
-        self.setKeyBinding('line_mode', 'extend_right', 'Shift+Right')
-        self.setKeyBinding('line_mode', 'page_up', 'Page_Up')
-        self.setKeyBinding('line_mode', 'page_up', defaultModKey + 'u')
-        self.setKeyBinding('line_mode', 'extend_page_up', 'Shift+Page_Up')
-        self.setKeyBinding('line_mode', 'extend_page_up', defaultModKey + 'Shift+U')
-        self.setKeyBinding('line_mode', 'page_down', 'Page_Down')
-        self.setKeyBinding('line_mode', 'page_down', defaultModKey + 'd')
-        self.setKeyBinding('line_mode', 'extend_page_down', 'Shift+Page_Down')
-        self.setKeyBinding('line_mode', 'extend_page_down', defaultModKey + 'Shift+D')
-        self.setKeyBinding('line_mode', 'delete_text', 'BackSpace')
-        self.setKeyBinding('line_mode', 'delete_text', 'Delete')
-        self.setKeyBinding('line_mode', 'delete_text', 'x')
-        self.setKeyBinding('line_mode', 'clear_edits', 'r')
+        self.setKeyBinding('line_mode', 'extend-right', 'Shift+Right')
+        self.setKeyBinding('line_mode', 'page-up', 'Page_Up')
+        self.setKeyBinding('line_mode', 'page-up', defaultModKey + 'u')
+        self.setKeyBinding('line_mode', 'extend-page-up', 'Shift+Page_Up')
+        self.setKeyBinding('line_mode', 'extend-page-up', defaultModKey + 'Shift+U')
+        self.setKeyBinding('line_mode', 'page-down', 'Page_Down')
+        self.setKeyBinding('line_mode', 'page-down', defaultModKey + 'd')
+        self.setKeyBinding('line_mode', 'extend-page-down', 'Shift+Page_Down')
+        self.setKeyBinding('line_mode', 'extend-page-down', defaultModKey + 'Shift+D')
+        self.setKeyBinding('line_mode', 'delete-text', 'BackSpace')
+        self.setKeyBinding('line_mode', 'delete-text', 'Delete')
+        self.setKeyBinding('line_mode', 'delete-text', 'x')
+        self.setKeyBinding('line_mode', 'clear-edits', 'r')
         self.setKeyBinding('line_mode', 'isolate', 'i')
-        self.setKeyBinding('line_mode', 'first_difference', 'Ctrl+Home')
-        self.setKeyBinding('line_mode', 'first_difference', 'Shift+P')
-        self.setKeyBinding('line_mode', 'previous_difference', 'p')
-        self.setKeyBinding('line_mode', 'next_difference', 'n')
-        self.setKeyBinding('line_mode', 'last_difference', 'Ctrl+End')
-        self.setKeyBinding('line_mode', 'last_difference', 'Shift+N')
-        # self.setKeyBinding('line_mode', 'copy_selection_right', 'Shift+L')
-        # self.setKeyBinding('line_mode', 'copy_selection_left', 'Shift+H')
-        self.setKeyBinding('line_mode', 'copy_left_into_selection', 'Shift+L')
-        self.setKeyBinding('line_mode', 'copy_right_into_selection', 'Shift+H')
-        self.setKeyBinding('line_mode', 'merge_from_left_then_right', 'm')
-        self.setKeyBinding('line_mode', 'merge_from_right_then_left', 'Shift+M')
-        self.setKeyBinding('align_mode', 'enter_line_mode', 'Escape')
+        self.setKeyBinding('line_mode', 'first-difference', 'Ctrl+Home')
+        self.setKeyBinding('line_mode', 'first-difference', 'Shift+P')
+        self.setKeyBinding('line_mode', 'previous-difference', 'p')
+        self.setKeyBinding('line_mode', 'next-difference', 'n')
+        self.setKeyBinding('line_mode', 'last-difference', 'Ctrl+End')
+        self.setKeyBinding('line_mode', 'last-difference', 'Shift+N')
+        # self.setKeyBinding('line_mode', 'copy-selection-right', 'Shift+L')
+        # self.setKeyBinding('line_mode', 'copy-selection-left', 'Shift+H')
+        self.setKeyBinding('line_mode', 'copy-left-into-selection', 'Shift+L')
+        self.setKeyBinding('line_mode', 'copy-right-into-selection', 'Shift+H')
+        self.setKeyBinding('line_mode', 'merge-from-left-then-right', 'm')
+        self.setKeyBinding('line_mode', 'merge-from-right-then-left', 'Shift+M')
+        self.setKeyBinding('align_mode', 'enter-line-mode', 'Escape')
         self.setKeyBinding('align_mode', 'align', 'space')
-        self.setKeyBinding('align_mode', 'enter_character_mode', 'Return')
-        self.setKeyBinding('align_mode', 'enter_character_mode', 'KP_Enter')
-        self.setKeyBinding('align_mode', 'first_line', 'g')
-        self.setKeyBinding('align_mode', 'last_line', 'Shift+G')
+        self.setKeyBinding('align_mode', 'enter-character-mode', 'Return')
+        self.setKeyBinding('align_mode', 'enter-character-mode', 'KP_Enter')
+        self.setKeyBinding('align_mode', 'first-line', 'g')
+        self.setKeyBinding('align_mode', 'last-line', 'Shift+G')
         self.setKeyBinding('align_mode', 'up', 'Up')
         self.setKeyBinding('align_mode', 'up', 'k')
         self.setKeyBinding('align_mode', 'down', 'Down')
@@ -166,11 +166,11 @@ class Resources:
         self.setKeyBinding('align_mode', 'left', 'h')
         self.setKeyBinding('align_mode', 'right', 'Right')
         self.setKeyBinding('align_mode', 'right', 'l')
-        self.setKeyBinding('align_mode', 'page_up', 'Page_Up')
-        self.setKeyBinding('align_mode', 'page_up', defaultModKey + 'u')
-        self.setKeyBinding('align_mode', 'page_down', 'Page_Down')
-        self.setKeyBinding('align_mode', 'page_down', defaultModKey + 'd')
-        self.setKeyBinding('character_mode', 'enter_line_mode', 'Escape')
+        self.setKeyBinding('align_mode', 'page-up', 'Page_Up')
+        self.setKeyBinding('align_mode', 'page-up', defaultModKey + 'u')
+        self.setKeyBinding('align_mode', 'page-down', 'Page_Down')
+        self.setKeyBinding('align_mode', 'page-down', defaultModKey + 'd')
+        self.setKeyBinding('character_mode', 'enter-line-mode', 'Escape')
 
         # default colours
         self.colours: Dict[str, _Colour] = {
@@ -225,29 +225,29 @@ class Resources:
         self.setDifferenceColours('difference_1 difference_2 difference_3')
 
     # keyboard action processing
-    def setKeyBinding(self, ctx: str, s: str, v: str) -> None:
-        action_tuple = (ctx, s)
-        modifiers = Gdk.ModifierType(0)
+    def setKeyBinding(self, ctx: str, name: str, modifiers: str) -> None:
+        action_tuple = (ctx, name)
+        modifier_flags = Gdk.ModifierType(0)
         key = None
-        for token in v.split('+'):
+        for token in modifiers.split('+'):
             if token == 'Shift':
-                modifiers |= Gdk.ModifierType.SHIFT_MASK
+                modifier_flags |= Gdk.ModifierType.SHIFT_MASK
             elif token == 'Ctrl':
-                modifiers |= Gdk.ModifierType.CONTROL_MASK
+                modifier_flags |= Gdk.ModifierType.CONTROL_MASK
             elif token == 'Cmd':
-                modifiers |= Gdk.ModifierType.META_MASK
+                modifier_flags |= Gdk.ModifierType.META_MASK
             elif token == 'Alt':
-                modifiers |= Gdk.ModifierType.MOD1_MASK
+                modifier_flags |= Gdk.ModifierType.MOD1_MASK
             elif len(token) == 0 or token[0] == '_':
-                raise ValueError(_('The key binding "{key}" is invalid').format(key=v))
+                raise ValueError(_('The key binding "{key}" is invalid').format(key=modifiers))
             else:
                 token = 'KEY_' + token
                 if not hasattr(Gdk, token):
-                    raise ValueError(_('The key binding "{key}" is invalid').format(key=v))
+                    raise ValueError(_('The key binding "{key}" is invalid').format(key=modifiers))
                 key = getattr(Gdk, token)
         if key is None:
-            raise ValueError(_('The key binding "{key}" is invalid').format(key=v))
-        key_tuple = (ctx, (key, modifiers))
+            raise ValueError(_('The key binding "{key}" is invalid').format(key=modifiers))
+        key_tuple = (ctx, (key, modifier_flags))
 
         # remove any existing binding
         if key_tuple in self.keybindings_lookup:
@@ -272,17 +272,17 @@ class Resources:
         del self.keybindings_lookup[key_tuple]
         del self.keybindings[action_tuple][key_tuple]
 
+    def getKeyBindings(self, ctx, name):
+        try:
+            return [t for _, t in self.keybindings[(ctx, name)].keys()]
+        except KeyError:
+            return []
+
     def getActionForKey(self, ctx, key, modifiers):
         try:
             return self.keybindings_lookup[(ctx, (key, modifiers))][1]
         except KeyError:
             return None
-
-    def getKeyBindings(self, ctx, s):
-        try:
-            return [t for c, t in self.keybindings[(ctx, s)].keys()]
-        except KeyError:
-            return []
 
     # colours used for indicating differences
     def setDifferenceColours(self, s: str) -> None:
