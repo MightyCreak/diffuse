@@ -15,6 +15,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   `logError` logs on stderr (@MightyCreak)
 - Change Git default branch from `master` to `main` (@MightyCreak)
 
+### Fixed
+
+- Shortcuts were not working since the move to Gtk.Application
+  (issue [#188](https://github.com/MightyCreak/diffuse/issues/188)) (@MightyCreak)
+
 ## 0.8.0 - 2023-04-03
 
 ### Added

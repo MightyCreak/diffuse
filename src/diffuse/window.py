@@ -973,20 +973,20 @@ class DiffuseWindow(Gtk.ApplicationWindow):
                 else:
                     if cb_data is not None:
                         cb_data = GLib.Variant.new_string(cb_data)
-                    accel = accel.replace('_', '-')
+                    gtk_compliant_accel = accel.replace('_', '-')
                     if cb is not None:
-                        action = Gio.SimpleAction.new(accel, cb_data and cb_data.get_type())
+                        cb_data_type = cb_data and cb_data.get_type()
+                        action = Gio.SimpleAction.new(gtk_compliant_accel, cb_data_type)
                         action.connect('activate', cb)
                         self.add_action(action)
                     item = Gio.MenuItem.new(label)
-                    item.set_action_and_target_value('win.' + accel, cb_data)
+                    item.set_action_and_target_value('win.' + gtk_compliant_accel, cb_data)
                     key_binding = theResources.getKeyBindings('menu', accel)
                     if len(key_binding) > 0:
-                        key, modifier = key_binding[0]
-                        self.get_application().set_accels_for_action(
-                            Gio.Action.print_detailed_name('win.' + accel, cb_data),
-                            [Gtk.accelerator_name(key, modifier)],
-                        )
+                        action_name = 'win.' + gtk_compliant_accel
+                        detailed_action_name = Gio.Action.print_detailed_name(action_name, cb_data)
+                        accels = [Gtk.accelerator_name(*key_binding[0])]
+                        self.get_application().set_accels_for_action(detailed_action_name, accels)
                     section_menu.append_item(item)
             menu.append_section(None, section_menu)
         return menu
