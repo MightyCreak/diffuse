@@ -1,5 +1,9 @@
 <h1 align="center">
-  <img src="data/icons/hicolor/scalable/apps/io.github.mightycreak.Diffuse.svg" alt="Diffuse" width="192" height="192"/><br/>
+  <img
+    src="./data/icons/hicolor/scalable/apps/io.github.mightycreak.Diffuse.svg"
+    alt="Diffuse"
+    width="192"
+    height="192"/><br/>
 </h1>
 
 <p align="center" style="margin-top: 2em">
@@ -10,7 +14,9 @@
 
 <p align="center">
   <a href="https://github.com/MightyCreak/diffuse/actions/workflows/ci.yml">
-    <img src="https://github.com/MightyCreak/diffuse/actions/workflows/ci.yml/badge.svg" alt="CI status"/>
+    <img
+      src="https://github.com/MightyCreak/diffuse/actions/workflows/ci.yml/badge.svg"
+      alt="CI status"/>
   </a>
   <a href="https://repology.org/project/diffuse/versions">
     <img src="https://repology.org/badge/tiny-repos/diffuse.svg" alt="Packaging status">
@@ -50,6 +56,10 @@ Some key features of Diffuse:
 
 For a more detailed documentation for users, translators and developers, see
 the [documentation](docs/).
+
+## Contact
+
+Discuss with us on Matrix at [#diffuse:matrix.org](https://matrix.to/#/#diffuse:matrix.org).
 
 ## Licenses
 
