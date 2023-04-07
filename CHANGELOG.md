@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   `logError` (@MightyCreak)
 - Log functions used to log only on stderr, now `logDebug` logs on stdout and
   `logError` logs on stderr (@MightyCreak)
+- Change Git default branch from `master` to `main` (@MightyCreak)
 
 ## 0.8.0 - 2023-04-03
 
