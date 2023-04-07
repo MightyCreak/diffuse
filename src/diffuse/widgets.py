@@ -523,8 +523,8 @@ class FileDiffViewerBase(Gtk.Grid):
                 self.align_pane = 0
                 self.align_line = 0
             self.mode = EditMode.LINE
-            self.emit('cursor_changed')
-            self.emit('mode_changed')
+            self.emit('cursor-changed')
+            self.emit('mode-changed')
 
     # changes the viewer's mode to CHAR_MODE
     def setCharMode(self) -> None:
@@ -541,8 +541,8 @@ class FileDiffViewerBase(Gtk.Grid):
             self._im_focus_in()
             self.im_context.reset()
             self.mode = EditMode.CHAR
-            self.emit('cursor_changed')
-            self.emit('mode_changed')
+            self.emit('cursor-changed')
+            self.emit('mode-changed')
 
     # sets the syntax highlighting rules
     def setSyntax(self, s):
@@ -551,7 +551,7 @@ class FileDiffViewerBase(Gtk.Grid):
             # invalidate the syntax caches
             for pane in self.panes:
                 pane.syntax_cache = []
-            self.emit('syntax_changed', s)
+            self.emit('syntax-changed', s)
             # force all panes to redraw
             for darea in self.dareas:
                 darea.queue_draw()
@@ -733,7 +733,7 @@ class FileDiffViewerBase(Gtk.Grid):
             # create an Undo object for the action
             self.addUndo(FileDiffViewerBase.SetFormatUndo(f, fmt, pane.format))
         pane.format = fmt
-        self.emit('format_changed', f, fmt)
+        self.emit('format-changed', f, fmt)
 
     # Undo for the creation of Line objects
     class InstanceLineUndo:
@@ -806,7 +806,7 @@ class FileDiffViewerBase(Gtk.Grid):
         elif not is_modified and line.is_modified:
             pane.num_edits -= 1
         if pane.num_edits != old_num_edits:
-            self.emit('num_edits_changed', f)
+            self.emit('num-edits-changed', f)
         line.is_modified = is_modified
         line.modified_text = text
         line.compare_string = None
@@ -1061,7 +1061,7 @@ class FileDiffViewerBase(Gtk.Grid):
             if line is not None and line.is_modified:
                 pane.num_edits += 1
         if pane.num_edits != old_num_edits:
-            self.emit('num_edits_changed', f)
+            self.emit('num-edits-changed', f)
         del pane.syntax_cache[:]
         pane.max_line_number = new_max_num
         self.dareas[f].queue_draw()
@@ -1541,8 +1541,8 @@ class FileDiffViewerBase(Gtk.Grid):
             self.setCurrentChar(self.current_line, self.current_char, True)
         else:
             self.setCurrentLine(self.current_pane, self.current_line, self.selection_line)
-        self.emit('cursor_changed')
-        self.emit('mode_changed')
+        self.emit('cursor-changed')
+        self.emit('mode-changed')
         # queue a redraw to show the updated selection
         self.dareas[old_f].queue_draw()
 
@@ -1585,7 +1585,7 @@ class FileDiffViewerBase(Gtk.Grid):
         self.current_line = i
         self.selection_line = selection if selection is not None else i
 
-        self.emit('cursor_changed')
+        self.emit('cursor-changed')
 
         # invalidate old selection area
         self._queue_draw_lines(old_f, line0, line1)
@@ -1697,7 +1697,7 @@ class FileDiffViewerBase(Gtk.Grid):
             self._set_clipboard_text(Gdk.SELECTION_PRIMARY, self.getSelectedText())
 
         self._cursor_position_changed(True)
-        self.emit('cursor_changed')
+        self.emit('cursor-changed')
 
         # invalidate old selection area
         self._queue_draw_lines(f, line0, line1)
@@ -1809,7 +1809,7 @@ class FileDiffViewerBase(Gtk.Grid):
                     self.mode = EditMode.CHAR
                     self._im_focus_in()
                     self.button_press(f, x, y, False)
-                    self.emit('mode_changed')
+                    self.emit('mode-changed')
                 elif self.mode == EditMode.CHAR and self.current_pane == f:
                     # select word
                     text = utils.strip_eol(self.getLineText(f, i))
@@ -2528,7 +2528,7 @@ class FileDiffViewerBase(Gtk.Grid):
         self.selection_line = self.current_line
         self.align_pane = self.current_pane
         self.align_line = self.current_line
-        self.emit('mode_changed')
+        self.emit('mode-changed')
         self.dareas[self.align_pane].queue_draw()
 
     # 'first-line' keybinding action
@@ -3102,7 +3102,7 @@ class FileDiffViewerBase(Gtk.Grid):
         for pane in self.panes:
             del pane.diff_cache[:]
         # tab width may have changed
-        self.emit('cursor_changed')
+        self.emit('cursor-changed')
         for darea in self.dareas:
             darea.queue_draw()
         self.diffmap_cache = None
@@ -3298,7 +3298,7 @@ class FileDiffViewerBase(Gtk.Grid):
         # queue redraw
         self.diffmap_cache = None
         self.diffmap.queue_draw()
-        self.emit('swapped_panes', f_dst, f_src)
+        self.emit('swapped-panes', f_dst, f_src)
 
     # swap the contents of two panes
     def swap_panes(self, f_dst: int, f_src: int) -> None:

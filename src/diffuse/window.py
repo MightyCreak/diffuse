@@ -166,7 +166,7 @@ class PaneHeader(Gtk.Box):
         s = ' '.join(ss)
         self.label.set_text(s)
         self.label.set_tooltip_text(s)
-        self.emit('title_changed')
+        self.emit('title-changed')
 
     # set num edits
     def setEdits(self, has_edits: bool) -> None:
@@ -373,7 +373,7 @@ class FileDiffViewer(FileDiffViewerBase):
         s = self.title
         if has_edits:
             s += ' *'
-        self.emit('title_changed', s)
+        self.emit('title-changed', s)
 
     def setEncoding(self, f, encoding):
         h = self.headers[f]
@@ -653,7 +653,7 @@ class FileDiffViewer(FileDiffViewerBase):
         else:
             s = None
         self.status = s
-        self.emit('status_changed', s)
+        self.emit('status-changed', s)
 
     # gets the status bar text
     def getStatus(self) -> Optional[str]:

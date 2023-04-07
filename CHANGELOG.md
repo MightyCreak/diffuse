@@ -15,6 +15,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Replace `_` by `-` in the action names to be compatible with GTK action names (@MightyCreak)
 
+### Fixed
+
+- Some signals weren't properly renamed from the previous GTK3 migration (@MightyCreak)
+
 ## 0.8.1 - 2023-04-07
 
 ### Changed
