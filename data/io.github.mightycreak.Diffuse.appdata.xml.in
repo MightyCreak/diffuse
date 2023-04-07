@@ -23,11 +23,11 @@
 
   <screenshots>
     <screenshot type="default">
-      <image type="source">https://github.com/MightyCreak/diffuse/raw/master/docs/images/screenshot_v0.7.7_main_window.png</image>
+      <image type="source">https://github.com/MightyCreak/diffuse/raw/main/docs/images/screenshot_v0.7.7_main_window.png</image>
       <caption>Main window</caption>
     </screenshot>
     <screenshot>
-      <image type="source">https://github.com/MightyCreak/diffuse/raw/master/docs/images/screenshot_v0.7.7_about_window.png</image>
+      <image type="source">https://github.com/MightyCreak/diffuse/raw/main/docs/images/screenshot_v0.7.7_about_window.png</image>
       <caption>About window</caption>
     </screenshot>
   </screenshots>

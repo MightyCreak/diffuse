@@ -39,19 +39,19 @@ few manual steps.
    - Release title: the tag (e.g. `v1.2.3`)
    - Description:
      - For the first paragraph, paste the first paragraph from the release notes
-     - For the second paragraph, got to [CHANGELOG.md](https://github.com/MightyCreak/diffuse/blob/master/CHANGELOG.md)
+     - For the second paragraph, got to [CHANGELOG.md](https://github.com/MightyCreak/diffuse/blob/main/CHANGELOG.md)
        and copy the URL anchor to the new release, then add this sentence
        (adapt the changelog link):  
        > For a more detailed list of changes, see the
-       > [changelog](https://github.com/MightyCreak/diffuse/blob/master/CHANGELOG.md#xyz---yyyy-mm-dd).
+       > [changelog](https://github.com/MightyCreak/diffuse/blob/main/CHANGELOG.md#xyz---yyyy-mm-dd).
 3. Publish release
 
 ## Create new release on Flatpak
 
-1. Clone the Flathub repository: https://github.com/flathub/io.github.mightycreak.Diffuse
+1. Clone the Flathub repository: <https://github.com/flathub/io.github.mightycreak.Diffuse>
 2. Copy the contents of Diffuse's `io.github.mightycreak.Diffuse.yml` to Flathub's
 3. Keep Flathub's `config-opts` and `sources` sections
 4. In `sources` section, change the `commit` and `tag`
 5. Create commit with changes and push to `master`
-6. Check the build on Flathub: https://flathub.org/builds/
+6. Check the build on Flathub: <https://flathub.org/builds/>
 7. When it's done and successful, publish the build
