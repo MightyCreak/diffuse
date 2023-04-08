@@ -28,7 +28,7 @@ from typing import List, Optional
 from urllib.parse import urlparse
 
 from diffuse import constants, utils
-from diffuse.dialogs import AboutDialog, FileChooserDialog, NumericDialog, SearchDialog
+from diffuse.dialogs import FileChooserDialog, NumericDialog, SearchDialog
 from diffuse.preferences import Preferences
 from diffuse.resources import theResources
 from diffuse.utils import LineEnding
@@ -1733,9 +1733,41 @@ class DiffuseWindow(Gtk.ApplicationWindow):
 
     # callback for the about menu item
     def about_cb(self, widget, data):
-        dialog = AboutDialog(self.get_toplevel())
-        dialog.run()
-        dialog.destroy()
+        authors = [
+            'Derrick Moser <derrick_moser@yahoo.com>',
+            'Romain Failliot <romain.failliot@foolstep.com>'
+        ]
+        license = f'''{constants.APP_NAME} {constants.VERSION}
+
+{constants.COPYRIGHT}
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along
+with this program; if not, write to the Free Software Foundation, Inc.,
+51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.'''
+
+        dialog = Gtk.AboutDialog(
+            transient_for=self.get_toplevel(),
+            modal=True,
+            program_name=constants.APP_NAME,
+            logo_icon_name=constants.APP_ID,
+            version=constants.VERSION,
+            comments=_('Diffuse is a graphical tool for merging and comparing text files.'),
+            copyright=constants.COPYRIGHT,
+            website=constants.WEBSITE,
+            authors=authors,
+            translator_credits=_('translator-credits'),
+            license=license)
+        dialog.present()
 
 
 def _append_buttons(box, size, specs):

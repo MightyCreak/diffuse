@@ -37,7 +37,7 @@ class DiffuseApplication(Gtk.Application):
 
     def __init__(self, sysconfigdir):
         super().__init__(
-            application_id='io.github.mightycreak.Diffuse',
+            application_id=constants.APP_ID,
             flags=Gio.ApplicationFlags.HANDLES_COMMAND_LINE | Gio.ApplicationFlags.NON_UNIQUE)
 
         self.window = None
