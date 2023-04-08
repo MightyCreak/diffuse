@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Replace `_` by `-` in the action names to be compatible with GTK action names (@MightyCreak)
+- The About dialog is now transient for the main window (@oscfdezdz)
 
 ### Fixed
 
