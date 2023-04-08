@@ -57,13 +57,13 @@ class NotebookTab(Gtk.EventBox):
     signals can be connected for MMB and RMB button presses.
     """
 
-    def __init__(self, name: str, stock: str) -> None:
+    def __init__(self, name: str, icon_name: str) -> None:
         Gtk.EventBox.__init__(self)
         self.set_visible_window(False)
         hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=0)
-        if stock is not None:
+        if icon_name is not None:
             image = Gtk.Image()
-            image.set_from_stock(stock, Gtk.IconSize.MENU)
+            image.set_from_icon_name(icon_name, Gtk.IconSize.MENU)
             hbox.pack_start(image, False, False, 5)
             image.show()
 
@@ -78,7 +78,7 @@ class NotebookTab(Gtk.EventBox):
         button = Gtk.Button()
         button.set_relief(Gtk.ReliefStyle.NONE)
         image = Gtk.Image()
-        image.set_from_stock(Gtk.STOCK_CLOSE, Gtk.IconSize.MENU)
+        image.set_from_icon_name('window-close-symbolic', Gtk.IconSize.MENU)
         button.add(image)
         image.show()
         button.set_tooltip_text(_('Close Tab'))
@@ -124,10 +124,10 @@ class PaneHeader(Gtk.Box):
     def __init__(self) -> None:
         Gtk.Box.__init__(self, orientation=Gtk.Orientation.HORIZONTAL, spacing=0)
         button_specs = [
-            [Gtk.STOCK_OPEN, self.button_cb, 'open', _('Open File...')],
-            [Gtk.STOCK_REFRESH, self.button_cb, 'reload', _('Reload File')],
-            [Gtk.STOCK_SAVE, self.button_cb, 'save', _('Save File')],
-            [Gtk.STOCK_SAVE_AS, self.button_cb, 'save_as', _('Save File As...')]
+            ['document-open-symbolic', self.button_cb, 'open', _('Open File...')],
+            ['view-refresh-symbolic', self.button_cb, 'reload', _('Reload File')],
+            ['document-save-symbolic', self.button_cb, 'save', _('Save File')],
+            ['document-save-as-symbolic', self.button_cb, 'save_as', _('Save File As...')]
         ]
         _append_buttons(self, Gtk.IconSize.MENU, button_specs)
 
@@ -307,9 +307,9 @@ class FileDiffViewer(FileDiffViewerBase):
                 Gtk.ButtonsType.NONE, _('Save changes before loading the new file?')
             )
             dialog.set_title(constants.APP_NAME)
-            dialog.add_button(Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL)
-            dialog.add_button(Gtk.STOCK_NO, Gtk.ResponseType.REJECT)
-            dialog.add_button(Gtk.STOCK_YES, Gtk.ResponseType.OK)
+            dialog.add_button(_('_Cancel'), Gtk.ResponseType.CANCEL)
+            dialog.add_button(_('_No'), Gtk.ResponseType.REJECT)
+            dialog.add_button(_('_Yes'), Gtk.ResponseType.OK)
             dialog.set_default_response(Gtk.ResponseType.CANCEL)
             response = dialog.run()
             dialog.destroy()
@@ -444,7 +444,7 @@ class FileDiffViewer(FileDiffViewerBase):
                 self.get_toplevel(),
                 self.prefs,
                 Gtk.FileChooserAction.OPEN,
-                Gtk.STOCK_OPEN,
+                _('_Open'),
                 True
             )
             if info.name is not None:
@@ -497,7 +497,7 @@ class FileDiffViewer(FileDiffViewerBase):
                 self.get_toplevel(),
                 self.prefs,
                 Gtk.FileChooserAction.SAVE,
-                Gtk.STOCK_SAVE
+                _('_Save')
             )
             if name is not None:
                 dialog.set_filename(os.path.abspath(name))
@@ -917,25 +917,25 @@ class DiffuseWindow(Gtk.ApplicationWindow):
             [DIFFUSE_STOCK_NEW_2WAY_MERGE, self.new_2_way_file_merge_cb, None, _('New 2-Way File Merge')],  # noqa: E501
             [DIFFUSE_STOCK_NEW_3WAY_MERGE, self.new_3_way_file_merge_cb, None, _('New 3-Way File Merge')],  # noqa: E501
             [],
-            [Gtk.STOCK_EXECUTE, self.button_cb, 'realign-all', _('Realign All')],
-            [Gtk.STOCK_GOTO_TOP, self.button_cb, 'first-difference', _('First Difference')],
-            [Gtk.STOCK_GO_UP, self.button_cb, 'previous-difference', _('Previous Difference')],
-            [Gtk.STOCK_GO_DOWN, self.button_cb, 'next-difference', _('Next Difference')],
-            [Gtk.STOCK_GOTO_BOTTOM, self.button_cb, 'last-difference', _('Last Difference')],
+            ['system-run-symbolic', self.button_cb, 'realign-all', _('Realign All')],
+            ['go-top-symbolic', self.button_cb, 'first-difference', _('First Difference')],
+            ['go-up-symbolic', self.button_cb, 'previous-difference', _('Previous Difference')],
+            ['go-down-symbolic', self.button_cb, 'next-difference', _('Next Difference')],
+            ['go-bottom-symbolic', self.button_cb, 'last-difference', _('Last Difference')],
             [],
-            [Gtk.STOCK_GOTO_LAST, self.button_cb, 'copy-selection-right', _('Copy Selection Right')],  # noqa: E501
-            [Gtk.STOCK_GOTO_FIRST, self.button_cb, 'copy-selection-left', _('Copy Selection Left')],
-            [Gtk.STOCK_GO_FORWARD, self.button_cb, 'copy-left-into-selection', _('Copy Left Into Selection')],  # noqa: E501
-            [Gtk.STOCK_GO_BACK, self.button_cb, 'copy-right-into-selection', _('Copy Right Into Selection')],  # noqa: E501
+            ['go-last-symbolic', self.button_cb, 'copy-selection-right', _('Copy Selection Right')],  # noqa: E501
+            ['go-first-symbolic', self.button_cb, 'copy-selection-left', _('Copy Selection Left')],
+            ['go-next-symbolic', self.button_cb, 'copy-left-into-selection', _('Copy Left Into Selection')],  # noqa: E501
+            ['go-previous-symbolic', self.button_cb, 'copy-right-into-selection', _('Copy Right Into Selection')],  # noqa: E501
             [DIFFUSE_STOCK_LEFT_RIGHT, self.button_cb, 'merge-from-left-then-right', _('Merge From Left Then Right')],  # noqa: E501
             [DIFFUSE_STOCK_RIGHT_LEFT, self.button_cb, 'merge-from-right-then-left', _('Merge From Right Then Left')],  # noqa: E501
             [],
-            [Gtk.STOCK_UNDO, self.button_cb, 'undo', _('Undo')],
-            [Gtk.STOCK_REDO, self.button_cb, 'redo', _('Redo')],
-            [Gtk.STOCK_CUT, self.button_cb, 'cut', _('Cut')],
-            [Gtk.STOCK_COPY, self.button_cb, 'copy', _('Copy')],
-            [Gtk.STOCK_PASTE, self.button_cb, 'paste', _('Paste')],
-            [Gtk.STOCK_CLEAR, self.button_cb, 'clear-edits', _('Clear Edits')]
+            ['edit-undo-symbolic', self.button_cb, 'undo', _('Undo')],
+            ['edit-redo-symbolic', self.button_cb, 'redo', _('Redo')],
+            ['edit-cut-symbolic', self.button_cb, 'cut', _('Cut')],
+            ['edit-copy-symbolic', self.button_cb, 'copy', _('Copy')],
+            ['edit-paste-symbolic', self.button_cb, 'paste', _('Paste')],
+            ['edit-clear-symbolic', self.button_cb, 'clear-edits', _('Clear Edits')]
         ]
         _append_buttons(hbox, Gtk.IconSize.LARGE_TOOLBAR, button_specs)
         # avoid the button bar from dictating the minimum window size
@@ -1170,11 +1170,11 @@ class DiffuseWindow(Gtk.ApplicationWindow):
         dialog.vbox.pack_start(sw, True, True, 0)
         sw.show()
         # add custom set of action buttons
-        dialog.add_button(Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL)
+        dialog.add_button(_('_Cancel'), Gtk.ResponseType.CANCEL)
         button = Gtk.Button.new_with_mnemonic(_('Close _Without Saving'))
         dialog.add_action_widget(button, Gtk.ResponseType.REJECT)
         button.show()
-        dialog.add_button(Gtk.STOCK_SAVE, Gtk.ResponseType.OK)
+        dialog.add_button(_('_Save'), Gtk.ResponseType.OK)
         dialog.set_default_response(Gtk.ResponseType.CANCEL)
         response = dialog.run()
         dialog.destroy()
@@ -1288,7 +1288,7 @@ class DiffuseWindow(Gtk.ApplicationWindow):
     def newFileDiffViewer(self, n: int) -> FileDiffViewer:
         self.viewer_count += 1
         tabname = _('File Merge %d') % (self.viewer_count, )
-        tab = NotebookTab(tabname, Gtk.STOCK_FILE)
+        tab = NotebookTab(tabname, 'text-x-generic-symbolic')
         viewer = FileDiffViewer(n, self.prefs, tabname)
         tab.button.connect('clicked', self.remove_tab_cb, viewer)
         tab.connect('button-press-event', self.notebooktab_button_press_cb, viewer)
@@ -1476,7 +1476,7 @@ class DiffuseWindow(Gtk.ApplicationWindow):
             self.get_toplevel(),
             self.prefs,
             Gtk.FileChooserAction.OPEN,
-            Gtk.STOCK_OPEN,
+            _('_Open'),
             True
         )
         dialog.set_default_response(Gtk.ResponseType.OK)
@@ -1499,7 +1499,7 @@ class DiffuseWindow(Gtk.ApplicationWindow):
             parent,
             self.prefs,
             Gtk.FileChooserAction.SELECT_FOLDER,
-            Gtk.STOCK_OPEN
+            _('_Open')
         )
         dialog.set_default_response(Gtk.ResponseType.OK)
         accept = (dialog.run() == Gtk.ResponseType.OK)
@@ -1522,7 +1522,7 @@ class DiffuseWindow(Gtk.ApplicationWindow):
             _('Choose Folder With Commit'),
             parent, self.prefs,
             Gtk.FileChooserAction.SELECT_FOLDER,
-            Gtk.STOCK_OPEN,
+            _('_Open'),
             True
         )
         dialog.set_default_response(Gtk.ResponseType.OK)
@@ -1806,12 +1806,15 @@ def _append_buttons(box, size, specs):
     """Convenience method for packing buttons into a container."""
     for spec in specs:
         if len(spec) > 0:
-            (stock_id, cb, cb_data, label) = spec
+            (icon_name, cb, cb_data, label) = spec
             button = Gtk.Button()
             button.set_relief(Gtk.ReliefStyle.NONE)
             button.set_can_focus(False)
             image = Gtk.Image()
-            image.set_from_stock(stock_id, size)
+            if icon_name.startswith('diffuse'):
+                image.set_from_stock(icon_name, size)
+            else:
+                image.set_from_icon_name(icon_name, size)
             button.add(image)
             image.show()
             button.connect('clicked', cb, cb_data)
