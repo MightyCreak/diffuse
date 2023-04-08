@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <gresource prefix="/io/github/mightycreak/Diffuse/icons/scalable/actions">
+    <file preprocess="xml-stripblanks" alias="new-2way-merge-symbolic.svg">icons/hicolor/scalable/actions/new-2way-merge-symbolic.svg</file>
+    <file preprocess="xml-stripblanks" alias="new-3way-merge-symbolic.svg">icons/hicolor/scalable/actions/new-3way-merge-symbolic.svg</file>
+    <file preprocess="xml-stripblanks" alias="copy-selection-left-symbolic.svg">icons/hicolor/scalable/actions/copy-selection-left-symbolic.svg</file>
+    <file preprocess="xml-stripblanks" alias="copy-selection-right-symbolic.svg">icons/hicolor/scalable/actions/copy-selection-right-symbolic.svg</file>
+    <file preprocess="xml-stripblanks" alias="copy-left-into-selection-symbolic.svg">icons/hicolor/scalable/actions/copy-left-into-selection-symbolic.svg</file>
+    <file preprocess="xml-stripblanks" alias="copy-right-into-selection-symbolic.svg">icons/hicolor/scalable/actions/copy-right-into-selection-symbolic.svg</file>
+  </gresource>
+</gresources>

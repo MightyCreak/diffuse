@@ -914,8 +914,8 @@ class DiffuseWindow(Gtk.ApplicationWindow):
         # create toolbar
         hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=0)
         button_specs = [
-            [DIFFUSE_STOCK_NEW_2WAY_MERGE, self.new_2_way_file_merge_cb, None, _('New 2-Way File Merge')],  # noqa: E501
-            [DIFFUSE_STOCK_NEW_3WAY_MERGE, self.new_3_way_file_merge_cb, None, _('New 3-Way File Merge')],  # noqa: E501
+            ['new-2way-merge-symbolic', self.new_2_way_file_merge_cb, None, _('New 2-Way File Merge')],  # noqa: E501
+            ['new-3way-merge-symbolic', self.new_3_way_file_merge_cb, None, _('New 3-Way File Merge')],  # noqa: E501
             [],
             ['system-run-symbolic', self.button_cb, 'realign-all', _('Realign All')],
             ['go-top-symbolic', self.button_cb, 'first-difference', _('First Difference')],
@@ -923,12 +923,12 @@ class DiffuseWindow(Gtk.ApplicationWindow):
             ['go-down-symbolic', self.button_cb, 'next-difference', _('Next Difference')],
             ['go-bottom-symbolic', self.button_cb, 'last-difference', _('Last Difference')],
             [],
-            ['go-last-symbolic', self.button_cb, 'copy-selection-right', _('Copy Selection Right')],  # noqa: E501
-            ['go-first-symbolic', self.button_cb, 'copy-selection-left', _('Copy Selection Left')],
-            ['go-next-symbolic', self.button_cb, 'copy-left-into-selection', _('Copy Left Into Selection')],  # noqa: E501
-            ['go-previous-symbolic', self.button_cb, 'copy-right-into-selection', _('Copy Right Into Selection')],  # noqa: E501
-            [DIFFUSE_STOCK_LEFT_RIGHT, self.button_cb, 'merge-from-left-then-right', _('Merge From Left Then Right')],  # noqa: E501
-            [DIFFUSE_STOCK_RIGHT_LEFT, self.button_cb, 'merge-from-right-then-left', _('Merge From Right Then Left')],  # noqa: E501
+            ['copy-selection-right-symbolic', self.button_cb, 'copy-selection-right', _('Copy Selection Right')],  # noqa: E501
+            ['copy-selection-left-symbolic', self.button_cb, 'copy-selection-left', _('Copy Selection Left')],  # noqa: E501
+            ['copy-left-into-selection-symbolic', self.button_cb, 'copy-left-into-selection', _('Copy Left Into Selection')],  # noqa: E501
+            ['copy-right-into-selection-symbolic', self.button_cb, 'copy-right-into-selection', _('Copy Right Into Selection')],  # noqa: E501
+            ['document-revert-rtl-symbolic', self.button_cb, 'merge-from-left-then-right', _('Merge From Left Then Right')],  # noqa: E501
+            ['document-revert-symbolic', self.button_cb, 'merge-from-right-then-left', _('Merge From Right Then Left')],  # noqa: E501
             [],
             ['edit-undo-symbolic', self.button_cb, 'undo', _('Undo')],
             ['edit-redo-symbolic', self.button_cb, 'redo', _('Redo')],
@@ -1811,10 +1811,7 @@ def _append_buttons(box, size, specs):
             button.set_relief(Gtk.ReliefStyle.NONE)
             button.set_can_focus(False)
             image = Gtk.Image()
-            if icon_name.startswith('diffuse'):
-                image.set_from_stock(icon_name, size)
-            else:
-                image.set_from_icon_name(icon_name, size)
+            image.set_from_icon_name(icon_name, size)
             button.add(image)
             image.show()
             button.connect('clicked', cb, cb_data)
