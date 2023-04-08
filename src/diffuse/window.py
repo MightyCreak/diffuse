@@ -1797,7 +1797,7 @@ class DiffuseWindow(Gtk.ApplicationWindow):
 
     # callback for the about menu item
     def about_cb(self, widget, data):
-        dialog = AboutDialog()
+        dialog = AboutDialog(self.get_toplevel())
         dialog.run()
         dialog.destroy()
 

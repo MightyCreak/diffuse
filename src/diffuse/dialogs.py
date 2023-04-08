@@ -33,8 +33,9 @@ from gi.repository import GObject, Gtk  # type: ignore # noqa: E402
 
 # the about dialog
 class AboutDialog(Gtk.AboutDialog):
-    def __init__(self) -> None:
+    def __init__(self, parent: Gtk.Widget) -> None:
         Gtk.AboutDialog.__init__(self)
+        self.set_transient_for(parent)
         self.set_logo_icon_name('io.github.mightycreak.Diffuse')
         self.set_program_name(constants.APP_NAME)
         self.set_version(constants.VERSION)
