@@ -39,11 +39,10 @@ from diffuse.widgets import FileDiffViewerBase, EditMode
 import gi  # type: ignore
 gi.require_version('Gdk', '3.0')
 gi.require_version('GObject', '2.0')
-gi.require_version('GdkPixbuf', '2.0')
 gi.require_version('Gtk', '3.0')
 gi.require_version('Pango', '1.0')
 gi.require_version('PangoCairo', '1.0')
-from gi.repository import Gdk, GdkPixbuf, Gio, GLib, GObject, Gtk, Pango  # type: ignore # noqa: E402, E501
+from gi.repository import Gdk, Gio, GLib, GObject, Gtk, Pango  # type: ignore # noqa: E402
 
 
 theVCSs = VcsRegistry()
@@ -712,69 +711,6 @@ class DiffuseWindow(Gtk.ApplicationWindow):
 
         # create a Box for our contents
         vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
-
-        # create some custom icons for merging
-        DIFFUSE_STOCK_NEW_2WAY_MERGE = 'diffuse-new-2way-merge'
-        DIFFUSE_STOCK_NEW_3WAY_MERGE = 'diffuse-new-3way-merge'
-        DIFFUSE_STOCK_LEFT_RIGHT = 'diffuse-left-right'
-        DIFFUSE_STOCK_RIGHT_LEFT = 'diffuse-right-left'
-
-        # get default theme and window scale factor
-        default_theme = Gtk.IconTheme.get_default()
-        scale_factor = self.get_scale_factor()
-
-        icon_size = Gtk.IconSize.lookup(Gtk.IconSize.LARGE_TOOLBAR).height
-        factory = Gtk.IconFactory()
-
-        # render the base item used to indicate a new document
-        p0 = default_theme.load_icon_for_scale('document-new', icon_size, scale_factor, 0)
-        w, h = p0.get_width(), p0.get_height()
-
-        # render new 2-way merge icon
-        s = 0.8
-        sw, sh = int(s * w), int(s * h)
-        w1, h1 = w - sw, h - sh
-        p = GdkPixbuf.Pixbuf.new(GdkPixbuf.Colorspace.RGB, True, 8, w, h)
-        p.fill(0)
-        p0.composite(p, 0, 0, sw, sh, 0, 0, s, s, GdkPixbuf.InterpType.BILINEAR, 255)
-        p0.composite(p, w1, h1, sw, sh, w1, h1, s, s, GdkPixbuf.InterpType.BILINEAR, 255)
-        factory.add(DIFFUSE_STOCK_NEW_2WAY_MERGE, Gtk.IconSet.new_from_pixbuf(p))
-
-        # render new 3-way merge icon
-        s = 0.7
-        sw, sh = int(s * w), int(s * h)
-        w1, h1 = (w - sw) / 2, (h - sh) / 2
-        w2, h2 = w - sw, h - sh
-        p = GdkPixbuf.Pixbuf.new(GdkPixbuf.Colorspace.RGB, True, 8, w, h)
-        p.fill(0)
-        p0.composite(p, 0, 0, sw, sh, 0, 0, s, s, GdkPixbuf.InterpType.BILINEAR, 255)
-        p0.composite(p, w1, h1, sw, sh, w1, h1, s, s, GdkPixbuf.InterpType.BILINEAR, 255)
-        p0.composite(p, w2, h2, sw, sh, w2, h2, s, s, GdkPixbuf.InterpType.BILINEAR, 255)
-        factory.add(DIFFUSE_STOCK_NEW_3WAY_MERGE, Gtk.IconSet.new_from_pixbuf(p))
-
-        # render the left and right arrow we will use in our custom icons
-        p0 = default_theme.load_icon_for_scale('go-next', icon_size, scale_factor, 0)
-        p1 = default_theme.load_icon_for_scale('go-previous', icon_size, scale_factor, 0)
-        w, h, s = p0.get_width(), p0.get_height(), 0.65
-        sw, sh = int(s * w), int(s * h)
-        w1, h1 = w - sw, h - sh
-
-        # create merge from left then right icon
-        p = GdkPixbuf.Pixbuf.new(GdkPixbuf.Colorspace.RGB, True, 8, w, h)
-        p.fill(0)
-        p1.composite(p, w1, h1, sw, sh, w1, h1, s, s, GdkPixbuf.InterpType.BILINEAR, 255)
-        p0.composite(p, 0, 0, sw, sh, 0, 0, s, s, GdkPixbuf.InterpType.BILINEAR, 255)
-        factory.add(DIFFUSE_STOCK_LEFT_RIGHT, Gtk.IconSet.new_from_pixbuf(p))
-
-        # create merge from right then left icon
-        p = GdkPixbuf.Pixbuf.new(GdkPixbuf.Colorspace.RGB, True, 8, w, h)
-        p.fill(0)
-        p0.composite(p, 0, h1, sw, sh, 0, h1, s, s, GdkPixbuf.InterpType.BILINEAR, 255)
-        p1.composite(p, w1, 0, sw, sh, w1, 0, s, s, GdkPixbuf.InterpType.BILINEAR, 255)
-        factory.add(DIFFUSE_STOCK_RIGHT_LEFT, Gtk.IconSet.new_from_pixbuf(p))
-
-        # make the icons available for use
-        factory.add_default()
 
         menu_specs = []
         menu_specs.append([_('_File'), [
