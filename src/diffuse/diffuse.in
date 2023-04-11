@@ -19,8 +19,11 @@
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
+import os
 import sys
 import gettext
+
+from gi.repository import Gio
 
 VERSION = '@VERSION@'
 PKGDATADIR = '@PKGDATADIR@'
@@ -34,4 +37,9 @@ gettext.textdomain('diffuse')
 
 if __name__ == '__main__':
     from diffuse import main
+
+    resource = Gio.resource_load(
+        os.path.join(PKGDATADIR, 'diffuse.gresource'))
+    Gio.Resource._register(resource)
+
     sys.exit(main.main(VERSION, SYSCONFIGDIR))

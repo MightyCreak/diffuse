@@ -257,8 +257,8 @@ class Preferences:
     # button was pressed
     def runDialog(self, parent: Gtk.Widget) -> None:
         dialog = Gtk.Dialog(_('Preferences'), parent=parent, destroy_with_parent=True)
-        dialog.add_button(Gtk.STOCK_CANCEL, Gtk.ResponseType.REJECT)
-        dialog.add_button(Gtk.STOCK_OK, Gtk.ResponseType.OK)
+        dialog.add_button(_('_Cancel'), Gtk.ResponseType.REJECT)
+        dialog.add_button(_('_OK'), Gtk.ResponseType.OK)
 
         widgets: Dict[str, Gtk.Widget] = {}
         w = self._buildPrefsDialog(parent, widgets, self.template)
@@ -473,7 +473,7 @@ class _FileEntry(Gtk.Box):
         entry.show()
         button = Gtk.Button()
         image = Gtk.Image()
-        image.set_from_stock(Gtk.STOCK_OPEN, Gtk.IconSize.MENU)
+        image.set_from_icon_name('document-open-symbolic', Gtk.IconSize.MENU)
         button.add(image)
         image.show()
         button.connect('clicked', self.chooseFile)
@@ -486,7 +486,7 @@ class _FileEntry(Gtk.Box):
             self.title,
             self.toplevel,
             Gtk.FileChooserAction.OPEN,
-            (Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL, Gtk.STOCK_OPEN, Gtk.ResponseType.OK))
+            (_('_Cancel'), Gtk.ResponseType.CANCEL, _('_Open'), Gtk.ResponseType.OK))
         dialog.set_current_folder(os.path.realpath(os.curdir))
         if dialog.run() == Gtk.ResponseType.OK:
             self.entry.set_text(dialog.get_filename())

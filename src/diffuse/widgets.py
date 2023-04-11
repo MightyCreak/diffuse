@@ -1854,16 +1854,16 @@ class FileDiffViewerBase(Gtk.Grid):
             can_swap = (f != self.current_pane)
 
             menu = self._create_menu([
-                [_('Align with Selection'), self.align_with_selection_cb, [f, i], Gtk.STOCK_EXECUTE, can_align],  # noqa: E501
+                [_('Align with Selection'), self.align_with_selection_cb, [f, i], 'system-run-symbolic', can_align],  # noqa: E501
                 [_('Isolate'), self.button_cb, 'isolate', None, can_isolate],
                 [_('Merge Selection'), self.merge_lines_cb, f, None, can_merge],
                 [],
-                [_('Cut'), self.button_cb, 'cut', Gtk.STOCK_CUT, can_select],
-                [_('Copy'), self.button_cb, 'copy', Gtk.STOCK_COPY, can_select],
-                [_('Paste'), self.button_cb, 'paste', Gtk.STOCK_PASTE, can_select],
+                [_('Cut'), self.button_cb, 'cut', 'edit-cut-symbolic', can_select],
+                [_('Copy'), self.button_cb, 'copy', 'edit-copy-symbolic', can_select],
+                [_('Paste'), self.button_cb, 'paste', 'edit-paste-symbolic', can_select],
                 [],
                 [_('Select All'), self.button_cb, 'select-all', None, can_select],
-                [_('Clear Edits'), self.button_cb, 'clear-edits', Gtk.STOCK_CLEAR, can_isolate],  # noqa: E501
+                [_('Clear Edits'), self.button_cb, 'clear-edits', 'edit-clear-symbolic', can_isolate],  # noqa: E501
                 [],
                 [_('Swap with Selected Pane'), self.swap_panes_cb, f, None, can_swap]
             ])
@@ -1875,13 +1875,13 @@ class FileDiffViewerBase(Gtk.Grid):
         menu = Gtk.Menu()
         for spec in specs:
             if len(spec) > 0:
-                (label, cb, cb_data, image_stock_name, sensitive) = spec
+                (label, cb, cb_data, image_icon_name, sensitive) = spec
                 item = Gtk.ImageMenuItem.new_with_mnemonic(label)
                 item.set_use_underline(True)
                 item.set_sensitive(sensitive)
-                if image_stock_name is not None:
+                if image_icon_name is not None:
                     image = Gtk.Image()
-                    image.set_from_stock(image_stock_name, Gtk.IconSize.MENU)
+                    image.set_from_icon_name(image_icon_name, Gtk.IconSize.MENU)
                     item.set_image(image)
                 if cb is not None:
                     item.connect('activate', cb, cb_data)

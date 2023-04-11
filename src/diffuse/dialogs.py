@@ -77,7 +77,7 @@ class FileChooserDialog(Gtk.FileChooserDialog):
 
     def __init__(self, title, parent, prefs, action, accept, rev=False):
         Gtk.FileChooserDialog.__init__(self, title=title, transient_for=parent, action=action)
-        self.add_button(Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL)
+        self.add_button(_('_Cancel'), Gtk.ResponseType.CANCEL)
         self.add_button(accept, Gtk.ResponseType.OK)
         self.prefs = prefs
         hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=0, border_width=5)
@@ -120,8 +120,8 @@ class FileChooserDialog(Gtk.FileChooserDialog):
 class NumericDialog(Gtk.Dialog):
     def __init__(self, parent, title, text, val, lower, upper, step=1, page=0):
         Gtk.Dialog.__init__(self, title=title, transient_for=parent, destroy_with_parent=True)
-        self.add_button(Gtk.STOCK_CANCEL, Gtk.ResponseType.REJECT)
-        self.add_button(Gtk.STOCK_OK, Gtk.ResponseType.ACCEPT)
+        self.add_button(_('_Cancel'), Gtk.ResponseType.REJECT)
+        self.add_button(_('_OK'), Gtk.ResponseType.ACCEPT)
 
         vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=0)
         vbox.set_border_width(10)
@@ -164,8 +164,8 @@ class SearchDialog(Gtk.Dialog):
             title=_('Find...'),
             transient_for=parent,
             destroy_with_parent=True)
-        self.add_button(Gtk.STOCK_CANCEL, Gtk.ResponseType.REJECT)
-        self.add_button(Gtk.STOCK_OK, Gtk.ResponseType.ACCEPT)
+        self.add_button(_('_Cancel'), Gtk.ResponseType.REJECT)
+        self.add_button(_('_OK'), Gtk.ResponseType.ACCEPT)
 
         vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=0)
         vbox.set_border_width(10)
