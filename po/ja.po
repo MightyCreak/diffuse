@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: diffuse-svn r316\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-23 20:00-0400\n"
+"POT-Creation-Date: 2023-04-16 14:09-0400\n"
 "PO-Revision-Date: 2020-06-29 14:49-0400\n"
 "Last-Translator: Derrick Moser <derrick_moser@yahoo.com>\n"
 "Language-Team: Japanese\n"
@@ -30,824 +30,304 @@ msgstr "テキストファイルをマージして比較するためのグラフ
 #: data/io.github.mightycreak.Diffuse.appdata.xml.in:7
 msgid ""
 "Diffuse is a graphical tool for comparing and merging text files. It can retrieve "
-"files for comparison from Bazaar, CVS, Darcs, Git, Mercurial, Monotone, RCS, "
-"Subversion, and SVK repositories."
+"files for comparison from Bazaar, CVS, Darcs, Git, Mercurial, Monotone, RCS, and "
+"Subversion repositories."
 msgstr ""
 
-#: data/io.github.mightycreak.Diffuse.appdata.xml.in:21
-msgid "Main window: diff between two files"
+#: data/io.github.mightycreak.Diffuse.appdata.xml.in:28
+msgid "Main window"
 msgstr ""
 
-#: src/diffuse/constants.py:25
+#: data/io.github.mightycreak.Diffuse.appdata.xml.in:32
+msgid "About window"
+msgstr ""
+
+#: src/diffuse/constants.py:26
 msgid "Copyright"
 msgstr ""
 
-#: src/diffuse/dialogs.py:40
-msgid "Diffuse is a graphical tool for merging and comparing text files."
+#: src/diffuse/dialogs.py:46 src/diffuse/dialogs.py:89 src/diffuse/dialogs.py:133
+#: src/diffuse/preferences.py:254 src/diffuse/preferences.py:483
+#: src/diffuse/window.py:309 src/diffuse/window.py:1107
+msgid "_Cancel"
 msgstr ""
-"Diffuse は、テキストファイルをマージして比較するためのグラフィックツールです。"
 
-#: src/diffuse/dialogs.py:45
-msgid "translator-credits"
-msgstr "Derrick Moser <derrick_moser@yahoo.com>"
-
-#: src/diffuse/dialogs.py:82
+#: src/diffuse/dialogs.py:50
 msgid "Encoding: "
 msgstr "エンコーディング: "
 
-#: src/diffuse/dialogs.py:94
+#: src/diffuse/dialogs.py:62
 msgid "Revision: "
 msgstr "リビジョン: "
 
-#: src/diffuse/dialogs.py:156
+#: src/diffuse/dialogs.py:90 src/diffuse/dialogs.py:134
+#: src/diffuse/preferences.py:255
+msgid "_OK"
+msgstr ""
+
+#: src/diffuse/dialogs.py:130
 msgid "Find..."
 msgstr "検索..."
 
-#: src/diffuse/dialogs.py:164
+#: src/diffuse/dialogs.py:140
 msgid "Search For: "
 msgstr "検索する文字列: "
 
-#: src/diffuse/dialogs.py:189
+#: src/diffuse/dialogs.py:165
 msgid "Match Case"
 msgstr "大文字/小文字を区別"
 
-#: src/diffuse/dialogs.py:194
+#: src/diffuse/dialogs.py:170
 msgid "Search Backwards"
 msgstr "先頭に向かって検索"
 
+#: src/diffuse/main.py:53
+msgid "Display version and copyright information"
+msgstr "バージョンと著作権情報を表示"
+
+#: src/diffuse/main.py:61
+msgid "Do not read any resource files"
+msgstr "リソースファイルを読まない"
+
+#: src/diffuse/main.py:69
+msgid "Specify explicit resource file"
+msgstr "指定されたリソースファイルを読む"
+
+#: src/diffuse/main.py:77
+msgid "File revisions <rev-1> and <rev>"
+msgstr "<rev-1> と <rev> というファイルリビジョン"
+
 #: src/diffuse/main.py:85
-msgid "Close Tab"
-msgstr "タブを閉じる"
+msgid "Close all tabs with no differences"
+msgstr "差分がないタブを閉じる"
 
-#: src/diffuse/main.py:132
-msgid "Open File..."
-msgstr "ファイルを開く..."
+#: src/diffuse/main.py:92
+msgid "Use <codec> to read and write files"
+msgstr "<codec> でファイルを読み書き"
 
-#: src/diffuse/main.py:133
-msgid "Reload File"
-msgstr "ファイルを再読込み"
+#: src/diffuse/main.py:100
+msgid "Display <label> instead of the file name"
+msgstr "ファイル名の代わりに <label> を表示"
 
-#: src/diffuse/main.py:134
-msgid "Save File"
-msgstr "ファイルを保存"
+#: src/diffuse/main.py:108
+msgid "Create a new tab for each modified file"
+msgstr "変更になったファイルのために新しいタブを作る"
 
-#: src/diffuse/main.py:135
-msgid "Save File As..."
-msgstr "ファイルとして保存..."
+#: src/diffuse/main.py:115
+msgid "File revision <rev>"
+msgstr "<rev> というファイルリビジョン"
 
-#: src/diffuse/main.py:217
-#, python-format
-msgid "Column %d"
-msgstr "%d列"
+#: src/diffuse/main.py:123
+msgid "Create a new tab for each file"
+msgstr "各ファイルのために新しいタブを作る"
 
-#: src/diffuse/main.py:291
-msgid "Save changes before loading the new file?"
-msgstr "新しいファイルをロードする前に、変更したデータを保存しますか？"
+#: src/diffuse/main.py:130
+msgid "Start a new tab"
+msgstr "新しいタブを始める"
 
-#: src/diffuse/main.py:402
-#, python-format
-msgid "Error reading revision %(rev)s of %(file)s."
-msgstr "%(file)s の %(rev)s というリビジョンを読み込む際にエラーが生じました。"
+#: src/diffuse/main.py:137 src/diffuse/preferences.py:159
+msgid "Version control system search order"
+msgstr ""
 
-#: src/diffuse/main.py:405 src/diffuse/main.py:1860
+#: src/diffuse/main.py:145
+msgid "Start with line <line> selected"
+msgstr "初めに <line> 行を選択してから"
+
+#: src/diffuse/main.py:153
+msgid "Create a blank file comparison pane"
+msgstr "空白のファイル比較枠を作る"
+
+#: src/diffuse/main.py:160 src/diffuse/preferences.py:86
+#: src/diffuse/preferences.py:95
+msgid "Ignore changes to white space"
+msgstr "空白の変更を無視"
+
+#: src/diffuse/main.py:167
+msgid "Ignore changes in blank lines"
+msgstr "空白行の違いを無視"
+
+#: src/diffuse/main.py:174 src/diffuse/preferences.py:88
+msgid "Ignore end of line differences"
+msgstr "行の最後の違いを無視"
+
+#: src/diffuse/main.py:181 src/diffuse/preferences.py:84
+msgid "Ignore case differences"
+msgstr "大文字小文字の違いを無視"
+
+#: src/diffuse/main.py:188 src/diffuse/preferences.py:85
+msgid "Ignore white space differences"
+msgstr "空白の違いを無視"
+
+#: src/diffuse/main.py:191
+msgid ""
+"Diffuse is a graphical tool for merging and comparing text files. Diffuse is\n"
+"able to compare an arbitrary number of files side-by-side and gives users the\n"
+"ability to manually adjust line matching and directly edit files. Diffuse can\n"
+"also retrieve revisions of files from several VCSs for comparison and merging."
+msgstr ""
+
+#: src/diffuse/main.py:247 src/diffuse/window.py:420
 #, python-format
 msgid "Error reading %s."
 msgstr "%s を読み込む際にエラーが生じました。"
 
-#: src/diffuse/main.py:427
-msgid "Open File"
-msgstr "ファイルを開く"
-
-#: src/diffuse/main.py:484
-#, python-format
-msgid "The file %s changed on disk. Do you want to reload the file?"
-msgstr "ファイル %s が変更されたようです。そのファイルを再読み込みしますか？"
-
-#: src/diffuse/main.py:510
-#, python-format
-msgid "Save %(title)s Pane %(pane)d"
-msgstr "%(title)s の%(pane)d番目の枠を保存"
-
-#: src/diffuse/main.py:542
-#, python-format
-msgid "A file named %s already exists. Do you want to overwrite it?"
-msgstr "%s というファイルは既に存在しています。それを上書きしますか？"
-
-#: src/diffuse/main.py:549
-#, python-format
-msgid ""
-"The file %s has been modified by another process since reading it. If you save, "
-"all the external changes could be lost. Save anyways?"
-msgstr ""
-"ファイル %s は、変更されています。保存する場合は、これらの変更が失われることがあり"
-"ます。保存しますか?"
-
-#: src/diffuse/main.py:591
-#, python-format
-msgid "Error encoding to %s."
-msgstr "%s に変える際にエラーが生じました。"
-
-#: src/diffuse/main.py:595 src/diffuse/preferences.py:300
-#, python-format
-msgid "Error writing %s."
-msgstr "%s へ書き込む際にエラーが生じました。"
-
-#: src/diffuse/main.py:625
-msgid "Go To Line..."
-msgstr "指定行へジャンプ..."
-
-#: src/diffuse/main.py:626
-msgid "Line Number: "
-msgstr "行番号: "
-
-#: src/diffuse/main.py:657
-msgid ""
-"Press the enter key or double click to edit. Press the space bar or use the RMB "
-"menu to manually align."
-msgstr ""
-"編集するためにエンターキーを押すか、ダブルクリックします。手動で整列させるためにス"
-"ペースバーを押すか、RMBを使います。"
-
-#: src/diffuse/main.py:661
-msgid "Press the escape key to finish editing."
-msgstr "ESCキーを押して、編集を終了します。"
-
-#: src/diffuse/main.py:664
-msgid ""
-"Select target line and press the space bar to align. Press the escape key to "
-"cancel."
-msgstr ""
-"目標行を選択してスペースバーを押すと整列します。取り消す場合は、ESCキーを押しま"
-"す。"
-
-#: src/diffuse/main.py:787
-msgid "_File"
-msgstr "ファイル(_F)"
-
-#: src/diffuse/main.py:788
-msgid "_Open File..."
-msgstr "ファイルを開く...(_O)"
-
-#: src/diffuse/main.py:789
-msgid "Open File In New _Tab..."
-msgstr "新しいタブにファイルを開く...(_T)"
-
-#: src/diffuse/main.py:790
-msgid "Open _Modified Files..."
-msgstr "変更のあるファイルを開く...(_M)"
-
-#: src/diffuse/main.py:791
-msgid "Open Commi_t..."
-msgstr "コミットを開く...(_T)"
-
-#: src/diffuse/main.py:792
-msgid "_Reload File"
-msgstr "ファイルの再読込み(_R)"
-
-#: src/diffuse/main.py:794
-msgid "_Save File"
-msgstr "ファイルを保存(_S)"
-
-#: src/diffuse/main.py:795
-msgid "Save File _As..."
-msgstr "ファイルとして保存...(_A)"
-
-#: src/diffuse/main.py:796
-msgid "Save A_ll"
-msgstr "全て保存(_L)"
-
-#: src/diffuse/main.py:798
-msgid "New _2-Way File Merge"
-msgstr "新しい２つのファイルの比較(_2)"
-
-#: src/diffuse/main.py:799
-msgid "New _3-Way File Merge"
-msgstr "新しい３つのファイルの比較(_3)"
-
-#: src/diffuse/main.py:800
-msgid "New _N-Way File Merge..."
-msgstr "新しい複数のファイルの比較...(_N)"
-
-#: src/diffuse/main.py:802
-msgid "_Close Tab"
-msgstr "タブを閉じる(_C)"
-
-#: src/diffuse/main.py:803
-msgid "_Undo Close Tab"
-msgstr "閉じたタブを元に戻す(_U)"
-
-#: src/diffuse/main.py:804
-msgid "_Quit"
-msgstr "終了(_Q)"
-
-#: src/diffuse/main.py:807
-msgid "_Edit"
-msgstr "編集(_E)"
-
-#: src/diffuse/main.py:808
-msgid "_Undo"
-msgstr "元に戻す(_U)"
-
-#: src/diffuse/main.py:809
-msgid "_Redo"
-msgstr "やり直す(_R)"
-
-#: src/diffuse/main.py:811
-msgid "Cu_t"
-msgstr "切り取り(_T)"
-
-#: src/diffuse/main.py:812
-msgid "_Copy"
-msgstr "コピー(_C)"
-
-#: src/diffuse/main.py:813
-msgid "_Paste"
-msgstr "貼り付け(_P)"
-
-#: src/diffuse/main.py:815
-msgid "Select _All"
-msgstr "全て選択(_A)"
-
-#: src/diffuse/main.py:816
-msgid "C_lear Edits"
-msgstr "編集をクリア(_L)"
-
-#: src/diffuse/main.py:817
-msgid "_Dismiss All Edits"
-msgstr "全ての編集を破棄(_D)"
-
-#: src/diffuse/main.py:819
-msgid "_Find..."
-msgstr "検索...(_F)"
-
-#: src/diffuse/main.py:820
-msgid "Find _Next"
-msgstr "次の検索(_N)"
-
-#: src/diffuse/main.py:821
-msgid "Find Pre_vious"
-msgstr "前の検索(_V)"
-
-#: src/diffuse/main.py:822
-msgid "_Go To Line..."
-msgstr "指定行へジャンプ...(_G)"
-
-#: src/diffuse/main.py:824
-msgid "Pr_eferences..."
-msgstr "設定...(_E)"
-
-#: src/diffuse/main.py:828
-msgid "None"
-msgstr "なし"
-
-#: src/diffuse/main.py:846
-msgid "_View"
-msgstr "表示(_V)"
-
-#: src/diffuse/main.py:847
-msgid "_Syntax Highlighting"
-msgstr "構文の強調表示(_S)"
-
-#: src/diffuse/main.py:849
-msgid "Re_align All"
-msgstr "全て再整列(_A)"
-
-#: src/diffuse/main.py:850
-msgid "_Isolate"
-msgstr "分離(_I)"
-
-#: src/diffuse/main.py:852
-msgid "_First Difference"
-msgstr "最初の差分(_F)"
-
-#: src/diffuse/main.py:853
-msgid "_Previous Difference"
-msgstr "前の差分(_P)"
-
-#: src/diffuse/main.py:854
-msgid "_Next Difference"
-msgstr "次の差分(_N)"
-
-#: src/diffuse/main.py:855
-msgid "_Last Difference"
-msgstr "最後の差分(_L)"
-
-#: src/diffuse/main.py:857
-msgid "Fir_st Tab"
-msgstr "最初のタブ(_S)"
-
-#: src/diffuse/main.py:858
-msgid "Pre_vious Tab"
-msgstr "前のタブ(_V)"
-
-#: src/diffuse/main.py:859
-msgid "Next _Tab"
-msgstr "次のタブ(_T)"
-
-#: src/diffuse/main.py:860
-msgid "Las_t Tab"
-msgstr "最後のタブ(_T)"
-
-#: src/diffuse/main.py:862
-msgid "Shift Pane _Right"
-msgstr "枠を右に動かす(_R)"
-
-#: src/diffuse/main.py:863
-msgid "Shift Pane _Left"
-msgstr "枠を左に動かす(_L)"
-
-#: src/diffuse/main.py:866
-msgid "F_ormat"
-msgstr "フォーマット(_O)"
-
-#: src/diffuse/main.py:867
-msgid "Convert To _Upper Case"
-msgstr "大文字に変換(_U)"
-
-#: src/diffuse/main.py:868
-msgid "Convert To _Lower Case"
-msgstr "小文字に変換(_L)"
-
-#: src/diffuse/main.py:870
-msgid "Sort Lines In _Ascending Order"
-msgstr "行を昇順に並べる(_A)"
-
-#: src/diffuse/main.py:871
-msgid "Sort Lines In D_escending Order"
-msgstr "行を降順に並べる(_E)"
-
-#: src/diffuse/main.py:873
-msgid "Remove Trailing _White Space"
-msgstr "末尾の空白を削除(_W)"
-
-#: src/diffuse/main.py:874
-msgid "Convert Tabs To _Spaces"
-msgstr "タブをスペースに変換(_S)"
-
-#: src/diffuse/main.py:875
-msgid "Convert Leading Spaces To _Tabs"
-msgstr "先頭のスペースをタブに変換(_T)"
-
-#: src/diffuse/main.py:877
-msgid "_Increase Indenting"
-msgstr "インデントを増やす(_I)"
-
-#: src/diffuse/main.py:878
-msgid "De_crease Indenting"
-msgstr "インデントを減らす(_C)"
-
-#: src/diffuse/main.py:880
-msgid "Convert To _DOS Format"
-msgstr "DOS 形式に変換(_D)"
-
-#: src/diffuse/main.py:881
-msgid "Convert To _Mac Format"
-msgstr "Mac 形式に変換(_M)"
-
-#: src/diffuse/main.py:882
-msgid "Convert To Uni_x Format"
-msgstr "Unix 形式に変換(_X)"
-
-#: src/diffuse/main.py:885
-msgid "_Merge"
-msgstr "マージ(_M)"
-
-#: src/diffuse/main.py:886
-msgid "Copy Selection _Right"
-msgstr "選択を右にコピー(_R)"
-
-#: src/diffuse/main.py:887
-msgid "Copy Selection _Left"
-msgstr "選択を左にコピー(_L)"
-
-#: src/diffuse/main.py:889
-msgid "Copy Left _Into Selection"
-msgstr "左から選択枠にコピー(_I)"
-
-#: src/diffuse/main.py:890
-msgid "Copy Right I_nto Selection"
-msgstr "右から選択枠にコピー(_N)"
-
-#: src/diffuse/main.py:891
-msgid "_Merge From Left Then Right"
-msgstr "左からマージした後、右からマージ(_M)"
-
-#: src/diffuse/main.py:892
-msgid "M_erge From Right Then Left"
-msgstr "右からマージした後、左からマージ(_E)"
-
-#: src/diffuse/main.py:895
-msgid "_Help"
-msgstr "ヘルプ(_H)"
-
-#: src/diffuse/main.py:896
-msgid "_Help Contents..."
-msgstr "ヘルプの目次...(_H)"
-
-#: src/diffuse/main.py:898
-#, python-format
-msgid "_About %s..."
-msgstr "%s について...(_A)"
-
-#: src/diffuse/main.py:913
-msgid "New 2-Way File Merge"
-msgstr "新しい２つのファイルの比較"
-
-#: src/diffuse/main.py:914
-msgid "New 3-Way File Merge"
-msgstr "新しい３つのファイルの比較"
-
-#: src/diffuse/main.py:916
-msgid "Realign All"
-msgstr "全て再整列"
-
-#: src/diffuse/main.py:917
-msgid "First Difference"
-msgstr "最初の差分"
-
-#: src/diffuse/main.py:918
-msgid "Previous Difference"
-msgstr "前の差分"
-
-#: src/diffuse/main.py:919
-msgid "Next Difference"
-msgstr "次の差分"
-
-#: src/diffuse/main.py:920
-msgid "Last Difference"
-msgstr "最後の差分"
-
-#: src/diffuse/main.py:922
-msgid "Copy Selection Right"
-msgstr "選択を右にコピー"
-
-#: src/diffuse/main.py:923
-msgid "Copy Selection Left"
-msgstr "選択を左にコピー"
-
-#: src/diffuse/main.py:924
-msgid "Copy Left Into Selection"
-msgstr "左から選択枠にコピー"
-
-#: src/diffuse/main.py:925
-msgid "Copy Right Into Selection"
-msgstr "右から選択枠にコピー"
-
-#: src/diffuse/main.py:926
-msgid "Merge From Left Then Right"
-msgstr "左からマージした後、右からマージ"
-
-#: src/diffuse/main.py:927
-msgid "Merge From Right Then Left"
-msgstr "右からマージした後、左からマージ"
-
-#: src/diffuse/main.py:929
-msgid "Undo"
-msgstr "元に戻す"
-
-#: src/diffuse/main.py:930
-msgid "Redo"
-msgstr "やり直す"
-
-#: src/diffuse/main.py:931 src/diffuse/widgets.py:1861
-msgid "Cut"
-msgstr "切り取り"
-
-#: src/diffuse/main.py:932 src/diffuse/widgets.py:1862
-msgid "Copy"
-msgstr "コピー"
-
-#: src/diffuse/main.py:933 src/diffuse/widgets.py:1863
-msgid "Paste"
-msgstr "貼り付け"
-
-#: src/diffuse/main.py:934 src/diffuse/widgets.py:1866
-msgid "Clear Edits"
-msgstr "編集をクリア"
-
-#: src/diffuse/main.py:1057
-msgid "Some files have unsaved changes. Select the files to save before closing."
-msgstr ""
-"変更が保存されていないファイルがあります。終了前に保存するファイルを選択します。"
-
-#: src/diffuse/main.py:1071
-msgid "Tab"
-msgstr "タブ"
-
-#: src/diffuse/main.py:1076
-msgid "Pane"
-msgstr "枠"
-
-#: src/diffuse/main.py:1087
-msgid "Close _Without Saving"
-msgstr "保存せずに閉じる(_W)"
-
-#: src/diffuse/main.py:1126
-#, python-format
-msgid "Closing this tab will quit %s."
-msgstr "このタブを閉じると、%sは終了します。"
-
-#: src/diffuse/main.py:1209
-#, python-format
-msgid "File Merge %d"
-msgstr "ファイルマージ%d"
-
-#: src/diffuse/main.py:1315
-#, python-format
-msgid "Error retrieving commits for %s."
-msgstr "%s のコミットの取得中にエラーが生じました。"
-
-#: src/diffuse/main.py:1347
-#, python-format
-msgid "Error retrieving modifications for %s."
-msgstr "%s の変更の取得中にエラーが生じました。"
-
-#: src/diffuse/main.py:1380
-msgid "Open File In New Tab"
-msgstr "新しいタブにファイルを開く"
-
-#: src/diffuse/main.py:1403
-msgid "Choose Folder With Modified Files"
-msgstr "変更なったファイルがあるフォルダを選択"
-
-#: src/diffuse/main.py:1421
-msgid "No modified files found."
-msgstr "変更なったファイルが見つかりませんでした。"
-
-#: src/diffuse/main.py:1427
-msgid "Choose Folder With Commit"
-msgstr "コミットがあるフォルダを選択"
-
-#: src/diffuse/main.py:1447
-msgid "No committed files found."
-msgstr "コミットされたファイルが見つかりませんでした。"
-
-#: src/diffuse/main.py:1483
-msgid "New N-Way File Merge..."
-msgstr "新しい複数のファイルの比較..."
-
-#: src/diffuse/main.py:1484
-msgid "Number of panes: "
-msgstr "枠の数: "
-
-#: src/diffuse/main.py:1558
-msgid "Phrase not found.  Continue from the end of the file?"
-msgstr "文字列が見つかりませんでした。ファイルの終わりから続けますか。"
-
-#: src/diffuse/main.py:1560
-msgid "Phrase not found.  Continue from the start of the file?"
-msgstr "文字列が見つかりませんでした。ファイルの始めから続けますか。"
-
-#: src/diffuse/main.py:1781
-#, fuzzy
-msgid ""
-"Usage:\n"
-"    diffuse [OPTION...] [FILE...]\n"
-"    diffuse ( -h | -? | --help | -v | --version )\n"
-"\n"
-"Diffuse is a graphical tool for merging and comparing text files. Diffuse is\n"
-"able to compare an arbitrary number of files side-by-side and gives users the\n"
-"ability to manually adjust line matching and directly edit files. Diffuse can\n"
-"also retrieve revisions of files from several VCSs for comparison and merging.\n"
-"\n"
-"Help Options:\n"
-"  ( -h | -? | --help )             Display this usage information\n"
-"  ( -v | --version )               Display version and copyright information\n"
-"\n"
-"Configuration Options:\n"
-"  --no-rcfile                      Do not read any resource files\n"
-"  --rcfile <file>                  Specify explicit resource file\n"
-"\n"
-"General Options:\n"
-"  ( -c | --commit ) <rev>          File revisions <rev-1> and <rev>\n"
-"  ( -D | --close-if-same )         Close all tabs with no differences\n"
-"  ( -e | --encoding ) <codec>      Use <codec> to read and write files\n"
-"  ( -L | --label ) <label>         Display <label> instead of the file name\n"
-"  ( -m | --modified )              Create a new tab for each modified file\n"
-"  ( -r | --revision ) <rev>        File revision <rev>\n"
-"  ( -s | --separate )              Create a new tab for each file\n"
-"  ( -t | --tab )                   Start a new tab\n"
-"  ( -V | --vcs ) <vcs-list>        Version control system search order\n"
-"  --line <line>                    Start with line <line> selected\n"
-"  --null-file                      Create a blank file comparison pane\n"
-"\n"
-"Display Options:\n"
-"  ( -b | --ignore-space-change )   Ignore changes to white space\n"
-"  ( -B | --ignore-blank-lines )    Ignore changes in blank lines\n"
-"  ( -E | --ignore-end-of-line )    Ignore end of line differences\n"
-"  ( -i | --ignore-case )           Ignore case differences\n"
-"  ( -w | --ignore-all-space )      Ignore white space differences"
-msgstr ""
-"使用方法:\n"
-"    diffuse [ [オプション...] [ファイル...] ]...\n"
-"    diffuse ( -h | -? | --help | -v | --version )\n"
-"\n"
-"Diffuse は、テキストファイルをマージして比較するためのグラフィックツールです。\n"
-"任意の数の並行なファイルを比較できます。ユーザは、手動で行を再整列し、\n"
-"ファイルを直接編集できます。また、Diffuse は比較やマージするためにBazaar、CVS、\n"
-"Darcs、Git、Mercurial、Monotone、RCS、Subversion、および SVK リポジトリから\n"
-"ファイルリビジョンを取得できます。\n"
-"\n"
-"ヘルプオプション:\n"
-"  ( -h | -? | --help )             この使用方法の情報を表示\n"
-"  ( -v | --version )               バージョンと著作権情報を表示\n"
-"\n"
-"構成のオプション:\n"
-"  --no-rcfile                      リソースファイルを読まない\n"
-"  --rcfile <file>                  指定されたリソースファイルを読む\n"
-"\n"
-"一般的なオプション:\n"
-"  ( -c | --commit ) <rev>          <rev-1> と <rev> というファイルリビジョン\n"
-"  ( -D | --close-if-same )         差分がないタブを閉じる\n"
-"  ( -e | --encoding ) <codec>      <codec> でファイルを読み書き\n"
-"  ( -L | --label ) <label>         ファイル名の代わりに <label> を表示\n"
-"  ( -m | --modified )              変更になったファイルのために新しいタブを作る\n"
-"  ( -r | --revision ) <rev>        <rev> というファイルリビジョン\n"
-"  ( -s | --separate )              各ファイルのために新しいタブを作る\n"
-"  ( -t | --tab )                   新しいタブを始める\n"
-"  ( -V | --vcs ) <vcs-list>        Version control system search order\n"
-"  --line <line>                    初めに <line> 行を選択してから\n"
-"  --null-file                      空白のファイル比較枠を作る\n"
-"\n"
-"表示オプション:\n"
-"  ( -b | --ignore-space-change )   空白の変更を無視\n"
-"  ( -B | --ignore-blank-lines )    空白行の違いを無視\n"
-"  ( -E | --ignore-end-of-line )    行の最後の違いを無視\n"
-"  ( -i | --ignore-case )           大文字小文字の違いを無視\n"
-"  ( -w | --ignore-all-space )      空白の違いを無視"
-
-#: src/diffuse/main.py:1948
+#: src/diffuse/main.py:327
 msgid "Error parsing line number."
 msgstr "行番号をパースする際にエラーが生じました。"
 
-#: src/diffuse/main.py:1958
-#, python-format
-msgid "Skipping unknown argument \"%s\"."
-msgstr "未知の引数「%s」を飛ばします。"
-
-#: src/diffuse/main.py:1966
+#: src/diffuse/main.py:343
 #, python-format
 msgid "Error processing argument \"%s\".  Directory not expected."
 msgstr ""
 "%s の引数を処理しているときにエラーが生じました。ディレクトリは予測できませんでし"
 "た。"
 
-#: src/diffuse/preferences.py:80
+#: src/diffuse/preferences.py:75
 msgid "Display"
 msgstr "表示"
 
-#: src/diffuse/preferences.py:83
+#: src/diffuse/preferences.py:78
 msgid "Font"
 msgstr "フォント"
 
-#: src/diffuse/preferences.py:84
+#: src/diffuse/preferences.py:79
 msgid "Tab width"
 msgstr "タブの幅"
 
-#: src/diffuse/preferences.py:85
+#: src/diffuse/preferences.py:80
 msgid "Show right margin"
 msgstr "右マージンを表示"
 
-#: src/diffuse/preferences.py:86
+#: src/diffuse/preferences.py:81
 msgid "Right margin"
 msgstr "右マージン"
 
-#: src/diffuse/preferences.py:87
+#: src/diffuse/preferences.py:82
 msgid "Show line numbers"
 msgstr "行番号を表示"
 
-#: src/diffuse/preferences.py:88
+#: src/diffuse/preferences.py:83
 msgid "Show white space characters"
 msgstr "空白文字を表示"
 
-#: src/diffuse/preferences.py:89
-msgid "Ignore case differences"
-msgstr "大文字小文字の違いを無視"
-
-#: src/diffuse/preferences.py:90
-msgid "Ignore white space differences"
-msgstr "空白の違いを無視"
-
-#: src/diffuse/preferences.py:91 src/diffuse/preferences.py:100
-msgid "Ignore changes to white space"
-msgstr "空白の変更を無視"
-
-#: src/diffuse/preferences.py:92
+#: src/diffuse/preferences.py:87
 msgid "Ignore blank line differences"
 msgstr "空白行の違いを無視"
 
-#: src/diffuse/preferences.py:93
-msgid "Ignore end of line differences"
-msgstr "行の最後の違いを無視"
-
-#: src/diffuse/preferences.py:95
+#: src/diffuse/preferences.py:90
 msgid "Alignment"
 msgstr "整列"
 
-#: src/diffuse/preferences.py:98
+#: src/diffuse/preferences.py:93
 msgid "Ignore case"
 msgstr "大文字小文字を無視"
 
-#: src/diffuse/preferences.py:99
+#: src/diffuse/preferences.py:94
 msgid "Ignore white space"
 msgstr "空白を無視"
 
-#: src/diffuse/preferences.py:101
+#: src/diffuse/preferences.py:96
 msgid "Ignore blank lines"
 msgstr "空白行を無視"
 
-#: src/diffuse/preferences.py:102
+#: src/diffuse/preferences.py:97
 msgid "Ignore end of line characters"
 msgstr "行の最後の文字を無視"
 
-#: src/diffuse/preferences.py:104
+#: src/diffuse/preferences.py:99
 msgid "Editor"
 msgstr "エディタ"
 
-#: src/diffuse/preferences.py:107
+#: src/diffuse/preferences.py:102
 msgid "Auto indent"
 msgstr "自動インデント"
 
-#: src/diffuse/preferences.py:108
+#: src/diffuse/preferences.py:103
 msgid "Expand tabs to spaces"
 msgstr "タブの代わりに空白を挿入"
 
-#: src/diffuse/preferences.py:109
+#: src/diffuse/preferences.py:104
 msgid "Soft tab width"
 msgstr "ソフトタブの幅"
 
-#: src/diffuse/preferences.py:111
+#: src/diffuse/preferences.py:106
 msgid "Tabs"
 msgstr "タブ"
 
-#: src/diffuse/preferences.py:114
+#: src/diffuse/preferences.py:109
 msgid "Default panes"
 msgstr "枠のデフォルトの数"
 
-#: src/diffuse/preferences.py:115
+#: src/diffuse/preferences.py:110
 msgid "Always show the tab bar"
 msgstr "常にタブバーを表示"
 
-#: src/diffuse/preferences.py:116
+#: src/diffuse/preferences.py:111
 #, python-format
 msgid "Warn me when closing a tab will quit %s"
 msgstr "タブを閉じるとき、%s を終了すると警告"
 
-#: src/diffuse/preferences.py:118
+#: src/diffuse/preferences.py:113
 msgid "Regional Settings"
 msgstr "地域設定"
 
-#: src/diffuse/preferences.py:121
+#: src/diffuse/preferences.py:116
 msgid "Default codec"
 msgstr "デフォルトのコーデック"
 
-#: src/diffuse/preferences.py:122
+#: src/diffuse/preferences.py:117
 msgid "Order of codecs used to identify encoding"
 msgstr "エンコーディングを特定するためのコーデックの優先順位"
 
-#: src/diffuse/preferences.py:143
+#: src/diffuse/preferences.py:138
 msgid "Cygwin"
 msgstr "Cygwin"
 
-#: src/diffuse/preferences.py:145
+#: src/diffuse/preferences.py:140
 msgid "Root directory"
 msgstr "ルートディレクトリ"
 
-#: src/diffuse/preferences.py:146
+#: src/diffuse/preferences.py:141
 msgid "Cygdrive prefix"
 msgstr "Cygdrive 接頭辞"
 
-#: src/diffuse/preferences.py:165
-msgid "Version control system search order"
-msgstr ""
-
-#: src/diffuse/preferences.py:173
+#: src/diffuse/preferences.py:167
 msgid "\"co\" command"
 msgstr "co というコマンド"
 
-#: src/diffuse/preferences.py:174
+#: src/diffuse/preferences.py:168
 msgid "\"rlog\" command"
 msgstr "rlog というコマンド"
 
-#: src/diffuse/preferences.py:176
+#: src/diffuse/preferences.py:170
 msgid "Command"
 msgstr "コマンド"
 
-#: src/diffuse/preferences.py:182
+#: src/diffuse/preferences.py:176
 msgid "Launch from a Bash login shell"
 msgstr "Bashログインシェルから始める"
 
-#: src/diffuse/preferences.py:189
+#: src/diffuse/preferences.py:183
 msgid "Update paths for Cygwin"
 msgstr "Cygwin のためにパスを更新"
 
-#: src/diffuse/preferences.py:194
+#: src/diffuse/preferences.py:188
 msgid "Version Control"
 msgstr "バージョンコントロール"
 
-#: src/diffuse/preferences.py:259
+#: src/diffuse/preferences.py:253
 msgid "Preferences"
 msgstr "設定"
+
+#: src/diffuse/preferences.py:294 src/diffuse/window.py:580
+#, python-format
+msgid "Error writing %s."
+msgstr "%s へ書き込む際にエラーが生じました。"
+
+#: src/diffuse/preferences.py:483 src/diffuse/window.py:446
+#: src/diffuse/window.py:1413 src/diffuse/window.py:1436 src/diffuse/window.py:1459
+msgid "_Open"
+msgstr ""
 
 #: src/diffuse/resources.py:242 src/diffuse/resources.py:246
 #: src/diffuse/resources.py:249
@@ -934,15 +414,10 @@ msgstr "{file} の {line}行 を処理しているときにエラーが生じま
 msgid "Auto Detect"
 msgstr "自動検出"
 
-#: src/diffuse/vcs/cvs.py:54 src/diffuse/vcs/rcs.py:63 src/diffuse/vcs/svn.py:97
+#: src/diffuse/vcs/cvs.py:54 src/diffuse/vcs/rcs.py:63 src/diffuse/vcs/svn.py:96
 #, python-format
 msgid "Error parsing revision %s."
 msgstr "%s というリビジョンをパースする際にエラーが生じました。"
-
-#: src/diffuse/vcs/vcs_registry.py:238
-#, python-format
-msgid "Error parsing %s."
-msgstr "%s をパースする際にエラーが生じました。"
 
 #: src/diffuse/widgets.py:1857
 msgid "Align with Selection"
@@ -956,10 +431,642 @@ msgstr "分離"
 msgid "Merge Selection"
 msgstr "選択をマージ"
 
+#: src/diffuse/widgets.py:1861 src/diffuse/window.py:865
+msgid "Cut"
+msgstr "切り取り"
+
+#: src/diffuse/widgets.py:1862 src/diffuse/window.py:866
+msgid "Copy"
+msgstr "コピー"
+
+#: src/diffuse/widgets.py:1863 src/diffuse/window.py:867
+msgid "Paste"
+msgstr "貼り付け"
+
 #: src/diffuse/widgets.py:1865
 msgid "Select All"
 msgstr "全て選択"
 
+#: src/diffuse/widgets.py:1866 src/diffuse/window.py:868
+msgid "Clear Edits"
+msgstr "編集をクリア"
+
 #: src/diffuse/widgets.py:1868
 msgid "Swap with Selected Pane"
 msgstr "選択された枠と交換"
+
+#: src/diffuse/window.py:83
+msgid "Close Tab"
+msgstr "タブを閉じる"
+
+#: src/diffuse/window.py:126
+msgid "Open File..."
+msgstr "ファイルを開く..."
+
+#: src/diffuse/window.py:127
+msgid "Reload File"
+msgstr "ファイルを再読込み"
+
+#: src/diffuse/window.py:128
+msgid "Save File"
+msgstr "ファイルを保存"
+
+#: src/diffuse/window.py:129
+msgid "Save File As..."
+msgstr "ファイルとして保存..."
+
+#: src/diffuse/window.py:228
+#, python-format
+msgid "Column %d"
+msgstr "%d列"
+
+#: src/diffuse/window.py:306
+msgid "Save changes before loading the new file?"
+msgstr "新しいファイルをロードする前に、変更したデータを保存しますか？"
+
+#: src/diffuse/window.py:310
+msgid "_No"
+msgstr ""
+
+#: src/diffuse/window.py:311
+msgid "_Yes"
+msgstr ""
+
+#: src/diffuse/window.py:417
+#, python-format
+msgid "Error reading revision %(rev)s of %(file)s."
+msgstr "%(file)s の %(rev)s というリビジョンを読み込む際にエラーが生じました。"
+
+#: src/diffuse/window.py:442
+msgid "Open File"
+msgstr "ファイルを開く"
+
+#: src/diffuse/window.py:495
+#, python-format
+msgid "Save %(title)s Pane %(pane)d"
+msgstr "%(title)s の%(pane)d番目の枠を保存"
+
+#: src/diffuse/window.py:499 src/diffuse/window.py:1111
+#, fuzzy
+msgid "_Save"
+msgstr "ファイルを保存(_S)"
+
+#: src/diffuse/window.py:527
+#, python-format
+msgid "A file named %s already exists. Do you want to overwrite it?"
+msgstr "%s というファイルは既に存在しています。それを上書きしますか？"
+
+#: src/diffuse/window.py:534
+#, python-format
+msgid ""
+"The file %s has been modified by another process since reading it. If you save, "
+"all the external changes could be lost. Save anyways?"
+msgstr ""
+"ファイル %s は、変更されています。保存する場合は、これらの変更が失われることがあり"
+"ます。保存しますか?"
+
+#: src/diffuse/window.py:576
+#, python-format
+msgid "Error encoding to %s."
+msgstr "%s に変える際にエラーが生じました。"
+
+#: src/diffuse/window.py:610
+msgid "Go To Line..."
+msgstr "指定行へジャンプ..."
+
+#: src/diffuse/window.py:611
+msgid "Line Number: "
+msgstr "行番号: "
+
+#: src/diffuse/window.py:642
+msgid ""
+"Press the enter key or double click to edit. Press the space bar or use the RMB "
+"menu to manually align."
+msgstr ""
+"編集するためにエンターキーを押すか、ダブルクリックします。手動で整列させるためにス"
+"ペースバーを押すか、RMBを使います。"
+
+#: src/diffuse/window.py:646
+msgid "Press the escape key to finish editing."
+msgstr "ESCキーを押して、編集を終了します。"
+
+#: src/diffuse/window.py:649
+msgid ""
+"Select target line and press the space bar to align. Press the escape key to "
+"cancel."
+msgstr ""
+"目標行を選択してスペースバーを押すと整列します。取り消す場合は、ESCキーを押しま"
+"す。"
+
+#: src/diffuse/window.py:710
+msgid "_File"
+msgstr "ファイル(_F)"
+
+#: src/diffuse/window.py:712
+msgid "_Open File..."
+msgstr "ファイルを開く...(_O)"
+
+#: src/diffuse/window.py:713
+msgid "Open File In New _Tab..."
+msgstr "新しいタブにファイルを開く...(_T)"
+
+#: src/diffuse/window.py:714
+msgid "Open _Modified Files..."
+msgstr "変更のあるファイルを開く...(_M)"
+
+#: src/diffuse/window.py:715
+msgid "Open Commi_t..."
+msgstr "コミットを開く...(_T)"
+
+#: src/diffuse/window.py:716
+msgid "_Reload File"
+msgstr "ファイルの再読込み(_R)"
+
+#: src/diffuse/window.py:718
+msgid "_Save File"
+msgstr "ファイルを保存(_S)"
+
+#: src/diffuse/window.py:719
+msgid "Save File _As..."
+msgstr "ファイルとして保存...(_A)"
+
+#: src/diffuse/window.py:720
+msgid "Save A_ll"
+msgstr "全て保存(_L)"
+
+#: src/diffuse/window.py:722
+msgid "New _2-Way File Merge"
+msgstr "新しい２つのファイルの比較(_2)"
+
+#: src/diffuse/window.py:723
+msgid "New _3-Way File Merge"
+msgstr "新しい３つのファイルの比較(_3)"
+
+#: src/diffuse/window.py:724
+msgid "New _N-Way File Merge..."
+msgstr "新しい複数のファイルの比較...(_N)"
+
+#: src/diffuse/window.py:726
+msgid "_Close Tab"
+msgstr "タブを閉じる(_C)"
+
+#: src/diffuse/window.py:727
+msgid "_Undo Close Tab"
+msgstr "閉じたタブを元に戻す(_U)"
+
+#: src/diffuse/window.py:728
+msgid "_Quit"
+msgstr "終了(_Q)"
+
+#: src/diffuse/window.py:732
+msgid "_Edit"
+msgstr "編集(_E)"
+
+#: src/diffuse/window.py:734
+msgid "_Undo"
+msgstr "元に戻す(_U)"
+
+#: src/diffuse/window.py:735
+msgid "_Redo"
+msgstr "やり直す(_R)"
+
+#: src/diffuse/window.py:737
+msgid "Cu_t"
+msgstr "切り取り(_T)"
+
+#: src/diffuse/window.py:738
+msgid "_Copy"
+msgstr "コピー(_C)"
+
+#: src/diffuse/window.py:739
+msgid "_Paste"
+msgstr "貼り付け(_P)"
+
+#: src/diffuse/window.py:741
+msgid "Select _All"
+msgstr "全て選択(_A)"
+
+#: src/diffuse/window.py:742
+msgid "C_lear Edits"
+msgstr "編集をクリア(_L)"
+
+#: src/diffuse/window.py:743
+msgid "_Dismiss All Edits"
+msgstr "全ての編集を破棄(_D)"
+
+#: src/diffuse/window.py:745
+msgid "_Find..."
+msgstr "検索...(_F)"
+
+#: src/diffuse/window.py:746
+msgid "Find _Next"
+msgstr "次の検索(_N)"
+
+#: src/diffuse/window.py:747
+msgid "Find Pre_vious"
+msgstr "前の検索(_V)"
+
+#: src/diffuse/window.py:748
+msgid "_Go To Line..."
+msgstr "指定行へジャンプ...(_G)"
+
+#: src/diffuse/window.py:750
+msgid "Pr_eferences..."
+msgstr "設定...(_E)"
+
+#: src/diffuse/window.py:754
+msgid "None"
+msgstr "なし"
+
+#: src/diffuse/window.py:776
+msgid "_View"
+msgstr "表示(_V)"
+
+#: src/diffuse/window.py:778
+msgid "_Syntax Highlighting"
+msgstr "構文の強調表示(_S)"
+
+#: src/diffuse/window.py:780
+msgid "Re_align All"
+msgstr "全て再整列(_A)"
+
+#: src/diffuse/window.py:781
+msgid "_Isolate"
+msgstr "分離(_I)"
+
+#: src/diffuse/window.py:783
+msgid "_First Difference"
+msgstr "最初の差分(_F)"
+
+#: src/diffuse/window.py:784
+msgid "_Previous Difference"
+msgstr "前の差分(_P)"
+
+#: src/diffuse/window.py:785
+msgid "_Next Difference"
+msgstr "次の差分(_N)"
+
+#: src/diffuse/window.py:786
+msgid "_Last Difference"
+msgstr "最後の差分(_L)"
+
+#: src/diffuse/window.py:788
+msgid "Fir_st Tab"
+msgstr "最初のタブ(_S)"
+
+#: src/diffuse/window.py:789
+msgid "Pre_vious Tab"
+msgstr "前のタブ(_V)"
+
+#: src/diffuse/window.py:790
+msgid "Next _Tab"
+msgstr "次のタブ(_T)"
+
+#: src/diffuse/window.py:791
+msgid "Las_t Tab"
+msgstr "最後のタブ(_T)"
+
+#: src/diffuse/window.py:793
+msgid "Shift Pane _Right"
+msgstr "枠を右に動かす(_R)"
+
+#: src/diffuse/window.py:794
+msgid "Shift Pane _Left"
+msgstr "枠を左に動かす(_L)"
+
+#: src/diffuse/window.py:798
+msgid "F_ormat"
+msgstr "フォーマット(_O)"
+
+#: src/diffuse/window.py:800
+msgid "Convert To _Upper Case"
+msgstr "大文字に変換(_U)"
+
+#: src/diffuse/window.py:801
+msgid "Convert To _Lower Case"
+msgstr "小文字に変換(_L)"
+
+#: src/diffuse/window.py:803
+msgid "Sort Lines In _Ascending Order"
+msgstr "行を昇順に並べる(_A)"
+
+#: src/diffuse/window.py:804
+msgid "Sort Lines In D_escending Order"
+msgstr "行を降順に並べる(_E)"
+
+#: src/diffuse/window.py:806
+msgid "Remove Trailing _White Space"
+msgstr "末尾の空白を削除(_W)"
+
+#: src/diffuse/window.py:807
+msgid "Convert Tabs To _Spaces"
+msgstr "タブをスペースに変換(_S)"
+
+#: src/diffuse/window.py:808
+msgid "Convert Leading Spaces To _Tabs"
+msgstr "先頭のスペースをタブに変換(_T)"
+
+#: src/diffuse/window.py:810
+msgid "_Increase Indenting"
+msgstr "インデントを増やす(_I)"
+
+#: src/diffuse/window.py:811
+msgid "De_crease Indenting"
+msgstr "インデントを減らす(_C)"
+
+#: src/diffuse/window.py:813
+msgid "Convert To _DOS Format"
+msgstr "DOS 形式に変換(_D)"
+
+#: src/diffuse/window.py:814
+msgid "Convert To _Mac Format"
+msgstr "Mac 形式に変換(_M)"
+
+#: src/diffuse/window.py:815
+msgid "Convert To Uni_x Format"
+msgstr "Unix 形式に変換(_X)"
+
+#: src/diffuse/window.py:819
+msgid "_Merge"
+msgstr "マージ(_M)"
+
+#: src/diffuse/window.py:821
+msgid "Copy Selection _Right"
+msgstr "選択を右にコピー(_R)"
+
+#: src/diffuse/window.py:822
+msgid "Copy Selection _Left"
+msgstr "選択を左にコピー(_L)"
+
+#: src/diffuse/window.py:824
+msgid "Copy Left _Into Selection"
+msgstr "左から選択枠にコピー(_I)"
+
+#: src/diffuse/window.py:825
+msgid "Copy Right I_nto Selection"
+msgstr "右から選択枠にコピー(_N)"
+
+#: src/diffuse/window.py:826
+msgid "_Merge From Left Then Right"
+msgstr "左からマージした後、右からマージ(_M)"
+
+#: src/diffuse/window.py:827
+msgid "M_erge From Right Then Left"
+msgstr "右からマージした後、左からマージ(_E)"
+
+#: src/diffuse/window.py:831
+msgid "_Help"
+msgstr "ヘルプ(_H)"
+
+#: src/diffuse/window.py:833
+msgid "_Help Contents..."
+msgstr "ヘルプの目次...(_H)"
+
+#: src/diffuse/window.py:835
+#, python-format
+msgid "_About %s..."
+msgstr "%s について...(_A)"
+
+#: src/diffuse/window.py:847
+msgid "New 2-Way File Merge"
+msgstr "新しい２つのファイルの比較"
+
+#: src/diffuse/window.py:848
+msgid "New 3-Way File Merge"
+msgstr "新しい３つのファイルの比較"
+
+#: src/diffuse/window.py:850
+msgid "Realign All"
+msgstr "全て再整列"
+
+#: src/diffuse/window.py:851
+msgid "First Difference"
+msgstr "最初の差分"
+
+#: src/diffuse/window.py:852
+msgid "Previous Difference"
+msgstr "前の差分"
+
+#: src/diffuse/window.py:853
+msgid "Next Difference"
+msgstr "次の差分"
+
+#: src/diffuse/window.py:854
+msgid "Last Difference"
+msgstr "最後の差分"
+
+#: src/diffuse/window.py:856
+msgid "Copy Selection Right"
+msgstr "選択を右にコピー"
+
+#: src/diffuse/window.py:857
+msgid "Copy Selection Left"
+msgstr "選択を左にコピー"
+
+#: src/diffuse/window.py:858
+msgid "Copy Left Into Selection"
+msgstr "左から選択枠にコピー"
+
+#: src/diffuse/window.py:859
+msgid "Copy Right Into Selection"
+msgstr "右から選択枠にコピー"
+
+#: src/diffuse/window.py:860
+msgid "Merge From Left Then Right"
+msgstr "左からマージした後、右からマージ"
+
+#: src/diffuse/window.py:861
+msgid "Merge From Right Then Left"
+msgstr "右からマージした後、左からマージ"
+
+#: src/diffuse/window.py:863
+msgid "Undo"
+msgstr "元に戻す"
+
+#: src/diffuse/window.py:864
+msgid "Redo"
+msgstr "やり直す"
+
+#: src/diffuse/window.py:950
+msgid "Changes detected"
+msgstr ""
+
+#: src/diffuse/window.py:954
+#, fuzzy, python-format
+msgid ""
+"The file \"%s\" changed on disk.\n"
+"\n"
+"Do you want to reload the file?"
+msgstr "ファイル %s が変更されたようです。そのファイルを再読み込みしますか？"
+
+#: src/diffuse/window.py:959
+#, fuzzy, python-format
+msgid ""
+"The following files changed on disk:\n"
+"%s\n"
+"\n"
+"Do you want to reload these files?"
+msgstr "ファイル %s が変更されたようです。そのファイルを再読み込みしますか？"
+
+#: src/diffuse/window.py:1078
+msgid "Some files have unsaved changes. Select the files to save before closing."
+msgstr ""
+"変更が保存されていないファイルがあります。終了前に保存するファイルを選択します。"
+
+#: src/diffuse/window.py:1092
+msgid "Tab"
+msgstr "タブ"
+
+#: src/diffuse/window.py:1097
+msgid "Pane"
+msgstr "枠"
+
+#: src/diffuse/window.py:1108
+msgid "Close _Without Saving"
+msgstr "保存せずに閉じる(_W)"
+
+#: src/diffuse/window.py:1147
+#, python-format
+msgid "Closing this tab will quit %s."
+msgstr "このタブを閉じると、%sは終了します。"
+
+#: src/diffuse/window.py:1224
+#, python-format
+msgid "File Merge %d"
+msgstr "ファイルマージ%d"
+
+#: src/diffuse/window.py:1344
+#, python-format
+msgid "Error retrieving commits for %s."
+msgstr "%s のコミットの取得中にエラーが生じました。"
+
+#: src/diffuse/window.py:1376
+#, python-format
+msgid "Error retrieving modifications for %s."
+msgstr "%s の変更の取得中にエラーが生じました。"
+
+#: src/diffuse/window.py:1409
+msgid "Open File In New Tab"
+msgstr "新しいタブにファイルを開く"
+
+#: src/diffuse/window.py:1432
+msgid "Choose Folder With Modified Files"
+msgstr "変更なったファイルがあるフォルダを選択"
+
+#: src/diffuse/window.py:1450
+msgid "No modified files found."
+msgstr "変更なったファイルが見つかりませんでした。"
+
+#: src/diffuse/window.py:1456
+msgid "Choose Folder With Commit"
+msgstr "コミットがあるフォルダを選択"
+
+#: src/diffuse/window.py:1476
+msgid "No committed files found."
+msgstr "コミットされたファイルが見つかりませんでした。"
+
+#: src/diffuse/window.py:1512
+msgid "New N-Way File Merge..."
+msgstr "新しい複数のファイルの比較..."
+
+#: src/diffuse/window.py:1513
+msgid "Number of panes: "
+msgstr "枠の数: "
+
+#: src/diffuse/window.py:1587
+msgid "Phrase not found.  Continue from the end of the file?"
+msgstr "文字列が見つかりませんでした。ファイルの終わりから続けますか。"
+
+#: src/diffuse/window.py:1589
+msgid "Phrase not found.  Continue from the start of the file?"
+msgstr "文字列が見つかりませんでした。ファイルの始めから続けますか。"
+
+#: src/diffuse/window.py:1762
+msgid "Diffuse is a graphical tool for merging and comparing text files."
+msgstr ""
+"Diffuse は、テキストファイルをマージして比較するためのグラフィックツールです。"
+
+#: src/diffuse/window.py:1766
+msgid "translator-credits"
+msgstr "Derrick Moser <derrick_moser@yahoo.com>"
+
+#, fuzzy
+#~ msgid ""
+#~ "Usage:\n"
+#~ "    diffuse [OPTION...] [FILE...]\n"
+#~ "    diffuse ( -h | -? | --help | -v | --version )\n"
+#~ "\n"
+#~ "Diffuse is a graphical tool for merging and comparing text files. Diffuse is\n"
+#~ "able to compare an arbitrary number of files side-by-side and gives users the\n"
+#~ "ability to manually adjust line matching and directly edit files. Diffuse can\n"
+#~ "also retrieve revisions of files from several VCSs for comparison and "
+#~ "merging.\n"
+#~ "\n"
+#~ "Help Options:\n"
+#~ "  ( -h | -? | --help )             Display this usage information\n"
+#~ "  ( -v | --version )               Display version and copyright information\n"
+#~ "\n"
+#~ "Configuration Options:\n"
+#~ "  --no-rcfile                      Do not read any resource files\n"
+#~ "  --rcfile <file>                  Specify explicit resource file\n"
+#~ "\n"
+#~ "General Options:\n"
+#~ "  ( -c | --commit ) <rev>          File revisions <rev-1> and <rev>\n"
+#~ "  ( -D | --close-if-same )         Close all tabs with no differences\n"
+#~ "  ( -e | --encoding ) <codec>      Use <codec> to read and write files\n"
+#~ "  ( -L | --label ) <label>         Display <label> instead of the file name\n"
+#~ "  ( -m | --modified )              Create a new tab for each modified file\n"
+#~ "  ( -r | --revision ) <rev>        File revision <rev>\n"
+#~ "  ( -s | --separate )              Create a new tab for each file\n"
+#~ "  ( -t | --tab )                   Start a new tab\n"
+#~ "  ( -V | --vcs ) <vcs-list>        Version control system search order\n"
+#~ "  --line <line>                    Start with line <line> selected\n"
+#~ "  --null-file                      Create a blank file comparison pane\n"
+#~ "\n"
+#~ "Display Options:\n"
+#~ "  ( -b | --ignore-space-change )   Ignore changes to white space\n"
+#~ "  ( -B | --ignore-blank-lines )    Ignore changes in blank lines\n"
+#~ "  ( -E | --ignore-end-of-line )    Ignore end of line differences\n"
+#~ "  ( -i | --ignore-case )           Ignore case differences\n"
+#~ "  ( -w | --ignore-all-space )      Ignore white space differences"
+#~ msgstr ""
+#~ "使用方法:\n"
+#~ "    diffuse [ [オプション...] [ファイル...] ]...\n"
+#~ "    diffuse ( -h | -? | --help | -v | --version )\n"
+#~ "\n"
+#~ "Diffuse は、テキストファイルをマージして比較するためのグラフィックツールで"
+#~ "す。\n"
+#~ "任意の数の並行なファイルを比較できます。ユーザは、手動で行を再整列し、\n"
+#~ "ファイルを直接編集できます。また、Diffuse は比較やマージするためにBazaar、"
+#~ "CVS、\n"
+#~ "Darcs、Git、Mercurial、Monotone、RCS、Subversion、および SVK リポジトリから\n"
+#~ "ファイルリビジョンを取得できます。\n"
+#~ "\n"
+#~ "ヘルプオプション:\n"
+#~ "  ( -h | -? | --help )             この使用方法の情報を表示\n"
+#~ "  ( -v | --version )               バージョンと著作権情報を表示\n"
+#~ "\n"
+#~ "構成のオプション:\n"
+#~ "  --no-rcfile                      リソースファイルを読まない\n"
+#~ "  --rcfile <file>                  指定されたリソースファイルを読む\n"
+#~ "\n"
+#~ "一般的なオプション:\n"
+#~ "  ( -c | --commit ) <rev>          <rev-1> と <rev> というファイルリビジョン\n"
+#~ "  ( -D | --close-if-same )         差分がないタブを閉じる\n"
+#~ "  ( -e | --encoding ) <codec>      <codec> でファイルを読み書き\n"
+#~ "  ( -L | --label ) <label>         ファイル名の代わりに <label> を表示\n"
+#~ "  ( -m | --modified )              変更になったファイルのために新しいタブを作"
+#~ "る\n"
+#~ "  ( -r | --revision ) <rev>        <rev> というファイルリビジョン\n"
+#~ "  ( -s | --separate )              各ファイルのために新しいタブを作る\n"
+#~ "  ( -t | --tab )                   新しいタブを始める\n"
+#~ "  ( -V | --vcs ) <vcs-list>        Version control system search order\n"
+#~ "  --line <line>                    初めに <line> 行を選択してから\n"
+#~ "  --null-file                      空白のファイル比較枠を作る\n"
+#~ "\n"
+#~ "表示オプション:\n"
+#~ "  ( -b | --ignore-space-change )   空白の変更を無視\n"
+#~ "  ( -B | --ignore-blank-lines )    空白行の違いを無視\n"
+#~ "  ( -E | --ignore-end-of-line )    行の最後の違いを無視\n"
+#~ "  ( -i | --ignore-case )           大文字小文字の違いを無視\n"
+#~ "  ( -w | --ignore-all-space )      空白の違いを無視"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Diffuse svn 316\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-23 20:00-0400\n"
+"POT-Creation-Date: 2023-04-16 14:09-0400\n"
 "PO-Revision-Date: 2020-06-29 14:49-0400\n"
 "Last-Translator:  <jarryson@gmail.com>\n"
 "Language-Team: Chinese (simplified)\n"
@@ -30,814 +30,302 @@ msgstr "图形化的比较和合并文本文件的工具"
 #: data/io.github.mightycreak.Diffuse.appdata.xml.in:7
 msgid ""
 "Diffuse is a graphical tool for comparing and merging text files. It can retrieve "
-"files for comparison from Bazaar, CVS, Darcs, Git, Mercurial, Monotone, RCS, "
-"Subversion, and SVK repositories."
+"files for comparison from Bazaar, CVS, Darcs, Git, Mercurial, Monotone, RCS, and "
+"Subversion repositories."
 msgstr ""
 
-#: data/io.github.mightycreak.Diffuse.appdata.xml.in:21
-msgid "Main window: diff between two files"
+#: data/io.github.mightycreak.Diffuse.appdata.xml.in:28
+msgid "Main window"
 msgstr ""
 
-#: src/diffuse/constants.py:25
+#: data/io.github.mightycreak.Diffuse.appdata.xml.in:32
+msgid "About window"
+msgstr ""
+
+#: src/diffuse/constants.py:26
 msgid "Copyright"
 msgstr "版权所有"
 
-#: src/diffuse/dialogs.py:40
-msgid "Diffuse is a graphical tool for merging and comparing text files."
-msgstr "Diffuse是一个合并和比较文本文件的图形化程序。"
+#: src/diffuse/dialogs.py:46 src/diffuse/dialogs.py:89 src/diffuse/dialogs.py:133
+#: src/diffuse/preferences.py:254 src/diffuse/preferences.py:483
+#: src/diffuse/window.py:309 src/diffuse/window.py:1107
+msgid "_Cancel"
+msgstr ""
 
-#: src/diffuse/dialogs.py:45
-msgid "translator-credits"
-msgstr "Liu Hao <jarryson@gmail.com>"
-
-#: src/diffuse/dialogs.py:82
+#: src/diffuse/dialogs.py:50
 msgid "Encoding: "
 msgstr "编码："
 
-#: src/diffuse/dialogs.py:94
+#: src/diffuse/dialogs.py:62
 msgid "Revision: "
 msgstr "修订："
 
-#: src/diffuse/dialogs.py:156
+#: src/diffuse/dialogs.py:90 src/diffuse/dialogs.py:134
+#: src/diffuse/preferences.py:255
+msgid "_OK"
+msgstr ""
+
+#: src/diffuse/dialogs.py:130
 msgid "Find..."
 msgstr "查找..."
 
-#: src/diffuse/dialogs.py:164
+#: src/diffuse/dialogs.py:140
 msgid "Search For: "
 msgstr "搜索："
 
-#: src/diffuse/dialogs.py:189
+#: src/diffuse/dialogs.py:165
 msgid "Match Case"
 msgstr "符合大小写"
 
-#: src/diffuse/dialogs.py:194
+#: src/diffuse/dialogs.py:170
 msgid "Search Backwards"
 msgstr "反向搜索"
 
+#: src/diffuse/main.py:53
+msgid "Display version and copyright information"
+msgstr "现实版本和版权信息"
+
+#: src/diffuse/main.py:61
+msgid "Do not read any resource files"
+msgstr "不要读取任何源文件"
+
+#: src/diffuse/main.py:69
+msgid "Specify explicit resource file"
+msgstr "指定明确的源文件"
+
+#: src/diffuse/main.py:77
+msgid "File revisions <rev-1> and <rev>"
+msgstr ""
+
 #: src/diffuse/main.py:85
-msgid "Close Tab"
-msgstr "关闭标签"
+msgid "Close all tabs with no differences"
+msgstr ""
 
-#: src/diffuse/main.py:132
-msgid "Open File..."
-msgstr "打开文件"
+#: src/diffuse/main.py:92
+msgid "Use <codec> to read and write files"
+msgstr ""
 
-#: src/diffuse/main.py:133
-msgid "Reload File"
-msgstr "重新加载文件"
+#: src/diffuse/main.py:100
+msgid "Display <label> instead of the file name"
+msgstr ""
 
-#: src/diffuse/main.py:134
-msgid "Save File"
-msgstr "保存文件"
+#: src/diffuse/main.py:108
+msgid "Create a new tab for each modified file"
+msgstr ""
 
-#: src/diffuse/main.py:135
-msgid "Save File As..."
-msgstr "另存为"
+#: src/diffuse/main.py:115
+msgid "File revision <rev>"
+msgstr ""
 
-#: src/diffuse/main.py:217
-#, python-format
-msgid "Column %d"
-msgstr "%d列"
+#: src/diffuse/main.py:123
+msgid "Create a new tab for each file"
+msgstr ""
 
-#: src/diffuse/main.py:291
-msgid "Save changes before loading the new file?"
-msgstr "加载新文件之前保存更改吗？"
+#: src/diffuse/main.py:130
+msgid "Start a new tab"
+msgstr ""
 
-#: src/diffuse/main.py:402
-#, python-format
-msgid "Error reading revision %(rev)s of %(file)s."
-msgstr "无法读取文件%(file)s中的修订版本%(rev)s。"
+#: src/diffuse/main.py:137 src/diffuse/preferences.py:159
+msgid "Version control system search order"
+msgstr ""
 
-#: src/diffuse/main.py:405 src/diffuse/main.py:1860
+#: src/diffuse/main.py:145
+msgid "Start with line <line> selected"
+msgstr ""
+
+#: src/diffuse/main.py:153
+msgid "Create a blank file comparison pane"
+msgstr ""
+
+#: src/diffuse/main.py:160 src/diffuse/preferences.py:86
+#: src/diffuse/preferences.py:95
+msgid "Ignore changes to white space"
+msgstr "忽略对空格的改变"
+
+#: src/diffuse/main.py:167
+msgid "Ignore changes in blank lines"
+msgstr "忽略对空行的改变"
+
+#: src/diffuse/main.py:174 src/diffuse/preferences.py:88
+msgid "Ignore end of line differences"
+msgstr "忽略行尾的不同"
+
+#: src/diffuse/main.py:181 src/diffuse/preferences.py:84
+msgid "Ignore case differences"
+msgstr "忽略大小写的不同"
+
+#: src/diffuse/main.py:188 src/diffuse/preferences.py:85
+msgid "Ignore white space differences"
+msgstr "忽略空格的不同"
+
+#: src/diffuse/main.py:191
+msgid ""
+"Diffuse is a graphical tool for merging and comparing text files. Diffuse is\n"
+"able to compare an arbitrary number of files side-by-side and gives users the\n"
+"ability to manually adjust line matching and directly edit files. Diffuse can\n"
+"also retrieve revisions of files from several VCSs for comparison and merging."
+msgstr ""
+
+#: src/diffuse/main.py:247 src/diffuse/window.py:420
 #, python-format
 msgid "Error reading %s."
 msgstr "无法读取%s。"
 
-#: src/diffuse/main.py:427
-msgid "Open File"
-msgstr "打开文件"
-
-#: src/diffuse/main.py:484
-#, python-format
-msgid "The file %s changed on disk. Do you want to reload the file?"
-msgstr "磁盘文件%s已被更改，是否重新载入？"
-
-#: src/diffuse/main.py:510
-#, python-format
-msgid "Save %(title)s Pane %(pane)d"
-msgstr "保存%(title)s窗格%(pane)d"
-
-#: src/diffuse/main.py:542
-#, python-format
-msgid "A file named %s already exists. Do you want to overwrite it?"
-msgstr "已存在名为%s的文件，您希望覆盖它吗？"
-
-#: src/diffuse/main.py:549
-#, python-format
-msgid ""
-"The file %s has been modified by another process since reading it. If you save, "
-"all the external changes could be lost. Save anyways?"
-msgstr "文件%s打开后被其他进程更改过了，如果保存，其他程序的修改将会丢失，保存吗？"
-
-#: src/diffuse/main.py:591
-#, python-format
-msgid "Error encoding to %s."
-msgstr "无法编码为%s。"
-
-#: src/diffuse/main.py:595 src/diffuse/preferences.py:300
-#, python-format
-msgid "Error writing %s."
-msgstr "无法写入%s"
-
-#: src/diffuse/main.py:625
-msgid "Go To Line..."
-msgstr "跳到行..."
-
-#: src/diffuse/main.py:626
-msgid "Line Number: "
-msgstr "行数："
-
-#: src/diffuse/main.py:657
-msgid ""
-"Press the enter key or double click to edit. Press the space bar or use the RMB "
-"menu to manually align."
-msgstr "按回车或者鼠标双击进行编译。空格键或者右键菜单手动对齐。"
-
-#: src/diffuse/main.py:661
-msgid "Press the escape key to finish editing."
-msgstr "按ESC键结束编辑"
-
-#: src/diffuse/main.py:664
-msgid ""
-"Select target line and press the space bar to align. Press the escape key to "
-"cancel."
-msgstr "选择目标行然后按空格键进行对齐，按ESC取消。"
-
-#: src/diffuse/main.py:787
-msgid "_File"
-msgstr "文件(_F)"
-
-#: src/diffuse/main.py:788
-msgid "_Open File..."
-msgstr "打开文件(_O)"
-
-#: src/diffuse/main.py:789
-msgid "Open File In New _Tab..."
-msgstr "在新标签里打开文件(_T)"
-
-#: src/diffuse/main.py:790
-msgid "Open _Modified Files..."
-msgstr "打开修改过的文件(_M)"
-
-#: src/diffuse/main.py:791
-msgid "Open Commi_t..."
-msgstr "打开提交(_T)"
-
-#: src/diffuse/main.py:792
-msgid "_Reload File"
-msgstr "重新加载文件(_R)"
-
-#: src/diffuse/main.py:794
-msgid "_Save File"
-msgstr "保存(_S)"
-
-#: src/diffuse/main.py:795
-msgid "Save File _As..."
-msgstr "另存为(_A)"
-
-#: src/diffuse/main.py:796
-msgid "Save A_ll"
-msgstr "保存所有(_L)"
-
-#: src/diffuse/main.py:798
-msgid "New _2-Way File Merge"
-msgstr "新建2方文件合并(_2)"
-
-#: src/diffuse/main.py:799
-msgid "New _3-Way File Merge"
-msgstr "新建3方文件合并(_3)"
-
-#: src/diffuse/main.py:800
-msgid "New _N-Way File Merge..."
-msgstr "新建多方文件合并(_N)"
-
-#: src/diffuse/main.py:802
-msgid "_Close Tab"
-msgstr "关闭标签(_C)"
-
-#: src/diffuse/main.py:803
-msgid "_Undo Close Tab"
-msgstr "恢复关闭的标签"
-
-#: src/diffuse/main.py:804
-msgid "_Quit"
-msgstr "退出(_Q)"
-
-#: src/diffuse/main.py:807
-msgid "_Edit"
-msgstr "编辑(_E)"
-
-#: src/diffuse/main.py:808
-msgid "_Undo"
-msgstr "恢复(_U)"
-
-#: src/diffuse/main.py:809
-msgid "_Redo"
-msgstr "重做(_R)"
-
-#: src/diffuse/main.py:811
-msgid "Cu_t"
-msgstr "剪切(_T)"
-
-#: src/diffuse/main.py:812
-msgid "_Copy"
-msgstr "复制(_C)"
-
-#: src/diffuse/main.py:813
-msgid "_Paste"
-msgstr "粘贴(_P)"
-
-#: src/diffuse/main.py:815
-msgid "Select _All"
-msgstr "选择所有(_A)"
-
-#: src/diffuse/main.py:816
-msgid "C_lear Edits"
-msgstr "取消编辑(L)"
-
-#: src/diffuse/main.py:817
-msgid "_Dismiss All Edits"
-msgstr "撤销所有更改(_D)"
-
-#: src/diffuse/main.py:819
-msgid "_Find..."
-msgstr "查找(_F)"
-
-#: src/diffuse/main.py:820
-msgid "Find _Next"
-msgstr "找下一个(_N)"
-
-#: src/diffuse/main.py:821
-msgid "Find Pre_vious"
-msgstr "找上一个(_V)"
-
-#: src/diffuse/main.py:822
-msgid "_Go To Line..."
-msgstr "跳到行(_G)"
-
-#: src/diffuse/main.py:824
-msgid "Pr_eferences..."
-msgstr "首选项(_E)"
-
-#: src/diffuse/main.py:828
-msgid "None"
-msgstr "无"
-
-#: src/diffuse/main.py:846
-msgid "_View"
-msgstr "视图(_V)"
-
-#: src/diffuse/main.py:847
-msgid "_Syntax Highlighting"
-msgstr "_Syntax高亮"
-
-#: src/diffuse/main.py:849
-msgid "Re_align All"
-msgstr "重新对齐所有(_A)"
-
-#: src/diffuse/main.py:850
-msgid "_Isolate"
-msgstr "分离(_I)"
-
-#: src/diffuse/main.py:852
-msgid "_First Difference"
-msgstr "第一个不同之处(_F)"
-
-#: src/diffuse/main.py:853
-msgid "_Previous Difference"
-msgstr "前一个不同之处(_P)"
-
-#: src/diffuse/main.py:854
-msgid "_Next Difference"
-msgstr "下一个不同之处(_N)"
-
-#: src/diffuse/main.py:855
-msgid "_Last Difference"
-msgstr "最后一个不同之处(_L)"
-
-#: src/diffuse/main.py:857
-msgid "Fir_st Tab"
-msgstr "第一个标签(_S)"
-
-#: src/diffuse/main.py:858
-msgid "Pre_vious Tab"
-msgstr "前一个标签(_V)"
-
-#: src/diffuse/main.py:859
-msgid "Next _Tab"
-msgstr "下一个标签(_T)"
-
-#: src/diffuse/main.py:860
-msgid "Las_t Tab"
-msgstr "最后一个标签(_T)"
-
-#: src/diffuse/main.py:862
-msgid "Shift Pane _Right"
-msgstr "右移窗格(_R)"
-
-#: src/diffuse/main.py:863
-msgid "Shift Pane _Left"
-msgstr "左移窗格(_L)"
-
-#: src/diffuse/main.py:866
-msgid "F_ormat"
-msgstr "格式(_O)"
-
-#: src/diffuse/main.py:867
-msgid "Convert To _Upper Case"
-msgstr "转换成大写"
-
-#: src/diffuse/main.py:868
-msgid "Convert To _Lower Case"
-msgstr "转换成小写"
-
-#: src/diffuse/main.py:870
-msgid "Sort Lines In _Ascending Order"
-msgstr "以递增的顺序排列行"
-
-#: src/diffuse/main.py:871
-msgid "Sort Lines In D_escending Order"
-msgstr "以递减的顺序排列行"
-
-#: src/diffuse/main.py:873
-msgid "Remove Trailing _White Space"
-msgstr "删除多余的空格(_W)"
-
-#: src/diffuse/main.py:874
-msgid "Convert Tabs To _Spaces"
-msgstr "转换制表符为空格(_S)"
-
-#: src/diffuse/main.py:875
-msgid "Convert Leading Spaces To _Tabs"
-msgstr "转换开头的空格为制表符(_T)"
-
-#: src/diffuse/main.py:877
-msgid "_Increase Indenting"
-msgstr "减少缩进(_I)"
-
-#: src/diffuse/main.py:878
-msgid "De_crease Indenting"
-msgstr "减少缩进"
-
-#: src/diffuse/main.py:880
-msgid "Convert To _DOS Format"
-msgstr "转换为DOS格式(_D)"
-
-#: src/diffuse/main.py:881
-msgid "Convert To _Mac Format"
-msgstr "转换为Mac格式(_M)"
-
-#: src/diffuse/main.py:882
-msgid "Convert To Uni_x Format"
-msgstr "转换为Unix格式(_X)"
-
-#: src/diffuse/main.py:885
-msgid "_Merge"
-msgstr "合并(_M)"
-
-#: src/diffuse/main.py:886
-msgid "Copy Selection _Right"
-msgstr "复制选择之处到右边(_R)"
-
-#: src/diffuse/main.py:887
-msgid "Copy Selection _Left"
-msgstr "复制选择之处到左边(_L)"
-
-#: src/diffuse/main.py:889
-msgid "Copy Left _Into Selection"
-msgstr "复制左边内容到选择之处(_L)"
-
-#: src/diffuse/main.py:890
-msgid "Copy Right I_nto Selection"
-msgstr "复制右边内容到选择之处(_L)"
-
-#: src/diffuse/main.py:891
-msgid "_Merge From Left Then Right"
-msgstr "先左再右合并(_M)"
-
-#: src/diffuse/main.py:892
-msgid "M_erge From Right Then Left"
-msgstr "先右后左合并(_E)"
-
-#: src/diffuse/main.py:895
-msgid "_Help"
-msgstr "帮助(_H)"
-
-#: src/diffuse/main.py:896
-msgid "_Help Contents..."
-msgstr "帮助内容(_H)"
-
-#: src/diffuse/main.py:898
-#, python-format
-msgid "_About %s..."
-msgstr "关于%s(_A)"
-
-#: src/diffuse/main.py:913
-msgid "New 2-Way File Merge"
-msgstr "新建2方文件合并"
-
-#: src/diffuse/main.py:914
-msgid "New 3-Way File Merge"
-msgstr "新建3方文件合并"
-
-#: src/diffuse/main.py:916
-msgid "Realign All"
-msgstr "重新对齐所有"
-
-#: src/diffuse/main.py:917
-msgid "First Difference"
-msgstr "第一个不同之处"
-
-#: src/diffuse/main.py:918
-msgid "Previous Difference"
-msgstr "前一个不同之处"
-
-#: src/diffuse/main.py:919
-msgid "Next Difference"
-msgstr "下一个不同之处"
-
-#: src/diffuse/main.py:920
-msgid "Last Difference"
-msgstr "最后一个不同之处"
-
-#: src/diffuse/main.py:922
-msgid "Copy Selection Right"
-msgstr "复制选择之处到右边"
-
-#: src/diffuse/main.py:923
-msgid "Copy Selection Left"
-msgstr "复制选择之处到左边"
-
-#: src/diffuse/main.py:924
-msgid "Copy Left Into Selection"
-msgstr "复制左边内容到选择之处"
-
-#: src/diffuse/main.py:925
-msgid "Copy Right Into Selection"
-msgstr "复制右边内容到选择之处"
-
-#: src/diffuse/main.py:926
-msgid "Merge From Left Then Right"
-msgstr "先左后右合并"
-
-#: src/diffuse/main.py:927
-msgid "Merge From Right Then Left"
-msgstr "先右后左合并(_T)"
-
-#: src/diffuse/main.py:929
-msgid "Undo"
-msgstr "恢复"
-
-#: src/diffuse/main.py:930
-msgid "Redo"
-msgstr "重做"
-
-#: src/diffuse/main.py:931 src/diffuse/widgets.py:1861
-msgid "Cut"
-msgstr "剪切"
-
-#: src/diffuse/main.py:932 src/diffuse/widgets.py:1862
-msgid "Copy"
-msgstr "复制"
-
-#: src/diffuse/main.py:933 src/diffuse/widgets.py:1863
-msgid "Paste"
-msgstr "粘贴"
-
-#: src/diffuse/main.py:934 src/diffuse/widgets.py:1866
-msgid "Clear Edits"
-msgstr "取消编辑"
-
-#: src/diffuse/main.py:1057
-msgid "Some files have unsaved changes. Select the files to save before closing."
-msgstr "一些文件包含未保存的更改。请在关闭前保存这些文件。"
-
-#: src/diffuse/main.py:1071
-msgid "Tab"
-msgstr "标签"
-
-#: src/diffuse/main.py:1076
-msgid "Pane"
-msgstr "窗格"
-
-#: src/diffuse/main.py:1087
-msgid "Close _Without Saving"
-msgstr "不保存而关闭"
-
-#: src/diffuse/main.py:1126
-#, python-format
-msgid "Closing this tab will quit %s."
-msgstr "关闭此标签将会退出%s"
-
-#: src/diffuse/main.py:1209
-#, python-format
-msgid "File Merge %d"
-msgstr "文件合并%d"
-
-#: src/diffuse/main.py:1315
-#, python-format
-msgid "Error retrieving commits for %s."
-msgstr "錯誤修改提交%s。"
-
-#: src/diffuse/main.py:1347
-#, python-format
-msgid "Error retrieving modifications for %s."
-msgstr "无法恢复对%s的修改。"
-
-#: src/diffuse/main.py:1380
-msgid "Open File In New Tab"
-msgstr "在新标签里打开文件"
-
-#: src/diffuse/main.py:1403
-msgid "Choose Folder With Modified Files"
-msgstr "选择更改过的文件夹"
-
-#: src/diffuse/main.py:1421
-msgid "No modified files found."
-msgstr "没有找到修改过的文件。"
-
-#: src/diffuse/main.py:1427
-msgid "Choose Folder With Commit"
-msgstr "选择提交的文件夹"
-
-#: src/diffuse/main.py:1447
-msgid "No committed files found."
-msgstr "没有找到提交的文件。"
-
-#: src/diffuse/main.py:1483
-msgid "New N-Way File Merge..."
-msgstr "新建多方文件合并"
-
-#: src/diffuse/main.py:1484
-msgid "Number of panes: "
-msgstr "窗格数: "
-
-#: src/diffuse/main.py:1558
-msgid "Phrase not found.  Continue from the end of the file?"
-msgstr "短语未找到，从文件结尾继续吗？"
-
-#: src/diffuse/main.py:1560
-msgid "Phrase not found.  Continue from the start of the file?"
-msgstr "短语未找到，从文件开头继续吗？"
-
-#: src/diffuse/main.py:1781
-#, fuzzy
-msgid ""
-"Usage:\n"
-"    diffuse [OPTION...] [FILE...]\n"
-"    diffuse ( -h | -? | --help | -v | --version )\n"
-"\n"
-"Diffuse is a graphical tool for merging and comparing text files. Diffuse is\n"
-"able to compare an arbitrary number of files side-by-side and gives users the\n"
-"ability to manually adjust line matching and directly edit files. Diffuse can\n"
-"also retrieve revisions of files from several VCSs for comparison and merging.\n"
-"\n"
-"Help Options:\n"
-"  ( -h | -? | --help )             Display this usage information\n"
-"  ( -v | --version )               Display version and copyright information\n"
-"\n"
-"Configuration Options:\n"
-"  --no-rcfile                      Do not read any resource files\n"
-"  --rcfile <file>                  Specify explicit resource file\n"
-"\n"
-"General Options:\n"
-"  ( -c | --commit ) <rev>          File revisions <rev-1> and <rev>\n"
-"  ( -D | --close-if-same )         Close all tabs with no differences\n"
-"  ( -e | --encoding ) <codec>      Use <codec> to read and write files\n"
-"  ( -L | --label ) <label>         Display <label> instead of the file name\n"
-"  ( -m | --modified )              Create a new tab for each modified file\n"
-"  ( -r | --revision ) <rev>        File revision <rev>\n"
-"  ( -s | --separate )              Create a new tab for each file\n"
-"  ( -t | --tab )                   Start a new tab\n"
-"  ( -V | --vcs ) <vcs-list>        Version control system search order\n"
-"  --line <line>                    Start with line <line> selected\n"
-"  --null-file                      Create a blank file comparison pane\n"
-"\n"
-"Display Options:\n"
-"  ( -b | --ignore-space-change )   Ignore changes to white space\n"
-"  ( -B | --ignore-blank-lines )    Ignore changes in blank lines\n"
-"  ( -E | --ignore-end-of-line )    Ignore end of line differences\n"
-"  ( -i | --ignore-case )           Ignore case differences\n"
-"  ( -w | --ignore-all-space )      Ignore white space differences"
-msgstr ""
-"用法:\n"
-"    diffuse [ [参数...] [文件...] ]...\n"
-"    diffuse ( -h | -? | --help | -v | --version )\n"
-"\n"
-"Diffuse is a graphical tool for merging and comparing text files.  Diffuse is\n"
-"able to compare an arbitrary number of files side-by-side and gives users the\n"
-"ability to manually adjust line matching and directly edit files.  Diffuse can\n"
-"also retrieve revisions of files from Bazaar, CVS, Darcs, Git, Mercurial,\n"
-"Monotone, RCS, Subversion, and SVK repositories for comparison and merging.\n"
-"\n"
-"帮助参数:\n"
-"  ( -h | -? | --help )             显示词使用信息\n"
-"  ( -v | --version )               现实版本和版权信息\n"
-"\n"
-"配置参数:\n"
-"  --no-rcfile                      不要读取任何源文件\n"
-"  --rcfile <file>                  指定明确的源文件\n"
-"\n"
-"其它参数:\n"
-"  ( -c | --commit ) <rev>          File revisions <rev-1> and <rev>\n"
-"  ( -D | --close-if-same )         Close all tabs with no differences\n"
-"  ( -e | --encoding ) <codec>      Use <codec> to read and write files\n"
-"  ( -L | --label ) <label>         Display <label> instead of the file name\n"
-"  ( -m | --modified )              Create a new tab for each modified file\n"
-"  ( -r | --revision ) <rev>        File revision <rev>\n"
-"  ( -s | --separate )              Create a new tab for each file\n"
-"  ( -t | --tab )                   Start a new tab\n"
-"  ( -V | --vcs ) <vcs-list>        Version control system search order\n"
-"  --line <line>                    Start with line <line> selected\n"
-"  --null-file                      Create a blank file comparison pane\n"
-"\n"
-"显示参数:\n"
-"  ( -b | --ignore-space-change )   忽略对空白的改变\n"
-"  ( -B | --ignore-blank-lines )    忽略对空行的改变\n"
-"  ( -E | --ignore-end-of-line )    忽略行尾的不同\n"
-"  ( -i | --ignore-case )           忽略小结的不同\n"
-"  ( -w | --ignore-all-space )      忽略所有空白的不同"
-
-#: src/diffuse/main.py:1948
+#: src/diffuse/main.py:327
 msgid "Error parsing line number."
 msgstr "解析行数时错误。"
 
-#: src/diffuse/main.py:1958
-#, python-format
-msgid "Skipping unknown argument \"%s\"."
-msgstr "跳过未知参数\"%s\"。"
-
-#: src/diffuse/main.py:1966
+#: src/diffuse/main.py:343
 #, python-format
 msgid "Error processing argument \"%s\".  Directory not expected."
 msgstr "无法处理\"%s\"。目录不存在。"
 
-#: src/diffuse/preferences.py:80
+#: src/diffuse/preferences.py:75
 msgid "Display"
 msgstr "显示"
 
-#: src/diffuse/preferences.py:83
+#: src/diffuse/preferences.py:78
 msgid "Font"
 msgstr "字体"
 
-#: src/diffuse/preferences.py:84
+#: src/diffuse/preferences.py:79
 msgid "Tab width"
 msgstr "制表符宽度"
 
-#: src/diffuse/preferences.py:85
+#: src/diffuse/preferences.py:80
 msgid "Show right margin"
 msgstr "显示右边距"
 
-#: src/diffuse/preferences.py:86
+#: src/diffuse/preferences.py:81
 msgid "Right margin"
 msgstr "右边距"
 
-#: src/diffuse/preferences.py:87
+#: src/diffuse/preferences.py:82
 msgid "Show line numbers"
 msgstr "显示行号"
 
-#: src/diffuse/preferences.py:88
+#: src/diffuse/preferences.py:83
 msgid "Show white space characters"
 msgstr "显示空格字符"
 
-#: src/diffuse/preferences.py:89
-msgid "Ignore case differences"
-msgstr "忽略大小写的不同"
-
-#: src/diffuse/preferences.py:90
-msgid "Ignore white space differences"
-msgstr "忽略空格的不同"
-
-#: src/diffuse/preferences.py:91 src/diffuse/preferences.py:100
-msgid "Ignore changes to white space"
-msgstr "忽略对空格的改变"
-
-#: src/diffuse/preferences.py:92
+#: src/diffuse/preferences.py:87
 msgid "Ignore blank line differences"
 msgstr "忽略空行的不同"
 
-#: src/diffuse/preferences.py:93
-msgid "Ignore end of line differences"
-msgstr "忽略行尾的不同"
-
-#: src/diffuse/preferences.py:95
+#: src/diffuse/preferences.py:90
 msgid "Alignment"
 msgstr "对齐"
 
-#: src/diffuse/preferences.py:98
+#: src/diffuse/preferences.py:93
 msgid "Ignore case"
 msgstr "忽略大小写"
 
-#: src/diffuse/preferences.py:99
+#: src/diffuse/preferences.py:94
 msgid "Ignore white space"
 msgstr "忽略空格"
 
-#: src/diffuse/preferences.py:101
+#: src/diffuse/preferences.py:96
 msgid "Ignore blank lines"
 msgstr "忽略空行"
 
-#: src/diffuse/preferences.py:102
+#: src/diffuse/preferences.py:97
 msgid "Ignore end of line characters"
 msgstr "忽略行尾结束符"
 
-#: src/diffuse/preferences.py:104
+#: src/diffuse/preferences.py:99
 msgid "Editor"
 msgstr "编辑器"
 
-#: src/diffuse/preferences.py:107
+#: src/diffuse/preferences.py:102
 msgid "Auto indent"
 msgstr "自动缩进"
 
-#: src/diffuse/preferences.py:108
+#: src/diffuse/preferences.py:103
 msgid "Expand tabs to spaces"
 msgstr "展开制表符为空格"
 
-#: src/diffuse/preferences.py:109
+#: src/diffuse/preferences.py:104
 msgid "Soft tab width"
 msgstr "软制表符宽度"
 
-#: src/diffuse/preferences.py:111
+#: src/diffuse/preferences.py:106
 msgid "Tabs"
 msgstr "标签"
 
-#: src/diffuse/preferences.py:114
+#: src/diffuse/preferences.py:109
 msgid "Default panes"
 msgstr "默认窗格"
 
-#: src/diffuse/preferences.py:115
+#: src/diffuse/preferences.py:110
 msgid "Always show the tab bar"
 msgstr "总是显示标签栏"
 
-#: src/diffuse/preferences.py:116
+#: src/diffuse/preferences.py:111
 #, python-format
 msgid "Warn me when closing a tab will quit %s"
 msgstr "当关闭标签会退出%s的时候提醒我"
 
-#: src/diffuse/preferences.py:118
+#: src/diffuse/preferences.py:113
 msgid "Regional Settings"
 msgstr "区域性设置"
 
-#: src/diffuse/preferences.py:121
+#: src/diffuse/preferences.py:116
 msgid "Default codec"
 msgstr "默认编码"
 
-#: src/diffuse/preferences.py:122
+#: src/diffuse/preferences.py:117
 msgid "Order of codecs used to identify encoding"
 msgstr "用来识别编码的编码顺序"
 
-#: src/diffuse/preferences.py:143
+#: src/diffuse/preferences.py:138
 msgid "Cygwin"
 msgstr ""
 
-#: src/diffuse/preferences.py:145
+#: src/diffuse/preferences.py:140
 msgid "Root directory"
 msgstr "根目录"
 
-#: src/diffuse/preferences.py:146
+#: src/diffuse/preferences.py:141
 msgid "Cygdrive prefix"
 msgstr ""
 
-#: src/diffuse/preferences.py:165
-msgid "Version control system search order"
-msgstr ""
-
-#: src/diffuse/preferences.py:173
+#: src/diffuse/preferences.py:167
 msgid "\"co\" command"
 msgstr "\"co\"命令"
 
-#: src/diffuse/preferences.py:174
+#: src/diffuse/preferences.py:168
 msgid "\"rlog\" command"
 msgstr "\"rlog\"命令"
 
-#: src/diffuse/preferences.py:176
+#: src/diffuse/preferences.py:170
 msgid "Command"
 msgstr "命令"
 
-#: src/diffuse/preferences.py:182
+#: src/diffuse/preferences.py:176
 msgid "Launch from a Bash login shell"
 msgstr "从命令行登录界面加载"
 
-#: src/diffuse/preferences.py:189
+#: src/diffuse/preferences.py:183
 msgid "Update paths for Cygwin"
 msgstr "为Cygwin更新路径"
 
-#: src/diffuse/preferences.py:194
+#: src/diffuse/preferences.py:188
 msgid "Version Control"
 msgstr "版本控制"
 
-#: src/diffuse/preferences.py:259
+#: src/diffuse/preferences.py:253
 msgid "Preferences"
 msgstr "首选项"
+
+#: src/diffuse/preferences.py:294 src/diffuse/window.py:580
+#, python-format
+msgid "Error writing %s."
+msgstr "无法写入%s"
+
+#: src/diffuse/preferences.py:483 src/diffuse/window.py:446
+#: src/diffuse/window.py:1413 src/diffuse/window.py:1436 src/diffuse/window.py:1459
+msgid "_Open"
+msgstr ""
 
 #: src/diffuse/resources.py:242 src/diffuse/resources.py:246
 #: src/diffuse/resources.py:249
@@ -924,15 +412,10 @@ msgstr "处理到文件{file}的{line}行时出错。"
 msgid "Auto Detect"
 msgstr "自动探测"
 
-#: src/diffuse/vcs/cvs.py:54 src/diffuse/vcs/rcs.py:63 src/diffuse/vcs/svn.py:97
+#: src/diffuse/vcs/cvs.py:54 src/diffuse/vcs/rcs.py:63 src/diffuse/vcs/svn.py:96
 #, python-format
 msgid "Error parsing revision %s."
 msgstr "无法解析修订版本%s。"
-
-#: src/diffuse/vcs/vcs_registry.py:238
-#, python-format
-msgid "Error parsing %s."
-msgstr "无法解析%s。"
 
 #: src/diffuse/widgets.py:1857
 msgid "Align with Selection"
@@ -946,10 +429,632 @@ msgstr "分离"
 msgid "Merge Selection"
 msgstr "合并选择之处"
 
+#: src/diffuse/widgets.py:1861 src/diffuse/window.py:865
+msgid "Cut"
+msgstr "剪切"
+
+#: src/diffuse/widgets.py:1862 src/diffuse/window.py:866
+msgid "Copy"
+msgstr "复制"
+
+#: src/diffuse/widgets.py:1863 src/diffuse/window.py:867
+msgid "Paste"
+msgstr "粘贴"
+
 #: src/diffuse/widgets.py:1865
 msgid "Select All"
 msgstr "选择所有"
 
+#: src/diffuse/widgets.py:1866 src/diffuse/window.py:868
+msgid "Clear Edits"
+msgstr "取消编辑"
+
 #: src/diffuse/widgets.py:1868
 msgid "Swap with Selected Pane"
 msgstr "交换选中的窗格"
+
+#: src/diffuse/window.py:83
+msgid "Close Tab"
+msgstr "关闭标签"
+
+#: src/diffuse/window.py:126
+msgid "Open File..."
+msgstr "打开文件"
+
+#: src/diffuse/window.py:127
+msgid "Reload File"
+msgstr "重新加载文件"
+
+#: src/diffuse/window.py:128
+msgid "Save File"
+msgstr "保存文件"
+
+#: src/diffuse/window.py:129
+msgid "Save File As..."
+msgstr "另存为"
+
+#: src/diffuse/window.py:228
+#, python-format
+msgid "Column %d"
+msgstr "%d列"
+
+#: src/diffuse/window.py:306
+msgid "Save changes before loading the new file?"
+msgstr "加载新文件之前保存更改吗？"
+
+#: src/diffuse/window.py:310
+msgid "_No"
+msgstr ""
+
+#: src/diffuse/window.py:311
+msgid "_Yes"
+msgstr ""
+
+#: src/diffuse/window.py:417
+#, python-format
+msgid "Error reading revision %(rev)s of %(file)s."
+msgstr "无法读取文件%(file)s中的修订版本%(rev)s。"
+
+#: src/diffuse/window.py:442
+msgid "Open File"
+msgstr "打开文件"
+
+#: src/diffuse/window.py:495
+#, python-format
+msgid "Save %(title)s Pane %(pane)d"
+msgstr "保存%(title)s窗格%(pane)d"
+
+#: src/diffuse/window.py:499 src/diffuse/window.py:1111
+#, fuzzy
+msgid "_Save"
+msgstr "保存(_S)"
+
+#: src/diffuse/window.py:527
+#, python-format
+msgid "A file named %s already exists. Do you want to overwrite it?"
+msgstr "已存在名为%s的文件，您希望覆盖它吗？"
+
+#: src/diffuse/window.py:534
+#, python-format
+msgid ""
+"The file %s has been modified by another process since reading it. If you save, "
+"all the external changes could be lost. Save anyways?"
+msgstr "文件%s打开后被其他进程更改过了，如果保存，其他程序的修改将会丢失，保存吗？"
+
+#: src/diffuse/window.py:576
+#, python-format
+msgid "Error encoding to %s."
+msgstr "无法编码为%s。"
+
+#: src/diffuse/window.py:610
+msgid "Go To Line..."
+msgstr "跳到行..."
+
+#: src/diffuse/window.py:611
+msgid "Line Number: "
+msgstr "行数："
+
+#: src/diffuse/window.py:642
+msgid ""
+"Press the enter key or double click to edit. Press the space bar or use the RMB "
+"menu to manually align."
+msgstr "按回车或者鼠标双击进行编译。空格键或者右键菜单手动对齐。"
+
+#: src/diffuse/window.py:646
+msgid "Press the escape key to finish editing."
+msgstr "按ESC键结束编辑"
+
+#: src/diffuse/window.py:649
+msgid ""
+"Select target line and press the space bar to align. Press the escape key to "
+"cancel."
+msgstr "选择目标行然后按空格键进行对齐，按ESC取消。"
+
+#: src/diffuse/window.py:710
+msgid "_File"
+msgstr "文件(_F)"
+
+#: src/diffuse/window.py:712
+msgid "_Open File..."
+msgstr "打开文件(_O)"
+
+#: src/diffuse/window.py:713
+msgid "Open File In New _Tab..."
+msgstr "在新标签里打开文件(_T)"
+
+#: src/diffuse/window.py:714
+msgid "Open _Modified Files..."
+msgstr "打开修改过的文件(_M)"
+
+#: src/diffuse/window.py:715
+msgid "Open Commi_t..."
+msgstr "打开提交(_T)"
+
+#: src/diffuse/window.py:716
+msgid "_Reload File"
+msgstr "重新加载文件(_R)"
+
+#: src/diffuse/window.py:718
+msgid "_Save File"
+msgstr "保存(_S)"
+
+#: src/diffuse/window.py:719
+msgid "Save File _As..."
+msgstr "另存为(_A)"
+
+#: src/diffuse/window.py:720
+msgid "Save A_ll"
+msgstr "保存所有(_L)"
+
+#: src/diffuse/window.py:722
+msgid "New _2-Way File Merge"
+msgstr "新建2方文件合并(_2)"
+
+#: src/diffuse/window.py:723
+msgid "New _3-Way File Merge"
+msgstr "新建3方文件合并(_3)"
+
+#: src/diffuse/window.py:724
+msgid "New _N-Way File Merge..."
+msgstr "新建多方文件合并(_N)"
+
+#: src/diffuse/window.py:726
+msgid "_Close Tab"
+msgstr "关闭标签(_C)"
+
+#: src/diffuse/window.py:727
+msgid "_Undo Close Tab"
+msgstr "恢复关闭的标签"
+
+#: src/diffuse/window.py:728
+msgid "_Quit"
+msgstr "退出(_Q)"
+
+#: src/diffuse/window.py:732
+msgid "_Edit"
+msgstr "编辑(_E)"
+
+#: src/diffuse/window.py:734
+msgid "_Undo"
+msgstr "恢复(_U)"
+
+#: src/diffuse/window.py:735
+msgid "_Redo"
+msgstr "重做(_R)"
+
+#: src/diffuse/window.py:737
+msgid "Cu_t"
+msgstr "剪切(_T)"
+
+#: src/diffuse/window.py:738
+msgid "_Copy"
+msgstr "复制(_C)"
+
+#: src/diffuse/window.py:739
+msgid "_Paste"
+msgstr "粘贴(_P)"
+
+#: src/diffuse/window.py:741
+msgid "Select _All"
+msgstr "选择所有(_A)"
+
+#: src/diffuse/window.py:742
+msgid "C_lear Edits"
+msgstr "取消编辑(L)"
+
+#: src/diffuse/window.py:743
+msgid "_Dismiss All Edits"
+msgstr "撤销所有更改(_D)"
+
+#: src/diffuse/window.py:745
+msgid "_Find..."
+msgstr "查找(_F)"
+
+#: src/diffuse/window.py:746
+msgid "Find _Next"
+msgstr "找下一个(_N)"
+
+#: src/diffuse/window.py:747
+msgid "Find Pre_vious"
+msgstr "找上一个(_V)"
+
+#: src/diffuse/window.py:748
+msgid "_Go To Line..."
+msgstr "跳到行(_G)"
+
+#: src/diffuse/window.py:750
+msgid "Pr_eferences..."
+msgstr "首选项(_E)"
+
+#: src/diffuse/window.py:754
+msgid "None"
+msgstr "无"
+
+#: src/diffuse/window.py:776
+msgid "_View"
+msgstr "视图(_V)"
+
+#: src/diffuse/window.py:778
+msgid "_Syntax Highlighting"
+msgstr "_Syntax高亮"
+
+#: src/diffuse/window.py:780
+msgid "Re_align All"
+msgstr "重新对齐所有(_A)"
+
+#: src/diffuse/window.py:781
+msgid "_Isolate"
+msgstr "分离(_I)"
+
+#: src/diffuse/window.py:783
+msgid "_First Difference"
+msgstr "第一个不同之处(_F)"
+
+#: src/diffuse/window.py:784
+msgid "_Previous Difference"
+msgstr "前一个不同之处(_P)"
+
+#: src/diffuse/window.py:785
+msgid "_Next Difference"
+msgstr "下一个不同之处(_N)"
+
+#: src/diffuse/window.py:786
+msgid "_Last Difference"
+msgstr "最后一个不同之处(_L)"
+
+#: src/diffuse/window.py:788
+msgid "Fir_st Tab"
+msgstr "第一个标签(_S)"
+
+#: src/diffuse/window.py:789
+msgid "Pre_vious Tab"
+msgstr "前一个标签(_V)"
+
+#: src/diffuse/window.py:790
+msgid "Next _Tab"
+msgstr "下一个标签(_T)"
+
+#: src/diffuse/window.py:791
+msgid "Las_t Tab"
+msgstr "最后一个标签(_T)"
+
+#: src/diffuse/window.py:793
+msgid "Shift Pane _Right"
+msgstr "右移窗格(_R)"
+
+#: src/diffuse/window.py:794
+msgid "Shift Pane _Left"
+msgstr "左移窗格(_L)"
+
+#: src/diffuse/window.py:798
+msgid "F_ormat"
+msgstr "格式(_O)"
+
+#: src/diffuse/window.py:800
+msgid "Convert To _Upper Case"
+msgstr "转换成大写"
+
+#: src/diffuse/window.py:801
+msgid "Convert To _Lower Case"
+msgstr "转换成小写"
+
+#: src/diffuse/window.py:803
+msgid "Sort Lines In _Ascending Order"
+msgstr "以递增的顺序排列行"
+
+#: src/diffuse/window.py:804
+msgid "Sort Lines In D_escending Order"
+msgstr "以递减的顺序排列行"
+
+#: src/diffuse/window.py:806
+msgid "Remove Trailing _White Space"
+msgstr "删除多余的空格(_W)"
+
+#: src/diffuse/window.py:807
+msgid "Convert Tabs To _Spaces"
+msgstr "转换制表符为空格(_S)"
+
+#: src/diffuse/window.py:808
+msgid "Convert Leading Spaces To _Tabs"
+msgstr "转换开头的空格为制表符(_T)"
+
+#: src/diffuse/window.py:810
+msgid "_Increase Indenting"
+msgstr "减少缩进(_I)"
+
+#: src/diffuse/window.py:811
+msgid "De_crease Indenting"
+msgstr "减少缩进"
+
+#: src/diffuse/window.py:813
+msgid "Convert To _DOS Format"
+msgstr "转换为DOS格式(_D)"
+
+#: src/diffuse/window.py:814
+msgid "Convert To _Mac Format"
+msgstr "转换为Mac格式(_M)"
+
+#: src/diffuse/window.py:815
+msgid "Convert To Uni_x Format"
+msgstr "转换为Unix格式(_X)"
+
+#: src/diffuse/window.py:819
+msgid "_Merge"
+msgstr "合并(_M)"
+
+#: src/diffuse/window.py:821
+msgid "Copy Selection _Right"
+msgstr "复制选择之处到右边(_R)"
+
+#: src/diffuse/window.py:822
+msgid "Copy Selection _Left"
+msgstr "复制选择之处到左边(_L)"
+
+#: src/diffuse/window.py:824
+msgid "Copy Left _Into Selection"
+msgstr "复制左边内容到选择之处(_L)"
+
+#: src/diffuse/window.py:825
+msgid "Copy Right I_nto Selection"
+msgstr "复制右边内容到选择之处(_L)"
+
+#: src/diffuse/window.py:826
+msgid "_Merge From Left Then Right"
+msgstr "先左再右合并(_M)"
+
+#: src/diffuse/window.py:827
+msgid "M_erge From Right Then Left"
+msgstr "先右后左合并(_E)"
+
+#: src/diffuse/window.py:831
+msgid "_Help"
+msgstr "帮助(_H)"
+
+#: src/diffuse/window.py:833
+msgid "_Help Contents..."
+msgstr "帮助内容(_H)"
+
+#: src/diffuse/window.py:835
+#, python-format
+msgid "_About %s..."
+msgstr "关于%s(_A)"
+
+#: src/diffuse/window.py:847
+msgid "New 2-Way File Merge"
+msgstr "新建2方文件合并"
+
+#: src/diffuse/window.py:848
+msgid "New 3-Way File Merge"
+msgstr "新建3方文件合并"
+
+#: src/diffuse/window.py:850
+msgid "Realign All"
+msgstr "重新对齐所有"
+
+#: src/diffuse/window.py:851
+msgid "First Difference"
+msgstr "第一个不同之处"
+
+#: src/diffuse/window.py:852
+msgid "Previous Difference"
+msgstr "前一个不同之处"
+
+#: src/diffuse/window.py:853
+msgid "Next Difference"
+msgstr "下一个不同之处"
+
+#: src/diffuse/window.py:854
+msgid "Last Difference"
+msgstr "最后一个不同之处"
+
+#: src/diffuse/window.py:856
+msgid "Copy Selection Right"
+msgstr "复制选择之处到右边"
+
+#: src/diffuse/window.py:857
+msgid "Copy Selection Left"
+msgstr "复制选择之处到左边"
+
+#: src/diffuse/window.py:858
+msgid "Copy Left Into Selection"
+msgstr "复制左边内容到选择之处"
+
+#: src/diffuse/window.py:859
+msgid "Copy Right Into Selection"
+msgstr "复制右边内容到选择之处"
+
+#: src/diffuse/window.py:860
+msgid "Merge From Left Then Right"
+msgstr "先左后右合并"
+
+#: src/diffuse/window.py:861
+msgid "Merge From Right Then Left"
+msgstr "先右后左合并(_T)"
+
+#: src/diffuse/window.py:863
+msgid "Undo"
+msgstr "恢复"
+
+#: src/diffuse/window.py:864
+msgid "Redo"
+msgstr "重做"
+
+#: src/diffuse/window.py:950
+msgid "Changes detected"
+msgstr ""
+
+#: src/diffuse/window.py:954
+#, fuzzy, python-format
+msgid ""
+"The file \"%s\" changed on disk.\n"
+"\n"
+"Do you want to reload the file?"
+msgstr "磁盘文件%s已被更改，是否重新载入？"
+
+#: src/diffuse/window.py:959
+#, fuzzy, python-format
+msgid ""
+"The following files changed on disk:\n"
+"%s\n"
+"\n"
+"Do you want to reload these files?"
+msgstr "磁盘文件%s已被更改，是否重新载入？"
+
+#: src/diffuse/window.py:1078
+msgid "Some files have unsaved changes. Select the files to save before closing."
+msgstr "一些文件包含未保存的更改。请在关闭前保存这些文件。"
+
+#: src/diffuse/window.py:1092
+msgid "Tab"
+msgstr "标签"
+
+#: src/diffuse/window.py:1097
+msgid "Pane"
+msgstr "窗格"
+
+#: src/diffuse/window.py:1108
+msgid "Close _Without Saving"
+msgstr "不保存而关闭"
+
+#: src/diffuse/window.py:1147
+#, python-format
+msgid "Closing this tab will quit %s."
+msgstr "关闭此标签将会退出%s"
+
+#: src/diffuse/window.py:1224
+#, python-format
+msgid "File Merge %d"
+msgstr "文件合并%d"
+
+#: src/diffuse/window.py:1344
+#, python-format
+msgid "Error retrieving commits for %s."
+msgstr "錯誤修改提交%s。"
+
+#: src/diffuse/window.py:1376
+#, python-format
+msgid "Error retrieving modifications for %s."
+msgstr "无法恢复对%s的修改。"
+
+#: src/diffuse/window.py:1409
+msgid "Open File In New Tab"
+msgstr "在新标签里打开文件"
+
+#: src/diffuse/window.py:1432
+msgid "Choose Folder With Modified Files"
+msgstr "选择更改过的文件夹"
+
+#: src/diffuse/window.py:1450
+msgid "No modified files found."
+msgstr "没有找到修改过的文件。"
+
+#: src/diffuse/window.py:1456
+msgid "Choose Folder With Commit"
+msgstr "选择提交的文件夹"
+
+#: src/diffuse/window.py:1476
+msgid "No committed files found."
+msgstr "没有找到提交的文件。"
+
+#: src/diffuse/window.py:1512
+msgid "New N-Way File Merge..."
+msgstr "新建多方文件合并"
+
+#: src/diffuse/window.py:1513
+msgid "Number of panes: "
+msgstr "窗格数: "
+
+#: src/diffuse/window.py:1587
+msgid "Phrase not found.  Continue from the end of the file?"
+msgstr "短语未找到，从文件结尾继续吗？"
+
+#: src/diffuse/window.py:1589
+msgid "Phrase not found.  Continue from the start of the file?"
+msgstr "短语未找到，从文件开头继续吗？"
+
+#: src/diffuse/window.py:1762
+msgid "Diffuse is a graphical tool for merging and comparing text files."
+msgstr "Diffuse是一个合并和比较文本文件的图形化程序。"
+
+#: src/diffuse/window.py:1766
+msgid "translator-credits"
+msgstr "Liu Hao <jarryson@gmail.com>"
+
+#, fuzzy
+#~ msgid ""
+#~ "Usage:\n"
+#~ "    diffuse [OPTION...] [FILE...]\n"
+#~ "    diffuse ( -h | -? | --help | -v | --version )\n"
+#~ "\n"
+#~ "Diffuse is a graphical tool for merging and comparing text files. Diffuse is\n"
+#~ "able to compare an arbitrary number of files side-by-side and gives users the\n"
+#~ "ability to manually adjust line matching and directly edit files. Diffuse can\n"
+#~ "also retrieve revisions of files from several VCSs for comparison and "
+#~ "merging.\n"
+#~ "\n"
+#~ "Help Options:\n"
+#~ "  ( -h | -? | --help )             Display this usage information\n"
+#~ "  ( -v | --version )               Display version and copyright information\n"
+#~ "\n"
+#~ "Configuration Options:\n"
+#~ "  --no-rcfile                      Do not read any resource files\n"
+#~ "  --rcfile <file>                  Specify explicit resource file\n"
+#~ "\n"
+#~ "General Options:\n"
+#~ "  ( -c | --commit ) <rev>          File revisions <rev-1> and <rev>\n"
+#~ "  ( -D | --close-if-same )         Close all tabs with no differences\n"
+#~ "  ( -e | --encoding ) <codec>      Use <codec> to read and write files\n"
+#~ "  ( -L | --label ) <label>         Display <label> instead of the file name\n"
+#~ "  ( -m | --modified )              Create a new tab for each modified file\n"
+#~ "  ( -r | --revision ) <rev>        File revision <rev>\n"
+#~ "  ( -s | --separate )              Create a new tab for each file\n"
+#~ "  ( -t | --tab )                   Start a new tab\n"
+#~ "  ( -V | --vcs ) <vcs-list>        Version control system search order\n"
+#~ "  --line <line>                    Start with line <line> selected\n"
+#~ "  --null-file                      Create a blank file comparison pane\n"
+#~ "\n"
+#~ "Display Options:\n"
+#~ "  ( -b | --ignore-space-change )   Ignore changes to white space\n"
+#~ "  ( -B | --ignore-blank-lines )    Ignore changes in blank lines\n"
+#~ "  ( -E | --ignore-end-of-line )    Ignore end of line differences\n"
+#~ "  ( -i | --ignore-case )           Ignore case differences\n"
+#~ "  ( -w | --ignore-all-space )      Ignore white space differences"
+#~ msgstr ""
+#~ "用法:\n"
+#~ "    diffuse [ [参数...] [文件...] ]...\n"
+#~ "    diffuse ( -h | -? | --help | -v | --version )\n"
+#~ "\n"
+#~ "Diffuse is a graphical tool for merging and comparing text files.  Diffuse is\n"
+#~ "able to compare an arbitrary number of files side-by-side and gives users the\n"
+#~ "ability to manually adjust line matching and directly edit files.  Diffuse "
+#~ "can\n"
+#~ "also retrieve revisions of files from Bazaar, CVS, Darcs, Git, Mercurial,\n"
+#~ "Monotone, RCS, Subversion, and SVK repositories for comparison and merging.\n"
+#~ "\n"
+#~ "帮助参数:\n"
+#~ "  ( -h | -? | --help )             显示词使用信息\n"
+#~ "  ( -v | --version )               现实版本和版权信息\n"
+#~ "\n"
+#~ "配置参数:\n"
+#~ "  --no-rcfile                      不要读取任何源文件\n"
+#~ "  --rcfile <file>                  指定明确的源文件\n"
+#~ "\n"
+#~ "其它参数:\n"
+#~ "  ( -c | --commit ) <rev>          File revisions <rev-1> and <rev>\n"
+#~ "  ( -D | --close-if-same )         Close all tabs with no differences\n"
+#~ "  ( -e | --encoding ) <codec>      Use <codec> to read and write files\n"
+#~ "  ( -L | --label ) <label>         Display <label> instead of the file name\n"
+#~ "  ( -m | --modified )              Create a new tab for each modified file\n"
+#~ "  ( -r | --revision ) <rev>        File revision <rev>\n"
+#~ "  ( -s | --separate )              Create a new tab for each file\n"
+#~ "  ( -t | --tab )                   Start a new tab\n"
+#~ "  ( -V | --vcs ) <vcs-list>        Version control system search order\n"
+#~ "  --line <line>                    Start with line <line> selected\n"
+#~ "  --null-file                      Create a blank file comparison pane\n"
+#~ "\n"
+#~ "显示参数:\n"
+#~ "  ( -b | --ignore-space-change )   忽略对空白的改变\n"
+#~ "  ( -B | --ignore-blank-lines )    忽略对空行的改变\n"
+#~ "  ( -E | --ignore-end-of-line )    忽略行尾的不同\n"
+#~ "  ( -i | --ignore-case )           忽略小结的不同\n"
+#~ "  ( -w | --ignore-all-space )      忽略所有空白的不同"

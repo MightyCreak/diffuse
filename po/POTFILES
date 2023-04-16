@@ -22,3 +22,4 @@ src/diffuse/vcs/svn.py
 src/diffuse/vcs/vcs_interface.py
 src/diffuse/vcs/vcs_registry.py
 src/diffuse/widgets.py
+src/diffuse/window.py

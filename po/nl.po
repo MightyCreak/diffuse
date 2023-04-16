@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-14 16:24-0500\n"
+"POT-Creation-Date: 2023-04-16 14:09-0400\n"
 "PO-Revision-Date: 2023-04-11 21:49+0200\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: Dutch\n"
@@ -25,694 +25,147 @@ msgstr "Diffuse"
 #: data/io.github.mightycreak.Diffuse.desktop.in:4
 #: data/io.github.mightycreak.Diffuse.appdata.xml.in:5
 msgid "Graphical tool for merging and comparing text files"
-msgstr ""
-"Grafische toepassing voor het vergelijken en samenvoegen van tekstbestanden"
+msgstr "Grafische toepassing voor het vergelijken en samenvoegen van tekstbestanden"
 
 #: data/io.github.mightycreak.Diffuse.appdata.xml.in:7
 msgid ""
-"Diffuse is a graphical tool for comparing and merging text files. It can "
-"retrieve files for comparison from Bazaar, CVS, Darcs, Git, Mercurial, "
-"Monotone, RCS, Subversion, and SVK repositories."
+"Diffuse is a graphical tool for comparing and merging text files. It can retrieve "
+"files for comparison from Bazaar, CVS, Darcs, Git, Mercurial, Monotone, RCS, and "
+"Subversion repositories."
 msgstr ""
 "Diffuse is een grafische toepassing voor het vergelijken en samenvoegen van "
-"tekstbestanden. Er kunnen bestanden uit Bazaar-, CVS-, Darcs-, Git-, "
-"Mercurial-, Monotone-, RCS-, Subversion- en SVK-repo's worden ingelezen."
+"tekstbestanden. Er kunnen bestanden uit Bazaar-, CVS-, Darcs-, Git-, Mercurial-, "
+"Monotone-, RCS-, en Subversion-repo's worden ingelezen."
 
-#: data/io.github.mightycreak.Diffuse.appdata.xml.in:21
-msgid "Main window: diff between two files"
-msgstr "Hoofdvenster: verschil tussen twee bestanden"
+#: data/io.github.mightycreak.Diffuse.appdata.xml.in:28
+msgid "Main window"
+msgstr "Hoofdvenster"
 
-#: src/diffuse/constants.py:25
+#: data/io.github.mightycreak.Diffuse.appdata.xml.in:32
+msgid "About window"
+msgstr ""
+
+#: src/diffuse/constants.py:26
 msgid "Copyright"
 msgstr "Copyright"
 
-#: src/diffuse/dialogs.py:41
-msgid "Diffuse is a graphical tool for merging and comparing text files."
+#: src/diffuse/dialogs.py:46 src/diffuse/dialogs.py:89 src/diffuse/dialogs.py:133
+#: src/diffuse/preferences.py:254 src/diffuse/preferences.py:483
+#: src/diffuse/window.py:309 src/diffuse/window.py:1107
+msgid "_Cancel"
 msgstr ""
-"Diffuse is een grafische toepassing voor het vergelijken en samenvoegen van "
-"tekstbestanden."
 
-#: src/diffuse/dialogs.py:46
-msgid "translator-credits"
-msgstr "Heimen Stoffels <vistausss@fastmail.com>"
-
-#: src/diffuse/dialogs.py:83
+#: src/diffuse/dialogs.py:50
 msgid "Encoding: "
 msgstr "Tekenset: "
 
-#: src/diffuse/dialogs.py:95
+#: src/diffuse/dialogs.py:62
 msgid "Revision: "
 msgstr "Revisie: "
 
-#: src/diffuse/dialogs.py:163
+#: src/diffuse/dialogs.py:90 src/diffuse/dialogs.py:134
+#: src/diffuse/preferences.py:255
+msgid "_OK"
+msgstr ""
+
+#: src/diffuse/dialogs.py:130
 msgid "Find..."
 msgstr "Zoeken…"
 
-#: src/diffuse/dialogs.py:173
+#: src/diffuse/dialogs.py:140
 msgid "Search For: "
 msgstr "Zoeken naar: "
 
-#: src/diffuse/dialogs.py:198
+#: src/diffuse/dialogs.py:165
 msgid "Match Case"
 msgstr "Hoofdlettergevoelig"
 
-#: src/diffuse/dialogs.py:203
+#: src/diffuse/dialogs.py:170
 msgid "Search Backwards"
 msgstr "Achterwaarts zoeken"
 
-#: src/diffuse/main.py:84
-msgid "Close Tab"
-msgstr "Tabblad sluiten"
-
-#: src/diffuse/main.py:131
-msgid "Open File..."
-msgstr "Bestand openen…"
-
-#: src/diffuse/main.py:132
-msgid "Reload File"
-msgstr "Bestand herladen"
-
-#: src/diffuse/main.py:133
-msgid "Save File"
-msgstr "Bestand opslaan"
-
-#: src/diffuse/main.py:134
-msgid "Save File As..."
-msgstr "Bestand opslaan als…"
-
-#: src/diffuse/main.py:229
-#, python-format
-msgid "Column %d"
-msgstr "Kolom %d"
-
-#: src/diffuse/main.py:303
-msgid "Save changes before loading the new file?"
-msgstr "Wilt u de wijzigingen opslaan alvorens het nieuwe bestand te laden?"
-
-#: src/diffuse/main.py:414
-#, python-format
-msgid "Error reading revision %(rev)s of %(file)s."
-msgstr "Revisie %(rev)s van %(file)s kan niet worden ingelezen."
-
-#: src/diffuse/main.py:417 src/diffuse/main.py:2004
-#, python-format
-msgid "Error reading %s."
-msgstr "‘%s’ kan niet worden ingelezen."
-
-#: src/diffuse/main.py:439
-msgid "Open File"
-msgstr "Bestand openen"
-
-#: src/diffuse/main.py:492
-#, python-format
-msgid "Save %(title)s Pane %(pane)d"
-msgstr "%(title)s-paneel %(pane)d opslaan"
-
-#: src/diffuse/main.py:524
-#, python-format
-msgid "A file named %s already exists. Do you want to overwrite it?"
-msgstr "Er is al een bestand genaamd “%s”. Wilt u dit bestand overschrijven?"
-
-#: src/diffuse/main.py:531
-#, python-format
-msgid ""
-"The file %s has been modified by another process since reading it. If you "
-"save, all the external changes could be lost. Save anyways?"
+#: src/diffuse/main.py:53
+msgid "Display version and copyright information"
 msgstr ""
-"‘%s’ is sinds het inlezen gewijzigd door een ander proces. Als u het bestand "
-"nu opslaan, dan worden alle externe wijzigingen gewist. Wilt u het bestand "
-"opslaan?"
 
-#: src/diffuse/main.py:573
-#, python-format
-msgid "Error encoding to %s."
-msgstr "Het omzetten naar %s is mislukt."
-
-#: src/diffuse/main.py:577 src/diffuse/preferences.py:300
-#, python-format
-msgid "Error writing %s."
-msgstr "‘%s’ kan niet worden weggeschreven."
-
-#: src/diffuse/main.py:607
-msgid "Go To Line..."
-msgstr "Ga naar regel…"
-
-#: src/diffuse/main.py:608
-msgid "Line Number: "
-msgstr "Regelnummer: "
-
-#: src/diffuse/main.py:639
-msgid ""
-"Press the enter key or double click to edit. Press the space bar or use the "
-"RMB menu to manually align."
-msgstr ""
-"Druk op de entertoets of dubbelklik om te bewerken. Druk op de spatiebalk of "
-"gebruik het RMB-menu om handmatig uit te lijnen."
-
-#: src/diffuse/main.py:643
-msgid "Press the escape key to finish editing."
-msgstr "Druk op de escapetoets om af te ronden."
-
-#: src/diffuse/main.py:646
-msgid ""
-"Select target line and press the space bar to align. Press the escape key to "
-"cancel."
-msgstr ""
-"Kies de desbetreffende regel en druk op de spatiebalk om uit te lijnen. Druk "
-"op de escapetoets om te annuleren."
-
-#: src/diffuse/main.py:768
-msgid "_File"
-msgstr "_Bestand"
-
-#: src/diffuse/main.py:770
-msgid "_Open File..."
-msgstr "Bestand _openen…"
-
-#: src/diffuse/main.py:771
-msgid "Open File In New _Tab..."
-msgstr "Bestand openen op nieuw _tabblad…"
-
-#: src/diffuse/main.py:772
-msgid "Open _Modified Files..."
-msgstr "Be_werkte bestanden openen…"
-
-#: src/diffuse/main.py:773
-msgid "Open Commi_t..."
-msgstr "Commi_t openen…"
-
-#: src/diffuse/main.py:774
-msgid "_Reload File"
-msgstr "Bestand he_rladen"
-
-#: src/diffuse/main.py:776
-msgid "_Save File"
-msgstr "Bestand op_slaan"
-
-#: src/diffuse/main.py:777
-msgid "Save File _As..."
-msgstr "Bestand opslaan _als…"
-
-#: src/diffuse/main.py:778
-msgid "Save A_ll"
-msgstr "A_lles opslaan"
-
-#: src/diffuse/main.py:780
-msgid "New _2-Way File Merge"
-msgstr "Nieuwe samenvoegmethode in _2 richtingen"
-
-#: src/diffuse/main.py:781
-msgid "New _3-Way File Merge"
-msgstr "Nieuwe samenvoegmethode in _3 richtingen"
-
-#: src/diffuse/main.py:782
-msgid "New _N-Way File Merge..."
-msgstr "Nieuwe samenvoegmethode in _x-aantal richtingen…"
-
-#: src/diffuse/main.py:784
-msgid "_Close Tab"
-msgstr "Tab_blad sluiten"
-
-#: src/diffuse/main.py:785
-msgid "_Undo Close Tab"
-msgstr "Tabbla_d heropenen"
-
-#: src/diffuse/main.py:786
-msgid "_Quit"
-msgstr "_Afsluiten"
-
-#: src/diffuse/main.py:790
-msgid "_Edit"
-msgstr "B_ewerken"
-
-#: src/diffuse/main.py:792
-msgid "_Undo"
-msgstr "On_gedaan maken"
-
-#: src/diffuse/main.py:793
-msgid "_Redo"
-msgstr "Opnieuw uitvoe_ren"
-
-#: src/diffuse/main.py:795
-msgid "Cu_t"
-msgstr "Kn_ippen"
-
-#: src/diffuse/main.py:796
-msgid "_Copy"
-msgstr "_Kopiëren"
-
-#: src/diffuse/main.py:797
-msgid "_Paste"
-msgstr "_Plakken"
-
-#: src/diffuse/main.py:799
-msgid "Select _All"
-msgstr "_Alles selecteren"
-
-#: src/diffuse/main.py:800
-msgid "C_lear Edits"
-msgstr "Bewerkingen _wissen"
-
-#: src/diffuse/main.py:801
-msgid "_Dismiss All Edits"
-msgstr "Alle bewerkingen wi_ssen"
-
-#: src/diffuse/main.py:803
-msgid "_Find..."
-msgstr "_Zoeken…"
-
-#: src/diffuse/main.py:804
-msgid "Find _Next"
-msgstr "Volge_nde zoeken"
-
-#: src/diffuse/main.py:805
-msgid "Find Pre_vious"
-msgstr "_Vorige zoeken"
-
-#: src/diffuse/main.py:806
-msgid "_Go To Line..."
-msgstr "_Ga naar regel…"
-
-#: src/diffuse/main.py:808
-msgid "Pr_eferences..."
-msgstr "Voork_euren…"
-
-#: src/diffuse/main.py:812
-msgid "None"
-msgstr "Geen"
-
-#: src/diffuse/main.py:834
-msgid "_View"
-msgstr "_Beeld"
-
-#: src/diffuse/main.py:836
-msgid "_Syntax Highlighting"
-msgstr "_Syntaxismarkering"
-
-#: src/diffuse/main.py:838
-msgid "Re_align All"
-msgstr "_Alles opnieuw uitlijnen"
-
-#: src/diffuse/main.py:839
-msgid "_Isolate"
-msgstr "Afs_chermen"
-
-#: src/diffuse/main.py:841
-msgid "_First Difference"
-msgstr "Eerste _verschil"
-
-#: src/diffuse/main.py:842
-msgid "_Previous Difference"
-msgstr "_Vorige verschil"
-
-#: src/diffuse/main.py:843
-msgid "_Next Difference"
-msgstr "Volge_nde verschil"
-
-#: src/diffuse/main.py:844
-msgid "_Last Difference"
-msgstr "_Laatste verschil"
-
-#: src/diffuse/main.py:846
-msgid "Fir_st Tab"
-msgstr "Eer_ste tabblad"
-
-#: src/diffuse/main.py:847
-msgid "Pre_vious Tab"
-msgstr "_Vorig tabblad"
-
-#: src/diffuse/main.py:848
-msgid "Next _Tab"
-msgstr "Volgend _tabblad"
-
-#: src/diffuse/main.py:849
-msgid "Las_t Tab"
-msgstr "Laats_te tabblad"
-
-#: src/diffuse/main.py:851
-msgid "Shift Pane _Right"
-msgstr "Paneel naar _rechts verplaatsen"
-
-#: src/diffuse/main.py:852
-msgid "Shift Pane _Left"
-msgstr "Paneel naar _links verplaatsen"
-
-#: src/diffuse/main.py:856
-msgid "F_ormat"
-msgstr "_Opmaak"
-
-#: src/diffuse/main.py:858
-msgid "Convert To _Upper Case"
-msgstr "Omzetten naar hoo_fdletters"
-
-#: src/diffuse/main.py:859
-msgid "Convert To _Lower Case"
-msgstr "Omzetten naar k_leine letters"
-
-#: src/diffuse/main.py:861
-msgid "Sort Lines In _Ascending Order"
-msgstr "Regels o_plopend sorteren"
-
-#: src/diffuse/main.py:862
-msgid "Sort Lines In D_escending Order"
-msgstr "Regels _aflopend sorteren"
-
-#: src/diffuse/main.py:864
-msgid "Remove Trailing _White Space"
-msgstr "_Witruimten aan regeleinden wissen"
-
-#: src/diffuse/main.py:865
-msgid "Convert Tabs To _Spaces"
-msgstr "Tabs omzetten naar _spaties"
-
-#: src/diffuse/main.py:866
-msgid "Convert Leading Spaces To _Tabs"
-msgstr "Spaties aan begin van regels omzetten naar _tabs"
-
-#: src/diffuse/main.py:868
-msgid "_Increase Indenting"
-msgstr "_Inspringing vergroten"
-
-#: src/diffuse/main.py:869
-msgid "De_crease Indenting"
-msgstr "Insprin_ging verkleinen"
-
-#: src/diffuse/main.py:871
-msgid "Convert To _DOS Format"
-msgstr "Omzetten naar _DOS-opmaak"
-
-#: src/diffuse/main.py:872
-msgid "Convert To _Mac Format"
-msgstr "Omzetten naar _Mac-opmaak"
-
-#: src/diffuse/main.py:873
-msgid "Convert To Uni_x Format"
-msgstr "Omzetten naar Uni_x-opmaak"
-
-#: src/diffuse/main.py:877
-msgid "_Merge"
-msgstr "Sa_menvoegen"
-
-#: src/diffuse/main.py:879
-msgid "Copy Selection _Right"
-msgstr "Selectie aan _rechterzijde kopiëren"
-
-#: src/diffuse/main.py:880
-msgid "Copy Selection _Left"
-msgstr "Selectie aan _linkerzijde kopiëren"
-
-#: src/diffuse/main.py:882
-msgid "Copy Left _Into Selection"
-msgstr "_Linkerzijde naar selectie kopiëren"
-
-#: src/diffuse/main.py:883
-msgid "Copy Right I_nto Selection"
-msgstr "_Rechterzijde naar selectie kopiëren"
-
-#: src/diffuse/main.py:884
-msgid "_Merge From Left Then Right"
-msgstr "Sa_menvoegen van links naar rechts"
-
-#: src/diffuse/main.py:885
-msgid "M_erge From Right Then Left"
-msgstr "Sam_envoegen van rechts naar links"
-
-#: src/diffuse/main.py:889
-msgid "_Help"
-msgstr "_Hulp"
-
-#: src/diffuse/main.py:891
-msgid "_Help Contents..."
-msgstr "_Zelfstudie…"
-
-#: src/diffuse/main.py:893
-#, python-format
-msgid "_About %s..."
-msgstr "_Over %s…"
-
-#: src/diffuse/main.py:908
-msgid "New 2-Way File Merge"
-msgstr "Nieuwe samenvoegmethode in 2 richtingen"
-
-#: src/diffuse/main.py:909
-msgid "New 3-Way File Merge"
-msgstr "Nieuwe samenvoegmethode in 3 richtingen"
-
-#: src/diffuse/main.py:911
-msgid "Realign All"
-msgstr "Alles opnieuw uitlijnen"
-
-#: src/diffuse/main.py:912
-msgid "First Difference"
-msgstr "Eerste verschil"
-
-#: src/diffuse/main.py:913
-msgid "Previous Difference"
-msgstr "Vorig verschil"
-
-#: src/diffuse/main.py:914
-msgid "Next Difference"
-msgstr "Volgend verschil"
-
-#: src/diffuse/main.py:915
-msgid "Last Difference"
-msgstr "Laatste verschil"
-
-#: src/diffuse/main.py:917
-msgid "Copy Selection Right"
-msgstr "Selectie aan rechterzijde kopiëren"
-
-#: src/diffuse/main.py:918
-msgid "Copy Selection Left"
-msgstr "Selectie aan linkerzijde kopiëren"
-
-#: src/diffuse/main.py:919
-msgid "Copy Left Into Selection"
-msgstr "Linkerzijde naar selectie kopiëren"
-
-#: src/diffuse/main.py:920
-msgid "Copy Right Into Selection"
-msgstr "Rechterzijde naar selectie kopiëren"
-
-#: src/diffuse/main.py:921
-msgid "Merge From Left Then Right"
-msgstr "Samenvoegen van links naar rechts"
-
-#: src/diffuse/main.py:922
-msgid "Merge From Right Then Left"
-msgstr "Samenvoegen van rechts naar links"
-
-#: src/diffuse/main.py:924
-msgid "Undo"
-msgstr "Ongedaan maken"
-
-#: src/diffuse/main.py:925
-msgid "Redo"
-msgstr "Opnieuw uitvoeren"
-
-#: src/diffuse/main.py:926 src/diffuse/widgets.py:1861
-msgid "Cut"
-msgstr "Knippen"
-
-#: src/diffuse/main.py:927 src/diffuse/widgets.py:1862
-msgid "Copy"
-msgstr "Kopiëren"
-
-#: src/diffuse/main.py:928 src/diffuse/widgets.py:1863
-msgid "Paste"
-msgstr "Plakken"
-
-#: src/diffuse/main.py:929 src/diffuse/widgets.py:1866
-msgid "Clear Edits"
-msgstr "Bewerkingen wissen"
-
-#: src/diffuse/main.py:996
-msgid "Changes detected"
-msgstr "Wijzigingen aangetroffen"
-
-#: src/diffuse/main.py:1000
-#, python-format
-msgid ""
-"The file \"%s\" changed on disk.\n"
-"\n"
-"Do you want to reload the file?"
-msgstr ""
-"“%s” is elders gewijzigd.\n"
-"\n"
-"Wilt u het bestand herladen?"
-
-#: src/diffuse/main.py:1005
-#, python-format
-msgid ""
-"The following files changed on disk:\n"
-"%s\n"
-"\n"
-"Do you want to reload these files?"
-msgstr ""
-"De volgende bestanden zijn elders gewijzigd:\n"
-"%s\n"
-"\n"
-"Wilt u deze bestanden herladen?"
-
-#: src/diffuse/main.py:1120
-msgid ""
-"Some files have unsaved changes. Select the files to save before closing."
-msgstr ""
-"Enkele bestanden zijn niet nog opgeslagen. Selecteer de te bewaren bestanden "
-"alvorens door te gaan."
-
-#: src/diffuse/main.py:1134
-msgid "Tab"
-msgstr "Tabblad"
-
-#: src/diffuse/main.py:1139
-msgid "Pane"
-msgstr "Paneel"
-
-#: src/diffuse/main.py:1150
-msgid "Close _Without Saving"
-msgstr "Sluiten _zonder op te slaan"
-
-#: src/diffuse/main.py:1189
-#, python-format
-msgid "Closing this tab will quit %s."
-msgstr "Door dit tabblad te sluiten, wordt %s afgesloten."
-
-#: src/diffuse/main.py:1266
-#, python-format
-msgid "File Merge %d"
-msgstr "Samenvoeging %d"
-
-#: src/diffuse/main.py:1372
-#, python-format
-msgid "Error retrieving commits for %s."
-msgstr "De commits van %s kunnen niet worden opgehaald."
-
-#: src/diffuse/main.py:1404
-#, python-format
-msgid "Error retrieving modifications for %s."
-msgstr "De wijzigingen aan %s kunnen niet worden opgehaald."
-
-#: src/diffuse/main.py:1437
-msgid "Open File In New Tab"
-msgstr "Bestand openen op nieuw tabblad"
-
-#: src/diffuse/main.py:1460
-msgid "Choose Folder With Modified Files"
-msgstr "Kies de map met bewerkte bestanden"
-
-#: src/diffuse/main.py:1478
-msgid "No modified files found."
-msgstr "Er zijn geen bewerkte bestanden aangetroffen."
-
-#: src/diffuse/main.py:1484
-msgid "Choose Folder With Commit"
-msgstr "Kies de map met de commit"
-
-#: src/diffuse/main.py:1504
-msgid "No committed files found."
-msgstr "Er zijn geen commits aangetroffen."
-
-#: src/diffuse/main.py:1540
-msgid "New N-Way File Merge..."
-msgstr "Nieuwe samenvoegmethode in x-aantal richtingen…"
-
-#: src/diffuse/main.py:1541
-msgid "Number of panes: "
-msgstr "Aantal panelen: "
-
-#: src/diffuse/main.py:1615
-msgid "Phrase not found.  Continue from the end of the file?"
-msgstr ""
-"De zoekterm is niet aangetroffen. Wilt u vanaf het einde van het bestand "
-"zoeken?"
-
-#: src/diffuse/main.py:1617
-msgid "Phrase not found.  Continue from the start of the file?"
-msgstr ""
-"De zoekterm is niet aangetroffen. Wilt u vanaf het begin van het bestand "
-"zoeken?"
-
-#: src/diffuse/main.py:1827
+#: src/diffuse/main.py:61
 msgid "Do not read any resource files"
 msgstr "Geen bronbestanden inlezen"
 
-#: src/diffuse/main.py:1835
+#: src/diffuse/main.py:69
 msgid "Specify explicit resource file"
 msgstr "Kies een bronbestand"
 
-#: src/diffuse/main.py:1843
+#: src/diffuse/main.py:77
 msgid "File revisions <rev-1> and <rev>"
 msgstr "Bestandsrevisies <rev-1> en <rev>"
 
-#: src/diffuse/main.py:1851
+#: src/diffuse/main.py:85
 msgid "Close all tabs with no differences"
 msgstr "Alle tabbladen zonder verschillen sluiten"
 
-#: src/diffuse/main.py:1858
+#: src/diffuse/main.py:92
 msgid "Use <codec> to read and write files"
 msgstr "<codec> gebruiken om bestand in te lezen en weg te schrijven"
 
-#: src/diffuse/main.py:1866
+#: src/diffuse/main.py:100
 msgid "Display <label> instead of the file name"
 msgstr "<label> tonen in plaats van bestandsnaam"
 
-#: src/diffuse/main.py:1874
+#: src/diffuse/main.py:108
 msgid "Create a new tab for each modified file"
 msgstr "Ieder bewerkt bestand openen een nieuw tabblad"
 
-#: src/diffuse/main.py:1881
+#: src/diffuse/main.py:115
 msgid "File revision <rev>"
 msgstr "Bestandsrevisie <rev>"
 
-#: src/diffuse/main.py:1889
+#: src/diffuse/main.py:123
 msgid "Create a new tab for each file"
 msgstr "Ieder bestand openen een nieuw tabblad"
 
-#: src/diffuse/main.py:1896
+#: src/diffuse/main.py:130
 msgid "Start a new tab"
 msgstr "Nieuw tabblad openen"
 
-#: src/diffuse/main.py:1903 src/diffuse/preferences.py:165
+#: src/diffuse/main.py:137 src/diffuse/preferences.py:159
 msgid "Version control system search order"
 msgstr "Versiebeheersysteem - zoekvolgorde"
 
-#: src/diffuse/main.py:1911
+#: src/diffuse/main.py:145
 msgid "Start with line <line> selected"
 msgstr "Beginnen met regel <line> als selectie"
 
-#: src/diffuse/main.py:1919
+#: src/diffuse/main.py:153
 msgid "Create a blank file comparison pane"
 msgstr "Blanco vergelijkingspaneel openen"
 
-#: src/diffuse/main.py:1926 src/diffuse/preferences.py:91
-#: src/diffuse/preferences.py:100
+#: src/diffuse/main.py:160 src/diffuse/preferences.py:86
+#: src/diffuse/preferences.py:95
 msgid "Ignore changes to white space"
 msgstr "Witruimtewijzigingen negeren"
 
-#: src/diffuse/main.py:1933
+#: src/diffuse/main.py:167
 msgid "Ignore changes in blank lines"
 msgstr "Wijzigingen aan blanco regels negeren"
 
-#: src/diffuse/main.py:1940 src/diffuse/preferences.py:93
+#: src/diffuse/main.py:174 src/diffuse/preferences.py:88
 msgid "Ignore end of line differences"
 msgstr "Regeleindeverschillen negeren"
 
-#: src/diffuse/main.py:1947 src/diffuse/preferences.py:89
+#: src/diffuse/main.py:181 src/diffuse/preferences.py:84
 msgid "Ignore case differences"
 msgstr "Hoofdletterverschillen negeren"
 
-#: src/diffuse/main.py:1954 src/diffuse/preferences.py:90
+#: src/diffuse/main.py:188 src/diffuse/preferences.py:85
 msgid "Ignore white space differences"
 msgstr "Witruimteverschillen negeren"
 
-#: src/diffuse/main.py:1957
+#: src/diffuse/main.py:191
 msgid ""
 "Diffuse is a graphical tool for merging and comparing text files. Diffuse is\n"
-"able to compare an arbitrary number of files side-by-side and gives users "
-"the\n"
-"ability to manually adjust line matching and directly edit files. Diffuse "
-"can\n"
+"able to compare an arbitrary number of files side-by-side and gives users the\n"
+"ability to manually adjust line matching and directly edit files. Diffuse can\n"
 "also retrieve revisions of files from several VCSs for comparison and merging."
 msgstr ""
 "Diffuse is een grafische toepassing voor het vergelijken en samenvoegen van "
@@ -721,152 +174,166 @@ msgstr ""
 "overeenkomen en de bestanden bewerken. Diffuse kan tevens revisies van "
 "verschillende soorten versiebeheersystemen (zoals Git) openen."
 
-#: src/diffuse/main.py:2080
+#: src/diffuse/main.py:247 src/diffuse/window.py:420
+#, python-format
+msgid "Error reading %s."
+msgstr "\"%s\" kan niet worden ingelezen."
+
+#: src/diffuse/main.py:327
 msgid "Error parsing line number."
 msgstr "Het regelnummer kan niet worden verwerkt."
 
-#: src/diffuse/main.py:2096
+#: src/diffuse/main.py:343
 #, python-format
 msgid "Error processing argument \"%s\".  Directory not expected."
-msgstr "De optie ‘%s’ kan niet worden verwerkt omdat er geen map werd verwacht."
+msgstr "De optie \"%s\" kan niet worden verwerkt omdat er geen map werd verwacht."
 
-#: src/diffuse/preferences.py:80
+#: src/diffuse/preferences.py:75
 msgid "Display"
 msgstr "Weergave"
 
-#: src/diffuse/preferences.py:83
+#: src/diffuse/preferences.py:78
 msgid "Font"
 msgstr "Lettertype"
 
-#: src/diffuse/preferences.py:84
+#: src/diffuse/preferences.py:79
 msgid "Tab width"
 msgstr "Tabbreedte"
 
-#: src/diffuse/preferences.py:85
+#: src/diffuse/preferences.py:80
 msgid "Show right margin"
 msgstr "Rechtermarge tonen"
 
-#: src/diffuse/preferences.py:86
+#: src/diffuse/preferences.py:81
 msgid "Right margin"
 msgstr "Rechtermarge"
 
-#: src/diffuse/preferences.py:87
+#: src/diffuse/preferences.py:82
 msgid "Show line numbers"
 msgstr "Regelnummers tonen"
 
-#: src/diffuse/preferences.py:88
+#: src/diffuse/preferences.py:83
 msgid "Show white space characters"
 msgstr "Witruimtetekens tonen"
 
-#: src/diffuse/preferences.py:92
+#: src/diffuse/preferences.py:87
 msgid "Ignore blank line differences"
 msgstr "Verschillen aan blanco regels negeren"
 
-#: src/diffuse/preferences.py:95
+#: src/diffuse/preferences.py:90
 msgid "Alignment"
 msgstr "Uitlijning"
 
-#: src/diffuse/preferences.py:98
+#: src/diffuse/preferences.py:93
 msgid "Ignore case"
 msgstr "Hoofdlettergebruik negeren"
 
-#: src/diffuse/preferences.py:99
+#: src/diffuse/preferences.py:94
 msgid "Ignore white space"
 msgstr "Witruimten negeren"
 
-#: src/diffuse/preferences.py:101
+#: src/diffuse/preferences.py:96
 msgid "Ignore blank lines"
 msgstr "Blanco regels negeren"
 
-#: src/diffuse/preferences.py:102
+#: src/diffuse/preferences.py:97
 msgid "Ignore end of line characters"
 msgstr "Regeleindetekens negeren"
 
-#: src/diffuse/preferences.py:104
+#: src/diffuse/preferences.py:99
 msgid "Editor"
 msgstr "Bewerker"
 
-#: src/diffuse/preferences.py:107
+#: src/diffuse/preferences.py:102
 msgid "Auto indent"
 msgstr "Automatisch inspringen"
 
-#: src/diffuse/preferences.py:108
+#: src/diffuse/preferences.py:103
 msgid "Expand tabs to spaces"
 msgstr "Tabs omzetten naar spaties"
 
-#: src/diffuse/preferences.py:109
+#: src/diffuse/preferences.py:104
 msgid "Soft tab width"
 msgstr "Zachte tabbreedte"
 
-#: src/diffuse/preferences.py:111
+#: src/diffuse/preferences.py:106
 msgid "Tabs"
 msgstr "Tabs"
 
-#: src/diffuse/preferences.py:114
+#: src/diffuse/preferences.py:109
 msgid "Default panes"
 msgstr "Standaardpanelen"
 
-#: src/diffuse/preferences.py:115
+#: src/diffuse/preferences.py:110
 msgid "Always show the tab bar"
 msgstr "Tabbladenbalk altijd tonen"
 
-#: src/diffuse/preferences.py:116
+#: src/diffuse/preferences.py:111
 #, python-format
 msgid "Warn me when closing a tab will quit %s"
 msgstr "Waarschuwing tonen als het sluiten van een tabblad %s afsluit"
 
-#: src/diffuse/preferences.py:118
+#: src/diffuse/preferences.py:113
 msgid "Regional Settings"
 msgstr "Lokale voorkeuren"
 
-#: src/diffuse/preferences.py:121
+#: src/diffuse/preferences.py:116
 msgid "Default codec"
 msgstr "Standaardcodec"
 
-#: src/diffuse/preferences.py:122
+#: src/diffuse/preferences.py:117
 msgid "Order of codecs used to identify encoding"
-msgstr ""
-"De volgorde van codecs die worden gebruikt om de tekenset vast te stellen"
+msgstr "De volgorde van codecs die worden gebruikt om de tekenset vast te stellen"
 
-#: src/diffuse/preferences.py:143
+#: src/diffuse/preferences.py:138
 msgid "Cygwin"
 msgstr "Cygwin"
 
-#: src/diffuse/preferences.py:145
+#: src/diffuse/preferences.py:140
 msgid "Root directory"
 msgstr "Hoofdmap"
 
-#: src/diffuse/preferences.py:146
+#: src/diffuse/preferences.py:141
 msgid "Cygdrive prefix"
 msgstr "Cygdrive-voorvoegsel"
 
-#: src/diffuse/preferences.py:173
+#: src/diffuse/preferences.py:167
 msgid "\"co\" command"
 msgstr "‘co’-opdracht"
 
-#: src/diffuse/preferences.py:174
+#: src/diffuse/preferences.py:168
 msgid "\"rlog\" command"
 msgstr "‘rlog’-opdracht"
 
-#: src/diffuse/preferences.py:176
+#: src/diffuse/preferences.py:170
 msgid "Command"
 msgstr "Opdracht"
 
-#: src/diffuse/preferences.py:182
+#: src/diffuse/preferences.py:176
 msgid "Launch from a Bash login shell"
 msgstr "Opstarten vanuit Bash-inlogshell"
 
-#: src/diffuse/preferences.py:189
+#: src/diffuse/preferences.py:183
 msgid "Update paths for Cygwin"
 msgstr "Locaties bijwerken voor gebruik met Cygwin"
 
-#: src/diffuse/preferences.py:194
+#: src/diffuse/preferences.py:188
 msgid "Version Control"
 msgstr "Versiebeheer"
 
-#: src/diffuse/preferences.py:259
+#: src/diffuse/preferences.py:253
 msgid "Preferences"
 msgstr "Voorkeuren"
+
+#: src/diffuse/preferences.py:294 src/diffuse/window.py:580
+#, python-format
+msgid "Error writing %s."
+msgstr "‘%s’ kan niet worden weggeschreven."
+
+#: src/diffuse/preferences.py:483 src/diffuse/window.py:446
+#: src/diffuse/window.py:1413 src/diffuse/window.py:1436 src/diffuse/window.py:1459
+msgid "_Open"
+msgstr ""
 
 #: src/diffuse/resources.py:242 src/diffuse/resources.py:246
 #: src/diffuse/resources.py:249
@@ -949,19 +416,14 @@ msgstr "Reguliere-uitdrukkingsfout op regel {line} in {file}."
 msgid "Unhandled error at line {line} of {file}."
 msgstr "Onbehandelde fout op regel {line} in {file}."
 
-#: src/diffuse/utils.py:65
+#: src/diffuse/utils.py:66
 msgid "Auto Detect"
 msgstr "Automatisch vaststellen"
 
-#: src/diffuse/vcs/cvs.py:54 src/diffuse/vcs/rcs.py:63 src/diffuse/vcs/svn.py:97
+#: src/diffuse/vcs/cvs.py:54 src/diffuse/vcs/rcs.py:63 src/diffuse/vcs/svn.py:96
 #, python-format
 msgid "Error parsing revision %s."
 msgstr "Revisie %s kan niet worden verwerkt."
-
-#: src/diffuse/vcs/vcs_registry.py:238
-#, python-format
-msgid "Error parsing %s."
-msgstr "%s kan niet worden verwerkt."
 
 #: src/diffuse/widgets.py:1857
 msgid "Align with Selection"
@@ -975,10 +437,572 @@ msgstr "Afschermen"
 msgid "Merge Selection"
 msgstr "Selectie samenvoegen"
 
+#: src/diffuse/widgets.py:1861 src/diffuse/window.py:865
+msgid "Cut"
+msgstr "Knippen"
+
+#: src/diffuse/widgets.py:1862 src/diffuse/window.py:866
+msgid "Copy"
+msgstr "Kopiëren"
+
+#: src/diffuse/widgets.py:1863 src/diffuse/window.py:867
+msgid "Paste"
+msgstr "Plakken"
+
 #: src/diffuse/widgets.py:1865
 msgid "Select All"
 msgstr "Alles selecteren"
 
+#: src/diffuse/widgets.py:1866 src/diffuse/window.py:868
+msgid "Clear Edits"
+msgstr "Bewerkingen wissen"
+
 #: src/diffuse/widgets.py:1868
 msgid "Swap with Selected Pane"
 msgstr "Uitwisselen met gekozen paneel"
+
+#: src/diffuse/window.py:83
+msgid "Close Tab"
+msgstr "Tabblad sluiten"
+
+#: src/diffuse/window.py:126
+msgid "Open File..."
+msgstr "Bestand openen…"
+
+#: src/diffuse/window.py:127
+msgid "Reload File"
+msgstr "Bestand herladen"
+
+#: src/diffuse/window.py:128
+msgid "Save File"
+msgstr "Bestand opslaan"
+
+#: src/diffuse/window.py:129
+msgid "Save File As..."
+msgstr "Bestand opslaan als…"
+
+#: src/diffuse/window.py:228
+#, python-format
+msgid "Column %d"
+msgstr "Kolom %d"
+
+#: src/diffuse/window.py:306
+msgid "Save changes before loading the new file?"
+msgstr "Wilt u de wijzigingen opslaan alvorens het nieuwe bestand te laden?"
+
+#: src/diffuse/window.py:310
+msgid "_No"
+msgstr ""
+
+#: src/diffuse/window.py:311
+msgid "_Yes"
+msgstr ""
+
+#: src/diffuse/window.py:417
+#, python-format
+msgid "Error reading revision %(rev)s of %(file)s."
+msgstr "Revisie %(rev)s van %(file)s kan niet worden ingelezen."
+
+#: src/diffuse/window.py:442
+msgid "Open File"
+msgstr "Bestand openen"
+
+#: src/diffuse/window.py:495
+#, python-format
+msgid "Save %(title)s Pane %(pane)d"
+msgstr "%(title)s-paneel %(pane)d opslaan"
+
+#: src/diffuse/window.py:499 src/diffuse/window.py:1111
+#, fuzzy
+msgid "_Save"
+msgstr "Bestand op_slaan"
+
+#: src/diffuse/window.py:527
+#, python-format
+msgid "A file named %s already exists. Do you want to overwrite it?"
+msgstr "Er is al een bestand genaamd “%s”. Wilt u dit bestand overschrijven?"
+
+#: src/diffuse/window.py:534
+#, python-format
+msgid ""
+"The file %s has been modified by another process since reading it. If you save, "
+"all the external changes could be lost. Save anyways?"
+msgstr ""
+"‘%s’ is sinds het inlezen gewijzigd door een ander proces. Als u het bestand nu "
+"opslaan, dan worden alle externe wijzigingen gewist. Wilt u het bestand opslaan?"
+
+#: src/diffuse/window.py:576
+#, python-format
+msgid "Error encoding to %s."
+msgstr "Het omzetten naar %s is mislukt."
+
+#: src/diffuse/window.py:610
+msgid "Go To Line..."
+msgstr "Ga naar regel…"
+
+#: src/diffuse/window.py:611
+msgid "Line Number: "
+msgstr "Regelnummer: "
+
+#: src/diffuse/window.py:642
+msgid ""
+"Press the enter key or double click to edit. Press the space bar or use the RMB "
+"menu to manually align."
+msgstr ""
+"Druk op de entertoets of dubbelklik om te bewerken. Druk op de spatiebalk of "
+"gebruik het RMB-menu om handmatig uit te lijnen."
+
+#: src/diffuse/window.py:646
+msgid "Press the escape key to finish editing."
+msgstr "Druk op de escapetoets om af te ronden."
+
+#: src/diffuse/window.py:649
+msgid ""
+"Select target line and press the space bar to align. Press the escape key to "
+"cancel."
+msgstr ""
+"Kies de desbetreffende regel en druk op de spatiebalk om uit te lijnen. Druk op "
+"de escapetoets om te annuleren."
+
+#: src/diffuse/window.py:710
+msgid "_File"
+msgstr "_Bestand"
+
+#: src/diffuse/window.py:712
+msgid "_Open File..."
+msgstr "Bestand _openen…"
+
+#: src/diffuse/window.py:713
+msgid "Open File In New _Tab..."
+msgstr "Bestand openen op nieuw _tabblad…"
+
+#: src/diffuse/window.py:714
+msgid "Open _Modified Files..."
+msgstr "Be_werkte bestanden openen…"
+
+#: src/diffuse/window.py:715
+msgid "Open Commi_t..."
+msgstr "Commi_t openen…"
+
+#: src/diffuse/window.py:716
+msgid "_Reload File"
+msgstr "Bestand he_rladen"
+
+#: src/diffuse/window.py:718
+msgid "_Save File"
+msgstr "Bestand op_slaan"
+
+#: src/diffuse/window.py:719
+msgid "Save File _As..."
+msgstr "Bestand opslaan _als…"
+
+#: src/diffuse/window.py:720
+msgid "Save A_ll"
+msgstr "A_lles opslaan"
+
+#: src/diffuse/window.py:722
+msgid "New _2-Way File Merge"
+msgstr "Nieuwe samenvoegmethode in _2 richtingen"
+
+#: src/diffuse/window.py:723
+msgid "New _3-Way File Merge"
+msgstr "Nieuwe samenvoegmethode in _3 richtingen"
+
+#: src/diffuse/window.py:724
+msgid "New _N-Way File Merge..."
+msgstr "Nieuwe samenvoegmethode in _x-aantal richtingen…"
+
+#: src/diffuse/window.py:726
+msgid "_Close Tab"
+msgstr "Tab_blad sluiten"
+
+#: src/diffuse/window.py:727
+msgid "_Undo Close Tab"
+msgstr "Tabbla_d heropenen"
+
+#: src/diffuse/window.py:728
+msgid "_Quit"
+msgstr "_Afsluiten"
+
+#: src/diffuse/window.py:732
+msgid "_Edit"
+msgstr "B_ewerken"
+
+#: src/diffuse/window.py:734
+msgid "_Undo"
+msgstr "On_gedaan maken"
+
+#: src/diffuse/window.py:735
+msgid "_Redo"
+msgstr "Opnieuw uitvoe_ren"
+
+#: src/diffuse/window.py:737
+msgid "Cu_t"
+msgstr "Kn_ippen"
+
+#: src/diffuse/window.py:738
+msgid "_Copy"
+msgstr "_Kopiëren"
+
+#: src/diffuse/window.py:739
+msgid "_Paste"
+msgstr "_Plakken"
+
+#: src/diffuse/window.py:741
+msgid "Select _All"
+msgstr "_Alles selecteren"
+
+#: src/diffuse/window.py:742
+msgid "C_lear Edits"
+msgstr "Bewerkingen _wissen"
+
+#: src/diffuse/window.py:743
+msgid "_Dismiss All Edits"
+msgstr "Alle bewerkingen wi_ssen"
+
+#: src/diffuse/window.py:745
+msgid "_Find..."
+msgstr "_Zoeken…"
+
+#: src/diffuse/window.py:746
+msgid "Find _Next"
+msgstr "Volge_nde zoeken"
+
+#: src/diffuse/window.py:747
+msgid "Find Pre_vious"
+msgstr "_Vorige zoeken"
+
+#: src/diffuse/window.py:748
+msgid "_Go To Line..."
+msgstr "_Ga naar regel…"
+
+#: src/diffuse/window.py:750
+msgid "Pr_eferences..."
+msgstr "Voork_euren…"
+
+#: src/diffuse/window.py:754
+msgid "None"
+msgstr "Geen"
+
+#: src/diffuse/window.py:776
+msgid "_View"
+msgstr "_Beeld"
+
+#: src/diffuse/window.py:778
+msgid "_Syntax Highlighting"
+msgstr "_Syntaxismarkering"
+
+#: src/diffuse/window.py:780
+msgid "Re_align All"
+msgstr "_Alles opnieuw uitlijnen"
+
+#: src/diffuse/window.py:781
+msgid "_Isolate"
+msgstr "Afs_chermen"
+
+#: src/diffuse/window.py:783
+msgid "_First Difference"
+msgstr "Eerste _verschil"
+
+#: src/diffuse/window.py:784
+msgid "_Previous Difference"
+msgstr "_Vorige verschil"
+
+#: src/diffuse/window.py:785
+msgid "_Next Difference"
+msgstr "Volge_nde verschil"
+
+#: src/diffuse/window.py:786
+msgid "_Last Difference"
+msgstr "_Laatste verschil"
+
+#: src/diffuse/window.py:788
+msgid "Fir_st Tab"
+msgstr "Eer_ste tabblad"
+
+#: src/diffuse/window.py:789
+msgid "Pre_vious Tab"
+msgstr "_Vorig tabblad"
+
+#: src/diffuse/window.py:790
+msgid "Next _Tab"
+msgstr "Volgend _tabblad"
+
+#: src/diffuse/window.py:791
+msgid "Las_t Tab"
+msgstr "Laats_te tabblad"
+
+#: src/diffuse/window.py:793
+msgid "Shift Pane _Right"
+msgstr "Paneel naar _rechts verplaatsen"
+
+#: src/diffuse/window.py:794
+msgid "Shift Pane _Left"
+msgstr "Paneel naar _links verplaatsen"
+
+#: src/diffuse/window.py:798
+msgid "F_ormat"
+msgstr "_Opmaak"
+
+#: src/diffuse/window.py:800
+msgid "Convert To _Upper Case"
+msgstr "Omzetten naar hoo_fdletters"
+
+#: src/diffuse/window.py:801
+msgid "Convert To _Lower Case"
+msgstr "Omzetten naar k_leine letters"
+
+#: src/diffuse/window.py:803
+msgid "Sort Lines In _Ascending Order"
+msgstr "Regels o_plopend sorteren"
+
+#: src/diffuse/window.py:804
+msgid "Sort Lines In D_escending Order"
+msgstr "Regels _aflopend sorteren"
+
+#: src/diffuse/window.py:806
+msgid "Remove Trailing _White Space"
+msgstr "_Witruimten aan regeleinden wissen"
+
+#: src/diffuse/window.py:807
+msgid "Convert Tabs To _Spaces"
+msgstr "Tabs omzetten naar _spaties"
+
+#: src/diffuse/window.py:808
+msgid "Convert Leading Spaces To _Tabs"
+msgstr "Spaties aan begin van regels omzetten naar _tabs"
+
+#: src/diffuse/window.py:810
+msgid "_Increase Indenting"
+msgstr "_Inspringing vergroten"
+
+#: src/diffuse/window.py:811
+msgid "De_crease Indenting"
+msgstr "Insprin_ging verkleinen"
+
+#: src/diffuse/window.py:813
+msgid "Convert To _DOS Format"
+msgstr "Omzetten naar _DOS-opmaak"
+
+#: src/diffuse/window.py:814
+msgid "Convert To _Mac Format"
+msgstr "Omzetten naar _Mac-opmaak"
+
+#: src/diffuse/window.py:815
+msgid "Convert To Uni_x Format"
+msgstr "Omzetten naar Uni_x-opmaak"
+
+#: src/diffuse/window.py:819
+msgid "_Merge"
+msgstr "Sa_menvoegen"
+
+#: src/diffuse/window.py:821
+msgid "Copy Selection _Right"
+msgstr "Selectie aan _rechterzijde kopiëren"
+
+#: src/diffuse/window.py:822
+msgid "Copy Selection _Left"
+msgstr "Selectie aan _linkerzijde kopiëren"
+
+#: src/diffuse/window.py:824
+msgid "Copy Left _Into Selection"
+msgstr "_Linkerzijde naar selectie kopiëren"
+
+#: src/diffuse/window.py:825
+msgid "Copy Right I_nto Selection"
+msgstr "_Rechterzijde naar selectie kopiëren"
+
+#: src/diffuse/window.py:826
+msgid "_Merge From Left Then Right"
+msgstr "Sa_menvoegen van links naar rechts"
+
+#: src/diffuse/window.py:827
+msgid "M_erge From Right Then Left"
+msgstr "Sam_envoegen van rechts naar links"
+
+#: src/diffuse/window.py:831
+msgid "_Help"
+msgstr "_Hulp"
+
+#: src/diffuse/window.py:833
+msgid "_Help Contents..."
+msgstr "_Zelfstudie…"
+
+#: src/diffuse/window.py:835
+#, python-format
+msgid "_About %s..."
+msgstr "_Over %s…"
+
+#: src/diffuse/window.py:847
+msgid "New 2-Way File Merge"
+msgstr "Nieuwe samenvoegmethode in 2 richtingen"
+
+#: src/diffuse/window.py:848
+msgid "New 3-Way File Merge"
+msgstr "Nieuwe samenvoegmethode in 3 richtingen"
+
+#: src/diffuse/window.py:850
+msgid "Realign All"
+msgstr "Alles opnieuw uitlijnen"
+
+#: src/diffuse/window.py:851
+msgid "First Difference"
+msgstr "Eerste verschil"
+
+#: src/diffuse/window.py:852
+msgid "Previous Difference"
+msgstr "Vorig verschil"
+
+#: src/diffuse/window.py:853
+msgid "Next Difference"
+msgstr "Volgend verschil"
+
+#: src/diffuse/window.py:854
+msgid "Last Difference"
+msgstr "Laatste verschil"
+
+#: src/diffuse/window.py:856
+msgid "Copy Selection Right"
+msgstr "Selectie aan rechterzijde kopiëren"
+
+#: src/diffuse/window.py:857
+msgid "Copy Selection Left"
+msgstr "Selectie aan linkerzijde kopiëren"
+
+#: src/diffuse/window.py:858
+msgid "Copy Left Into Selection"
+msgstr "Linkerzijde naar selectie kopiëren"
+
+#: src/diffuse/window.py:859
+msgid "Copy Right Into Selection"
+msgstr "Rechterzijde naar selectie kopiëren"
+
+#: src/diffuse/window.py:860
+msgid "Merge From Left Then Right"
+msgstr "Samenvoegen van links naar rechts"
+
+#: src/diffuse/window.py:861
+msgid "Merge From Right Then Left"
+msgstr "Samenvoegen van rechts naar links"
+
+#: src/diffuse/window.py:863
+msgid "Undo"
+msgstr "Ongedaan maken"
+
+#: src/diffuse/window.py:864
+msgid "Redo"
+msgstr "Opnieuw uitvoeren"
+
+#: src/diffuse/window.py:950
+msgid "Changes detected"
+msgstr "Wijzigingen aangetroffen"
+
+#: src/diffuse/window.py:954
+#, python-format
+msgid ""
+"The file \"%s\" changed on disk.\n"
+"\n"
+"Do you want to reload the file?"
+msgstr ""
+"“%s” is elders gewijzigd.\n"
+"\n"
+"Wilt u het bestand herladen?"
+
+#: src/diffuse/window.py:959
+#, python-format
+msgid ""
+"The following files changed on disk:\n"
+"%s\n"
+"\n"
+"Do you want to reload these files?"
+msgstr ""
+"De volgende bestanden zijn elders gewijzigd:\n"
+"%s\n"
+"\n"
+"Wilt u deze bestanden herladen?"
+
+#: src/diffuse/window.py:1078
+msgid "Some files have unsaved changes. Select the files to save before closing."
+msgstr ""
+"Enkele bestanden zijn niet nog opgeslagen. Selecteer de te bewaren bestanden "
+"alvorens door te gaan."
+
+#: src/diffuse/window.py:1092
+msgid "Tab"
+msgstr "Tabblad"
+
+#: src/diffuse/window.py:1097
+msgid "Pane"
+msgstr "Paneel"
+
+#: src/diffuse/window.py:1108
+msgid "Close _Without Saving"
+msgstr "Sluiten _zonder op te slaan"
+
+#: src/diffuse/window.py:1147
+#, python-format
+msgid "Closing this tab will quit %s."
+msgstr "Door dit tabblad te sluiten, wordt %s afgesloten."
+
+#: src/diffuse/window.py:1224
+#, python-format
+msgid "File Merge %d"
+msgstr "Samenvoeging %d"
+
+#: src/diffuse/window.py:1344
+#, python-format
+msgid "Error retrieving commits for %s."
+msgstr "De commits van %s kunnen niet worden opgehaald."
+
+#: src/diffuse/window.py:1376
+#, python-format
+msgid "Error retrieving modifications for %s."
+msgstr "De wijzigingen aan %s kunnen niet worden opgehaald."
+
+#: src/diffuse/window.py:1409
+msgid "Open File In New Tab"
+msgstr "Bestand openen op nieuw tabblad"
+
+#: src/diffuse/window.py:1432
+msgid "Choose Folder With Modified Files"
+msgstr "Kies de map met bewerkte bestanden"
+
+#: src/diffuse/window.py:1450
+msgid "No modified files found."
+msgstr "Er zijn geen bewerkte bestanden aangetroffen."
+
+#: src/diffuse/window.py:1456
+msgid "Choose Folder With Commit"
+msgstr "Kies de map met de commit"
+
+#: src/diffuse/window.py:1476
+msgid "No committed files found."
+msgstr "Er zijn geen commits aangetroffen."
+
+#: src/diffuse/window.py:1512
+msgid "New N-Way File Merge..."
+msgstr "Nieuwe samenvoegmethode in x-aantal richtingen…"
+
+#: src/diffuse/window.py:1513
+msgid "Number of panes: "
+msgstr "Aantal panelen: "
+
+#: src/diffuse/window.py:1587
+msgid "Phrase not found.  Continue from the end of the file?"
+msgstr ""
+"De zoekterm is niet aangetroffen. Wilt u vanaf het einde van het bestand zoeken?"
+
+#: src/diffuse/window.py:1589
+msgid "Phrase not found.  Continue from the start of the file?"
+msgstr ""
+"De zoekterm is niet aangetroffen. Wilt u vanaf het begin van het bestand zoeken?"
+
+#: src/diffuse/window.py:1762
+msgid "Diffuse is a graphical tool for merging and comparing text files."
+msgstr ""
+"Diffuse is een grafische toepassing voor het vergelijken en samenvoegen van "
+"tekstbestanden."
+
+#: src/diffuse/window.py:1766
+msgid "translator-credits"
+msgstr "Heimen Stoffels <vistausss@fastmail.com>"
