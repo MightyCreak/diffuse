@@ -5,7 +5,7 @@
 [Setup]
 AppId=Diffuse
 AppName={cm:ToolName}
-AppVerName=Diffuse 0.8.1
+AppVerName=Diffuse 0.8.2
 DefaultDirName={pf}\Diffuse
 DefaultGroupName=Diffuse
 UninstallDisplayIcon={app}\diffusew.exe

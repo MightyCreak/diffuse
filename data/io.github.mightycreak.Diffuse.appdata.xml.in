@@ -37,6 +37,29 @@
   <update_contact>romain@foolstep.com</update_contact>
 
   <releases>
+    <release version="0.8.2" date="2023-04-16">
+      <description>
+        <p>Use more modern, symbolic icons, add Dutch translation, and a couple of small fixes.</p>
+        <p>Added:</p>
+        <ul>
+          <li>Add link to the Matrix room in the README (@MightyCreak)</li>
+          <li>Add Dutch translation (@Vistaus)</li>
+        </ul>
+        <p>Changed:</p>
+        <ul>
+          <li>Replace `_` by `-` in the action names to be compatible with GTK action names (@MightyCreak)</li>
+          <li>The About dialog is now transient for the main window (@oscfdezdz)</li>
+          <li>Remove deprecated STOCK constants and use more modern, symbolic icons (@oscfdezdz)</li>
+        </ul>
+        <p>Fixed:</p>
+        <ul>
+          <li>Some signals weren't properly renamed from the previous GTK3 migration (@MightyCreak)</li>
+          <li>The syntax menu wasn't working anymore (@MightyCreak)</li>
+          <li>Properly handles SIGINT (i.e. Ctrl+C) now (@MightyCreak)</li>
+          <li>Add back `save_state()` to remember window's width and height (@MightyCreak)</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.8.1" date="2023-04-07">
       <description>
         <p>
