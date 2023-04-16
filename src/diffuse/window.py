@@ -28,7 +28,7 @@ from typing import List, Optional
 from urllib.parse import urlparse
 
 from diffuse import constants, utils
-from diffuse.dialogs import AboutDialog, FileChooserDialog, NumericDialog, SearchDialog
+from diffuse.dialogs import FileChooserDialog, NumericDialog, SearchDialog
 from diffuse.preferences import Preferences
 from diffuse.resources import theResources
 from diffuse.utils import LineEnding
@@ -682,24 +682,18 @@ class DiffuseWindow(Gtk.ApplicationWindow):
         # number of created viewers (used to label some tabs)
         self.viewer_count = 0
 
-        # get monitor resolution
-        monitor_geometry = Gdk.Display.get_default().get_monitor(0).get_geometry()
-
         # state information that should persist across sessions
         self.bool_state = {
             'window_maximized': False,
             'search_matchcase': False,
             'search_backwards': False
         }
-        self.int_state = {'window_width': 1024, 'window_height': 768}
-        self.int_state['window_x'] = max(
-            0,
-            (monitor_geometry.width - self.int_state['window_width']) / 2
-        )
-        self.int_state['window_y'] = max(
-            0,
-            (monitor_geometry.height - self.int_state['window_height']) / 2
-        )
+        self.int_state = {
+            'window_width': 1024,
+            'window_height': 768,
+        }
+
+        # window state signals
         self.connect('configure-event', self.configure_cb)
         self.connect('window-state-event', self.window_state_cb)
 
@@ -985,37 +979,41 @@ class DiffuseWindow(Gtk.ApplicationWindow):
                     page.open_file(f, True)
 
     # record the window's position and size
-    def configure_cb(self, widget, event):
+    def configure_cb(self, widget: Gtk.Widget, event: Gdk.EventConfigure) -> None:
         # read the state directly instead of using window_maximized as the order
         # of configure/window_state events is undefined
         if (widget.get_window().get_state() & Gdk.WindowState.MAXIMIZED) == 0:
-            self.int_state['window_x'], self.int_state['window_y'] = widget.get_window().get_root_origin()  # noqa: E501
             self.int_state['window_width'] = event.width
             self.int_state['window_height'] = event.height
 
     # record the window's maximized state
-    def window_state_cb(self, window, event):
-        self.bool_state['window_maximized'] = (
-            (event.new_window_state & Gdk.WindowState.MAXIMIZED) != 0
-        )
+    def window_state_cb(self, widget: Gtk.Widget, event: Gdk.EventWindowState) -> None:
+        is_maximized = (event.new_window_state & Gdk.WindowState.MAXIMIZED) != 0
+        self.bool_state['window_maximized'] = is_maximized
 
     # load state information that should persist across sessions
-    def loadState(self, statepath: str) -> None:
+    def load_state(self, statepath: str) -> None:
         if os.path.isfile(statepath):
             try:
                 f = open(statepath, 'r')
                 ss = utils.readlines(f)
                 f.close()
+
                 for j, s in enumerate(ss):
                     try:
                         a = shlex.split(s, True)
-                        if len(a) > 0:
-                            if len(a) == 2 and a[0] in self.bool_state:
-                                self.bool_state[a[0]] = (a[1] == 'True')
-                            elif len(a) == 2 and a[0] in self.int_state:
-                                self.int_state[a[0]] = int(a[1])
-                            else:
-                                raise ValueError()
+                        if len(a) == 0:
+                            continue
+                        if len(a) != 2:
+                            raise ValueError()
+
+                        (key, value) = a
+                        if key in self.bool_state:
+                            self.bool_state[key] = (value == 'True')
+                        elif key in self.int_state:
+                            self.int_state[key] = int(value)
+                        else:
+                            raise ValueError()
                     except ValueError:
                         # this may happen if the state was written by a
                         # different version -- don't bother the user
@@ -1024,13 +1022,12 @@ class DiffuseWindow(Gtk.ApplicationWindow):
                 # bad $HOME value? -- don't bother the user
                 utils.logDebug(f'Error reading {statepath}.')
 
-        self.move(self.int_state['window_x'], self.int_state['window_y'])
         self.resize(self.int_state['window_width'], self.int_state['window_height'])
         if self.bool_state['window_maximized']:
             self.maximize()
 
     # save state information that should persist across sessions
-    def saveState(self, statepath: str) -> None:
+    def save_state(self, statepath: str) -> None:
         try:
             ss = []
             for k, v in self.bool_state.items():
@@ -1038,6 +1035,7 @@ class DiffuseWindow(Gtk.ApplicationWindow):
             for k, v in self.int_state.items():
                 ss.append(f'{k} {v}\n')
             ss.sort()
+
             f = open(statepath, 'w')
             f.write(f'# This state file was generated by {constants.APP_NAME} {constants.VERSION}.\n\n')  # noqa: E501
             for s in ss:
@@ -1733,9 +1731,41 @@ class DiffuseWindow(Gtk.ApplicationWindow):
 
     # callback for the about menu item
     def about_cb(self, widget, data):
-        dialog = AboutDialog(self.get_toplevel())
-        dialog.run()
-        dialog.destroy()
+        authors = [
+            'Derrick Moser <derrick_moser@yahoo.com>',
+            'Romain Failliot <romain.failliot@foolstep.com>'
+        ]
+        license = f'''{constants.APP_NAME} {constants.VERSION}
+
+{constants.COPYRIGHT}
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along
+with this program; if not, write to the Free Software Foundation, Inc.,
+51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.'''
+
+        dialog = Gtk.AboutDialog(
+            transient_for=self.get_toplevel(),
+            modal=True,
+            program_name=constants.APP_NAME,
+            logo_icon_name=constants.APP_ID,
+            version=constants.VERSION,
+            comments=_('Diffuse is a graphical tool for merging and comparing text files.'),
+            copyright=constants.COPYRIGHT,
+            website=constants.WEBSITE,
+            authors=authors,
+            translator_credits=_('translator-credits'),
+            license=license)
+        dialog.present()
 
 
 def _append_buttons(box, size, specs):

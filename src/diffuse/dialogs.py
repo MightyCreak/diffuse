@@ -22,46 +22,12 @@ import os
 from gettext import gettext as _
 from typing import Optional
 
-from diffuse import constants
 from diffuse import utils
 
 import gi  # type: ignore
 gi.require_version('GObject', '2.0')
 gi.require_version('Gtk', '3.0')
 from gi.repository import GObject, Gtk  # type: ignore # noqa: E402
-
-
-# the about dialog
-class AboutDialog(Gtk.AboutDialog):
-    def __init__(self, parent: Gtk.Widget) -> None:
-        Gtk.AboutDialog.__init__(self)
-        self.set_transient_for(parent)
-        self.set_logo_icon_name('io.github.mightycreak.Diffuse')
-        self.set_program_name(constants.APP_NAME)
-        self.set_version(constants.VERSION)
-        self.set_comments(_('Diffuse is a graphical tool for merging and comparing text files.'))
-        self.set_copyright(constants.COPYRIGHT)
-        self.set_website(constants.WEBSITE)
-        self.set_authors(['Derrick Moser <derrick_moser@yahoo.com>',
-                          'Romain Failliot <romain.failliot@foolstep.com>'])
-        self.set_translator_credits(_('translator-credits'))
-        license_text = [
-            constants.APP_NAME + ' ' + constants.VERSION + '\n\n',
-            constants.COPYRIGHT + '\n\n',
-            '''This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 2 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License along
-with this program; if not, write to the Free Software Foundation, Inc.,
-51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.''']
-        self.set_license(''.join(license_text))
 
 
 # custom dialogue for picking files with widgets for specifying the encoding

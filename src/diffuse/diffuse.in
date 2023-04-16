@@ -22,6 +22,7 @@
 import os
 import sys
 import gettext
+import signal
 
 from gi.repository import Gio
 
@@ -32,6 +33,10 @@ SYSCONFIGDIR = '@SYSCONFIGDIR@'
 
 sys.path.insert(1, PKGDATADIR)
 
+# Quietly handle SIGINT (i.e. Ctrl+C)
+signal.signal(signal.SIGINT, signal.SIG_DFL)
+
+# Initialize i18n
 gettext.bindtextdomain('diffuse', localedir=LOCALEDIR)
 gettext.textdomain('diffuse')
 

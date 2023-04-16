@@ -37,11 +37,13 @@ class DiffuseApplication(Gtk.Application):
 
     def __init__(self, sysconfigdir):
         super().__init__(
-            application_id='io.github.mightycreak.Diffuse',
+            application_id=constants.APP_ID,
             flags=Gio.ApplicationFlags.HANDLES_COMMAND_LINE | Gio.ApplicationFlags.NON_UNIQUE)
 
         self.window = None
         self.sysconfigdir = sysconfigdir
+
+        self.connect('shutdown', self.on_shutdown)
 
         self.add_main_option(
             'version',
@@ -249,7 +251,7 @@ also retrieve revisions of files from several VCSs for comparison and merging.''
 
         # load state
         self.statepath = os.path.join(data_dir, 'state')
-        diff_window.loadState(self.statepath)
+        diff_window.load_state(self.statepath)
 
         # process remaining command line arguments
         encoding = None
@@ -365,6 +367,9 @@ also retrieve revisions of files from several VCSs for comparison and merging.''
 
         self.activate()
         return 0
+
+    def on_shutdown(self, application: Gio.Application) -> None:
+        self.window.save_state(self.statepath)
 
 
 def main(version: str, sysconfigdir: str) -> int:
