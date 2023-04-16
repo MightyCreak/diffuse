@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: diffuse 0.4.7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-23 20:00-0400\n"
+"POT-Creation-Date: 2023-04-16 14:09-0400\n"
 "PO-Revision-Date: 2020-06-29 14:49-0400\n"
 "Last-Translator: Akom Chotiphantawanon <knight2000@gmail.com>\n"
 "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
@@ -31,816 +31,302 @@ msgstr "เครื่องมือแบบกราฟิกสำหรั
 #: data/io.github.mightycreak.Diffuse.appdata.xml.in:7
 msgid ""
 "Diffuse is a graphical tool for comparing and merging text files. It can retrieve "
-"files for comparison from Bazaar, CVS, Darcs, Git, Mercurial, Monotone, RCS, "
-"Subversion, and SVK repositories."
+"files for comparison from Bazaar, CVS, Darcs, Git, Mercurial, Monotone, RCS, and "
+"Subversion repositories."
 msgstr ""
 
-#: data/io.github.mightycreak.Diffuse.appdata.xml.in:21
-msgid "Main window: diff between two files"
+#: data/io.github.mightycreak.Diffuse.appdata.xml.in:28
+msgid "Main window"
 msgstr ""
 
-#: src/diffuse/constants.py:25
+#: data/io.github.mightycreak.Diffuse.appdata.xml.in:32
+msgid "About window"
+msgstr ""
+
+#: src/diffuse/constants.py:26
 msgid "Copyright"
 msgstr ""
 
-#: src/diffuse/dialogs.py:40
-msgid "Diffuse is a graphical tool for merging and comparing text files."
-msgstr "Diffuse เป็นเครื่องมือแบบกราฟิกสำหรับผสานและเปรียบเทียบแฟ้มข้อความ"
+#: src/diffuse/dialogs.py:46 src/diffuse/dialogs.py:89 src/diffuse/dialogs.py:133
+#: src/diffuse/preferences.py:254 src/diffuse/preferences.py:483
+#: src/diffuse/window.py:309 src/diffuse/window.py:1107
+msgid "_Cancel"
+msgstr ""
 
-#: src/diffuse/dialogs.py:45
-msgid "translator-credits"
-msgstr "Akom Chotiphantawanon <knight2000@gmail.com> "
-
-#: src/diffuse/dialogs.py:82
+#: src/diffuse/dialogs.py:50
 msgid "Encoding: "
 msgstr "รหัสอักขระ: "
 
-#: src/diffuse/dialogs.py:94
+#: src/diffuse/dialogs.py:62
 msgid "Revision: "
 msgstr "ฉบับแก้ไข: "
 
-#: src/diffuse/dialogs.py:156
+#: src/diffuse/dialogs.py:90 src/diffuse/dialogs.py:134
+#: src/diffuse/preferences.py:255
+msgid "_OK"
+msgstr ""
+
+#: src/diffuse/dialogs.py:130
 msgid "Find..."
 msgstr "หา..."
 
-#: src/diffuse/dialogs.py:164
+#: src/diffuse/dialogs.py:140
 msgid "Search For: "
 msgstr "ค้นหา: "
 
-#: src/diffuse/dialogs.py:189
+#: src/diffuse/dialogs.py:165
 msgid "Match Case"
 msgstr "ตัวพิมพ์ใหญ่-เล็กตรงกัน"
 
-#: src/diffuse/dialogs.py:194
+#: src/diffuse/dialogs.py:170
 msgid "Search Backwards"
 msgstr "ค้นถอยหลัง"
 
+#: src/diffuse/main.py:53
+msgid "Display version and copyright information"
+msgstr "แสดงรุ่นและข้อมูลลิขสิทธิ์"
+
+#: src/diffuse/main.py:61
+msgid "Do not read any resource files"
+msgstr "ไม่ต้องอ่านแฟ้มทรัพยากรใดๆ"
+
+#: src/diffuse/main.py:69
+msgid "Specify explicit resource file"
+msgstr "เจาะจงแฟ้มทรัพยากรที่จะใช้"
+
+#: src/diffuse/main.py:77
+msgid "File revisions <rev-1> and <rev>"
+msgstr "แฟ้มฉบับแก้ไข <rev-1> และ <rev>"
+
 #: src/diffuse/main.py:85
-msgid "Close Tab"
-msgstr "ปิดแท็บ"
+msgid "Close all tabs with no differences"
+msgstr "ปิดแท็บทั้งหมดที่ไม่มีความแตกต่าง"
 
-#: src/diffuse/main.py:132
-msgid "Open File..."
-msgstr "เปิดแฟ้ม..."
+#: src/diffuse/main.py:92
+msgid "Use <codec> to read and write files"
+msgstr "ใช้ <codec> ในการอ่านและเขียนแฟ้ม"
 
-#: src/diffuse/main.py:133
-msgid "Reload File"
-msgstr "โหลดแฟ้มซ้ำ"
+#: src/diffuse/main.py:100
+msgid "Display <label> instead of the file name"
+msgstr "แสดง <label> แทนชื่อแฟ้ม"
 
-#: src/diffuse/main.py:134
-msgid "Save File"
-msgstr "บันทึกแฟ้ม"
+#: src/diffuse/main.py:108
+msgid "Create a new tab for each modified file"
+msgstr "สร้างแท็บใหม่สำหรับแฟ้มที่เปลี่ยนแปลงแต่ละแฟ้ม"
 
-#: src/diffuse/main.py:135
-msgid "Save File As..."
-msgstr "บันทึกแฟ้มเป็น..."
+#: src/diffuse/main.py:115
+msgid "File revision <rev>"
+msgstr "แฟ้มฉบับแก้ไข <rev>"
 
-#: src/diffuse/main.py:217
-#, python-format
-msgid "Column %d"
-msgstr "คอลัมน์ %d"
+#: src/diffuse/main.py:123
+msgid "Create a new tab for each file"
+msgstr "สร้างแท็บแยกสำหรับแฟ้มแต่ละแฟ้ม"
 
-#: src/diffuse/main.py:291
-msgid "Save changes before loading the new file?"
-msgstr "บันทึกการเปลี่ยนแปลงก่อนโหลดแฟ้มใหม่หรือไม่?"
+#: src/diffuse/main.py:130
+msgid "Start a new tab"
+msgstr "เปิดแท็บใหม่"
 
-#: src/diffuse/main.py:402
-#, python-format
-msgid "Error reading revision %(rev)s of %(file)s."
-msgstr "เกิดข้อผิดพลาดขณะอ่านฉบับแก้ไข %(rev)s ของ %(file)s"
+#: src/diffuse/main.py:137 src/diffuse/preferences.py:159
+msgid "Version control system search order"
+msgstr ""
 
-#: src/diffuse/main.py:405 src/diffuse/main.py:1860
+#: src/diffuse/main.py:145
+msgid "Start with line <line> selected"
+msgstr "เปิดโดยเลือกบรรทัด <line> ไว้"
+
+#: src/diffuse/main.py:153
+msgid "Create a blank file comparison pane"
+msgstr "สร้างช่องแฟ้มเปล่า"
+
+#: src/diffuse/main.py:160 src/diffuse/preferences.py:86
+#: src/diffuse/preferences.py:95
+msgid "Ignore changes to white space"
+msgstr "ไม่สนใจการเปลี่ยนแปลงของช่องว่าง"
+
+#: src/diffuse/main.py:167
+msgid "Ignore changes in blank lines"
+msgstr "ไม่สนใจการเปลี่ยนแปลงในบรรทัดเปล่า"
+
+#: src/diffuse/main.py:174 src/diffuse/preferences.py:88
+msgid "Ignore end of line differences"
+msgstr "ไม่สนใจความแตกต่างของอักขระจบบรรทัด"
+
+#: src/diffuse/main.py:181 src/diffuse/preferences.py:84
+msgid "Ignore case differences"
+msgstr "ไม่สนใจความแตกต่างของตัวพิมพ์ใหญ่-เล็ก"
+
+#: src/diffuse/main.py:188 src/diffuse/preferences.py:85
+msgid "Ignore white space differences"
+msgstr "ไม่สนใจความแตกต่างของช่องว่างทั้งหมด"
+
+#: src/diffuse/main.py:191
+msgid ""
+"Diffuse is a graphical tool for merging and comparing text files. Diffuse is\n"
+"able to compare an arbitrary number of files side-by-side and gives users the\n"
+"ability to manually adjust line matching and directly edit files. Diffuse can\n"
+"also retrieve revisions of files from several VCSs for comparison and merging."
+msgstr ""
+
+#: src/diffuse/main.py:247 src/diffuse/window.py:420
 #, python-format
 msgid "Error reading %s."
 msgstr "เกิดข้อผิดพลาดขณะอ่าน %s"
 
-#: src/diffuse/main.py:427
-msgid "Open File"
-msgstr "เปิดแฟ้ม"
-
-#: src/diffuse/main.py:484
-#, python-format
-msgid "The file %s changed on disk. Do you want to reload the file?"
-msgstr "แฟ้ม \"%s\" มีการเปลี่ยนแปลงในดิสก์ คุณต้องการโหลดแฟ้มซ้ำหรือไม่?"
-
-#: src/diffuse/main.py:510
-#, python-format
-msgid "Save %(title)s Pane %(pane)d"
-msgstr "บันทึก %(title)s ช่อง %(pane)d"
-
-#: src/diffuse/main.py:542
-#, python-format
-msgid "A file named %s already exists. Do you want to overwrite it?"
-msgstr "แฟ้มชื่อ \"%s\" มีอยู่ก่อนแล้ว คุณต้องการเขียนทับหรือไม่?"
-
-#: src/diffuse/main.py:549
-#, python-format
-msgid ""
-"The file %s has been modified by another process since reading it. If you save, "
-"all the external changes could be lost. Save anyways?"
-msgstr ""
-"แฟ้ม \"%s\" ถูกเปลี่ยนแปลงโดยโพรเซสอื่นนับตั้งแต่ที่อ่านไว้ ถ้าคุณบันทึก "
-"การเปลี่ยนแปลงภายนอกทั้งหมดอาจสูญหายได้ ยังคงบันทึกหรือไม่?"
-
-#: src/diffuse/main.py:591
-#, python-format
-msgid "Error encoding to %s."
-msgstr "เกิดข้อผิดพลาดขณะลงรหัส %s"
-
-#: src/diffuse/main.py:595 src/diffuse/preferences.py:300
-#, python-format
-msgid "Error writing %s."
-msgstr "เกิดข้อผิดพลาดขณะเขียน %s"
-
-#: src/diffuse/main.py:625
-msgid "Go To Line..."
-msgstr "ไปที่บรรทัด..."
-
-#: src/diffuse/main.py:626
-msgid "Line Number: "
-msgstr "หมายเลขบรรทัด: "
-
-#: src/diffuse/main.py:657
-msgid ""
-"Press the enter key or double click to edit. Press the space bar or use the RMB "
-"menu to manually align."
-msgstr "กดปุ่ม Enter หรือดับเบิลคลิกเพื่อแก้ไข กดแคร่เว้นวรรคหรือใช้เมนูคลิกขวาเพื่อจัดเรียงด้วยมือ"
-
-#: src/diffuse/main.py:661
-msgid "Press the escape key to finish editing."
-msgstr "กดปุ่ม Escape เพื่อจบการแก้ไข"
-
-#: src/diffuse/main.py:664
-msgid ""
-"Select target line and press the space bar to align. Press the escape key to "
-"cancel."
-msgstr "เลือกบรรทัดเป้าหมายแล้วกดแคร่เว้นวรรคเพื่อจัดเรียง กดปุ่ม Escape เพื่อยกเลิก"
-
-#: src/diffuse/main.py:787
-msgid "_File"
-msgstr "แ_ฟ้ม"
-
-#: src/diffuse/main.py:788
-msgid "_Open File..."
-msgstr "_เปิดแฟ้ม..."
-
-#: src/diffuse/main.py:789
-msgid "Open File In New _Tab..."
-msgstr "เปิดแฟ้มในแ_ท็บใหม่..."
-
-#: src/diffuse/main.py:790
-msgid "Open _Modified Files..."
-msgstr "เปิดแฟ้มที่เ_ปลี่ยนแปลง..."
-
-#: src/diffuse/main.py:791
-msgid "Open Commi_t..."
-msgstr "เปิด Commi_t..."
-
-#: src/diffuse/main.py:792
-msgid "_Reload File"
-msgstr "โ_หลดแฟ้มซ้ำ"
-
-#: src/diffuse/main.py:794
-msgid "_Save File"
-msgstr "_บันทึกแฟ้ม"
-
-#: src/diffuse/main.py:795
-msgid "Save File _As..."
-msgstr "บันทึกแฟ้มเป็_น..."
-
-#: src/diffuse/main.py:796
-msgid "Save A_ll"
-msgstr "บันทึกทั้งห_มด"
-
-#: src/diffuse/main.py:798
-msgid "New _2-Way File Merge"
-msgstr "การผสานแฟ้ม _2 ทางชุดใหม่"
-
-#: src/diffuse/main.py:799
-msgid "New _3-Way File Merge"
-msgstr "การผสานแฟ้ม _3 ทางชุดใหม่"
-
-#: src/diffuse/main.py:800
-msgid "New _N-Way File Merge..."
-msgstr "การผสานแฟ้ม _N ทางชุดใหม่..."
-
-#: src/diffuse/main.py:802
-msgid "_Close Tab"
-msgstr "ปิ_ดแท็บ"
-
-#: src/diffuse/main.py:803
-msgid "_Undo Close Tab"
-msgstr "เ_รียกคืนการปิดแท็บ"
-
-#: src/diffuse/main.py:804
-msgid "_Quit"
-msgstr "_ออก"
-
-#: src/diffuse/main.py:807
-msgid "_Edit"
-msgstr "แ_ก้ไข"
-
-#: src/diffuse/main.py:808
-msgid "_Undo"
-msgstr "เ_รียกคืน"
-
-#: src/diffuse/main.py:809
-msgid "_Redo"
-msgstr "_ทำซ้ำ"
-
-#: src/diffuse/main.py:811
-msgid "Cu_t"
-msgstr "_ตัด"
-
-#: src/diffuse/main.py:812
-msgid "_Copy"
-msgstr "_คัดลอก"
-
-#: src/diffuse/main.py:813
-msgid "_Paste"
-msgstr "_แปะ"
-
-#: src/diffuse/main.py:815
-msgid "Select _All"
-msgstr "เลือกทั้ง_หมด"
-
-#: src/diffuse/main.py:816
-msgid "C_lear Edits"
-msgstr "_ล้างการแก้ไขต่างๆ"
-
-#: src/diffuse/main.py:817
-msgid "_Dismiss All Edits"
-msgstr "ไ_ม่สนใจการแก้ไขทั้งหมด"
-
-#: src/diffuse/main.py:819
-msgid "_Find..."
-msgstr "_หา..."
-
-#: src/diffuse/main.py:820
-msgid "Find _Next"
-msgstr "หา_ถัดไป"
-
-#: src/diffuse/main.py:821
-msgid "Find Pre_vious"
-msgstr "หา_ก่อนหน้า"
-
-#: src/diffuse/main.py:822
-msgid "_Go To Line..."
-msgstr "ไปที่_บรรทัด..."
-
-#: src/diffuse/main.py:824
-msgid "Pr_eferences..."
-msgstr "_ปรับแต่ง..."
-
-#: src/diffuse/main.py:828
-msgid "None"
-msgstr "ไม่มี"
-
-#: src/diffuse/main.py:846
-msgid "_View"
-msgstr "มุ_มมอง"
-
-#: src/diffuse/main.py:847
-msgid "_Syntax Highlighting"
-msgstr "การเน้นไ_วยากรณ์"
-
-#: src/diffuse/main.py:849
-msgid "Re_align All"
-msgstr "จัดเรียงให_ม่ทั้งหมด"
-
-#: src/diffuse/main.py:850
-msgid "_Isolate"
-msgstr "แ_ยก"
-
-#: src/diffuse/main.py:852
-msgid "_First Difference"
-msgstr "ความแตกต่างแ_รก"
-
-#: src/diffuse/main.py:853
-msgid "_Previous Difference"
-msgstr "ความแตกต่าง_ก่อนหน้า"
-
-#: src/diffuse/main.py:854
-msgid "_Next Difference"
-msgstr "ความแตกต่าง_ถัดไป"
-
-#: src/diffuse/main.py:855
-msgid "_Last Difference"
-msgstr "ความแตกต่าง_ล่าสุด"
-
-#: src/diffuse/main.py:857
-msgid "Fir_st Tab"
-msgstr "แท็บ_แรก"
-
-#: src/diffuse/main.py:858
-msgid "Pre_vious Tab"
-msgstr "แท็บก่อ_นหน้า"
-
-#: src/diffuse/main.py:859
-msgid "Next _Tab"
-msgstr "แ_ท็บถัดไป"
-
-#: src/diffuse/main.py:860
-msgid "Las_t Tab"
-msgstr "แท็บสุ_ดท้าย"
-
-#: src/diffuse/main.py:862
-msgid "Shift Pane _Right"
-msgstr "เลื่อนช่องไปทาง_ขวา"
-
-#: src/diffuse/main.py:863
-msgid "Shift Pane _Left"
-msgstr "เลื่อนช่องไปทางซ้_าย"
-
-#: src/diffuse/main.py:866
-msgid "F_ormat"
-msgstr "จัดรูปแ_บบ"
-
-#: src/diffuse/main.py:867
-msgid "Convert To _Upper Case"
-msgstr "แปลงเป็นตัวพิมพ์ใ_หญ่"
-
-#: src/diffuse/main.py:868
-msgid "Convert To _Lower Case"
-msgstr "แปลงเป็นตัวพิมพ์เล็_ก"
-
-#: src/diffuse/main.py:870
-msgid "Sort Lines In _Ascending Order"
-msgstr "เรียงบรรทัดจากน้_อยไปหามาก"
-
-#: src/diffuse/main.py:871
-msgid "Sort Lines In D_escending Order"
-msgstr "เรียงบรรทัดจาก_มากไปหาน้อย"
-
-#: src/diffuse/main.py:873
-msgid "Remove Trailing _White Space"
-msgstr "ลบช่องว่างท้า_ยบรรทัด"
-
-#: src/diffuse/main.py:874
-msgid "Convert Tabs To _Spaces"
-msgstr "แปลงแท็บเป็น_ช่องว่าง"
-
-#: src/diffuse/main.py:875
-msgid "Convert Leading Spaces To _Tabs"
-msgstr "แปลงช่องว่างที่ต้นบรรทัดเป็นแ_ท็บ"
-
-#: src/diffuse/main.py:877
-msgid "_Increase Indenting"
-msgstr "เ_พิ่มการร่นย่อหน้า"
-
-#: src/diffuse/main.py:878
-msgid "De_crease Indenting"
-msgstr "_ลดการร่นย่อหน้า"
-
-#: src/diffuse/main.py:880
-msgid "Convert To _DOS Format"
-msgstr "แปลงเป็นรูปแบบ_ดอส"
-
-#: src/diffuse/main.py:881
-msgid "Convert To _Mac Format"
-msgstr "แปลงเป็นรูปแบบแ_ม็ค"
-
-#: src/diffuse/main.py:882
-msgid "Convert To Uni_x Format"
-msgstr "แปลงเป็นรูปแบบยู_นิกซ์"
-
-#: src/diffuse/main.py:885
-msgid "_Merge"
-msgstr "_ผสาน"
-
-#: src/diffuse/main.py:886
-msgid "Copy Selection _Right"
-msgstr "คัดลอกบรรทัดที่เลือกไปช่อง_ขวา"
-
-#: src/diffuse/main.py:887
-msgid "Copy Selection _Left"
-msgstr "คัดลอกบรรทัดที่เลือกไปช่องซ้า_ย"
-
-#: src/diffuse/main.py:889
-msgid "Copy Left _Into Selection"
-msgstr "คัดลอกช่องซ้าย_เข้าในบรรทัดที่เลือก"
-
-#: src/diffuse/main.py:890
-msgid "Copy Right I_nto Selection"
-msgstr "คัดลอกช่องขวาเข้าใ_นบรรทัดที่เลือก"
-
-#: src/diffuse/main.py:891
-msgid "_Merge From Left Then Right"
-msgstr "_ผสานจากช่องซ้ายแล้วตามด้วยขวา"
-
-#: src/diffuse/main.py:892
-msgid "M_erge From Right Then Left"
-msgstr "ผ_สานจากช่องขวาแล้วตามด้วยซ้าย"
-
-#: src/diffuse/main.py:895
-msgid "_Help"
-msgstr "_วิธีใช้"
-
-#: src/diffuse/main.py:896
-msgid "_Help Contents..."
-msgstr "เ_นื้อหาวิธีใช้..."
-
-#: src/diffuse/main.py:898
-#, python-format
-msgid "_About %s..."
-msgstr "เ_กี่ยวกับ %s..."
-
-#: src/diffuse/main.py:913
-msgid "New 2-Way File Merge"
-msgstr "การผสานแฟ้ม 2 ทางชุดใหม่"
-
-#: src/diffuse/main.py:914
-msgid "New 3-Way File Merge"
-msgstr "การผสานแฟ้ม 3 ทางชุดใหม่"
-
-#: src/diffuse/main.py:916
-msgid "Realign All"
-msgstr "จัดเรียงใหม่ทั้งหมด"
-
-#: src/diffuse/main.py:917
-msgid "First Difference"
-msgstr "ความแตกต่างแรก"
-
-#: src/diffuse/main.py:918
-msgid "Previous Difference"
-msgstr "ความแตกต่างก่อนหน้า"
-
-#: src/diffuse/main.py:919
-msgid "Next Difference"
-msgstr "ความแตกต่างถัดไป"
-
-#: src/diffuse/main.py:920
-msgid "Last Difference"
-msgstr "ความแตกต่างสุดท้าย"
-
-#: src/diffuse/main.py:922
-msgid "Copy Selection Right"
-msgstr "คัดลอกบรรทัดที่เลือกไปช่องขวา"
-
-#: src/diffuse/main.py:923
-msgid "Copy Selection Left"
-msgstr "คัดลอกบรรทัดที่เลือกไปช่องซ้าย"
-
-#: src/diffuse/main.py:924
-msgid "Copy Left Into Selection"
-msgstr "คัดลอกช่องซ้ายเข้าในบรรทัดที่เลือก"
-
-#: src/diffuse/main.py:925
-msgid "Copy Right Into Selection"
-msgstr "คัดลอกช่องขวาเข้าในบรรทัดที่เลือก"
-
-#: src/diffuse/main.py:926
-msgid "Merge From Left Then Right"
-msgstr "ผสานจากช่องซ้ายแล้วตามด้วยขวา"
-
-#: src/diffuse/main.py:927
-msgid "Merge From Right Then Left"
-msgstr "ผสานจากช่องขวาแล้วตามด้วยซ้าย"
-
-#: src/diffuse/main.py:929
-msgid "Undo"
-msgstr "เรียกคืน"
-
-#: src/diffuse/main.py:930
-msgid "Redo"
-msgstr "ทำซ้ำ"
-
-#: src/diffuse/main.py:931 src/diffuse/widgets.py:1861
-msgid "Cut"
-msgstr "ตัด"
-
-#: src/diffuse/main.py:932 src/diffuse/widgets.py:1862
-msgid "Copy"
-msgstr "คัดลอก"
-
-#: src/diffuse/main.py:933 src/diffuse/widgets.py:1863
-msgid "Paste"
-msgstr "แปะ"
-
-#: src/diffuse/main.py:934 src/diffuse/widgets.py:1866
-msgid "Clear Edits"
-msgstr "ล้างการแก้ไข"
-
-#: src/diffuse/main.py:1057
-msgid "Some files have unsaved changes. Select the files to save before closing."
-msgstr "บางแฟ้มมีการเปลี่ยนแปลงที่ไม่ได้บันทึก เลือกแฟ้มเพื่อบันทึกก่อนปิด"
-
-#: src/diffuse/main.py:1071
-msgid "Tab"
-msgstr "แท็บ"
-
-#: src/diffuse/main.py:1076
-msgid "Pane"
-msgstr "ช่อง"
-
-#: src/diffuse/main.py:1087
-msgid "Close _Without Saving"
-msgstr "ปิ_ดโดยไม่บันทึก"
-
-#: src/diffuse/main.py:1126
-#, python-format
-msgid "Closing this tab will quit %s."
-msgstr "การปิดแท็บนี้จะออกจาก %s"
-
-#: src/diffuse/main.py:1209
-#, python-format
-msgid "File Merge %d"
-msgstr "การผสานแฟ้ม %d"
-
-#: src/diffuse/main.py:1315
-#, python-format
-msgid "Error retrieving commits for %s."
-msgstr "เกิดข้อผิดพลาดขณะดึง commit ต่างๆ สำหรับ %s"
-
-#: src/diffuse/main.py:1347
-#, python-format
-msgid "Error retrieving modifications for %s."
-msgstr "เกิดข้อผิดพลาดขณะดึงการเปลี่ยนแปลงสำหรับ %s"
-
-#: src/diffuse/main.py:1380
-msgid "Open File In New Tab"
-msgstr "เปิดแฟ้มในแท็บใหม่"
-
-#: src/diffuse/main.py:1403
-msgid "Choose Folder With Modified Files"
-msgstr "เลือกโฟลเดอร์ที่มีแฟ้มที่เปลี่ยนแปลง"
-
-#: src/diffuse/main.py:1421
-msgid "No modified files found."
-msgstr "ไม่พบแฟ้มที่เปลี่ยนแปลง"
-
-#: src/diffuse/main.py:1427
-msgid "Choose Folder With Commit"
-msgstr "เลือกโฟลเดอร์ที่มีการ commit"
-
-#: src/diffuse/main.py:1447
-msgid "No committed files found."
-msgstr "ไม่พบแฟ้มที่มีการ commit"
-
-#: src/diffuse/main.py:1483
-msgid "New N-Way File Merge..."
-msgstr "การผสานแฟ้ม N ทางชุดใหม่..."
-
-#: src/diffuse/main.py:1484
-msgid "Number of panes: "
-msgstr "จำนวนช่อง: "
-
-#: src/diffuse/main.py:1558
-msgid "Phrase not found.  Continue from the end of the file?"
-msgstr "ไม่พบคำที่ค้น จะหาต่อจากท้ายแฟ้มหรือไม่?"
-
-#: src/diffuse/main.py:1560
-msgid "Phrase not found.  Continue from the start of the file?"
-msgstr "ไม่พบคำที่ค้น จะหาต่อจากต้นแฟ้มหรือไม่?"
-
-#: src/diffuse/main.py:1781
-#, fuzzy
-msgid ""
-"Usage:\n"
-"    diffuse [OPTION...] [FILE...]\n"
-"    diffuse ( -h | -? | --help | -v | --version )\n"
-"\n"
-"Diffuse is a graphical tool for merging and comparing text files. Diffuse is\n"
-"able to compare an arbitrary number of files side-by-side and gives users the\n"
-"ability to manually adjust line matching and directly edit files. Diffuse can\n"
-"also retrieve revisions of files from several VCSs for comparison and merging.\n"
-"\n"
-"Help Options:\n"
-"  ( -h | -? | --help )             Display this usage information\n"
-"  ( -v | --version )               Display version and copyright information\n"
-"\n"
-"Configuration Options:\n"
-"  --no-rcfile                      Do not read any resource files\n"
-"  --rcfile <file>                  Specify explicit resource file\n"
-"\n"
-"General Options:\n"
-"  ( -c | --commit ) <rev>          File revisions <rev-1> and <rev>\n"
-"  ( -D | --close-if-same )         Close all tabs with no differences\n"
-"  ( -e | --encoding ) <codec>      Use <codec> to read and write files\n"
-"  ( -L | --label ) <label>         Display <label> instead of the file name\n"
-"  ( -m | --modified )              Create a new tab for each modified file\n"
-"  ( -r | --revision ) <rev>        File revision <rev>\n"
-"  ( -s | --separate )              Create a new tab for each file\n"
-"  ( -t | --tab )                   Start a new tab\n"
-"  ( -V | --vcs ) <vcs-list>        Version control system search order\n"
-"  --line <line>                    Start with line <line> selected\n"
-"  --null-file                      Create a blank file comparison pane\n"
-"\n"
-"Display Options:\n"
-"  ( -b | --ignore-space-change )   Ignore changes to white space\n"
-"  ( -B | --ignore-blank-lines )    Ignore changes in blank lines\n"
-"  ( -E | --ignore-end-of-line )    Ignore end of line differences\n"
-"  ( -i | --ignore-case )           Ignore case differences\n"
-"  ( -w | --ignore-all-space )      Ignore white space differences"
-msgstr ""
-"วิธีใช้:\n"
-"    diffuse [ [ตัวเลือก...] [แฟ้ม...] ]...\n"
-"    diffuse ( -h | -? | --help | -v | --version )\n"
-"\n"
-"Diffuse เป็นเครื่องมือแบบกราฟิกสำหรับผสานและเปรียบเทียบแฟ้มข้อความ  Diffuse\n"
-"สามารถเปรียบเทียบแฟ้มจำนวนเท่าใดก็ได้โดยวางเทียบข้างกัน และให้ผู้ใช้สามารถ\n"
-"ปรับการจับคู่บรรทัดด้วยมือ และแก้ไขแฟ้มได้โดยตรง นอกจากนี้ Diffuse ยังสามารถ\n"
-"ดึงเอาฉบับแก้ไขต่างๆ ของแฟ้มจากคลัง Bazaar, CVS, Darcs, Git, Mercurial,\n"
-"Monotone, RCS, Subversion, และ SVK มาเปรียบเทียบและผสานได้\n"
-"\n"
-"ตัวเลือกวิธีใช้:\n"
-"  ( -h | -? | --help )             แสดงข้อมูลวิธีใช้นี้\n"
-"  ( -v | --version )               แสดงรุ่นและข้อมูลลิขสิทธิ์\n"
-"\n"
-"ตัวเลือกค่าตั้ง:\n"
-"  --no-rcfile                      ไม่ต้องอ่านแฟ้มทรัพยากรใดๆ\n"
-"  --rcfile <file>                  เจาะจงแฟ้มทรัพยากรที่จะใช้\n"
-"\n"
-"ตัวเลือกทั่วไป:\n"
-"  ( -c | --commit ) <rev>          แฟ้มฉบับแก้ไข <rev-1> และ <rev>\n"
-"  ( -D | --close-if-same )         ปิดแท็บทั้งหมดที่ไม่มีความแตกต่าง\n"
-"  ( -e | --encoding ) <codec>      ใช้ <codec> ในการอ่านและเขียนแฟ้ม\n"
-"  ( -L | --label ) <label>         แสดง <label> แทนชื่อแฟ้ม\n"
-"  ( -m | --modified )              สร้างแท็บใหม่สำหรับแฟ้มที่เปลี่ยนแปลงแต่ละแฟ้ม\n"
-"  ( -r | --revision ) <rev>        แฟ้มฉบับแก้ไข <rev>\n"
-"  ( -s | --separate )              สร้างแท็บแยกสำหรับแฟ้มแต่ละแฟ้ม\n"
-"  ( -t | --tab )                   เปิดแท็บใหม่\n"
-"  ( -V | --vcs ) <vcs-list>        Version control system search order\n"
-"  --line <line>                    เปิดโดยเลือกบรรทัด <line> ไว้\n"
-"  --null-file                      สร้างช่องแฟ้มเปล่า\n"
-"\n"
-"ตัวเลือกการแสดงผล:\n"
-"  ( -b | --ignore-space-change )   ไม่สนใจการเปลี่ยนแปลงของช่องว่าง\n"
-"  ( -B | --ignore-blank-lines )    ไม่สนใจการเปลี่ยนแปลงในบรรทัดเปล่า\n"
-"  ( -E | --ignore-end-of-line )    ไม่สนใจความแตกต่างของอักขระจบบรรทัด\n"
-"  ( -i | --ignore-case )           ไม่สนใจความแตกต่างของตัวพิมพ์ใหญ่-เล็ก\n"
-"  ( -w | --ignore-all-space )      ไม่สนใจความแตกต่างของช่องว่างทั้งหมด"
-
-#: src/diffuse/main.py:1948
+#: src/diffuse/main.py:327
 msgid "Error parsing line number."
 msgstr "เกิดข้อผิดพลาดขณะแจงหมายเลขบรรทัด"
 
-#: src/diffuse/main.py:1958
-#, python-format
-msgid "Skipping unknown argument \"%s\"."
-msgstr "ขอข้ามอาร์กิวเมนต์ \"%s\" ที่ไม่ทราบ"
-
-#: src/diffuse/main.py:1966
+#: src/diffuse/main.py:343
 #, python-format
 msgid "Error processing argument \"%s\".  Directory not expected."
 msgstr "เกิดข้อผิดพลาดขณะประมวลผลอาร์กิวเมนต์ \"%s\"  ไม่คาดหมายว่าจะพบไดเรกทอรี"
 
-#: src/diffuse/preferences.py:80
+#: src/diffuse/preferences.py:75
 msgid "Display"
 msgstr "การแสดงผล"
 
-#: src/diffuse/preferences.py:83
+#: src/diffuse/preferences.py:78
 msgid "Font"
 msgstr "แบบอักษร"
 
-#: src/diffuse/preferences.py:84
+#: src/diffuse/preferences.py:79
 msgid "Tab width"
 msgstr "ความกว้างแท็บ"
 
-#: src/diffuse/preferences.py:85
+#: src/diffuse/preferences.py:80
 msgid "Show right margin"
 msgstr "แสดงขอบขวา"
 
-#: src/diffuse/preferences.py:86
+#: src/diffuse/preferences.py:81
 msgid "Right margin"
 msgstr "ขอบขวา"
 
-#: src/diffuse/preferences.py:87
+#: src/diffuse/preferences.py:82
 msgid "Show line numbers"
 msgstr "แสดงเลขบรรทัด"
 
-#: src/diffuse/preferences.py:88
+#: src/diffuse/preferences.py:83
 msgid "Show white space characters"
 msgstr "แสดงอักขระช่องว่าง"
 
-#: src/diffuse/preferences.py:89
-msgid "Ignore case differences"
-msgstr "ไม่สนใจความแตกต่างของตัวพิมพ์ใหญ่-เล็ก"
-
-#: src/diffuse/preferences.py:90
-msgid "Ignore white space differences"
-msgstr "ไม่สนใจความแตกต่างของช่องว่างทั้งหมด"
-
-#: src/diffuse/preferences.py:91 src/diffuse/preferences.py:100
-msgid "Ignore changes to white space"
-msgstr "ไม่สนใจการเปลี่ยนแปลงของช่องว่าง"
-
-#: src/diffuse/preferences.py:92
+#: src/diffuse/preferences.py:87
 msgid "Ignore blank line differences"
 msgstr "ไม่สนใจความแตกต่างของบรรทัดเปล่า"
 
-#: src/diffuse/preferences.py:93
-msgid "Ignore end of line differences"
-msgstr "ไม่สนใจความแตกต่างของอักขระจบบรรทัด"
-
-#: src/diffuse/preferences.py:95
+#: src/diffuse/preferences.py:90
 msgid "Alignment"
 msgstr "การจัดเรียง"
 
-#: src/diffuse/preferences.py:98
+#: src/diffuse/preferences.py:93
 msgid "Ignore case"
 msgstr "ไม่สนใจตัวพิมพ์ใหญ่-เล็ก"
 
-#: src/diffuse/preferences.py:99
+#: src/diffuse/preferences.py:94
 msgid "Ignore white space"
 msgstr "ไม่สนใจช่องว่าง"
 
-#: src/diffuse/preferences.py:101
+#: src/diffuse/preferences.py:96
 msgid "Ignore blank lines"
 msgstr "ไม่สนใจบรรทัดเปล่า"
 
-#: src/diffuse/preferences.py:102
+#: src/diffuse/preferences.py:97
 msgid "Ignore end of line characters"
 msgstr "ไม่สนใจอักขระจบบรรทัด"
 
-#: src/diffuse/preferences.py:104
+#: src/diffuse/preferences.py:99
 msgid "Editor"
 msgstr "เครื่องมือแก้ไข"
 
-#: src/diffuse/preferences.py:107
+#: src/diffuse/preferences.py:102
 msgid "Auto indent"
 msgstr "ร่นบรรทัดอัตโนมัติ"
 
-#: src/diffuse/preferences.py:108
+#: src/diffuse/preferences.py:103
 msgid "Expand tabs to spaces"
 msgstr "กระจายแท็บเป็นช่องว่าง"
 
-#: src/diffuse/preferences.py:109
+#: src/diffuse/preferences.py:104
 msgid "Soft tab width"
 msgstr "ความกว้างของแท็บแบบซอฟต์"
 
-#: src/diffuse/preferences.py:111
+#: src/diffuse/preferences.py:106
 msgid "Tabs"
 msgstr "แท็บ"
 
-#: src/diffuse/preferences.py:114
+#: src/diffuse/preferences.py:109
 msgid "Default panes"
 msgstr "ช่องปริยาย"
 
-#: src/diffuse/preferences.py:115
+#: src/diffuse/preferences.py:110
 msgid "Always show the tab bar"
 msgstr "แสดงแถบแท็บเสมอ"
 
-#: src/diffuse/preferences.py:116
+#: src/diffuse/preferences.py:111
 #, python-format
 msgid "Warn me when closing a tab will quit %s"
 msgstr "เตือนเมื่อการปิดแท็บจะออกจาก %s"
 
-#: src/diffuse/preferences.py:118
+#: src/diffuse/preferences.py:113
 msgid "Regional Settings"
 msgstr "ค่าตั้งภูมิภาค"
 
-#: src/diffuse/preferences.py:121
+#: src/diffuse/preferences.py:116
 msgid "Default codec"
 msgstr "ตัวอ่าน-ลงรหัสปริยาย"
 
-#: src/diffuse/preferences.py:122
+#: src/diffuse/preferences.py:117
 msgid "Order of codecs used to identify encoding"
 msgstr "ลำดับตัวอ่าน-ลงรหัสที่ใช้ในการตรวจสอบรหัสอักขระ"
 
-#: src/diffuse/preferences.py:143
+#: src/diffuse/preferences.py:138
 msgid "Cygwin"
 msgstr "Cygwin"
 
-#: src/diffuse/preferences.py:145
+#: src/diffuse/preferences.py:140
 msgid "Root directory"
 msgstr "ไดเรกทอรีราก"
 
-#: src/diffuse/preferences.py:146
+#: src/diffuse/preferences.py:141
 msgid "Cygdrive prefix"
 msgstr "พาธส่วนต้นของ Cygdrive"
 
-#: src/diffuse/preferences.py:165
-msgid "Version control system search order"
-msgstr ""
-
-#: src/diffuse/preferences.py:173
+#: src/diffuse/preferences.py:167
 msgid "\"co\" command"
 msgstr "คำสั่ง \"co\""
 
-#: src/diffuse/preferences.py:174
+#: src/diffuse/preferences.py:168
 msgid "\"rlog\" command"
 msgstr "คำสั่ง \"rlog\""
 
-#: src/diffuse/preferences.py:176
+#: src/diffuse/preferences.py:170
 msgid "Command"
 msgstr "คำสั่ง"
 
-#: src/diffuse/preferences.py:182
+#: src/diffuse/preferences.py:176
 msgid "Launch from a Bash login shell"
 msgstr "เรียกจากเชลล์ล็อกอินของ Bash"
 
-#: src/diffuse/preferences.py:189
+#: src/diffuse/preferences.py:183
 msgid "Update paths for Cygwin"
 msgstr "ปรับข้อมูลพาธสำหรับ Cygwin"
 
-#: src/diffuse/preferences.py:194
+#: src/diffuse/preferences.py:188
 msgid "Version Control"
 msgstr "การควบคุมรุ่น"
 
-#: src/diffuse/preferences.py:259
+#: src/diffuse/preferences.py:253
 msgid "Preferences"
 msgstr "ปรับแต่ง"
+
+#: src/diffuse/preferences.py:294 src/diffuse/window.py:580
+#, python-format
+msgid "Error writing %s."
+msgstr "เกิดข้อผิดพลาดขณะเขียน %s"
+
+#: src/diffuse/preferences.py:483 src/diffuse/window.py:446
+#: src/diffuse/window.py:1413 src/diffuse/window.py:1436 src/diffuse/window.py:1459
+msgid "_Open"
+msgstr ""
 
 #: src/diffuse/resources.py:242 src/diffuse/resources.py:246
 #: src/diffuse/resources.py:249
@@ -927,15 +413,10 @@ msgstr "เกิดข้อผิดพลาดขณะประมวลผ
 msgid "Auto Detect"
 msgstr "ตรวจสอบอัตโนมัติ"
 
-#: src/diffuse/vcs/cvs.py:54 src/diffuse/vcs/rcs.py:63 src/diffuse/vcs/svn.py:97
+#: src/diffuse/vcs/cvs.py:54 src/diffuse/vcs/rcs.py:63 src/diffuse/vcs/svn.py:96
 #, python-format
 msgid "Error parsing revision %s."
 msgstr "เกิดข้อผิดพลาดขณะแจงฉบับแก้ไข %s"
-
-#: src/diffuse/vcs/vcs_registry.py:238
-#, python-format
-msgid "Error parsing %s."
-msgstr "เกิดข้อผิดพลาดขณะแจง %s"
 
 #: src/diffuse/widgets.py:1857
 msgid "Align with Selection"
@@ -949,10 +430,633 @@ msgstr "แยก"
 msgid "Merge Selection"
 msgstr "ผสานบรรทัดที่เลือก"
 
+#: src/diffuse/widgets.py:1861 src/diffuse/window.py:865
+msgid "Cut"
+msgstr "ตัด"
+
+#: src/diffuse/widgets.py:1862 src/diffuse/window.py:866
+msgid "Copy"
+msgstr "คัดลอก"
+
+#: src/diffuse/widgets.py:1863 src/diffuse/window.py:867
+msgid "Paste"
+msgstr "แปะ"
+
 #: src/diffuse/widgets.py:1865
 msgid "Select All"
 msgstr "เลือกทั้งหมด"
 
+#: src/diffuse/widgets.py:1866 src/diffuse/window.py:868
+msgid "Clear Edits"
+msgstr "ล้างการแก้ไข"
+
 #: src/diffuse/widgets.py:1868
 msgid "Swap with Selected Pane"
 msgstr "สลับกับช่องที่เลือก"
+
+#: src/diffuse/window.py:83
+msgid "Close Tab"
+msgstr "ปิดแท็บ"
+
+#: src/diffuse/window.py:126
+msgid "Open File..."
+msgstr "เปิดแฟ้ม..."
+
+#: src/diffuse/window.py:127
+msgid "Reload File"
+msgstr "โหลดแฟ้มซ้ำ"
+
+#: src/diffuse/window.py:128
+msgid "Save File"
+msgstr "บันทึกแฟ้ม"
+
+#: src/diffuse/window.py:129
+msgid "Save File As..."
+msgstr "บันทึกแฟ้มเป็น..."
+
+#: src/diffuse/window.py:228
+#, python-format
+msgid "Column %d"
+msgstr "คอลัมน์ %d"
+
+#: src/diffuse/window.py:306
+msgid "Save changes before loading the new file?"
+msgstr "บันทึกการเปลี่ยนแปลงก่อนโหลดแฟ้มใหม่หรือไม่?"
+
+#: src/diffuse/window.py:310
+msgid "_No"
+msgstr ""
+
+#: src/diffuse/window.py:311
+msgid "_Yes"
+msgstr ""
+
+#: src/diffuse/window.py:417
+#, python-format
+msgid "Error reading revision %(rev)s of %(file)s."
+msgstr "เกิดข้อผิดพลาดขณะอ่านฉบับแก้ไข %(rev)s ของ %(file)s"
+
+#: src/diffuse/window.py:442
+msgid "Open File"
+msgstr "เปิดแฟ้ม"
+
+#: src/diffuse/window.py:495
+#, python-format
+msgid "Save %(title)s Pane %(pane)d"
+msgstr "บันทึก %(title)s ช่อง %(pane)d"
+
+#: src/diffuse/window.py:499 src/diffuse/window.py:1111
+#, fuzzy
+msgid "_Save"
+msgstr "_บันทึกแฟ้ม"
+
+#: src/diffuse/window.py:527
+#, python-format
+msgid "A file named %s already exists. Do you want to overwrite it?"
+msgstr "แฟ้มชื่อ \"%s\" มีอยู่ก่อนแล้ว คุณต้องการเขียนทับหรือไม่?"
+
+#: src/diffuse/window.py:534
+#, python-format
+msgid ""
+"The file %s has been modified by another process since reading it. If you save, "
+"all the external changes could be lost. Save anyways?"
+msgstr ""
+"แฟ้ม \"%s\" ถูกเปลี่ยนแปลงโดยโพรเซสอื่นนับตั้งแต่ที่อ่านไว้ ถ้าคุณบันทึก "
+"การเปลี่ยนแปลงภายนอกทั้งหมดอาจสูญหายได้ ยังคงบันทึกหรือไม่?"
+
+#: src/diffuse/window.py:576
+#, python-format
+msgid "Error encoding to %s."
+msgstr "เกิดข้อผิดพลาดขณะลงรหัส %s"
+
+#: src/diffuse/window.py:610
+msgid "Go To Line..."
+msgstr "ไปที่บรรทัด..."
+
+#: src/diffuse/window.py:611
+msgid "Line Number: "
+msgstr "หมายเลขบรรทัด: "
+
+#: src/diffuse/window.py:642
+msgid ""
+"Press the enter key or double click to edit. Press the space bar or use the RMB "
+"menu to manually align."
+msgstr "กดปุ่ม Enter หรือดับเบิลคลิกเพื่อแก้ไข กดแคร่เว้นวรรคหรือใช้เมนูคลิกขวาเพื่อจัดเรียงด้วยมือ"
+
+#: src/diffuse/window.py:646
+msgid "Press the escape key to finish editing."
+msgstr "กดปุ่ม Escape เพื่อจบการแก้ไข"
+
+#: src/diffuse/window.py:649
+msgid ""
+"Select target line and press the space bar to align. Press the escape key to "
+"cancel."
+msgstr "เลือกบรรทัดเป้าหมายแล้วกดแคร่เว้นวรรคเพื่อจัดเรียง กดปุ่ม Escape เพื่อยกเลิก"
+
+#: src/diffuse/window.py:710
+msgid "_File"
+msgstr "แ_ฟ้ม"
+
+#: src/diffuse/window.py:712
+msgid "_Open File..."
+msgstr "_เปิดแฟ้ม..."
+
+#: src/diffuse/window.py:713
+msgid "Open File In New _Tab..."
+msgstr "เปิดแฟ้มในแ_ท็บใหม่..."
+
+#: src/diffuse/window.py:714
+msgid "Open _Modified Files..."
+msgstr "เปิดแฟ้มที่เ_ปลี่ยนแปลง..."
+
+#: src/diffuse/window.py:715
+msgid "Open Commi_t..."
+msgstr "เปิด Commi_t..."
+
+#: src/diffuse/window.py:716
+msgid "_Reload File"
+msgstr "โ_หลดแฟ้มซ้ำ"
+
+#: src/diffuse/window.py:718
+msgid "_Save File"
+msgstr "_บันทึกแฟ้ม"
+
+#: src/diffuse/window.py:719
+msgid "Save File _As..."
+msgstr "บันทึกแฟ้มเป็_น..."
+
+#: src/diffuse/window.py:720
+msgid "Save A_ll"
+msgstr "บันทึกทั้งห_มด"
+
+#: src/diffuse/window.py:722
+msgid "New _2-Way File Merge"
+msgstr "การผสานแฟ้ม _2 ทางชุดใหม่"
+
+#: src/diffuse/window.py:723
+msgid "New _3-Way File Merge"
+msgstr "การผสานแฟ้ม _3 ทางชุดใหม่"
+
+#: src/diffuse/window.py:724
+msgid "New _N-Way File Merge..."
+msgstr "การผสานแฟ้ม _N ทางชุดใหม่..."
+
+#: src/diffuse/window.py:726
+msgid "_Close Tab"
+msgstr "ปิ_ดแท็บ"
+
+#: src/diffuse/window.py:727
+msgid "_Undo Close Tab"
+msgstr "เ_รียกคืนการปิดแท็บ"
+
+#: src/diffuse/window.py:728
+msgid "_Quit"
+msgstr "_ออก"
+
+#: src/diffuse/window.py:732
+msgid "_Edit"
+msgstr "แ_ก้ไข"
+
+#: src/diffuse/window.py:734
+msgid "_Undo"
+msgstr "เ_รียกคืน"
+
+#: src/diffuse/window.py:735
+msgid "_Redo"
+msgstr "_ทำซ้ำ"
+
+#: src/diffuse/window.py:737
+msgid "Cu_t"
+msgstr "_ตัด"
+
+#: src/diffuse/window.py:738
+msgid "_Copy"
+msgstr "_คัดลอก"
+
+#: src/diffuse/window.py:739
+msgid "_Paste"
+msgstr "_แปะ"
+
+#: src/diffuse/window.py:741
+msgid "Select _All"
+msgstr "เลือกทั้ง_หมด"
+
+#: src/diffuse/window.py:742
+msgid "C_lear Edits"
+msgstr "_ล้างการแก้ไขต่างๆ"
+
+#: src/diffuse/window.py:743
+msgid "_Dismiss All Edits"
+msgstr "ไ_ม่สนใจการแก้ไขทั้งหมด"
+
+#: src/diffuse/window.py:745
+msgid "_Find..."
+msgstr "_หา..."
+
+#: src/diffuse/window.py:746
+msgid "Find _Next"
+msgstr "หา_ถัดไป"
+
+#: src/diffuse/window.py:747
+msgid "Find Pre_vious"
+msgstr "หา_ก่อนหน้า"
+
+#: src/diffuse/window.py:748
+msgid "_Go To Line..."
+msgstr "ไปที่_บรรทัด..."
+
+#: src/diffuse/window.py:750
+msgid "Pr_eferences..."
+msgstr "_ปรับแต่ง..."
+
+#: src/diffuse/window.py:754
+msgid "None"
+msgstr "ไม่มี"
+
+#: src/diffuse/window.py:776
+msgid "_View"
+msgstr "มุ_มมอง"
+
+#: src/diffuse/window.py:778
+msgid "_Syntax Highlighting"
+msgstr "การเน้นไ_วยากรณ์"
+
+#: src/diffuse/window.py:780
+msgid "Re_align All"
+msgstr "จัดเรียงให_ม่ทั้งหมด"
+
+#: src/diffuse/window.py:781
+msgid "_Isolate"
+msgstr "แ_ยก"
+
+#: src/diffuse/window.py:783
+msgid "_First Difference"
+msgstr "ความแตกต่างแ_รก"
+
+#: src/diffuse/window.py:784
+msgid "_Previous Difference"
+msgstr "ความแตกต่าง_ก่อนหน้า"
+
+#: src/diffuse/window.py:785
+msgid "_Next Difference"
+msgstr "ความแตกต่าง_ถัดไป"
+
+#: src/diffuse/window.py:786
+msgid "_Last Difference"
+msgstr "ความแตกต่าง_ล่าสุด"
+
+#: src/diffuse/window.py:788
+msgid "Fir_st Tab"
+msgstr "แท็บ_แรก"
+
+#: src/diffuse/window.py:789
+msgid "Pre_vious Tab"
+msgstr "แท็บก่อ_นหน้า"
+
+#: src/diffuse/window.py:790
+msgid "Next _Tab"
+msgstr "แ_ท็บถัดไป"
+
+#: src/diffuse/window.py:791
+msgid "Las_t Tab"
+msgstr "แท็บสุ_ดท้าย"
+
+#: src/diffuse/window.py:793
+msgid "Shift Pane _Right"
+msgstr "เลื่อนช่องไปทาง_ขวา"
+
+#: src/diffuse/window.py:794
+msgid "Shift Pane _Left"
+msgstr "เลื่อนช่องไปทางซ้_าย"
+
+#: src/diffuse/window.py:798
+msgid "F_ormat"
+msgstr "จัดรูปแ_บบ"
+
+#: src/diffuse/window.py:800
+msgid "Convert To _Upper Case"
+msgstr "แปลงเป็นตัวพิมพ์ใ_หญ่"
+
+#: src/diffuse/window.py:801
+msgid "Convert To _Lower Case"
+msgstr "แปลงเป็นตัวพิมพ์เล็_ก"
+
+#: src/diffuse/window.py:803
+msgid "Sort Lines In _Ascending Order"
+msgstr "เรียงบรรทัดจากน้_อยไปหามาก"
+
+#: src/diffuse/window.py:804
+msgid "Sort Lines In D_escending Order"
+msgstr "เรียงบรรทัดจาก_มากไปหาน้อย"
+
+#: src/diffuse/window.py:806
+msgid "Remove Trailing _White Space"
+msgstr "ลบช่องว่างท้า_ยบรรทัด"
+
+#: src/diffuse/window.py:807
+msgid "Convert Tabs To _Spaces"
+msgstr "แปลงแท็บเป็น_ช่องว่าง"
+
+#: src/diffuse/window.py:808
+msgid "Convert Leading Spaces To _Tabs"
+msgstr "แปลงช่องว่างที่ต้นบรรทัดเป็นแ_ท็บ"
+
+#: src/diffuse/window.py:810
+msgid "_Increase Indenting"
+msgstr "เ_พิ่มการร่นย่อหน้า"
+
+#: src/diffuse/window.py:811
+msgid "De_crease Indenting"
+msgstr "_ลดการร่นย่อหน้า"
+
+#: src/diffuse/window.py:813
+msgid "Convert To _DOS Format"
+msgstr "แปลงเป็นรูปแบบ_ดอส"
+
+#: src/diffuse/window.py:814
+msgid "Convert To _Mac Format"
+msgstr "แปลงเป็นรูปแบบแ_ม็ค"
+
+#: src/diffuse/window.py:815
+msgid "Convert To Uni_x Format"
+msgstr "แปลงเป็นรูปแบบยู_นิกซ์"
+
+#: src/diffuse/window.py:819
+msgid "_Merge"
+msgstr "_ผสาน"
+
+#: src/diffuse/window.py:821
+msgid "Copy Selection _Right"
+msgstr "คัดลอกบรรทัดที่เลือกไปช่อง_ขวา"
+
+#: src/diffuse/window.py:822
+msgid "Copy Selection _Left"
+msgstr "คัดลอกบรรทัดที่เลือกไปช่องซ้า_ย"
+
+#: src/diffuse/window.py:824
+msgid "Copy Left _Into Selection"
+msgstr "คัดลอกช่องซ้าย_เข้าในบรรทัดที่เลือก"
+
+#: src/diffuse/window.py:825
+msgid "Copy Right I_nto Selection"
+msgstr "คัดลอกช่องขวาเข้าใ_นบรรทัดที่เลือก"
+
+#: src/diffuse/window.py:826
+msgid "_Merge From Left Then Right"
+msgstr "_ผสานจากช่องซ้ายแล้วตามด้วยขวา"
+
+#: src/diffuse/window.py:827
+msgid "M_erge From Right Then Left"
+msgstr "ผ_สานจากช่องขวาแล้วตามด้วยซ้าย"
+
+#: src/diffuse/window.py:831
+msgid "_Help"
+msgstr "_วิธีใช้"
+
+#: src/diffuse/window.py:833
+msgid "_Help Contents..."
+msgstr "เ_นื้อหาวิธีใช้..."
+
+#: src/diffuse/window.py:835
+#, python-format
+msgid "_About %s..."
+msgstr "เ_กี่ยวกับ %s..."
+
+#: src/diffuse/window.py:847
+msgid "New 2-Way File Merge"
+msgstr "การผสานแฟ้ม 2 ทางชุดใหม่"
+
+#: src/diffuse/window.py:848
+msgid "New 3-Way File Merge"
+msgstr "การผสานแฟ้ม 3 ทางชุดใหม่"
+
+#: src/diffuse/window.py:850
+msgid "Realign All"
+msgstr "จัดเรียงใหม่ทั้งหมด"
+
+#: src/diffuse/window.py:851
+msgid "First Difference"
+msgstr "ความแตกต่างแรก"
+
+#: src/diffuse/window.py:852
+msgid "Previous Difference"
+msgstr "ความแตกต่างก่อนหน้า"
+
+#: src/diffuse/window.py:853
+msgid "Next Difference"
+msgstr "ความแตกต่างถัดไป"
+
+#: src/diffuse/window.py:854
+msgid "Last Difference"
+msgstr "ความแตกต่างสุดท้าย"
+
+#: src/diffuse/window.py:856
+msgid "Copy Selection Right"
+msgstr "คัดลอกบรรทัดที่เลือกไปช่องขวา"
+
+#: src/diffuse/window.py:857
+msgid "Copy Selection Left"
+msgstr "คัดลอกบรรทัดที่เลือกไปช่องซ้าย"
+
+#: src/diffuse/window.py:858
+msgid "Copy Left Into Selection"
+msgstr "คัดลอกช่องซ้ายเข้าในบรรทัดที่เลือก"
+
+#: src/diffuse/window.py:859
+msgid "Copy Right Into Selection"
+msgstr "คัดลอกช่องขวาเข้าในบรรทัดที่เลือก"
+
+#: src/diffuse/window.py:860
+msgid "Merge From Left Then Right"
+msgstr "ผสานจากช่องซ้ายแล้วตามด้วยขวา"
+
+#: src/diffuse/window.py:861
+msgid "Merge From Right Then Left"
+msgstr "ผสานจากช่องขวาแล้วตามด้วยซ้าย"
+
+#: src/diffuse/window.py:863
+msgid "Undo"
+msgstr "เรียกคืน"
+
+#: src/diffuse/window.py:864
+msgid "Redo"
+msgstr "ทำซ้ำ"
+
+#: src/diffuse/window.py:950
+msgid "Changes detected"
+msgstr ""
+
+#: src/diffuse/window.py:954
+#, fuzzy, python-format
+msgid ""
+"The file \"%s\" changed on disk.\n"
+"\n"
+"Do you want to reload the file?"
+msgstr "แฟ้ม \"%s\" มีการเปลี่ยนแปลงในดิสก์ คุณต้องการโหลดแฟ้มซ้ำหรือไม่?"
+
+#: src/diffuse/window.py:959
+#, fuzzy, python-format
+msgid ""
+"The following files changed on disk:\n"
+"%s\n"
+"\n"
+"Do you want to reload these files?"
+msgstr "แฟ้ม \"%s\" มีการเปลี่ยนแปลงในดิสก์ คุณต้องการโหลดแฟ้มซ้ำหรือไม่?"
+
+#: src/diffuse/window.py:1078
+msgid "Some files have unsaved changes. Select the files to save before closing."
+msgstr "บางแฟ้มมีการเปลี่ยนแปลงที่ไม่ได้บันทึก เลือกแฟ้มเพื่อบันทึกก่อนปิด"
+
+#: src/diffuse/window.py:1092
+msgid "Tab"
+msgstr "แท็บ"
+
+#: src/diffuse/window.py:1097
+msgid "Pane"
+msgstr "ช่อง"
+
+#: src/diffuse/window.py:1108
+msgid "Close _Without Saving"
+msgstr "ปิ_ดโดยไม่บันทึก"
+
+#: src/diffuse/window.py:1147
+#, python-format
+msgid "Closing this tab will quit %s."
+msgstr "การปิดแท็บนี้จะออกจาก %s"
+
+#: src/diffuse/window.py:1224
+#, python-format
+msgid "File Merge %d"
+msgstr "การผสานแฟ้ม %d"
+
+#: src/diffuse/window.py:1344
+#, python-format
+msgid "Error retrieving commits for %s."
+msgstr "เกิดข้อผิดพลาดขณะดึง commit ต่างๆ สำหรับ %s"
+
+#: src/diffuse/window.py:1376
+#, python-format
+msgid "Error retrieving modifications for %s."
+msgstr "เกิดข้อผิดพลาดขณะดึงการเปลี่ยนแปลงสำหรับ %s"
+
+#: src/diffuse/window.py:1409
+msgid "Open File In New Tab"
+msgstr "เปิดแฟ้มในแท็บใหม่"
+
+#: src/diffuse/window.py:1432
+msgid "Choose Folder With Modified Files"
+msgstr "เลือกโฟลเดอร์ที่มีแฟ้มที่เปลี่ยนแปลง"
+
+#: src/diffuse/window.py:1450
+msgid "No modified files found."
+msgstr "ไม่พบแฟ้มที่เปลี่ยนแปลง"
+
+#: src/diffuse/window.py:1456
+msgid "Choose Folder With Commit"
+msgstr "เลือกโฟลเดอร์ที่มีการ commit"
+
+#: src/diffuse/window.py:1476
+msgid "No committed files found."
+msgstr "ไม่พบแฟ้มที่มีการ commit"
+
+#: src/diffuse/window.py:1512
+msgid "New N-Way File Merge..."
+msgstr "การผสานแฟ้ม N ทางชุดใหม่..."
+
+#: src/diffuse/window.py:1513
+msgid "Number of panes: "
+msgstr "จำนวนช่อง: "
+
+#: src/diffuse/window.py:1587
+msgid "Phrase not found.  Continue from the end of the file?"
+msgstr "ไม่พบคำที่ค้น จะหาต่อจากท้ายแฟ้มหรือไม่?"
+
+#: src/diffuse/window.py:1589
+msgid "Phrase not found.  Continue from the start of the file?"
+msgstr "ไม่พบคำที่ค้น จะหาต่อจากต้นแฟ้มหรือไม่?"
+
+#: src/diffuse/window.py:1762
+msgid "Diffuse is a graphical tool for merging and comparing text files."
+msgstr "Diffuse เป็นเครื่องมือแบบกราฟิกสำหรับผสานและเปรียบเทียบแฟ้มข้อความ"
+
+#: src/diffuse/window.py:1766
+msgid "translator-credits"
+msgstr "Akom Chotiphantawanon <knight2000@gmail.com> "
+
+#, fuzzy
+#~ msgid ""
+#~ "Usage:\n"
+#~ "    diffuse [OPTION...] [FILE...]\n"
+#~ "    diffuse ( -h | -? | --help | -v | --version )\n"
+#~ "\n"
+#~ "Diffuse is a graphical tool for merging and comparing text files. Diffuse is\n"
+#~ "able to compare an arbitrary number of files side-by-side and gives users the\n"
+#~ "ability to manually adjust line matching and directly edit files. Diffuse can\n"
+#~ "also retrieve revisions of files from several VCSs for comparison and "
+#~ "merging.\n"
+#~ "\n"
+#~ "Help Options:\n"
+#~ "  ( -h | -? | --help )             Display this usage information\n"
+#~ "  ( -v | --version )               Display version and copyright information\n"
+#~ "\n"
+#~ "Configuration Options:\n"
+#~ "  --no-rcfile                      Do not read any resource files\n"
+#~ "  --rcfile <file>                  Specify explicit resource file\n"
+#~ "\n"
+#~ "General Options:\n"
+#~ "  ( -c | --commit ) <rev>          File revisions <rev-1> and <rev>\n"
+#~ "  ( -D | --close-if-same )         Close all tabs with no differences\n"
+#~ "  ( -e | --encoding ) <codec>      Use <codec> to read and write files\n"
+#~ "  ( -L | --label ) <label>         Display <label> instead of the file name\n"
+#~ "  ( -m | --modified )              Create a new tab for each modified file\n"
+#~ "  ( -r | --revision ) <rev>        File revision <rev>\n"
+#~ "  ( -s | --separate )              Create a new tab for each file\n"
+#~ "  ( -t | --tab )                   Start a new tab\n"
+#~ "  ( -V | --vcs ) <vcs-list>        Version control system search order\n"
+#~ "  --line <line>                    Start with line <line> selected\n"
+#~ "  --null-file                      Create a blank file comparison pane\n"
+#~ "\n"
+#~ "Display Options:\n"
+#~ "  ( -b | --ignore-space-change )   Ignore changes to white space\n"
+#~ "  ( -B | --ignore-blank-lines )    Ignore changes in blank lines\n"
+#~ "  ( -E | --ignore-end-of-line )    Ignore end of line differences\n"
+#~ "  ( -i | --ignore-case )           Ignore case differences\n"
+#~ "  ( -w | --ignore-all-space )      Ignore white space differences"
+#~ msgstr ""
+#~ "วิธีใช้:\n"
+#~ "    diffuse [ [ตัวเลือก...] [แฟ้ม...] ]...\n"
+#~ "    diffuse ( -h | -? | --help | -v | --version )\n"
+#~ "\n"
+#~ "Diffuse เป็นเครื่องมือแบบกราฟิกสำหรับผสานและเปรียบเทียบแฟ้มข้อความ  Diffuse\n"
+#~ "สามารถเปรียบเทียบแฟ้มจำนวนเท่าใดก็ได้โดยวางเทียบข้างกัน และให้ผู้ใช้สามารถ\n"
+#~ "ปรับการจับคู่บรรทัดด้วยมือ และแก้ไขแฟ้มได้โดยตรง นอกจากนี้ Diffuse ยังสามารถ\n"
+#~ "ดึงเอาฉบับแก้ไขต่างๆ ของแฟ้มจากคลัง Bazaar, CVS, Darcs, Git, Mercurial,\n"
+#~ "Monotone, RCS, Subversion, และ SVK มาเปรียบเทียบและผสานได้\n"
+#~ "\n"
+#~ "ตัวเลือกวิธีใช้:\n"
+#~ "  ( -h | -? | --help )             แสดงข้อมูลวิธีใช้นี้\n"
+#~ "  ( -v | --version )               แสดงรุ่นและข้อมูลลิขสิทธิ์\n"
+#~ "\n"
+#~ "ตัวเลือกค่าตั้ง:\n"
+#~ "  --no-rcfile                      ไม่ต้องอ่านแฟ้มทรัพยากรใดๆ\n"
+#~ "  --rcfile <file>                  เจาะจงแฟ้มทรัพยากรที่จะใช้\n"
+#~ "\n"
+#~ "ตัวเลือกทั่วไป:\n"
+#~ "  ( -c | --commit ) <rev>          แฟ้มฉบับแก้ไข <rev-1> และ <rev>\n"
+#~ "  ( -D | --close-if-same )         ปิดแท็บทั้งหมดที่ไม่มีความแตกต่าง\n"
+#~ "  ( -e | --encoding ) <codec>      ใช้ <codec> ในการอ่านและเขียนแฟ้ม\n"
+#~ "  ( -L | --label ) <label>         แสดง <label> แทนชื่อแฟ้ม\n"
+#~ "  ( -m | --modified )              สร้างแท็บใหม่สำหรับแฟ้มที่เปลี่ยนแปลงแต่ละแฟ้ม\n"
+#~ "  ( -r | --revision ) <rev>        แฟ้มฉบับแก้ไข <rev>\n"
+#~ "  ( -s | --separate )              สร้างแท็บแยกสำหรับแฟ้มแต่ละแฟ้ม\n"
+#~ "  ( -t | --tab )                   เปิดแท็บใหม่\n"
+#~ "  ( -V | --vcs ) <vcs-list>        Version control system search order\n"
+#~ "  --line <line>                    เปิดโดยเลือกบรรทัด <line> ไว้\n"
+#~ "  --null-file                      สร้างช่องแฟ้มเปล่า\n"
+#~ "\n"
+#~ "ตัวเลือกการแสดงผล:\n"
+#~ "  ( -b | --ignore-space-change )   ไม่สนใจการเปลี่ยนแปลงของช่องว่าง\n"
+#~ "  ( -B | --ignore-blank-lines )    ไม่สนใจการเปลี่ยนแปลงในบรรทัดเปล่า\n"
+#~ "  ( -E | --ignore-end-of-line )    ไม่สนใจความแตกต่างของอักขระจบบรรทัด\n"
+#~ "  ( -i | --ignore-case )           ไม่สนใจความแตกต่างของตัวพิมพ์ใหญ่-เล็ก\n"
+#~ "  ( -w | --ignore-all-space )      ไม่สนใจความแตกต่างของช่องว่างทั้งหมด"

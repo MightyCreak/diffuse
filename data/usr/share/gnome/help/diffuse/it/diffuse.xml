@@ -35,7 +35,7 @@
   <chapter id="introduction">
     <title>Introduzione</title>
 
-    <para><application>&app;</application> è uno strumento grafico per l'unione e il confronto di file di testo. <application>&app;</application> è in grado di confrontare uno a fianco all'altro un qualsiasi numero di file e fornisce all'utente la possibilità di correggere manualmente la corrispondenza fra le righe e di modificare i file. <application>&app;</application> è anche in grado di recuperare le revisioni dei file dai repository Bazaar, CVS, Darcs, Git, Mercurial, Monotone, RCS, Subversion e SVK per confrontarle e unirle.</para>
+    <para><application>&app;</application> è uno strumento grafico per l'unione e il confronto di file di testo. <application>&app;</application> è in grado di confrontare uno a fianco all'altro un qualsiasi numero di file e fornisce all'utente la possibilità di correggere manualmente la corrispondenza fra le righe e di modificare i file. <application>&app;</application> è anche in grado di recuperare le revisioni dei file dai repository Bazaar, CVS, Darcs, Git, Mercurial, Monotone, RCS e Subversion per confrontarle e unirle.</para>
 
     <sect1 id="introduction-about">
       <title>Informazioni</title>

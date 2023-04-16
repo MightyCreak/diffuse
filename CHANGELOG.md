@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Removed
+
+- Remove support for the SVK CVS (@MightyCreak)
+
 ## 0.8.2 - 2023-04-16
 
 ### Added

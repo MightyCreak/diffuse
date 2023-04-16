@@ -37,7 +37,7 @@
     <title>Úvod</title>
 
     <para>
-      <application>&app;</application> je grafický nástroj pro slučování a porovnávání textových souborů. <application>&app;</application> dokáže porovnat libovolný počet souborů a nabízí uživatelům možnost ručně upravit zarovnání řádků a přímo upravovat porovnávané soubory. <application>&app;</application> také umí načíst k porovnání a slučování revize souborů přímo z repozitářů Bazaar, CVS, Darcs, Git, Mercurial, Monotone, RCS, Subversion a SVK.</para>
+      <application>&app;</application> je grafický nástroj pro slučování a porovnávání textových souborů. <application>&app;</application> dokáže porovnat libovolný počet souborů a nabízí uživatelům možnost ručně upravit zarovnání řádků a přímo upravovat porovnávané soubory. <application>&app;</application> také umí načíst k porovnání a slučování revize souborů přímo z repozitářů Bazaar, CVS, Darcs, Git, Mercurial, Monotone, RCS a Subversion.</para>
 
     <sect1 id="introduction-about">
       <title>O programu</title>

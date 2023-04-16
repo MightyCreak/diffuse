@@ -18,8 +18,8 @@ src/diffuse/vcs/git.py
 src/diffuse/vcs/hg.py
 src/diffuse/vcs/mtn.py
 src/diffuse/vcs/rcs.py
-src/diffuse/vcs/svk.py
 src/diffuse/vcs/svn.py
 src/diffuse/vcs/vcs_interface.py
 src/diffuse/vcs/vcs_registry.py
 src/diffuse/widgets.py
+src/diffuse/window.py
