@@ -19,12 +19,10 @@
 
 import os
 
-from gettext import gettext as _
 from typing import List, Optional
 
 from diffuse import utils
 from diffuse.preferences import Preferences
-from diffuse.vcs.folder_set import FolderSet
 from diffuse.vcs.vcs_interface import VcsInterface
 from diffuse.vcs.bzr import Bzr
 from diffuse.vcs.cvs import Cvs
@@ -33,7 +31,6 @@ from diffuse.vcs.git import Git
 from diffuse.vcs.hg import Hg
 from diffuse.vcs.mtn import Mtn
 from diffuse.vcs.rcs import Rcs
-from diffuse.vcs.svk import Svk
 from diffuse.vcs.svn import Svn
 
 
@@ -48,7 +45,6 @@ class VcsRegistry:
             'hg': _get_hg_repo,
             'mtn': _get_mtn_repo,
             'rcs': _get_rcs_repo,
-            'svk': _get_svk_repo,
             'svn': _get_svn_repo
         }
 
@@ -169,71 +165,3 @@ def _get_rcs_repo(path: str, prefs: Preferences) -> Optional[VcsInterface]:
 def _get_svn_repo(path: str, prefs: Preferences) -> Optional[VcsInterface]:
     p = _find_parent_dir_with(path, '.svn')
     return Svn(p) if p else None
-
-
-def _get_svk_repo(path: str, prefs: Preferences) -> Optional[VcsInterface]:
-    name = path
-    # parse the ~/.svk/config file to discover which directories are part of
-    # SVK repositories
-    if utils.isWindows():
-        name = name.upper()
-    svkroot = os.environ.get('SVKROOT', None)
-    if svkroot is None:
-        svkroot = os.path.expanduser('~/.svk')
-    svkconfig = os.path.join(svkroot, 'config')
-    if os.path.isfile(svkconfig):
-        try:
-            # find working copies by parsing the config file
-            with open(svkconfig, 'r', encoding='utf-8') as f:
-                ss: List[str] = utils.readlines(f)
-            projs: List[str] = []
-            sep = os.sep
-            # find the separator character
-            for s in ss:
-                if s.startswith('  sep: ') and len(s) > 7:
-                    sep = s[7]
-            # find the project directories
-            i = 0
-            while i < len(ss):
-                s = ss[i]
-                i += 1
-                if s.startswith('  hash: '):
-                    while i < len(ss) and ss[i].startswith('    '):
-                        s = ss[i]
-                        i += 1
-                        if (
-                            s.endswith(': ') and
-                            i < len(ss) and
-                            ss[i].startswith('      depotpath: ')
-                        ):
-                            key = s[4:-2].replace(sep, os.sep)
-                            # parse directory path
-                            j, n, tt = 0, len(key), []
-                            while j < n:
-                                if key[j] == '"':
-                                    # quoted string
-                                    j += 1
-                                    while j < n:
-                                        if key[j] == '"':
-                                            j += 1
-                                            break
-                                        if key[j] == '\\':
-                                            # escaped character
-                                            j += 1
-                                        if j < n:
-                                            tt.append(key[j])
-                                            j += 1
-                                else:
-                                    tt.append(key[j])
-                                    j += 1
-                            key = ''.join(tt).replace(sep, os.sep)
-                            if utils.isWindows():
-                                key = key.upper()
-                            projs.append(key)
-                    break
-            # check if the file belongs to one of the project directories
-            if FolderSet(projs).contains(name):
-                return Svk(path)
-        except IOError:
-            utils.logError(_('Error parsing %s.') % (svkconfig, ))
-    return None

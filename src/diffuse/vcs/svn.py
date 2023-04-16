@@ -30,7 +30,6 @@ from diffuse.vcs.vcs_interface import VcsInterface
 
 
 # Subversion support
-# SVK support subclasses from this
 class Svn(VcsInterface):
     def __init__(self, root: str):
         super().__init__(root)

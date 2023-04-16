@@ -47,11 +47,6 @@ class Preferences:
         # find available encodings
         self.encodings: List[Optional[str]] = sorted(set(encodings.aliases.aliases.values()))
 
-        if utils.isWindows():
-            svk_bin = 'svk.bat'
-        else:
-            svk_bin = 'svk'
-
         auto_detect_codecs = ['utf_8', 'utf_16', 'latin_1']
         e = utils.norm_encoding(sys.getfilesystemencoding())
         if e is not None and e not in auto_detect_codecs:
@@ -154,14 +149,13 @@ class Preferences:
                ('hg', 'Mercurial', 'hg'),
                ('mtn', 'Monotone', 'mtn'),
                ('rcs', 'RCS', None),
-               ('svn', 'Subversion', 'svn'),
-               ('svk', 'SVK', svk_bin)]
+               ('svn', 'Subversion', 'svn')]
 
         vcs_template = [
             'List', [
                 'String',
                 'vcs_search_order',
-                'bzr cvs darcs git hg mtn rcs svn svk',
+                'bzr cvs darcs git hg mtn rcs svn',
                 _('Version control system search order')
             ]
         ]

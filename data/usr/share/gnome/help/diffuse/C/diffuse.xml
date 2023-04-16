@@ -34,7 +34,7 @@
       is able to compare an arbitrary number of files side-by-side and gives
       users the ability to manually adjust line matching and directly edit
       files.  <application>&app;</application> can also retrieve revisions of files from Bazaar, CVS,
-      Darcs, Git, Mercurial, Monotone, RCS, Subversion, and SVK repositories
+      Darcs, Git, Mercurial, Monotone, RCS, and Subversion repositories
       for comparison and merging.
     </para>
 
