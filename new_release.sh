@@ -31,7 +31,7 @@ DATE_YEAR=$(date +%Y)
 echo "Changing files for new version $NEW_VERSION..."
 
 # meson.build
-sed -i -E "s/version: '.+?',/version: '$NEW_VERSION',/" \
+sed -i -E "s/\bversion: '.+?',/version: '$NEW_VERSION',/" \
     meson.build
 
 # GNOME help (.xml and .omf)
