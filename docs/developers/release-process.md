@@ -9,11 +9,11 @@ few manual steps.
 
 1. Find the next version, using semantic versioning (e.g. `1.2.3`), depending on
    the changes in the changelog
-2. Execute `./new_release NEW_VERSION` (replace `NEW_VERSION` with the new version)
-3. Update the AppData release notes in data/io.github.mightycreak.Diffuse.appdata.xml.in:
-   - Look for the empty `<p>` tag under the new `<release>` tag
-   - Add a paragraph to sum the release in one sentence (e.g. highlights, ...)
-   - Paste the changes from CHANGELOG.md and adapt it to HTML (see other
+2. Execute `./new_release.sh NEW_VERSION` (replace `NEW_VERSION` with the new version)
+3. Update the AppData release notes in `data/io.github.mightycreak.Diffuse.appdata.xml.in`:
+   - Look for the `<description>` tag under the new `<release>` tag
+   - Sum the release in one sentence in the `<p>` tag (e.g. highlights, ...)
+   - Paste the changes from CHANGELOG.md, and adapt it to HTML (see other
      releases in the file)
 
 ### Create branch, PR and merge
@@ -25,7 +25,8 @@ few manual steps.
 ## Create new release on GitHub
 
 1. Create a new release on GitHub's [new release page](https://github.com/MightyCreak/diffuse/releases/new):
-   - Choose a tag: `v` followed with the new version (e.g. `v1.2.3`)
+   - Release tag: Enter `v` followed with the new version (e.g. `v1.2.3`) and
+     create the tag
    - Release title: the tag (e.g. `v1.2.3`)
    - Description:
      - For the first paragraph, paste the first paragraph from the release notes
