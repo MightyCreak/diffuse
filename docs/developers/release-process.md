@@ -25,7 +25,7 @@ few manual steps.
 ## Create new release on GitHub
 
 1. Create a new release on GitHub's [new release page](https://github.com/MightyCreak/diffuse/releases/new):
-   - Release tag: Enter `v` followed with the new version (e.g. `v1.2.3`) and
+   - Choose a tag: Enter `v` followed with the new version (e.g. `v1.2.3`) and
      create the tag
    - Release title: the tag (e.g. `v1.2.3`)
    - Description:
