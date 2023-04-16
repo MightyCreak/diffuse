@@ -985,7 +985,7 @@ class DiffuseWindow(Gtk.ApplicationWindow):
                     page.open_file(f, True)
 
     # record the window's position and size
-    def configure_cb(self, widget, event):
+    def configure_cb(self, widget: Gtk.Widget, event: Gdk.EventConfigure) -> None:
         # read the state directly instead of using window_maximized as the order
         # of configure/window_state events is undefined
         if (widget.get_window().get_state() & Gdk.WindowState.MAXIMIZED) == 0:
@@ -1000,7 +1000,7 @@ class DiffuseWindow(Gtk.ApplicationWindow):
         )
 
     # load state information that should persist across sessions
-    def loadState(self, statepath: str) -> None:
+    def load_state(self, statepath: str) -> None:
         if os.path.isfile(statepath):
             try:
                 f = open(statepath, 'r')
@@ -1030,7 +1030,7 @@ class DiffuseWindow(Gtk.ApplicationWindow):
             self.maximize()
 
     # save state information that should persist across sessions
-    def saveState(self, statepath: str) -> None:
+    def save_state(self, statepath: str) -> None:
         try:
             ss = []
             for k, v in self.bool_state.items():
