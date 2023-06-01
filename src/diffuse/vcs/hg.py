@@ -66,6 +66,12 @@ class Hg(VcsInterface):
             args.append(utils.safeRelativePath(self.root, name, prefs, 'hg_cygwin'))
         # run command
         prev = self._getPreviousRevision(prefs, rev)
+        if rev is not None:
+            if '..' in rev:
+                prev, rev = rev.split('..')
+                args.extend(['-r',prev,'-r',rev])
+            else:
+                args.extend(['-r',rev])
         fs = FolderSet(names)
         modified = {}
         for s in utils.popenReadLines(self.root, args, prefs, 'hg_bash'):
@@ -92,7 +98,7 @@ class Hg(VcsInterface):
         return self._getCommitTemplate(
             prefs,
             names,
-            ['log', '--template', 'A\t{file_adds}\nM\t{file_mods}\nR\t{file_dels}\n', '-r', rev],
+            ['log', '--template', 'A\t{file_adds}\nM\t{file_mods}\nR\t{file_dels}\n'],
             rev)
 
     def getFolderTemplate(self, prefs, names):
