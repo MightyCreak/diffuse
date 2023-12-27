@@ -22,6 +22,7 @@ import sys
 import encodings
 
 from gettext import gettext as _
+from typing import Optional
 
 from diffuse import constants, utils
 from diffuse.resources import theResources
@@ -35,13 +36,14 @@ from gi.repository import Gio, GLib, Gtk  # type: ignore # noqa: E402
 class DiffuseApplication(Gtk.Application):
     """The main application class."""
 
-    def __init__(self, sysconfigdir):
+    def __init__(self, sysconfigdir: str):
         super().__init__(
             application_id=constants.APP_ID,
             flags=Gio.ApplicationFlags.HANDLES_COMMAND_LINE | Gio.ApplicationFlags.NON_UNIQUE)
 
-        self.window = None
         self.sysconfigdir = sysconfigdir
+        self.window: Optional[DiffuseWindow] = None
+        self.statepath: str = ""
 
         self.connect('shutdown', self.on_shutdown)
 
@@ -196,7 +198,8 @@ also retrieve revisions of files from several VCSs for comparison and merging.''
 
     def do_activate(self) -> None:
         """Called when the application is activated."""
-        self.window.present()
+        if self.window is not None:
+            self.window.present()
 
     def do_command_line(self, command_line):
         """Called to treat the command line options."""
@@ -369,7 +372,8 @@ also retrieve revisions of files from several VCSs for comparison and merging.''
         return 0
 
     def on_shutdown(self, application: Gio.Application) -> None:
-        self.window.save_state(self.statepath)
+        if self.window is not None and self.statepath != '':
+            self.window.save_state(self.statepath)
 
 
 def main(version: str, sysconfigdir: str) -> int:
