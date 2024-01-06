@@ -17,12 +17,6 @@ repo root:
 xgettext -w 84 -o po/diffuse.pot -f po/POTFILES
 ```
 
-Regenerating the POT file will add a bunch of new lines coming from
-`data/io.github.mightycreak.Diffuse.appdata.xml.in`. Not all the lines need to
-be translated in this file. In `diffuse.pot`, look for the comment
-`Translators: no need to translate after this comment`, and remove all the
-added lines for this file.
-
 _Note:_ why 84 characters, you ask? because the usage text has to be 80-char
 wide, plus the beginning and ending `"` and the final `\n` (which is two
 characters).
