@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Changed
+
+- Update from GNOME 44 to 45 (@sabriunal)
+- Flatpak manifest now runs the tests (@sabriunal)
+
 ### Removed
 
 - Remove support for the SVK CVS (@MightyCreak)
