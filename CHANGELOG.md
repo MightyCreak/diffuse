@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Update from GNOME 44 to 45 (@sabriunal)
 - Flatpak manifest now runs the tests (@sabriunal)
+- Use `appstreamcli` instead of the deprecated `appstream-util` to validate
+  appdata (@sabriunal)
 
 ### Removed
 
@@ -20,6 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fix compatibility with Python 3.12: remove use of `distutils` (@MightyCreak)
 - Fix new errors raised by Flake8 (@MightyCreak)
+- Fix the error with the CICD due to the use of `appstreamcli` (@MightyCreak)
 
 ## 0.8.2 - 2023-04-16
 
