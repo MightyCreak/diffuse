@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Fix compatibility with Python 3.12: remove use of `distutils` (@MightyCreak)
+- Fix new errors raised by Flake8 (@MightyCreak)
 
 ## 0.8.2 - 2023-04-16
 
