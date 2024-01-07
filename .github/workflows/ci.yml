@@ -39,13 +39,17 @@ jobs:
 
   meson-build-test:
     runs-on: ubuntu-latest
+    container:
+      # Use Ubuntu 23.04 in order to have appstreamcli v0.16 instead of 0.15.
+      image: ubuntu:23.04
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-python@v5
       with:
           python-version: '3.8'
-    - run: sudo apt-get -y install meson appstream desktop-file-utils gettext
-    - run: pip install meson ninja
+    # Extra installation since we are not using ubuntu-latest
+    - run: apt-get update && apt-get -y install libglib2.0-dev-bin
+    - run: apt-get -y install meson appstream desktop-file-utils gettext
     - run: meson setup build
     - run: meson compile -C build
     - run: meson test --print-errorlogs -C build
