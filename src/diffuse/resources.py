@@ -30,7 +30,6 @@ import platform
 import re
 import shlex
 
-from distutils import util
 from gettext import gettext as _
 from typing import Dict, Final, List, Optional, Pattern, Set, Tuple
 
@@ -322,7 +321,7 @@ class Resources:
 
     def getOptionAsBool(self, option: str) -> bool:
         '''Get the option value, casted as a boolean.'''
-        return bool(util.strtobool(self.getOption(option)))
+        return bool(self.getOption(option).lower() in ['true', '1'])
 
     # string resources
     def getString(self, symbol: str) -> str:

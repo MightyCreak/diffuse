@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Remove support for the SVK CVS (@MightyCreak)
 
+### Fixed
+
+- Fix compatibility with Python 3.12: remove use of `distutils` (@MightyCreak)
+
 ## 0.8.2 - 2023-04-16
 
 ### Added
