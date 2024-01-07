@@ -48,7 +48,7 @@ jobs:
     - run: pip install meson ninja
     - run: meson setup build
     - run: meson compile -C build
-    - run: meson test -C build
+    - run: meson test --print-errorlogs -C build
 
   flatpak-build-test:
     runs-on: ubuntu-latest
