@@ -16,8 +16,8 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - uses: actions/setup-python@v4
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
       with:
           python-version: '3.8'
 
@@ -40,11 +40,11 @@ jobs:
   meson-build-test:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - uses: actions/setup-python@v4
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
       with:
           python-version: '3.8'
-    - run: sudo apt-get -y install meson appstream appstream-util desktop-file-utils gettext
+    - run: sudo apt-get -y install meson appstream desktop-file-utils gettext
     - run: pip install meson ninja
     - run: meson setup build
     - run: meson compile -C build
@@ -53,11 +53,11 @@ jobs:
   flatpak-build-test:
     runs-on: ubuntu-latest
     container:
-      image: bilelmoussaoui/flatpak-github-actions:gnome-44
+      image: bilelmoussaoui/flatpak-github-actions:gnome-45
       options: --privileged
     steps:
-    - uses: actions/checkout@v3
-    - uses: actions/setup-python@v4
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
       with:
           python-version: '3.8'
     - uses: flatpak/flatpak-github-actions/flatpak-builder@v6
