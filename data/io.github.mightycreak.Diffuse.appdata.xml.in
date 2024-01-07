@@ -19,8 +19,11 @@
   <project_license>GPL-2.0-or-later</project_license>
   <content_rating type="oars-1.1"/>
   <launchable type="desktop-id">io.github.mightycreak.Diffuse.desktop</launchable>
+  <translation type="gettext">diffuse</translation>
   <url type="homepage">https://mightycreak.github.io/diffuse/</url>
   <url type="bugtracker">https://github.com/MightyCreak/diffuse/issues</url>
+  <url type="vcs-browser">https://github.com/MightyCreak/diffuse</url>
+  <url type="translate">https://github.com/MightyCreak/diffuse/blob/main/docs/translators.md</url>
 
   <screenshots>
     <screenshot type="default">
@@ -33,13 +36,12 @@
     </screenshot>
   </screenshots>
 
-  <!-- Translators: no need to translate after this comment -->
-  <developer_name>Romain Failliot</developer_name>
+  <developer_name translatable="no">Romain Failliot</developer_name>
   <update_contact>romain@foolstep.com</update_contact>
 
   <releases>
     <release version="0.8.2" date="2023-04-16">
-      <description>
+      <description translatable="no">
         <p>Use more modern, symbolic icons, add Dutch translation, and a couple of small fixes.</p>
         <p>Added:</p>
         <ul>
@@ -62,7 +64,7 @@
       </description>
     </release>
     <release version="0.8.1" date="2023-04-07">
-      <description>
+      <description translatable="no">
         <p>
           Fix for the shortcuts that weren't working anymore due to migration to Gtk.Application.
         </p>
@@ -82,7 +84,7 @@
       </description>
     </release>
     <release version="0.8.0" date="2023-04-03">
-      <description>
+      <description translatable="no">
         <p>
           Update to GNOME 44, improved GTK 3 support, initial support for Rust, added Turkish and
           Georgian translations, and a couple of fixes.
@@ -119,7 +121,7 @@
       </description>
     </release>
     <release version="0.7.7" date="2022-10-23">
-      <description>
+      <description translatable="no">
         <p>
           Update translations.
         </p>
@@ -132,7 +134,7 @@
       </description>
     </release>
     <release version="0.7.6" date="2022-10-23">
-      <description>
+      <description translatable="no">
         <p>
           Add port to Mac OS.
         </p>
@@ -153,7 +155,7 @@
       </description>
     </release>
     <release version="0.7.5" date="2022-04-15">
-      <description>
+      <description translatable="no">
         <p>
           Crashfix and French translation.
         </p>
@@ -170,7 +172,7 @@
       </description>
     </release>
     <release version="0.7.4" date="2022-04-03">
-      <description>
+      <description translatable="no">
         <p>
           Mainly a maintenance release. It does increase the GNOME SDK's version.
         </p>
@@ -204,7 +206,7 @@
       </description>
     </release>
     <release version="0.7.3" date="2021-11-22">
-      <description>
+      <description translatable="no">
         <p>
           Patch release that introduces linters (flake8 and mypy).
         </p>
@@ -229,7 +231,7 @@
       </description>
     </release>
     <release version="0.7.2" date="2021-11-18">
-      <description>
+      <description translatable="no">
         <p>
           Patch release that fixes an error about APP_NAME and the Brazilian translation.
         </p>
@@ -257,7 +259,7 @@
       </description>
     </release>
     <release version="0.7.1" date="2021-11-17">
-      <description>
+      <description translatable="no">
         <p>
           Patch release to fix a bug when using the Flatpak package.
         </p>
@@ -271,7 +273,7 @@
       </description>
     </release>
     <release version="0.7.0" date="2021-11-16">
-      <description>
+      <description translatable="no">
         <p>
           With this release, the main end-user change is the new icon. The rest
           is mainly maintenance improvements with a much more standard folder
@@ -310,7 +312,7 @@
       </description>
     </release>
     <release version="0.6.0" date="2020-11-29">
-      <description>
+      <description translatable="no">
         <p>
           Mainly under the hood changes in this release, so nothing really
           visible to the users in this version. That said, I figured it was a
@@ -335,7 +337,7 @@
       </description>
     </release>
     <release version="0.5.0" date="2020-07-18">
-      <description>
+      <description translatable="no">
         <p>
           Here is the v0.5.0. Unintentionally, this release happens exactly 6
           years after the previous v0.4.8 release!

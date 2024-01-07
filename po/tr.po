@@ -1,23 +1,23 @@
 # Turkish translation for io.github.mightycreak.Diffuse.
-# Copyright (C) 2022 io.github.mightycreak.Diffuse's COPYRIGHT HOLDER
+# Copyright (C) 2022-2024 io.github.mightycreak.Diffuse's COPYRIGHT HOLDER
 # This file is distributed under the same license as the io.github.mightycreak.Diffuse package.
 #
-# Sabri Ünal <libreajans@gmail.com>, 2022.
+# Sabri Ünal <libreajans@gmail.com>, 2022, 2024.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: io.github.mightycreak.Diffuse\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-04-16 14:09-0400\n"
-"PO-Revision-Date: 2022-11-19 03:14+0300\n"
+"PO-Revision-Date: 2024-01-07 02:49+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
-"Language-Team: Türkçe <gnome-turk@gnome.org>\n"
+"Language-Team: Türkçe <takim@gnome.org.tr>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #: data/io.github.mightycreak.Diffuse.desktop.in:3
 #: data/io.github.mightycreak.Diffuse.appdata.xml.in:4
@@ -30,23 +30,22 @@ msgid "Graphical tool for merging and comparing text files"
 msgstr "Metin dosyalarını birleştirmek ve karşılaştırmak için grafiksel araç"
 
 #: data/io.github.mightycreak.Diffuse.appdata.xml.in:7
-#, fuzzy
 msgid ""
 "Diffuse is a graphical tool for comparing and merging text files. It can retrieve "
 "files for comparison from Bazaar, CVS, Darcs, Git, Mercurial, Monotone, RCS, and "
 "Subversion repositories."
 msgstr ""
 "Diffuse, metin dosyalarını karşılaştırmak ve birleştirmek için grafiksel bir "
-"araçtır. Bazaar, CVS, Darcs, Git, Mercurial, Monotone, RCS, ve Subversion "
-"depolarından karşılaştırma için dosyaları alabilir."
+"araçtır. Bazaar, CVS, Darcs, Git, Mercurial, Monotone, RCS ve Subversion "
+"depolarından karşılaştırma için dosya alabilir."
 
 #: data/io.github.mightycreak.Diffuse.appdata.xml.in:28
 msgid "Main window"
-msgstr ""
+msgstr "Ana pencere"
 
 #: data/io.github.mightycreak.Diffuse.appdata.xml.in:32
 msgid "About window"
-msgstr ""
+msgstr "Pencere hakkında"
 
 #: src/diffuse/constants.py:26
 msgid "Copyright"
@@ -56,7 +55,7 @@ msgstr "Telif Hakkı"
 #: src/diffuse/preferences.py:254 src/diffuse/preferences.py:483
 #: src/diffuse/window.py:309 src/diffuse/window.py:1107
 msgid "_Cancel"
-msgstr ""
+msgstr "İ_ptal"
 
 #: src/diffuse/dialogs.py:50
 msgid "Encoding: "
@@ -69,7 +68,7 @@ msgstr "Düzeltme: "
 #: src/diffuse/dialogs.py:90 src/diffuse/dialogs.py:134
 #: src/diffuse/preferences.py:255
 msgid "_OK"
-msgstr ""
+msgstr "_Tamam"
 
 #: src/diffuse/dialogs.py:130
 msgid "Find..."
@@ -104,9 +103,8 @@ msgid "File revisions <rev-1> and <rev>"
 msgstr "Dosya düzeltmesi <rev-1> ve <rev>"
 
 #: src/diffuse/main.py:85
-#, fuzzy
 msgid "Close all tabs with no differences"
-msgstr "Fark yoksa sekmeleri kapat"
+msgstr "Fark olmayan tüm sekmeleri kapat"
 
 #: src/diffuse/main.py:92
 msgid "Use <codec> to read and write files"
@@ -172,6 +170,11 @@ msgid ""
 "ability to manually adjust line matching and directly edit files. Diffuse can\n"
 "also retrieve revisions of files from several VCSs for comparison and merging."
 msgstr ""
+"Diffuse, metin dosyalarını karşılaştırmak ve birleştirmek için grafiksel bir "
+"araçtır. Diffuse, pek çok dosyayı yan yana karşılaştırabilir ve kullanıcılara "
+"satır eşleştirmeyi elle ayarlama ve dosyaları doğrudan düzenleme imkanı sunar. "
+"Diffuse ayrıca karşılaştırma ve birleştirme için çeşitli sürüm kontrol "
+"sistemlerinden dosyaların revizyonlarını alabilir."
 
 #: src/diffuse/main.py:247 src/diffuse/window.py:420
 #, python-format
@@ -332,7 +335,7 @@ msgstr "%s yazma hatası."
 #: src/diffuse/preferences.py:483 src/diffuse/window.py:446
 #: src/diffuse/window.py:1413 src/diffuse/window.py:1436 src/diffuse/window.py:1459
 msgid "_Open"
-msgstr ""
+msgstr "_Aç"
 
 #: src/diffuse/resources.py:242 src/diffuse/resources.py:246
 #: src/diffuse/resources.py:249
@@ -491,11 +494,11 @@ msgstr "Yeni dosya yüklenmeden önce değişiklikler kaydedilsin mi?"
 
 #: src/diffuse/window.py:310
 msgid "_No"
-msgstr ""
+msgstr "_Hayır"
 
 #: src/diffuse/window.py:311
 msgid "_Yes"
-msgstr ""
+msgstr "_Evet"
 
 #: src/diffuse/window.py:417
 #, python-format
@@ -512,9 +515,8 @@ msgid "Save %(title)s Pane %(pane)d"
 msgstr "%(title)s Bölmesi %(pane)d Kaydet"
 
 #: src/diffuse/window.py:499 src/diffuse/window.py:1111
-#, fuzzy
 msgid "_Save"
-msgstr "Dosyayı _Kaydet"
+msgstr "_Kaydet"
 
 #: src/diffuse/window.py:527
 #, python-format
@@ -894,24 +896,32 @@ msgstr "Yinele"
 
 #: src/diffuse/window.py:950
 msgid "Changes detected"
-msgstr ""
+msgstr "Değişiklikler algılandı"
 
 #: src/diffuse/window.py:954
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "The file \"%s\" changed on disk.\n"
 "\n"
 "Do you want to reload the file?"
-msgstr "%s dosyası diskte değişti. Dosyayı yeniden yüklemek ister misiniz?"
+msgstr ""
+"\"%s\" dosyası diskte değişti. \n"
+"\n"
+"Dosyayı yeniden yüklemek ister misiniz?"
 
 #: src/diffuse/window.py:959
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "The following files changed on disk:\n"
 "%s\n"
 "\n"
 "Do you want to reload these files?"
-msgstr "%s dosyası diskte değişti. Dosyayı yeniden yüklemek ister misiniz?"
+msgstr ""
+"Aşağıdaki dosyalar diskte değişti. \n"
+"\n"
+"%s\n"
+"\n"
+"Bu dosyaları yeniden yüklemek ister misiniz?"
 
 #: src/diffuse/window.py:1078
 msgid "Some files have unsaved changes. Select the files to save before closing."
@@ -996,90 +1006,3 @@ msgstr ""
 #: src/diffuse/window.py:1766
 msgid "translator-credits"
 msgstr "Sabri Ünal <libreajans@gmail.com>"
-
-#~ msgid "Main window: diff between two files"
-#~ msgstr "Ana pencere: iki dosya arasında fark"
-
-#~ msgid ""
-#~ "Usage:\n"
-#~ "    diffuse [OPTION...] [FILE...]\n"
-#~ "    diffuse ( -h | -? | --help | -v | --version )\n"
-#~ "\n"
-#~ "Diffuse is a graphical tool for merging and comparing text files. Diffuse is\n"
-#~ "able to compare an arbitrary number of files side-by-side and gives users the\n"
-#~ "ability to manually adjust line matching and directly edit files. Diffuse can\n"
-#~ "also retrieve revisions of files from several VCSs for comparison and "
-#~ "merging.\n"
-#~ "\n"
-#~ "Help Options:\n"
-#~ "  ( -h | -? | --help )             Display this usage information\n"
-#~ "  ( -v | --version )               Display version and copyright information\n"
-#~ "\n"
-#~ "Configuration Options:\n"
-#~ "  --no-rcfile                      Do not read any resource files\n"
-#~ "  --rcfile <file>                  Specify explicit resource file\n"
-#~ "\n"
-#~ "General Options:\n"
-#~ "  ( -c | --commit ) <rev>          File revisions <rev-1> and <rev>\n"
-#~ "  ( -D | --close-if-same )         Close all tabs with no differences\n"
-#~ "  ( -e | --encoding ) <codec>      Use <codec> to read and write files\n"
-#~ "  ( -L | --label ) <label>         Display <label> instead of the file name\n"
-#~ "  ( -m | --modified )              Create a new tab for each modified file\n"
-#~ "  ( -r | --revision ) <rev>        File revision <rev>\n"
-#~ "  ( -s | --separate )              Create a new tab for each file\n"
-#~ "  ( -t | --tab )                   Start a new tab\n"
-#~ "  ( -V | --vcs ) <vcs-list>        Version control system search order\n"
-#~ "  --line <line>                    Start with line <line> selected\n"
-#~ "  --null-file                      Create a blank file comparison pane\n"
-#~ "\n"
-#~ "Display Options:\n"
-#~ "  ( -b | --ignore-space-change )   Ignore changes to white space\n"
-#~ "  ( -B | --ignore-blank-lines )    Ignore changes in blank lines\n"
-#~ "  ( -E | --ignore-end-of-line )    Ignore end of line differences\n"
-#~ "  ( -i | --ignore-case )           Ignore case differences\n"
-#~ "  ( -w | --ignore-all-space )      Ignore white space differences"
-#~ msgstr ""
-#~ "Kullanım:\n"
-#~ "    diffuse [SEÇENEK...] [DOSYA...]\n"
-#~ "    diffuse ( -h | -? | --help | -v | --version )\n"
-#~ "\n"
-#~ "Diffuse, metin dosyalarını birleştirmek ve karşılaştırmak için grafiksel bir "
-#~ "araçtır.\n"
-#~ "Diffuse, tercih edilen sayıda dosyayı yan yana karşılaştırabilir ve "
-#~ "kullanıcılara\n"
-#~ "satır eşleştirmeyi elle ayarlama ve dosyaları doğrudan düzenleme yeteneği "
-#~ "kazandırır.\n"
-#~ "Diffuse, karşılaştırma ve birleştirme için çeşitli Sürüm Denetim Sistemi "
-#~ "dosyaların\n"
-#~ "düzeltmelerini de alabilir.\n"
-#~ "\n"
-#~ "Yardım Seçenekleri:\n"
-#~ "  ( -h | -? | --help )             Bu kullanım bilgilerini göster\n"
-#~ "  ( -v | --version )               Sürümü ve telif hakkı bilgilerini göster\n"
-#~ "\n"
-#~ "Yapılandırma Seçenekleri:\n"
-#~ "  --no-rcfile                      Herhangi bir kaynak dosyasını okuma\n"
-#~ "  --rcfile <file>                  Açık kaynak dosyasını belirtin\n"
-#~ "\n"
-#~ "Genel Seçenekler:\n"
-#~ "  ( -c | --commit ) <rev>          Dosya düzeltmesi <rev-1> ve <rev>\n"
-#~ "  ( -D | --close-if-same )         Fark yoksa sekmeleri kapat\n"
-#~ "  ( -e | --encoding ) <codec>      Dosyaları okumak için <codec> kod çözücü "
-#~ "kullan\n"
-#~ "  ( -L | --label ) <label>         Dosya adı yerine <label> etiketini göster\n"
-#~ "  ( -m | --modified )              Değiştirilen her dosya için yeni sekme "
-#~ "oluştur\n"
-#~ "  ( -r | --revision ) <rev>        Dosya düzeltmesi <rev>\n"
-#~ "  ( -s | --separate )              Her dosya için yeni sekme oluştur\n"
-#~ "  ( -t | --tab )                   Yeni sekme başlat\n"
-#~ "  ( -V | --vcs ) <vcs-list>        Sürüm denetimi sistemi arama sırası\n"
-#~ "  --line <line>                    <line> satırı seçiliyken başla\n"
-#~ "  --null-file                      Boş bir dosya karşılaştırma bölmesi "
-#~ "oluştur\n"
-#~ "\n"
-#~ "Görünüm Seçenekleri:\n"
-#~ "  ( -b | --ignore-space-change )   Boşluk değişikliklerini yoksay\n"
-#~ "  ( -B | --ignore-blank-lines )    Boş satırlardaki değişiklikleri yoksay\n"
-#~ "  ( -E | --ignore-end-of-line )    Satır sonu farklarını yoksay\n"
-#~ "  ( -i | --ignore-case )           Büyük/Küçük harf farklarını yoksay\n"
-#~ "  ( -w | --ignore-all-space )      Boşluk farklarını yoksay"
