@@ -44,7 +44,7 @@ jobs:
     - uses: actions/setup-python@v5
       with:
           python-version: '3.8'
-    - run: sudo apt-get -y install meson appstream appstream-util desktop-file-utils gettext
+    - run: sudo apt-get -y install meson appstream desktop-file-utils gettext
     - run: pip install meson ninja
     - run: meson setup build
     - run: meson compile -C build
