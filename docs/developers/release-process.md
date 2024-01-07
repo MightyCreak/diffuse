@@ -44,9 +44,27 @@ few manual steps.
 ## Create new release on Flatpak
 
 1. Clone the Flathub repository: <https://github.com/flathub/io.github.mightycreak.Diffuse>
-2. Copy the contents of Diffuse's `io.github.mightycreak.Diffuse.yml` to Flathub's
-3. Keep Flathub's `config-opts` and `sources` sections
-4. In `sources` section, change the `commit` and `tag`
-5. Create commit with changes and push to `master`
-6. Check the build on Flathub: <https://flathub.org/builds/>
-7. When it's done and successful, publish the build
+2. Copy the contents of `io.github.mightycreak.Diffuse.yml` in Diffuse repository
+   to Flathub's
+3. Edit the file:
+   - Replace the content of the `diffuse` module with these lines:
+
+     ```yaml
+     - name: diffuse
+       builddir: true
+       buildsystem: meson
+       config-opts:
+         - -Dlog_print_output=true
+         - -Duse_flatpak=true
+       sources:
+          - type: git
+            url: https://github.com/MightyCreak/diffuse
+            tag: <tag>
+            commit: <tag_commit>
+     ```
+
+   - Replace `<tag>` with the release tag (e.g. `v1.2.3`)
+   - Replace `<tag_commit>` with the release tag commit (e.g. `c0cefac1c4ab99a309b65002e820f5c815e368e1`)
+4. Create commit with changes and push to `main`
+5. Check the build on Flathub: <https://flathub.org/builds/>
+6. When it's done and successful, publish the build

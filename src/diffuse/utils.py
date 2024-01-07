@@ -185,7 +185,7 @@ def popenRead(
             prefs.convertToNativePath('/bin/bash.exe'),
             '-l',
             '-c',
-            f"cd {_bash_escape(cwd)}; {' '.join([ _bash_escape(arg) for arg in cmd ])}"
+            f"cd {_bash_escape(cwd)}; {' '.join([_bash_escape(arg) for arg in cmd])}"
         ]
         opt_cwd = None
 
