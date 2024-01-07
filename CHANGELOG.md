@@ -13,6 +13,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Flatpak manifest now runs the tests (@sabriunal)
 - Use `appstreamcli` instead of the deprecated `appstream-util` to validate
   appdata (@sabriunal)
+- Update appdata: add translation tag, vcs-browser and translate URLs (@sabriunal)
+- Translation: mark the developer name and release descriptions as
+  untranslatable (@sabriunal)
+- Translation: update Turkish translation (@sabriunal)
 
 ### Removed
 
