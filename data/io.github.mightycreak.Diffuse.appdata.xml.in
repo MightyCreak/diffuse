@@ -40,6 +40,30 @@
   <update_contact>romain@foolstep.com</update_contact>
 
   <releases>
+    <release version="0.9.0" date="2024-01-13">
+      <description>
+        <p>Summary: remove support for SVK, update to GNOME 45, updated Turkish translation.</p>
+        <p>Changed:</p>
+        <ul>
+          <li>Update from GNOME 44 to 45 (@sabriunal)</li>
+          <li>Flatpak manifest now runs the tests (@sabriunal)</li>
+          <li>Use appstreamcli instead of the deprecated appstream-util to validate appdata (@sabriunal)</li>
+          <li>Update appdata: add translation tag, vcs-browser and translate URLs (@sabriunal)</li>
+          <li>Translation: mark the developer name and release descriptions as untranslatable (@sabriunal)</li>
+          <li>Translation: update Turkish translation (@sabriunal)</li>
+        </ul>
+        <p>Removed:</p>
+        <ul>
+          <li>Remove support for the SVK CVS (@MightyCreak)</li>
+        </ul>
+        <p>Fixed:</p>
+        <ul>
+          <li>Fix compatibility with Python 3.12: remove use of distutils (@MightyCreak)</li>
+          <li>Fix new errors raised by Flake8 (@MightyCreak)</li>
+          <li>Fix the error with the CICD due to the use of appstreamcli (@MightyCreak)</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.8.2" date="2023-04-16">
       <description translatable="no">
         <p>Use more modern, symbolic icons, add Dutch translation, and a couple of small fixes.</p>
