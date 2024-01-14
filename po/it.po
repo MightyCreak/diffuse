@@ -2,14 +2,15 @@
 # Copyright (C) 2010 THE Diffuse'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the Diffuse package.
 # Cristian Marchi <cri.penta@gmail.com>, 2010.
+# Albano Battistella <albanobattistella@gmail.com>, 2024.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Diffuse 0.4.4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-04-16 14:09-0400\n"
-"PO-Revision-Date: 2022-04-04 12:18-0400\n"
-"Last-Translator: Cristian Marchi <cri.penta@gmail.com>\n"
+"PO-Revision-Date: 2024-01-14 22:18+0100\n"
+"Last-Translator: Albano Battistella <albanobattistella@gmail.com>\n"
 "Language-Team: Italian\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -34,14 +35,17 @@ msgid ""
 "files for comparison from Bazaar, CVS, Darcs, Git, Mercurial, Monotone, RCS, and "
 "Subversion repositories."
 msgstr ""
+"Diffuse è uno strumento grafico per confrontare e unire file di testo. Può recuperare "
+"file per il confronto da Bazaar, CVS, Darcs, Git, Mercurial, Monotone, RCS e "
+"Repository di sovversione."
 
 #: data/io.github.mightycreak.Diffuse.appdata.xml.in:28
 msgid "Main window"
-msgstr ""
+msgstr "Finestra principale"
 
 #: data/io.github.mightycreak.Diffuse.appdata.xml.in:32
 msgid "About window"
-msgstr ""
+msgstr "Informazioni sulla finestra"
 
 #: src/diffuse/constants.py:26
 msgid "Copyright"
@@ -51,7 +55,7 @@ msgstr ""
 #: src/diffuse/preferences.py:254 src/diffuse/preferences.py:483
 #: src/diffuse/window.py:309 src/diffuse/window.py:1107
 msgid "_Cancel"
-msgstr ""
+msgstr "_Annulla"
 
 #: src/diffuse/dialogs.py:50
 msgid "Encoding: "
@@ -128,7 +132,7 @@ msgstr "Apre una nuova scheda"
 
 #: src/diffuse/main.py:137 src/diffuse/preferences.py:159
 msgid "Version control system search order"
-msgstr ""
+msgstr "Ordine di ricerca del sistema di controllo della versione"
 
 #: src/diffuse/main.py:145
 msgid "Start with line <line> selected"
@@ -166,6 +170,10 @@ msgid ""
 "ability to manually adjust line matching and directly edit files. Diffuse can\n"
 "also retrieve revisions of files from several VCSs for comparison and merging."
 msgstr ""
+"Diffuse è uno strumento grafico per unire e confrontare file di testo. Diffuse è\n"
+"in grado di confrontare un numero arbitrario di file fianco a fianco e offre agli utenti\n"
+"capacità di regolare manualmente la corrispondenza delle linee e modificare direttamente i file. Diffuse può\n"
+"recuperare anche revisioni di file da diversi VCS per il confronto e l'unione."
 
 #: src/diffuse/main.py:247 src/diffuse/window.py:420
 #, python-format
@@ -326,88 +334,84 @@ msgstr "Errore scrivendo il %s."
 #: src/diffuse/preferences.py:483 src/diffuse/window.py:446
 #: src/diffuse/window.py:1413 src/diffuse/window.py:1436 src/diffuse/window.py:1459
 msgid "_Open"
-msgstr ""
+msgstr "_Apri"
 
 #: src/diffuse/resources.py:242 src/diffuse/resources.py:246
 #: src/diffuse/resources.py:249
 #, python-brace-format
 msgid "The key binding \"{key}\" is invalid"
-msgstr ""
+msgstr "L'associazione della chiave \"{key}\" non è valida"
 
 #: src/diffuse/resources.py:376
 msgid "Imports must have one argument"
-msgstr ""
+msgstr "Le importazioni devono avere un argomento"
 
 #: src/diffuse/resources.py:392
 msgid "Key bindings must have three arguments"
-msgstr ""
+msgstr "Le associazioni di tasti devono avere tre argomenti"
 
 #: src/diffuse/resources.py:398
 msgid "Colors must have four arguments"
-msgstr ""
+msgstr "I colori devono avere quattro argomenti"
 
 #: src/diffuse/resources.py:404
 msgid "Floats must have two arguments"
-msgstr ""
+msgstr "I float devono avere due argomenti"
 
 #: src/diffuse/resources.py:410
 msgid "Options must have two arguments"
-msgstr ""
+msgstr "Le opzioni devono avere due argomenti"
 
 #: src/diffuse/resources.py:413
 #, python-brace-format
 msgid "Option \"{option}\" is unknown"
-msgstr ""
+msgstr "L'opzione \"{option}\" è sconosciuta"
 
 #: src/diffuse/resources.py:420
 msgid "Strings must have two arguments"
-msgstr ""
+msgstr "Le stringhe devono avere due argomenti"
 
 #: src/diffuse/resources.py:431
 msgid "Syntaxes must have two or three arguments"
-msgstr ""
+msgstr "Le sintassi devono avere due o tre argomenti"
 
 #: src/diffuse/resources.py:459
 msgid "Syntax patterns must have at least four arguments"
-msgstr ""
+msgstr "I modelli di sintassi devono avere almeno quattro argomenti"
 
 #: src/diffuse/resources.py:465 src/diffuse/resources.py:509
 #, python-brace-format
 msgid "Value \"{value}\" is unknown"
-msgstr ""
+msgstr "Il valore \"{value}\" è sconosciuto"
 
 #: src/diffuse/resources.py:476
 msgid "Syntax files must have one or two arguments"
-msgstr ""
+msgstr "I file di sintassi devono avere uno o due argomenti"
 
 #: src/diffuse/resources.py:494
 msgid "Syntax magics must have at least one argument"
-msgstr ""
+msgstr "Le magie della sintassi devono avere almeno un argomento"
 
 #: src/diffuse/resources.py:513
 #, python-brace-format
 msgid "Keyword \"{keyword}\" is unknown"
-msgstr ""
+msgstr "La parola chiave \"{keyword}\" è sconosciuta"
 
 #: src/diffuse/resources.py:515
-#, fuzzy, python-brace-format
 msgid "Syntax error at line {line} of {file}"
-msgstr "Errore nell'elaborare la riga {line} di «{file}»."
+msgstr "Errore di sintassi alla riga {line} di {file}"
 
 #: src/diffuse/resources.py:521
-#, fuzzy, python-brace-format
 msgid "Value error at line {line} of {file}"
-msgstr "Errore nell'elaborare la riga {line} di «{file}»."
+msgstr "Errore di valore alla riga {line} di {file}"
 
 #: src/diffuse/resources.py:527
-#, fuzzy, python-brace-format
 msgid "Regex error at line {line} of {file}."
-msgstr "Errore nell'elaborare la riga {line} di «{file}»."
+msgstr "Errore regex alla riga {line} di {file}."
 
 #: src/diffuse/resources.py:530
-#, fuzzy, python-brace-format
 msgid "Unhandled error at line {line} of {file}."
-msgstr "Errore nell'elaborare la riga {line} di «{file}»."
+msgstr "Errore non gestito alla riga {line} di {file}."
 
 #: src/diffuse/utils.py:66
 msgid "Auto Detect"
@@ -485,11 +489,11 @@ msgstr "Salvare i cambiamenti prima di caricare il nuovo file?"
 
 #: src/diffuse/window.py:310
 msgid "_No"
-msgstr ""
+msgstr ":_No"
 
 #: src/diffuse/window.py:311
 msgid "_Yes"
-msgstr ""
+msgstr "_Si"
 
 #: src/diffuse/window.py:417
 #, python-format
@@ -506,9 +510,8 @@ msgid "Save %(title)s Pane %(pane)d"
 msgstr "Salva %(title)s riquadro %(pane)d"
 
 #: src/diffuse/window.py:499 src/diffuse/window.py:1111
-#, fuzzy
 msgid "_Save"
-msgstr "_Salva file"
+msgstr "_Salva"
 
 #: src/diffuse/window.py:527
 #, python-format
@@ -888,24 +891,29 @@ msgstr "Ripeti"
 
 #: src/diffuse/window.py:950
 msgid "Changes detected"
-msgstr ""
+msgstr "Modifiche rilevate"
 
 #: src/diffuse/window.py:954
-#, fuzzy, python-format
 msgid ""
 "The file \"%s\" changed on disk.\n"
 "\n"
 "Do you want to reload the file?"
-msgstr "Il file «%s» è cambiato sul disco. Ricaricarlo?"
+msgstr ""
+"Il file \"%s\" sul disco è stato modificato.\n"
+"\n"
+"Vuoi ricaricare il file?"
 
 #: src/diffuse/window.py:959
-#, fuzzy, python-format
 msgid ""
 "The following files changed on disk:\n"
 "%s\n"
 "\n"
 "Do you want to reload these files?"
-msgstr "Il file «%s» è cambiato sul disco. Ricaricarlo?"
+msgstr ""
+"I seguenti file sono stati modificati sul disco:\n"
+"%s\n"
+"\n"
+"Vuoi ricaricare questi file?"
 
 #: src/diffuse/window.py:1078
 msgid "Some files have unsaved changes. Select the files to save before closing."
