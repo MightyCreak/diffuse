@@ -37,6 +37,9 @@
   </screenshots>
 
   <developer_name translate="no">Romain Failliot</developer_name>
+  <developer id="io.github.mightycreak">
+    <name translate="no">Romain Failliot</name>
+  </developer>
   <update_contact>romain@foolstep.com</update_contact>
 
   <releases>
