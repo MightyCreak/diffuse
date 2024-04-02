@@ -36,7 +36,10 @@
     </screenshot>
   </screenshots>
 
-  <developer_name translatable="no">Romain Failliot</developer_name>
+  <developer_name translate="no">Romain Failliot</developer_name>
+  <developer id="io.github.mightycreak">
+    <name translate="no">Romain Failliot</name>
+  </developer>
   <update_contact>romain@foolstep.com</update_contact>
 
   <releases>
@@ -65,7 +68,7 @@
       </description>
     </release>
     <release version="0.8.2" date="2023-04-16">
-      <description translatable="no">
+      <description translate="no">
         <p>Use more modern, symbolic icons, add Dutch translation, and a couple of small fixes.</p>
         <p>Added:</p>
         <ul>
@@ -88,7 +91,7 @@
       </description>
     </release>
     <release version="0.8.1" date="2023-04-07">
-      <description translatable="no">
+      <description translate="no">
         <p>
           Fix for the shortcuts that weren't working anymore due to migration to Gtk.Application.
         </p>
@@ -108,7 +111,7 @@
       </description>
     </release>
     <release version="0.8.0" date="2023-04-03">
-      <description translatable="no">
+      <description translate="no">
         <p>
           Update to GNOME 44, improved GTK 3 support, initial support for Rust, added Turkish and
           Georgian translations, and a couple of fixes.
@@ -145,7 +148,7 @@
       </description>
     </release>
     <release version="0.7.7" date="2022-10-23">
-      <description translatable="no">
+      <description translate="no">
         <p>
           Update translations.
         </p>
@@ -158,7 +161,7 @@
       </description>
     </release>
     <release version="0.7.6" date="2022-10-23">
-      <description translatable="no">
+      <description translate="no">
         <p>
           Add port to Mac OS.
         </p>
@@ -179,7 +182,7 @@
       </description>
     </release>
     <release version="0.7.5" date="2022-04-15">
-      <description translatable="no">
+      <description translate="no">
         <p>
           Crashfix and French translation.
         </p>
@@ -196,7 +199,7 @@
       </description>
     </release>
     <release version="0.7.4" date="2022-04-03">
-      <description translatable="no">
+      <description translate="no">
         <p>
           Mainly a maintenance release. It does increase the GNOME SDK's version.
         </p>
@@ -230,7 +233,7 @@
       </description>
     </release>
     <release version="0.7.3" date="2021-11-22">
-      <description translatable="no">
+      <description translate="no">
         <p>
           Patch release that introduces linters (flake8 and mypy).
         </p>
@@ -255,7 +258,7 @@
       </description>
     </release>
     <release version="0.7.2" date="2021-11-18">
-      <description translatable="no">
+      <description translate="no">
         <p>
           Patch release that fixes an error about APP_NAME and the Brazilian translation.
         </p>
@@ -283,7 +286,7 @@
       </description>
     </release>
     <release version="0.7.1" date="2021-11-17">
-      <description translatable="no">
+      <description translate="no">
         <p>
           Patch release to fix a bug when using the Flatpak package.
         </p>
@@ -297,7 +300,7 @@
       </description>
     </release>
     <release version="0.7.0" date="2021-11-16">
-      <description translatable="no">
+      <description translate="no">
         <p>
           With this release, the main end-user change is the new icon. The rest
           is mainly maintenance improvements with a much more standard folder
@@ -336,7 +339,7 @@
       </description>
     </release>
     <release version="0.6.0" date="2020-11-29">
-      <description translatable="no">
+      <description translate="no">
         <p>
           Mainly under the hood changes in this release, so nothing really
           visible to the users in this version. That said, I figured it was a
@@ -361,7 +364,7 @@
       </description>
     </release>
     <release version="0.5.0" date="2020-07-18">
-      <description translatable="no">
+      <description translate="no">
         <p>
           Here is the v0.5.0. Unintentionally, this release happens exactly 6
           years after the previous v0.4.8 release!
