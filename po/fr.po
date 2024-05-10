@@ -2,6 +2,7 @@
 # Copyright (C) 2021 Romain Failliot <romain.failliot@foolstep.com>
 # This file is distributed under the same license as the Diffuse package.
 # Romain Failliot <romain.failliot@foolstep.com>, 2021.
+# Wedone <wedoneofficiel@outlook.fr>, 2024.
 #
 msgid ""
 msgstr ""
@@ -9,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-04-16 14:09-0400\n"
 "PO-Revision-Date: 2022-04-04 11:58-0400\n"
-"Last-Translator: Romain Failliot <romain.failliot@foolstep.com>\n"
+"Last-Translator: Wedone <wedoneofficiel@outlook.fr>\n"
 "Language-Team: French\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -55,7 +56,7 @@ msgstr "Copyright"
 #: src/diffuse/preferences.py:254 src/diffuse/preferences.py:483
 #: src/diffuse/window.py:309 src/diffuse/window.py:1107
 msgid "_Cancel"
-msgstr ""
+msgstr "_Annuler"
 
 #: src/diffuse/dialogs.py:50
 msgid "Encoding: "
@@ -68,7 +69,7 @@ msgstr "Révision: "
 #: src/diffuse/dialogs.py:90 src/diffuse/dialogs.py:134
 #: src/diffuse/preferences.py:255
 msgid "_OK"
-msgstr ""
+msgstr "_Ok"
 
 #: src/diffuse/dialogs.py:130
 msgid "Find..."
@@ -170,6 +171,10 @@ msgid ""
 "ability to manually adjust line matching and directly edit files. Diffuse can\n"
 "also retrieve revisions of files from several VCSs for comparison and merging."
 msgstr ""
+"Diffuse est un outil graphique permettant de fusionner et de comparer des fichiers texte. Diffuse est \n"
+"capable de comparer un nombre arbitraire de fichiers côte à côte et donne aux utilisateurs la \n"
+"possibilité d'ajuster manuellement la correspondance des lignes et de modifier directement les fichiers. Diffuse peut \n"
+"également récupérer les révisions des fichiers de plusieurs VCS pour comparaison et fusion."
 
 #: src/diffuse/main.py:247 src/diffuse/window.py:420
 #, python-format
@@ -330,7 +335,7 @@ msgstr "Erreur à l'écriture de %s."
 #: src/diffuse/preferences.py:483 src/diffuse/window.py:446
 #: src/diffuse/window.py:1413 src/diffuse/window.py:1436 src/diffuse/window.py:1459
 msgid "_Open"
-msgstr ""
+msgstr "_Ouvrir"
 
 #: src/diffuse/resources.py:242 src/diffuse/resources.py:246
 #: src/diffuse/resources.py:249
@@ -489,11 +494,11 @@ msgstr "Sauvegarder les changements avant de charger le nouveau fichier?"
 
 #: src/diffuse/window.py:310
 msgid "_No"
-msgstr ""
+msgstr "_Non"
 
 #: src/diffuse/window.py:311
 msgid "_Yes"
-msgstr ""
+msgstr "_Oui"
 
 #: src/diffuse/window.py:417
 #, python-format
@@ -893,7 +898,7 @@ msgstr "Refaire"
 
 #: src/diffuse/window.py:950
 msgid "Changes detected"
-msgstr ""
+msgstr "Modifications détectées"
 
 #: src/diffuse/window.py:954
 #, python-format
