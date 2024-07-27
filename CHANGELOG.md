@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Translation: update French translation (@WedoneOfficiel)
 - Translation: update Italian translation (@albanobattistella)
+- Translation: update Portuguese translation (@hugok79)
 
 ## 0.9.0 - 2024-01-13
 
