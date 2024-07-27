@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Translation: update French translation (@WedoneOfficiel)
 - Translation: update Italian translation (@albanobattistella)
 
 ## 0.9.0 - 2024-01-13
