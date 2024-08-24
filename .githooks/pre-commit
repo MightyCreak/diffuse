@@ -1,0 +1,19 @@
+#!/bin/bash
+
+set -e
+
+txtred='\e[0;31m'
+txtbld='\e[1m'
+txtrst='\e[0m'
+
+if ! flake8 src/ po/
+then
+    echo -e "${txtred}${txtbld}Linter error(s) from flake8${txtrst}"
+    exit 1
+fi
+
+if ! mypy src/ po/
+then
+    echo -e "${txtred}${txtbld}Linter error(s) from mypy${txtrst}"
+    exit 1
+fi
