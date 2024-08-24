@@ -79,7 +79,7 @@ git config --local core.hooksPath ./.githooks
 To build, test and install Diffuse locally:
 
 ```sh
-flatpak install runtime/org.gnome.Sdk/$(uname -m)/44
+flatpak install runtime/org.gnome.Sdk/$(uname -m)/46
 flatpak-builder --user --install build-flatpak io.github.mightycreak.Diffuse.yml
 ```
 

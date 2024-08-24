@@ -20,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Docs: fix incorrect flatpak command to install runtime SDK (@MightyCreak)
+- Update to flatpak's GNOME runtime 46 (@MightyCreak)
 
 ## 0.9.0 - 2024-01-13
 
