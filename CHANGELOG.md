@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Translation: add 'nl' in LINGUAS (@hugok79)
 - Update pypi packages (@MightyCreak)
 - Add pre-commit git hooks to run linters (@MightyCreak)
+- Docs: improve devs setup structure (@MightyCreak)
 
 ### Fixed
 

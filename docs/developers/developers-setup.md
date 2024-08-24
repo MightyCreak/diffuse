@@ -10,18 +10,6 @@ Diffuse depends on these projects:
 * Meson
 * Flatpak and Flatpak builder (Linux only)
 
-### Install git hooks (optional)
-
-There is a pre-commit git hook that runs some linters on the source code before committing.
-
-To install the git hooks (for the repository only), run this command:
-
-```sh
-git config --local core.hooksPath ./.githooks
-```
-
-## Install the dependencies
-
 ### Install the system dependencies
 
 It's a bit difficult to get the command lines for all the systems, but these
@@ -70,6 +58,16 @@ For developer tools, run this one instead (it includes requirements.txt):
 
 ```sh
 pip3 install -r requirements.dev.txt
+```
+
+### Install git hooks (optional)
+
+There is a pre-commit git hook that runs some linters on the source code before committing.
+
+To install the git hooks (for the repository only), run this command:
+
+```sh
+git config --local core.hooksPath ./.githooks
 ```
 
 ## Setup
