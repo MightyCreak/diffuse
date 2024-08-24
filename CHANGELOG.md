@@ -16,6 +16,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update pypi packages (@MightyCreak)
 - Add pre-commit git hooks to run linters (@MightyCreak)
 
+### Fixed
+
+- Docs: fix incorrect flatpak command to install runtime SDK (@MightyCreak)
+
 ## 0.9.0 - 2024-01-13
 
 ### Changed
