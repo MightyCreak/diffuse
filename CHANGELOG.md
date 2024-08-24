@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Translation: update Italian translation (@albanobattistella)
 - Translation: update Portuguese translation (@hugok79)
 - Translation: add 'nl' in LINGUAS (@hugok79)
+- Update pypi packages (@MightyCreak)
 
 ## 0.9.0 - 2024-01-13
 
