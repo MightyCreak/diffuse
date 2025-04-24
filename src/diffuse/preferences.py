@@ -149,13 +149,14 @@ class Preferences:
                ('hg', 'Mercurial', 'hg'),
                ('mtn', 'Monotone', 'mtn'),
                ('rcs', 'RCS', None),
+               ('src', 'SRC', 'src'),
                ('svn', 'Subversion', 'svn')]
 
         vcs_template = [
             'List', [
                 'String',
                 'vcs_search_order',
-                'bzr cvs darcs git hg mtn rcs svn',
+                'bzr cvs darcs git hg mtn rcs svn src',
                 _('Version control system search order')
             ]
         ]
