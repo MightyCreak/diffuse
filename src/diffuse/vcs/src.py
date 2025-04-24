@@ -17,6 +17,11 @@
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
+# The only use-cases that make sense for src are:
+# diffuse -r <rev> <file>
+# diffuse -c <rev> <file> NB a single file
+# diffuse -m [ <file> ]
+
 import os
 import glob
 
@@ -45,17 +50,20 @@ class Src(VcsInterface):
 
     @staticmethod
     def _parseStatusLine(s: str) -> Tuple[str, str]:
-        # src status prints eg "M<TAB>filename" - as opposed to svn which expands the TAB!
-        if len(s) < 3 or s[0] not in 'ACDMR':
+        # src status prints 'M  filename'
+        if len(s) < 3 or s[0] not in 'M':
             return '', ''
-        return s[0], s[2:]
+        k = 3
+        if k < len(s) and s[k] == ' ':
+            k += 1
+        return s[0], s[k:]
 
     @staticmethod
     def _getPreviousRevision(rev: Optional[str]) -> str:
         if rev is None:
             return 'BASE'
         m = int(rev)
-        return str(max(m > 1, 0))
+        return str(max(m - 1, 0))
 
     def _getURL(self, prefs: Preferences) -> Optional[str]:
         if self.url is None:
@@ -70,7 +78,6 @@ class Src(VcsInterface):
 
     def getFileTemplate(self, prefs: Preferences, name: str) -> VcsInterface.PathRevisionList:
         # FIXME: verify this
-        # merge conflict
         escaped_name = utils.globEscape(name)
         left = glob.glob(escaped_name + '.merge-left.r*')
         right = glob.glob(escaped_name + '.merge-right.r*')
@@ -86,17 +93,17 @@ class Src(VcsInterface):
         return [ (name, self._getPreviousRevision(None)), (name, None) ]
 
     def _getCommitTemplate(self, prefs, rev, names):
-        # there's no concept like a 'commit' for src - each file
-        # has an independent history. So you can either:
+        # there's no concept like a 'commit' for src - each file has
+        # an independent history with its own version numbers. So, if
+        # we get here we have either:
 
         # diffuse -c 14 todo.org
         # or
         # diffuse -m [files]
 
-        # Nothing else really makes much sense to me so let's assume that if we have a rev
-        # then we're doing a -m otherwise it's a -c
-
-        # FIXME: removed, added, conflicting files - only modified files work!!
+        # Nothing else really makes much sense in src as far as
+        # diffuse is concerned so let's assume that if we have a rev
+        # then we're doing a -c otherwise it's a -m
 
         result = []
 
@@ -122,20 +129,13 @@ class Src(VcsInterface):
                 # run command
         modified, added, removed = {}, set(), set()
         for s in utils.popenReadLines(self.root, args, prefs, vcs_bash):
-
             status = self._parseStatusLine(s)
             if status is None:
                 continue
             v, k = status
             rel = prefs.convertToNativePath(k)
             k = os.path.join(self.root, rel)
-
-            if v == 'D':
-                # deleted file or directory
-                # the contents of deleted folders are not reported
-                # by "src diff --summarize -c <rev>"
-                removed.add(rel)
-            elif v == 'A':
+            if v == 'A':
                 # new file or directory
                 added.add(rel)
             elif v == 'M':
@@ -144,9 +144,6 @@ class Src(VcsInterface):
                 if not isabs:
                     k = utils.relpath(pwd, k)
                     modified[k] = [ (k, prev), (k, rev) ]
-            elif v == 'C':
-                # merge conflict
-                modified[k] = self.getFileTemplate(prefs, k)
             elif v == 'R':
                 # replaced file
                 removed.add(rel)
