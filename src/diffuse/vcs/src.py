@@ -51,7 +51,7 @@ class Src(VcsInterface):
     @staticmethod
     def _parseStatusLine(s: str) -> Tuple[str, str]:
         # src status prints 'M  filename'
-        if len(s) < 3 or s[0] not in 'M':
+        if len(s) < 3 or s[0] not in 'M=':
             return '', ''
         k = 3
         if k < len(s) and s[k] == ' ':
@@ -138,7 +138,7 @@ class Src(VcsInterface):
             if v == 'A':
                 # new file or directory
                 added.add(rel)
-            elif v == 'M':
+            elif v == 'M' or v == '=':
                 # modified file or merge conflict
                 k = os.path.join(self.root, k)
                 if not isabs:
