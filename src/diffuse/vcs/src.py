@@ -138,7 +138,7 @@ class Src(VcsInterface):
             if v == 'A':
                 # new file or directory
                 added.add(rel)
-            elif v == 'M' or v == '=':
+            elif v == 'M' or (len(names) == 1 and v == '='):
                 # modified file or merge conflict
                 k = os.path.join(self.root, k)
                 if not isabs:
