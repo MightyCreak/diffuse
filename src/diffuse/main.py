@@ -287,7 +287,6 @@ also retrieve revisions of files from several VCSs for comparison and merging.''
             mode = 'modified'
         if 'revision' in options:
             # specified revision
-            print(options['revision'])
             for i in options['revision']:
                 revs.append((i, encoding))
         if 'separate' in options:
