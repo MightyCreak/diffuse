@@ -113,7 +113,7 @@ class DiffuseApplication(Gtk.Application):
             'revision',
             ord('r'),
             GLib.OptionFlags.NONE,
-            GLib.OptionArg.STRING,
+            GLib.OptionArg.STRING_ARRAY,
             _('File revision <rev>'),
             'rev',
         )
@@ -287,7 +287,9 @@ also retrieve revisions of files from several VCSs for comparison and merging.''
             mode = 'modified'
         if 'revision' in options:
             # specified revision
-            revs.append((options['revision'], encoding))
+            print(options['revision'])
+            for i in options['revision']:
+                revs.append((i, encoding))
         if 'separate' in options:
             funcs[mode](specs, labels, opts)
             specs, labels, opts = [], [], {}
