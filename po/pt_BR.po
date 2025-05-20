@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: diffuse-svn\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-04-16 14:09-0400\n"
-"PO-Revision-Date: 2022-04-04 12:19-0400\n"
-"Last-Translator: Pedro Albuquerque <pmra@gmx.com>\n"
+"PO-Revision-Date: 2025-05-20 03:07-0300\n"
+"Last-Translator: John peter sa <johnppetersa@gmail.com>\n"
 "Language-Team: Português do Brasil <pmra@gmx.com>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.6\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-Basepath: ../src/usr/bin\n"
 "X-Poedit-KeywordsList: _\n"
@@ -34,31 +34,32 @@ msgstr "Ferramenta gráfica para unificar e comparar arquivos de texto"
 
 #: data/io.github.mightycreak.Diffuse.appdata.xml.in:7
 msgid ""
-"Diffuse is a graphical tool for comparing and merging text files. It can retrieve "
-"files for comparison from Bazaar, CVS, Darcs, Git, Mercurial, Monotone, RCS, and "
-"Subversion repositories."
+"Diffuse is a graphical tool for comparing and merging text files. It can "
+"retrieve files for comparison from Bazaar, CVS, Darcs, Git, Mercurial, "
+"Monotone, RCS, and Subversion repositories."
 msgstr ""
-"O Diffuse é uma ferramenta gráfica para unificar e comparar arquivos de texto. "
-"Também pode obter revisões para comparar arquivos de repositórios Bazaar, CVS, "
-"Darcs, Git, Mercurial, Monotone, RCS, e Subversion. "
+"O Diffuse é uma ferramenta gráfica para unificar e comparar arquivos de "
+"texto. Também pode obter revisões para comparar arquivos de repositórios "
+"Bazaar, CVS, Darcs, Git, Mercurial, Monotone, RCS, e Subversion."
 
 #: data/io.github.mightycreak.Diffuse.appdata.xml.in:28
 msgid "Main window"
-msgstr ""
+msgstr "Janela principal"
 
 #: data/io.github.mightycreak.Diffuse.appdata.xml.in:32
 msgid "About window"
-msgstr ""
+msgstr "Sobre a janela"
 
 #: src/diffuse/constants.py:26
 msgid "Copyright"
 msgstr "Direitos autorais"
 
-#: src/diffuse/dialogs.py:46 src/diffuse/dialogs.py:89 src/diffuse/dialogs.py:133
-#: src/diffuse/preferences.py:254 src/diffuse/preferences.py:483
-#: src/diffuse/window.py:309 src/diffuse/window.py:1107
+#: src/diffuse/dialogs.py:46 src/diffuse/dialogs.py:89
+#: src/diffuse/dialogs.py:133 src/diffuse/preferences.py:254
+#: src/diffuse/preferences.py:483 src/diffuse/window.py:309
+#: src/diffuse/window.py:1107
 msgid "_Cancel"
-msgstr ""
+msgstr "_Cancelar"
 
 #: src/diffuse/dialogs.py:50
 msgid "Encoding: "
@@ -71,7 +72,7 @@ msgstr "Revisão: "
 #: src/diffuse/dialogs.py:90 src/diffuse/dialogs.py:134
 #: src/diffuse/preferences.py:255
 msgid "_OK"
-msgstr ""
+msgstr "_OK"
 
 #: src/diffuse/dialogs.py:130
 msgid "Find..."
@@ -168,11 +169,22 @@ msgstr "Ignorar diferenças de espaços"
 
 #: src/diffuse/main.py:191
 msgid ""
-"Diffuse is a graphical tool for merging and comparing text files. Diffuse is\n"
-"able to compare an arbitrary number of files side-by-side and gives users the\n"
-"ability to manually adjust line matching and directly edit files. Diffuse can\n"
-"also retrieve revisions of files from several VCSs for comparison and merging."
+"Diffuse is a graphical tool for merging and comparing text files. Diffuse "
+"is\n"
+"able to compare an arbitrary number of files side-by-side and gives users "
+"the\n"
+"ability to manually adjust line matching and directly edit files. Diffuse "
+"can\n"
+"also retrieve revisions of files from several VCSs for comparison and "
+"merging."
 msgstr ""
+"Diffuse é uma ferramenta gráfica para mesclar e comparar arquivos de texto. "
+"O Diffuse é\n"
+"capaz de comparar um número arbitrário de arquivos lado a lado e oferece aos "
+"usuários a\n"
+"capacidade de ajustar manualmente a correspondência de linhas e editar "
+"arquivos diretamente. O Diffuse também pode\n"
+"recuperar revisões de arquivos de vários VCSs para comparação e mesclagem."
 
 #: src/diffuse/main.py:247 src/diffuse/window.py:420
 #, python-format
@@ -331,9 +343,10 @@ msgid "Error writing %s."
 msgstr "Erro ao salvar %s."
 
 #: src/diffuse/preferences.py:483 src/diffuse/window.py:446
-#: src/diffuse/window.py:1413 src/diffuse/window.py:1436 src/diffuse/window.py:1459
+#: src/diffuse/window.py:1413 src/diffuse/window.py:1436
+#: src/diffuse/window.py:1459
 msgid "_Open"
-msgstr ""
+msgstr "_Abrir"
 
 #: src/diffuse/resources.py:242 src/diffuse/resources.py:246
 #: src/diffuse/resources.py:249
@@ -397,30 +410,31 @@ msgid "Keyword \"{keyword}\" is unknown"
 msgstr "Palavra-chave \"{keyword}\" é desconhecida"
 
 #: src/diffuse/resources.py:515
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Syntax error at line {line} of {file}"
-msgstr "Erro da sintaxe na linha {line} de {file}."
+msgstr "Erro de sintaxe na linha {line} de {file}"
 
 #: src/diffuse/resources.py:521
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Value error at line {line} of {file}"
-msgstr "Erro do valor na linha {line} de {file}."
+msgstr "Erro de valor na linha {line} de {file}"
 
 #: src/diffuse/resources.py:527
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Regex error at line {line} of {file}."
-msgstr "Erro do regex na linha {line} de {file}."
+msgstr "Erro de regex na linha {line} de {file}."
 
 #: src/diffuse/resources.py:530
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Unhandled error at line {line} of {file}."
-msgstr "Erro incomum na linha {line} de {file}."
+msgstr "Erro não tratado na linha {line} de {file}."
 
 #: src/diffuse/utils.py:66
 msgid "Auto Detect"
 msgstr "Detecção automática"
 
-#: src/diffuse/vcs/cvs.py:54 src/diffuse/vcs/rcs.py:63 src/diffuse/vcs/svn.py:96
+#: src/diffuse/vcs/cvs.py:54 src/diffuse/vcs/rcs.py:63
+#: src/diffuse/vcs/svn.py:96
 #, python-format
 msgid "Error parsing revision %s."
 msgstr "Erro ao analisar a revisão %s."
@@ -492,11 +506,11 @@ msgstr "Salvar alterações antes de carregar o novo arquivo?"
 
 #: src/diffuse/window.py:310
 msgid "_No"
-msgstr ""
+msgstr "_Não"
 
 #: src/diffuse/window.py:311
 msgid "_Yes"
-msgstr ""
+msgstr "_Sim"
 
 #: src/diffuse/window.py:417
 #, python-format
@@ -513,9 +527,8 @@ msgid "Save %(title)s Pane %(pane)d"
 msgstr "Salvar %(title)s painel %(pane)d"
 
 #: src/diffuse/window.py:499 src/diffuse/window.py:1111
-#, fuzzy
 msgid "_Save"
-msgstr "_Salvar arquivo"
+msgstr "_Salvar"
 
 #: src/diffuse/window.py:527
 #, python-format
@@ -525,12 +538,12 @@ msgstr "Já existe um arquivo chamado %s. Quer substituí-lo?"
 #: src/diffuse/window.py:534
 #, python-format
 msgid ""
-"The file %s has been modified by another process since reading it. If you save, "
-"all the external changes could be lost. Save anyways?"
+"The file %s has been modified by another process since reading it. If you "
+"save, all the external changes could be lost. Save anyways?"
 msgstr ""
-"O arquivo %s foi modificado por outro processo desde seu último carregamento. Se "
-"salvar agora, perderá todas as alterações feitas fora deste programa. Salvar de "
-"qualquer forma?"
+"O arquivo %s foi modificado por outro processo desde seu último "
+"carregamento. Se salvar agora, perderá todas as alterações feitas fora deste "
+"programa. Salvar de qualquer forma?"
 
 #: src/diffuse/window.py:576
 #, python-format
@@ -547,11 +560,11 @@ msgstr "Número de linha: "
 
 #: src/diffuse/window.py:642
 msgid ""
-"Press the enter key or double click to edit. Press the space bar or use the RMB "
-"menu to manually align."
+"Press the enter key or double click to edit. Press the space bar or use the "
+"RMB menu to manually align."
 msgstr ""
-"Pressione Enter ou faça duplo clique para editar. Pressione a barra de espaço ou "
-"use o menu RMB para alinhar manualmente."
+"Pressione Enter ou faça duplo clique para editar. Pressione a barra de "
+"espaço ou use o menu RMB para alinhar manualmente."
 
 #: src/diffuse/window.py:646
 msgid "Press the escape key to finish editing."
@@ -562,8 +575,8 @@ msgid ""
 "Select target line and press the space bar to align. Press the escape key to "
 "cancel."
 msgstr ""
-"Selecione a linha alvo e pressione a barra de espaço para alinhar. Pressione Esc "
-"para cancelar."
+"Selecione a linha alvo e pressione a barra de espaço para alinhar. Pressione "
+"Esc para cancelar."
 
 #: src/diffuse/window.py:710
 msgid "_File"
@@ -896,27 +909,35 @@ msgstr "Refazer"
 
 #: src/diffuse/window.py:950
 msgid "Changes detected"
-msgstr ""
+msgstr "Alterações detectadas"
 
 #: src/diffuse/window.py:954
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "The file \"%s\" changed on disk.\n"
 "\n"
 "Do you want to reload the file?"
-msgstr "O arquivo %s foi alterado no armazenamento. Quer recarregá-lo?"
+msgstr ""
+"O arquivo \"%s\" foi alterado no disco.\n"
+"\n"
+"Deseja recarregar o arquivo?"
 
 #: src/diffuse/window.py:959
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "The following files changed on disk:\n"
 "%s\n"
 "\n"
 "Do you want to reload these files?"
-msgstr "O arquivo %s foi alterado no armazenamento. Quer recarregá-lo?"
+msgstr ""
+"Os seguintes arquivos foram alterados no disco:\n"
+"%s\n"
+"\n"
+"Deseja recarregar estes arquivos?"
 
 #: src/diffuse/window.py:1078
-msgid "Some files have unsaved changes. Select the files to save before closing."
+msgid ""
+"Some files have unsaved changes. Select the files to save before closing."
 msgstr ""
 "Alguns arquivos têm alterações não salvas. Selecione os arquivos para salvar "
 "antes de fechar."
@@ -992,11 +1013,14 @@ msgstr "Frase não encontrada. Continuar desde o início do arquivo?"
 #: src/diffuse/window.py:1762
 msgid "Diffuse is a graphical tool for merging and comparing text files."
 msgstr ""
-"O Diffuse é uma ferramenta gráfica para unificar e comparar arquivos de texto."
+"O Diffuse é uma ferramenta gráfica para unificar e comparar arquivos de "
+"texto."
 
 #: src/diffuse/window.py:1766
 msgid "translator-credits"
-msgstr "Pedro Albuquerque <pmra@gmx.com>"
+msgstr ""
+"Pedro Albuquerque <pmra@gmx.com>\n"
+"john peter sa <johnppetersa@gmail.com>"
 
 #~ msgid "Main window: diff between two files"
 #~ msgstr "Janela principal: diff entre dois arquivos"
@@ -1007,15 +1031,19 @@ msgstr "Pedro Albuquerque <pmra@gmx.com>"
 #~ "    diffuse [OPTION...] [FILE...]\n"
 #~ "    diffuse ( -h | -? | --help | -v | --version )\n"
 #~ "\n"
-#~ "Diffuse is a graphical tool for merging and comparing text files. Diffuse is\n"
-#~ "able to compare an arbitrary number of files side-by-side and gives users the\n"
-#~ "ability to manually adjust line matching and directly edit files. Diffuse can\n"
+#~ "Diffuse is a graphical tool for merging and comparing text files. Diffuse "
+#~ "is\n"
+#~ "able to compare an arbitrary number of files side-by-side and gives users "
+#~ "the\n"
+#~ "ability to manually adjust line matching and directly edit files. Diffuse "
+#~ "can\n"
 #~ "also retrieve revisions of files from several VCSs for comparison and "
 #~ "merging.\n"
 #~ "\n"
 #~ "Help Options:\n"
 #~ "  ( -h | -? | --help )             Display this usage information\n"
-#~ "  ( -v | --version )               Display version and copyright information\n"
+#~ "  ( -v | --version )               Display version and copyright "
+#~ "information\n"
 #~ "\n"
 #~ "Configuration Options:\n"
 #~ "  --no-rcfile                      Do not read any resource files\n"
@@ -1025,8 +1053,10 @@ msgstr "Pedro Albuquerque <pmra@gmx.com>"
 #~ "  ( -c | --commit ) <rev>          File revisions <rev-1> and <rev>\n"
 #~ "  ( -D | --close-if-same )         Close all tabs with no differences\n"
 #~ "  ( -e | --encoding ) <codec>      Use <codec> to read and write files\n"
-#~ "  ( -L | --label ) <label>         Display <label> instead of the file name\n"
-#~ "  ( -m | --modified )              Create a new tab for each modified file\n"
+#~ "  ( -L | --label ) <label>         Display <label> instead of the file "
+#~ "name\n"
+#~ "  ( -m | --modified )              Create a new tab for each modified "
+#~ "file\n"
 #~ "  ( -r | --revision ) <rev>        File revision <rev>\n"
 #~ "  ( -s | --separate )              Create a new tab for each file\n"
 #~ "  ( -t | --tab )                   Start a new tab\n"
@@ -1058,12 +1088,14 @@ msgstr "Pedro Albuquerque <pmra@gmx.com>"
 #~ "\n"
 #~ "Opções de configuração:\n"
 #~ "  --no-rcfile                      não lê qualquer arquivo de recursos\n"
-#~ "  --rcfile <file>                  define um arquivo de recursos especifico\n"
+#~ "  --rcfile <file>                  define um arquivo de recursos "
+#~ "especifico\n"
 #~ "\n"
 #~ "Opções gerais:\n"
 #~ "  ( -c | --commit ) <rev>          revisões de arquivos <rev-1> e <rev>\n"
 #~ "  ( -D | --close-if-same )         fecha todas as abas sem diferenças\n"
-#~ "  ( -e | --encoding ) <codec>      usa <codec> para ler e escrever arquivos\n"
+#~ "  ( -e | --encoding ) <codec>      usa <codec> para ler e escrever "
+#~ "arquivos\n"
 #~ "  ( -L | --label ) <etiqueta>      mostra <etiqueta> em vez do nome do "
 #~ "arquivos\n"
 #~ "  ( -m | --modified )              cria uma nova aba para cada arquivo "
@@ -1072,12 +1104,14 @@ msgstr "Pedro Albuquerque <pmra@gmx.com>"
 #~ "  ( -s | --separate )              cria uma nova aba para cada arquivo\n"
 #~ "  ( -t | --tab )                   executa uma nova aba\n"
 #~ "  ( -V | --vcs ) <vcs-list>        Version control system search order\n"
-#~ "  --line <linha>                   começa com a linha <linha> selecionada\n"
+#~ "  --line <linha>                   começa com a linha <linha> "
+#~ "selecionada\n"
 #~ "  --null-file                      cria um novo painel de comparação\n"
 #~ "\n"
 #~ "Opções de vista:\n"
 #~ "  ( -b | --ignore-space-change )   ignora alterações para espaços\n"
-#~ "  ( -B | --ignore-blank-lines )    ignora alterações para linhas em branco\n"
+#~ "  ( -B | --ignore-blank-lines )    ignora alterações para linhas em "
+#~ "branco\n"
 #~ "  ( -E | --ignore-end-of-line )    ignora diferenças de fim de linha\n"
 #~ "  ( -i | --ignore-case )           ignora diferenças entre maiúsculas\n"
 #~ "  ( -w | --ignore-all-space )      ignora diferenças de espaços"
