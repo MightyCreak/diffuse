@@ -19,7 +19,8 @@ examples should be enough to find the packages on most systems.
     <summary>Debian/Ubuntu</summary>
 
 ```sh
-sudo apt install python3-pip libcairo2-dev libgirepository1.0-dev meson flatpak flatpak-builder
+sudo apt install python3-pip libcairo2-dev libgirepository-2.0-dev \
+    meson flatpak flatpak-builder
 ```
 
 _Note: Tested on Debian 11 (Buster) and Ubuntu 20.04 (Focal)_
@@ -28,7 +29,8 @@ _Note: Tested on Debian 11 (Buster) and Ubuntu 20.04 (Focal)_
     <summary>Fedora</summary>
 
 ```sh
-sudo dnf install python-pip cairo-devel cairo-gobject-devel meson flatpak flatpak-builder
+sudo dnf install python-pip cairo-devel cairo-gobject-devel \
+    meson flatpak flatpak-builder
 ```
 
 _Note: Tested on Fedora 36_

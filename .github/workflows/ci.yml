@@ -14,16 +14,16 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   lint:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-python@v5
       with:
-          python-version: '3.8'
+          python-version: '3.9'
 
     - name: Install dependencies
       run: |
-        sudo apt-get -y install libgirepository1.0-dev
+        sudo apt-get update && sudo apt-get -y install libcairo2-dev libgirepository-2.0-dev
         pip install -r requirements.dev.txt
         pip list
 
@@ -38,32 +38,30 @@ jobs:
         mypy src/ po/
 
   meson-build-test:
-    runs-on: ubuntu-latest
-    container:
-      # Use Ubuntu 23.04 in order to have appstreamcli v0.16 instead of 0.15.
-      image: ubuntu:23.04
+    runs-on: ubuntu-24.04
+    # container:
+    #   # Use Ubuntu 23.04 in order to have appstreamcli v0.16 instead of 0.15.
+    #   image: ubuntu:23.04
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-python@v5
       with:
-          python-version: '3.8'
-    # Extra installation since we are not using ubuntu-latest
-    - run: apt-get update && apt-get -y install libglib2.0-dev-bin
-    - run: apt-get -y install meson appstream desktop-file-utils gettext
+          python-version: '3.9'
+    - run: sudo apt-get update && sudo apt-get -y install libglib2.0-dev-bin meson appstream desktop-file-utils gettext
     - run: meson setup build
     - run: meson compile -C build
     - run: meson test --print-errorlogs -C build
 
   flatpak-build-test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     container:
-      image: bilelmoussaoui/flatpak-github-actions:gnome-45
+      image: ghcr.io/flathub-infra/flatpak-github-actions:gnome-46
       options: --privileged
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-python@v5
       with:
-          python-version: '3.8'
+          python-version: '3.9'
     - uses: flatpak/flatpak-github-actions/flatpak-builder@v6
       with:
         bundle: "diffuse.flatpak"
