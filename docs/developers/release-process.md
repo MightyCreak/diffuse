@@ -51,8 +51,8 @@ few manual steps.
 
      ```yaml
      - name: diffuse
-       builddir: true
        buildsystem: meson
+       builddir: true
        config-opts:
          - -Dlog_print_output=true
          - -Duse_flatpak=true
@@ -65,6 +65,7 @@ few manual steps.
 
    - Replace `<tag>` with the release tag (e.g. `v1.2.3`)
    - Replace `<tag_commit>` with the release tag commit (e.g. `c0cefac1c4ab99a309b65002e820f5c815e368e1`)
-4. Create commit with changes and push to `main`
-5. Check the build on Flathub: <https://flathub.org/builds/>
-6. When it's done and successful, publish the build
+4. Create a new branch, commit the changes and create a new PR
+5. When everything's green: merge the PR
+6. Check the build on Flathub: <https://flathub.org/builds/>
+7. When it's done and successful, publish the build
