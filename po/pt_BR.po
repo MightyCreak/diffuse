@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: diffuse-svn\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-04-16 14:09-0400\n"
-"PO-Revision-Date: 2022-04-04 12:19-0400\n"
-"Last-Translator: Pedro Albuquerque <pmra@gmx.com>\n"
+"PO-Revision-Date: 2025-05-20 03:07-0300\n"
+"Last-Translator: John peter sa <johnppetersa@gmail.com>\n"
 "Language-Team: Português do Brasil <pmra@gmx.com>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.6\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-Basepath: ../src/usr/bin\n"
 "X-Poedit-KeywordsList: _\n"
@@ -40,15 +40,15 @@ msgid ""
 msgstr ""
 "O Diffuse é uma ferramenta gráfica para unificar e comparar arquivos de texto. "
 "Também pode obter revisões para comparar arquivos de repositórios Bazaar, CVS, "
-"Darcs, Git, Mercurial, Monotone, RCS, e Subversion. "
+"Darcs, Git, Mercurial, Monotone, RCS, e Subversion."
 
 #: data/io.github.mightycreak.Diffuse.appdata.xml.in:28
 msgid "Main window"
-msgstr ""
+msgstr "Janela principal"
 
 #: data/io.github.mightycreak.Diffuse.appdata.xml.in:32
 msgid "About window"
-msgstr ""
+msgstr "Sobre a janela"
 
 #: src/diffuse/constants.py:26
 msgid "Copyright"
@@ -58,7 +58,7 @@ msgstr "Direitos autorais"
 #: src/diffuse/preferences.py:254 src/diffuse/preferences.py:483
 #: src/diffuse/window.py:309 src/diffuse/window.py:1107
 msgid "_Cancel"
-msgstr ""
+msgstr "_Cancelar"
 
 #: src/diffuse/dialogs.py:50
 msgid "Encoding: "
@@ -71,7 +71,7 @@ msgstr "Revisão: "
 #: src/diffuse/dialogs.py:90 src/diffuse/dialogs.py:134
 #: src/diffuse/preferences.py:255
 msgid "_OK"
-msgstr ""
+msgstr "_OK"
 
 #: src/diffuse/dialogs.py:130
 msgid "Find..."
@@ -173,6 +173,13 @@ msgid ""
 "ability to manually adjust line matching and directly edit files. Diffuse can\n"
 "also retrieve revisions of files from several VCSs for comparison and merging."
 msgstr ""
+"Diffuse é uma ferramenta gráfica para mesclar e comparar arquivos de texto. O "
+"Diffuse é\n"
+"capaz de comparar um número arbitrário de arquivos lado a lado e oferece aos "
+"usuários a\n"
+"capacidade de ajustar manualmente a correspondência de linhas e editar arquivos "
+"diretamente. O Diffuse também pode\n"
+"recuperar revisões de arquivos de vários VCSs para comparação e mesclagem."
 
 #: src/diffuse/main.py:247 src/diffuse/window.py:420
 #, python-format
@@ -333,7 +340,7 @@ msgstr "Erro ao salvar %s."
 #: src/diffuse/preferences.py:483 src/diffuse/window.py:446
 #: src/diffuse/window.py:1413 src/diffuse/window.py:1436 src/diffuse/window.py:1459
 msgid "_Open"
-msgstr ""
+msgstr "_Abrir"
 
 #: src/diffuse/resources.py:242 src/diffuse/resources.py:246
 #: src/diffuse/resources.py:249
@@ -397,24 +404,24 @@ msgid "Keyword \"{keyword}\" is unknown"
 msgstr "Palavra-chave \"{keyword}\" é desconhecida"
 
 #: src/diffuse/resources.py:515
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Syntax error at line {line} of {file}"
-msgstr "Erro da sintaxe na linha {line} de {file}."
+msgstr "Erro de sintaxe na linha {line} de {file}"
 
 #: src/diffuse/resources.py:521
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Value error at line {line} of {file}"
-msgstr "Erro do valor na linha {line} de {file}."
+msgstr "Erro de valor na linha {line} de {file}"
 
 #: src/diffuse/resources.py:527
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Regex error at line {line} of {file}."
-msgstr "Erro do regex na linha {line} de {file}."
+msgstr "Erro de regex na linha {line} de {file}."
 
 #: src/diffuse/resources.py:530
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Unhandled error at line {line} of {file}."
-msgstr "Erro incomum na linha {line} de {file}."
+msgstr "Erro não tratado na linha {line} de {file}."
 
 #: src/diffuse/utils.py:66
 msgid "Auto Detect"
@@ -492,11 +499,11 @@ msgstr "Salvar alterações antes de carregar o novo arquivo?"
 
 #: src/diffuse/window.py:310
 msgid "_No"
-msgstr ""
+msgstr "_Não"
 
 #: src/diffuse/window.py:311
 msgid "_Yes"
-msgstr ""
+msgstr "_Sim"
 
 #: src/diffuse/window.py:417
 #, python-format
@@ -513,9 +520,8 @@ msgid "Save %(title)s Pane %(pane)d"
 msgstr "Salvar %(title)s painel %(pane)d"
 
 #: src/diffuse/window.py:499 src/diffuse/window.py:1111
-#, fuzzy
 msgid "_Save"
-msgstr "_Salvar arquivo"
+msgstr "_Salvar"
 
 #: src/diffuse/window.py:527
 #, python-format
@@ -896,24 +902,31 @@ msgstr "Refazer"
 
 #: src/diffuse/window.py:950
 msgid "Changes detected"
-msgstr ""
+msgstr "Alterações detectadas"
 
 #: src/diffuse/window.py:954
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "The file \"%s\" changed on disk.\n"
 "\n"
 "Do you want to reload the file?"
-msgstr "O arquivo %s foi alterado no armazenamento. Quer recarregá-lo?"
+msgstr ""
+"O arquivo \"%s\" foi alterado no disco.\n"
+"\n"
+"Deseja recarregar o arquivo?"
 
 #: src/diffuse/window.py:959
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "The following files changed on disk:\n"
 "%s\n"
 "\n"
 "Do you want to reload these files?"
-msgstr "O arquivo %s foi alterado no armazenamento. Quer recarregá-lo?"
+msgstr ""
+"Os seguintes arquivos foram alterados no disco:\n"
+"%s\n"
+"\n"
+"Deseja recarregar estes arquivos?"
 
 #: src/diffuse/window.py:1078
 msgid "Some files have unsaved changes. Select the files to save before closing."
@@ -996,7 +1009,9 @@ msgstr ""
 
 #: src/diffuse/window.py:1766
 msgid "translator-credits"
-msgstr "Pedro Albuquerque <pmra@gmx.com>"
+msgstr ""
+"Pedro Albuquerque <pmra@gmx.com>\n"
+"john peter sa <johnppetersa@gmail.com>"
 
 #~ msgid "Main window: diff between two files"
 #~ msgstr "Janela principal: diff entre dois arquivos"
