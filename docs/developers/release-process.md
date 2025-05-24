@@ -19,7 +19,7 @@ few manual steps.
 ### Create branch, PR and merge
 
 1. Create a new branch (e.g. `release-1.2.3`)
-2. Create a new PR
+2. Commit the changed files and create a new PR
 3. When everything's green: merge the PR
 
 ## Create new release on GitHub
