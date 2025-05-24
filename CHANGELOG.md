@@ -16,11 +16,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update pypi packages (@MightyCreak)
 - Add pre-commit git hooks to run linters (@MightyCreak)
 - Docs: improve devs setup structure (@MightyCreak)
+- Update to flatpak's GNOME runtime 48 (@MightyCreak)
 
 ### Fixed
 
 - Docs: fix incorrect flatpak command to install runtime SDK (@MightyCreak)
-- Update to flatpak's GNOME runtime 46 (@MightyCreak)
 - Update GitHub actions: use Ubuntu 24.04, Python 3.9 and new Flatpak image (@MightyCreak)
 
 ## 0.9.0 - 2024-01-13
