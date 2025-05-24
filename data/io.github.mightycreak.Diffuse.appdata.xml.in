@@ -43,6 +43,28 @@
   <update_contact>romain@foolstep.com</update_contact>
 
   <releases>
+    <release version="0.10.0" date="2025-05-24">
+      <description>
+        <p>Summary: update to GNOME 48, updated a few translations.</p>
+        <p>Changed:</p>
+        <ul>
+          <li>Translation: update French translation (@WedoneOfficiel)</li>
+          <li>Translation: update Italian translation (@albanobattistella)</li>
+          <li>Translation: update Portuguese translation (@hugok79)</li>
+          <li>Translation: update Brazilian Portuguese translation (@johnpetersa19)</li>
+          <li>Translation: add 'nl' in LINGUAS (@hugok79)</li>
+          <li>Update pypi packages (@MightyCreak)</li>
+          <li>Add pre-commit git hooks to run linters (@MightyCreak)</li>
+          <li>Docs: improve devs setup structure (@MightyCreak)</li>
+          <li>Update to flatpak's GNOME runtime 48 (@MightyCreak)</li>
+        </ul>
+        <p>Fixed:</p>
+        <ul>
+          <li>Docs: fix incorrect flatpak command to install runtime SDK (@MightyCreak)</li>
+          <li>Update GitHub actions: use Ubuntu 24.04, Python 3.9 and new Flatpak image (@MightyCreak)</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.9.0" date="2024-01-13">
       <description>
         <p>Summary: remove support for SVK, update to GNOME 45, updated Turkish translation.</p>

@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## [0.10.0] - 2025-05-24
+
+## [0.10.0] - 2025-05-24
+
 ### Changed
 
 - Translation: update French translation (@WedoneOfficiel)
@@ -24,7 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Docs: fix incorrect flatpak command to install runtime SDK (@MightyCreak)
 - Update GitHub actions: use Ubuntu 24.04, Python 3.9 and new Flatpak image (@MightyCreak)
 
-## 0.9.0 - 2024-01-13
+## [0.9.0] - 2024-01-13
 
 ### Changed
 
@@ -47,7 +51,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fix new errors raised by Flake8 (@MightyCreak)
 - Fix the error with the CICD due to the use of `appstreamcli` (@MightyCreak)
 
-## 0.8.2 - 2023-04-16
+## [0.8.2] - 2023-04-16
 
 ### Added
 
@@ -67,7 +71,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Properly handles SIGINT (i.e. Ctrl+C) now (@MightyCreak)
 - Add back `save_state()` to remember window's width and height (@MightyCreak)
 
-## 0.8.1 - 2023-04-07
+## [0.8.1] - 2023-04-07
 
 ### Changed
 
@@ -82,7 +86,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Shortcuts were not working since the move to Gtk.Application
   (issue [#188](https://github.com/MightyCreak/diffuse/issues/188)) (@MightyCreak)
 
-## 0.8.0 - 2023-04-03
+## [0.8.0] - 2023-04-03
 
 ### Added
 
@@ -110,7 +114,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Documentation: prefer `pip3` over `pip` to ensure it works everywhere (@krlmlr)
 - Flatpak: add missing `--filesystem=xdg-run/gvfsd` privilege (@MightyCreak)
 
-## 0.7.7 - 2022-10-23
+## [0.7.7] - 2022-10-23
 
 ### Changed
 
@@ -118,7 +122,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Translation: updated POT file
 - Translation: fixed issue with commented string that still needs translation
 
-## 0.7.6 - 2022-10-23
+## [0.7.6] - 2022-10-23
 
 ### Added
 
@@ -134,7 +138,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fixed MyPy errors
 
-## 0.7.5 - 2022-04-15
+## [0.7.5] - 2022-04-15
 
 ### Added
 
@@ -147,7 +151,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Cleanups: use constructors instead of `new()` whenever possible in GTK
   classes
 
-## 0.7.4 - 2022-04-03
+## [0.7.4] - 2022-04-03
 
 ### Added
 
@@ -176,7 +180,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Removed the lasting lint errors (i.e. in main.py)
 - Fix Flatpak runtime version in documentation
 
-## 0.7.3 - 2021-11-22
+## [0.7.3] - 2021-11-22
 
 ### Added
 
@@ -195,7 +199,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - The intense code cleaning seems to have fixed a bug with the `-c` argument
   (#120)
 
-## 0.7.2 - 2021-11-18
+## [0.7.2] - 2021-11-18
 
 ### Added
 
@@ -214,14 +218,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed 'APP_NAME' error when opening non existing file
 - Fixed the Portuguese Brazilian (pt_BR) translation
 
-## 0.7.1 - 2021-11-17
+## [0.7.1] - 2021-11-17
 
 ### Fixed
 
 - Fixed #103: the flatpak app can now call binaries on the host, such as `git`,
   `svn`, etc. (PR #105)
 
-## 0.7.0 - 2021-11-16
+## [0.7.0] - 2021-11-16
 
 ### Added
 
@@ -244,7 +248,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fixed some GTK deprecation warnings
 
-## 0.6.0 - 2020-11-29
+## [0.6.0] - 2020-11-29
 
 ### Added
 
@@ -257,7 +261,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Replaced some interpolation operators (`%`) for the `f` string prefix
 - Use the window scale factor for the icons generation
 
-## 0.5.0 - 2020-07-18
+## [0.5.0] - 2020-07-18
 
 ### Added
 
@@ -600,3 +604,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - initial public release
+
+[0.10.0]: https://github.com/MightyCreak/diffuse/compare/v0.9.0...v0.10.0
+[0.9.0]: https://github.com/MightyCreak/diffuse/compare/v0.8.2...v0.9.0
+[0.8.2]: https://github.com/MightyCreak/diffuse/compare/v0.8.1...v0.8.2
+[0.8.1]: https://github.com/MightyCreak/diffuse/compare/v0.8.0...v0.8.1
+[0.8.0]: https://github.com/MightyCreak/diffuse/compare/v0.7.7...v0.8.0
+[0.7.7]: https://github.com/MightyCreak/diffuse/compare/v0.7.6...v0.7.7
+[0.7.6]: https://github.com/MightyCreak/diffuse/compare/v0.7.5...v0.7.6
+[0.7.5]: https://github.com/MightyCreak/diffuse/compare/v0.7.4...v0.7.5
+[0.7.4]: https://github.com/MightyCreak/diffuse/compare/v0.7.3...v0.7.4
+[0.7.3]: https://github.com/MightyCreak/diffuse/compare/v0.7.2...v0.7.3
+[0.7.2]: https://github.com/MightyCreak/diffuse/compare/v0.7.1...v0.7.2
+[0.7.1]: https://github.com/MightyCreak/diffuse/compare/v0.7.0...v0.7.1
+[0.7.0]: https://github.com/MightyCreak/diffuse/compare/v0.6.0...v0.7.0
+[0.6.0]: https://github.com/MightyCreak/diffuse/compare/v0.5.0...v0.6.0
+[0.5.0]: https://github.com/MightyCreak/diffuse/compare/v0.4.8...v0.5.0

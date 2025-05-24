@@ -72,8 +72,10 @@ echo "$new_release" | sed -i "/<releases>/r /dev/stdin" \
 
 # CHANGELOG.md
 new_changelog="
-## $NEW_VERSION - $DATE_FULL"
+## [$NEW_VERSION] - $DATE_FULL"
 echo "$new_changelog" | sed -i "/^## Unreleased$/r /dev/stdin" \
     CHANGELOG.md
 
 echo "Changes done."
+echo
+echo "Don't forget to add the compare link in CHANGELOG.md."
