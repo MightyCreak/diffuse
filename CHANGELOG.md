@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Translation: update French translation (@WedoneOfficiel)
 - Translation: update Italian translation (@albanobattistella)
 - Translation: update Portuguese translation (@hugok79)
+- Translation: update Brazilian Portuguese translation (@johnpetersa19)
 - Translation: add 'nl' in LINGUAS (@hugok79)
 - Update pypi packages (@MightyCreak)
 - Add pre-commit git hooks to run linters (@MightyCreak)
