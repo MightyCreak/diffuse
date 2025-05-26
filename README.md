@@ -1,45 +1,68 @@
-<h1 align="center">
+# Diffuse
+
+<div align="center">
   <img
     src="./data/icons/hicolor/scalable/apps/io.github.mightycreak.Diffuse.svg"
-    alt="Diffuse"
+    alt="Diffuse Logo"
     width="192"
-    height="192"/><br/>
-</h1>
+    height="192"/>
+</div>
 
-<p align="center" style="margin-top: 2em">
+<div align="center">
+  <p><strong>A powerful graphical tool for merging and comparing text files</strong></p>
+  
   <a href="https://flathub.org/apps/details/io.github.mightycreak.Diffuse">
     <img width="200" alt="Download on Flathub" src="https://flathub.org/assets/badges/flathub-badge-en.png"/>
   </a>
-</p>
+  
+  <p>
+    <a href="https://github.com/MightyCreak/diffuse/actions/workflows/ci.yml">
+      <img
+        src="https://github.com/MightyCreak/diffuse/actions/workflows/ci.yml/badge.svg"
+        alt="CI status"/>
+    </a>
+    <a href="https://repology.org/project/diffuse/versions">
+      <img src="https://repology.org/badge/tiny-repos/diffuse.svg" alt="Packaging status">
+    </a>
+  </p>
+</div>
 
-<p align="center">
-  <a href="https://github.com/MightyCreak/diffuse/actions/workflows/ci.yml">
-    <img
-      src="https://github.com/MightyCreak/diffuse/actions/workflows/ci.yml/badge.svg"
-      alt="CI status"/>
-  </a>
-  <a href="https://repology.org/project/diffuse/versions">
-    <img src="https://repology.org/badge/tiny-repos/diffuse.svg" alt="Packaging status">
-  </a>
-</p>
+## Overview
 
-Diffuse is a graphical tool for merging and comparing text files. Diffuse is
-able to compare an arbitrary number of files side-by-side and gives users the
-ability to manually adjust line matching and directly edit files. Diffuse can
-also retrieve revisions of files from several VCSs for comparison and merging.
+Diffuse is a sophisticated graphical tool designed for merging and comparing text files with precision and ease. Whether you're reviewing code changes, merging configurations, or comparing documents, Diffuse provides an intuitive interface that handles complex file comparisons effortlessly.
 
-Some key features of Diffuse:
+Unlike traditional diff tools, Diffuse excels at comparing multiple files simultaneously and integrates seamlessly with popular version control systems, making it an essential tool for developers, system administrators, and anyone working with text files.
 
-* Ability to compare and merge an arbitrary number of files side-by-side (n-way
-  merges)
-* Line matching can be manually corrected by the user
-* Ability to directly edit files
-* Syntax highlighting
-* Supports several VCS: [Bazaar][bzr], [CVS][cvs], [Darcs][darcs], [Git][git],
-  [Mercurial][hg], [Monotone][mtn], [RCS][rcs] and [Subversion][svn]
-* Unicode support
-* Unlimited undo
-* Easy keyboard navigation
+## ✨ Key Features
+
+**Multi-Way Comparisons**
+- Compare and merge an arbitrary number of files side-by-side
+- Support for n-way merges with intuitive visual representation
+
+**Advanced Editing Capabilities**
+- Direct file editing within the comparison view
+- Manual line matching correction for precise control
+- Unlimited undo functionality for confident editing
+
+**Developer-Friendly**
+- Comprehensive syntax highlighting for multiple programming languages
+- Integration with major version control systems
+- Easy keyboard navigation for efficient workflow
+
+**Version Control Integration**
+- Seamless support for multiple VCS platforms:
+  - [Git][git] - Modern distributed version control
+  - [Subversion][svn] - Centralized version control
+  - [Mercurial][hg] - Distributed version control
+  - [Bazaar][bzr] - Distributed version control
+  - [CVS][cvs] - Legacy version control
+  - [Darcs][darcs] - Advanced patch theory
+  - [Monotone][mtn] - Distributed version control
+  - [RCS][rcs] - Simple file versioning
+
+**Internationalization**
+- Full Unicode support for global compatibility
+- Multi-language interface support
 
 [bzr]: https://bazaar.canonical.com
 [cvs]: https://cvs.nongnu.org
@@ -50,27 +73,38 @@ Some key features of Diffuse:
 [rcs]: https://www.gnu.org/software/rcs/
 [svn]: https://subversion.apache.org
 
-## Documentation
+## 📚 Documentation
 
-For a more detailed documentation for users, translators and developers, see
-the [documentation](docs/).
+Comprehensive documentation is available for users, translators, and developers in the [documentation](docs/) directory, covering:
 
-## Contact
+- User guide and tutorials
+- Developer API reference
+- Translation guidelines
+- Build and installation instructions
 
-Discuss with us on Matrix at [#diffuse:matrix.org](https://matrix.to/#/#diffuse:matrix.org).
+## 💬 Community & Support
 
-## Licenses
+Join our community discussions on Matrix: [#diffuse:matrix.org](https://matrix.to/#/#diffuse:matrix.org)
 
-Diffuse is under the [GPLv2](COPYING).
+Whether you need help, want to contribute, or have suggestions for improvements, our community is here to help.
 
-The file [io.github.mightycreak.Diffuse.appdata.xml.in](data/io.github.mightycreak.Diffuse.appdata.xml.in)
-is licensed under the [FSF-AP](https://www.gnu.org/prep/maintain/html_node/License-Notices-for-Other-Files.html)
-license.
+## 📄 License
 
-Copyright (C) 2006-2019 Derrick Moser <derrick_moser@yahoo.com>  
-Copyright (C) 2015-2023 Romain Failliot <romain.failliot@foolstep.com>
+**Diffuse** is released under the [GPLv2](COPYING) license.
 
-Icon made by [@jimmac](https://github.com/jimmac).
+The AppData file [io.github.mightycreak.Diffuse.appdata.xml.in](data/io.github.mightycreak.Diffuse.appdata.xml.in) is licensed under the [FSF-AP](https://www.gnu.org/prep/maintain/html_node/License-Notices-for-Other-Files.html) license.
 
-This repository is a fork of the original project on SourceForge, which doesn't
-seem to be maintained anymore: <https://sourceforge.net/projects/diffuse/>.
+## 👥 Credits
+
+**Copyright & Maintainers:**
+- Copyright (C) 2006-2019 Derrick Moser <derrick_moser@yahoo.com>
+- Copyright (C) 2015-2023 Romain Failliot <romain.failliot@foolstep.com>
+
+**Design:**
+- Icon designed by [@jimmac](https://github.com/jimmac)
+
+## 🔗 Project History
+
+This repository is a community-maintained fork of the original Diffuse project from SourceForge, which is no longer actively maintained. The original project can be found at: <https://sourceforge.net/projects/diffuse/>
+
+We've continued development to ensure Diffuse remains a reliable and modern tool for file comparison and merging.
