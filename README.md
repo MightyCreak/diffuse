@@ -3,7 +3,7 @@
 <div align="center">
   <img
     src="./data/icons/hicolor/scalable/apps/io.github.mightycreak.Diffuse.svg"
-    alt="Diffuse Logo"
+    alt="Diffuse"
     width="192"
     height="192"/>
 </div>
