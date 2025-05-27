@@ -32,6 +32,7 @@ from diffuse.vcs.hg import Hg
 from diffuse.vcs.mtn import Mtn
 from diffuse.vcs.rcs import Rcs
 from diffuse.vcs.svn import Svn
+from diffuse.vcs.src import Src
 
 
 class VcsRegistry:
@@ -45,7 +46,8 @@ class VcsRegistry:
             'hg': _get_hg_repo,
             'mtn': _get_mtn_repo,
             'rcs': _get_rcs_repo,
-            'svn': _get_svn_repo
+            'svn': _get_svn_repo,
+            'src': _get_src_repo
         }
 
     # determines which VCS to use for files in the named folder
@@ -165,3 +167,7 @@ def _get_rcs_repo(path: str, prefs: Preferences) -> Optional[VcsInterface]:
 def _get_svn_repo(path: str, prefs: Preferences) -> Optional[VcsInterface]:
     p = _find_parent_dir_with(path, '.svn')
     return Svn(p) if p else None
+
+def _get_src_repo(path: str, prefs: Preferences) -> Optional[VcsInterface]:
+    p = _find_parent_dir_with(path, '.src')
+    return Src(p) if p else None
