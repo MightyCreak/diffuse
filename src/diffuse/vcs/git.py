@@ -39,7 +39,10 @@ class Git(VcsInterface):
         for name in names:
             isabs |= os.path.isabs(name)
         # run command
-        prev = rev + '^'
+        if '..' in rev:
+            prev, rev = rev.split('..')
+        else:
+            prev = rev + '^'
         fs = FolderSet(names)
         modified = {}
         for s in utils.popenReadLines(self.root, args, prefs, 'git_bash'):
