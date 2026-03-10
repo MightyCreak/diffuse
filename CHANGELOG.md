@@ -14,6 +14,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - fix(cicd): update Github CI/CD script (@MightyCreak)
+- Fix [#246](https://github.com/MightyCreak/diffuse/issues/246): Re-instate ability
+  to provide multiple revs eg diffuse -r v1 -r v2 file (@bhepple)
 
 ## [0.10.0] - 2025-05-24
 
