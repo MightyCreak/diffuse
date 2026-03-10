@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Update release process documentation (@MightyCreak)
 
+### Fixed
+
+- fix(cicd): update Github CI/CD script (@MightyCreak)
+
 ## [0.10.0] - 2025-05-24
 
 ### Changed
