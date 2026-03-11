@@ -14,7 +14,7 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   lint:
-    runs-on: ubuntu-26.04
+    runs-on: ubuntu-24.04
     steps:
     - uses: actions/checkout@v6
     - uses: actions/setup-python@v6
@@ -38,7 +38,7 @@ jobs:
         mypy src/ po/
 
   meson-build-test:
-    runs-on: ubuntu-26.04
+    runs-on: ubuntu-24.04
     steps:
     - uses: actions/checkout@v6
     - uses: actions/setup-python@v6
@@ -50,7 +50,7 @@ jobs:
     - run: meson test --print-errorlogs -C build
 
   flatpak-build-test:
-    runs-on: ubuntu-26.04
+    runs-on: ubuntu-24.04
     container:
       image: ghcr.io/flathub-infra/flatpak-github-actions:gnome-48
       options: --privileged
