@@ -10,6 +10,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Update release process documentation (@MightyCreak)
+- Minimal Pytnon release is now 3.10 (@MightyCreak)
+- Update flatpak's GNOME runtime to 49 (@MightyCreak)
+- Update PyPi requirements (@MightyCreak)
 
 ### Fixed
 

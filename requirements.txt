@@ -1,1 +1,1 @@
-PyGObject ~= 3.48
+PyGObject ~= 3.54
