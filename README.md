@@ -36,7 +36,7 @@ Some key features of Diffuse:
 * Ability to directly edit files
 * Syntax highlighting
 * Supports several VCS: [Bazaar][bzr], [CVS][cvs], [Darcs][darcs], [Git][git],
-  [Mercurial][hg], [Monotone][mtn], [RCS][rcs] and [Subversion][svn]
+  [Mercurial][hg], [Monotone][mtn], [RCS][rcs], [Subversion][svn] and [Src][src]
 * Unicode support
 * Unlimited undo
 * Easy keyboard navigation
@@ -49,6 +49,7 @@ Some key features of Diffuse:
 [mtn]: https://www.monotone.ca
 [rcs]: https://www.gnu.org/software/rcs/
 [svn]: https://subversion.apache.org
+[src]: http://www.catb.org/~esr/src/
 
 ## Documentation
 
