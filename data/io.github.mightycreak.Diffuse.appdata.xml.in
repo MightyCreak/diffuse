@@ -43,6 +43,24 @@
   <update_contact>romain@foolstep.com</update_contact>
 
   <releases>
+    <release version="0.11.0" date="2026-03-12">
+      <description>
+        <p>Summary: allow multiple `-r` flags in command-line, update to GNOME 49.</p>
+        <p>Changed:</p>
+        <ul>
+          <li>Update release process documentation (@MightyCreak)</li>
+          <li>Minimal Pytnon release is now 3.10 (@MightyCreak)</li>
+          <li>Update flatpak's GNOME runtime to 49 (@MightyCreak)</li>
+          <li>Update PyPi requirements (@MightyCreak)</li>
+        </ul>
+        <p>Fixed:</p>
+        <ul>
+          <li>fix(cicd): update Github CI/CD script (@MightyCreak)</li>
+          <li>Fix #246: Re-instate ability
+            to provide multiple revs eg diffuse -r v1 -r v2 file (@bhepple)</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.10.0" date="2025-05-24">
       <description>
         <p>Summary: update to GNOME 48, updated a few translations.</p>
