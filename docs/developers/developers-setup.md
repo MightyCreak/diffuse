@@ -4,7 +4,7 @@
 
 Diffuse depends on these projects:
 
-* Python 3.8+
+* Python 3.10+
 * PyPi
 * Cairo and GObject Introspection development headers
 * Meson
