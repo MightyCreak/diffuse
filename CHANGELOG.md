@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- fix: fixes some issues with the appdata file (@MightyCreak)
+
 ## [0.11.0] - 2026-03-12
 
 ### Changed

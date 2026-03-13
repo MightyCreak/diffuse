@@ -2,13 +2,20 @@
 <component type="desktop-application">
   <id>io.github.mightycreak.Diffuse</id>
   <name>Diffuse</name>
-  <summary>Graphical tool for merging and comparing text files</summary>
+  <summary>Compare and merge text files</summary>
   <description>
     <p>
-      Diffuse is a graphical tool for comparing and merging text files. It can retrieve files for comparison from
-      Bazaar, CVS, Darcs, Git, Mercurial, Monotone, RCS, and Subversion repositories.
+      Diffuse allows to compare and merge text files. It supports several version control systems:
+      Bazaar, CVS, Darcs, Git, Mercurial, Monotone, RCS, and Subversion.
     </p>
   </description>
+  <keywords>
+    <keyword>diff</keyword>
+    <keyword>compare</keyword>
+    <keyword>merge</keyword>
+    <keyword>development</keyword>
+    <keyword>programming</keyword>
+  </keywords>
   <supports>
     <control>pointing</control>
     <control>keyboard</control>
@@ -27,12 +34,12 @@
 
   <screenshots>
     <screenshot type="default">
-      <image type="source">https://raw.githubusercontent.com/MightyCreak/diffuse/main/docs/images/screenshot_v0.7.7_main_window.png</image>
+      <image type="source">https://raw.githubusercontent.com/MightyCreak/diffuse/main/docs/images/screenshot_main_window.png</image>
       <caption>Main window</caption>
     </screenshot>
     <screenshot>
-      <image type="source">https://raw.githubusercontent.com/MightyCreak/diffuse/main/docs/images/screenshot_v0.7.7_about_window.png</image>
-      <caption>About window</caption>
+      <image type="source">https://raw.githubusercontent.com/MightyCreak/diffuse/main/docs/images/screenshot_preferences.png</image>
+      <caption>Preferences window</caption>
     </screenshot>
   </screenshots>
 
